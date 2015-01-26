@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?include "..\..\Config.wxi" ?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Fragment>
+    <DirectoryRef Id="ProgramFilesFolder">
+      
+      <Directory Id="PRODUCTDIR" Name="$(var.ProductName) SDKs">
+        <Directory Id="INSTALLDIR" Name="v$(var.SDKVersion)">
+
+          <Directory Id="LibrariesFolder" Name="!(loc.LibrariesFolder)">
+            <Directory Id="DotNet2Folder" Name="!(loc.DotNet2Folder)"/>
+            <Directory Id="DotNet4Folder" Name="!(loc.DotNet4Folder)"/>
+          </Directory>
+
+          <Directory Id="DocsFolder" Name="!(loc.DocsFolder)"/>
+          <Directory Id="ExamplesFolder" Name="!(loc.ExamplesFolder)"/>
+
+          <Component Id="LicenseFiles" Guid="{A1146DFB-E654-4f46-B96E-61C11CFBFEF2}">
+            <File Id="License.rtf" Source="SourceDir\License.rtf" />
+            <File Id="ReadMe.txt" Source="SourceDir\ReadMe.txt" />
+          </Component>
+
+        </Directory>
+      </Directory>
+      
+    </DirectoryRef>
+  </Fragment>
+</Wix>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Fragment>
+    <DirectoryRef Id="Registry">
+      <Component Id="VSRegistration" Guid="{C5C9FA53-DDEB-4970-AA00-A0B131245CFD}">
+        <!-- DotNet2 Assemblies -->
+        <RegistryValue Id="DN2_WIN2K"
+                       Root="HKLM"
+                       Key="SOFTWARE\Microsoft\.NETFramework\v2.0.50727\AssemblyFoldersEx\DotRas_$(var.DN2WIN2KVER)"
+                       Action="write"
+                       Value="[DN2_Win2kFolder]"
+                       Type="string" />
+
+        <RegistryValue Id="DN2_WINXP"
+                       Root="HKLM"
+                       Key="SOFTWARE\Microsoft\.NETFramework\v2.0.50727\AssemblyFoldersEx\DotRas_$(var.DN2WINXPVER)"
+                       Action="write"
+                       Value="[DN2_WinXpFolder]"
+                       Type="string" />
+
+        <RegistryValue Id="DN2_WIN2K8"
+                       Root="HKLM"
+                       Key="SOFTWARE\Microsoft\.NETFramework\v2.0.50727\AssemblyFoldersEx\DotRas_$(var.DN2WIN2K8VER)"
+                       Action="write"
+                       Value="[DN2_Win2k8Folder]"
+                       Type="string" />
+
+        <RegistryValue Id="DN2_WIN7"
+                       Root="HKLM"
+                       Key="SOFTWARE\Microsoft\.NETFramework\v2.0.50727\AssemblyFoldersEx\DotRas_$(var.DN2WIN7VER)"
+                       Action="write"
+                       Value="[DN2_Win7Folder]"
+                       Type="string" />
+
+        <RegistryValue Id="DN2_WIN8"
+                       Root="HKLM"
+                       Key="SOFTWARE\Microsoft\.NETFramework\v2.0.50727\AssemblyFoldersEx\DotRas_$(var.DN2WIN8VER)"
+                       Action="write"
+                       Value="[DN2_Win8Folder]"
+                       Type="string" />
+
+        <!-- DotNet4 Assemblies -->
+        <RegistryValue Id="DN4_WIN2K"
+                       Root="HKLM"
+                       Key="SOFTWARE\Microsoft\.NETFramework\v4.0.30319\AssemblyFoldersEx\DotRas_$(var.DN4WIN2KVER)"
+                       Action="write"
+                       Value="[DN4_Win2kFolder]"
+                       Type="string" />
+
+        <RegistryValue Id="DN4_WINXP"
+                       Root="HKLM"
+                       Key="SOFTWARE\Microsoft\.NETFramework\v4.0.30319\AssemblyFoldersEx\DotRas_$(var.DN4WINXPVER)"
+                       Action="write"
+                       Value="[DN4_WinXpFolder]"
+                       Type="string" />
+
+        <RegistryValue Id="DN4_WIN2K8"
+                       Root="HKLM"
+                       Key="SOFTWARE\Microsoft\.NETFramework\v4.0.30319\AssemblyFoldersEx\DotRas_$(var.DN4WIN2K8VER)"
+                       Action="write"
+                       Value="[DN4_Win2k8Folder]"
+                       Type="string" />
+
+        <RegistryValue Id="DN4_WIN7"
+                       Root="HKLM"
+                       Key="SOFTWARE\Microsoft\.NETFramework\v4.0.30319\AssemblyFoldersEx\DotRas_$(var.DN4WIN7VER)"
+                       Action="write"
+                       Value="[DN4_Win7Folder]"
+                       Type="string" />
+
+        <RegistryValue Id="DN4_WIN8"
+                       Root="HKLM"
+                       Key="SOFTWARE\Microsoft\.NETFramework\v4.0.30319\AssemblyFoldersEx\DotRas_$(var.DN4WIN8VER)"
+                       Action="write"
+                       Value="[DN4_Win8Folder]"
+                       Type="string" />
+      </Component>
+    </DirectoryRef>
+  </Fragment>
+</Wix>

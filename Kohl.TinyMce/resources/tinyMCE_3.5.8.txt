@@ -1,0 +1,78 @@
+<!-- TinyMCE -->
+<script type="text/javascript">
+	tinyMCE.init({
+		// General options
+		mode : "textareas",
+		theme : "advanced",
+		skin : "o2k7",
+		skin_variant : "black",
+		plugins : "autolink,lists,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template,wordcount,advlist,autosave,visualblocks",
+		entity_encoding : "named", //"raw",
+
+		// http://www.tinymce.com/wiki.php/Configuration:verify_html
+		// This option enables or disables the element cleanup functionality. If you set this option to false, all element cleanup will be skipped but other cleanup functionality such as URL conversion will still be executed.
+		verify_html : false,
+
+		// http://www.tinymce.com/wiki.php/Configuration:convert_newlines_to_brs
+		// If you set this option to true, newline characters codes get converted into br elements. This option is set to false by default.
+		convert_newlines_to_brs : false,
+
+		// http://www.tinymce.com/wiki.php/Configuration:extended_valid_elements
+		// This option is very similar to valid_elements. The only difference between this option and valid_elements is that this one gets added to the existing rule set. This can be very useful if the existing rule set is fine but you want to add some specific elements that also should be valid.
+		// When adding a new attribute by specifying an existing element rule (e.g. img), the entire rule for that element is over-ridden so be sure to include all valid attributes not just the one you wish to add. See valid_elements for default rules.
+		extended_valid_elements : "img[class|src|border=0|alt|title|hspace|vspace|width|height|align|onmouseover|onmouseout|name]",
+
+		// http://www.tinymce.com/wiki.php/Configuration:valid_elements
+		valid_elements : "a[href|target=_blank],strong/b,div[align],br",
+
+		// http://www.tinymce.com/wiki.php/Configuration:force_p_newlines
+		force_p_newlines : false,
+
+		// http://www.tinymce.com/wiki.php/Configuration:force_br_newlines
+		force_br_newlines : false,
+
+		// http://www.tinymce.com/wiki.php/Configuration:force_br_newlines
+		// http://www.tinymce.com/wiki.php/Configuration:forced_root_block
+		forced_root_block : '', // Needed for 3.x
+
+		// http://www.tinymce.com/wiki.php/Configuration:preformatted
+		preformatted : false,
+
+		// http://www.tinymce.com/wiki.php/Configuration:invalid_elements
+		invalid_elements : "",
+
+		// Theme options
+		theme_advanced_buttons1 : "newdocument,|,bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,styleselect,formatselect,fontselect,fontsizeselect",
+		theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,image,cleanup,help,code,|,insertdate,inserttime,preview,|,forecolor,backcolor",
+		theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,emotions,iespell,media,advhr,|,print,|,ltr,rtl,|,fullscreen",
+		theme_advanced_buttons4 : "insertlayer,moveforward,movebackward,absolute,|,styleprops,|,cite,abbr,acronym,del,ins,attribs,|,visualchars,nonbreaking,template,pagebreak,restoredraft,visualblocks",
+		theme_advanced_toolbar_location : "top",
+		theme_advanced_toolbar_align : "left",
+		theme_advanced_statusbar_location : "bottom",
+		theme_advanced_resizing : true,
+
+		// Example content CSS (should be your site CSS)
+		content_css : "[CSS]",
+
+		// Drop lists for link/image/media/template dialogs
+		template_external_list_url : "lists/template_list.js",
+		external_link_list_url : "lists/link_list.js",
+		external_image_list_url : "lists/image_list.js",
+		media_external_list_url : "lists/media_list.js"
+		
+		/*,
+
+		// Style formats
+		style_formats : [
+			{title : 'Bold text', inline : 'b'},
+			{title : 'Red text', inline : 'span', styles : {color : '#ff0000'}},
+			{title : 'Red header', block : 'h1', styles : {color : '#ff0000'}},
+			{title : 'Example 1', inline : 'span', classes : 'example1'},
+			{title : 'Example 2', inline : 'span', classes : 'example2'},
+			{title : 'Table styles'},
+			{title : 'Table row 1', selector : 'tr', classes : 'tablerow1'}
+		]
+		*/
+	});
+</script>
+<!-- /TinyMCE -->

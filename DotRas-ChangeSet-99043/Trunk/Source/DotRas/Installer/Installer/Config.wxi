@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Include>
+  <!-- PRODUCTNAME
+      Defines the product name being installed.
+  -->
+  <?define ProductName = "DotRas" ?>
+
+  <!-- UPGRADECODE
+      Defines the upgrade code for the product.
+  -->
+  <?define UpgradeCode = {935DE49B-F385-4EE9-96A5-951062923D6F} ?>
+
+  <!-- PRODUCTMANUFACTURER
+    Defines the product manufacturer variable used throughout the application.
+  -->
+  <?define ProductManufacturer = "Jeff Winn" ?>
+
+  <!-- PRODUCTURL
+    Defines the product URL. 
+  -->
+  <?define ProductURL = "http://dotras.codeplex.com" ?>
+</Include>

@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F10324EB-3318-4533-A4E1-9A69CF421CAC}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Terminals.Plugins.AutoIt</RootNamespace>
+    <AssemblyName>Terminals.Plugins.AutoIt</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <NoWin32Manifest>False</NoWin32Manifest>
+    <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
+    <NoStdLib>False</NoStdLib>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <IntermediateOutputPath>obj\$(Configuration)\</IntermediateOutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Terminals\bin\x86\Debug\Plugins\AutoIt\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>None</DebugType>
+    <Optimize>True</Optimize>
+    <OutputPath>..\Terminals\bin\x86\Release\Plugins\AutoIt\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
+    <BaseIntermediateOutputPath>obj\</BaseIntermediateOutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Platform)' == 'AnyCPU' ">
+    <BaseAddress>4194304</BaseAddress>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <RegisterForComInterop>False</RegisterForComInterop>
+    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Kohl.Framework">
+      <HintPath>..\DLLs\Kohl.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Connection\AutoItConnection.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Connection\AutoItConnection.Designer.cs">
+      <DependentUpon>AutoItConnection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FavoriteExtensions.cs" />
+    <Compile Include="Connection\AutoItEditorConnection.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Connection\AutoItEditorConnection.Designer.cs">
+      <DependentUpon>AutoItEditorConnection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Panels\FavoritePanels\AutoItFavoritePanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Panels\FavoritePanels\AutoItFavoritePanel.Designer.cs">
+      <DependentUpon>AutoItFavoritePanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Panels\OptionPanels\AutoItOptionPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Panels\OptionPanels\AutoItOptionPanel.Designer.cs">
+      <DependentUpon>AutoItOptionPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Panels\OptionPanels\AutoItEnableForProtocolsOptionPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <DependentUpon>Resources.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="SettingsExtensions.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CodeEditor\CodeEditor.csproj">
+      <Project>{fb3e07ab-e0fa-4122-be64-bffef510201b}</Project>
+      <Name>CodeEditor</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Terminals.Configuration\Terminals.Configuration.csproj">
+      <Project>{fceb7dac-e7be-4b40-976f-0687b9f36cd1}</Project>
+      <Name>Terminals.Configuration</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Terminals.Connection\Terminals.Connection.csproj">
+      <Project>{b7912bf3-a591-4011-b48e-9eab91568bb3}</Project>
+      <Name>Terminals.Connection</Name>
+      <Private>False</Private>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Panels\FavoritePanels\AutoItFavoritePanel.resx">
+      <DependentUpon>AutoItFavoritePanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Panels\OptionPanels\AutoItEnableForProtocolsOptionPanel.resx">
+      <DependentUpon>AutoItEnableForProtocolsOptionPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Panels\OptionPanels\AutoItOptionPanel.resx">
+      <DependentUpon>AutoItOptionPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <Generator>ResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AutoIt.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

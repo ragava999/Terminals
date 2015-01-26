@@ -1,0 +1,605 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+	<xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+		<xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+		<xsd:element name="root" msdata:IsDataSet="true">
+			<xsd:complexType>
+				<xsd:choice maxOccurs="unbounded">
+					<xsd:element name="metadata">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" />
+							</xsd:sequence>
+							<xsd:attribute name="name" use="required" type="xsd:string" />
+							<xsd:attribute name="type" type="xsd:string" />
+							<xsd:attribute name="mimetype" type="xsd:string" />
+							<xsd:attribute ref="xml:space" />
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="assembly">
+						<xsd:complexType>
+							<xsd:attribute name="alias" type="xsd:string" />
+							<xsd:attribute name="name" type="xsd:string" />
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="data">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+								<xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+							</xsd:sequence>
+							<xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+							<xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+							<xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+							<xsd:attribute ref="xml:space" />
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="resheader">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+							</xsd:sequence>
+							<xsd:attribute name="name" type="xsd:string" use="required" />
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:choice>
+			</xsd:complexType>
+		</xsd:element>
+	</xsd:schema>
+	<resheader name="resmimetype">
+		<value>text/microsoft-resx</value>
+	</resheader>
+	<resheader name="version">
+		<value>2.0</value>
+	</resheader>
+	<resheader name="reader">
+		<value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<resheader name="writer">
+		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<data name="App_AboutText" xml:space="preserve">
+    <value>Compress .Net Executables. </value>
+  </data>
+	<data name="App_AboutTextLong" xml:space="preserve">
+    <value>  - Compress your .Net assembly for faster download.
+  - High ZIP compression with no unpack library overhead.
+  - Bundle multiple assemblies into a single distribution.
+  - Works for Windows Forms and Console Applications.
+  - Create a toolkit application that is a composite of multiple 
+    assemblies accessible via a menu.   
+  - Persist or explicitly define your assembly info from the 
+    original assembly or from a source file.
+  - Persist or add a new icon to your packed executable. 
+
+&lt;t:9&gt;Notes on assembly load process:
+The order of the locations that .Net will look for assemblies that are referenced by your application is important and may affect your application at runtime.&lt;/t:9&gt;
+
+&lt;t:2&gt;The order is:&lt;/t:2&gt; 
+  1. &lt;t:10&gt;GAC&lt;/t:10&gt;
+  2. &lt;t:10&gt;File System&lt;/t:10&gt;
+  3. &lt;t:10&gt;Compressed Resource&lt;/t:10&gt;
+
+&lt;t:2&gt;This means that&lt;/t:2&gt;  
+&lt;t:2&gt;A.&lt;/t:2&gt; &lt;t:10&gt;If your application references an assembly that can be found in the GAC then your application will favor this at runtime.&lt;/t:10&gt;
+
+&lt;t:2&gt;B.&lt;/t:2&gt; &lt;t:10&gt;Else if your application references an assembly that can be found in the file system (in the same directory as your application) then your application will favor this at runtime.&lt;/t:10&gt;
+
+&lt;t:2&gt;C.&lt;/t:2&gt; &lt;t:10&gt;Failing both A and B your application will attempt to load the referenced assembly from the compressed resource inside the application executable file.&lt;/t:10&gt;
+
+&lt;t:2&gt;Unless&lt;/t:2&gt; &lt;t:10&gt;Your application loads the class in an assembly from an additional AppDomain in which case the assembly must be in the GAC or the file system.&lt;/t:10&gt;
+
+&lt;t:16&gt;It is not possible to load a class from the executing assembly from an additional 
+AppDomain when the executing assembly has been compressed.&lt;/t:16&gt;</value>
+  </data>
+	<data name="App_CreditsText" xml:space="preserve">
+    <value>Rugland Digital Systems
+http://rpx.codeplex.com/
+
+Copyright (C) 2008 - 2018 Phill Tew</value>
+  </data>
+	<data name="App_LegalText" xml:space="preserve">
+    <value>Uses Ionic.Zip for re-compression.
+http://www.codeplex.com/DotNetZip
+
+Inspired by UPX (the Ultimate Packer for eXecutables)
+Markus F.X.J. Oberhumer, László Molnár &amp; John F. Reiser
+http://upx.sourceforge.net/</value>
+  </data>
+	<data name="App_Title" xml:space="preserve">
+    <value>Rugland Packer for (.Net) eXecutables</value>
+  </data>
+	<data name="Arg_AssemblyInfoPath_Help" xml:space="preserve">
+    <value>Use this argument to use the assembly info from a source file.
+
+If the /Toolkit argument is defined then you must supply this argument.  
+
+If neither the /Toolkit or this option is defined then an attempt will be
+made to retrieve the info from the assembly at the location specified in the
+&lt;exec file&gt; argument via reflection.</value>
+  </data>
+	<data name="Arg_AssemblyInfoPath_Key" xml:space="preserve">
+    <value>AssemblyInfo</value>
+  </data>
+	<data name="Arg_AssemblyInfoPath_Name" xml:space="preserve">
+    <value>AssemblyInfo.cs</value>
+  </data>
+	<data name="Arg_AssemblyInfoPath_ShortHelp" xml:space="preserve">
+    <value>Path of a AssemblyInfo.cs code file to use</value>
+  </data>
+	<data name="Arg_AssemblyInfoPath_Symbol" xml:space="preserve">
+    <value>a</value>
+  </data>
+	<data name="Arg_BuildSwitch_Help" xml:space="preserve">
+    <value>Generates errors compatible with MS VisualStudio</value>
+  </data>
+	<data name="Arg_BuildSwitch_Key" xml:space="preserve">
+    <value>Build</value>
+  </data>
+	<data name="Arg_BuildSwitch_ShortHelp" xml:space="preserve">
+    <value>Build mode</value>
+  </data>
+	<data name="Arg_ConsoleSwitch_Help" xml:space="preserve">
+    <value>Output as a console or forms application, if not defined then the value is derived from assembly supplied in the &lt;exec file&gt; argument.</value>
+  </data>
+	<data name="Arg_ConsoleSwitch_Key" xml:space="preserve">
+    <value>Console</value>
+  </data>
+	<data name="Arg_ConsoleSwitch_ShortHelp" xml:space="preserve">
+    <value>Output as a console or forms application</value>
+  </data>
+	<data name="Arg_ConsoleSwitch_Symbol" xml:space="preserve">
+    <value>c</value>
+  </data>
+	<data name="Arg_Decorate_Help" xml:space="preserve">
+    <value>This comes at a small cost to the assembly code size.</value>
+  </data>
+	<data name="Arg_Decorate_Key" xml:space="preserve">
+    <value>Decorate</value>
+  </data>
+	<data name="Arg_Decorate_Name" xml:space="preserve">
+    <value>Decorate</value>
+  </data>
+	<data name="Arg_Decorate_ShortHelp" xml:space="preserve">
+    <value>Decorate the console output of the resulting assembly</value>
+  </data>
+	<data name="Arg_FileList_Help" xml:space="preserve">
+    <value>List of additional assemblies to be bundled into the resulting executable.
+See additional notes on assembly load order by using the /?? switch</value>
+  </data>
+	<data name="Arg_FileList_Name" xml:space="preserve">
+    <value>additional assemblies</value>
+  </data>
+	<data name="Arg_Hide_Help" xml:space="preserve">
+    <value>This helps protect your assemblies from unwanted unpacking or inspection by
+a third party.
+
+If the optional password is supplied then the resource will be encrypted and
+only accessible by supplying the password as the fist argument when running 
+the application.
+
+If this switch is not supplied then applications like WindowsExplore and
+WinRar will register the compressed assembly as a archive file and may give 
+options to the user for unpacking it.
+
+&lt;t:7&gt;This comes at a small cost to the final size of the assembly but also has a
+cost in start up time proportional to the size of the internal compressed
+resource.&lt;/t:7&gt;</value>
+  </data>
+	<data name="Arg_Hide_Key" xml:space="preserve">
+    <value>Hide</value>
+  </data>
+	<data name="Arg_Hide_Name" xml:space="preserve">
+    <value>password</value>
+  </data>
+	<data name="Arg_Hide_ShortHelp" xml:space="preserve">
+    <value>Hide and protect compressed assemblies</value>
+  </data>
+	<data name="Arg_IconPath_Help" xml:space="preserve">
+    <value>The assembly icon cannot be compressed so be careful and monitor its size. </value>
+  </data>
+	<data name="Arg_IconPath_Key" xml:space="preserve">
+    <value>Icon</value>
+  </data>
+	<data name="Arg_IconPath_Name" xml:space="preserve">
+    <value>icon</value>
+  </data>
+	<data name="Arg_IconPath_ShortHelp" xml:space="preserve">
+    <value>Path of the icon to use on the resulting assembly</value>
+  </data>
+	<data name="Arg_IconPath_Symbol" xml:space="preserve">
+    <value>i</value>
+  </data>
+	<data name="Arg_OutputPath_Help" xml:space="preserve">
+    <value>Use this argument if you what to compile to a specific location.
+If this argument is not supplied then the default &lt;exec file&gt; argument will be used</value>
+  </data>
+	<data name="Arg_OutputPath_Key" xml:space="preserve">
+    <value>Output</value>
+  </data>
+	<data name="Arg_OutputPath_Name" xml:space="preserve">
+    <value>output</value>
+  </data>
+	<data name="Arg_OutputPath_ShortHelp" xml:space="preserve">
+    <value>Explicit full path of the executable to create</value>
+  </data>
+	<data name="Arg_OutputPath_Symbol" xml:space="preserve">
+    <value>o</value>
+  </data>
+	<data name="Arg_PassArgsSwitch_Help" xml:space="preserve">
+    <value>If this switch if defined then any command line arguments supplied when
+executing the resulting assembly will be passed on.</value>
+  </data>
+	<data name="Arg_PassArgsSwitch_Key" xml:space="preserve">
+    <value>PassArgs</value>
+  </data>
+	<data name="Arg_PassArgsSwitch_ShortHelp" xml:space="preserve">
+    <value>Pass command line arguments</value>
+  </data>
+	<data name="Arg_PassArgsSwitch_Symbol" xml:space="preserve">
+    <value>p</value>
+  </data>
+	<data name="Arg_PathString_Help" xml:space="preserve">
+    <value>The full or relative path to a executable file to be compressed.
+Unless the /Toolkit argument is defined then it will be the location of the resulting toolkit.</value>
+  </data>
+	<data name="Arg_PathString_Name" xml:space="preserve">
+    <value>exec file</value>
+  </data>
+	<data name="Arg_PathString_ShortHelp" xml:space="preserve">
+    <value>Executable file to be compressed or the name of the resulting toolkit if /T is defined</value>
+  </data>
+	<data name="Arg_QuietSwitch_Help" xml:space="preserve">
+    <value>Don't display messages about every action</value>
+  </data>
+	<data name="Arg_QuietSwitch_Key" xml:space="preserve">
+    <value>Quiet</value>
+  </data>
+	<data name="Arg_QuietSwitch_ShortHelp" xml:space="preserve">
+    <value>Quiet mode</value>
+  </data>
+	<data name="Arg_Toolkit_Help" xml:space="preserve">
+    <value>Use this argument to create composite toolkit from multiple assemblies.
+
+The supplied value should be a comma separated value (CSV) string in the
+format "[Tool Name]:[Tool Path],[Tool Name2]:[Tool Path2],.."
+
+Where [Tool Name] is the name of the menu item within the composite toolkit
+assembly and [Tool Path] is the full path to the tool assembly.</value>
+  </data>
+	<data name="Arg_Toolkit_Key" xml:space="preserve">
+    <value>Tools</value>
+  </data>
+	<data name="Arg_Toolkit_Name" xml:space="preserve">
+    <value>tools csv</value>
+  </data>
+	<data name="Arg_Toolkit_ShortHelp" xml:space="preserve">
+    <value>A CSV of tools in the format "[Tool Name]:[Tool Path],.."</value>
+  </data>
+	<data name="Arg_Verbose_Help" xml:space="preserve">
+    <value>Use this argument to specify the level of detail RPX outputs whilst it is running.</value>
+  </data>
+	<data name="Arg_Verbose_Key" xml:space="preserve">
+    <value>Verbose</value>
+  </data>
+	<data name="Arg_Verbose_ShortHelp" xml:space="preserve">
+    <value>Message verbosity level</value>
+  </data>
+	<data name="Arg_WarningsAsErrors_Help" xml:space="preserve">
+    <value>When +w warning will be reported as errors.
+When -w warnings will not be reported at all.
+
+This switch is to be used in conjunction with the /build switch.</value>
+  </data>
+	<data name="Arg_WarningsAsErrors_Key" xml:space="preserve">
+    <value>Warning</value>
+  </data>
+	<data name="Arg_WarningsAsErrors_ShortHelp" xml:space="preserve">
+    <value>Warnings are errors</value>
+  </data>
+	<data name="AssemblyInfo_Company" xml:space="preserve">
+    <value>Company</value>
+  </data>
+	<data name="AssemblyInfo_Configuration" xml:space="preserve">
+    <value>Configuration</value>
+  </data>
+	<data name="AssemblyInfo_Copyright" xml:space="preserve">
+    <value>Copyright</value>
+  </data>
+	<data name="AssemblyInfo_Culture" xml:space="preserve">
+    <value>Culture</value>
+  </data>
+	<data name="AssemblyInfo_Description" xml:space="preserve">
+    <value>Description</value>
+  </data>
+	<data name="AssemblyInfo_FileVersion" xml:space="preserve">
+    <value>FileVersion</value>
+  </data>
+	<data name="AssemblyInfo_Product" xml:space="preserve">
+    <value>Product</value>
+  </data>
+	<data name="AssemblyInfo_Trademark" xml:space="preserve">
+    <value>Trademark</value>
+  </data>
+	<data name="AssemblyInfo_Version" xml:space="preserve">
+    <value>Version</value>
+  </data>
+	<data name="Compiler_AssemblyInfoFromFile" xml:space="preserve">
+    <value>Assembly info is from a source file</value>
+  </data>
+	<data name="Compiler_AssemblyInfoHasBeenReflected" xml:space="preserve">
+    <value>Assembly info has been reflected</value>
+  </data>
+	<data name="Compiler_AssemblyTarget" xml:space="preserve">
+    <value>Application target is {0}</value>
+  </data>
+	<data name="Compiler_BackupAsm" xml:space="preserve">
+    <value>Backing up existing assembly.</value>
+  </data>
+	<data name="Compiler_BuildErrors" xml:space="preserve">
+    <value>Errors building {0}</value>
+  </data>
+	<data name="Compiler_CannotDeleteJunkFiles" xml:space="preserve">
+    <value>Cannot delete junked files.</value>
+  </data>
+	<data name="Compiler_CleaningJunkFiles" xml:space="preserve">
+    <value>Cleaning up junk files.</value>
+  </data>
+	<data name="Compiler_CompileFailed" xml:space="preserve">
+    <value>Compilation failed ({0} errors)</value>
+  </data>
+	<data name="Compiler_CompileStart" xml:space="preserve">
+    <value>Compiling final assembly</value>
+  </data>
+	<data name="Compiler_Compiling" xml:space="preserve">
+    <value>Compiling</value>
+  </data>
+	<data name="Compiler_ConsoleApplication" xml:space="preserve">
+    <value>the console</value>
+  </data>
+	<data name="Compiler_DefaultApplication" xml:space="preserve">
+    <value>the console.
+As the '+C' argument has not been specified and the information could not be obtained from the PE head</value>
+  </data>
+	<data name="Compiler_DeleteTempArchive" xml:space="preserve">
+    <value>Delete temporary archive file.</value>
+  </data>
+	<data name="Compiler_ErrorGettingResource" xml:space="preserve">
+    <value>Error retrieving from resources. Tried '{0}'\n{1}</value>
+  </data>
+	<data name="Compiler_FormsApplication" xml:space="preserve">
+    <value>windows forms</value>
+  </data>
+	<data name="Compiler_IncludeCryptographyCode" xml:space="preserve">
+    <value>Include Cryptography code</value>
+  </data>
+	<data name="Compiler_IncludeDisguiseCode" xml:space="preserve">
+    <value>Include Disguise code</value>
+  </data>
+	<data name="Compiler_JunkingBackupAsm" xml:space="preserve">
+    <value>Junking backup assembly.</value>
+  </data>
+	<data name="Compiler_Options" xml:space="preserve">
+    <value>Options</value>
+  </data>
+	<data name="Compiler_PackingAsm" xml:space="preserve">
+    <value>Packing assembly(s).</value>
+  </data>
+	<data name="Compiler_Recompressor" xml:space="preserve">
+    <value>Applying re-compressor</value>
+  </data>
+	<data name="Compiler_ResourceDoesNotExist" xml:space="preserve">
+    <value>The resource with the path '{0}' does not exist</value>
+  </data>
+	<data name="Compiler_ResourceNotDefined" xml:space="preserve">
+    <value>No resource has been defined</value>
+  </data>
+	<data name="Compiler_RestoreBackupAsm" xml:space="preserve">
+    <value>Restoring backup assembly.</value>
+  </data>
+	<data name="Compiler_Toolkit" xml:space="preserve">
+    <value>Creating Toolkit</value>
+  </data>
+	<data name="Compiler_Tools" xml:space="preserve">
+    <value>{0} Tools</value>
+  </data>
+	<data name="Compiler_UnableToLoadAsm" xml:space="preserve">
+    <value>Unable to load assembly</value>
+  </data>
+	<data name="Decrypt_ErrorPathDoesNotExist" xml:space="preserve">
+    <value>Cannot decrypt file '{0}' as it does not exist</value>
+  </data>
+	<data name="Disguise_ErrorPathDoesNotExist" xml:space="preserve">
+    <value>Cannot disguise file '{0}' as it does not exist</value>
+  </data>
+	<data name="Encrypt_ErrorPathDoesNotExist" xml:space="preserve">
+    <value>Cannot encrypt file '{0}' as it does not exist</value>
+  </data>
+	<data name="Encypt_EncryptedSize" xml:space="preserve">
+    <value>Encrypted size</value>
+  </data>
+	<data name="Encypt_OriginalSize" xml:space="preserve">
+    <value>Original size</value>
+  </data>
+	<data name="Encypt_Password" xml:space="preserve">
+    <value>Password</value>
+  </data>
+	<data name="Encypt_Salt" xml:space="preserve">
+    <value>Salt</value>
+  </data>
+	<data name="Encypt_Strength" xml:space="preserve">
+    <value>Strength</value>
+  </data>
+	<data name="Error_0101" xml:space="preserve">
+    <value>exec file must be supplied</value>
+  </data>
+	<data name="Error_0102" xml:space="preserve">
+    <value>Source file '{0} does not exist</value>
+  </data>
+	<data name="Error_0103" xml:space="preserve">
+    <value>Compressed size is bigger than the initial size.
+Was the assembly already compressed?</value>
+  </data>
+	<data name="Error_0104" xml:space="preserve">
+    <value>You must supply a output path</value>
+  </data>
+	<data name="Error_0105" xml:space="preserve">
+    <value>Error with tool definition '{0}', you must supply a tool name. 
+The expected format is "Name:Path"</value>
+  </data>
+	<data name="Error_0106" xml:space="preserve">
+    <value>You must supply a AssemblyInfo file path</value>
+  </data>
+	<data name="Error_0107" xml:space="preserve">
+    <value>Unsupported subsystem type: '{0}'</value>
+  </data>
+	<data name="Error_0108" xml:space="preserve">
+    <value>Error reflecting assembly information</value>
+  </data>
+	<data name="Error_0109" xml:space="preserve">
+    <value>Invalid Icon Group reserved id</value>
+  </data>
+	<data name="Error_0110" xml:space="preserve">
+    <value>Invalid Icon Group type id</value>
+  </data>
+	<data name="Error_0111" xml:space="preserve">
+    <value>Error while extracting icon from PE file </value>
+  </data>
+	<data name="Error_0112" xml:space="preserve">
+    <value>Error while reading the PE header</value>
+  </data>
+	<data name="Hide_Disguised" xml:space="preserve">
+    <value>Disguised</value>
+  </data>
+	<data name="Hide_Encrypted" xml:space="preserve">
+    <value>Encrypted</value>
+  </data>
+	<data name="Hide_Protection" xml:space="preserve">
+    <value>Protection</value>
+  </data>
+	<data name="Package_CompressedSize" xml:space="preserve">
+    <value>Packed size</value>
+  </data>
+	<data name="Package_Compression" xml:space="preserve">
+    <value>Compression</value>
+  </data>
+	<data name="Package_FilesTotalSize" xml:space="preserve">
+    <value>Unpacked size</value>
+  </data>
+	<data name="Package_SummaryTitle" xml:space="preserve">
+    <value>Package Summary</value>
+  </data>
+	<data name="Protection_SummaryTitle" xml:space="preserve">
+    <value>Applying package protection</value>
+  </data>
+	<data name="Recompressor_Compression" xml:space="preserve">
+    <value>Re-compression</value>
+  </data>
+	<data name="Recompressor_Inital" xml:space="preserve">
+    <value>Initial</value>
+  </data>
+	<data name="Recompressor_Invalid" xml:space="preserve">
+    <value>invalid</value>
+  </data>
+	<data name="Recompressor_Recompressed" xml:space="preserve">
+    <value>Re-compressed</value>
+  </data>
+	<data name="Reflection_FoundIconResource" xml:space="preserve">
+    <value>Found icon</value>
+  </data>
+	<data name="Reflection_FoundNImageLayers" xml:space="preserve">
+    <value>{0} sizes and or color depths</value>
+  </data>
+	<data name="Reflection_NoIconFound" xml:space="preserve">
+    <value>No icon was found</value>
+  </data>
+	<data name="Reflector_CouldNotReadPE" xml:space="preserve">
+    <value>Could not read the PE Header of the assembly '{0}'</value>
+  </data>
+	<data name="Text_FinalSize" xml:space="preserve">
+    <value>Final size</value>
+  </data>
+	<data name="Text_FinalSummary" xml:space="preserve">
+    <value>Final Summary</value>
+  </data>
+	<data name="Text_IconFileSize" xml:space="preserve">
+    <value>Icon file size</value>
+  </data>
+	<data name="Text_Invalid" xml:space="preserve">
+    <value>Invalid</value>
+  </data>
+	<data name="Text_OfOriginalSize" xml:space="preserve">
+    <value>of original size</value>
+  </data>
+	<data name="Text_OverallCompression" xml:space="preserve">
+    <value>Total compression</value>
+  </data>
+	<data name="Text_StartupOverhead" xml:space="preserve">
+    <value>Startup overhead</value>
+  </data>
+	<data name="Text_TotalSize" xml:space="preserve">
+    <value>Total size</value>
+  </data>
+	<data name="Text_UncompressedSize" xml:space="preserve">
+    <value>Uncompressed size</value>
+  </data>
+</root>

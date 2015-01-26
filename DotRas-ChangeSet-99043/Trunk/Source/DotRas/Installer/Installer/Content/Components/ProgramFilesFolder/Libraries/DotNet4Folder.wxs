@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+	<Fragment>
+    <ComponentGroup Id="DotNet4ComponentGroup">
+      <ComponentRef Id="DN4_WIN2K"/>
+      <ComponentRef Id="DN4_WINXP"/>
+      <ComponentRef Id="DN4_WIN2K8"/>
+      <ComponentRef Id="DN4_WIN7"/>
+      <ComponentRef Id="DN4_WIN8"/>
+    </ComponentGroup>
+
+    <DirectoryRef Id="DotNet4Folder">
+
+      <Directory Id="DN4_Win2kFolder" Name="WIN2K">
+        <Component Id="DN4_WIN2K" Guid="{C0E70C29-29BE-4E02-B71C-8CADC988BD65}">
+          <File Id="DN4_WIN2K.dll" Source="SourceDir\Libraries\NET40\WIN2K\DotRas.dll" />
+          <!--<File Id="DN4_WIN2K.pdb" Source="SourceDir\Libraries\NET40\WIN2K\DotRas.pdb" />-->
+          <File Id="DN4_WIN2K.xml" Source="SourceDir\Libraries\NET40\WIN2K\DotRas.xml" />
+        </Component>
+      </Directory>
+
+      <Directory Id="DN4_WinXpFolder" Name="WINXP">
+        <Component Id="DN4_WINXP" Guid="{D3AB7CCA-EE23-4A75-8AE9-ADDF58CE7BD8}">
+          <File Id="DN4_WINXP.dll" Source="SourceDir\Libraries\NET40\WINXP\DotRas.dll" />
+          <!--<File Id="DN4_WINXP.pdb" Source="SourceDir\Libraries\NET40\WINXP\DotRas.pdb" />-->
+          <File Id="DN4_WINXP.xml" Source="SourceDir\Libraries\NET40\WINXP\DotRas.xml" />
+        </Component>
+      </Directory>
+
+      <Directory Id="DN4_Win2k8Folder" Name="WIN2K8">
+        <Component Id="DN4_WIN2K8" Guid="{1A447404-5E04-4583-85F5-615FF914E7B8}">
+          <File Id="DN4_WIN2K8.dll" Source="SourceDir\Libraries\NET40\WIN2K8\DotRas.dll" />
+          <!--<File Id="DN4_WIN2K8.pdb" Source="SourceDir\Libraries\NET40\WIN2K8\DotRas.pdb" />-->
+          <File Id="DN4_WIN2K8.xml" Source="SourceDir\Libraries\NET40\WIN2K8\DotRas.xml" />
+        </Component>
+      </Directory>
+
+      <Directory Id="DN4_Win7Folder" Name="WIN7">
+        <Component Id="DN4_WIN7" Guid="{4C37DA3C-D80F-47F5-A678-00D117D48987}">
+          <File Id="DN4_WIN7.dll" Source="SourceDir\Libraries\NET40\WIN7\DotRas.dll" />
+          <!--<File Id="DN4_WIN7.pdb" Source="SourceDir\Libraries\NET40\WIN7\DotRas.pdb" />-->
+          <File Id="DN4_WIN7.xml" Source="SourceDir\Libraries\NET40\WIN7\DotRas.xml" />
+        </Component>
+      </Directory>
+
+      <Directory Id="DN4_Win8Folder" Name="WIN8">
+        <Component Id="DN4_WIN8" Guid="{D4022DE6-0C80-4B30-883F-B955518D1DB6}">
+          <File Id="DN4_WIN8.dll" Source="SourceDir\Libraries\NET40\WIN8\DotRas.dll" />
+          <!--<File Id="DN4_WIN8.pdb" Source="SourceDir\Libraries\NET40\WIN8\DotRas.pdb" />-->
+          <File Id="DN4_WIN8.xml" Source="SourceDir\Libraries\NET40\WIN8\DotRas.xml" />
+        </Component>
+      </Directory>
+    </DirectoryRef>
+	</Fragment>
+</Wix>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?include "Config.wxi"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Product Id="*" Name="$(var.ProductName) v$(var.SDKVersion) SDK" Language="1033" Version="$(var.ProductVersion)" Manufacturer="$(var.ProductManufacturer)"
+      UpgradeCode="$(var.UpgradeCode)">
+
+    <Package InstallerVersion="200" Compressed="yes" InstallPrivileges="elevated" InstallScope="perMachine" Manufacturer="$(var.ProductManufacturer)" />
+    <Media Id="1" Cabinet="product.cab" EmbedCab="yes" />
+
+    <DirectoryRef Id="TARGETDIR" />
+
+    <Icon Id="Setup.ico" SourceFile=".\Images\Setup.ico"/>
+
+    <Property Id="ARPCONTACT" Value="$(var.ProductManufacturer)" />
+    <Property Id="ARPURLINFOABOUT" Value="$(var.ProductURL)" />
+    <Property Id="ARPPRODUCTICON" Value="Setup.ico" />
+    
+    <!-- Defines the user interface that will be used by the installer. -->
+    <UIRef Id="ProductUI" />
+
+    <!-- Defines the features that will be installed. -->
+    <FeatureGroupRef Id="ProductFeatureGroup" />
+  </Product>
+</Wix>

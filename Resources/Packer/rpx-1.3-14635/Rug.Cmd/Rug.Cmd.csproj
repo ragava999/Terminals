@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <ProjectType>local</ProjectType>
+    <ProjectVersion>7.10.377</ProjectVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{60F8448B-AC13-4030-90A9-B8C405F959B1}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <AssemblyName>Rug.Cmd</AssemblyName>
+    <OutputType>Library</OutputType>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <SignAssembly>False</SignAssembly>
+    <DelaySign>False</DelaySign>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+    <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
+    <NoStdLib>False</NoStdLib>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <ErrorReport>prompt</ErrorReport>
+    <DebugSymbols>false</DebugSymbols>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DebugType>None</DebugType>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <ErrorReport>prompt</ErrorReport>
+    <DebugSymbols>false</DebugSymbols>
+    <OutputPath>bin\Release\</OutputPath>
+    <DebugType>None</DebugType>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <Optimize>False</Optimize>
+    <CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Platform)' == 'AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <RegisterForComInterop>False</RegisterForComInterop>
+    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
+    <BaseAddress>4194304</BaseAddress>
+    <FileAlignment>4096</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Platform)' == 'x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <RegisterForComInterop>False</RegisterForComInterop>
+    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
+    <BaseAddress>4194304</BaseAddress>
+    <FileAlignment>4096</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>false</DebugSymbols>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DebugType>None</DebugType>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>false</DebugSymbols>
+    <OutputPath>bin\Release\</OutputPath>
+    <DebugType>None</DebugType>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Windows.Forms" />
+    <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="Global.cs" />
+    <Compile Include="Rug\Cmd\Colors\ConsoleColorThemeDirectory.cs" />
+    <Compile Include="Rug\Cmd\ConsoleShade.cs" />
+    <Compile Include="Rug\Cmd\ConsoleArrows.cs" />
+    <Compile Include="Rug\Cmd\ConsoleMathsChars.cs" />
+    <Compile Include="Rug\Cmd\ConsoleLineStyle.cs" />
+    <Compile Include="Rug\Cmd\LineChars.cs" />
+    <Compile Include="Rug\Cmd\ConsoleDrawMode.cs" />
+    <Compile Include="Rug\Cmd\ConsoleChars.cs" />
+    <Compile Include="Rug\Cmd\CmdHelper.cs" />
+    <Compile Include="Rug\Cmd\Colors\ConsoleColorDefaultThemes.cs" />
+    <Compile Include="Rug\Cmd\Colors\ConsoleColorTheme.cs" />
+    <Compile Include="Rug\Cmd\Arguments\CommandLineSplitter.cs" />
+    <Compile Include="Rug\Cmd\IArgumentValue.cs" />
+    <Compile Include="Rug\Cmd\BaseArgument.cs" />
+    <Compile Include="Rug\Cmd\PackageHelper.cs" />
+    <Compile Include="Rug\Cmd\Gui\ConsoleProgressBarTextAlignment.cs" />
+    <Compile Include="Rug\Cmd\Gui\ConsoleProgressBarTextFormat.cs" />
+    <Compile Include="Rug\Cmd\Gui\ConsoleProgressBarCaps.cs" />
+    <Compile Include="Rug\Cmd\Gui\ConsoleProgressBar.cs" />
+    <Compile Include="Rug\Cmd\Strings.cs" />
+    <Compile Include="Rug\Cmd\IConsole.cs" />
+    <Compile Include="Rug\Cmd\ConsoleFormatter.cs" />
+    <Compile Include="Rug\Cmd\ConsoleThemeColor.cs" />
+    <Compile Include="Rug\Cmd\ConsoleColorExt.cs" />
+    <Compile Include="Rug\Cmd\ConsoleVerbosity.cs" />
+    <Compile Include="Rug\Cmd\ConsoleMessage.cs" />
+    <Compile Include="Rug\Cmd\ConsoleExt.cs" />
+    <Compile Include="Rug\Cmd\RugConsole.cs" />
+    <Compile Include="Rug\Cmd\RC.cs" />
+    <Compile Include="Rug\Cmd\Helper.cs" />
+    <Compile Include="Rug\Cmd\BoolSwitch.cs" />
+    <Compile Include="Rug\Cmd\PlusMinusSwitch.cs" />
+    <Compile Include="Rug\Cmd\EnumSwitch.cs" />
+    <Compile Include="Rug\Cmd\StringArgument.cs" />
+    <Compile Include="Rug\Cmd\OptionalStringArgument.cs" />
+    <Compile Include="Rug\Cmd\CsvArgument.cs" />
+    <Compile Include="Rug\Cmd\StringListArgument.cs" />
+    <Compile Include="Rug\Cmd\ArgumentParser.cs" />
+    <Compile Include="Rug\Cmd\ConsoleColorState.cs" />
+    <Compile Include="Rug\Cmd\ArgumentKey.cs" />
+    <EmbeddedResource Include="Rug.Cmd.Colors.Colorful.ctheme" />
+    <EmbeddedResource Include="Rug.Cmd.Strings.resources" />
+    <EmbeddedResource Include="Rug.Cmd.Colors.Simple.ctheme" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+  </ItemGroup>
+</Project>

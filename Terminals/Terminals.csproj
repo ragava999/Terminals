@@ -1,0 +1,1282 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{9ECB9FEF-89D1-4144-BAD4-5F3218545B2B}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Terminals</RootNamespace>
+    <AssemblyName>Terminals</AssemblyName>
+    <ApplicationIcon>terminalsicon.ico</ApplicationIcon>
+    <SignAssembly>False</SignAssembly>
+    <ManifestCertificateThumbprint>200FB5A1E56B57D807AAEEC6C4E021804D6435FD</ManifestCertificateThumbprint>
+    <ManifestKeyFile>Terminals_TemporaryKey.pfx</ManifestKeyFile>
+    <GenerateManifests>false</GenerateManifests>
+    <SignManifests>false</SignManifests>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+    <TargetZone>LocalIntranet</TargetZone>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.8.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+    <SourceAnalysisOverrideSettingsFile>C:\Users\wzhmtl\AppData\Roaming\ICSharpCode/SharpDevelop4\Settings.SourceAnalysis</SourceAnalysisOverrideSettingsFile>
+    <NoStdLib>False</NoStdLib>
+    <WarningLevel>4</WarningLevel>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+    <DelaySign>False</DelaySign>
+    <RunCodeAnalysis>False</RunCodeAnalysis>
+    <NoWin32Manifest>False</NoWin32Manifest>
+    <IntermediateOutputPath>obj\$(Configuration)\</IntermediateOutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugType>Full</DebugType>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;GECKO</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarnodeAnalysis Condition="'$(USERNAME)' == 'tfsservice1'">True</WarnodeAnalysis>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
+    <CodeAnalysisRuleSet>Migrated rules for Terminals.ruleset</CodeAnalysisRuleSet>
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>PdbOnly</DebugType>
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE;GECKO</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis Condition="'$(USERNAME)' == 'tfsservice1'">True</RunCodeAnalysis>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>false</DebugSymbols>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;GECKO</DefineConstants>
+    <DebugType>Full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE;GECKO</DefineConstants>
+    <DebugType>None</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <DebugSymbols>false</DebugSymbols>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup />
+  <PropertyGroup>
+    <StartupObject>Terminals.Program</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup />
+  <PropertyGroup />
+  <ItemGroup>
+    <Reference Include="AxInterop.Microsoft.VMRCClientControl.Interop">
+      <HintPath>..\DLLs\VMRC\AxInterop.Microsoft.VMRCClientControl.Interop.dll</HintPath>
+    </Reference>
+    <Reference Include="AxInterop.MSTSCLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLLs\MSTSC\AxInterop.MSTSCLib.dll</HintPath>
+    </Reference>
+    <Reference Include="AxWFICALib">
+      <HintPath>..\DLLs\Citrix\AxWFICALib.dll</HintPath>
+    </Reference>
+    <Reference Include="Interop.MSTSCLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <HintPath>..\DLLs\MSTSC\Interop.MSTSCLib.dll</HintPath>
+    </Reference>
+    <Reference Include="Kohl.Framework">
+      <HintPath>..\DLLs\Kohl.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\DLLs\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="Microsoft.VMRCClientControl.Interop">
+      <HintPath>..\DLLs\VMRC\Microsoft.VMRCClientControl.Interop.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.Entity">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Design" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Connections\FileOperations.cs" />
+    <Compile Include="Connections\ReconnectingControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Connections\ReconnectingControl.designer.cs">
+      <DependentUpon>ReconnectingControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AboutForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AboutForm.Designer.cs">
+      <DependentUpon>AboutForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AddConnectionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddConnectionForm.Designer.cs">
+      <DependentUpon>AddConnectionForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CommandLine\ArgumentType.cs" />
+    <Compile Include="CommandLine\DefaultArgumentAttribute.cs" />
+    <Compile Include="CommandLine\ErrorReporter.cs" />
+    <Compile Include="CommandLine\LocalizedArgumentAttribute.cs" />
+    <Compile Include="CommandLine\Parser.cs" />
+    <Compile Include="Connections\BrowserCredentials.cs" />
+    <Compile Include="Connections\ExplorerConnection.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Connections\HTTPSConnection.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Connections\IAuthenticate.cs" />
+    <Compile Include="Connections\IE.cs" />
+    <Compile Include="Connections\IOleClientSite.cs" />
+    <Compile Include="Connections\IOleObject.cs" />
+    <Compile Include="Connections\IServiceProvider.cs" />
+    <Compile Include="Connections\PuttyConnection.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Connections\RAdminConnection.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Connections\GenericConnection.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Connections\ExternalConnection.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Connections\RASProperties.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Connections\RASProperties.designer.cs">
+      <DependentUpon>RASProperties.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Connections\SshConnection.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Forms\Controls\CredentialPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\Controls\CredentialPanel.Designer.cs">
+      <DependentUpon>CredentialPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExportImport\Import\vRDConfigurationFile.cs" />
+    <Compile Include="ExportImport\Import\vRDConfigurationFileConnectionsFolder.cs" />
+    <Compile Include="ExportImport\Import\vRDConfigurationFileConnectionsFolderFolder.cs" />
+    <Compile Include="ExportImport\Import\vRDConfigurationFileCredentialsFolder.cs" />
+    <Compile Include="ExportImport\Import\vRDConfigurationFileCredentialsFolderCredentials.cs" />
+    <Compile Include="Forms\Controls\CustomComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Forms\Controls\DBTreeView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Forms\Controls\FontControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\Controls\FontControl.Designer.cs">
+      <DependentUpon>FontControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Controls\IPAddressControl\CedeFocusEventArgs.cs" />
+    <Compile Include="Forms\Controls\IPAddressControl\IPAddressControlAction.cs" />
+    <Compile Include="Forms\Controls\IPAddressControl\IPAddressControlDirection.cs" />
+    <Compile Include="Forms\Controls\IPAddressControl\IPAddressControlSelection.cs" />
+    <Compile Include="Forms\Controls\IPAddressControl\TextChangedEventArgs.cs" />
+    <Compile Include="Forms\Controls\LikeBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Forms\Controls\Radius.cs" />
+    <Compile Include="Forms\Controls\TabColorPreferences.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\Controls\TabColorPreferences.Designer.cs">
+      <DependentUpon>TabColorPreferences.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Controls\TreeViewBase.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Forms\Render\RenderColors.cs" />
+    <Compile Include="Forms\Render\UseClearTypeGridFit.cs" />
+    <Compile Include="Forms\Render\UseClipping.cs" />
+    <Compile Include="Forms\RequestPassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\RequestPassword.Designer.cs">
+      <DependentUpon>RequestPassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SelectDatabase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SelectDatabase.Designer.cs">
+      <DependentUpon>SelectDatabase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ExpirationDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ExpirationDialog.Designer.cs">
+      <DependentUpon>ExpirationDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Network\Services\CommandLineService.cs" />
+    <Compile Include="Panels\FavoritePanels\RdpFavoritePanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Panels\FavoritePanels\RdpFavoritePanel.Designer.cs">
+      <DependentUpon>RdpFavoritePanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Panels\OptionPanels\PuttyOptionPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Panels\OptionPanels\PuttyOptionPanel.Designer.cs">
+      <DependentUpon>PuttyOptionPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Panels\OptionPanels\RAdminOptionPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Panels\OptionPanels\RAdminOptionPanel.Designer.cs">
+      <DependentUpon>RAdminOptionPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Network\AD\ComputerFoundDelegate.cs" />
+    <Compile Include="Network\AD\ListComputersDoneDelegate.cs" />
+    <Compile Include="Network\DNS\AdditionalRecord.cs" />
+    <Compile Include="Network\DNS\Answer.cs" />
+    <Compile Include="Network\DNS\DnsClass.cs" />
+    <Compile Include="Network\DNS\Opcode.cs" />
+    <Compile Include="Network\DNS\ReturnCode.cs" />
+    <Compile Include="Network\NTP\SystemTime.cs" />
+    <Compile Include="Network\NTP\LeapIndicator.cs" />
+    <Compile Include="Network\NTP\Mode.cs" />
+    <Compile Include="Network\NTP\Stratum.cs" />
+    <Compile Include="Network\PortScanner\ScanResult.cs" />
+    <Compile Include="Network\Servers\ServerEnumerator.cs" />
+    <Compile Include="Network\Servers\Servers.cs" />
+    <Compile Include="Network\Servers\ServerType.cs" />
+    <Compile Include="Network\Servers\Win32API.cs" />
+    <Compile Include="Network\Services\CommandLineServer.cs" />
+    <Compile Include="CommandLine\CommandLineArgs.cs" />
+    <Compile Include="Connections\HTTPConnection.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Connections\MiniBrowser.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Connections\MiniBrowser.Designer.cs">
+      <DependentUpon>MiniBrowser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Connections\NetworkingToolsConnection.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Connections\ICAConnection.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Connections\NetworkingToolsLayout.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Connections\NetworkingToolsLayout.Designer.cs">
+      <DependentUpon>NetworkingToolsLayout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Connections\RASConnection.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Connections\RDPConnection.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Connections\TabbedTools.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Connections\TabbedTools.Designer.cs">
+      <DependentUpon>TabbedTools.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Connections\TerminalConnection.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Connections\VMRCConnection.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Connections\VNCConnection.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ExportImport\Exporters.cs" />
+    <Compile Include="ExportImport\Export\ExportOptions.cs" />
+    <Compile Include="ExportImport\Export\ExportRdp.cs" />
+    <Compile Include="ExportImport\Export\ExportExtraLogicAndroidRd.cs" />
+    <Compile Include="ExportImport\Export\IExport.cs" />
+    <Compile Include="ExportImport\Export\ExportTerminals.cs" />
+    <Compile Include="ExportImport\IIntegration.cs" />
+    <Compile Include="ExportImport\Import\ImportRdpRegistry.cs" />
+    <Compile Include="ExportImport\Integration.cs" />
+    <Compile Include="ExportImport\Integrations.cs" />
+    <Compile Include="Panels\OptionPanels\CaptureOptionPanel.Designer.cs">
+      <DependentUpon>CaptureOptionPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Panels\OptionPanels\ConnectCommandOptionPanel.Designer.cs">
+      <DependentUpon>ConnectCommandOptionPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Panels\OptionPanels\ConnectionsOptionPanel.Designer.cs">
+      <DependentUpon>ConnectionsOptionPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Controls\ConsolePreferences.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\Controls\ConsolePreferences.Designer.cs">
+      <DependentUpon>ConsolePreferences.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Credentials\ManageCredentialForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Credentials\ManageCredentialForm.Designer.cs">
+      <DependentUpon>ManageCredentialForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Credentials\CredentialManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Credentials\CredentialManager.Designer.cs">
+      <DependentUpon>CredentialManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Credentials\UserSelectForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Credentials\UserSelectForm.Designer.cs">
+      <DependentUpon>UserSelectForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Controls\FavoritesMenuLoader.cs" />
+    <Compile Include="Forms\DiskDrivesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DiskDrivesForm.Designer.cs">
+      <DependentUpon>DiskDrivesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExportImport\ExportFrom.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExportImport\ExportFrom.Designer.cs">
+      <DependentUpon>ExportFrom.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Controls\TreeListLoader.cs" />
+    <Compile Include="Forms\Controls\FavsList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\Controls\FavsList.Designer.cs">
+      <DependentUpon>FavsList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Controls\FavoritesTreeView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Forms\Controls\FavoriteTreeNode.cs" />
+    <Compile Include="Forms\Controls\HistoryTreeView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Forms\Controls\HistoryTreeView.Designer.cs">
+      <DependentUpon>HistoryTreeView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Controls\ImportWithDialogs.cs" />
+    <Compile Include="Forms\Controls\IPAddressControl\FieldChangedEventArgs.cs" />
+    <Compile Include="Forms\Controls\IPAddressControl\IPAddressControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Forms\Controls\IPAddressControl\IPAddressControlDesigner.cs" />
+    <Compile Include="Forms\Controls\IPAddressControl\IPAddressDotControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Forms\Controls\IPAddressControl\IPAddressFieldControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Forms\Controls\TagMenuItem.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Panels\OptionPanels\DefaultPasswordOptionPanel.Designer.cs">
+      <DependentUpon>DefaultPasswordOptionPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Panels\OptionPanels\FavoritesOptionPanel.Designer.cs">
+      <DependentUpon>FavoritesOptionPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Panels\OptionPanels\InterfaceOptionPanel.Designer.cs">
+      <DependentUpon>InterfaceOptionPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Panels\OptionPanels\MasterPasswordOptionPanel.Designer.cs">
+      <DependentUpon>MasterPasswordOptionpanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Panels\OptionPanels\ProxyOptionPanel.Designer.cs">
+      <DependentUpon>ProxyOptionPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Panels\OptionPanels\StartShutdownOptionPanel.Designer.cs">
+      <DependentUpon>StartShutdownOptionPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\TerminalFormDialogResult.cs" />
+    <Compile Include="Network\Services\ICommandLineService.cs" />
+    <Compile Include="Forms\Controls\SplitButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Forms\Controls\ToolStripContainer.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Forms\Render\Office2007BlackColorTable.cs" />
+    <Compile Include="Forms\Render\Office2007BlueColorTable.cs" />
+    <Compile Include="Forms\Render\UseAntiAlias.cs" />
+    <Compile Include="Forms\Render\Office2007Renderer.cs" />
+    <Compile Include="Forms\Controls\TagTreeNode.cs" />
+    <Compile Include="ExportImport\Importers.cs" />
+    <Compile Include="ExportImport\Import\ImportTerminals.cs" />
+    <Compile Include="ExportImport\Import\ImportvRD.cs" />
+    <Compile Include="ExportImport\Import\Connection.cs" />
+    <Compile Include="Network\AD\ActiveDirectoryClient.cs" />
+    <Compile Include="Network\AD\ActiveDirectoryComputer.cs" />
+    <Compile Include="Network\DNS\Adapter.cs" />
+    <Compile Include="Network\DNS\AdapterInfo.cs" />
+    <Compile Include="Network\AD\ImportFromAD.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Network\AD\ImportFromAD.Designer.cs">
+      <DependentUpon>ImportFromAD.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Network\WakeOnLAN\MagicPacket.cs" />
+    <Compile Include="Network\Pcap\PacketCapture.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Network\Pcap\PacketCapture.designer.cs">
+      <DependentUpon>PacketCapture.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Network\Ping\PingReplyData.cs" />
+    <Compile Include="Network\PortScanner\PortScanner.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Network\PortScanner\PortScanner.Designer.cs">
+      <DependentUpon>PortScanner.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Network\TraceRoute\RouteHopFoundEventArgs.cs" />
+    <Compile Include="Network\TraceRoute\TraceRoute.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Network\TraceRoute\TraceRouteHopData.cs" />
+    <Compile Include="Network\WMI\LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Network\WakeOnLAN\WakeOnLan.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Network\WakeOnLAN\WakeOnLan.Designer.cs">
+      <DependentUpon>WakeOnLan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Network\WMI\Services.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Network\WMI\Services.Designer.cs">
+      <DependentUpon>Services.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Network\WMI\Share.cs" />
+    <Compile Include="Network\WMI\WMIControl.Designer.cs">
+      <DependentUpon>WMIControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Network\WMI\WMIServerCredentials.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Network\WMI\WMIServerCredentials.Designer.cs">
+      <DependentUpon>WMIServerCredentials.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Panels\OptionPanels\CaptureOptionPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Panels\OptionPanels\ConnectCommandOptionPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Panels\OptionPanels\ConnectionsOptionPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Panels\OptionPanels\DefaultPasswordOptionPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Panels\OptionPanels\FavoritesOptionPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Panels\OptionPanels\InterfaceOptionPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Panels\OptionPanels\MasterPasswordOptionpanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Panels\OptionPanels\ProxyOptionPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Panels\OptionPanels\StartShutdownOptionPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Panels\FavoritePanels\ExplorerFavoritePanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Panels\FavoritePanels\ExplorerFavoritePanel.Designer.cs">
+      <DependentUpon>ExplorerFavoritePanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Panels\FavoritePanels\GenericFavoritePanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Panels\FavoritePanels\GenericFavoritePanel.Designer.cs">
+      <DependentUpon>GenericFavoritePanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Panels\FavoritePanels\PuttyFavoritePanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Panels\FavoritePanels\PuttyFavoritePanel.Designer.cs">
+      <DependentUpon>PuttyFavoritePanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Panels\FavoritePanels\RAdminFavoritePanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Panels\FavoritePanels\RAdminFavoritePanel.Designer.cs">
+      <DependentUpon>RAdminFavoritePanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Panels\OptionEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Panels\OptionEditor.Designer.cs">
+      <DependentUpon>OptionEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Controls\SortableUnboundGrid.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Connections\TcpProtocol.cs" />
+    <Compile Include="Connections\TelnetProtocol.cs" />
+    <Compile Include="Connections\TelnetStream.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="ProtocolHandler.cs" />
+    <Compile Include="Forms\QuickConnect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\QuickConnect.designer.cs">
+      <DependentUpon>QuickConnect.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TerminalServices\SessionInfo.cs" />
+    <Compile Include="SSHClient\KeyGenThread.cs" />
+    <Compile Include="SSHClient\KeyChooser.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SSHClient\KeyChooser.Designer.cs">
+      <DependentUpon>KeyChooser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SSHClient\KeyGenForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SSHClient\KeyGenForm.Designer.cs">
+      <DependentUpon>KeyGenForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SSHClient\Preferences.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SSHClient\Preferences.Designer.cs">
+      <DependentUpon>Preferences.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SSHClient\Protocol.cs" />
+    <Compile Include="SSHClient\SSH2UserAuthKey.cs" />
+    <Compile Include="SSHClient\SShTraceLissener.cs" />
+    <Compile Include="Updates\UpdatePackage.cs" />
+    <Compile Include="Updates\UpdatePackage.designer.cs">
+      <DependentUpon>UpdatePackage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Updates\Web.cs" />
+    <Compile Include="Updates\RSS\Collections\ExceptionCollection.cs" />
+    <Compile Include="Updates\RSS\Collections\RssCategoryCollection.cs" />
+    <Compile Include="Updates\RSS\Collections\RssChannelCollection.cs" />
+    <Compile Include="Updates\RSS\Collections\RssItemCollection.cs" />
+    <Compile Include="Updates\RSS\Collections\RssModuleCollection.cs" />
+    <Compile Include="Updates\RSS\Collections\RssModuleItemCollection.cs" />
+    <Compile Include="Updates\RSS\Collections\RssModuleItemCollectionCollection.cs" />
+    <Compile Include="Updates\RSS\RssChannel\RssChannel.cs" />
+    <Compile Include="Updates\RSS\RssChannel\RssCloud.cs" />
+    <Compile Include="Updates\RSS\RssChannel\RssImage.cs" />
+    <Compile Include="Updates\RSS\RssChannel\RssTextInput.cs" />
+    <Compile Include="Updates\RSS\RssFeed.cs" />
+    <Compile Include="Updates\RSS\RssItem\RssEnclosure.cs" />
+    <Compile Include="Updates\RSS\RssItem\RssGuid.cs" />
+    <Compile Include="Updates\RSS\RssItem\RssItem.cs" />
+    <Compile Include="Updates\RSS\RssItem\RssSource.cs" />
+    <Compile Include="Updates\RSS\RssModule.cs" />
+    <Compile Include="Updates\RSS\RssModuleItem.cs" />
+    <Compile Include="Updates\RSS\RssReader.cs" />
+    <Compile Include="Updates\RSS\RssWriter.cs" />
+    <Compile Include="Updates\RSS\Shared\DBBool.cs" />
+    <Compile Include="Updates\RSS\Shared\RssCategory.cs" />
+    <Compile Include="Updates\RSS\Shared\RssDefault.cs" />
+    <Compile Include="Updates\RSS\Shared\RssElement.cs" />
+    <Compile Include="Updates\RSS\Shared\RssCloudProtocol.cs" />
+    <Compile Include="Updates\RSS\Shared\RssVersion.cs" />
+    <Compile Include="Updates\UpdateManager.cs" />
+    <Compile Include="Updates\UpdateConfig.cs" />
+    <Compile Include="Wizard\BindingElement.cs" />
+    <Compile Include="Wizard\CommonOptions.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Wizard\CommonOptions.Designer.cs">
+      <DependentUpon>CommonOptions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Wizard\DefaultCredentials.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Wizard\DefaultCredentials.Designer.cs">
+      <DependentUpon>DefaultCredentials.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Wizard\EnterPassword.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Wizard\EnterPassword.Designer.cs">
+      <DependentUpon>EnterPassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Wizard\MasterPassword.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Wizard\MasterPassword.Designer.cs">
+      <DependentUpon>MasterPassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Wizard\FirstRunWizard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Wizard\FirstRunWizard.Designer.cs">
+      <DependentUpon>FirstRunWizard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExportImport\Import\ImportRDP.cs" />
+    <Compile Include="ExportImport\Import\IImport.cs" />
+    <Compile Include="ExportImport\Import\ImportMuRD.cs" />
+    <Compile Include="Network\DNS\DNSLookup.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Network\DNS\DNSLookup.Designer.cs">
+      <DependentUpon>DNSLookup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Network\DNS\ANameRecord.cs" />
+    <Compile Include="Network\DNS\DnsType.cs" />
+    <Compile Include="Network\DNS\InvalidResponseException.cs" />
+    <Compile Include="Network\DNS\MXRecord.cs" />
+    <Compile Include="Network\DNS\NoResponseException.cs" />
+    <Compile Include="Network\DNS\NSRecord.cs" />
+    <Compile Include="Network\DNS\Pointer.cs" />
+    <Compile Include="Network\DNS\Question.cs" />
+    <Compile Include="Network\DNS\RecordBase.cs" />
+    <Compile Include="Network\DNS\Request.cs" />
+    <Compile Include="Network\DNS\Resolver.cs" />
+    <Compile Include="Network\DNS\ResourceRecord.cs" />
+    <Compile Include="Network\DNS\Response.cs" />
+    <Compile Include="Network\DNS\SoaRecord.cs" />
+    <Compile Include="Network\InterfacesList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Network\InterfacesList.Designer.cs">
+      <DependentUpon>InterfacesList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Network\LocalConnections.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Network\LocalConnections.Designer.cs">
+      <DependentUpon>LocalConnections.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Network\Ping\Ping.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Network\Ping\Ping.Designer.cs">
+      <DependentUpon>Ping.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Network\Servers\ServerComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Network\NTP\NetworkTime.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Network\NTP\NetworkTime.Designer.cs">
+      <DependentUpon>NetworkTime.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Network\NTP\NTPClient.cs" />
+    <Compile Include="Network\Servers\ServerList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Network\Servers\ServerList.Designer.cs">
+      <DependentUpon>ServerList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Network\Servers\TerminalServerManager.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Network\Servers\TerminalServerManager.Designer.cs">
+      <DependentUpon>TerminalServerManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Network\TraceRoute\TraceRouteControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Network\TraceRoute\TraceRouteControl.Designer.cs">
+      <DependentUpon>TraceRouteControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Network\WMI\NetworkShares.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Network\WMI\NetworkShares.Designer.cs">
+      <DependentUpon>NetworkShares.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Network\WhoIs\WhoIs.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Network\WhoIs\WhoIs.Designer.cs">
+      <DependentUpon>WhoIs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Network\WhoIs\WhoisResolver.cs" />
+    <Compile Include="Network\WMI\LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Network\WMI\WMIControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\NewGroupForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\NewGroupForm.Designer.cs">
+      <DependentUpon>NewGroupForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\OrganizeFavoritesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\OrganizeFavoritesForm.Designer.cs">
+      <DependentUpon>OrganizeFavoritesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Panels\FavoriteEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Panels\FavoriteEditor.Designer.cs">
+      <DependentUpon>FavoriteEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\OrganizeFavoritesToolbarForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\OrganizeFavoritesToolbarForm.Designer.cs">
+      <DependentUpon>OrganizeFavoritesToolbarForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\OrganizeGroupsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\OrganizeGroupsForm.Designer.cs">
+      <DependentUpon>OrganizeGroupsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\OrganizeShortcuts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\OrganizeShortcuts.Designer.cs">
+      <DependentUpon>OrganizeShortcuts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Wizard\WizardForms.cs" />
+    <EmbeddedResource Include="Connections\ReconnectingControl.resx">
+      <DependentUpon>ReconnectingControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AboutForm.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>AboutForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AddConnectionForm.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>AddConnectionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Connections\MiniBrowser.resx">
+      <DependentUpon>MiniBrowser.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Connections\NetworkingToolsLayout.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>NetworkingToolsLayout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Connections\RASProperties.resx">
+      <DependentUpon>RASProperties.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Connections\TabbedTools.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>TabbedTools.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Controls\CredentialPanel.resx">
+      <DependentUpon>CredentialPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Controls\DBTreeView.resx">
+      <DependentUpon>DBTreeView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Credentials\CredentialManager.resx">
+      <DependentUpon>CredentialManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Controls\FontControl.resx">
+      <DependentUpon>FontControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Controls\HistoryTreeView.resx">
+      <DependentUpon>HistoryTreeView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Controls\TabColorPreferences.resx">
+      <DependentUpon>TabColorPreferences.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\RequestPassword.resx">
+      <DependentUpon>RequestPassword.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SelectDatabase.resx">
+      <DependentUpon>SelectDatabase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Panels\FavoritePanels\RdpFavoritePanel.resx">
+      <DependentUpon>RdpFavoritePanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Panels\OptionPanels\CaptureOptionPanel.resx">
+      <DependentUpon>CaptureOptionPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Panels\OptionPanels\ConnectCommandOptionPanel.resx">
+      <DependentUpon>ConnectCommandOptionPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Panels\OptionPanels\ConnectionsOptionPanel.resx">
+      <DependentUpon>ConnectionsOptionPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Panels\OptionPanels\DefaultPasswordOptionPanel.resx">
+      <DependentUpon>DefaultPasswordOptionPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Panels\OptionPanels\FavoritesOptionPanel.resx">
+      <DependentUpon>FavoritesOptionPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Panels\OptionPanels\InterfaceOptionPanel.resx">
+      <DependentUpon>InterfaceOptionPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LocalizedValues_en.resx">
+      <LastGenOutput>LocalizedValues_en.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LocalizedValues_de.resx">
+      <LastGenOutput>LocalizedValues_de.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ExpirationDialog.resx">
+      <DependentUpon>ExpirationDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Panels\OptionPanels\PuttyOptionPanel.resx">
+      <DependentUpon>PuttyOptionPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Panels\OptionPanels\RAdminOptionPanel.resx">
+      <DependentUpon>RAdminOptionPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Panels\OptionPanels\MasterPasswordOptionpanel.resx">
+      <DependentUpon>MasterPasswordOptionpanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Panels\OptionPanels\ProxyOptionPanel.resx">
+      <DependentUpon>ProxyOptionPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Panels\OptionPanels\StartShutdownOptionPanel.resx">
+      <DependentUpon>StartShutdownOptionPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Network\Servers\ServerList.resx">
+      <DependentUpon>ServerList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Network\WMI\LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Network\WMI\WMIControl.resx">
+      <DependentUpon>WMIControl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Panels\FavoritePanels\ExplorerFavoritePanel.resx">
+      <DependentUpon>ExplorerFavoritePanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Panels\FavoritePanels\GenericFavoritePanel.resx">
+      <DependentUpon>GenericFavoritePanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Panels\FavoritePanels\PuttyFavoritePanel.resx">
+      <DependentUpon>PuttyFavoritePanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Panels\FavoritePanels\RAdminFavoritePanel.resx">
+      <DependentUpon>RAdminFavoritePanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\NewGroupForm.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>NewGroupForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Panels\OptionEditor.resx">
+      <DependentUpon>OptionEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\OrganizeFavoritesForm.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>OrganizeFavoritesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Panels\FavoriteEditor.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FavoriteEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\OrganizeFavoritesToolbarForm.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>OrganizeFavoritesToolbarForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\OrganizeGroupsForm.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>OrganizeGroupsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\OrganizeShortcuts.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>OrganizeShortcuts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\QuickConnect.resx">
+      <DependentUpon>QuickConnect.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SaveActiveConnectionsForm.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>SaveActiveConnectionsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <Compile Include="Forms\SaveActiveConnectionsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SaveActiveConnectionsForm.Designer.cs">
+      <DependentUpon>SaveActiveConnectionsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Connections\ShellFileOperation.cs" />
+    <Compile Include="Network\Services\SingleInstanceApplication.cs" />
+    <Compile Include="TerminalServices\Client.cs" />
+    <Compile Include="TerminalServices\ConnectionStates.cs" />
+    <Compile Include="TerminalServices\Session.cs" />
+    <Compile Include="TerminalServices\SessionProcess.cs" />
+    <Compile Include="TerminalServices\TerminalServicesAPI.cs" />
+    <Compile Include="TerminalServices\TerminalServer.cs" />
+    <Compile Include="TerminalServices\TSManager.cs" />
+    <Compile Include="CommandLine\ArgumentAttribute.cs" />
+    <Compile Include="Wizard\AddExistingRDPConnections.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Wizard\AddExistingRDPConnections.Designer.cs">
+      <DependentUpon>AddExistingRDPConnections.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Wizard\IntroForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Wizard\IntroForm.Designer.cs">
+      <DependentUpon>IntroForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Wizard\MMC\MMCFile.cs" />
+    <Compile Include="Wizard\PasswordStrength.cs" />
+    <Compile Include="Wizard\SpecialCommandsWizard.cs" />
+    <None Include="..\ReleaseNotes.txt">
+      <Link>ReleaseNotes.txt</Link>
+    </None>
+    <Content Include="terminalsicon.ico" />
+    <None Include="Updates\UpdatePackage.xsc">
+      <DependentUpon>UpdatePackage.xsd</DependentUpon>
+    </None>
+    <None Include="Updates\UpdatePackage.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>UpdatePackage1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Updates\UpdatePackage.xss">
+      <DependentUpon>UpdatePackage.xsd</DependentUpon>
+    </None>
+    <None Include="TerminalServices\WTSApi32.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Forms\Controls\ConsolePreferences.resx">
+      <DependentUpon>ConsolePreferences.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Credentials\ManageCredentialForm.resx">
+      <DependentUpon>ManageCredentialForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Credentials\UserSelectForm.resx">
+      <DependentUpon>UserSelectForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DiskDrivesForm.resx">
+      <DependentUpon>DiskDrivesForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExportImport\ExportFrom.resx">
+      <DependentUpon>ExportFrom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Controls\FavsList.resx">
+      <DependentUpon>FavsList.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Network\AD\ImportFromAD.resx">
+      <DependentUpon>ImportFromAD.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Network\Pcap\PacketCapture.resx">
+      <DependentUpon>PacketCapture.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Network\PortScanner\PortScanner.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>PortScanner.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Network\WakeOnLAN\WakeOnLan.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WakeOnLan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Network\WMI\Services.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>Services.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Network\WMI\WMIServerCredentials.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WMIServerCredentials.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SSHClient\KeyChooser.resx">
+      <DependentUpon>KeyChooser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SSHClient\KeyGenForm.resx">
+      <DependentUpon>KeyGenForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SSHClient\Preferences.resx">
+      <DependentUpon>Preferences.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizard\CommonOptions.resx">
+      <DependentUpon>CommonOptions.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizard\DefaultCredentials.resx">
+      <DependentUpon>DefaultCredentials.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizard\EnterPassword.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>EnterPassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizard\MasterPassword.resx">
+      <DependentUpon>MasterPassword.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizard\FirstRunWizard.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FirstRunWizard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Network\DNS\DNSLookup.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>DNSLookup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Network\InterfacesList.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>InterfacesList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Network\LocalConnections.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>LocalConnections.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Network\Ping\Ping.resx">
+      <DependentUpon>Ping.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Network\NTP\NetworkTime.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>NetworkTime.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Network\Servers\TerminalServerManager.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>TerminalServerManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Network\TraceRoute\TraceRouteControl.resx">
+      <DependentUpon>TraceRouteControl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Network\WMI\NetworkShares.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>NetworkShares.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Network\WhoIs\WhoIs.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WhoIs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizard\AddExistingRDPConnections.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>AddExistingRDPConnections.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizard\IntroForm.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>IntroForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <Content Include="Terminals.log4net.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Be.Windows.Forms.HexBox\Be.Windows.Forms.HexBox.csproj">
+      <Project>{26C5F25F-B450-4CAF-AD8B-B8D11AE73457}</Project>
+      <Name>Be.Windows.Forms.HexBox</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BitBucket Gecko\Geckofx-Core\Geckofx-Core.csproj">
+      <Project>{6AB4EEE6-1889-43AB-83F7-A4F083230BE7}</Project>
+      <Name>Geckofx-Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BitBucket Gecko\Geckofx-Winforms\Geckofx-Winforms.csproj">
+      <Project>{D7ADC901-E1C4-480E-8F6D-B1FFD5CF87E8}</Project>
+      <Name>Geckofx-Winforms</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DotRas-ChangeSet-99043\Trunk\Source\DotRas\DotRas\DotRas.csproj">
+      <Project>{09eb2d48-2a3b-4aa7-bdc5-908e103b1e13}</Project>
+      <Name>DotRas</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ExplorerBrowser\ExplorerBrowser.csproj">
+      <Project>{2aacff7e-f4b1-44f6-92c6-20acbb647a4d}</Project>
+      <Name>ExplorerBrowser</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Granados\Granados.csproj">
+      <Project>{9780D85D-2E12-4747-9E08-DEDB95A71FC3}</Project>
+      <Name>Granados</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Metro\Metro.csproj">
+      <Project>{4F3A4024-5A19-4F08-823A-B75D6AFE5CD8}</Project>
+      <Name>Metro</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SharpPcap-4.1.0\SharpPcap\SharpPcap.csproj">
+      <Project>{24262E52-1304-4A25-8F73-A3B06E40592E}</Project>
+      <Name>SharpPcap</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SharpZipLib\ICSharpCode.SharpZLib.csproj">
+      <Project>{0E7413FF-EB9E-4714-ACF2-BE3A6A7B2FFD}</Project>
+      <Name>ICSharpCode.SharpZLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TerminalEmulator\TerminalEmulator.csproj">
+      <Project>{933C6FDB-9617-4F19-89AF-C5D373F88479}</Project>
+      <Name>TerminalEmulator</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Terminals.Configuration\Terminals.Configuration.csproj">
+      <Project>{fceb7dac-e7be-4b40-976f-0687b9f36cd1}</Project>
+      <Name>Terminals.Configuration</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Terminals.Connection\Terminals.Connection.csproj">
+      <Project>{b7912bf3-a591-4011-b48e-9eab91568bb3}</Project>
+      <Name>Terminals.Connection</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VncSharp\VncSharp.csproj">
+      <Project>{E0695F0F-0FAF-44BC-AE55-A1FCBFE70271}</Project>
+      <Name>VncSharp</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ZedGraph 5.1 %28.net 2%29\source\ZedGraph.csproj">
+      <Project>{2541686b-1673-43bf-af89-3163945db009}</Project>
+      <Name>ZedGraph</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <CheckForOverflowUnderflow>True</CheckForOverflowUnderflow>
+    <Optimize>False</Optimize>
+    <StartAction>Project</StartAction>
+    <BaseIntermediateOutputPath>obj\</BaseIntermediateOutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Platform)' == 'AnyCPU' ">
+    <RegisterForComInterop>False</RegisterForComInterop>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+    <BaseAddress>4194304</BaseAddress>
+    <FileAlignment>4096</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
+    <Optimize>True</Optimize>
+    <StartAction>Project</StartAction>
+    <BaseIntermediateOutputPath>obj\</BaseIntermediateOutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Platform)' == 'x86' ">
+    <RegisterForComInterop>False</RegisterForComInterop>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+    <BaseAddress>4194304</BaseAddress>
+    <FileAlignment>4096</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent>$(SolutionDir)$(ConfigurationName).bat</PostBuildEvent>
+  </PropertyGroup>
+</Project>

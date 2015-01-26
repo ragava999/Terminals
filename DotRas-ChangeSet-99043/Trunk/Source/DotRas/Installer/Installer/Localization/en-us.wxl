@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?include "..\Config.wxi" ?>
+<WixLocalization Culture="en-us" xmlns="http://schemas.microsoft.com/wix/2006/localization">  
+  <!-- Folder Names -->
+  <String Id="LibrariesFolder">Libraries</String>
+  <String Id="DotNet2Folder">NET20</String>
+  <String Id="DotNet4Folder">NET40</String>
+  <String Id="DocsFolder">Help</String>
+  <String Id="SourceFolder">Source</String>
+  <String Id="ExamplesFolder">Examples</String>
+
+  <!-- Feature Names -->
+  <String Id="BinFiles">Libraries</String>
+  <String Id="BinFilesDesc">Installs the component libraries.</String>
+  <String Id="DocumentationFiles">Documentation</String>
+  <String Id="DocumentationFilesDesc">Installs the documentation files.</String>
+  <String Id="SampleFiles">Examples</String>
+  <String Id="SampleFilesDesc">Installs any example projects included.</String>
+  <String Id="VSRegFeatureTitle">Visual Studio Registration</String>
+  <String Id="VSRegFeatureDesc">Registers this product with the Visual Studio add .NET reference dialog.</String>
+  
+  <!-- Shortcut Names -->
+  <String Id="HelpShortcutDesc">SDK Documentation</String>
+
+  <!-- WixUI Dialog Overrides -->
+  <String Id="CustomizeDlgTitle" Overridable="yes">{\WixUI_Font_Title}Feature Setup</String>
+  <String Id="CustomizeDlgDescription" Overridable="yes">Select which features you want to install.</String>
+  <String Id="LicenseAgreementDlgDescription" Overridable="yes">Please read the following license agreement carefully.</String>
+</WixLocalization>

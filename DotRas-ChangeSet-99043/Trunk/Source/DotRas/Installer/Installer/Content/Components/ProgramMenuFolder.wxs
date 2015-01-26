@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?include "..\..\Config.wxi" ?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+	<Fragment>    
+    <DirectoryRef Id="ProgramMenuFolder">
+
+      <Directory Id="ShortcutFolder" Name="$(var.ProductName) SDK v$(var.SDKVersion)">
+        <Component Id="HelpShortcut" Guid="{2C055565-E72E-48C1-82E1-20D505F7749D}">          
+          <RegistryValue Root="HKCU" 
+                         Key="SOFTWARE\$(var.ProductName) SDKs\$(var.ProductVersion)" 
+                         Name="installed" 
+                         Type="integer" 
+                         Value="1" 
+                         Action="write" 
+                         KeyPath="yes" />
+
+          <Shortcut Id="HelpShortcut"
+                    Name="$(var.ProductName) !(loc.HelpShortcutDesc).lnk" 
+                    Directory="ShortcutFolder"
+                    Target="[#DotRas.chm]"/>
+
+          <RemoveFolder Id="RemoveShortcutFolder" On="uninstall"/>
+        </Component>        
+      </Directory>
+      
+    </DirectoryRef>
+	</Fragment>
+</Wix>

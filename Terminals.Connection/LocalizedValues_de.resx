@@ -1,0 +1,231 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="CaputureManager.Capture.CaptureManagerLayout_ConfirmCaptionDeleteMultipleItems" xml:space="preserve">
+    <value>Mehrere Elemente löschen</value>
+  </data>
+  <data name="CaputureManager.Capture.CaptureManagerLayout_ConfirmDeleteMultipleFiles" xml:space="preserve">
+    <value>Möchten Sie diese Dateien tatsächlich {0} löschen?</value>
+  </data>
+  <data name="CaputureManager.Capture.CaptureManagerLayout_ConfirmCaptionDeleteSingleItem" xml:space="preserve">
+    <value>Element löschen</value>
+  </data>
+  <data name="CaputureManager.Capture.CaptureManagerLayout_ConfirmDeleteSingleFile" xml:space="preserve">
+    <value>Möchten Sie diese Datei wirklich löschen?</value>
+  </data>
+  <data name="CaputureManager.Capture.CaptureManagerLayout_DeleteFolder" xml:space="preserve">
+    <value>Ordner löschen?</value>
+  </data>
+  <data name="CaputureManager.Capture.CaptureManagerLayout_ConfirmDeleteSingleFolder" xml:space="preserve">
+    <value>Möchten Sie diesen Ordner wirklich löschen?</value>
+  </data>
+  <data name="CaptureManager" xml:space="preserve">
+    <value>Bildverwaltungsmanager</value>
+  </data>
+  <data name="CaputureManager.Capture.Delete" xml:space="preserve">
+    <value>Fehler beim Löschen des Bildes.</value>
+  </data>
+  <data name="CaputureManager.Capture.PostToFlickr" xml:space="preserve">
+    <value>Bild von %TITLE%</value>
+  </data>
+  <data name="CaputureManager.Capture.CaputureManager" xml:space="preserve">
+    <value>yyyy_MM_dd_hh_mm_ss</value>
+  </data>
+  <data name="CaputureManager.Capture.Move_Error" xml:space="preserve">
+    <value>Fehler beim Verschieben des Bildes.</value>
+  </data>
+  <data name="CaputureManager.Capture.CommentsFileName" xml:space="preserve">
+    <value>{0}.Kommentare</value>
+  </data>
+  <data name="CaputureManager.Capture.PostToFlickr_Error" xml:space="preserve">
+    <value>Bitte melden Sie sich via %TITLE% (Menü "Werkzeuge" ... "Optionen" ... "Screen Capture" ... "Flickr") an bevor Sie posten können.</value>
+  </data>
+  <data name="CaputureManager.Capture.CaptureManagerLayout_CaptureRootFolderName" xml:space="preserve">
+    <value>Schnappschussordner</value>
+  </data>
+  <data name="CaputureManager.Capture.CaptureManagerLayout_PostToFlickr" xml:space="preserve">
+    <value>Ausgewählte Bilder auf Flickr hochladen</value>
+  </data>
+  <data name="CaputureManager.Capture.CaptureManagerLayout.SendToFlickr_Error" xml:space="preserve">
+    <value>Es gab einen Fehler ihre Bilder in Flickr hochzuladen.</value>
+  </data>
+  <data name="CaputureManager.Capture.CaptureManagerLayout.SendToFlickr_Information" xml:space="preserve">
+    <value>Alle Bilder wurden erfolgreich in Flickr hochgeladen.</value>
+  </data>
+  <data name="CaputureManager.Capture.CaptureManagerLayout.PostToFlickr_Information" xml:space="preserve">
+    <value>Alle Bilder wurden für den Übertragungsvorgang an Flickr gereiht. Sobald der Vorgang abgeschlossen ist werden Sie notifiziert.</value>
+  </data>
+  <data name="CaputureManager.Capture.CaptureManagerLayout.PostToFlickr_Question" xml:space="preserve">
+    <value>Sind Sie sicher, dass Sie {0} Bilder auf Ihren Flickr-Bereich hochladen wollen?</value>
+  </data>
+  <data name="CaputureManager.Capture.CaptureManagerLayout.PostToFlickr_Warning" xml:space="preserve">
+    <value>Bitte selektieren Sie Bilder damit diese hochgeladen werden können.</value>
+  </data>
+  <data name="CaputureManager.Capture.CaptureManagerLayout_NewFolder" xml:space="preserve">
+    <value>Neuer Verzeichnisname</value>
+  </data>
+  <data name="CaputureManager.Capture.CaptureManagerLayout_Files" xml:space="preserve">
+    <value>Das Verzeichnis "{0}" enthält {1} Ordner.</value>
+  </data>
+  <data name="CaputureManager.Capture.CaptureManagerLayout_Directory" xml:space="preserve">
+    <value>Das Verzeichnis "{0}" enthält {1} Dateien.</value>
+  </data>
+  <data name="CaputureManager.Capture.ScreenCapture.Capture" xml:space="preserve">
+    <value>Bilderstellung von der aktiven %TITLE%verbindung schlug fehl.</value>
+  </data>
+  <data name="CaputureManager.Capture.ScreenCapture.Print" xml:space="preserve">
+    <value>Der Druckvorgang schlug fehl.</value>
+  </data>
+  <data name="CaputureManager.Capture.ScreenCapture.Save" xml:space="preserve">
+    <value>Saving image to [{0}] in format [{1}] failed.\n{2}</value>
+  </data>
+  <data name="CaputureManager.Capture.ScreenCapture_Format1" xml:space="preserve">
+    <value>{0}\\{1}.{2:D2}.{3}</value>
+  </data>
+  <data name="CaputureManager.Capture.ScreenCapture_Format2" xml:space="preserve">
+    <value>{0}\\{1}.{2}</value>
+  </data>
+  <data name="Connections.CaputureManagerConnection.Disconnect_Error" xml:space="preserve">
+    <value>Fehler beim Trennen der Verbindung zum Bildverwaltungsmanager.</value>
+  </data>
+  <data name="Connections.ConnectionManager.CreateConnection" xml:space="preserve">
+    <value>%TITLE% war leider nicht im Stande eine Verbindung aufzubauen. Versuchen Sie es erneut oder überpfürfen Sie bitte die Logdatei um nähere Informationen zu erhalten.</value>
+  </data>
+  <data name="CaptureManager_ViewStyle_LargeIcons" xml:space="preserve">
+    <value>Große Bilder</value>
+  </data>
+  <data name="CaptureManager_ViewStyle_SmallIcons" xml:space="preserve">
+    <value>Kleine Bilder</value>
+  </data>
+  <data name="CaptureManager_ViewStyle_Title" xml:space="preserve">
+    <value>Titelansicht</value>
+  </data>
+  <data name="CaptureManager_ViewStyle_List" xml:space="preserve">
+    <value>Liste</value>
+  </data>
+  <data name="Connections.ConnectionImageHandler.LoadImage" xml:space="preserve">
+    <value>Fehler beim Laden des TreeView-Element-Bildes.</value>
+  </data>
+  <data name="EnableProtocolOptionPanel.Text" xml:space="preserve">
+    <value>Protokolle für {0}-Plugin aktivieren</value>
+  </data>
+  <data name="OptionPanel.Text" xml:space="preserve">
+    <value>{0}-Optionen</value>
+  </data>
+</root>

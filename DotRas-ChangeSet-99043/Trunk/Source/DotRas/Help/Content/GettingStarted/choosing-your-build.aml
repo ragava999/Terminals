@@ -1,0 +1,172 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="616a3e82-976e-4702-ae41-e662aa5db9ca" revisionNumber="1">
+  <developerConceptualDocument xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!--
+    <summary>
+      <para>Optional summary abstract</para>
+    </summary>
+    -->
+    <introduction>
+      <!-- Uncomment this to generate an outline of the section and sub-section
+           titles.  Specify a numeric value as the inner text to limit it to
+           a specific number of sub-topics when creating the outline.  Specify
+           zero (0) to limit it to top-level sections only.  -->
+      <!-- <autoOutline /> -->
+      <para>The DotRas project contains different assemblies for different versions of Windows. Deciding which assembly your project should use is one of the biggest decisions you will make when utilizing the API. Each assembly contains different features, because different versions of Windows expose different features. Whichever assembly you select, that will be the earliest version of Windows your application can support.</para>
+    </introduction>
+    <!-- Add one or more top-level section elements.  These are collapsible.
+         If using <autoOutline />, add an address attribute to identify it
+         and specify a title so that it can be jumped to with a hyperlink. -->
+    <section address="Introduction">
+    	<title>Introduction</title>
+    	<content>
+    		<para>Attempting to use the assembly compiled for Windows XP on Windows 2000 would cause many of the methods to throw exceptions with an error code of 632. Error code 632 indicates a structure size problem. Windows decides how to interact with the structure based on the size of the structure passed into it. If you decide to use the Windows XP (WINXP) version, that assembly will support everything except for Windows 2000. The same thing applies to Windows 2008 (WIN2K8) only supporting Windows Vista or later. If your application needs to support IPv6, you will need to use the WIN2K8 build, and your application will only work on Windows Vista or later. No versions of Windows prior to Windows Vista has this capability.</para>
+    		<para><legacyBold>Do not take this decision lightly, your application's platform interoperability rests solely on this decision.</legacyBold></para>
+    		<alert class="tip">
+    			<para>If you are unsure which assembly will suit your needs, use the Windows 2000 version of the assembly. It is cross-platform compatible with all supported operating systems.</para>
+    		</alert>
+    	</content>
+    </section>
+    <section address="Benefits">
+      <title>Benefits and Features</title>
+      <content>
+        <!-- Uncomment this to create a sub-section outline
+        <autoOutline /> -->
+        <para>The list below describes the different versions available and the features each version adds.</para>
+        <para>
+	        <list class="bullet">
+	         <listItem><legacyBold>WIN8 - Windows 8 and Windows 8 Server</legacyBold>
+	            <list class="bullet">
+	                <listItem>Includes all features listed in the WIN7 build.</listItem>
+	                <listItem>Entry options
+	                    <list class="bullet">
+	                       <listItem>Indicating whether a pre-shared is used by the initiator or respoder for IPSec authentication.</listItem>
+	                       <listItem>Natively allowing caching of credentials at the end of a successful authentication attempt.</listItem>
+	                    </list>
+	                </listItem>
+	            </list>
+	         </listItem>
+	         <listItem><legacyBold>WIN7 - Windows 7 and Windows 2008 Server R2 (aka Windows 7 Server)</legacyBold>
+	         	<list class="bullet">
+	         		<listItem>Includes all features listed in the WIN2K8 build.</listItem>
+	         		<listItem>Updating Internet Key Exchange (IKEv2) connection tunnel endpoints.</listItem>
+	         		<listItem>Retrieval of PPP and Internet Key Exchange (IKEv2) projection information for an active connection.</listItem>
+	         		<listItem>Connection substates for Internet Key Exchange (IKEv2) virtual private network connections.</listItem>
+	         		<listItem>Modifying the interface metrics, allowing skipping PPP authentication, and setting an authentication cookie while dialing.</listItem>
+	         		<listItem>Entry options
+	         			<list class="bullet">
+	         				<listItem>Disabling class based static routes.</listItem>
+	         				<listItem>Enabling/disabling mobility of an IKEv2 virtual private network connection.</listItem>
+	         				<listItem>Modifying the IPv6 address, prefix length, and network outage timeout.</listItem>
+	         			</list>
+	         		</listItem>
+	         		<listItem>Added support for IKEv2 VPN strategies.</listItem>
+	         	</list>
+	         </listItem>
+	         <listItem><legacyBold>WIN2K8 - Windows Vista and Windows 2008 Server</legacyBold>
+	         	<list class="bullet">
+	         		<listItem>Includes all features listed in the WINXP build.</listItem>
+	         		<listItem>Retrival of the correlation id, network access protection (NAP) status, and IPv6 projection information for an active connection.</listItem>
+	         		<listItem>Modifying IPv6 DNS addresses, IPv4 and IPv6 interface metrics for a phonebook entry.</listItem>
+	         		<listItem>Added support for the IPv6 network protocol.</listItem>
+	         		<listItem>Removes support for SLIP projection information.</listItem>
+	         		<listItem>Entry options
+	         			<list class="bullet">
+	         				<listItem>Enables securing of routing compartments.</listItem>
+	         				<listItem>Allows indication whether default settings should be used during entry creation.</listItem>
+	         				<listItem>Enabling IPv6 remote default gateway.</listItem>
+	         				<listItem>Registration of IP address with DNS.</listItem>
+	         				<listItem>Using DNS suffix for registration.</listItem>
+	         				<listItem>Disabling the IKE name EKU check.</listItem>
+	         			</list>
+	         		</listItem>
+	         		<listItem>Added support for SSTP VPN strategies.</listItem>	         		
+	         	</list>
+	         </listItem>
+	         <listItem><legacyBold>WINXP - Windows XP and Windows 2003 Server</legacyBold>
+	         	<list class="bullet">
+	         		<listItem>Includes all features listed in the WIN2K build.</listItem>
+	         		<listItem>Retrival of connection options and session id for active connections.</listItem>
+	         		<listItem>Adds support for custom scripting on the RasDialer component.</listItem>
+	         		<listItem>Added support for PPPoE devices.</listItem>
+	         		<listItem>Added DNS suffix, TCP window size, prerequisite entries, redial count, redial pause, clearing and retrieval of preshared key credentials, and updating credentials for all users to RasEntry.</listItem>
+	         		<listItem>Entry options
+	         			<list class="bullet">
+	         				<listItem>Support for securing file and print servers.</listItem>
+	         				<listItem>Securing the client for MS networks.</listItem>
+	         				<listItem>Disallow negotiation of multi-link.</listItem>
+	         				<listItem>Disallow use of RAS credentials to access network resources.</listItem>
+	         				<listItem>Use preshared keys for IPSec authentication.</listItem>
+	         				<listItem>Indicating whether the connection connects to the Internet.</listItem>
+	         				<listItem>Disabling NBT probing over IP.</listItem>
+	         				<listItem>Enabling the use of global device settings.</listItem>
+	         				<listItem>Enabling auto-reconnect if the connection is dropped.</listItem>
+	         				<listItem>Indicating whether the same set of phone numbers will be used for all subentries in a multi-link connection.</listItem>
+	         			</list>
+	         		</listItem>
+	         	</list>
+	         </listItem>
+	         <listItem><legacyBold>WIN2K - Windows 2000 and Windows 2000 Server</legacyBold>
+	         	<list class="bullet">
+	         		<listItem>Base version of the assembly.</listItem>
+	         	</list>
+	         </listItem>
+	        </list>
+        </para>
+      </content>
+      <!-- If a section contains a sections element, its content creates
+           sub-sections.  These are not collapsible.
+      <sections>
+          <section address="SubSection1">
+              <title>Sub-section 1</title>
+              <content>
+                  <para>Sub-section content.</para>
+              </content>
+          </section>
+          <section address="SubSection2">
+              <title>Sub-section 2</title>
+              <content>
+                  <para>Sub-section content.</para>
+              </content>
+          </section>
+      </sections> -->
+    </section>
+    <relatedTopics>
+      <!-- One or more of the following:
+           - A local link
+           - An external link
+           - A code entity reference
+
+      <link xlink:href="Other Topic's ID"/>
+      <link xlink:href="Other Topic's ID">Link inner text</link>
+
+      <externalLink>
+          <linkText>Link text</linkText>
+          <linkAlternateText>Optional alternate link text</linkAlternateText>
+          <linkUri>URI</linkUri>
+      </externalLink>
+
+      <codeEntityReference>API member ID</codeEntityReference>
+
+      Examples:
+
+      <link xlink:href="00e97994-e9e6-46e0-b420-5be86b2f8270" />
+      <link xlink:href="00e97994-e9e6-46e0-b420-5be86b2f8278">Some other topic</link>
+
+      <externalLink>
+          <linkText>SHFB on CodePlex</linkText>
+          <linkAlternateText>Go to CodePlex</linkAlternateText>
+          <linkUri>http://shfb.codeplex.com</linkUri>
+      </externalLink>
+
+      <codeEntityReference>T:TestDoc.TestClass</codeEntityReference>
+      <codeEntityReference>P:TestDoc.TestClass.SomeProperty</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.#ctor</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.#ctor(System.String,System.Int32)</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.ToString</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.FirstMethod</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.SecondMethod(System.Int32,System.String)</codeEntityReference>
+      -->
+    </relatedTopics>
+  </developerConceptualDocument>
+</topic>

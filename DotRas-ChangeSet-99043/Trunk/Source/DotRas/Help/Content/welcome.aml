@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="b19a8eb4-0f61-4aac-b321-455ce189c421" revisionNumber="1">
+  <developerConceptualDocument xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!--
+    <summary>
+      <para>Optional summary abstract</para>
+    </summary>
+    -->
+    <introduction>
+    	<mediaLink><image xlink:href="Logo" placement="near" /></mediaLink>
+      <!-- Uncomment this to generate an outline of the section and sub-section
+           titles.  Specify a numeric value as the inner text to limit it to
+           a specific number of sub-topics when creating the outline.  Specify
+           zero (0) to limit it to top-level sections only.  -->
+      <!-- <autoOutline /> -->
+      <para>
+      Welcome to the DotRas SDK Documentation. This is intended to be a reference that you can use to assist with development using the DotRas project.
+      This project is continuously evolving, so expect things to change in each version of the project. As with all software products, there may be bugs found in 
+      the application. There are processes in place to the release process to minimize this exposure and reduce that risk. If however, you do find something you 
+      feel is a bug or have a feature request please visit the project found <externalLink><linkText>here</linkText><linkUri>http://dotras.codeplex.com</linkUri></externalLink>.
+      </para>
+    </introduction>
+    <!-- Add one or more top-level section elements.  These are collapsible.
+         If using <autoOutline />, add an address attribute to identify it
+         and specify a title so that it can be jumped to with a hyperlink. -->
+    <section address="Section1">
+      <title>What is DotRas?</title>
+      <content>
+        <!-- Uncomment this to create a sub-section outline
+        <autoOutline /> -->
+        <para>
+        DotRas is an open-source project aimed at developers using the .NET framework who need to interact with the Remote Access Service (RAS)
+        APIs exposed within Microsoft Windows. Currently the project supports the .NET 2.0.50727 framework and later for maximum compatibility. The product 
+        contains multiple version of the binary which each containing different features for the supported versions of Microsoft Windows.
+        </para>
+        <para>
+        For more information about the features supported, visit the <link xlink:href="616a3e82-976e-4702-ae41-e662aa5db9ca" /> topic.
+        </para>
+      </content>
+    </section>    
+    <relatedTopics>
+    	<link xlink:href="957eb2dd-003b-4ca0-afa9-ad8bb561bd8d" />
+      <!-- One or more of the following:
+           - A local link
+           - An external link
+           - A code entity reference
+
+      <link xlink:href="Other Topic's ID"/>
+      <link xlink:href="Other Topic's ID">Link inner text</link>
+
+      <externalLink>
+          <linkText>Link text</linkText>
+          <linkAlternateText>Optional alternate link text</linkAlternateText>
+          <linkUri>URI</linkUri>
+      </externalLink>
+
+      <codeEntityReference>API member ID</codeEntityReference>
+
+      Examples:
+
+      <link xlink:href="00e97994-e9e6-46e0-b420-5be86b2f8270" />
+      <link xlink:href="00e97994-e9e6-46e0-b420-5be86b2f8278">Some other topic</link>
+
+      <externalLink>
+          <linkText>SHFB on CodePlex</linkText>
+          <linkAlternateText>Go to CodePlex</linkAlternateText>
+          <linkUri>http://shfb.codeplex.com</linkUri>
+      </externalLink>
+
+      <codeEntityReference>T:TestDoc.TestClass</codeEntityReference>
+      <codeEntityReference>P:TestDoc.TestClass.SomeProperty</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.#ctor</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.#ctor(System.String,System.Int32)</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.ToString</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.FirstMethod</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.SecondMethod(System.Int32,System.String)</codeEntityReference>
+      -->
+    </relatedTopics>
+  </developerConceptualDocument>
+</topic>

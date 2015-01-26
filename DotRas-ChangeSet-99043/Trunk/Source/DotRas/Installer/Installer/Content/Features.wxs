@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?include "..\Config.wxi" ?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+    <Fragment>
+      <FeatureGroup Id="ProductFeatureGroup">
+        <Feature Id="BinFeature" Title="!(loc.BinFiles)" Level="1" AllowAdvertise="no" Description="!(loc.BinFilesDesc)">
+          <ComponentGroupRef Id="DotNet2ComponentGroup"/>
+          <ComponentGroupRef Id="DotNet4ComponentGroup"/>
+
+          <!-- The license files that are required for the application. -->
+          <ComponentRef Id="LicenseFiles"/>
+        </Feature>        
+        <Feature Id="DocumentationFeature" Title="!(loc.DocumentationFiles)" Level="1" AllowAdvertise="no" Description="!(loc.DocumentationFilesDesc)">
+          <ComponentGroupRef Id="DocsComponentGroup"/>
+          <ComponentRef Id="HelpShortcut"/>
+        </Feature>
+        <Feature Id="ExamplesFeature" Title="!(loc.SampleFiles)" Level="1" AllowAdvertise="no" Description="!(loc.SampleFilesDesc)">
+          <ComponentGroupRef Id="ExamplesComponentGroup"/>
+        </Feature>
+        <Feature Id="VSRegFeature" Title="!(loc.VSRegFeatureTitle)" Level="2" AllowAdvertise="no" Description="!(loc.VSRegFeatureDesc)">
+          <ComponentRef Id="VSRegistration"/>
+        </Feature>
+      </FeatureGroup>
+    </Fragment>
+</Wix>
