@@ -1,6 +1,7 @@
 # Terminals
 Terminals is a multi-tab terminal services and remote desktop client. Moreover Terminals is capable beside RDP of supporting AutoIt, a shell explorer, http connections, ICA/Citrix connections, telnet, ssh, VNC and many other protocols.
 
+[Download the latest release here](https://github.com/OliverKohlDSc/Terminals/releases/download/4.7.0.0/Binaries_4.7.0.0.zip)
 
 ##Release v 4.7.0.0
 
@@ -569,6 +570,8 @@ Fixed a problem in the debug.bat and release.bat files.
 
 ##Release v 3.5.0.0
 
+Date: 2011-01-03
+
 Fixed exceptions that appear in the log file.
 
 Updated Terminals RAS connection to "DotRas".
@@ -580,10 +583,14 @@ Added Citrix ICA (Receiver) connection.
 
 ##Release v 3.4.0.0
 
+Date: 2009-09-17
+
 Added chromium browser
 
 
 ##Release v 3.0.0.0
+
+Date: 2007-01-26
 
 IE Browser extensions:
 	http Form fields
@@ -623,3 +630,33 @@ Added dispatch functionality in "Quick Edit" context menu.
 Removed support for .TRM file handle extension -> Throwed exceptions in event log.
 
 The ManageCredentialForm is now able to show the password in plain text by double clicking the password label.
+
+##History
+
+This code is based on the Terminals version 1.0 located on CodePlex.
+
+| URL                                              | Date | Version |
+|--------------------------------------------------|------|---------|
+|https://terminals.codeplex.com/releases/view/1659 | 2007 |     1.0 |
+
+
+1) Support for RDP 6:
+- 32bit color support
+- Supports screen resolutions of up to 4096x2048
+- Supports disabling clipboard redirection
+- Enable smart card redirection
+- Enable plug&play devices redirection
+
+2) Save position and size
+3) Nicer about box...
+4) Execute before connect (per connection and for all connections).
+5) Some bugs were fixed.
+
+The original version had an issue on some machines and crashed.
+
+All rights for the original code belong to [Rob Chartier](https://www.codeplex.com/site/users/view/RobChartier) and his colleagues ([about 8 people in total](https://terminals.codeplex.com/team/view)).
+
+The code itself differs completely from the original version, nearly no parts except 3rd party libraries are in it's orignal condition. I attempted to improve the code, fixed a lot of bugs and added a lot of features.
+
+
+
