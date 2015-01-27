@@ -3,6 +3,10 @@ Terminals is a multi-tab terminal services and remote desktop client. Moreover T
 
 [Download the latest release here](https://github.com/OliverKohlDSc/Terminals/releases/download/4.7.0.0/Binaries_4.7.0.0.zip)
 
+The [official website](http://oliverkohldsc.github.io/Terminals) can be found [here](http://oliverkohldsc.github.io/Terminals).
+
+[My personal website](http://www.kohl.bz)
+
 ##Release v 4.7.0.0
 
 Date: 2015-01-26
