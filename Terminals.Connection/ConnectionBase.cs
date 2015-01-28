@@ -17,7 +17,12 @@ namespace Terminals.Connection
     {
 		public ConnectionBase()
 		{
-			System.AppDomain.CurrentDomain.AssemblyResolve += CurrentDomain_AssemblyResolve;
+            // This prevents SharpDevelop and Visual Studio from both an exception in design mode for controls using this HistoryTreeView and from crashing when opening the
+            // designer for this class.
+            if (LicenseManager.UsageMode == LicenseUsageMode.Runtime)
+            {
+				System.AppDomain.CurrentDomain.AssemblyResolve += CurrentDomain_AssemblyResolve;
+            }
 		}
 		
 		private System.Reflection.Assembly CurrentDomain_AssemblyResolve(object sender, System.ResolveEventArgs args)

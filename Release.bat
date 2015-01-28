@@ -80,8 +80,8 @@ echo Compilation and clean up done - optional last step will be started now ...
 cd ..\Distribution Release\
 
 echo Preparing netz compiler
-rem copy /Y ..\..\..\..\netz-src\netz\compress\defcomp.dll ..\..\..\..\netz-src\netz\bin\Release\defcomp.dll
-rem copy /Y ..\..\..\..\netz-src\netz\compress\zip.dll ..\..\..\..\netz-src\netz\bin\Release\zip.dll
+copy /Y ..\..\..\..\netz-src\netz\compress\defcomp.dll ..\..\..\..\netz-src\netz\bin\Release\defcomp.dll
+copy /Y ..\..\..\..\netz-src\netz\compress\zip.dll ..\..\..\..\netz-src\netz\bin\Release\zip.dll
 
 echo Packing and compressing the distributable version.
 
