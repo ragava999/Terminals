@@ -1,9 +1,13 @@
 # Terminals
 Terminals is a multi-tab terminal services and remote desktop client. Moreover Terminals is capable beside RDP of supporting AutoIt, a shell explorer, http connections, ICA/Citrix connections, telnet, ssh, VNC and many other protocols.
 
+[Download the latest release here](https://github.com/OliverKohlDSc/Terminals/releases/download/4.7.0.0/Binaries_4.7.0.0.zip)
 
-Release v 4.7.0.0
-~~~~~~~~~~~~~~~~~
+The [official website](http://oliverkohldsc.github.io/Terminals) can be found [here](http://oliverkohldsc.github.io/Terminals).
+
+[My personal website](http://www.kohl.bz)
+
+##Release v 4.7.0.0
 
 Date: 2015-01-26
 
@@ -32,8 +36,8 @@ Added compilation switch to remove the XUL code and to remove the dependencies t
 The next release will be a bug fixing release.
 
 
-Release v 4.6.0.1
-~~~~~~~~~~~~~~~~~
+
+##Release v 4.6.0.1
 
 Date: 2014-10-13
 
@@ -43,8 +47,7 @@ It is now possible to abort the putty dialog before the connection is available.
 
 
 
-Release v 4.6.0.0
-~~~~~~~~~~~~~~~~~
+##Release v 4.6.0.0
 
 Date: 2014-06-02
 
@@ -62,11 +65,22 @@ ZedGraph had a problem with the localization when being build with SharpDevelop.
 
 Extended Putty connection to support proxy settings
 The new keywords for putty are not supported for Terminals 4.5.0.3 or below:
-puttyProxyType="SOCKS5" puttyProxyPort="80" puttyProxyHost="myproxy"
+```
+puttyProxyType="SOCKS5"
+puttyProxyPort="80"
+puttyProxyHost="myproxy"
+```
 
 Plugin settings and option will now only be written to configuration file if the value differs from the default value.
-Settings or favorites like <plugin name="TEXT_ShowTinyMceInEditMode" value="False" defaultValue="False" /> make no sense.
-Instead the config will look like: <plugin name="TEXT_ShowTinyMceInEditMode" defaultValue="False" />
+Settings or favorites like
+```
+<plugin name="TEXT_ShowTinyMceInEditMode" value="False" defaultValue="False" />
+```
+make no sense.
+Instead the config will look like:
+```
+<plugin name="TEXT_ShowTinyMceInEditMode" defaultValue="False" />
+```
 
 updated icsharp
 
@@ -80,12 +94,14 @@ Improved loading speed of terminals
 
 Terminals will now load the DB connection only if a Terminals.Configuration.dll.config can be found and
 a datasource has been entered like:
+```
 <?xml version="1.0" encoding="utf-8"?>
 <configuration>
 	<appSettings>
 	<add key="TerminalsConnection" value="Data Source=MyMachine;User Id=MyUser;Password=MyPwd;Initial Catalog=Terminals"></add>
 	</appSettings>
 </configuration>
+```
 
 Reduced plugin size due to autoresolving feature
 
@@ -106,8 +122,7 @@ Credentials XML will now support UTF-8 (no conversion needed - but after the fir
 Both the text plugin and the Kohl.TinyMce are now supporting data (base64) images.
 
 
-Release v 4.5.0.3
-~~~~~~~~~~~~~~~~~
+##Release v 4.5.0.3
 
 Date: 2014-03-21
 
@@ -115,13 +130,12 @@ Fixed a RDP focus problem that occured on some workstations due to problems with
 
 Removed the "grab focus" functionality from terminals.
 
-Changed shortcut key for "Full Screen" from {F11} to {Alt} + {F11}.
+Changed shortcut key for "Full Screen" from **{F11}** to **{Alt}** + **{F11}**.
 
 The password manager now automatically sends the password to the keyboard after unleashing the password by right double clicks on the label.
 
 
-Release v 4.5.0.2
-~~~~~~~~~~~~~~~~~
+##Release v 4.5.0.2
 
 Date: 2013-12-02
 
@@ -146,8 +160,7 @@ Terminals is now skipping certificate warnings in internet explorer
 Removed de- and encryption for form fields -> no need and pain when porting the configuration from one machine to another.
 
 
-Release v 4.3.0.0
-~~~~~~~~~~~~~~~~~
+##Release v 4.3.0.0
 
 Date: 2013-10-21
 
@@ -163,17 +176,20 @@ Optimized startup of Terminals.
 
 Optimized the process of showing the help screen. (-help and --help are working too, instead of /? -? or /help)
 
-Option to use a different password safe file (Credentials.xml) is now available. (e.g. Terminals.exe -Cred:D:\MyPasswords.xml)
+Option to use a different password safe file (Credentials.xml) is now available.
+e.g.
+> Terminals.exe -Cred:D:\MyPasswords.xml
 
-Option to use a differnt configuration file for Terminals is now available. (e.g. Terminals.exe -Config:D:\MyConfigFile.conf)
+Option to use a differnt configuration file for Terminals is now available.
+e.g.
+> Terminals.exe -Config:D:\MyConfigFile.conf
 
 Fixed two bugs in the FireFox HTTP and HTTPS connection.
 
 Sorted credentials in FavoriteEditor.
 
 
-Release v 4.2.0.0
-~~~~~~~~~~~~~~~~~
+##Release v 4.2.0.0
 
 Date: 2013-08-14
 
@@ -209,7 +225,10 @@ Fixed bug: RAdmin session not closing after click on the right corner x button (
 
 Fixed localization of input box and Kohl.Framework.
 
-Improved the way treeviews are localized in the resx files e.g. EN_myTreeView1.Nodes[0] = 'My translation' or DE_treeView1.Nodes["Test"] = 'ABC'
+Improved the way treeviews are localized in the resx files e.g.
+> EN_myTreeView1.Nodes[0] = 'My translation'
+or
+> DE_treeView1.Nodes["Test"] = 'ABC'
 
 Localized TreeView in the options form.
 
@@ -232,8 +251,7 @@ Added scintilla for auto it connection.
 Kohl.Framework will now initialize automatically.
 
 
-Release v 4.0.0.5
-~~~~~~~~~~~~~~~~~
+##Release v 4.0.0.5
 
 Date: 2013-06-19
 
@@ -316,8 +334,7 @@ Added setting "InvertTabPageOrder".
 Changed resize behaviour of RDP.
 
 
-Release v 3.9.0.0
-~~~~~~~~~~~~~~~~~
+##Release v 3.9.0.0
 
 Date: 2013-02-22
 
@@ -362,16 +379,14 @@ Deleted unused and obsolete (2006) socks library from Mentalis.org:
 http://www.mentalis.org/soft/projects/ssocket/
 
 Excerpt from http://www.mentalis.org/soft/projects/secserv/download.qpx:
-     Security Services for .NET 2.0 - Downloads
-
-     This page lists the download locations of the Mentalis.org Security Services for .NET 2.0 library. The current version is v0.0.2 (beta).
-     Download Full Archive
-     This archive consists of the Security Services source code, a signed pre-compiled version of the library, and the full documentation. Future versions of the library will contain example projects and unit tests. 
-       Mentalis.org (North America, Virginia) [406 Kb] 
-
-      Version History
-      v0.0.1b  Initial public beta release. 2006/05/14 
-      v0.0.2b  First beta revision. 2006/06/25   
+>   Security Services for .NET 2.0 - Downloads
+>   This page lists the download locations of the Mentalis.org Security Services for .NET 2.0 library. The current version is v0.0.2 (beta).
+>   Download Full Archive
+>   This archive consists of the Security Services source code, a signed pre-compiled version of the library, and the full documentation. Future versions of the library will contain example projects and unit tests. 
+>   Mentalis.org (North America, Virginia) [406 Kb] 
+>   Version History
+>   v0.0.1b  Initial public beta release. 2006/05/14 
+>   v0.0.2b  First beta revision. 2006/06/25   
 
 Upgraded ICSharpCode.SharpZipLib.dll from version 0.85.4.369 to version 0.86.0.518.
 
@@ -426,8 +441,7 @@ The favorite property "telnetcursorcolor" is now obsolete and has been removed f
 The configuration file size has been shrinked by defaulting a null value for the favorite property "htmlFormFields".
 
 
-Release v 3.8.0.0
-~~~~~~~~~~~~~~~~~
+##Release v 3.8.0.0
 
 Date: 2012-12-12
 
@@ -466,8 +480,7 @@ Moved configuration backup method to start and removed other obsolete backup met
 The settings property "savedCredentials" is now obsolete and has been removed from the config file.
 
 
-Release v 3.7.0.0
-~~~~~~~~~~~~~~~~~
+##Release v 3.7.0.0
 
 Date: 2012-12-04
 
@@ -526,8 +539,7 @@ First part of localization finished second part will follow in Terminals 3.8
 User experience has been improved due to the usage of a different icon set.
 
 
-Release v 3.6.0.0
-~~~~~~~~~~~~~~~~~
+##Release v 3.6.0.0
 
 Date: 2012-07-26
 
@@ -560,8 +572,9 @@ Removed duplicate app.config files in the Terminals proj and Terminals.Configura
 Fixed a problem in the debug.bat and release.bat files.
 
 
-Release v 3.5.0.0
-~~~~~~~~~~~~~~~~~
+##Release v 3.5.0.0
+
+Date: 2011-01-03
 
 Fixed exceptions that appear in the log file.
 
@@ -572,14 +585,16 @@ Added threading capabilities for Terminals connections.
 Added Citrix ICA (Receiver) connection.
 
 
-Release v 3.4.0.0
-~~~~~~~~~~~~~~~~~
+##Release v 3.4.0.0
+
+Date: 2009-09-17
 
 Added chromium browser
 
 
-Release v 3.0.0.0
-~~~~~~~~~~~~~~~~~
+##Release v 3.0.0.0
+
+Date: 2007-01-26
 
 IE Browser extensions:
 	http Form fields
@@ -619,3 +634,33 @@ Added dispatch functionality in "Quick Edit" context menu.
 Removed support for .TRM file handle extension -> Throwed exceptions in event log.
 
 The ManageCredentialForm is now able to show the password in plain text by double clicking the password label.
+
+##History
+
+This code is based on the Terminals version 1.0 located on CodePlex.
+
+| URL                                              | Date | Version |
+|--------------------------------------------------|------|---------|
+|https://terminals.codeplex.com/releases/view/1659 | 2007 |     1.0 |
+
+
+1) Support for RDP 6:
+- 32bit color support
+- Supports screen resolutions of up to 4096x2048
+- Supports disabling clipboard redirection
+- Enable smart card redirection
+- Enable plug&play devices redirection
+
+2) Save position and size
+3) Nicer about box...
+4) Execute before connect (per connection and for all connections).
+5) Some bugs were fixed.
+
+The original version had an issue on some machines and crashed.
+
+All rights for the original code belong to [Rob Chartier](https://www.codeplex.com/site/users/view/RobChartier) and his colleagues ([about 8 people in total](https://terminals.codeplex.com/team/view)).
+
+The code itself differs completely from the original version, nearly no parts except 3rd party libraries are in it's orignal condition. I attempted to improve the code, fixed a lot of bugs and added a lot of features.
+
+
+
