@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Gecko
 {
-	// TODO: make this class binary marshalable from struct gfxMatrix
+	
 	[StructLayout(LayoutKind.Sequential) ]
 	public class gfxMatrix
 	{

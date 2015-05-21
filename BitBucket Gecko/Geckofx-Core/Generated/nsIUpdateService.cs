@@ -524,7 +524,7 @@ namespace Gecko
         /// check. If the update is not in the "failed" state or the certificate
         /// attribute check has not failed the value is zero.
         ///
-        /// TODO: Define typical error codes (for now, see updater/errors.h and the
+        
         /// CERT_ATTR_CHECK_FAILED_* values in nsUpdateService.js)
         /// </summary>
 		[MethodImpl(MethodImplOptions.InternalCall, MethodCodeType=MethodCodeType.Runtime)]
@@ -536,7 +536,7 @@ namespace Gecko
         /// check. If the update is not in the "failed" state or the certificate
         /// attribute check has not failed the value is zero.
         ///
-        /// TODO: Define typical error codes (for now, see updater/errors.h and the
+        
         /// CERT_ATTR_CHECK_FAILED_* values in nsUpdateService.js)
         /// </summary>
 		[MethodImpl(MethodImplOptions.InternalCall, MethodCodeType=MethodCodeType.Runtime)]

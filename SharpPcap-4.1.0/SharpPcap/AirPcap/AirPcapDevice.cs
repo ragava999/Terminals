@@ -706,7 +706,7 @@ namespace SharpPcap.AirPcap
         }
 
         /// <summary>
-        /// TODO: Get this from packet.net or another place in System.Net.xxx?
+        
         /// </summary>
         private const int MacAddressSizeInBytes = 6;
 

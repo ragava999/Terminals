@@ -49,7 +49,7 @@ namespace netz
 
 		private static void ProcessCreateXRes(ArrayList files)
 		{
-			//TODO implement a custom resource format
+			
 			if(files.Count <= 0) throw new Exception("No DLL files!");
 			string fileName = Path.GetFullPath(InputParser.externalResourceName + "-netz.resources");
 			OutDirMan.OutDir = Path.GetDirectoryName(fileName);

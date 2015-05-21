@@ -45,7 +45,7 @@ namespace Gecko
 		/// <summary>
         /// Append a clause.
         ///
-        /// TODO: Should be able to specify custom clause style.
+        
         /// </summary>
 		[MethodImpl(MethodImplOptions.InternalCall, MethodCodeType=MethodCodeType.Runtime)]
 		void AppendClause(uint aLength, uint aAttribute);

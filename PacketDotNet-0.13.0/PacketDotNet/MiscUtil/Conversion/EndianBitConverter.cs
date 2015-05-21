@@ -317,7 +317,7 @@ namespace MiscUtil.Conversion
         /// <returns>A decimal  formed by sixteen bytes beginning at startIndex.</returns>
         public decimal ToDecimal (byte[] value, int startIndex)
         {
-            // HACK: This always assumes four parts, each in their own endianness,
+            
             // starting with the first part at the start of the byte array.
             // On the other hand, there's no real format specified...
             int[] parts = new int[4];

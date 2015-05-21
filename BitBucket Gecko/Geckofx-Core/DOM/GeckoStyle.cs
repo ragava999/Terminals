@@ -42,7 +42,7 @@ namespace Gecko
 	/// <summary>
 	/// Wrapper around nsIDOMCSSStyleDeclaration
 	/// Allows viewing and modifying inline CSS styles.
-	/// TODO: could add the following functionality if needed:
+	
 	/// GetParentRule, RemoveProperty, GetPropertyPriority
 	/// </summary>
 	public class GeckoStyle

@@ -77,7 +77,7 @@ namespace CodeEditor
         {
             if (length > 0)
             {
-                // TODO Still using old API
+                
                 // This will style the _length of chars and advance the style pointer.
                 ((INativeScintilla)_scintilla).SetStyling(length, style);
             }
@@ -86,7 +86,7 @@ namespace CodeEditor
 
         public void Style()
         {
-            // TODO Still using the old API
+            
             // Signals that we're going to begin styling from this point.
             ((INativeScintilla)_scintilla).StartStyling(_startPos, 0x1F);
 

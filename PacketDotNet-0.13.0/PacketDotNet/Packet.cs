@@ -257,7 +257,7 @@ namespace PacketDotNet
 
                     var ms = new MemoryStream();
 
-                    // TODO: not sure if this is a performance gain or if
+                    
                     //       the compiler is smart enough to not call the get accessor for Header
                     //       twice, once when retrieving the header and again when retrieving the Length
                     var theHeader = Header;

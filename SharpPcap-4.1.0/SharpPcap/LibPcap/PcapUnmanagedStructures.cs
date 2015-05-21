@@ -86,7 +86,7 @@ namespace SharpPcap.LibPcap
             public UInt16       sa_port;        /* port */
             public in_addr      sin_addr;       /* address */
 
-            // TODO: I'm not sure that we can define a fixed field in another easier to
+            
             //       understand way
 
             // pad the size of sockaddr_in out to 16 bytes

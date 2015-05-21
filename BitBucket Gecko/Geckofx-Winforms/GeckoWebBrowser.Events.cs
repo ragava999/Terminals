@@ -1532,7 +1532,7 @@ namespace Gecko
 
 	#region GeckoCreateWindow2EventArgs
 
-	// TODO Merged into GeckoCreateWindowEventArgs, remove GeckoCreateWindow2EventArgs in future
+	
 	/// <summary>Provides data for event.</summary>
 	public class GeckoCreateWindow2EventArgs
 		: GeckoCreateWindowEventArgs

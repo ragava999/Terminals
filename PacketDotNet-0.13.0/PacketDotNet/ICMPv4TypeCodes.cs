@@ -102,6 +102,6 @@ namespace PacketDotNet
         Photuri_NeedAuthorization = 0x2605,
 #pragma warning restore 1591
 
-        //TODO: continue this list as user requested
+        
     }
 }

@@ -124,17 +124,17 @@ namespace Gecko
 
 		public static class LoginManager
 		{
-			// TODO
+			
 		}
 
 		public static class Places
 		{
-			// TODO
+			
 		}
 
 		public static class SessionStore
 		{
-			// TODO
+			
 		}
 		
 		/// <summary>

@@ -422,7 +422,7 @@ namespace Gecko
     /// nsIHandlerApp represents an external application that can handle content
     /// of some sort (either a MIME type or a protocol).
     ///
-    /// FIXME: now that we've made nsIWebHandlerApp inherit from nsIHandlerApp,
+    
     /// we should also try to make nsIWebContentHandlerInfo inherit from or possibly
     /// be replaced by nsIWebHandlerApp (bug 394710).
     /// </summary>

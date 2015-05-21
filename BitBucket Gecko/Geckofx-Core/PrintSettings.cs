@@ -113,7 +113,7 @@ namespace Gecko
 		public nsIPrintSettings Clone()
 		{
 			Console.WriteLine("4");
-			// TODO deal with refs?
+			
 			return (PrintSettings)this.MemberwiseClone();
 		}
 

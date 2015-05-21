@@ -246,7 +246,7 @@ namespace Granados {
 
             Debug.WriteLine("EXTENDED DATA");
 
-            // TODO: 
+            
         }
         public void OnUnknownMessage(byte type, byte[] data) {
             Debug.WriteLine("Unknown Message " + type);
@@ -428,7 +428,7 @@ namespace Granados {
         }
 
         private void TransmitFileContent() {
-            const int BUFSIZE = 4096; //TODO: this size should be configurable
+            const int BUFSIZE = 4096; 
             byte[] buf = new byte[BUFSIZE];
             Stream strm = _param.LocalSource.Stream;
             try {

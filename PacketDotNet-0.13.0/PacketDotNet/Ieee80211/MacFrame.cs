@@ -351,16 +351,16 @@ namespace PacketDotNet
                         break;
                     }
                 case FrameControlField.FrameSubTypes.ManagementReserved0:
-                    break; //TODO
+                    break; 
                 case FrameControlField.FrameSubTypes.ManagementReserved1:
-                    break; //TODO
+                    break; 
                 case FrameControlField.FrameSubTypes.ManagementBeacon:
                     {
                         macFrame = new BeaconFrame (bas);
                         break;
                     }
                 case FrameControlField.FrameSubTypes.ManagementATIM:
-                    break; //TODO
+                    break; 
                 case FrameControlField.FrameSubTypes.ManagementDisassociation:
                     {
                         macFrame = new DisassociationFrame (bas);
@@ -382,7 +382,7 @@ namespace PacketDotNet
                         break;
                     }
                 case FrameControlField.FrameSubTypes.ManagementReserved3:
-                    break; //TODO
+                    break; 
                 case FrameControlField.FrameSubTypes.ControlBlockAcknowledgmentRequest:
                     {
                         macFrame = new BlockAcknowledgmentRequestFrame (bas);
@@ -394,7 +394,7 @@ namespace PacketDotNet
                         break;
                     }
                 case FrameControlField.FrameSubTypes.ControlPSPoll:
-                    break; //TODO
+                    break; 
                 case FrameControlField.FrameSubTypes.ControlRTS:
                     {
                         macFrame = new RtsFrame (bas);
@@ -416,7 +416,7 @@ namespace PacketDotNet
                         break;
                     }
                 case FrameControlField.FrameSubTypes.ControlCFEndCFACK:
-                    break; //TODO
+                    break; 
                 case FrameControlField.FrameSubTypes.Data:
                 case FrameControlField.FrameSubTypes.DataCFACK:
                 case FrameControlField.FrameSubTypes.DataCFPoll:
@@ -556,7 +556,7 @@ namespace PacketDotNet
     
                         var ms = new MemoryStream();
     
-                        // TODO: not sure if this is a performance gain or if
+                        
                         //       the compiler is smart enough to not call the get accessor for Header
                         //       twice, once when retrieving the header and again when retrieving the Length
                         var theHeader = Header;

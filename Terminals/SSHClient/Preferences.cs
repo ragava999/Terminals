@@ -124,7 +124,6 @@ namespace Terminals.SSHClient
 
         private void comboBoxKey_SelectedIndexChanged(object sender, EventArgs e)
         {
-            // TODO SSH1 ?
             string tag = (string) this.comboBoxKey.SelectedItem;
             string keytext = this.keysSection.Keys[tag].Key;
             SSH2UserAuthKey key = SSH2UserAuthKey.FromBase64String(keytext);
@@ -133,7 +132,7 @@ namespace Terminals.SSHClient
 
         private void ButtonSSH1CheckedChanged(object sender, EventArgs e)
         {
-            // TODO: Import PUTTY keys!
+			// TODO: KOHL> Import PUTTY keys!
             this.buttonGenerateKey.Text = this.buttonSSH1.Checked ? "Load" : "New";
         }
     }

@@ -87,7 +87,7 @@ namespace SharpPcap
             AF_INET = 2;
 
             // AF_PACKET = 17 on Linux, AF_NETBIOS = 17 on Windows
-            // FIXME: need to resolve the discrepency at some point
+            
             AF_PACKET = 17;
 
             if(isUnix())

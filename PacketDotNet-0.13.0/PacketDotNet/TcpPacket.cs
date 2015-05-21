@@ -211,7 +211,7 @@ namespace PacketDotNet
 
         /// <summary>
         /// Flags, 9 bits
-        /// TODO: Handle the NS bit
+        
         /// </summary>
         public byte AllFlags
         {
@@ -618,7 +618,7 @@ namespace PacketDotNet
                 properties.Add("destination port", DestinationPort.ToString());
                 properties.Add("sequence number", SequenceNumber.ToString() + " (0x" + SequenceNumber.ToString("x") + ")");
                 properties.Add("acknowledgement number", AcknowledgmentNumber.ToString() + " (0x" + AcknowledgmentNumber.ToString("x") + ")");
-                // TODO: Implement a HeaderLength property for TCPPacket
+                
                 //properties.Add("header length", HeaderLength.ToString());
                 properties.Add("flags", "(0x" + AllFlags.ToString("x") + ")");
                 string flags = Convert.ToString(AllFlags, 2).PadLeft(8, '0');

@@ -197,9 +197,9 @@ namespace PacketDotNet
                 Dictionary<string,string> properties = new Dictionary<string,string>();
                 properties.Add("type", Type.ToString() + " (" + (int)Type + ")");
                 properties.Add("code", Code.ToString());
-                // TODO: Implement a checksum verification for ICMPv6
+                
                 properties.Add("checksum", "0x" + Checksum.ToString("x"));
-                // TODO: Implement ICMPv6 Option fields here?
+                
 
                 // calculate the padding needed to right-justify the property names
                 int padLength = Utils.RandomUtils.LongestStringLength(new List<string>(properties.Keys));

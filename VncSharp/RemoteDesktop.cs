@@ -334,7 +334,7 @@ namespace VncSharp
         /// <exception cref="System.InvalidOperationException">Thrown if the RemoteDesktop control is already Connected.  See <see cref="VncSharp.RemoteDesktop.IsConnected" />.</exception>
         public void Connect(string host, int display, bool viewOnly, bool scaled)
         {
-            // TODO: Should this be done asynchronously so as not to block the UI?  Since an event 
+            
             // indicates the end of the connection, maybe that would be a better design.
             InsureConnection(false);
 
@@ -656,7 +656,7 @@ namespace VncSharp
 		// Handle Mouse Events:		 -------------------------------------------
 		// In all cases, the same thing needs to happen: figure out where the cursor
 		// is, and then figure out the state of all mouse buttons.
-		// TODO: currently we don't handle the case of 3-button emulation with 2-buttons.
+		
 		protected override void OnMouseMove(MouseEventArgs mea)
 		{
 			// Only bother if the control is connected.
@@ -688,10 +688,10 @@ namespace VncSharp
 			base.OnMouseUp(mea);
 		}
 		
-		// TODO: Perhaps overload UpdateRemotePointer to take a flag indicating if mousescroll has occured??
+		
 		protected override void OnMouseWheel(MouseEventArgs mea)
 		{
-			// HACK: this check insures that while in DesignMode, no messages are sent to a VNC Host
+			
 			// (i.e., there won't be one--NullReferenceException)			
             if (!DesignMode && IsConnected) {
 				Point current = PointToClient(MousePosition);
@@ -711,7 +711,7 @@ namespace VncSharp
 		
 		private void UpdateRemotePointer()
 		{
-			// HACK: this check insures that while in DesignMode, no messages are sent to a VNC Host
+			
 			// (i.e., there won't be one--NullReferenceException)			
 			if (!DesignMode && IsConnected) {
 				Point current = PointToClient(MousePosition);
@@ -809,7 +809,7 @@ namespace VncSharp
 		    }
 		}
 
-		// HACK: the following overrides do a double check on DesignMode so 
+		
 		// that if still in design mode, no messages are sent for 
 		// mouse/keyboard events (i.e., there won't be Host yet--
 		// NullReferenceException)			
@@ -900,7 +900,7 @@ namespace VncSharp
 				case SpecialKeys.CtrlEsc:
 					PressKeys(new uint[] { 0xffe3, 0xff1b }, release); // CTRL, ESC
 					break;
-				// TODO: are there more I should support???
+				
 				default:
 					break;
 			}

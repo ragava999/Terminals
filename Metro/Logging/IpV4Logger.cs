@@ -136,7 +136,7 @@ namespace Metro.Logging
 											m_logger.XmlWriter.WriteElementString ("Overflow",		option1.Overflow.ToString());
 											m_logger.XmlWriter.WriteElementString ("Pointer",			option1.Pointer.ToString());
 
-											// TODO: Handle logging of time stamps and address stamps in time stamp IP option
+											
 											
 											break;
 										case IpV4OptionNumber.LooseSourceRouting:
@@ -145,7 +145,7 @@ namespace Metro.Logging
 											
 											m_logger.XmlWriter.WriteElementString ("Pointer",			option2.Pointer.ToString());
 										
-											// TODO: Handle logging of route in routing IP options
+											
 											
 											break;
 										case IpV4OptionNumber.NoOperation:
@@ -156,7 +156,7 @@ namespace Metro.Logging
 											
 											m_logger.XmlWriter.WriteElementString ("Pointer",			option3.Pointer.ToString());
 										
-											// TODO: Handle logging of route in routing IP options
+											
 											
 											break;
 										case IpV4OptionNumber.Security:
@@ -182,7 +182,7 @@ namespace Metro.Logging
 											
 											m_logger.XmlWriter.WriteElementString ("Pointer",			option6.Pointer.ToString());
 										
-											// TODO: Handle logging of route in routing IP options
+											
 											
 											break;
 									}

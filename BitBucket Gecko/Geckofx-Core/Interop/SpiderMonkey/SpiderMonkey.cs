@@ -31,7 +31,7 @@ namespace Gecko
 
 		public static IntPtr JS_GetStringCharsAndLength(IntPtr cx, IntPtr jsString, out uint length)
 		{
-			// TODO: 64bit Windows.
+			
 			if (Xpcom.Is32Bit)
 			{
 				if (Xpcom.IsLinux)

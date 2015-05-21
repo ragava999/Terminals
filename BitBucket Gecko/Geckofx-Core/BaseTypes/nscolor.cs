@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Gecko
 {
-	// TODO: make this class binary marshalable from struct nscolor
+	
 	/// <summary>
 	/// nscolor is 32 bit integer value
 	/// </summary>

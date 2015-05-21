@@ -343,7 +343,7 @@ namespace netz.starter
 							if(c != null) c.Reset();
 						}
 						catch{}
-						//TODO send email
+						
 					}
 					catch{}
 				}

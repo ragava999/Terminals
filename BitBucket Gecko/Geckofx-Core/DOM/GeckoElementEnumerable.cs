@@ -16,7 +16,7 @@ namespace Gecko
 
 		#region IEnumerable<GeckoNode> Members
 
-		// TODO: This current implementation only also GetEnumerator to be called once!
+		
 		// refactor so that Enumerator is inplemented in seperate class and GetEnumerator can
 		// be called multiple times.
 		public IEnumerator<GeckoHtmlElement> GetEnumerator()

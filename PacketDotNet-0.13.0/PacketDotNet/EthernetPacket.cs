@@ -332,7 +332,7 @@ namespace PacketDotNet
 
         /// <summary>
         /// Generate a random EthernetPacket
-        /// TODO: could improve this routine to set a random payload as well
+        
         /// </summary>
         /// <returns>
         /// A <see cref="EthernetPacket"/>

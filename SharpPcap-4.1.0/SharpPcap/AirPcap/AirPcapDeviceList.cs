@@ -116,7 +116,7 @@ namespace SharpPcap.AirPcap
                     {
                         if (newItem.Name == existingItem.Name)
                         {
-                            // TODO: if we have entries to copy from new to existing, copy them here
+                            
 
                             break; // break out of the foreach(existingItem)
                         }

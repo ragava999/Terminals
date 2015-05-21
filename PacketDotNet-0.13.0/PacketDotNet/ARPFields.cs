@@ -22,7 +22,7 @@ namespace PacketDotNet
     /// <summary> IP protocol field encoding information.
     ///
     /// </summary>
-    /// FIXME: These fields are partially broken because they assume the offset for
+    
     /// several fields and the offset is actually based on the accumulated offset
     /// into the structure determined by the fields that indicate sizes
     public class ARPFields
@@ -68,7 +68,7 @@ namespace PacketDotNet
         {
             // NOTE: We use IPv4Fields_Fields.IP_ADDRESS_WIDTH because arp packets are
             //       only used in IPv4 networks. Neighbor discovery is used with IPv6
-            //FIXME: we really should use the sizes given by the length fields to determine
+            
             // the position offsets here instead of assuming the hw address is an ethernet mac address
             ProtocolAddressTypePosition = HardwareAddressTypePosition + AddressTypeLength;
             HardwareAddressLengthPosition = ProtocolAddressTypePosition + AddressTypeLength;

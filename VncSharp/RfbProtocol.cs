@@ -430,7 +430,7 @@ namespace VncSharp
 			encoding = (int) reader.ReadUInt32();
 		}
 		
-        // TODO: this colour map code should probably go in Framebuffer.cs
+        
         private ushort[,] mapEntries = new ushort[256, 3];
         public ushort[,] MapEntries
         {

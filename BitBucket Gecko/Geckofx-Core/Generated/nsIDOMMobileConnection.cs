@@ -345,7 +345,7 @@ namespace Gecko
         /// will be either 'RadioNotAvailable', 'RequestNotSupported',
         /// 'InvalidParameter', 'ModeNotSupported' or 'GenericFailure'
         ///
-        /// TODO: param "type" should be a WebIDL enum when this interface is converted
+        
         /// to WebIDL
         /// </summary>
 		[return: MarshalAs(UnmanagedType.Interface)]
@@ -381,7 +381,7 @@ namespace Gecko
         /// will be either 'RadioNotAvailable', 'RequestNotSupported',
         /// 'IllegalSIMorME', 'InvalidParameter', or 'GenericFailure'
         ///
-        /// TODO: param "mode" should be a WebIDL enum when this interface is converted
+        
         /// to WebIDL
         /// </summary>
 		[return: MarshalAs(UnmanagedType.Interface)]

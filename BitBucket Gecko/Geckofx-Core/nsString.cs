@@ -591,7 +591,7 @@ namespace Gecko
 
 	}
 
-	// TODO: see comments on class nsAString
+	
 	[StructLayout(LayoutKind.Sequential)]
 	public class nsAUTF8String : nsAUTF8StringBase, IDisposable
 	{				
@@ -713,7 +713,7 @@ namespace Gecko
 	}
 
 
-	// TODO: see comment on class nsAString
+	
 	[StructLayout(LayoutKind.Sequential)]
 	public class nsACString : nsACStringBase, IDisposable
 	{		

@@ -48,7 +48,7 @@ namespace Gecko
 		void SetLengthAttribute(uint aLength);
 		
 		/// <summary>
-        /// FIXME item should just be inherited from nsIDOMHTMLCollection
+        
         /// </summary>
 		[return: MarshalAs(UnmanagedType.Interface)]
 		[MethodImpl(MethodImplOptions.InternalCall, MethodCodeType=MethodCodeType.Runtime)]

@@ -98,7 +98,7 @@ namespace Gecko
 				yield return "drag";
 				yield return "drop";
 				yield return "dragend";
-				yield return "mozfullscreenchange"; //TODO: change to "fullscreenchange" after prefix removed
+				yield return "mozfullscreenchange"; 
 			}
 		}
 
@@ -314,7 +314,7 @@ namespace Gecko
 					case WM_SETFOCUS:
 						break;
 					case WM_MOUSEACTIVATE:
-						// TODO FIXME: port for Linux
+						
 						if ( Xpcom.IsWindows )
 						{
 							m.Result = ( IntPtr ) MA_ACTIVATE;
@@ -461,7 +461,7 @@ namespace Gecko
 		/// 
 		/// You can also implement your fullscreen windowing by listening to the FullscreenChange event.
 		/// 
-		/// TODO: implement confirm prompt. Currently enters fullscreen without user's confirm.
+		
 		/// </summary>
 		public void EnableDefaultFullscreen()
 		{
@@ -499,7 +499,7 @@ namespace Gecko
 		/// This method is called by gecko when showing a print dialog; window handle
 		/// returned here is the dialog's owner. If model print dialog is not required, just returns NULL.
 		/// 
-		/// TODO: Gecko destroys the window returned after the dialog is dismissed, so we can't return this.Handle, we
+		
 		/// create and return a temp window instead. This may be a bug of gecko.
 		/// 
 		/// See https://bitbucket.org/geckofx/geckofx-29.0/issue/50/printing-with-native-printingpromptservice for more info.

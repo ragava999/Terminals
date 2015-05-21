@@ -57,7 +57,7 @@ namespace PacketDotNet
         /// <summary>
         /// PPPoe version, must be 0x1 according to RFC
         /// </summary>
-        /// FIXME: This currently outputs the wrong version number
+        
         public byte Version
         {
             get
@@ -100,7 +100,7 @@ namespace PacketDotNet
         /// <summary>
         ///
         /// </summary>
-        /// FIXME: This currently outputs the wrong code
+        
         public PPPoECode Code
         {
             get
@@ -253,13 +253,13 @@ namespace PacketDotNet
             {
                 // collect the properties and their value
                 Dictionary<string,string> properties = new Dictionary<string,string>();
-                // FIXME: The version output is incorrect
+                
                 properties.Add("", Convert.ToString(Version, 2).PadLeft(4, '0') + " .... = version: " + Version.ToString());
                 properties.Add(" ", ".... " + Convert.ToString(Type, 2).PadLeft(4, '0') + " = type: " + Type.ToString());
-                // FIXME: The Code output is incorrect
+                
                 properties.Add("code", Code.ToString() + " (0x" + Code.ToString("x") + ")");
                 properties.Add("session id", "0x" + SessionId.ToString("x"));
-                // TODO: Implement a PayloadLength property for PPPoE
+                
                 //properties.Add("payload length", PayloadLength.ToString());
 
                 // calculate the padding needed to right-justify the property names

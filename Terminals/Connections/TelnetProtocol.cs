@@ -196,7 +196,7 @@ namespace Terminals.Connections
 
         private void process_telnet_command(byte b, Stream s)
         {
-            // TODO what if end of command sequence not in this buffer?
+            
             if (b < 240)
                 return; // error
             int option = s.ReadByte();

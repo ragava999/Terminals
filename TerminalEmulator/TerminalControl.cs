@@ -604,7 +604,7 @@ namespace WalburySoftware
                 case Keys.Left:
                 case Keys.Right:
                 case Keys.Shift:
-                    // FIXME: still working on supporting the rest of the keyboard...
+				// FIXME: KOHL> still working on supporting the rest of the keyboard...
                 case Keys.RWin:
                 case Keys.LWin:
                     return true;

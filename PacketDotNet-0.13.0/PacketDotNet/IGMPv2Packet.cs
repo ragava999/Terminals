@@ -192,7 +192,7 @@ namespace PacketDotNet
                 Dictionary<string,string> properties = new Dictionary<string,string>();
                 properties.Add("type", Type + " (0x" + Type.ToString("x") + ")");
                 properties.Add("max response time", String.Format("{0:0.0}", MaxResponseTime / 10) + " sec (0x" + MaxResponseTime.ToString("x") + ")");
-                // TODO: Implement checksum validation for IGMPv2
+                
                 properties.Add("header checksum", "0x" + Checksum.ToString("x"));
                 properties.Add("group address", GroupAddress.ToString());
 

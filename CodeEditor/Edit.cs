@@ -12,7 +12,7 @@
     {
         #region Constants
         private const string NEW_DOCUMENT_TEXT = "Untitled";
-        private const int LINE_NUMBERS_MARGIN_WIDTH = 35; // TODO Don't hardcode this
+        private const int LINE_NUMBERS_MARGIN_WIDTH = 35; 
         #endregion Constants
 
         #region Fields

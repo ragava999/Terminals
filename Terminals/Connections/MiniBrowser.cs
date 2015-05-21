@@ -579,9 +579,7 @@ namespace Terminals.Connections
                     return;
                 }
 
-                // TODO: Add PowerShell script that gets some input parameters -> btw this is needed for the generic connection too! -> maybe implement an afterwards script, before connect, and timer configureable script!
-                // TODO: Explicitly let the user choose between ID, Name and e.g. CSS class -> don't use any automagic
-                // TODO: React on document.onready, load-events, button clicks, explicit page urls and titles etc. to be more dynamic
+                // TODO: KOHL> Add PowerShell script that gets some input parameters -> btw this is needed for the generic connection too! -> maybe implement an afterwards script, before connect, and timer configureable script! Explicitly let the user choose between ID, Name and e.g. CSS class -> don't use any automagic. React on document.onready, load-events, button clicks, explicit page urls and titles etc. to be more dynamic
                 foreach (HtmlFormField htmlFormField in this.HtmlFormFields)
                 {
                     this.FillFormField(htmlFormField.Key, htmlFormField.Value);

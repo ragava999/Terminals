@@ -130,7 +130,7 @@ namespace Gecko
 #if PORT
 					return Entry.GetTitleAttribute();
 #else
-					//TODO: maybe use mozIPlaceInfo?
+					
 					throw new NotImplementedException();
 #endif
 				}
@@ -143,7 +143,7 @@ namespace Gecko
 #if PORT
 					return Entry.GetIsSubFrameAttribute();
 #else
-					//TODO: maybe use mozIPlaceInfo?
+					
 					throw new NotImplementedException();
 #endif
 				}

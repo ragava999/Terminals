@@ -583,7 +583,7 @@ namespace PacketDotNet
                 // collect the properties and their value
                 Dictionary<string,string> properties = new Dictionary<string,string>();
                 properties.Add("version", Version.ToString());
-                // FIXME: Header length output is incorrect
+                
                 properties.Add("header length", HeaderLength + " bytes");
                 string diffServices =  Convert.ToString(DifferentiatedServices, 2).PadLeft(8, '0').Insert(4, " ");
                 properties.Add("differentiated services", "0x" + DifferentiatedServices.ToString("x").PadLeft(2, '0'));

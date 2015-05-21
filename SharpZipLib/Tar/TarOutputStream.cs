@@ -411,7 +411,7 @@ namespace ICSharpCode.SharpZipLib.Tar
 			// We have to deal with assembly!!!
 			// The programmer can be writing little 32 byte chunks for all
 			// we know, and we must assemble complete blocks for writing.
-			// TODO  REVIEW Maybe this should be in TarBuffer? Could that help to
+			
 			//        eliminate some of the buffer copying.
 			//
 			if (assemblyBufferLength > 0) {

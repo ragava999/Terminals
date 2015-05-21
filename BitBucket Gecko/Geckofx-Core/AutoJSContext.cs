@@ -93,7 +93,7 @@ namespace Gecko
 		public AutoJSContext(IntPtr context)
 		{
 			// We can't just use nsIXPConnect::GetSafeJSContext(); because its marked as [noxpcom, nostdcall]
-			// TODO: Enhance IDL compiler to not generate methods for noxpcom, nostdcall tagged methods.
+			
 			if (context == IntPtr.Zero)
 			{
 				context = GlobalJSContextHolder.SafeJSContext;
@@ -129,7 +129,7 @@ namespace Gecko
 		{
 			var ptr = new JsVal();
 			bool ret = SpiderMonkey.JS_EvaluateScript(_cx, GetGlobalObject(), jsScript, (uint)jsScript.Length, "script", 1, ref ptr);
-			// TODO: maybe getting JS_EvaluateScriptForPrincipals working would increase priviliges of the running script.
+			
 			//bool ret = SpiderMonkey.JS_EvaluateScriptForPrincipals(_cx, globalObject, ..., jsScript, (uint)jsScript.Length,"script", 1, ref ptr);
 
 

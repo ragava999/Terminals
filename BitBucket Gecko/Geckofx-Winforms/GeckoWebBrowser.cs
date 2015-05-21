@@ -1514,7 +1514,7 @@ namespace Gecko
 
 		void nsIEmbeddingSiteWindow.Blur()
 		{
-			// TODO: implement.
+			
 		}
 
 		#endregion		
@@ -1592,7 +1592,7 @@ namespace Gecko
 				if ((aStateFlags & nsIWebProgressListenerConstants.STATE_START) != 0)
 				{
 
-					// TODO: replace to aWebProgress.GetIsTopLevelAttribute() // Gecko 24+
+					
 					if (stateIsNetwork && domWindow.IsTopWindow())
 					{
 						IsBusy = true;
@@ -1603,7 +1603,7 @@ namespace Gecko
 						if (ea.Cancel)
 						{
 							aRequest.Cancel(NS_BINDING_ABORTED);
-							//TODO: change the following handling of cancelled request
+							
 
 							// clear busy state
 							IsBusy = false;
@@ -1622,7 +1622,7 @@ namespace Gecko
 
 						if (ea.Cancel)
 						{
-							// TODO: test it on Linux
+							
 							if (!Xpcom.IsLinux)
 								aRequest.Cancel(NS_BINDING_ABORTED);
 						}
@@ -1966,7 +1966,7 @@ namespace Gecko
 				case "dragend":
 					OnDomDragEnd((DomDragEventArgs)e);
 					break;
-				case "mozfullscreenchange": //TODO: change to "fullscreenchange" after prefix removed
+				case "mozfullscreenchange": 
 					OnFullscreenChange(e);
 					break;
 			}

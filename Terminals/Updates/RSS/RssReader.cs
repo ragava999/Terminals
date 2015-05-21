@@ -48,7 +48,7 @@ namespace Terminals.Updates.RSS
     /// </remarks>
     public class RssReader
     {
-        // TODO: Add support for modules
+        
 
         private readonly ExceptionCollection exceptions = new ExceptionCollection();
         private RssCategory category;

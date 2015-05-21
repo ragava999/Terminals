@@ -52,7 +52,7 @@ namespace PacketDotNet
                 var val = EndianBitConverter.Big.ToUInt16(header.Bytes,
                                                           header.Offset + ICMPv4Fields.TypeCodePosition);
 
-                //TODO: how to handle a mismatch in the mapping? maybe throw here?
+                
                 if(Enum.IsDefined(typeof(ICMPv4TypeCodes), val))
                     return (ICMPv4TypeCodes)val;
                 else
@@ -212,7 +212,7 @@ namespace PacketDotNet
                 // collect the properties and their value
                 Dictionary<string,string> properties = new Dictionary<string,string>();
                 properties.Add("type/code", TypeCode.ToString() + " (0x" + TypeCode.ToString("x") + ")");
-                // TODO: Implement checksum verification for ICMPv4
+                
                 properties.Add("checksum", Checksum.ToString("x"));
                 properties.Add("identifier", "0x" + ID.ToString("x"));
                 properties.Add("sequence number", Sequence + " (0x" + Sequence.ToString("x") + ")");

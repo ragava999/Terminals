@@ -19,7 +19,7 @@ using System;
 using System.Drawing;
 using System.Drawing.Imaging;
 
-// FIXME: I can't understand why yet, but under the Xvnc server in Unix (v. 3.3.7), this doesn't work.  
+
 // Everything is fine using the Windows server!?
 
 namespace VncSharp.Encodings

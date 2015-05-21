@@ -193,7 +193,7 @@ namespace PacketDotNet
         {
             get
             {
-                //FIXME: this code is broken because it assumes that the address position is
+                
                 // a fixed position
                 byte[] hwAddress = new byte[HardwareAddressLength];
                 Array.Copy(header.Bytes, header.Offset + ARPFields.SenderHardwareAddressPosition,
@@ -228,7 +228,7 @@ namespace PacketDotNet
         {
             get
             {
-                //FIXME: this code is broken because it assumes that the address position is
+                
                 // a fixed position
                 byte[] hwAddress = new byte[HardwareAddressLength];
                 Array.Copy(header.Bytes, header.Offset + ARPFields.TargetHardwareAddressPosition,

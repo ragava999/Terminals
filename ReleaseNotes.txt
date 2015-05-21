@@ -27,9 +27,15 @@ Fixed a memory leak in the StoredCredentials -> thread safe singelton had proble
 
 Fixed an error that occured after detaching a window from terminals.
 
-TODO: Remove localization
+Updated ToDO and FixMe comments to match the following style:
+// TODO: KOHL> xyz
+// FIXME: KOHL> xyz
 
-TODO: Decrypt/Hide password for keepass.
+Removed all obsolete code comments.
+
+TODO: KOHL> Remove localization and replace with state of the art model.
+
+TODO: KOHL> Decrypt/Hide password for keepass.
 
 
 Release v 4.7.0.0

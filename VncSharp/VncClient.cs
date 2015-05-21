@@ -190,7 +190,7 @@ namespace VncSharp
 			for (int i = 0; i < types.Length; ++i) {
 				if (   types[i] == 1  	// None
 					|| types[i] == 2	// VNC Authentication
-// TODO: None of the following are currently supported -------------------
+
 //					|| types[i] == 5	// RA2
 //					|| types[i] == 6    // RA2ne
 //					|| types[i] == 16   // Tight
@@ -226,7 +226,7 @@ namespace VncSharp
 				// currently using this message, but it is read here to clean out the stream.
 				// In earlier versions of the protocol, the server will just drop the connection.
 				if (rfb.ServerVersion == 3.8) rfb.ReadSecurityFailureReason();
-				rfb.Close();	// TODO: Is this the right place for this???
+				rfb.Close();	
 				return false;
 			}
 		}
@@ -373,7 +373,7 @@ namespace VncSharp
                             if (CheckIfThreadDone())
                                 break;
 
-                            // TODO: consider gathering all update rectangles in a batch and *then* posting the event back to the main thread.
+                            
                             for (int i = 0; i < rectangles; ++i) {
                                 // Get the update rectangle's info
                                 Rectangle rectangle;
@@ -402,12 +402,12 @@ namespace VncSharp
                             }
                             break;
                         case RfbProtocol.BELL:
-                            Beep(500, 300);  // TODO: are there better values than these?
+                            Beep(500, 300);  
                             break;
                         case RfbProtocol.SERVER_CUT_TEXT:
                             if (CheckIfThreadDone())
                                 break;
-                            // TODO: This is invasive, should there be a bool property allowing this message to be ignored?
+                            
                             Clipboard.SetDataObject(rfb.ReadServerCutText().Replace("\n", Environment.NewLine), true);
                             OnServerCutText();
                             break;
@@ -485,7 +485,7 @@ namespace VncSharp
             }
         }
 
-		// TODO: This needs to be pushed into the protocol rather than expecting keysym from the caller.
+		
 		public virtual void WriteKeyboardEvent(uint keysym, bool pressed)
 		{
 			try {
@@ -495,7 +495,7 @@ namespace VncSharp
 			}
 		}
 
-		// TODO: This needs to be pushed into the protocol rather than expecting the caller to create the mask.
+		
 		public virtual void WritePointerEvent(byte buttonMask, Point point)
 		{
 			try {
