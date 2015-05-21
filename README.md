@@ -1,11 +1,31 @@
 # Terminals
 Terminals is a multi-tab terminal services and remote desktop client. Moreover Terminals is capable beside RDP of supporting AutoIt, a shell explorer, http connections, ICA/Citrix connections, telnet, ssh, VNC and many other protocols.
 
-[Download the latest release here](https://github.com/OliverKohlDSc/Terminals/releases/download/4.7.0.0/Binaries_4.7.0.0.zip)
+[Download the latest release here](https://github.com/OliverKohlDSc/Terminals/releases/download/4.7.3.0/Binaries_4.7.3.0.zip)
 
 The [official website](http://oliverkohldsc.github.io/Terminals) can be found [here](http://oliverkohldsc.github.io/Terminals).
 
 [My personal website](http://www.kohl.bz)
+
+###Release v 4.7.3.0
+
+Date: 2015-05-21
+
+It's now possible to connect to a KeePass 2.0 DB instead of using the Credentials.xml by filling in both the path & the password in the Terminals Options.
+
+Fixed a memory leak in the StoredCredentials -> thread safe singelton had problems.
+
+Fixed an error that occured after detaching a window from terminals.
+
+Updated ToDO and FixMe comments to match the following style:
+// TODO: KOHL> xyz
+// FIXME: KOHL> xyz
+
+Removed all obsolete code comments.
+
+TODO: KOHL> Remove localization and replace with state of the art model.
+
+TODO: KOHL> Decrypt/Hide password for keepass.
 
 ##Release v 4.7.0.0
 
