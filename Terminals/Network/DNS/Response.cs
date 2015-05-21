@@ -1,7 +1,7 @@
 namespace Terminals.Network.DNS
 {
     using System;
-    using Kohl.Framework.Localization;
+
     using Kohl.Framework.Logging;
 
     /// <summary>
@@ -40,7 +40,7 @@ namespace Terminals.Network.DNS
                 }
                 catch (Exception ex)
                 {
-                    Log.Error(Localization.Text("Network.DNS.Response.Response_Error"), ex);
+					Log.Error("A DNS response question failure occured.", ex);
                     // something grim has happened, we can't continue
                     throw new InvalidResponseException(ex);
                 }

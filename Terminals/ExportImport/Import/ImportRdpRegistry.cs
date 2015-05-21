@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Kohl.Framework.Localization;
+
 using Kohl.Framework.Logging;
 using Microsoft.Win32;
 using Terminals.Configuration.Files.Main.Favorites;
@@ -37,7 +37,7 @@ namespace Terminals.ExportImport.Import
             }
             catch (Exception e)
             {
-                Log.Error(Localization.Text("ExportImport.Import.ImportRDP.Import"), e);
+                Log.Error("The RDP import from the registry failed.", e);
             }
 
             return new List<FavoriteConfigurationElement>();

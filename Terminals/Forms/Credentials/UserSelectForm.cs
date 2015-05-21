@@ -2,7 +2,7 @@
 {
     using System;
     using System.Windows.Forms;
-    using Kohl.Framework.Localization;
+
     using Configuration.Files.Credentials;
     using Controls;
 
@@ -13,7 +13,7 @@
         public UserSelectForm()
         {
             this.InitializeComponent();
-            Localization.SetLanguage(this);
+            
             this.passwordTextBox.PasswordChar = Terminals.Forms.Controls.CredentialPanel.HIDDEN_PASSWORD_CHAR;
         }
 

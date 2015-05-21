@@ -3,8 +3,6 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.30729</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{9ECB9FEF-89D1-4144-BAD4-5F3218545B2B}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -60,17 +58,30 @@
     <CodeAnalysisRuleSet>Migrated rules for Terminals.ruleset</CodeAnalysisRuleSet>
     <PlatformTarget>x86</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
+    <StartAction>Project</StartAction>
+    <BaseIntermediateOutputPath>obj\</BaseIntermediateOutputPath>
+    <RegisterForComInterop>False</RegisterForComInterop>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+    <BaseAddress>4194304</BaseAddress>
+    <FileAlignment>4096</FileAlignment>
+    <Optimize>false</Optimize>
+    <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>PdbOnly</DebugType>
     <OutputPath>bin\x86\Release\</OutputPath>
     <DefineConstants>TRACE;GECKO</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
     <RunCodeAnalysis Condition="'$(USERNAME)' == 'tfsservice1'">True</RunCodeAnalysis>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
     <PlatformTarget>x86</PlatformTarget>
-    <DebugSymbols>false</DebugSymbols>
+    <RegisterForComInterop>False</RegisterForComInterop>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+    <BaseAddress>4194304</BaseAddress>
+    <FileAlignment>4096</FileAlignment>
+    <StartAction>Project</StartAction>
+    <BaseIntermediateOutputPath>obj\</BaseIntermediateOutputPath>
+    <Optimize>true</Optimize>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <OutputPath>bin\x86\Debug\</OutputPath>
@@ -83,6 +94,14 @@
     <UseVSHostingProcess>true</UseVSHostingProcess>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
     <DebugSymbols>true</DebugSymbols>
+    <StartAction>Project</StartAction>
+    <BaseIntermediateOutputPath>obj\</BaseIntermediateOutputPath>
+    <RegisterForComInterop>False</RegisterForComInterop>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+    <BaseAddress>4194304</BaseAddress>
+    <FileAlignment>4096</FileAlignment>
+    <Optimize>false</Optimize>
+    <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <OutputPath>bin\x86\Release\</OutputPath>
@@ -93,7 +112,13 @@
     <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
-    <DebugSymbols>false</DebugSymbols>
+    <StartAction>Project</StartAction>
+    <BaseIntermediateOutputPath>obj\</BaseIntermediateOutputPath>
+    <RegisterForComInterop>False</RegisterForComInterop>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+    <BaseAddress>4194304</BaseAddress>
+    <FileAlignment>4096</FileAlignment>
+    <Optimize>true</Optimize>
   </PropertyGroup>
   <PropertyGroup />
   <PropertyGroup />
@@ -107,17 +132,8 @@
     <Reference Include="AxInterop.Microsoft.VMRCClientControl.Interop">
       <HintPath>..\DLLs\VMRC\AxInterop.Microsoft.VMRCClientControl.Interop.dll</HintPath>
     </Reference>
-    <Reference Include="AxInterop.MSTSCLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\DLLs\MSTSC\AxInterop.MSTSCLib.dll</HintPath>
-    </Reference>
     <Reference Include="AxWFICALib">
       <HintPath>..\DLLs\Citrix\AxWFICALib.dll</HintPath>
-    </Reference>
-    <Reference Include="Interop.MSTSCLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <EmbedInteropTypes>False</EmbedInteropTypes>
-      <HintPath>..\DLLs\MSTSC\Interop.MSTSCLib.dll</HintPath>
     </Reference>
     <Reference Include="Kohl.Framework">
       <HintPath>..\DLLs\Kohl.Framework.dll</HintPath>
@@ -133,7 +149,6 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data.Entity">
@@ -149,6 +164,13 @@
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
+    <Reference Include="AxInterop.MSTSCLib">
+      <HintPath>..\DLLs\MSTSC\AxInterop.MSTSCLib.dll</HintPath>
+    </Reference>
+    <Reference Include="Interop.MSTSCLib">
+      <HintPath>..\DLLs\MSTSC\Interop.MSTSCLib.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Configuration" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Connections\FileOperations.cs" />
@@ -825,7 +847,6 @@
       <DependentUpon>ReconnectingControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\AboutForm.resx">
-      <SubType>Designer</SubType>
       <DependentUpon>AboutForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\AddConnectionForm.resx">
@@ -847,58 +868,24 @@
       <SubType>Designer</SubType>
       <DependentUpon>TabbedTools.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Controls\CredentialPanel.resx">
-      <DependentUpon>CredentialPanel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Controls\DBTreeView.resx">
-      <DependentUpon>DBTreeView.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Credentials\CredentialManager.resx">
       <DependentUpon>CredentialManager.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Controls\FontControl.resx">
-      <DependentUpon>FontControl.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Credentials\ManageCredentialForm.resx">
+      <DependentUpon>ManageCredentialForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Controls\HistoryTreeView.resx">
-      <DependentUpon>HistoryTreeView.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Credentials\UserSelectForm.resx">
+      <DependentUpon>UserSelectForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Controls\TabColorPreferences.resx">
-      <DependentUpon>TabColorPreferences.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\QuickConnect.resx">
+      <DependentUpon>QuickConnect.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\RequestPassword.resx">
       <DependentUpon>RequestPassword.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\SelectDatabase.resx">
-      <DependentUpon>SelectDatabase.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Panels\FavoritePanels\RdpFavoritePanel.resx">
-      <DependentUpon>RdpFavoritePanel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Panels\OptionPanels\CaptureOptionPanel.resx">
-      <DependentUpon>CaptureOptionPanel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Panels\OptionPanels\ConnectCommandOptionPanel.resx">
-      <DependentUpon>ConnectCommandOptionPanel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Panels\OptionPanels\ConnectionsOptionPanel.resx">
-      <DependentUpon>ConnectionsOptionPanel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Panels\OptionPanels\DefaultPasswordOptionPanel.resx">
-      <DependentUpon>DefaultPasswordOptionPanel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Panels\OptionPanels\FavoritesOptionPanel.resx">
-      <DependentUpon>FavoritesOptionPanel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Panels\OptionPanels\InterfaceOptionPanel.resx">
-      <DependentUpon>InterfaceOptionPanel.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="LocalizedValues_en.resx">
       <LastGenOutput>LocalizedValues_en.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="LocalizedValues_de.resx">
-      <LastGenOutput>LocalizedValues_de.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
@@ -907,17 +894,8 @@
     <EmbeddedResource Include="Forms\ExpirationDialog.resx">
       <DependentUpon>ExpirationDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Panels\OptionPanels\PuttyOptionPanel.resx">
-      <DependentUpon>PuttyOptionPanel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Panels\OptionPanels\RAdminOptionPanel.resx">
-      <DependentUpon>RAdminOptionPanel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Panels\OptionPanels\MasterPasswordOptionpanel.resx">
-      <DependentUpon>MasterPasswordOptionpanel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Panels\OptionPanels\ProxyOptionPanel.resx">
-      <DependentUpon>ProxyOptionPanel.cs</DependentUpon>
+    <EmbeddedResource Include="Panels\OptionPanels\DefaultPasswordOptionPanel.resx">
+      <DependentUpon>DefaultPasswordOptionPanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Panels\OptionPanels\StartShutdownOptionPanel.resx">
       <DependentUpon>StartShutdownOptionPanel.cs</DependentUpon>
@@ -932,18 +910,6 @@
     <EmbeddedResource Include="Network\WMI\WMIControl.resx">
       <DependentUpon>WMIControl.cs</DependentUpon>
       <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Panels\FavoritePanels\ExplorerFavoritePanel.resx">
-      <DependentUpon>ExplorerFavoritePanel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Panels\FavoritePanels\GenericFavoritePanel.resx">
-      <DependentUpon>GenericFavoritePanel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Panels\FavoritePanels\PuttyFavoritePanel.resx">
-      <DependentUpon>PuttyFavoritePanel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Panels\FavoritePanels\RAdminFavoritePanel.resx">
-      <DependentUpon>RAdminFavoritePanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\NewGroupForm.resx">
       <SubType>Designer</SubType>
@@ -976,9 +942,6 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\QuickConnect.resx">
-      <DependentUpon>QuickConnect.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\SaveActiveConnectionsForm.resx">
       <SubType>Designer</SubType>
@@ -1031,28 +994,17 @@
       <DependentUpon>UpdatePackage.xsd</DependentUpon>
     </None>
     <None Include="TerminalServices\WTSApi32.cs" />
+    <EmbeddedResource Include="Forms\Controls\HistoryTreeView.resx">
+      <DependentUpon>HistoryTreeView.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Forms\Controls\ConsolePreferences.resx">
-      <DependentUpon>ConsolePreferences.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Credentials\ManageCredentialForm.resx">
-      <DependentUpon>ManageCredentialForm.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Credentials\UserSelectForm.resx">
-      <DependentUpon>UserSelectForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\DiskDrivesForm.resx">
       <DependentUpon>DiskDrivesForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="ExportImport\ExportFrom.resx">
       <DependentUpon>ExportFrom.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Controls\FavsList.resx">
-      <DependentUpon>FavsList.cs</DependentUpon>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Network\AD\ImportFromAD.resx">
       <DependentUpon>ImportFromAD.cs</DependentUpon>
@@ -1169,16 +1121,20 @@
       <Name>Geckofx-Winforms</Name>
     </ProjectReference>
     <ProjectReference Include="..\DotRas-ChangeSet-99043\Trunk\Source\DotRas\DotRas\DotRas.csproj">
-      <Project>{09eb2d48-2a3b-4aa7-bdc5-908e103b1e13}</Project>
+      <Project>{09EB2D48-2A3B-4AA7-BDC5-908E103B1E13}</Project>
       <Name>DotRas</Name>
     </ProjectReference>
     <ProjectReference Include="..\ExplorerBrowser\ExplorerBrowser.csproj">
-      <Project>{2aacff7e-f4b1-44f6-92c6-20acbb647a4d}</Project>
+      <Project>{2AACFF7E-F4B1-44F6-92C6-20ACBB647A4D}</Project>
       <Name>ExplorerBrowser</Name>
     </ProjectReference>
     <ProjectReference Include="..\Granados\Granados.csproj">
       <Project>{9780D85D-2E12-4747-9E08-DEDB95A71FC3}</Project>
       <Name>Granados</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\keepass2-master\KeePassLib\KeePassLib.csproj">
+      <Project>{53573E4E-33CB-4FDB-8698-C95F5E40E7F3}</Project>
+      <Name>KeePassLib</Name>
     </ProjectReference>
     <ProjectReference Include="..\Metro\Metro.csproj">
       <Project>{4F3A4024-5A19-4F08-823A-B75D6AFE5CD8}</Project>
@@ -1197,11 +1153,11 @@
       <Name>TerminalEmulator</Name>
     </ProjectReference>
     <ProjectReference Include="..\Terminals.Configuration\Terminals.Configuration.csproj">
-      <Project>{fceb7dac-e7be-4b40-976f-0687b9f36cd1}</Project>
+      <Project>{FCEB7DAC-E7BE-4B40-976F-0687B9F36CD1}</Project>
       <Name>Terminals.Configuration</Name>
     </ProjectReference>
     <ProjectReference Include="..\Terminals.Connection\Terminals.Connection.csproj">
-      <Project>{b7912bf3-a591-4011-b48e-9eab91568bb3}</Project>
+      <Project>{B7912BF3-A591-4011-B48E-9EAB91568BB3}</Project>
       <Name>Terminals.Connection</Name>
     </ProjectReference>
     <ProjectReference Include="..\VncSharp\VncSharp.csproj">
@@ -1209,7 +1165,7 @@
       <Name>VncSharp</Name>
     </ProjectReference>
     <ProjectReference Include="..\ZedGraph 5.1 %28.net 2%29\source\ZedGraph.csproj">
-      <Project>{2541686b-1673-43bf-af89-3163945db009}</Project>
+      <Project>{2541686B-1673-43BF-AF89-3163945DB009}</Project>
       <Name>ZedGraph</Name>
     </ProjectReference>
   </ItemGroup>

@@ -113,7 +113,7 @@ namespace Terminals.Forms.Controls
         public void FillCredentials(String credentialName)
         {
             this.CredentialDropdown.Items.Clear();
-            List<CredentialSet> creds = StoredCredentials.Instance.Items;
+            List<CredentialSet> creds = StoredCredentials.Items;
             this.CredentialDropdown.Items.Add("(custom)");
 
             Int32 selIndex = 0;

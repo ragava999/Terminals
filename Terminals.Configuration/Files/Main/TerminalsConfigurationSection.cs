@@ -278,6 +278,24 @@ namespace Terminals.Configuration.Files.Main
         }
         #endregion
 
+        #region KeePass section (2)
+        [ConfigurationProperty("KeePassPath")]
+        public string KeePassPath
+        {
+            get { return (String) this["KeePassPath"]; }
+
+            set { this["KeePassPath"] = value; }
+        }
+        
+        [ConfigurationProperty("KeePassPassword")]
+        public string KeePassPassword
+        {
+            get { return (String) this["KeePassPassword"]; }
+
+            set { this["KeePassPassword"] = value; }
+        }
+        #endregion
+        
         #region Execute Before Connect section
 
         [ConfigurationProperty("executeBeforeConnect")]

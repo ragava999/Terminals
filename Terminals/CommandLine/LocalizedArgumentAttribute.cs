@@ -1,6 +1,6 @@
 namespace Terminals.CommandLine
 {
-    using Kohl.Framework.Localization;
+
 
     /// <summary>
     ///     Allows control of command line parsing.
@@ -20,8 +20,8 @@ namespace Terminals.CommandLine
 
         public new string HelpText
         {
-            get { return Localization.Text(base.HelpText); }
-            set { base.HelpText = Localization.Text(value); }
+            get { return base.HelpText; }
+            set { base.HelpText = value; }
         }
     }
 }

@@ -2,7 +2,7 @@ using System;
 using System.Drawing;
 using System.Windows.Forms;
 using Kohl.Framework.Converters;
-using Kohl.Framework.Localization;
+
 using Kohl.Framework.Logging;
 using Terminals.Configuration.Files.Main.Favorites;
 using Terminals.Configuration.Files.Main.Keys;
@@ -48,7 +48,7 @@ namespace Terminals.Connections
         {
             this.connected = false;
 
-            String protocol = Localization.Text("Connections.TerminalConnection.Connect_ProtocolUnknown");
+			String protocol = "unknown";
 
             try
             {
@@ -82,7 +82,7 @@ namespace Terminals.Connections
 
                 if (!this.Favorite.Credential.IsSetUserName || !this.Favorite.Credential.IsSetPassword)
                 {
-                    Log.Fatal(string.Format(Localization.Text("Connections.TerminalConnection.Connect"), this.Favorite.Protocol.ToLower()));
+					Log.Fatal(string.Format("Please set user name and password in your {0} connection properties.", this.Favorite.Protocol.ToLower()));
                     return false;
                 }
 
@@ -104,7 +104,7 @@ namespace Terminals.Connections
             }
             catch (Exception exc)
             {
-                Log.Fatal(string.Format(Localization.Text("Connections.HTTPConnection.Connect_Error2"), protocol), exc);
+				Log.Fatal(string.Format("Terminals was unable to create the {0} connection.", protocol), exc);
                 return this.connected = false;
             }
         }
@@ -147,7 +147,7 @@ namespace Terminals.Connections
 
         private void OnDisconnected()
         {
-            Log.Fatal(String.Format(Localization.Text("Connections.TerminalConnection.OnDisconnect"),
+			Log.Fatal(String.Format("{0} connection \"{1}\" has been lost.",
                                     this.Favorite.Protocol, this.Favorite.Name));
             this.connected = false;
             this.CloseTabPage();
@@ -166,7 +166,7 @@ namespace Terminals.Connections
             catch (Exception ex)
             {
                 Log.Error(
-                    string.Format(Localization.Text("Connection.ExternalConnection.Disconnect"), this.Favorite.Protocol,
+					string.Format("Unable to disconnect form the {0} connection named \"{1}\".", this.Favorite.Protocol,
                                   this.Favorite.Name), ex);
             }
         }

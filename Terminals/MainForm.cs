@@ -10,7 +10,7 @@ namespace Terminals
     using System.Threading;
     using System.Windows.Forms;
     using Kohl.Framework.Info;
-    using Kohl.Framework.Localization;
+
     using Kohl.Framework.Logging;
     using Kohl.Framework.WinForms;
     using CommandLine;
@@ -149,7 +149,7 @@ namespace Terminals
             {
                 this.showOnAllScreens = false;
 
-                this.mainForm.showInDualScreensToolStripMenuItem.Text = Localization.Text("MainForm_Monitor_Multi");
+				this.mainForm.showInDualScreensToolStripMenuItem.Text = "Show on &amp;multi screens";
 
                 if (Screen.AllScreens.Length > 1)
                 {
@@ -161,7 +161,7 @@ namespace Terminals
                     if (this.mainForm.Width > Screen.FromControl(this.mainForm).Bounds.Width || w > 2)  //Screen.PrimaryScreen.Bounds.Width || w > 2)
                     {
                         this.showOnAllScreens = true;
-                        this.mainForm.showInDualScreensToolStripMenuItem.Text = Localization.Text("MainForm_Monitor_Single");
+						this.mainForm.showInDualScreensToolStripMenuItem.Text = "Show on &amp;single screen";
                     }
                 }
                 else
@@ -183,13 +183,13 @@ namespace Terminals
 
                     with += screenArr.Sum(screen => screen.Bounds.Width);
 
-                    this.mainForm.showInDualScreensToolStripMenuItem.Text = Localization.Text("MainForm_Monitor_Single");
+					this.mainForm.showInDualScreensToolStripMenuItem.Text = "Show on &amp;single screen";
                     this.mainForm.BringToFront();
                 }
                 else
                 {
                     with = Screen.PrimaryScreen.Bounds.Width;
-                    this.mainForm.showInDualScreensToolStripMenuItem.Text = Localization.Text("MainForm_Monitor_Multi");
+					this.mainForm.showInDualScreensToolStripMenuItem.Text = "Show on &amp;multi screens";
                 }
 
                 this.mainForm.Top = 0;
@@ -1897,19 +1897,6 @@ namespace Terminals
         private void CredentialManagementToolStripButton_Click(object sender, EventArgs e)
         {
             this.ShowCredentialsManager();
-        }
-
-        private void ChangeLanguage_Click(object sender, EventArgs e)
-        {
-            Bitmap bitmap = Resources.Localization2;
-
-            // Load any of the two pictures depending on the current second % 2 == 0
-            if (DateTime.Now.Second % 2 == 0)
-            {
-                bitmap = Resources.Localization3;
-            }
-
-            Localization.SetLanguageDialog(this, Program.Languages, bitmap, Color.White);
         }
 
         private void exportConnectionsListToolStripMenuItem_Click(object sender, EventArgs e)

@@ -16,6 +16,22 @@
 **************************************************** R E L E A S E   N O T E S ****************************************************
 
 
+Release v 4.7.3.0
+~~~~~~~~~~~~~~~~~
+
+Date: 2015-05-21
+
+It's now possible to connect to a KeePass 2.0 DB instead of using the Credentials.xml by filling in both the path & the password in the Terminals Options.
+
+Fixed a memory leak in the StoredCredentials -> thread safe singelton had problems.
+
+Fixed an error that occured after detaching a window from terminals.
+
+TODO: Remove localization
+
+TODO: Decrypt/Hide password for keepass.
+
+
 Release v 4.7.0.0
 ~~~~~~~~~~~~~~~~~
 

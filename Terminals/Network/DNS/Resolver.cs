@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Net;
 using System.Net.Sockets;
-using Kohl.Framework.Localization;
+
 using Kohl.Framework.Logging;
 
 namespace Terminals.Network.DNS
@@ -139,7 +139,7 @@ namespace Terminals.Network.DNS
                 }
                 catch (SocketException ex)
                 {
-                    Log.Error(Localization.Text("Network.DNS.Resolver.UdpTransfer_Error"), ex);
+					Log.Error("Ein Socketfehler trat auf beim Versuch die UDP-Daten zu erhalten.", ex);
                     // failure - we better try again, but remember how many attempts
                     attempts++;
                 }

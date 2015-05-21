@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using DotRas;
-using Kohl.Framework.Localization;
+
 using Kohl.Framework.Logging;
 using Terminals.Configuration.Files.Main.Favorites;
 using Terminals.Properties;
@@ -109,7 +109,7 @@ namespace Terminals.Connections
                 // case we'll load the RAS connection from the phone book.
                 if ((this.rasDialer.Credentials = this.Favorite.Credential) == null)
                 {
-                    rasProperties.Warn(Localization.Text("Connection.RASConnection.Connect_Warn"));
+					rasProperties.Warn("Terminals has no credentials, showing dial dialog ...");
 
                     RasDialDialog rasDialDialog = new RasDialDialog
                                                       {
@@ -119,7 +119,7 @@ namespace Terminals.Connections
 
                     if (rasDialDialog.ShowDialog() == DialogResult.OK)
                     {
-                        rasProperties.Info(string.Format("{0} {1}", "Thank you for providing the credentials." + Localization.Text("Connection.RASConnection.Connect_Info")));
+						rasProperties.Info(string.Format("{0} {1}", "Thank you for providing the credentials." + "Using the Terminals credentials, dialing ..."));
                         return this.connected = true;
                     }
 
@@ -127,14 +127,14 @@ namespace Terminals.Connections
                     return this.connected = false;
                 }
 
-                rasProperties.Info(Localization.Text("Connection.RASConnection.Connect_Info"));
+				rasProperties.Info("Using the Terminals credentials, dialing ...");
                 this.rasDialer.Dial();
 
                 return this.connected = true;
             }
             catch (Exception ex)
             {
-                rasProperties.Error(string.Format(Localization.Text("Connections.HTTPConnection.Connect_Error2"), this.Favorite.Protocol), ex);
+				rasProperties.Error(string.Format("Terminals  was unable to create the {0} connection.", this.Favorite.Protocol), ex);
                 return this.connected = false;
             }
         }
@@ -142,7 +142,7 @@ namespace Terminals.Connections
         private void rasDialer_StateChanged(object sender, StateChangedEventArgs e)
         {
             if (rasProperties != null)
-                rasProperties.Info(string.Format(Localization.Text("Connection.RASConnection_ConnectionState"), e.State.ToString()));
+				rasProperties.Info(string.Format("RAS connection state: {0}", e.State.ToString()));
         }
 
         private void rasDialer_DialCompleted(object sender, DialCompletedEventArgs e)
@@ -150,12 +150,12 @@ namespace Terminals.Connections
             if (e.Cancelled)
             {
                 if (rasProperties != null)
-                    rasProperties.Info(Localization.Text("Connection.RASConnection_Cancelled"));
+					rasProperties.Info("The RAS connection has been cancelled.");
             }
             else if (e.TimedOut)
             {
                 if (rasProperties != null)
-                    rasProperties.Info(Localization.Text("Connection.RASConnection_Timeout"));
+					rasProperties.Info("The RAS connection attempt timed out.");
             }
             else if (e.Error != null)
             {
@@ -167,7 +167,7 @@ namespace Terminals.Connections
                 this.connected = true;
 
                 if (rasProperties != null)
-                    rasProperties.Info(Localization.Text("Connection.RASConnection_Connected"));
+					rasProperties.Info("RAS connection has been created successfully.");
             }
 
             if (!e.Connected)
@@ -189,7 +189,7 @@ namespace Terminals.Connections
             if (this.rasDialer.IsBusy)
             {
                 if (rasProperties != null)
-                    rasProperties.Info(Localization.Text("Connection.RASConnection.Disconnect_Info1"));
+					rasProperties.Info("Hanging up RAS connection asynchronously.");
 
                 // The connection attempt has not been completed, cancel the attempt.
                 this.rasDialer.DialAsyncCancel();
@@ -199,7 +199,7 @@ namespace Terminals.Connections
                 foreach (RasConnection connection in RasConnection.GetActiveConnections())
                 {
                     if (rasProperties != null)
-                        rasProperties.Info(Localization.Text("Connection.RASConnection.Disconnect_Info2"));
+						rasProperties.Info("Hanging up RAS connection.");
 
                     // The connection has been found, disconnect it.
                     connection.HangUp();

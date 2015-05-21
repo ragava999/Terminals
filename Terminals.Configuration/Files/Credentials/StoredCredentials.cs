@@ -10,51 +10,51 @@ using Terminals.Configuration.Serialization;
 
 namespace Terminals.Configuration.Files.Credentials
 {
-    public sealed class StoredCredentials
+    public static class StoredCredentials
     {
         /// <summary>
         ///     Gets default name of the credentials file.
         /// </summary>
         private const string CONFIG_FILE = "Credentials.xml";
 
-        private readonly List<CredentialSet> cache;
+        private static readonly List<CredentialSet> cache;
 
-        private readonly Mutex fileLock = new Mutex(false, AssemblyInfo.Title() + "." + CONFIG_FILE);
-        private DataFileWatcher fileWatcher;
+        private static readonly Mutex fileLock = new Mutex(false, AssemblyInfo.Title() + "." + CONFIG_FILE);
+        private static DataFileWatcher fileWatcher;
 
         /// <summary>
         ///     Prevents creating from other class
         /// </summary>
-        private StoredCredentials()
+        static StoredCredentials()
         {
-            // This prevents SharpDevelop and Visual Studio from both an exception in design mode for controls using this HistoryTreeView and from crashing when opening the
-            // designer for this class.
-            if (LicenseManager.UsageMode == LicenseUsageMode.Runtime)
+            cache = new List<CredentialSet>();
+
+            if (Main.Settings.Settings.KeePassUse)
+            	LoadStoredCredentials(configFileLocation);
+            else
             {
-                this.cache = new List<CredentialSet>();
-
-                this.InitializeFileWatch();
-
+            	InitializeFileWatch();
+            
                 if (File.Exists(configFileLocation))
-                    this.LoadStoredCredentials(configFileLocation);
+                    LoadStoredCredentials(configFileLocation);
                 else
-                    this.Save();
-            }
+                    Save();
+           	}
         }
 
         /// <summary>
         ///     Gets the not null collection containing stored credentials
         /// </summary>
-        public List<CredentialSet> Items
+        public static List<CredentialSet> Items
         {
             get
             {
                 // prevent manipulation directly with this list
-                return (from s in this.cache orderby s.Name select s).ToList();
+                return (from s in cache orderby s.Name select s).ToList();
             }
         }
 
-        public event EventHandler CredentialsChanged;
+        public static event EventHandler CredentialsChanged;
 
         private static string configFileLocation = Path.Combine(AssemblyInfo.DirectoryConfigFiles, CONFIG_FILE);
 
@@ -70,40 +70,110 @@ namespace Terminals.Configuration.Files.Credentials
             }
         }
 
-        private void InitializeFileWatch()
+        private static void InitializeFileWatch()
         {
-            this.fileWatcher = new DataFileWatcher(configFileLocation);
-            this.fileWatcher.FileChanged += this.CredentialsFileChanged;
-            this.fileWatcher.StartObservation();
+            fileWatcher = new DataFileWatcher(configFileLocation);
+            fileWatcher.FileChanged += CredentialsFileChanged;
+            fileWatcher.StartObservation();
         }
 
-        private void CredentialsFileChanged(object sender, EventArgs e)
+        private static void CredentialsFileChanged(object sender, EventArgs e)
         {
-            this.LoadStoredCredentials(configFileLocation);
-            if (this.CredentialsChanged != null)
-                this.CredentialsChanged(this, new EventArgs());
+        	if (Main.Settings.Settings.KeePassUse)
+        		return;
+        	
+            LoadStoredCredentials(configFileLocation);
+            if (CredentialsChanged != null)
+                CredentialsChanged("CredentialsFileChanged", new EventArgs());
         }
 
-        public void AssignSynchronizationObject(ISynchronizeInvoke synchronizer)
+        public static void AssignSynchronizationObject(ISynchronizeInvoke synchronizer)
         {
-            this.fileWatcher.AssignSynchronizer(synchronizer);
+            fileWatcher.AssignSynchronizer(synchronizer);
         }
 
-        private void LoadStoredCredentials(string configFileName)
+        private static void LoadStoredCredentials(string configFileName)
         {
-            List<CredentialSet> loaded = this.LoadFile(configFileName);
+        	List<CredentialSet> loaded = null;
+        	
+        	if (Main.Settings.Settings.KeePassUse)
+        	{
+        		loaded = LoadKeePass();
+        	}
+            else
+				loaded = LoadFile(configFileName);
+            
             if (loaded != null)
             {
-                this.cache.Clear();
-                this.cache.AddRange(loaded);
+            	
+                cache.Clear();
+                cache.AddRange(loaded);
             }
         }
+        
+        private static List<CredentialSet> LoadKeePass()
+        {        	
+        	try
+        	{
+				var ioConnInfo = new KeePassLib.Serialization.IOConnectionInfo { Path = Main.Settings.Settings.KeePassPath };
+				var compKey = new KeePassLib.Keys.CompositeKey();
+				compKey.AddUserKey(new KeePassLib.Keys.KcpPassword(Main.Settings.Settings.KeePassPassword));
+				
+				var db = new KeePassLib.PwDatabase();
+				db.Open(ioConnInfo, compKey, null);
+	
+				var entries = db.RootGroup.GetEntries(true);
+				
+				List<CredentialSet> list = new List<CredentialSet>();
+								
+				foreach (var entry in entries)
+				{
+					string title = entry.Strings.ReadSafe("Title");
+					string userNameAndDomain = entry.Strings.ReadSafe("UserName");
+					
+					if (!string.IsNullOrEmpty(title) && !string.IsNullOrEmpty(userNameAndDomain))
+					{
+						list.Add(new CredentialSet
+		                {
+		                    Name = title,
+		                    Username = (userNameAndDomain.Contains("\\") ? userNameAndDomain.Split(new string[] {"\\"}, StringSplitOptions.None)[1] : userNameAndDomain),
+		                    Domain = (userNameAndDomain.Contains("\\") ? userNameAndDomain.Split(new string[] {"\\"}, StringSplitOptions.None)[0] : ""),
+		                    Password = entry.Strings.ReadSafe("Password")
+				         });
+					}
+				}
 
-        private List<CredentialSet> LoadFile(string configFileName)
+				/*
+				var kpdata = (from entry in entries
+					where (!string.IsNullOrEmpty(entry.Strings.ReadSafe("Title")) && !string.IsNullOrEmpty(entry.Strings.ReadSafe("UserName")))
+	                select new CredentialSet
+	                {
+	                    Name = entry.Strings.ReadSafe("Title"),
+	                    Username = (entry.Strings.ReadSafe("UserName").Contains("\\") ? entry.Strings.ReadSafe("UserName").Split(new string[] {"\\"}, StringSplitOptions.None)[1] : entry.Strings.ReadSafe("UserName")),
+	                    Domain = (entry.Strings.ReadSafe("UserName").Contains("\\") ? entry.Strings.ReadSafe("UserName").Split(new string[] {"\\"}, StringSplitOptions.None)[0] : ""),
+	                    SecretKey = entry.Strings.ReadSafe("Password")
+	                }).ToList();
+				*/
+				db.Close();
+				
+				//return kpdata;
+				
+				return list;
+        	} catch (Exception ex)
+        	{
+                Log.Error("Error loading KeePass-File due to the following reason: " + ex.Message, ex);
+                return  new List<CredentialSet>();
+        	}
+        }
+
+        private static List<CredentialSet> LoadFile(string configFileName)
         {
+        	if (Main.Settings.Settings.KeePassUse)
+        		return new List<CredentialSet>();
+        	
             try
             {
-                this.fileLock.WaitOne();
+                fileLock.WaitOne();
                 object loadedObj = Serialize.DeserializeXmlFromDisk(configFileName, typeof (List<CredentialSet>));
                 return loadedObj as List<CredentialSet>;
             }
@@ -115,17 +185,20 @@ namespace Terminals.Configuration.Files.Credentials
             }
             finally
             {
-                this.fileLock.ReleaseMutex();
+                fileLock.ReleaseMutex();
             }
         }
-
-        public void Save()
+        
+        public static void Save()
         {
+        	if (Main.Settings.Settings.KeePassUse)
+        		return;
+        	
             try
             {
-                this.fileLock.WaitOne();
-                this.fileWatcher.StopObservation();
-                Serialize.SerializeXmlToDisk(this.cache, configFileLocation);
+                fileLock.WaitOne();
+                fileWatcher.StopObservation();
+                Serialize.SerializeXmlToDisk(cache, configFileLocation);
             }
             catch (Exception exception)
             {
@@ -134,8 +207,8 @@ namespace Terminals.Configuration.Files.Credentials
             }
             finally
             {
-                this.fileWatcher.StartObservation();
-                this.fileLock.ReleaseMutex();
+                fileWatcher.StartObservation();
+                fileLock.ReleaseMutex();
             }
         }
 
@@ -144,65 +217,39 @@ namespace Terminals.Configuration.Files.Credentials
         ///     This method isnt case sensitive. If no item matches, returns null.
         /// </summary>
         /// <param name="name"> name of an item to search </param>
-        public CredentialSet GetByName(string name)
+        public static CredentialSet GetByName(string name)
         {
             if (string.IsNullOrEmpty(name))
                 return null;
 
             name = name.ToLower();
-            return this.Items.FirstOrDefault(candidate => candidate.Name.ToLower() == name);
+            return Items.FirstOrDefault(candidate => candidate.Name.ToLower() == name);
         }
 
-        public void Remove(CredentialSet toRemove)
+        public static void Remove(CredentialSet toRemove)
         {
-            this.cache.Remove(toRemove);
+            cache.Remove(toRemove);
         }
 
-        public void Add(CredentialSet toAdd)
+        public static void Add(CredentialSet toAdd)
         {
             if (String.IsNullOrEmpty(toAdd.Name))
                 return;
 
-            this.cache.Add(toAdd);
+            cache.Add(toAdd);
         }
 
-        public void UpdatePasswordsByNewKeyMaterial(string newKeyMaterial)
+        public static void UpdatePasswordsByNewKeyMaterial(string newKeyMaterial)
         {
-            foreach (CredentialSet credentials in this.cache)
+			if (Main.Settings.Settings.KeePassUse)
+        		return;
+        	        	
+            foreach (CredentialSet credentials in cache)
             {
                 credentials.UpdatePasswordByNewKeyMaterial(newKeyMaterial);
             }
 
-            this.Save();
+            Save();
         }
-
-        #region Thread safe singleton
-        /// <summary>
-        ///     Gets the singleton instance with cached credentials
-        /// </summary>
-        public static StoredCredentials Instance
-        {
-            get { return Nested.Instance; }
-        }
-
-        private static class Nested
-        {
-            private static StoredCredentials instance;
-
-            public static StoredCredentials Instance
-            {
-                get
-                {
-                    // This prevents SharpDevelop and Visual Studio from both an exception in design mode for controls using this HistoryTreeView and from crashing when opening the
-                    // designer for this class.
-                    if (LicenseManager.UsageMode == LicenseUsageMode.Runtime)
-                        if (instance == null)
-                            instance = new StoredCredentials();
-
-                    return instance;
-                }
-            }
-        }
-        #endregion
     }
 }

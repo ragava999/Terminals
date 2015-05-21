@@ -53,6 +53,9 @@ namespace Terminals.Configuration.Files.Credentials
         {
             get
             {
+            	if (Main.Settings.Settings.KeePassUse)
+            		return this.Password;
+            		
                 if (!string.IsNullOrEmpty(this.Password))
                     return PasswordFunctions.DecryptPassword(this.Password, this.Name);
 
@@ -60,10 +63,13 @@ namespace Terminals.Configuration.Files.Credentials
             }
             set
             {
-                if (string.IsNullOrEmpty(value))
-                    this.Password = String.Empty;
-                else
-                    this.Password = PasswordFunctions.EncryptPassword(value);
+            	if (Main.Settings.Settings.KeePassUse)
+            		this.Password = value;
+            	else
+	                if (string.IsNullOrEmpty(value))
+	                    this.Password = String.Empty;
+	                else
+	                    this.Password = PasswordFunctions.EncryptPassword(value);
             }
         }
 

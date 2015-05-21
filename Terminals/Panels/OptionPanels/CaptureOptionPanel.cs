@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Windows.Forms;
-using Kohl.Framework.Localization;
+
 using Terminals.Configuration.Files.Main.Settings;
 using Terminals.Connection.Panels.OptionPanels;
 
@@ -12,7 +12,6 @@ namespace Terminals.Panels.OptionPanels
         public CaptureOptionPanel()
         {
             this.InitializeComponent();
-            Localization.SetLanguage(this);
         }
 
         public override void LoadSettings()

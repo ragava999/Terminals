@@ -117,11 +117,11 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="$this.TrayHeight" type="System.Int32, mscorlib">
     <value>51</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAEAgIAAAAEAIAAoCAEAFgAAACgAAACAAAAAAAEAAAEAIAAAAAAAAAABABILAAASCwAAAAAAAAAA
@@ -1253,83 +1253,5 @@
         AAAAAAB//wAAAAAAAAAAAAAAAAAAf/8AAAAAAAAAAAAAAAAAAH//////////////////////////////
         //////////////////////////////////8=
 </value>
-  </data>
-  <data name="DE_$this.Text" xml:space="preserve">
-    <value>Optionen</value>
-  </data>
-  <data name="DE_OptionsTreeView.Nodes[&quot;Amazon&quot;]" xml:space="preserve">
-    <value>Amazon</value>
-  </data>
-  <data name="DE_OptionsTreeView.Nodes[&quot;Default Password&quot;]" xml:space="preserve">
-    <value>Standardpasswort</value>
-  </data>
-  <data name="DE_OptionsTreeView.Nodes[&quot;Execute Before Connect&quot;]" xml:space="preserve">
-    <value>Ausführen vor Verbindungsherstellung</value>
-  </data>
-  <data name="DE_OptionsTreeView.Nodes[&quot;Favorites&quot;]" xml:space="preserve">
-    <value>Favoriten</value>
-  </data>
-  <data name="DE_OptionsTreeView.Nodes[&quot;Flickr&quot;]" xml:space="preserve">
-    <value>Flickr</value>
-  </data>
-  <data name="DE_OptionsTreeView.Nodes[&quot;Master Password&quot;]" xml:space="preserve">
-    <value>Terminals Passwort</value>
-  </data>
-  <data name="DE_OptionsTreeView.Nodes[&quot;Proxy&quot;]" xml:space="preserve">
-    <value>Proxy</value>
-  </data>
-  <data name="DE_OptionsTreeView.Nodes[0]" xml:space="preserve">
-    <value>Start &amp; Stopp</value>
-  </data>
-  <data name="DE_OptionsTreeView.Nodes[1]" xml:space="preserve">
-    <value>Benutzeroberfläche</value>
-  </data>
-  <data name="DE_OptionsTreeView.Nodes[2]" xml:space="preserve">
-    <value>Sicherheit</value>
-  </data>
-  <data name="DE_OptionsTreeView.Nodes[3]" xml:space="preserve">
-    <value>Verbindungen</value>
-  </data>
-  <data name="DE_OptionsTreeView.Nodes[4]" xml:space="preserve">
-    <value>Bildschirmfoto</value>
-  </data>
-  <data name="EN_$this.Text" xml:space="preserve">
-    <value>Options</value>
-  </data>
-  <data name="EN_OptionsTreeView.Nodes[&quot;Amazon&quot;]" xml:space="preserve">
-    <value>Amazon</value>
-  </data>
-  <data name="EN_OptionsTreeView.Nodes[&quot;Default Password&quot;]" xml:space="preserve">
-    <value>Default Password</value>
-  </data>
-  <data name="EN_OptionsTreeView.Nodes[&quot;Execute Before Connect&quot;]" xml:space="preserve">
-    <value>Execute Before Connect</value>
-  </data>
-  <data name="EN_OptionsTreeView.Nodes[&quot;Favorites&quot;]" xml:space="preserve">
-    <value>Favorites</value>
-  </data>
-  <data name="EN_OptionsTreeView.Nodes[&quot;Flickr&quot;]" xml:space="preserve">
-    <value>Flickr</value>
-  </data>
-  <data name="EN_OptionsTreeView.Nodes[&quot;Master Password&quot;]" xml:space="preserve">
-    <value>Master Password</value>
-  </data>
-  <data name="EN_OptionsTreeView.Nodes[&quot;Proxy&quot;]" xml:space="preserve">
-    <value>Proxy</value>
-  </data>
-  <data name="EN_OptionsTreeView.Nodes[0]" xml:space="preserve">
-    <value>Startup &amp; Shutdown</value>
-  </data>
-  <data name="EN_OptionsTreeView.Nodes[1]" xml:space="preserve">
-    <value>User interface</value>
-  </data>
-  <data name="EN_OptionsTreeView.Nodes[2]" xml:space="preserve">
-    <value>Security</value>
-  </data>
-  <data name="EN_OptionsTreeView.Nodes[3]" xml:space="preserve">
-    <value>Connections</value>
-  </data>
-  <data name="EN_OptionsTreeView.Nodes[4]" xml:space="preserve">
-    <value>Screen Capture</value>
   </data>
 </root>

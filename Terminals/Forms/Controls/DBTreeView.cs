@@ -8,7 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 
 using Kohl.Framework.Converters;
-using Kohl.Framework.Localization;
+
 
 using Terminals.Configuration.Files.Main.Favorites;
 using Terminals.Configuration.Files.Main.Settings;

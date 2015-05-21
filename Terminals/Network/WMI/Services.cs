@@ -5,7 +5,7 @@ using System.Linq;
 using System.Management;
 using System.Text;
 using System.Windows.Forms;
-using Kohl.Framework.Localization;
+
 
 namespace Terminals.Network.WMI
 {
@@ -16,7 +16,7 @@ namespace Terminals.Network.WMI
         public Services()
         {
             this.InitializeComponent();
-            Localization.SetLanguage(this);
+            
         }
 
         private void LoadServices(string Username, string Password, string Computer)

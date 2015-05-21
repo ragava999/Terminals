@@ -14,7 +14,7 @@ namespace Terminals.Connections
 
     // Terminals and framework namespaces
     using Kohl.Framework.Info;
-    using Kohl.Framework.Localization;
+
     using Kohl.Framework.Logging;
     using Configuration.Files.Main.Favorites;
     using Connection;
@@ -137,7 +137,7 @@ namespace Terminals.Connections
                     this.iIcaClient.InitialProgram = "#" + this.Favorite.IcaApplicationName;
                 }
 
-                this.InvokeIfNecessary(() => this.Text = Localization.Text("Connections.ICAConnection.Connect"));
+                this.InvokeIfNecessary(() => this.Text = "Connecting to the Citrix ICA server ...");
                 
                 this.iIcaClient.Connect();
 
@@ -147,14 +147,14 @@ namespace Terminals.Connections
             }
             catch (Exception ex)
             {
-                Log.Fatal(string.Format(Localization.Text("Connections.HTTPConnection.Connect_Error2"), this.Favorite.Protocol), ex);
+                Log.Fatal(string.Format("Terminals was unable to create the {0} connection.", this.Favorite.Protocol), ex);
                 return this.connected = false;
             }
         }
 
         private void iIcaClient_OnDisconnect(object sender, EventArgs e)
         {
-            Log.Fatal(string.Format(Localization.Text("Connections.ICAConnection_ConnectionLost"), this.Favorite.Name));
+            Log.Fatal(string.Format("The Citrix ICA \"{0}\" connection has been lost unexpectedly.", this.Favorite.Name));
             this.connected = false;
 
             this.CloseTabPage();
@@ -167,7 +167,7 @@ namespace Terminals.Connections
             
             if (String.IsNullOrEmpty(desktopShare))
             {
-                MessageBox.Show(this, Localization.Text("Connections.ICAConnection.ICAConnection_DragDrop"),
+                MessageBox.Show(this, "A desktop share was not defined for this connection. Please define a share in the connection properties window (under the Local Resources tab).",
                                 AssemblyInfo.Title(), MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             else
@@ -189,7 +189,7 @@ namespace Terminals.Connections
             catch (Exception ex)
             {
                 Log.Error(
-                    string.Format(Localization.Text("Connection.ExternalConnection.Disconnect"), this.Favorite.Protocol,
+                    string.Format("Unable to disconnect form the {0} connection named \"{1}\".", this.Favorite.Protocol,
                                   this.Favorite.Name), ex);
             }
         }

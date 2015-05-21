@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using Kohl.Framework.Localization;
+
 using Terminals.Configuration.Files.Main.Favorites;
 using Terminals.Connection.Manager;
 using Terminals.Connection.Panels.FavoritePanels;

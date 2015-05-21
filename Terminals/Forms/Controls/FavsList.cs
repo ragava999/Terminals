@@ -10,7 +10,7 @@
     using System.Text.RegularExpressions;
     using System.Windows.Forms;
     using Kohl.Framework.Info;
-    using Kohl.Framework.Localization;
+
     using Kohl.Framework.Logging;
     using Kohl.Framework.WinForms;
 
@@ -178,7 +178,7 @@
                     return;
                 }
 
-                if (MessageBox.Show(msg, Localization.Text("Confirmation"), MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show(msg, "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     try
                     {
@@ -191,18 +191,18 @@
                     catch (ManagementException ex)
                     {
                         Log.Info(ex.ToString(), ex);
-                        MessageBox.Show(Localization.Text("UnableToRemoteShutdown") + "\r\nPlease check the log file.");
+                        MessageBox.Show("Terminals was not able to shutdown the machine remotely.\r\nPlease check the log file.");
                     }
                     catch (UnauthorizedAccessException)
                     {
-                        MessageBox.Show(Localization.Text("UnableToRemoteShutdown") + "\r\n\r\nAccess is Denied.");
+                        MessageBox.Show("Terminals was not able to shutdown the machine remotely.\r\n\r\nAccess is Denied.");
                         return;
                     }
                 }
             }
             else
             {
-                MessageBox.Show(Localization.Text("UnableToRemoteShutdown"));
+                MessageBox.Show("Terminals was not able to shutdown the machine remotely.");
             }
         }
 
@@ -252,7 +252,7 @@
 
             if (result.ReturnCode == DialogResult.OK)
             {
-                CredentialSet credentialSet = StoredCredentials.Instance.GetByName(result.Text);
+                CredentialSet credentialSet = StoredCredentials.GetByName(result.Text);
 
                 if (credentialSet == null)
                 {
@@ -422,7 +422,7 @@
             this.connectAsToolStripMenuItem.DropDownItems.Clear();
             this.connectAsToolStripMenuItem.DropDownItems.Add(this.userConnectToolStripMenuItem);
 
-            List<CredentialSet> list = StoredCredentials.Instance.Items;
+            List<CredentialSet> list = StoredCredentials.Items;
 
             foreach (CredentialSet s in list)
             {
@@ -437,7 +437,7 @@
             {
                 this.GetMainForm().Connect(fav.Name, this.consoleToolStripMenuItem.Checked,
                                            this.newWindowToolStripMenuItem.Checked, fav.IsDatabaseFavorite,
-                                           StoredCredentials.Instance.GetByName(sender.ToString()), true);
+                                           StoredCredentials.GetByName(sender.ToString()), true);
             }
         }
 

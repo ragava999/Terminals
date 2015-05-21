@@ -2,7 +2,7 @@
 using System.Reflection;
 using System.Text;
 using System.Xml;
-using Kohl.Framework.Localization;
+
 using Kohl.Framework.Logging;
 using Terminals.Configuration.Files.Main.Favorites;
 using Terminals.ExportImport.Import;
@@ -34,7 +34,7 @@ namespace Terminals.ExportImport.Export
             }
             catch (Exception ex)
             {
-                Log.Error(Localization.Text("ExportImport.Export.ExportTerminals.Export"), ex);
+                Log.Error("Export  to XML failed.", ex);
             }
         }
 

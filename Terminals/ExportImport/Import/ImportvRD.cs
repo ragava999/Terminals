@@ -9,7 +9,7 @@ using System.Security.Principal;
 using System.Text;
 using System.Windows.Forms;
 using System.Xml.Serialization;
-using Kohl.Framework.Localization;
+
 using Kohl.Framework.WinForms;
 using Terminals.Configuration.Files.Credentials;
 using Terminals.Configuration.Files.Main.Favorites;
@@ -24,8 +24,8 @@ namespace Terminals.ExportImport.Import
         {
             List<FavoriteConfigurationElement> fav = new List<FavoriteConfigurationElement>();
             InputBoxResult result =
-                InputBox.Show(Localization.Text("ExportImport.Import.ImportvRD.ImportFavorites_Prompt"),
-                              Localization.Text("ExportImport.Import.ImportvRD.ImportFavorites_Title"), '*');
+                InputBox.Show("Please enter the description vRD password.",
+                              "vRD Password", '*');
 
             if (result.ReturnCode == DialogResult.OK)
             {
@@ -113,7 +113,7 @@ namespace Terminals.ExportImport.Import
 
         public string Name
         {
-            get { return Localization.Text("ExportImport.Import.ImportvRD.Name"); }
+            get { return "Visionapp Remote Desktop"; }
         }
 
         public string KnownExtension
@@ -127,17 +127,17 @@ namespace Terminals.ExportImport.Import
             {
                 vRDConfigurationFileCredentialsFolderCredentials toImport = credentials[guid];
                 //will store the last one if the same credential name 
-                CredentialSet destination = StoredCredentials.Instance.GetByName(toImport.Name);
+                CredentialSet destination = StoredCredentials.GetByName(toImport.Name);
                 if (destination == null)
                 {
                     destination = new CredentialSet();
-                    StoredCredentials.Instance.Add(destination);
+                    StoredCredentials.Add(destination);
                 }
 
                 UpdateFromvrDCredentials(toImport, destination);
             }
 
-            StoredCredentials.Instance.Save();
+            StoredCredentials.Save();
         }
 
         private static void UpdateFromvrDCredentials(vRDConfigurationFileCredentialsFolderCredentials source,

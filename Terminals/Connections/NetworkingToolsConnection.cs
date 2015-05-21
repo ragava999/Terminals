@@ -6,7 +6,7 @@ namespace Terminals.Connections
     using System.Windows.Forms;
 
     // Terminals and framework namespaces
-    using Kohl.Framework.Localization;
+
     using Kohl.Framework.Logging;
     using Configuration.Files.Main.Favorites;
     using Connection;
@@ -57,7 +57,7 @@ namespace Terminals.Connections
             catch (Exception ex)
             {
                 Log.Error(
-                    string.Format(Localization.Text("Connection.ExternalConnection.Disconnect"), this.Favorite.Protocol,
+					string.Format("Unable to disconnect form the {0} connection named \"{1}\".", this.Favorite.Protocol,
                                   this.Favorite.Name), ex);
             }
         }

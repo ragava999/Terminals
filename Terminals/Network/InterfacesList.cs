@@ -1,6 +1,6 @@
 using System;
 using System.Windows.Forms;
-using Kohl.Framework.Localization;
+
 using Metro;
 using Terminals.Network.DNS;
 
@@ -11,7 +11,7 @@ namespace Terminals.Network
         public InterfacesList()
         {
             this.InitializeComponent();
-            Localization.SetLanguage(this);
+            
         }
 
         private void InterfacesList_Load(object sender, EventArgs e)

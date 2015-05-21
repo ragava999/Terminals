@@ -1,5 +1,5 @@
 ﻿using System.Windows.Forms;
-using Kohl.Framework.Localization;
+
 using Terminals.Configuration.Files.Main.Settings;
 using Terminals.Connection.Panels.OptionPanels;
 using System.IO;
@@ -11,7 +11,7 @@ namespace Terminals.Panels.OptionPanels
         public StartShutdownOptionPanel()
         {
             this.InitializeComponent();
-            Localization.SetLanguage(this);
+            
         }
 
         public override void LoadSettings()

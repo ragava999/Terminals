@@ -1,6 +1,6 @@
 using System;
 using System.Windows.Forms;
-using Kohl.Framework.Localization;
+
 using Kohl.Framework.Logging;
 
 namespace Terminals.Network.WakeOnLAN
@@ -10,7 +10,7 @@ namespace Terminals.Network.WakeOnLAN
         public WakeOnLan()
         {
             this.InitializeComponent();
-            Localization.SetLanguage(this);
+            
         }
 
         private void SendButton_Click(object sender, EventArgs e)

@@ -2,6 +2,7 @@ namespace Terminals.Connection
 {
     // .NET namespaces
     using System;
+    using System.ComponentModel;
 	using System.Diagnostics;
     using System.Drawing;
     using System.Linq;

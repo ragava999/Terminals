@@ -7,7 +7,7 @@ namespace Terminals.Connections
     using System.Windows.Forms;
     using DotRas;
 
-    using Kohl.Framework.Localization;
+
     using Kohl.Framework.Logging;
 
     using Connection;
@@ -92,18 +92,18 @@ namespace Terminals.Connections
                         if (this.connectedTime == DateTime.MinValue)
                             this.connectedTime = DateTime.Now;
 
-                        this.Info(Localization.Text("Connection.RASProperties.UpdateStats_Connected"));
-                        this.Info(string.Format(Localization.Text("Connection.RASProperties.UpdateStats_ServerName"), this.RasConnection.Favorite.ServerName));
-                        this.Info(string.Format(Localization.Text("Connection.RASProperties.UpdateStats_Host"), this.RasEntry.PhoneNumber));
-                        this.Info(string.Format(Localization.Text("Connection.RASProperties.UpdateStats_IPAddress"), this.RasEntry.IPAddress));
+							this.Info("Connected");
+							this.Info(string.Format("Server name: {0}", this.RasConnection.Favorite.ServerName));
+							this.Info(string.Format("Host: {0}", this.RasEntry.PhoneNumber));
+							this.Info(string.Format("IP Address: {0}", this.RasEntry.IPAddress));
 
                         TimeSpan ts = new TimeSpan(DateTime.Now.Ticks - this.connectedTime.Ticks);
 
-                        this.Info(string.Format(Localization.Text("Connection.RASProperties.UpdateStats_ConnectionDuration"), ts.Days, ts.Hours, ts.Minutes, ts.Seconds));
+							this.Info(string.Format("Connection duration: {0} days, {1} hours, {2} minutes, {3} seconds", ts.Days, ts.Hours, ts.Minutes, ts.Seconds));
                     }
                     else
                     {
-                        this.Info(Localization.Text("Connection.RASProperties.UpdateStats_NotConnected"));
+							this.Info("Not connected");
                     }
                 }
             });

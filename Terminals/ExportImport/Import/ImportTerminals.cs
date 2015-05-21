@@ -4,7 +4,7 @@ using System.IO;
 using System.Reflection;
 using System.Text;
 using System.Xml;
-using Kohl.Framework.Localization;
+
 using Kohl.Framework.Logging;
 using Terminals.Configuration.Files.Main.Favorites;
 
@@ -14,7 +14,7 @@ namespace Terminals.ExportImport.Import
     {
         public const string TERMINALS_FILEEXTENSION = ".xml";
 
-        public static readonly string PROVIDER_NAME = Localization.Text("ExportImport.Import.ImportTerminals_Provider_Name");
+        public static readonly string PROVIDER_NAME = "%TITLE% favorites";
 
         List<FavoriteConfigurationElement> IImport.ImportFavorites(string Filename)
         {
@@ -57,7 +57,7 @@ namespace Terminals.ExportImport.Import
             }
             catch (Exception ex)
             {
-                Log.Error(Localization.Text("ExportImport.Import.ImportTerminals.ImportFavorites"), ex);
+                Log.Error("The XML import failed.", ex);
             }
 
             return favorites;

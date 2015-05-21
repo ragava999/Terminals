@@ -1,7 +1,7 @@
 using System;
 using System.ComponentModel;
 using System.Windows.Forms;
-using Kohl.Framework.Localization;
+
 using Kohl.Framework.Logging;
 using Kohl.Framework.WinForms;
 using Terminals.Configuration.Files.Main.Favorites;
@@ -21,7 +21,7 @@ namespace Terminals.Network.Servers
         public TerminalServerManager()
         {
             this.InitializeComponent();
-            Localization.SetLanguage(this);
+            
         }
 
         public void ForceTSAdmin(string Host)
@@ -51,7 +51,7 @@ namespace Terminals.Network.Servers
             }
             else
             {
-                MessageBox.Show(Localization.Text("Network.Servers.TerminalServerManager_Error"));
+				MessageBox.Show("This machine does not appear to be a terminal server.");
             }
         }
 
@@ -92,7 +92,7 @@ namespace Terminals.Network.Servers
             }
             catch (Exception exc)
             {
-                Log.Error(Localization.Text("Network.Servers.TerminalServerManager.Connect"), exc);
+				Log.Error("Connection failure.", exc);
             }
         }
 
@@ -128,12 +128,12 @@ namespace Terminals.Network.Servers
             if (this.SelectedSession != null)
             {
                 InputBoxResult result =
-                    InputBox.Show(Localization.Text("Network.Servers.TerminalServerManager.SendMessage"));
+					InputBox.Show("Please enter the message to send..");
                 if (result.ReturnCode == DialogResult.OK && result.Text.Trim() != null)
                 {
                     TerminalServicesAPI.SendMessage(this.SelectedSession,
-                                                    Localization.Text(
-                                                        "Network.Servers.TerminalServerManager.SendMessage_Title"),
+                                                    
+						"Message from your administrator (sent via Terminals)",
                                                     result.Text.Trim(), 0, 10, false);
                 }
             }
@@ -144,8 +144,8 @@ namespace Terminals.Network.Servers
             if (this.SelectedSession != null)
             {
                 if (
-                    MessageBox.Show(Localization.Text("Network.Servers.TerminalServerManager_Logoff"),
-                                    Localization.Text("Network.Servers.TerminalServerManager_Confirm"),
+					MessageBox.Show("Are you sure you want to log off the selected session?",
+						"Confirmation required ...",
                                     MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation) == DialogResult.OK)
                 {
                     TerminalServicesAPI.LogOffSession(this.SelectedSession, false);
@@ -158,8 +158,8 @@ namespace Terminals.Network.Servers
             if (this.server.IsATerminalServer)
             {
                 if (
-                    MessageBox.Show(Localization.Text("Network.Servers.TerminalServerManager_Reboot"),
-                                    Localization.Text("Network.Servers.TerminalServerManager_Confirm"),
+					MessageBox.Show("Are you sure you want to reboot this server?",
+						"Confirmation required ...",
                                     MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation) == DialogResult.OK)
                 {
                     TerminalServicesAPI.ShutdownSystem(this.server, true);
@@ -172,8 +172,8 @@ namespace Terminals.Network.Servers
             if (this.server.IsATerminalServer)
             {
                 if (
-                    MessageBox.Show(Localization.Text("Network.Servers.TerminalServerManager_Shutdown"),
-                                    Localization.Text("Network.Servers.TerminalServerManager_Confirm"),
+					MessageBox.Show("Are you sure you want to shutdown this server?",
+						"Confirmation required ...",
                                     MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation) == DialogResult.OK)
                 {
                     TerminalServicesAPI.ShutdownSystem(this.server, false);

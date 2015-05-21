@@ -1,7 +1,7 @@
 using System;
 using System.Management;
 using System.Windows.Forms;
-using Kohl.Framework.Localization;
+
 using Kohl.Framework.Logging;
 
 namespace Terminals.Network.WMI
@@ -16,7 +16,7 @@ namespace Terminals.Network.WMI
         public LoginForm()
         {
             this.InitializeComponent();
-            Localization.SetLanguage(this);
+            
             this.PasswordTextBox.PasswordChar = Terminals.Forms.Controls.CredentialPanel.HIDDEN_PASSWORD_CHAR;
         }
 
@@ -79,8 +79,8 @@ namespace Terminals.Network.WMI
                     }
                     catch (Exception exc)
                     {
-                        Log.Info(Localization.Text("Network.WMI.LoginForm.LoginButton_Click"), exc);
-                        MessageBox.Show(Localization.Text("Network.WMI.LoginForm.LoginButton_Click"));
+						Log.Info("The login failed.", exc);
+						MessageBox.Show("The login failed.");
                     }
 
                     if (success)

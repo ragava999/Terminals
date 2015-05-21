@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Text;
-using Kohl.Framework.Localization;
+
 using Kohl.Framework.Logging;
 using Terminals.Configuration.Files.Main.Favorites;
 using Terminals.ExportImport.Import;
@@ -57,7 +57,7 @@ namespace Terminals.ExportImport.Export
             }
             catch (Exception exception)
             {
-                Log.Error(Localization.Text("ExportImport.Export.ExportRdp.ExportFavorite"), exception);
+                Log.Error("RDP export failed.", exception);
             }
         }
 

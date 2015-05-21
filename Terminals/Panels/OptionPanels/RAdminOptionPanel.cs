@@ -1,6 +1,6 @@
 ﻿using Terminals.Connection.Panels.OptionPanels;
 using System;
-using Kohl.Framework.Localization;
+
 using Terminals.Configuration.Files.Main.Settings;
 
 namespace Terminals.Panels.OptionPanels
@@ -10,7 +10,7 @@ namespace Terminals.Panels.OptionPanels
         public RAdminOptionPanel()
         {
             this.InitializeComponent();
-            Localization.SetLanguage(this);
+            
         }
 
         public override void LoadSettings()

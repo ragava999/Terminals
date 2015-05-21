@@ -8,7 +8,7 @@ namespace Terminals.Forms.Controls
     using System.Drawing;
     using System.Linq;
     using System.Windows.Forms;
-    using Kohl.Framework.Localization;
+
     using Kohl.Framework.Logging;
     using Terminals.Configuration.Files.Main.Favorites;
     using Terminals.Configuration.Files.Main.Settings;
@@ -201,11 +201,11 @@ namespace Terminals.Forms.Controls
                 this.AddAlphabeticalContextMenu();
             }
 
-            ToolStripItem quickConnect = this.quickContextMenu.Items.Add(Localization.Text("QuickConnect"));
+            ToolStripItem quickConnect = this.quickContextMenu.Items.Add("Quick connect");
             quickConnect.Name = QUICK_CONNECT;
 
             this.quickContextMenu.Items.Add("-");
-            exitMenu = this.quickContextMenu.Items.Add(Localization.Text("Exit"));
+            exitMenu = this.quickContextMenu.Items.Add("Exit");
             exitMenu.Name = COMMAND_EXIT;
         }
 
@@ -336,7 +336,7 @@ namespace Terminals.Forms.Controls
             }
             catch (Exception exc)
             {
-                Log.Error(Localization.Text("Forms.Controls.FavoritesMenuLoader.LoadFavoritesToolbar"), exc);
+                Log.Error("Error loading the favorites toolbar.", exc);
             }
         }
 
@@ -464,10 +464,10 @@ namespace Terminals.Forms.Controls
 
         private void AddCommandMenuItems()
         {
-            this.special = new ToolStripMenuItem(Localization.Text("SpecialCommands"), Resources.computer_link);
-            this.mgmt = new ToolStripMenuItem(Localization.Text("Management"), Resources.CompMgmt);
-            this.cpl = new ToolStripMenuItem(Localization.Text("ControlPanel"), Resources.ControlPanel);
-            this.other = new ToolStripMenuItem(Localization.Text("Other"));
+            this.special = new ToolStripMenuItem("Special Commands", Resources.computer_link);
+            this.mgmt = new ToolStripMenuItem("Management", Resources.CompMgmt);
+            this.cpl = new ToolStripMenuItem("Control Panel", Resources.ControlPanel);
+            this.other = new ToolStripMenuItem("Other");
 
             this.quickContextMenu.Items.Add(this.special);
             this.special.DropDown.Items.Add(this.mgmt);
@@ -500,7 +500,7 @@ namespace Terminals.Forms.Controls
 
         private void AddAlphabeticalContextMenu()
         {
-            this.alphabeticalMenu = new ToolStripMenuItem(Localization.Text("Alphabetical")) { Name = COMMAND_ALPHABETICAL };
+            this.alphabeticalMenu = new ToolStripMenuItem("Alphabetical") { Name = COMMAND_ALPHABETICAL };
 
             this.alphabeticalMenu.DropDownItemClicked += this.quickContextMenu_ItemClicked;
             this.alphabeticalMenu.DropDownOpening += this.OnAlphabeticalMenuDropDownOpening;
@@ -534,28 +534,28 @@ namespace Terminals.Forms.Controls
 
         private void AddGeneralTrayContextMenu()
         {
-            this.restoreScreenMenuItem = this.CreateGeneralTrayContextMenuItem(Localization.Text("RestoreScreen"),
+            this.restoreScreenMenuItem = this.CreateGeneralTrayContextMenuItem("Restore Screen",
                                                                                COMMAND_RESTORESCREEN, Resources.arrow_in);
-            this.fullScreenMenuItem = this.CreateGeneralTrayContextMenuItem(Localization.Text("FullScreen"),
+            this.fullScreenMenuItem = this.CreateGeneralTrayContextMenuItem("Full Screen",
                                                                             COMMAND_FULLSCREEN, Resources.arrow_out);
 
-            this.CreateGeneralTrayContextMenuItem(Localization.Text("Detach"), COMMAND_DETACH, Resources.unlink);
+            this.CreateGeneralTrayContextMenuItem("Detach", COMMAND_DETACH, Resources.unlink);
 
             this.quickContextMenu.Items.Add("-");
-            ToolStripItem showMenu = this.quickContextMenu.Items.Add(Localization.Text("ShowMenu"));
+            ToolStripItem showMenu = this.quickContextMenu.Items.Add("Show Menu");
             showMenu.Name = COMMAND_SHOWMENU;
             this.quickContextMenu.Items.Add("-");
-            this.CreateGeneralTrayContextMenuItem(Localization.Text("CaptureManager", true, typeof(IHostingForm).Assembly), COMMAND_CAPTUREMANAGER,
+            this.CreateGeneralTrayContextMenuItem("Capture Manager", COMMAND_CAPTUREMANAGER,
                                                   Resources.screen_capture_box);
-            this.CreateGeneralTrayContextMenuItem(Localization.Text("NetworkingTools"), COMMAND_NETTOOLS,
+            this.CreateGeneralTrayContextMenuItem("Networking Tools", COMMAND_NETTOOLS,
                                                   Resources.computer_link);
             this.quickContextMenu.Items.Add("-");
             this.CreateGeneralTrayContextMenuItem(
-                Localization.Text("Credentials.Credential.CredentialManager_Caption"), COMMAND_CREDENTIALMANAGER,
+                "Credential Manager", COMMAND_CREDENTIALMANAGER,
                 Resources.computer_security);
-            this.CreateGeneralTrayContextMenuItem(Localization.Text("OrganizeFavorites"), COMMAND_ORGANIZEFAVORITES,
+            this.CreateGeneralTrayContextMenuItem("Organize Favorites", COMMAND_ORGANIZEFAVORITES,
                                                   Resources.star);
-            this.CreateGeneralTrayContextMenuItem(Localization.Text("Options"), COMMAND_OPTIONS, Resources.options);
+            this.CreateGeneralTrayContextMenuItem("Options", COMMAND_OPTIONS, Resources.options);
             this.quickContextMenu.Items.Add("-");
         }
 

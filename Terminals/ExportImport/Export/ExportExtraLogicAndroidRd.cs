@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Xml.Linq;
-using Kohl.Framework.Localization;
+
 using Kohl.Framework.Logging;
 using Terminals.Configuration.Files.Main.Favorites;
 using Terminals.Connection;
@@ -17,8 +17,7 @@ namespace Terminals.ExportImport.Export
     {
         public const string EXTENSION = ".xml";
 
-        public static readonly string PROVIDER_NAME =
-            Localization.Text("ExportImport.Export.ExportExtraLogicAndroidRd_Provider_Name");
+        public static readonly string PROVIDER_NAME = "Xtralogic Remote Desktop Client for Android";
 
         public string Name
         {
@@ -40,7 +39,7 @@ namespace Terminals.ExportImport.Export
             }
             catch (Exception exception)
             {
-                Log.Error(Localization.Text("ExportImport.Export.ExportExtraLogicAndroidRd.Export"), exception);
+                Log.Error("Export to ExtraLogicAndroidRd failed.", exception);
             }
         }
 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Management;
 using System.Text;
 using System.Windows.Forms;
-using Kohl.Framework.Localization;
+
 
 namespace Terminals.Network.WMI
 {
@@ -12,7 +12,7 @@ namespace Terminals.Network.WMI
         public NetworkShares()
         {
             this.InitializeComponent();
-            Localization.SetLanguage(this);
+            
         }
 
         private void LoadShares(string Username, string Password, string Computer)

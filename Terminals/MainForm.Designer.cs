@@ -55,7 +55,6 @@ namespace Terminals
             this.toolStripMenuItemImport = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemExport = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripMenuItemChangeLanguage = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -352,7 +351,6 @@ namespace Terminals
             this.toolStripMenuItemImport,
             this.toolStripMenuItemExport,
             this.toolStripMenuItem4,
-            this.toolStripMenuItemChangeLanguage,
             this.toolStripMenuItem1,
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
@@ -391,16 +389,6 @@ namespace Terminals
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
             this.toolStripMenuItem4.Size = new System.Drawing.Size(214, 6);
             this.toolStripMenuItem4.Visible = false;
-            // 
-            // toolStripMenuItemChangeLanguage
-            // 
-            this.toolStripMenuItemChangeLanguage.Image = global::Terminals.Properties.Resources.Localization1;
-            this.toolStripMenuItemChangeLanguage.Name = "toolStripMenuItemChangeLanguage";
-            this.toolStripMenuItemChangeLanguage.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.L)));
-            this.toolStripMenuItemChangeLanguage.Size = new System.Drawing.Size(217, 22);
-            this.toolStripMenuItemChangeLanguage.Text = "&Change language";
-            this.toolStripMenuItemChangeLanguage.ToolTipText = "Changes the display language to the desired one.";
-            this.toolStripMenuItemChangeLanguage.Click += new System.EventHandler(this.ChangeLanguage_Click);
             // 
             // toolStripMenuItem1
             // 
@@ -1206,7 +1194,6 @@ namespace Terminals
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemImport;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemExport;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemChangeLanguage;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem4;
         private System.Windows.Forms.ToolStripMenuItem openLogFolderToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem openLogFileToolStripMenuItem;

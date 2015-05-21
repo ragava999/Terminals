@@ -14,7 +14,7 @@ namespace Terminals.Connections
     using System.Threading;
 
     // Terminals and framework namespaces
-    using Kohl.Framework.Localization;
+
     using Kohl.Framework.Logging;
     using Configuration.Files.Main.Favorites;
 
@@ -467,7 +467,7 @@ namespace Terminals.Connections
         #region Private Fields (7)
 
         private static readonly object EmbedWindowLock = new object();
-        private readonly Process process = new Process();
+        protected readonly Process process = new Process();
         private readonly ProcessStartInfo processStartInfo = new ProcessStartInfo();
         private bool connected;
         private bool disconnecting;
@@ -732,7 +732,7 @@ namespace Terminals.Connections
             GCHandle gch = GCHandle.FromIntPtr(pointer);
             List<IntPtr> list = gch.Target as List<IntPtr>;
             if (list == null)
-                throw new InvalidCastException(Localization.Text("Connections.ExternalConnection.EnumWindow"));
+                throw new InvalidCastException("GCHandle target could not be cast to List&lt;IntPtr&gt;.");
 
             list.Add(handle);
             return true;
@@ -871,7 +871,7 @@ namespace Terminals.Connections
 
                     if (this.HWnd == IntPtr.Zero)
                     {
-                        Log.Error(Localization.Text("Connection.ExternalConnection.ProcessWaitForProcessMainWindowIdle"));
+                        Log.Error("The process' main window hasn't been found. Therefore %TITLE% Terminals was not able to create a connection.");
                         return this.connected = false;
                     }
                 }
@@ -951,7 +951,7 @@ namespace Terminals.Connections
 
                 if (string.IsNullOrEmpty(this.ProgramPath) || (this.UseShellExecute && !File.Exists(this.ProgramPath)))
                 {
-                    Log.Error(Localization.Text("Connection.ExternalConnection.Connect_Error1"));
+                    Log.Error("Please configure the path for the file to be opened (e.g. word document) or executable to be run.");
                     return false;
                 }
 
@@ -1036,7 +1036,7 @@ namespace Terminals.Connections
             }
             catch (Exception ex)
             {
-                Log.Error(string.Format(Localization.Text("Connection.ExternalConnection.Connect_Error2"), this.Favorite.Protocol), ex);
+                Log.Error(string.Format("The following error occured while trying to create the {0} connection.", this.Favorite.Protocol), ex);
                 return this.connected = false;
             }
 
@@ -1079,7 +1079,7 @@ namespace Terminals.Connections
             }
             catch (Exception ex)
             {
-                Log.Error(string.Format(Localization.Text("Connection.ExternalConnection.Disconnect"), this.Favorite.Protocol, this.Favorite.Name), ex);
+                Log.Error(string.Format("Unable to disconnect form the {0} connection named \"{1}\".", this.Favorite.Protocol, this.Favorite.Name), ex);
             }
         }
 

@@ -7,7 +7,7 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
-using Kohl.Framework.Localization;
+
 using Kohl.Framework.Logging;
 using ZedGraph;
 using Timer = System.Threading.Timer;
@@ -52,8 +52,6 @@ namespace Terminals.Network.Ping
             this.packetOptions = new PingOptions(50, true);
 
             this.InitializeGraph();
-
-            Localization.SetLanguage(this, true);
 
             this.dataGridView1.SuspendLayout();
 

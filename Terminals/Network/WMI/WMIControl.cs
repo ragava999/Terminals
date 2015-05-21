@@ -8,7 +8,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using System.Xml;
-using Kohl.Framework.Localization;
+
 using Kohl.Framework.Logging;
 using Terminals.Properties;
 
@@ -26,7 +26,7 @@ namespace Terminals.Network.WMI
         {
             this.InitializeComponent();
             this.Form1_Resize(null, null);
-            Localization.SetLanguage(this);
+            
         }
 
         private string Username { get; set; }

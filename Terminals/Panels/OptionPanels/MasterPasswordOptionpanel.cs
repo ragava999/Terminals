@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
-using Kohl.Framework.Localization;
+
 using Terminals.Configuration.Files.Main.Settings;
 using Terminals.Connection.Panels.OptionPanels;
 using Terminals.Forms.Controls;
@@ -16,10 +16,9 @@ namespace Terminals.Panels.OptionPanels
 
             this.lblPasswordsMatch.Text = string.Empty;
 
-            Localization.SetLanguage(this);
+            
 
-            this.PasswordTextbox.PasswordChar = Terminals.Forms.Controls.CredentialPanel.HIDDEN_PASSWORD_CHAR;
-            this.ConfirmPasswordTextBox.PasswordChar = Terminals.Forms.Controls.CredentialPanel.HIDDEN_PASSWORD_CHAR;
+            this.txtKeePassPassword.PasswordChar = this.ConfirmPasswordTextBox.PasswordChar = this.PasswordTextbox.PasswordChar = Terminals.Forms.Controls.CredentialPanel.HIDDEN_PASSWORD_CHAR;
         }
 
         private bool PasswordsMatch
@@ -41,6 +40,9 @@ namespace Terminals.Panels.OptionPanels
             this.chkPasswordProtectTerminals.Checked = Settings.IsMasterPasswordDefined;
             this.PasswordTextbox.Enabled = Settings.IsMasterPasswordDefined;
             this.ConfirmPasswordTextBox.Enabled = Settings.IsMasterPasswordDefined;
+            this.txtKeePassPassword.Text = Settings.KeePassPassword;
+            this.txtKeePassPath.Text = Settings.KeePassPath;
+            
             this.FillTextBoxesByMasterPassword(Settings.IsMasterPasswordDefined);
         }
 
@@ -58,6 +60,20 @@ namespace Terminals.Panels.OptionPanels
                 {
                     Settings.UpdateMasterPassword(this.PasswordTextbox.Text);
                 }
+            }
+ 
+            bool restart = false;
+            if (Settings.KeePassPassword != txtKeePassPassword.Text || Settings.KeePassPath != txtKeePassPath.Text)
+            {
+            	restart = true;
+            }
+            
+            Settings.KeePassPassword = txtKeePassPassword.Text;
+            Settings.KeePassPath = txtKeePassPath.Text;
+            
+            if (restart)
+            {
+            	MessageBox.Show("Your Credential configuration has changed. Please close your existing connections and restart Terminals.");
             }
         }
 
@@ -102,13 +118,13 @@ namespace Terminals.Panels.OptionPanels
                 if (this.PasswordsMatch)
                 {
                     this.lblPasswordsMatch.Text =
-                        Localization.Text("Forms.OptionPanels.MasterPasswordOptionPanel.CheckPasswords_Match");
+						"Password matches.";
                     this.lblPasswordsMatch.ForeColor = Color.Green;
                 }
                 else
                 {
                     this.lblPasswordsMatch.Text =
-                        Localization.Text("Forms.OptionPanels.MasterPasswordOptionPanel.CheckPasswords_NoMatch");
+						"Passwords do not match.";
                     this.lblPasswordsMatch.ForeColor = Color.Red;
                 }
             }

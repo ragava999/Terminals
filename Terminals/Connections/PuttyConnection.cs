@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
-using Kohl.Framework.Localization;
+
 using Kohl.Framework.Logging;
 using Terminals.Configuration.Files.Main.Favorites;
 using Terminals.Configuration.Files.Main.Settings;
@@ -330,7 +330,7 @@ namespace Terminals.Connections
                 this.hConfigDialog = FindWindowEx(this.panelHandle, IntPtr.Zero, null, IntPtr.Zero);
                 this.HWnd = this.hConfigDialog;
 
-                Log.Info(Localization.Text("Connection.PuttyConnection.PerformPostAction_Info1"));
+				Log.Info("PuTTY Connection: PuTTY configuration dialog has been startet. Waiting for user input.");
                 
                 // wait for any of both threads, first one wins
                 do
@@ -345,7 +345,7 @@ namespace Terminals.Connections
                     {
                     	// this forces a disconnect because the value of the connected-Property will remain the same (i.e. "false").
                     	string error = "The user has aborted the session manually before a connection was created.";
-                    	Log.Warn(Localization.Text(error));
+                    	Log.Warn(error);
                     	this.Disconnect();
                     	throw new Exception(error);
                     	//return;
@@ -353,7 +353,7 @@ namespace Terminals.Connections
                     
                 } while (this.hConfigDialog != IntPtr.Zero);
 
-                Log.Info(Localization.Text("Connection.PuttyConnection.PerformPostAction_Info2"));
+				Log.Info("PuTTY connection: PuTTY Configuration dialog has been closed.");
 
                 /* Give the GUI some time to be painted */
                 Thread.Sleep(120);
@@ -395,7 +395,7 @@ namespace Terminals.Connections
             Application.DoEvents();
             this.EmbedWindow(this.hPuttyConsole);
             BringWindowToTop(this.hPuttyConsole);
-            Log.Info(Localization.Text("Connection.PuttyConnection.PerformPostAction_Info3"));
+			Log.Info("PuTTY connection: PuTTY has been startet.");
 
             this.hConfigDialog = FindWindowEx(this.panelHandle, IntPtr.Zero, null, IntPtr.Zero);
             this.HWnd = this.hConfigDialog;
@@ -424,8 +424,8 @@ namespace Terminals.Connections
                                            if (!set)
                                            {
                                                Log.Info(
-                                                   Localization.Text(
-                                                       "Connection.PuttyConnection.PerformPostAction_Info4"));
+                                                   
+										"PuTTY connection: Setting password.");
                                                // Make sure that our window is active
                                                SetForegroundWindow(this.hPuttyConsole);
                                                Thread.Sleep(100);
@@ -443,12 +443,12 @@ namespace Terminals.Connections
                                if (string.IsNullOrEmpty(text))
                                {
                                    // ERROR .. PWD wrong, etc ...
-                                   Log.Error(Localization.Text("Connection.PuttyConnection.PerformPostAction_Error"));
+						Log.Error("PuTTY Connection: Error establishing connection.");
                                    this.Disconnect();
                                    return;
                                }
 
-                               Log.Info(Localization.Text("Connection.PuttyConnection.PerformPostAction_Info"));
+					Log.Info("PuTTY Connection: Connection has been established successfully.");
                            }).Start();
 
             this.connected = true;

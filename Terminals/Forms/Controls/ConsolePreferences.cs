@@ -2,7 +2,7 @@
 {
     using System;
     using System.Windows.Forms;
-    using Kohl.Framework.Localization;
+
     using Terminals.Configuration.Files.Main.Favorites;
 
     public partial class ConsolePreferences : UserControl
@@ -10,7 +10,6 @@
         public ConsolePreferences()
         {
             this.InitializeComponent();
-            Localization.SetLanguage(this);
         }
 
         public void FillControls(FavoriteConfigurationElement favorite)

@@ -2,7 +2,7 @@ using System;
 using System.Drawing;
 using System.Windows.Forms;
 using AxMicrosoft.VMRCClientControl.Interop;
-using Kohl.Framework.Localization;
+
 using Kohl.Framework.Logging;
 using Microsoft.VMRCClientControl.Interop;
 using Terminals.Configuration.Files.Main.Favorites;
@@ -61,7 +61,7 @@ namespace Terminals.Connections
                 }
                 catch (Exception ex)
                 {
-                    Log.Fatal(Localization.Text("Connections.VMRCConnection.Connect_Fatal"), ex);
+					Log.Fatal("It seems that your VMRC COM components are not registered. Please run the 'RegisterVMRC.bat' in your %TITLE% directory as administrator to register the components.", ex);
                     return false;
                 }
 
@@ -101,9 +101,9 @@ namespace Terminals.Connections
                 this.vmrc.OnSwitchedDisplay += this.vmrc_OnSwitchedDisplay;
 
                 if (this.InvokeRequired)
-                    this.Invoke(new MethodInvoker(delegate { this.Text = Localization.Text("Connections.VMRCConnection.Connect_Info"); }));
+					this.Invoke(new MethodInvoker(delegate { this.Text = "Connecting to VMRC server ..."; }));
                 else
-                    this.Text = Localization.Text("Connections.VMRCConnection.Connect_Info");
+					this.Text = "Connecting to VMRC server ...";
 
                 this.vmrc.Connect();
 
@@ -112,7 +112,7 @@ namespace Terminals.Connections
             catch (Exception exc)
             {
                 Log.Fatal(
-                    string.Format(Localization.Text("Connections.HTTPConnection.Connect_Error2"), this.Favorite.Protocol),
+					string.Format("Terminals was unable to create the {0} connection.", this.Favorite.Protocol),
                     exc);
                 return this.connected = false;
             }
@@ -133,12 +133,12 @@ namespace Terminals.Connections
             else
             {
                 if (e.state == VMRCState.vmrcState_ConnectionFailed)
-                    Log.Fatal(string.Format(Localization.Text("Connections.VMRCConnection.OnStateChanged_Fatal1"),
-                                            this.Favorite.Name));
+					Log.Fatal(string.Format("VMRC connection '{0}' failed.",
+						this.Favorite.Name));
 
                 if (e.state == VMRCState.vmrcState_NotConnected)
-                    Log.Fatal(string.Format(Localization.Text("Connections.VMRCConnection.OnStateChanged_Fatal2"),
-                                            this.Favorite.Name));
+					Log.Fatal(string.Format("VMRC connection '{0}' has been closed.",
+						this.Favorite.Name));
 
                 this.connected = false;
 
@@ -165,7 +165,7 @@ namespace Terminals.Connections
             catch (Exception ex)
             {
                 Log.Error(
-                    string.Format(Localization.Text("Connection.ExternalConnection.Disconnect"), this.Favorite.Protocol,
+					string.Format("Unable to disconnect form the {0} connection named \"{1}\".", this.Favorite.Protocol,
                                   this.Favorite.Name), ex);
             }
         }

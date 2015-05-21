@@ -4,7 +4,7 @@ using System.Drawing;
 using System.Threading;
 using System.Windows.Forms;
 using Kohl.Framework.Info;
-using Kohl.Framework.Localization;
+
 using Kohl.Framework.Logging;
 using Terminals.Configuration.Files.Main.Settings;
 using Terminals.Properties;
@@ -410,6 +410,26 @@ namespace Terminals.Connections
             return hDialog;
         }
 
+        public override void Disconnect()
+        {
+      		System.Diagnostics.Process.GetProcessById(process.Id).Kill();
+        	
+        	if (this.HWnd != IntPtr.Zero)
+            {
+                // close the window using API
+                SendMessage(this.HWnd, 0x0112 /* WM_SYSCOMMAND */, 0xF060 /* SC_CLOSE */, null);
+            }
+        	
+            System.Collections.Generic.List<IntPtr> list = GetChildWindows(this.TerminalTabPage.Controls[0].Handle);
+            foreach (IntPtr ptr in list)
+            {
+                // close the window using API
+                SendMessage(ptr, 0x0112 /* WM_SYSCOMMAND */, 0xF060 /* SC_CLOSE */, null);
+            }
+            
+            base.Disconnect();
+        }
+        
         private IntPtr GetSessionDukeessionDialog(int attempts = 1000)
         {
             // ***** FIND THE CONNECTION INFORMATION DIALOG, EMBED IT AND HIDE THE CANCEL BUTTON *****
@@ -522,7 +542,7 @@ namespace Terminals.Connections
                 if (!this.Favorite.Credential.IsSetUserName)
                 {
                     this.Disconnect();
-                    string error = Localization.Text("Connection.RAdminConnection_PerformPostAction_MissingUserName");
+					string error = "Please enter the user name in your RAdmin connection properties.";
                     MessageBox.Show(error, AssemblyInfo.Title(), MessageBoxButtons.OK, MessageBoxIcon.Error);
                     Log.Error(error);
                     this.Disconnect();
@@ -533,7 +553,7 @@ namespace Terminals.Connections
                 if (!this.Favorite.Credential.IsSetPassword)
                 {
                     this.Disconnect();
-                    string error = Localization.Text("Connection.RAdminConnection_PerformPostAction_MissingPassword");
+					string error = "Please enter the password in your RAdmin connection properties.";
                     MessageBox.Show(error, AssemblyInfo.Title(), MessageBoxButtons.OK, MessageBoxIcon.Error);
                     Log.Error(error);
                     this.Disconnect();
@@ -543,7 +563,7 @@ namespace Terminals.Connections
 
                 if (!this.Favorite.Credential.IsSetDomainName)
                 {
-                    Log.Warn(Localization.Text("Connection.RAdminConnection_PerformPostAction_MissingDomainName"));
+					Log.Warn("Attention: The domain hasn't been set in your RAdmin connection properties. The connection will be established without the domain name.");
                 }
 
                 Application.DoEvents();

@@ -2,7 +2,7 @@ using System;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
-using Kohl.Framework.Localization;
+
 using Kohl.Framework.Logging;
 
 namespace Terminals.Network.WhoIs
@@ -15,7 +15,7 @@ namespace Terminals.Network.WhoIs
         public static String Whois(String domain, String host)
         {
             if (domain == null)
-                return Localization.Text("Network.WhoIs.WhoisResolver_NoDomain");
+                return "No domain specified.";
 
             String ret = String.Empty;
             Socket s = null;
@@ -39,7 +39,7 @@ namespace Terminals.Network.WhoIs
             }
             catch (Exception e)
             {
-                Log.Error(Localization.Text("Network.WhoIs.WhoisResolver_Error"), e);
+				Log.Error("Could not connect to the WhoIs server. Check if you are allowed to use port 43 or please try again later.", e);
             }
             finally
             {

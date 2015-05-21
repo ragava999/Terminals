@@ -1,4 +1,4 @@
-﻿using Kohl.Framework.Localization;
+﻿
 using Terminals.Configuration.Files.Main.Favorites;
 using Terminals.Connection.Manager;
 using Terminals.Connection.Panels.FavoritePanels;
@@ -22,7 +22,6 @@ namespace Terminals.Panels.FavoritePanels
         public GenericFavoritePanel()
         {
             this.InitializeComponent();
-            Localization.SetLanguage(this);
         }
 
         public override void FillControls(FavoriteConfigurationElement favorite)

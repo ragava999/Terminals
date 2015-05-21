@@ -85,6 +85,37 @@ namespace Terminals.Configuration.Files.Main.Settings
         }
         #endregion
 
+        #region KeePass settings (2)
+        public static bool KeePassUse
+        {
+        	get { return !string.IsNullOrEmpty(KeePassPath) && !string.IsNullOrEmpty(KeePassPassword); }
+        }
+        
+        public static string KeePassPath
+        {
+            get { return GetSection().KeePassPath; }
+
+            set
+            {
+                GetSection().KeePassPath = value;
+                SaveImmediatelyIfRequested();
+            }
+        }
+
+        public static string KeePassPassword
+        {
+            get { return GetSection().KeePassPassword; }
+
+            set
+            {
+                GetSection().KeePassPassword = value;
+                SaveImmediatelyIfRequested();
+            }
+        }
+
+        #endregion
+
+        
         #region RAdmin settings
 
         public static string RAdminProgramPath
@@ -510,7 +541,7 @@ namespace Terminals.Configuration.Files.Main.Settings
             string newKeyMaterial = GetKeyMaterial(newMasterPassword);
             configSection.UpdatePasswordsByNewKeyMaterial(newKeyMaterial);
             UpdateFavoritePasswordsByNewKeyMaterial(newKeyMaterial);
-            StoredCredentials.Instance.UpdatePasswordsByNewKeyMaterial(newKeyMaterial);
+            StoredCredentials.UpdatePasswordsByNewKeyMaterial(newKeyMaterial);
         }
 
         public static Boolean IsMasterPasswordValid(string passwordToCheck)

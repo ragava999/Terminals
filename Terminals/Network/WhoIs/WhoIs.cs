@@ -2,7 +2,7 @@ using System;
 using System.Threading;
 using System.Windows.Forms;
 using Kohl.Framework.Info;
-using Kohl.Framework.Localization;
+
 
 namespace Terminals.Network.WhoIs
 {
@@ -12,7 +12,7 @@ namespace Terminals.Network.WhoIs
         {
             this.InitializeComponent();
             this.hostTextbox.Text = AssemblyInfo.Url;
-            Localization.SetLanguage(this);
+            
         }
 
         private void whoisButton_Click(object sender, EventArgs e)
@@ -73,8 +73,7 @@ namespace Terminals.Network.WhoIs
 
                     result =
                         String.Format(
-                            "{0}\r\n----------------------" + Localization.Text("Network.WhoIs.WhoIs_SubQuery") +
-                            ":{1}--------------------------\r\n{2}", result, newServer, newResults);
+                            "{0}\r\n----------------------Sub Query:{1}--------------------------\r\n{2}", result, newServer, newResults);
                 }
 
                 this.textBox2.Text = result;

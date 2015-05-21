@@ -164,6 +164,12 @@
       <LastGenOutput>Terminals.Designer.cs</LastGenOutput>
     </EntityDeploy>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\keepass2-master\KeePassLib\KeePassLib.csproj">
+      <Project>{53573E4E-33CB-4FDB-8698-C95F5E40E7F3}</Project>
+      <Name>KeePassLib</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

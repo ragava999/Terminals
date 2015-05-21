@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management;
-using Kohl.Framework.Localization;
+
 using Kohl.Framework.Logging;
 
 namespace Terminals.Network.DNS
@@ -21,7 +21,7 @@ namespace Terminals.Network.DNS
                 }
                 catch (Exception exc)
                 {
-                    Log.Error(Localization.Text("Network.DNS.AdapterInfo_Error"), exc);
+                    Log.Error("The DNS server lookup failed.", exc);
                 }
 
                 servers.Add("Google: 8.8.8.8");

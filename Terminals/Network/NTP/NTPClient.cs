@@ -20,7 +20,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Runtime.InteropServices;
 using System.Threading;
-using Kohl.Framework.Localization;
+
 using Kohl.Framework.Logging;
 
 namespace Terminals.Network.NTP
@@ -288,7 +288,7 @@ namespace Terminals.Network.NTP
                                 {
                                     val = "N/A";
                                     Log.Error(
-                                        string.Format(Localization.Text("Network.NTP.NTPClient.ReferenceID"), Address),
+								string.Format("Error parsing and looking up DNS for IP address '{0}'.", Address),
                                         e);
                                 }
 

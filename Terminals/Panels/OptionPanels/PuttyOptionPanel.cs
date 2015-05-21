@@ -1,5 +1,5 @@
 ﻿using Terminals.Connection.Panels.OptionPanels;
-using Kohl.Framework.Localization;
+
 using Terminals.Configuration.Files.Main.Settings;
 
 namespace Terminals.Panels.OptionPanels
@@ -9,7 +9,7 @@ namespace Terminals.Panels.OptionPanels
         public PuttyOptionPanel()
         {
             this.InitializeComponent();
-            Localization.SetLanguage(this);
+            
         }
 
         public override void LoadSettings()

@@ -5,7 +5,7 @@ namespace Terminals.Forms.Controls
     using System;
     using System.Collections.Generic;
     using System.Windows.Forms;
-    using Kohl.Framework.Localization;
+
     using Terminals.Configuration.Files.Main.Favorites;
     using Terminals.Configuration.Files.Main.Settings;
 
@@ -15,7 +15,7 @@ namespace Terminals.Forms.Controls
     /// </summary>
     public class ImportWithDialogs
     {
-        private static readonly string importSuffix = Localization.Text("Forms.Controls.ImportWithDialogs_Imported");
+        private static readonly string importSuffix = "_imported";
         private readonly Form sourceForm;
 
         public bool SaveInDB { get; set; }
@@ -38,14 +38,14 @@ namespace Terminals.Forms.Controls
 
         private static void ShowImportResultMessage(Int32 importedItemsCount)
         {
-            string message = Localization.Text("Forms.Controls.ImportWithDialogs.ShowImportResultMessage_Singular");
+			string message = "1 item has been added to your favorites.";
 
             if (importedItemsCount > 1)
                 message =
-                    String.Format(Localization.Text("Forms.Controls.ImportWithDialogs.ShowImportResultMessage_Plural"),
+					String.Format("{0} items have been added to your favorites.",
                                   importedItemsCount);
 
-            MessageBox.Show(message, Localization.Text("Forms.Controls.ImportWithDialogs.ShowImportResultMessage"),
+			MessageBox.Show(message, "Terminals - Import result",
                             MessageBoxButtons.OK);
         }
 
@@ -97,9 +97,9 @@ namespace Terminals.Forms.Controls
                 overwriteResult =
                     MessageBox.Show(
                         String.Format(
-                            Localization.Text("Forms.Controls.ImportWithDialogs.AskIfOverwriteOrRename_Message"),
+							"There are {0} connections to import, which already exist.\nDo you want to rename them?\nSelect\n   -&gt; Yes to rename the newly imported items with \"{1}\" suffix\n   -&gt; No to overwrite existing items\n   -&gt; Cancel to interupt the import",
                             conflictingFavoritesCount, importSuffix),
-                        Localization.Text("Forms.Controls.ImportWithDialogs.AskIfOverwriteOrRename_Caption"),
+						"Terminals - conflicts found in import",
                         MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
             }
 

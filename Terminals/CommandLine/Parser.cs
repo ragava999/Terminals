@@ -7,7 +7,7 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text;
 using Kohl.Framework.Info;
-using Kohl.Framework.Localization;
+
 using Kohl.Framework.Logging;
 
 namespace Terminals.CommandLine
@@ -290,7 +290,7 @@ namespace Terminals.CommandLine
 
         private void ReportUnrecognizedArgument(string argument)
         {
-            this.reporter(string.Format(Localization.Text("CommandLine.Parser.ReportUnrecognizedArgument"), argument));
+            this.reporter(string.Format("Unrecognized command line argument '{0}'", argument));
         }
 
         /// <summary>
@@ -307,7 +307,7 @@ namespace Terminals.CommandLine
                 foreach (string argument in args)
                 {
                     // Skip the program name if we use the Parser.HelpArgument
-                    // Localization.Text("CommandLine.Parser.ReportUnrecognizedArgument")
+                    // "CommandLine.Parser.ReportUnrecognizedArgument")
                     // e.g. Error: Das Kommandozeilenargument 'terminals.exe' konnte nicht erkannt werden.
                     // e.g. Error: Unrecognized command line argument 'terminals.exe'
                     if (argument.ToLower().Contains(AssemblyInfo.Title().ToLower() + ".exe") | argument.ToLower().Contains(AssemblyInfo.Title().ToLower() + ".vshost.exe"))
@@ -510,8 +510,7 @@ namespace Terminals.CommandLine
                 strings[index] = GetHelpStrings(arg);
                 index++;
             }
-            strings[index++] = new ArgumentHelpStrings("@<file>",
-                                                       Localization.Text("CommandLine.Parser.GetAllHelpStrings"));
+            strings[index++] = new ArgumentHelpStrings("@<file>","Read response file for more options");
             if (this.defaultArgument != null)
                 strings[index++] = GetHelpStrings(this.defaultArgument);
 
@@ -544,7 +543,7 @@ namespace Terminals.CommandLine
             }
             catch (Exception e)
             {
-                string msg = string.Format(Localization.Text("CommandLine.Parser.LexFileArguments"), fileName, e.Message);
+                string msg = string.Format("Error: Can't open command line argument file '{0}' : '{1}'", fileName, e.Message);
                 Log.Info(msg, e);
                 this.reporter(msg);
                 arguments = null;
@@ -628,7 +627,7 @@ namespace Terminals.CommandLine
                 // got EOF 
                 if (inQuotes)
                 {
-                    string msg = string.Format(Localization.Text("CommandLine.Parser.LexFileArguments_Error"), fileName);
+                    string msg = string.Format("Error: Unbalanced '\"' in command line argument file '{0}'", fileName);
                     Log.Info(msg, exc);
                     this.reporter(msg);
                     hadError = true;
@@ -746,20 +745,6 @@ namespace Terminals.CommandLine
                 {
                     this.collectionValues = new ArrayList();
                 }
-
-                Debug.Assert(!string.IsNullOrEmpty(this.longName));
-                Debug.Assert(!this.isDefault || !this.ExplicitShortName);
-                Debug.Assert(!this.IsCollection || this.AllowMultiple,
-                             Localization.Text("CommandLine.Parser.Arguments_Error1"));
-                Debug.Assert(!this.Unique || this.IsCollection, Localization.Text("CommandLine.Parser.Arguments_Error2"));
-                Debug.Assert(IsValidElementType(this.Type) ||
-                             IsCollectionType(this.Type));
-                Debug.Assert((this.IsCollection && IsValidElementType(this.elementType)) ||
-                             (!this.IsCollection && this.elementType == null));
-                Debug.Assert(!(this.IsRequired && this.HasDefaultValue),
-                             Localization.Text("CommandLine.Parser.Arguments_Error3"));
-                Debug.Assert(!this.HasDefaultValue || (this.defaultValue.GetType() == field.FieldType),
-                             Localization.Text("CommandLine.Parser.Arguments_Error4"));
             }
 
             private Type ValueType
@@ -820,7 +805,7 @@ namespace Terminals.CommandLine
                     {
                         if (builder.Length > 0)
                             builder.Append(" ");
-                        builder.Append(Localization.Text("CommandLine.Parser.FullHelpText_DefaultValue") + ":'");
+                        builder.Append("Default value:'");
                         this.AppendValue(builder, this.DefaultValue);
                         builder.Append('\'');
                     }
@@ -828,7 +813,7 @@ namespace Terminals.CommandLine
                     {
                         if (builder.Length > 0)
                             builder.Append(" ");
-                        builder.Append("(" + Localization.Text("CommandLine.Parser.FullHelpText_ShortForm") + " /");
+                        builder.Append("(Short Form /");
                         builder.Append(this.ShortName);
                         builder.Append(")");
                     }
@@ -949,11 +934,11 @@ namespace Terminals.CommandLine
                 {
                     if (this.IsDefault)
                         this.reporter(
-                            string.Format(Localization.Text("CommandLine.Parser.ReportMissingRequiredArgument_Error1"),
+                            string.Format("Missing required argument '&lt;{0}&gt;'.",
                                           this.LongName));
                     else
                         this.reporter(
-                            string.Format(Localization.Text("CommandLine.Parser.ReportMissingRequiredArgument_Error2"),
+                            string.Format("Missing required argument '/{0}'.",
                                           this.LongName));
                     return true;
                 }
@@ -962,7 +947,7 @@ namespace Terminals.CommandLine
 
             private void ReportDuplicateArgumentValue(string value)
             {
-                this.reporter(string.Format(Localization.Text("CommandLine.Parser.ReportDuplicateArgumentValue"),
+                this.reporter(string.Format("Duplicate '{0}' argument '{1}'",
                                             this.LongName, value));
             }
 
@@ -970,7 +955,7 @@ namespace Terminals.CommandLine
             {
                 if (this.SeenValue && !this.AllowMultiple)
                 {
-                    this.reporter(string.Format(Localization.Text("CommandLine.Parser.SetValue"), this.LongName));
+                    this.reporter(string.Format("Duplicate '{0}' argument.", this.LongName));
                     return false;
                 }
                 this.seenValue = true;
@@ -997,7 +982,7 @@ namespace Terminals.CommandLine
 
             private void ReportBadArgumentValue(string value)
             {
-                this.reporter(string.Format(Localization.Text("CommandLine.Parser.ReportBadArgumentValue"), value,
+                this.reporter(string.Format("'{0}' is not a valid value for the '{1}' command line option.", value,
                                             this.LongName));
             }
 
@@ -1046,8 +1031,8 @@ namespace Terminals.CommandLine
                     }
                     catch (Exception exc)
                     {
-                        this.reporter(Localization.Text("CommandLine.Parser.ParseValue") + " " + exc.Message);
-                        //Terminals.Configuration.Logging.Log.Error(Localization.Text("CommandLine.Parser.ParseValue"), exc);
+                        this.reporter("Failed parsing commandline arguments. " + exc.Message);
+                        //Terminals.Configuration.Logging.Log.Error("CommandLine.Parser.ParseValue"), exc);
                     }
                 }
 

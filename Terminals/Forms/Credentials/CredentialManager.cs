@@ -1,9 +1,10 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 using Kohl.Framework.Info;
-using Kohl.Framework.Localization;
+
 using Terminals.Configuration.Files.Credentials;
 
 namespace Terminals.Forms.Credentials
@@ -14,9 +15,14 @@ namespace Terminals.Forms.Credentials
         {
             this.InitializeComponent();
             this.Text = AssemblyInfo.Title() + " - " +
-                        Localization.Text("Credentials.Credential.CredentialManager_Caption");
-            StoredCredentials.Instance.CredentialsChanged += this.CredentialsChanged;
-            Localization.SetLanguage(this);
+                        "Credential manager";
+            StoredCredentials.CredentialsChanged += this.CredentialsChanged;
+                        
+            if (Terminals.Configuration.Files.Main.Settings.Settings.KeePassUse)
+            {
+            	AddButton.Enabled = false;
+            	DeleteButton.Enabled = false;
+            }
         }
 
         private void CredentialsChanged(object sender, EventArgs e)
@@ -27,8 +33,8 @@ namespace Terminals.Forms.Credentials
         private void BindList()
         {
             this.CredentialsListView.Items.Clear();
-            List<CredentialSet> credentials = StoredCredentials.Instance.Items;
-
+            List<CredentialSet> credentials = StoredCredentials.Items;   
+            
             foreach (CredentialSet credential in credentials)
             {
                 ListViewItem item = new ListViewItem(credential.Name);
@@ -71,7 +77,7 @@ namespace Terminals.Forms.Credentials
             if (this.CredentialsListView.SelectedItems != null && this.CredentialsListView.SelectedItems.Count > 0)
             {
                 string name = this.CredentialsListView.SelectedItems[0].Text;
-                return StoredCredentials.Instance.GetByName(name);
+                return StoredCredentials.GetByName(name);
             }
 
             return null;
@@ -100,13 +106,12 @@ namespace Terminals.Forms.Credentials
             {
                 if (
                     MessageBox.Show(
-                        string.Format(Localization.Text("Credentials.Credential.CredentialManager.DeleteButton_Click"),
-                                      toRemove.Name),
-                        Localization.Text("Credentials.Credential.CredentialManager_Caption"), MessageBoxButtons.YesNo) ==
+                        string.Format("Are you sure you want to delete credential {0}?",
+                                      toRemove.Name), "Credential manager", MessageBoxButtons.YesNo) ==
                     DialogResult.Yes)
                 {
-                    StoredCredentials.Instance.Remove(toRemove);
-                    StoredCredentials.Instance.Save();
+                    StoredCredentials.Remove(toRemove);
+                    StoredCredentials.Save();
                     this.BindList();
                 }
             }
@@ -114,7 +119,7 @@ namespace Terminals.Forms.Credentials
 
         private void CredentialManager_FormClosed(object sender, FormClosedEventArgs e)
         {
-            StoredCredentials.Instance.CredentialsChanged -= this.CredentialsChanged;
+            StoredCredentials.CredentialsChanged -= this.CredentialsChanged;
         }
     }
 }

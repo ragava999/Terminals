@@ -1,7 +1,7 @@
 using System;
 using System.Drawing;
 using System.Windows.Forms;
-using Kohl.Framework.Localization;
+
 using Kohl.Framework.Logging;
 using Terminals.Configuration.Files.Main.Favorites;
 using Terminals.Properties;
@@ -64,9 +64,9 @@ namespace Terminals.Connections
                 this.rd.GetPassword = this.VNCPassword;
 
                 if (this.InvokeRequired)
-                    this.Invoke(new MethodInvoker(delegate { this.Text = Localization.Text("Connections.VNCConnection.Connect_Info"); }));
+					this.Invoke(new MethodInvoker(delegate { this.Text = "Connecting to VNC server ..."; }));
                 else
-                    this.Text = Localization.Text("Connections.VNCConnection.Connect_Info");
+					this.Text = "Connecting to VNC server ...";
 
                 if (this.rd.InvokeRequired)
                     this.rd.Invoke(new MethodInvoker(delegate { this.rd.Connect(this.Favorite.ServerName, this.Favorite.VncDisplayNumber, this.Favorite.VncViewOnly, this.Favorite.VncAutoScale);  }));
@@ -78,7 +78,7 @@ namespace Terminals.Connections
             }
             catch (Exception exc)
             {
-                Log.Error(Localization.Text("Connections.VNCConnection.Connect_Error"), exc);
+				Log.Error("Error occured while connecting to the VNC server.", exc);
                 return this.connected = false;
             }
         }
@@ -111,7 +111,7 @@ namespace Terminals.Connections
             catch (Exception ex)
             {
                 Log.Fatal(
-                    string.Format(Localization.Text("Connections.HTTPConnection.Connect_Error2"), this.Favorite.Protocol),
+					string.Format("Terminals was unable to create the {0} connection.", this.Favorite.Protocol),
                     ex);
             }
             // Change the Form's title to match desktop name
@@ -127,7 +127,7 @@ namespace Terminals.Connections
             catch (Exception ex)
             {
                 Log.Error(
-                    string.Format(Localization.Text("Connection.ExternalConnection.Disconnect"), this.Favorite.Protocol,
+					string.Format("Unable to disconnect form the {0} connection named \"{1}\".", this.Favorite.Protocol,
                                   this.Favorite.Name), ex);
             }
         }

@@ -1,7 +1,7 @@
 using System;
 using System.Drawing;
 using System.Windows.Forms;
-using Kohl.Framework.Localization;
+
 using Kohl.Framework.Logging;
 using Terminals.Network.Pcap;
 
@@ -30,7 +30,7 @@ namespace Terminals.Connections
                 this.PcapTabPage.Padding = new Padding(3);
                 this.PcapTabPage.Size = new Size(886, 309);
                 this.PcapTabPage.TabIndex = 15;
-                this.PcapTabPage.Text = Localization.Text("Connections.TabbedTools.TabbedTools_Text");
+				this.PcapTabPage.Text = "Packets";
                 this.PcapTabPage.UseVisualStyleBackColor = true;
                 // 
                 // packetCapture1
@@ -46,14 +46,12 @@ namespace Terminals.Connections
                 this.PcapTabPage.Controls.Clear();
                 Label l = new Label
                               {
-                                  Text = Localization.Text("Connections.TabbedTools.TabbedTools"),
+					Text = "The software \"WinPCap\" is either not installed or not supported on this version of windows.",
                                   Dock = DockStyle.Top
                               };
                 this.PcapTabPage.Controls.Add(l);
                 Log.Info(l.Text, ex);
             }
-
-            Localization.SetLanguage(this, true);
         }
 
         public new void Dispose()

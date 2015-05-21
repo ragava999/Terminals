@@ -271,7 +271,7 @@
     <value>Connected</value>
   </data>
   <data name="Connection.RASProperties.UpdateStats_ConnectionDuration" xml:space="preserve">
-    <value>Connection duration: {0} days, {1} hours, {2} minutes, {3} seconds</value>
+    <value></value>
   </data>
   <data name="Connection.RASProperties.UpdateStats_ConnectionStatus" xml:space="preserve">
     <value>Connection status</value>

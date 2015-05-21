@@ -66,7 +66,7 @@ namespace Terminals.Configuration.Files.Main.Favorites
         {
             Settings.Settings.AssignSynchronizationObject(synchronizer);
             ConnectionHistory.Instance.AssignSynchronizationObject(synchronizer);
-            StoredCredentials.Instance.AssignSynchronizationObject(synchronizer);
+            StoredCredentials.AssignSynchronizationObject(synchronizer);
         }
 
         private void OnConfigFileReloaded(ConfigurationChangedEventArgs args)

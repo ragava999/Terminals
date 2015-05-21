@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using Kohl.Framework.Lists;
-using Kohl.Framework.Localization;
+
 using Terminals.Configuration.Files.Main.Favorites;
 using Terminals.Configuration.Files.Main.Settings;
 using Terminals.Forms.Controls;
@@ -25,8 +25,6 @@ namespace Terminals.Network.AD
 
             SortableList<ActiveDirectoryComputer> computers = new SortableList<ActiveDirectoryComputer>();
             this.bsComputers.DataSource = computers;
-
-            Localization.SetLanguage(this);
         }
 
         private void ImportFromAD_Load(object sender, EventArgs e)
@@ -43,20 +41,20 @@ namespace Terminals.Network.AD
             {
                 this.bsComputers.Clear();
                 this.adClient.FindComputers(this.domainTextbox.Text);
-                this.lblProgressStatus.Text = Localization.Text("Network.AD.ImportFromAD.ScanADButton_Message1");
+                this.lblProgressStatus.Text = "Contacting domain ...";
                 this.SwitchToRunningMode();
             }
             else
             {
                 this.adClient.Stop();
-                this.lblProgressStatus.Text = Localization.Text("Network.AD.ImportFromAD.ScanADButton_Message2");
+                this.lblProgressStatus.Text = "Canceling scan ...";
             }
         }
 
         private void SwitchToRunningMode()
         {
             this.progressBar1.Visible = true;
-            this.ButtonScanAD.Text = Localization.Text("Network.AD.ImportFromAD.SwitchToRunningMode");
+            this.ButtonScanAD.Text = "Stop";
             this.btnSelectAll.Enabled = false;
             this.btnSelectNone.Enabled = false;
             this.ButtonImport.Enabled = false;
@@ -65,7 +63,7 @@ namespace Terminals.Network.AD
         private void SwitchToStoppedMode()
         {
             this.progressBar1.Visible = false;
-            this.ButtonScanAD.Text = Localization.Text("Network.AD.ImportFromAD.SwitchToStoppedMode");
+            this.ButtonScanAD.Text = "Scan";
             this.btnSelectAll.Enabled = true;
             this.btnSelectNone.Enabled = true;
             this.ButtonImport.Enabled = true;
@@ -81,7 +79,7 @@ namespace Terminals.Network.AD
             {
                 this.bsComputers.Add(computer);
                 this.lblProgressStatus.Text =
-                    String.Format(Localization.Text("Network.AD.ImportFromAD.OnClientComputerFound"),
+                    String.Format("Scaning... {0} computers found.",
                                   this.bsComputers.Count);
                 this.gridComputers.Refresh();
             }
@@ -98,13 +96,13 @@ namespace Terminals.Network.AD
                 if (success)
                 {
                     this.lblProgressStatus.Text =
-                        String.Format(Localization.Text("Network.AD.ImportFromAD.OnClientComputersDone"),
+                        String.Format("Scan complete, {0} computers found.",
                                       this.bsComputers.Count);
                 }
                 else
                 {
                     this.lblProgressStatus.Text =
-                        Localization.Text("Network.AD.ImportFromAD.OnClientComputersDone_Cancel");
+                        "Scan canceled.";
                 }
 
                 this.SwitchToStoppedMode();

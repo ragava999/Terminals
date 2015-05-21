@@ -41,7 +41,7 @@ namespace Terminals.Configuration.Files.Main.Favorites
         {
             get
             {
-                CredentialSet cred = StoredCredentials.Instance.GetByName(this.XmlCredentialSetName);
+                CredentialSet cred = StoredCredentials.GetByName(this.XmlCredentialSetName);
                 if (cred != null)
                     return cred.SecretKey;
 
@@ -55,7 +55,7 @@ namespace Terminals.Configuration.Files.Main.Favorites
                     return;
                 }
 
-                CredentialSet cred = StoredCredentials.Instance.GetByName(this.XmlCredentialSetName);
+                CredentialSet cred = StoredCredentials.GetByName(this.XmlCredentialSetName);
 
                 if (cred == null)
                 {
@@ -240,7 +240,7 @@ namespace Terminals.Configuration.Files.Main.Favorites
         {
             internal get
             {
-                CredentialSet cred = StoredCredentials.Instance.GetByName(this.XmlCredentialSetName);
+                CredentialSet cred = StoredCredentials.GetByName(this.XmlCredentialSetName);
                 if (cred != null)
                     return cred.Domain;
 
@@ -254,7 +254,7 @@ namespace Terminals.Configuration.Files.Main.Favorites
                     return;
                 }
 
-                CredentialSet cred = StoredCredentials.Instance.GetByName(this.XmlCredentialSetName);
+                CredentialSet cred = StoredCredentials.GetByName(this.XmlCredentialSetName);
 
                 if (cred == null)
                 {
@@ -281,7 +281,7 @@ namespace Terminals.Configuration.Files.Main.Favorites
             {
                 if (!string.IsNullOrEmpty(this.XmlCredentialSetName))
                 {
-                    CredentialSet cred = StoredCredentials.Instance.GetByName(this.XmlCredentialSetName);
+                    CredentialSet cred = StoredCredentials.GetByName(this.XmlCredentialSetName);
 
                     if (cred != null)
                         return cred.Username;
@@ -299,7 +299,7 @@ namespace Terminals.Configuration.Files.Main.Favorites
                     return;
                 }
 
-                CredentialSet cred = StoredCredentials.Instance.GetByName(this.XmlCredentialSetName);
+                CredentialSet cred = StoredCredentials.GetByName(this.XmlCredentialSetName);
 
                 if (cred == null)
                 {

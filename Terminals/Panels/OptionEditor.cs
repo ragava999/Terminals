@@ -5,7 +5,7 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using Kohl.Framework.Logging;
-using Kohl.Framework.Localization;
+
 using Terminals.Configuration.Files.Main.Settings;
 using Terminals.Connection.Manager;
 using Terminals.Connection.Native;
@@ -77,7 +77,7 @@ namespace Terminals.Panels
 
             this.UpdateLookAndFeel();
 
-            Localization.SetLanguage(this);
+            
         }
 
         private void SettingsConfigFileReloaded(ConfigurationChangedEventArgs args)

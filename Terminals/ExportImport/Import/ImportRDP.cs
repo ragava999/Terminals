@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using Kohl.Framework.Localization;
+
 using Kohl.Framework.Logging;
 using Terminals.Configuration.Files.Main.Favorites;
 
@@ -65,7 +65,7 @@ namespace Terminals.ExportImport.Import
             }
             catch (Exception exception)
             {
-                Log.Error(Localization.Text("ExportImport.Import.ImportRDP.IImport.ImportFavorites"), exception);
+                Log.Error("The RDP import failed.", exception);
                 return new List<FavoriteConfigurationElement>();
             }
         }

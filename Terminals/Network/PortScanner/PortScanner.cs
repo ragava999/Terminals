@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Net;
 using System.Threading;
 using System.Windows.Forms;
-using Kohl.Framework.Localization;
+
 using Kohl.Framework.Logging;
 using Metro;
 using Metro.Scanning;
@@ -92,7 +92,7 @@ namespace Terminals.Network.PortScanner
                             }
                             catch (Exception exc)
                             {
-                                Log.Error(Localization.Text("Network.PortScanner.PortScanner.ScanSubnet"), exc);
+								Log.Error("Error scanning the IP subset.", exc);
                             }
                         }
                     }
@@ -117,8 +117,8 @@ namespace Terminals.Network.PortScanner
             }
             catch (Exception ex)
             {
-                Log.Warn(Localization.Text("Network.PortScanner.PortScanner.ScanMachine"), ex);
-                MessageBox.Show(Localization.Text("Network.PortScanner.PortScanner.ScanMachine") + Environment.NewLine + ex.Message, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				Log.Warn("Error occured while trying to scan the target machine.", ex);
+				MessageBox.Show("Error occured while trying to scan the target machine." + Environment.NewLine + ex.Message, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
 
             if (!this.IsDisposed)
@@ -147,7 +147,7 @@ namespace Terminals.Network.PortScanner
             }
             catch (Exception exc)
             {
-                Log.Error(Localization.Text("Network.PortScanner.PortScanner.PortScanner_Load"), exc);
+				Log.Error("Error connecting to the network interfaces.", exc);
             }
         }
 
@@ -182,11 +182,11 @@ namespace Terminals.Network.PortScanner
             if (this.resultsGridView.Columns == null || this.resultsGridView.Columns.Count == 0)
             {
                 this.resultsGridView.Columns.Add(
-                    Localization.Text("Network.PortScanner.PortScanner.UpdateConnections_EndPoint"),
-                    Localization.Text("Network.PortScanner.PortScanner.UpdateConnections_EndPoint"));
+					"End point",
+					"End point");
                 this.resultsGridView.Columns.Add(
-                    Localization.Text("Network.PortScanner.PortScanner.UpdateConnections_State"),
-                    Localization.Text("Network.PortScanner.PortScanner.UpdateConnections_State"));
+					"State",
+					"State");
             }
 
             lock (this.resultsLock)
@@ -209,7 +209,7 @@ namespace Terminals.Network.PortScanner
 
             this.ScanResultsLabel.Text =
                 string.Format(
-                    Localization.Text("Network.PortScanner.PortScanner.UpdateConnections_OutstandingRequests"),
+					"Outstanding requests: {0}",
                     this.Counter);
         }
 

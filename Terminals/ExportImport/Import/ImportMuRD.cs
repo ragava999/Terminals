@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using System.IO;
-using Kohl.Framework.Localization;
+
 using Terminals.Configuration.Files.Main.Favorites;
 
 namespace Terminals.ExportImport.Import
@@ -154,7 +154,7 @@ namespace Terminals.ExportImport.Import
 
         public string Name
         {
-            get { return Localization.Text("ExportImport.Import.ImportMuRD.Name"); }
+            get { return "Multiple Remote Desktops Manager"; }
         }
 
         public string KnownExtension

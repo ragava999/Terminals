@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
-using Kohl.Framework.Localization;
+
 using Terminals.Configuration.Files.Main.Settings;
 using Terminals.Connection.Panels.OptionPanels;
 
@@ -11,7 +11,6 @@ namespace Terminals.Panels.OptionPanels
         public ConnectCommandOptionPanel()
         {
             this.InitializeComponent();
-            Localization.SetLanguage(this);
         }
 
         public override void LoadSettings()

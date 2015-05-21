@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
-using Kohl.Framework.Localization;
+
 using Terminals.Configuration.Files.Main.Favorites;
 
 namespace Terminals.Forms.Controls
@@ -10,7 +10,7 @@ namespace Terminals.Forms.Controls
         public TabColorPreferences()
         {
             this.InitializeComponent();
-            Localization.SetLanguage(this);
+
         }
 
         public void FillControls(FavoriteConfigurationElement favorite)

@@ -1,6 +1,6 @@
 using System;
 using System.Windows.Forms;
-using Kohl.Framework.Localization;
+
 
 namespace Terminals.Network.NTP
 {
@@ -24,7 +24,7 @@ namespace Terminals.Network.NTP
 
             this.propertyGrid1.SelectedObject = client;
 
-            Localization.SetLanguage(this);
+            
         }
 
         private void UpdateButton_Click(object sender, EventArgs e)

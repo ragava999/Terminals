@@ -7,7 +7,7 @@ using System.Threading;
 using System.Windows.Forms;
 using Be.Windows.Forms;
 using Kohl.Framework.Info;
-using Kohl.Framework.Localization;
+
 using Kohl.Framework.Logging;
 using SharpPcap;
 using SharpPcap.LibPcap;
@@ -29,7 +29,7 @@ namespace Terminals.Network.Pcap
         public PacketCapture()
         {
             this.InitializeComponent();
-            Localization.SetLanguage(this);
+            
         }
 
         public new void Dispose()
@@ -65,17 +65,17 @@ namespace Terminals.Network.Pcap
                 this.Enabled = false;
                 if (exc is BadImageFormatException)
                 {
-                    Log.Info(Localization.Text("Network.Pcap.PacketCapture_Info1"), exc);
-                    MessageBox.Show(Localization.Text("Network.Pcap.PacketCapture_Info1"), AssemblyInfo.Title(), MessageBoxButtons.OK, MessageBoxIcon.Information);
+					Log.Info("Terminals packet capture is not configured to work with this system (Bad Image Format Exception)", exc);
+					MessageBox.Show("Terminals packet capture is not configured to work with this system (Bad Image Format Exception)", AssemblyInfo.Title(), MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else if (exc is DllNotFoundException)
                 {
-                    Log.Info(Localization.Text("Network.Pcap.PacketCapture_Info2"), exc);
+                    Log.Info("Network.Pcap.PacketCapture_Info2", exc);
                     if (
                         MessageBox.Show(
-                            Localization.Text("Network.Pcap.PacketCapture_Info2") + " " +
-                            Localization.Text("Network.Pcap.PacketCapture_Question1"),
-                            Localization.Text("Network.Pcap.PacketCapture_Question2"), MessageBoxButtons.OKCancel) ==
+							"It appears that WinPcap is not installed.  In order to use this feature within Terminals you must first install that product. " +
+							"Do you wish to visit the download location right now?",
+							"Download WinPcap?", MessageBoxButtons.OKCancel) ==
                         DialogResult.OK)
                     {
                         Process.Start("http://www.winpcap.org/install/default.htm");
@@ -83,7 +83,7 @@ namespace Terminals.Network.Pcap
                 }
                 else
                 {
-                    Log.Info(Localization.Text("Network.Pcap.PacketCapture_Info3"), exc);
+                    Log.Info("Network.Pcap.PacketCapture_Info3", exc);
                 }
             }
             this.PacketCapture_Resize(null, null);
@@ -106,10 +106,10 @@ namespace Terminals.Network.Pcap
             }
             catch (Exception exc)
             {
-                MessageBox.Show(string.Format(Localization.Text("Network.Pcap.PacketCapture.StartCapture"),
+				MessageBox.Show(string.Format("Failed to set the filter {0}.",
                                               this.FilterTextBox.Text));
                 Log.Info(
-                    string.Format(Localization.Text("Network.Pcap.PacketCapture.StartCapture"), this.FilterTextBox.Text),
+					string.Format("Failed to set the filter {0}.", this.FilterTextBox.Text),
                     exc);
             }
 
@@ -200,7 +200,7 @@ namespace Terminals.Network.Pcap
             }
             catch
             {
-                Log.Warn(Localization.Text("Network.Pcap.PacketCapture.StopCapture"));
+				Log.Warn("Terminals needed more than 500 milliseconds to abort the PCap thread.");
             }
 
             device.Close();
@@ -231,8 +231,8 @@ namespace Terminals.Network.Pcap
                 this.hexBox1.ByteProvider = provider;
                 this.textBox1.Text = Encoding.Default.GetString(packet.Data);
                 this.treeView1.Nodes.Clear();
-                TreeNode header = this.treeView1.Nodes.Add(Localization.Text("Network.Pcap.PacketCapture_Header"));
-                header.Nodes.Add(string.Format(Localization.Text("Network.Pcap.PacketCapture_Length"),
+				TreeNode header = this.treeView1.Nodes.Add("Header");
+				header.Nodes.Add(string.Format("Length: {0}",
                                                packet.Data.Length));
 
                 StringBuilder sb = new StringBuilder();
@@ -241,14 +241,14 @@ namespace Terminals.Network.Pcap
                     sb.Append(b.ToString("00"));
                     sb.Append(" ");
                 }
-                header.Nodes.Add(string.Format(Localization.Text("Network.Pcap.PacketCapture_Data"), sb));
-                header.Nodes.Add(string.Format(Localization.Text("Network.Pcap.PacketCapture_DataLength"),
+				header.Nodes.Add(string.Format("Data: {0}", sb));
+				header.Nodes.Add(string.Format("Data length: {0}",
                                                packet.Data.Length.ToString()));
-                header.Nodes.Add(string.Format(Localization.Text("Network.Pcap.PacketCapture_Date"),
+				header.Nodes.Add(string.Format("Date: {0}",
                                                packet.Timeval.Date.ToString()));
-                header.Nodes.Add(string.Format(Localization.Text("Network.Pcap.PacketCapture_Microseconds"),
+				header.Nodes.Add(string.Format("Microseconds: {0}",
                                                packet.Timeval.MicroSeconds.ToString()));
-                header.Nodes.Add(string.Format(Localization.Text("Network.Pcap.PacketCapture_Seconds"),
+				header.Nodes.Add(string.Format("Seconds: {0}",
                                                packet.Timeval.Seconds.ToString()));
 
                 this.treeView1.ExpandAll();

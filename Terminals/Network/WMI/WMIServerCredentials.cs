@@ -1,6 +1,6 @@
 using System;
 using System.Windows.Forms;
-using Kohl.Framework.Localization;
+
 
 namespace Terminals.Network.WMI
 {
@@ -9,7 +9,7 @@ namespace Terminals.Network.WMI
         public WMIServerCredentials()
         {
             this.InitializeComponent();
-            Localization.SetLanguage(this);
+            
             this.PasswordTextbox.PasswordChar = Terminals.Forms.Controls.CredentialPanel.HIDDEN_PASSWORD_CHAR;
         }
 

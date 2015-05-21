@@ -13,7 +13,7 @@ namespace Terminals.Connections
 	using Terminals.Configuration.Files.Main.Favorites;
 	
 	using Kohl.Framework.Info;
-	using Kohl.Framework.Localization;
+	
 	using Kohl.Framework.Logging;
 	
     using AxMSTSCLib;
@@ -209,25 +209,25 @@ namespace Terminals.Connections
                 switch (errorCode)
                 {
                     case 0:
-                        return Localization.Text("Connection.RDPConnection.OnFatalError_0");
+					return "An unknown error has occurred.";
                     case 1:
-                        return Localization.Text("Connection.RDPConnection.OnFatalError_1");
+					return "Internal error code 1.";
                     case 2:
-                        return Localization.Text("Connection.RDPConnection.OnFatalError_2");
+					return "An out-of-memory error has occurred.";
                     case 3:
-                        return Localization.Text("Connection.RDPConnection.OnFatalError_3");
+					return "A window-creation error has occurred.";
                     case 4:
-                        return Localization.Text("Connection.RDPConnection.OnFatalError_4");
+					return "Internal error code 2.";
                     case 5:
-                        return Localization.Text("Connection.RDPConnection.OnFatalError_5");
+					return "Internal error code 3. This is not a valid state.";
                     case 6:
-                        return Localization.Text("Connection.RDPConnection.OnFatalError_6");
+					return "Internal error code 4.";
                     case 7:
-                        return Localization.Text("Connection.RDPConnection.OnFatalError_7");
+					return "An unrecoverable error has occurred during client connection.";
                     case 100:
-                        return Localization.Text("Connection.RDPConnection.OnFatalError_8");
+					return "Winsock initialization error.";
                     default:
-                        return Localization.Text("Connection.RDPConnection.OnFatalError_9");
+					return "An unknown error.";
                 }
             }
 
@@ -238,35 +238,35 @@ namespace Terminals.Connections
                 switch (errorCode)
                 {
                     case -5:
-                        return Localization.Text("Connection.RDPConnection.OnLogonError_1");
+					return "Winlogon is displaying the \"session contention\" dialog box.";
                     case -2:
-                        return Localization.Text("Connection.RDPConnection.OnLogonError_2");
+					return "Winlogon is continuing with the logon process.";
                     case -3:
-                        return Localization.Text("Connection.RDPConnection.OnLogonError_3");
+					return "Winlogon is ending silently.";
                     case -6:
-                        return Localization.Text("Connection.RDPConnection.OnLogonError_4");
+					return "Winlogon is displaying the \"no permissions\" dialog box.";
                     case -7:
-                        return Localization.Text("Connection.RDPConnection.OnLogonError_5");
+					return "Winlogon is displaying the \"disconnect refused\" dialog box.";
                     case -4:
-                        return Localization.Text("Connection.RDPConnection.OnLogonError_6");
+					return "Winlogon is displaying the \"reconnect\" dialog box.";
                     case -1:
-                        return Localization.Text("Connection.RDPConnection.OnLogonError_7");
+					return "The user access has been denied.";
                     case 0:
-                        return Localization.Text("Connection.RDPConnection.OnLogonError_8");
+					return "The logon failed because the logon credentials are not valid.";
                     case 2:
-                        return Localization.Text("Connection.RDPConnection.OnLogonError_9");
+					return "Another logon or post-logon error occurred. The remote desktop client displays a logon screen to the user.";
                     case 1:
-                        return Localization.Text("Connection.RDPConnection.OnLogonError_10");
+					return "The password has expired. Please update your password to continue logging on.";
                     case 3:
-                        return Localization.Text("Connection.RDPConnection.OnLogonError_11");
+					return "The remote desktop client displays a dialog box that contains important information for the user.";
                     case -1073741714:
-                        return Localization.Text("Connection.RDPConnection.OnLogonError_12");
+					return "The user name and authentication information are valid, but authentication was blocked due to restrictions on the user account, such as time-of-day restrictions.";
                     case -1073741715:
-                        return Localization.Text("Connection.RDPConnection.OnLogonError_13");
+					return "The attempted logon is not valid. This is due to either an incorrect user name or incorrect authentication information.";
                     case -1073741276:
-                        return Localization.Text("Connection.RDPConnection.OnLogonError_14");
+					return "The password has expired. The user must update their password to continue logging on.";
                     default:
-                        return Localization.Text("Connection.RDPConnection.OnLogonError_15");
+					return "An unknown error occured.";
                 }
             }
 
@@ -277,9 +277,9 @@ namespace Terminals.Connections
                 switch (warningCode)
                 {
                     case 1:
-                        return Localization.Text("Connection.RDPConnection.OnWarning_1");
+					return "Bitmap cache is corrupt.";
                     default:
-                        return Localization.Text("Connection.RDPConnection.OnWarning_2");
+					return "An unknown warning occured.";
                 }
             }
         }
@@ -590,7 +590,7 @@ namespace Terminals.Connections
             }
             catch (Exception ex)
             {
-                Log.Error(Localization.Text("Connections.RDPConnection.ChangeDesktopSize"), ex);
+				Log.Error("Error trying to set the desktop dimensions.", ex);
             }
         }
 
@@ -881,7 +881,7 @@ namespace Terminals.Connections
             }
             catch (Exception ex)
             {
-                Log.Error(Localization.Text("Connection.ExternalConnection.Disconnect"), ex);
+				Log.Error("Unable to disconnect form the {0} connection named \"{1}\".", ex);
             }
         }
         
@@ -898,7 +898,7 @@ namespace Terminals.Connections
 
             if (String.IsNullOrEmpty(desktopShare))
             {
-                MessageBox.Show(this, Localization.Text("Connections.ICAConnection.ICAConnection_DragDrop"),
+				MessageBox.Show(this, "A desktop share was not defined for this connection.\nPlease define a share in the connection properties window (under the Local Resources tab).",
                                 AssemblyInfo.Title(), MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             else
@@ -997,7 +997,7 @@ namespace Terminals.Connections
         {
             int errorCode = e.errorCode;
             string message = RdpClientErrorMessages.ToFatalErrorMessage(errorCode);
-            string finalMsg = string.Format(Localization.Text("Connection.RDPConnection.OnFatalError"), errorCode, message);
+			string finalMsg = string.Format("There was a fatal error returned from the RDP connection \"{0}\".", errorCode, message);
             Log.Fatal(errorCode.ToString());
 			
 			if (!string.IsNullOrEmpty(finalMsg) && !string.IsNullOrEmpty(finalMsg.Trim()))
@@ -1010,7 +1010,7 @@ namespace Terminals.Connections
         {
             int warningCode = e.warningCode;
             string message = RdpClientErrorMessages.ToWarningMessage(warningCode);
-            string finalMsg = string.Format(Localization.Text("Connection.RDPConnection.OnWarning"), warningCode, message);
+			string finalMsg = string.Format("here was a warning returned from the RDP connection.\nWarning Code: {0}\nWarning Description: {1}", warningCode, message);
             Log.Warn(warningCode.ToString());
             Log.Warn(finalMsg);
         }
@@ -1020,7 +1020,7 @@ namespace Terminals.Connections
             int errorCode = e.lError;
 			
             string message = RdpClientErrorMessages.ToLogonMessage(errorCode);
-            string finalMsg = string.Format(Localization.Text("Connection.RDPConnection.OnLogonError"), errorCode, message);
+			string finalMsg = string.Format("There was a logon error returned from the RDP connection.\nLogon code: {0}\nLogon description: {1}", errorCode, message);
             
 			if (errorCode != -2)
 				Log.Error(finalMsg);

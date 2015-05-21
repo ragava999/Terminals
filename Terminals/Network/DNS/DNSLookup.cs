@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Windows.Forms;
-using Kohl.Framework.Localization;
+
 using Kohl.Framework.Logging;
 
 namespace Terminals.Network.DNS
@@ -12,7 +12,6 @@ namespace Terminals.Network.DNS
         public DnsLookup()
         {
             this.InitializeComponent();
-            Localization.SetLanguage(this);
         }
 
         public void ForceDNS(string Host)

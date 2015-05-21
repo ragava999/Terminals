@@ -9,7 +9,7 @@
     using Configuration.Files.Main.Favorites;
     using Configuration.Files.Main.Settings;
     using Connection;
-    using Kohl.Framework.Localization;
+
     using Terminals.Connection.Manager;
 
     /// <summary>

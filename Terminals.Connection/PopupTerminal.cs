@@ -163,10 +163,11 @@ namespace Terminals.Connection
                 {
                     if (tab.Controls.Count > 0)
                     {
-                        if (!((ConnectionBase) tab.Controls[0]).Connected)
-                        {
-                            removeableTabs.Add(tab);
-                        }
+                    	if (tab.Controls[0] is ConnectionBase)
+	                        if (!((ConnectionBase) tab.Controls[0]).Connected)
+	                        {
+	                            removeableTabs.Add(tab);
+	                        }
                     }
                 }
                 try

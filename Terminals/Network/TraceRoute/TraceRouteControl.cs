@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
-using Kohl.Framework.Localization;
+
 using Kohl.Framework.Logging;
 using ZedGraph;
 
@@ -28,7 +28,7 @@ namespace Terminals.Network.TraceRoute
             this.DoUpdateForm = this.UpdateForm;
 
             this.InitializeGraph();
-            Localization.SetLanguage(this);
+            
 
             this.dataGridView1.Columns.Add("1", "Count");
             this.dataGridView1.Columns.Add("2", "Address");

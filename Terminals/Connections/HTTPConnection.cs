@@ -6,7 +6,7 @@ namespace Terminals.Connections
     using System.Windows.Forms;
 
     // Terminals and framework namespaces
-    using Kohl.Framework.Localization;
+
     using Kohl.Framework.Logging;
     using Configuration.Files.Main.Favorites;
     using Properties;
@@ -72,7 +72,7 @@ namespace Terminals.Connections
                     if (this.browser != null)
                         browserType = this.browser.BrowserType.ToString() + " ";
 
-                    Log.Error(string.Format(Localization.Text("Connections.HTTPConnection.Connect_Error1"), browserType), ex);
+                    Log.Error(string.Format("Could not initialize the %TITLE% internet {0}browser. Check for missing DLLs.", browserType), ex);
 
                     return this.connected = false;
                 }
@@ -94,7 +94,7 @@ namespace Terminals.Connections
             }
             catch (Exception ex)
             {
-                Log.Fatal(string.Format(Localization.Text("Connections.HTTPConnection.Connect_Error2"), this.Favorite.Protocol), ex);
+                Log.Fatal(string.Format("Terminals was unable to create the {0} connection.", this.Favorite.Protocol), ex);
                 return this.connected = false;
             }
 

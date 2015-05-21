@@ -1,5 +1,5 @@
 ﻿using System;
-using Kohl.Framework.Localization;
+
 using Microsoft.Win32;
 using Terminals.Configuration.Files.Main.Favorites;
 using Terminals.Connection.Manager;
@@ -21,7 +21,7 @@ namespace Terminals.Panels.FavoritePanels
         public PuttyFavoritePanel()
         {
             this.InitializeComponent();
-            Localization.SetLanguage(this);
+            
             LoadPuttyStrings();
         }
 

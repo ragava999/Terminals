@@ -51,12 +51,6 @@
   <ItemGroup>
     <Compile Include="Converters\FontParser.cs" />
     <Compile Include="Drawing\IconHandler.cs" />
-    <Compile Include="Localization\ChangeLang.cs">
-      <SubType>form</SubType>
-    </Compile>
-    <Compile Include="Localization\CultureInfoDisplayItem.cs" />
-    <Compile Include="Localization\FormLanguageSwitchSingleton.cs" />
-    <Compile Include="Localization\LanguageCollector.cs" />
     <Compile Include="Logging.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <AutoGen>false</AutoGen>
@@ -100,11 +94,6 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Security\Credential.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Localization\ChangeLang.resx">
-      <DependentUpon>ChangeLang.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

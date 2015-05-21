@@ -4,7 +4,7 @@
     using System;
     using System.Drawing;
     using System.Windows.Forms;
-    using Kohl.Framework.Localization;
+
     using Kohl.Framework.Logging;
     using Kohl.Framework.Security;
 
