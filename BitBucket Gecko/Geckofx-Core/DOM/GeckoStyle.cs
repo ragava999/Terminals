@@ -296,8 +296,6 @@ namespace Gecko
 				else if (string.IsNullOrEmpty(rule))
 					return -1;
 				
-				const int NS_ERROR_DOM_SYNTAX_ERR = unchecked((int)0x8053000c);
-
 				using (AutoJSContext context = new AutoJSContext(GetJSContext()))
 				{
 					context.PushCompartmentScope((nsISupports)StyleSheet._DomStyleSheet);

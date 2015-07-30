@@ -73,7 +73,6 @@ namespace Gecko
 		{
 			uint count = 0;
 			string[] ret = null;
-#warning test it
 			_properties.GetKeys( ref count,ref ret );
 			return ret;
 		}

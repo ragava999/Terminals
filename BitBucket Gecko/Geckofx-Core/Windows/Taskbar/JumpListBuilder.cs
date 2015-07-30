@@ -35,7 +35,6 @@ namespace Gecko.Windows
 		public bool AddListToBuild(short aCatType, JumpListItem[] items, string catName)
 		{
 			var array = GeckoCollectionsHelper.CreateArray();
-#warning TODO
 			for (int i = 0; i < items.Length; i++)
 			{
 				//array.AppendElement(items[i]._item, false);

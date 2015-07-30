@@ -22,7 +22,7 @@ namespace Gecko.Observers
 						{
 							Request( req );
 						}
-						catch ( Exception e )
+						catch
 						{
 							Console.WriteLine("Exception in observer implementation");
 						}
@@ -41,7 +41,7 @@ namespace Gecko.Observers
 						{
 							Response( res );
 						}
-						catch ( Exception e)
+						catch
 						{
 							Console.WriteLine( "Exception in observer implementation" );
 						}

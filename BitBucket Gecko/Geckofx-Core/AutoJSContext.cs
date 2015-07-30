@@ -215,29 +215,6 @@ namespace Gecko
 		public bool EvaluateTrustedScript(string jsScript, out string result)
 		{
 			throw new NotImplementedException();
-
-			var ptr = new JsVal();
-			IntPtr globalObject = SpiderMonkey.JS_GetGlobalForScopeChain(_cx);
-			bool ret;
-			IntPtr systemGlobalObject = SpiderMonkey.JS_GetGlobalForScopeChain(GlobalJSContextHolder.BackstageJSContext);
-			// Compartments have to be entered and left in LIFO order.
-			bool inSystemCompartment = false;
-			IntPtr oldCompartment = IntPtr.Zero;
-			try
-			{
-				// Allow access to any object on page.
-				oldCompartment = SpiderMonkey.JS_EnterCompartment(_cx, systemGlobalObject);
-				// At any time, a JSContext has a current (possibly-NULL) compartment.
-				inSystemCompartment = true;
-				ret = SpiderMonkey.JS_EvaluateScript(_cx, globalObject, jsScript, (uint)jsScript.Length, "script", 1, ref ptr);
-				result = ConvertValueToString(ptr);
-			}
-			finally
-			{
-				if (inSystemCompartment)
-					SpiderMonkey.JS_LeaveCompartment(_cx, oldCompartment);
-			}
-			return ret;
 		}
 
 		private IntPtr GetGlobalObject()

@@ -35,7 +35,6 @@ namespace Gecko.IO
 
 		public uint ReadSegments( nsWriteSegmentFun aWriter, IntPtr aClosure, uint aCount )
 		{
-#warning implement it
 			return 0;
 		}
 
