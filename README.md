@@ -641,7 +641,7 @@ Added icons, removed obsolete icons.
 
 Added copy and delete actions to the favorites context menu
 
-Limited the number of allowed connections to be loaded (Favorites and Tags are configureable)
+Limited the number of allowed connections to be loaded (Favorites and Tags are configurable)
 
 Fixed invalid port or server name bug.
 
