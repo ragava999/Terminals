@@ -1,6 +1,5 @@
 ﻿using System.Windows.Forms;
 using Terminals.Connection.Manager;
-using Kohl.Framework.Localization;
 
 namespace Terminals.Connection.Panels.OptionPanels
 {
@@ -10,7 +9,7 @@ namespace Terminals.Connection.Panels.OptionPanels
         {
             get
             {
-                return string.Format(Localization.Text("OptionPanel.Text", typeof(EnableProtocolOptionPanel)), ConnectionManager.GetProtcolNameCamalCase(this.Name));
+                return string.Format("{0} options", ConnectionManager.GetProtcolNameCamalCase(this.Name));
             }
         }
 

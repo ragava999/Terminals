@@ -688,7 +688,7 @@ namespace Terminals
             {
                 if (!string.IsNullOrEmpty(cmd.Thumbnail))
                 {
-                    img = Kohl.Framework.Drawing.Image.Base64ToImage(cmd.Thumbnail);
+                    img = Kohl.Framework.Drawing.IconHandler.Base64ToImage(cmd.Thumbnail);
                 }
             }
             catch (Exception exc)
@@ -1285,7 +1285,7 @@ namespace Terminals
                 {
                     close =
                         (MessageBox.Show(this, "Are you sure that you want to disconnect from the active terminal?",
-                                         AssemblyInfo.Title(), MessageBoxButtons.YesNo, MessageBoxIcon.Question) ==
+                                         AssemblyInfo.Title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) ==
                          DialogResult.Yes);
                 }
                 else
@@ -1850,7 +1850,7 @@ namespace Terminals
 
         private void openLogFolderToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Process.Start(Log.CurentLogFolder);
+            Process.Start(Log.CurrentLogFolder);
             Log.Info("The log file folder has been opened.");
         }
         
@@ -1875,7 +1875,7 @@ namespace Terminals
                     }
             }
 
-            lastOpenLogFileProcessId = Process.Start("notepad.exe", Log.CurentLogFile).Id;
+            lastOpenLogFileProcessId = Process.Start("notepad.exe", Log.CurrentLogFile).Id;
             Log.Info("Notepad has been started containing the current log file.");
         }
 

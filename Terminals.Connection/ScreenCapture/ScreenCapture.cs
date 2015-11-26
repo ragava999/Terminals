@@ -4,7 +4,6 @@ using System.Drawing.Imaging;
 using System.Drawing.Printing;
 using System.IO;
 using System.Windows.Forms;
-using Kohl.Framework.Localization;
 using Kohl.Framework.Logging;
 using Terminals.Configuration.Files.Main.Settings;
 using Terminals.Connection.Native;
@@ -105,7 +104,7 @@ namespace Terminals.Connection.ScreenCapture
             }
             catch (Exception ex)
             {
-                Log.Error(Localization.Text("CaputureManager.Capture.ScreenCapture.Capture", typeof(ScreenCapture)), ex);
+                Log.Error("Screen capture failed.", ex);
             }
 
             this.images[0] = memoryImage;
@@ -145,7 +144,7 @@ namespace Terminals.Connection.ScreenCapture
             }
             catch (Exception ex)
             {
-                Log.Error(Localization.Text("CaputureManager.Capture.ScreenCapture.Capture", typeof(ScreenCapture)), ex);
+                Log.Error("Screen capture failed.", ex);
             }
 
             this.images[0] = memoryImage;
@@ -208,7 +207,7 @@ namespace Terminals.Connection.ScreenCapture
             }
             catch (Exception ex)
             {
-                Log.Error(Localization.Text("CaputureManager.Capture.ScreenCapture.Capture", typeof(ScreenCapture)), ex);
+                Log.Error("Screen capture failed.", ex);
             }
 
             return this.images;
@@ -229,9 +228,8 @@ namespace Terminals.Connection.ScreenCapture
                 }
                 catch (Exception ex)
                 {
-                    Log.Error(Localization.Text("CaputureManager.Capture.ScreenCapture.Print", typeof(ScreenCapture)), ex);
-                    MessageBox.Show(ex.Message, Localization.Text("CaputureManager.Capture.ScreenCapture.Print", typeof(ScreenCapture)),
-                                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Log.Error("Print failed.", ex);
+                    MessageBox.Show(ex.Message, "Print failed.", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -279,12 +277,12 @@ namespace Terminals.Connection.ScreenCapture
                 {
                     if (this.images.Length > 1)
                     {
-                        filename = string.Format(Localization.Text("CaputureManager.Capture.ScreenCapture_Format1", typeof(ScreenCapture)),
+                        filename = string.Format("{0}\\{1}.{2:D2}.{3}",
                                                  directory, name, i + 1, ext);
                     }
                     else
                     {
-                        filename = string.Format(Localization.Text("CaputureManager.Capture.ScreenCapture_Format2", typeof(ScreenCapture)),
+                        filename = string.Format("{0}\\{1}.{2}",
                                                  directory, name, ext);
                     }
 
@@ -302,10 +300,10 @@ namespace Terminals.Connection.ScreenCapture
             }
             catch (Exception ex)
             {
-                string s = string.Format(Localization.Text("CaputureManager.Capture.ScreenCapture.Save", typeof(ScreenCapture)), filename,
+                string s = string.Format("Saving image to [{0}] in format [{1}] failed.\n{2}", filename,
                                          format.ToString(), ex);
                 Log.Error(s, ex);
-                MessageBox.Show(s, Localization.Text("CaputureManager.Capture.ScreenCapture.Capture", typeof(ScreenCapture)),
+                MessageBox.Show(s, "Screen capture failed.",
                                 MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }

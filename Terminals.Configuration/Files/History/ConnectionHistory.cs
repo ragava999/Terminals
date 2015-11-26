@@ -25,7 +25,7 @@ namespace Terminals.Configuration.Files.History
         /// <summary>
         ///     Prevent concurent updates on History file by another program
         /// </summary>
-        private readonly Mutex fileLock = new Mutex(false, AssemblyInfo.Title() + ".History");
+        private readonly Mutex fileLock = new Mutex(false, AssemblyInfo.Title + ".History");
 
         private readonly DataFileWatcher fileWatcher;
 

@@ -5,7 +5,6 @@ using System.Drawing;
 using System.IO;
 using System.Threading;
 using System.Windows.Forms;
-using Kohl.Framework.Localization;
 using Kohl.Framework.Logging;
 using Kohl.Framework.WinForms;
 using Terminals.Configuration.Files.Main.Settings;
@@ -15,7 +14,7 @@ namespace Terminals.Connection.ScreenCapture
     public partial class CaptureManagerLayout : UserControl
     {
         private readonly TreeNode root =
-            new TreeNode(Localization.Text("CaputureManager.Capture.CaptureManagerLayout_CaptureRootFolderName", typeof(CaptureManagerLayout)));
+            new TreeNode("Capture Root Folder");
 
         public CaptureManagerLayout()
         {
@@ -23,10 +22,10 @@ namespace Terminals.Connection.ScreenCapture
 
             this.viewComboBox.Items.AddRange(new object[]
                                                  {
-                                                     Localization.Text("CaptureManager_ViewStyle_LargeIcons", typeof(CaptureManagerLayout)),
-                                                     Localization.Text("CaptureManager_ViewStyle_SmallIcons", typeof(CaptureManagerLayout)),
-                                                     Localization.Text("CaptureManager_ViewStyle_Title", typeof(CaptureManagerLayout)),
-                                                     Localization.Text("CaptureManager_ViewStyle_List", typeof(CaptureManagerLayout))
+                                                     "Large Icons",
+                                                     "Small Icons",
+                                                     "Title",
+                                                     "List"
                                                  });
         }
 
@@ -35,7 +34,6 @@ namespace Terminals.Connection.ScreenCapture
             this.LoadRoot();
             this.viewComboBox.SelectedIndex = 1;
             this.trackBarZoom.Value = 45;
-            Localization.SetLanguage(this.ParentForm, null);
 
             treeViewFolders.AfterSelect += treeView1_AfterSelect;
         }
@@ -153,16 +151,16 @@ namespace Terminals.Connection.ScreenCapture
             if (this.treeViewFolders.SelectedNode != null)
             {
                 DirectoryInfo dir = (this.treeViewFolders.SelectedNode.Tag as DirectoryInfo);
-                InputBoxResult result =
-                    InputBox.Show(Localization.Text("CaputureManager.Capture.CaptureManagerLayout_NewFolder", typeof(CaptureManagerLayout)));
-                if (result.ReturnCode == DialogResult.OK)
+                
+                string input = "New folder name";
+                if (InputBox.Show(ref input) == DialogResult.OK)
                 {
                     string rootFolder = dir.FullName;
-                    string fullNewName = Path.Combine(rootFolder, result.Text);
+                    string fullNewName = Path.Combine(rootFolder, input);
                     if (!Directory.Exists(fullNewName))
                     {
                         DirectoryInfo info = Directory.CreateDirectory(fullNewName);
-                        TreeNode node = new TreeNode(result.Text);
+                        TreeNode node = new TreeNode(input);
                         node.Tag = info;
                         this.treeViewFolders.SelectedNode.Nodes.Add(node);
                         this.treeViewFolders.SelectedNode.Expand();
@@ -180,26 +178,20 @@ namespace Terminals.Connection.ScreenCapture
                 {
                     FileInfo[] files = dir.GetFiles();
                     DirectoryInfo[] dirs = dir.GetDirectories();
-                    string msg = string.Format("{0}\r\n\r\n",
-                                               Localization.Text(
-                                                   "CaputureManager.Capture.CaptureManagerLayout_ConfirmDeleteSingleFolder", typeof(CaptureManagerLayout)));
+                    string msg = string.Format("{0}\r\n\r\n", "Are you sure you want to delete this file?");
                     if (files.Length > 0)
                     {
-                        msg += string.Format(Localization.Text("CaputureManager.Capture.CaptureManagerLayout_Files", typeof(CaptureManagerLayout)),
+                        msg += string.Format("The folder \"{0}\" contains {1} directories.",
                                              this.treeViewFolders.SelectedNode.Text, files.Length);
                     }
 
                     if (dirs.Length > 0)
                     {
-                        msg += string.Format(
-                            Localization.Text("CaputureManager.Capture.CaptureManagerLayout_Directory", typeof(CaptureManagerLayout)),
+                        msg += string.Format("The folder \"{0}\" contains {1} files.",
                             this.treeViewFolders.SelectedNode.Text, dirs.Length);
                     }
 
-                    DialogResult result = MessageBox.Show(msg,
-                                                          Localization.Text(
-                                                              "CaputureManager.Capture.CaptureManagerLayout_DeleteFolder", typeof(CaptureManagerLayout)),
-                                                          MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                    DialogResult result = MessageBox.Show(msg, "Delete Folder?", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                     if (result == DialogResult.OK)
                     {
                         string rootFolder = dir.FullName;
@@ -340,19 +332,17 @@ namespace Terminals.Connection.ScreenCapture
 
                 if (this.listViewFiles.SelectedItems.Count == 1)
                 {
-                    msg = Localization.Text("CaputureManager.Capture.CaptureManagerLayout_ConfirmDeleteSingleFile", typeof(CaptureManagerLayout));
-                    cpt =
-                        Localization.Text("CaputureManager.Capture.CaptureManagerLayout_ConfirmCaptionDeleteSingleItem", typeof(CaptureManagerLayout));
+                    msg = "Are you sure you want to delete this file?";
+                    cpt = "Delete Item";
                 }
                 else
                 {
                     msg =
                         string.Format(
-                            Localization.Text("CaputureManager.Capture.CaptureManagerLayout_ConfirmDeleteMultipleFiles", typeof(CaptureManagerLayout)),
+                            "Are you sure you want to delete these {0} files?",
                             cnt);
                     cpt =
-                        Localization.Text(
-                            "CaputureManager.Capture.CaptureManagerLayout_ConfirmCaptionDeleteMultipleItems", typeof(CaptureManagerLayout));
+                    	"Delete Multiple Items";
                 }
 
                 if (MessageBox.Show(msg, cpt, MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
@@ -402,25 +392,25 @@ namespace Terminals.Connection.ScreenCapture
 
         private void View_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (this.viewComboBox.Text == Localization.Text("CaptureManager_ViewStyle_LargeIcons", typeof(CaptureManagerLayout)))
+        	if (this.viewComboBox.Text == this.viewComboBox.Items[0].ToString())
             {
                 this.imageList.ImageSize = new Size(150, 150);
                 this.listViewFiles.View = View.LargeIcon;
             }
-            else if (this.viewComboBox.Text == Localization.Text("CaptureManager_ViewStyle_SmallIcons", typeof(CaptureManagerLayout)))
+            else if (this.viewComboBox.Text == this.viewComboBox.Items[1].ToString())
             {
                 this.imageList.ImageSize = new Size(50, 50);
                 this.listViewFiles.View = View.LargeIcon;
             }
-            else if (this.viewComboBox.Text == Localization.Text("CaptureManager_ViewStyle_List", typeof(CaptureManagerLayout)))
+            else if (this.viewComboBox.Text == this.viewComboBox.Items[2].ToString())
             {
                 this.imageList.ImageSize = new Size(150, 150);
-                this.listViewFiles.View = View.List;
+                this.listViewFiles.View = View.Tile;
             }
             else
             {
                 this.imageList.ImageSize = new Size(150, 150);
-                this.listViewFiles.View = View.Tile;
+                this.listViewFiles.View = View.List;
             }
 
             this.RefreshView();

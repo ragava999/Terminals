@@ -59,7 +59,7 @@ namespace Terminals.Wizard
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(249, 26);
             this.label1.TabIndex = 3;
-            this.label1.Text = "Welcome to " + AssemblyInfo.Title();
+            this.label1.Text = "Welcome to " + AssemblyInfo.Title;
             // 
             // MinimizeCheckbox
             // 

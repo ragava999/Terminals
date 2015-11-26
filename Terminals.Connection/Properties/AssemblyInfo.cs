@@ -1,5 +1,4 @@
 ﻿using System.Reflection;
-using Kohl.Framework.Logging;
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
@@ -22,9 +21,9 @@ using Kohl.Framework.Logging;
 //      Revision
 //
 
-[assembly: AssemblyVersion("4.3.0.1")]
-[assembly: AssemblyFileVersion("4.3.0.1")]
-[assembly: AssemblyInformationalVersion("4.3.0.1 RTM")]
+[assembly: AssemblyVersion("4.4.2.3")]
+[assembly: AssemblyFileVersion("4.4.2.3")]
+[assembly: AssemblyInformationalVersion("4.4.2.3 RTM")]
 /*
 AssemblyVersion
 

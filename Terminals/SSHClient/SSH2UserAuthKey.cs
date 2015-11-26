@@ -1,12 +1,3 @@
-/*
- * Created by SharpDevelop.
- * User: CableJ01
- * Date: 18/01/2009
- * Time: 15:40
- * 
- * To change this template use Tools | Options | Coding | Edit Standard Headers.
- */
-
 using System;
 using System.IO;
 using System.Security.Cryptography;

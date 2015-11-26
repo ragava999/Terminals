@@ -11,7 +11,6 @@ namespace Terminals.Connection.TabControl
     using System.Windows.Forms;
 
     // Terminals and framework namespaces
-    using Kohl.Framework.Localization;
     using Kohl.Framework.Logging;
     using Configuration.Files.Main.Favorites;
     using Configuration.Files.Main.Settings;
@@ -165,7 +164,7 @@ namespace Terminals.Connection.TabControl
         {
             foreach (TerminalTabControlItem tab in this.mainTabControl.Items)
             {
-                if (tab.Title == Localization.Text("CaptureManager", typeof(TerminalTabsSelectionControler)))
+                if (tab.Title == "Capture Manager")
                 {
                     CaptureManagerConnection conn = (CaptureManagerConnection)tab.Connection;
                     conn.RefreshView();
@@ -196,7 +195,7 @@ namespace Terminals.Connection.TabControl
         #region Private Methods (6)
         private void CreateCaptureManagerTab()
         {
-            string captureTitle = Localization.Text("CaptureManager", typeof(TerminalTabsSelectionControler));
+            string captureTitle = "Capture Manager";
             TerminalTabControlItem terminalTabPage = null;
 
             if (mainForm.InvokeRequired)

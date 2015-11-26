@@ -135,11 +135,8 @@
     <Reference Include="AxWFICALib">
       <HintPath>..\DLLs\Citrix\AxWFICALib.dll</HintPath>
     </Reference>
-    <Reference Include="Kohl.Framework">
-      <HintPath>..\DLLs\Kohl.Framework.dll</HintPath>
-    </Reference>
-    <Reference Include="log4net">
-      <HintPath>..\DLLs\log4net.dll</HintPath>
+    <Reference Include="KeePassLib">
+      <HintPath>..\packages\KeePassLib.2.30\lib\KeePassLib.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
@@ -843,9 +840,6 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Wizard\WizardForms.cs" />
-    <EmbeddedResource Include="Connections\ReconnectingControl.resx">
-      <DependentUpon>ReconnectingControl.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\AboutForm.resx">
       <DependentUpon>AboutForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -857,25 +851,11 @@
       <DependentUpon>MiniBrowser.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Connections\NetworkingToolsLayout.resx">
-      <SubType>Designer</SubType>
-      <DependentUpon>NetworkingToolsLayout.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Connections\RASProperties.resx">
-      <DependentUpon>RASProperties.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Connections\TabbedTools.resx">
-      <SubType>Designer</SubType>
-      <DependentUpon>TabbedTools.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Credentials\CredentialManager.resx">
       <DependentUpon>CredentialManager.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Credentials\ManageCredentialForm.resx">
       <DependentUpon>ManageCredentialForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Credentials\UserSelectForm.resx">
-      <DependentUpon>UserSelectForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\QuickConnect.resx">
       <DependentUpon>QuickConnect.cs</DependentUpon>
@@ -884,24 +864,11 @@
       <DependentUpon>RequestPassword.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="LocalizedValues_en.resx">
-      <LastGenOutput>LocalizedValues_en.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ExpirationDialog.resx">
       <DependentUpon>ExpirationDialog.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Panels\OptionPanels\DefaultPasswordOptionPanel.resx">
-      <DependentUpon>DefaultPasswordOptionPanel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Panels\OptionPanels\StartShutdownOptionPanel.resx">
-      <DependentUpon>StartShutdownOptionPanel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Network\Servers\ServerList.resx">
-      <DependentUpon>ServerList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Network\WMI\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
@@ -937,6 +904,9 @@
     <EmbeddedResource Include="Forms\OrganizeShortcuts.resx">
       <SubType>Designer</SubType>
       <DependentUpon>OrganizeShortcuts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Panels\OptionPanels\DefaultPasswordOptionPanel.resx">
+      <DependentUpon>DefaultPasswordOptionPanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
@@ -982,6 +952,7 @@
       <Link>ReleaseNotes.txt</Link>
     </None>
     <Content Include="terminalsicon.ico" />
+    <None Include="packages.config" />
     <None Include="Updates\UpdatePackage.xsc">
       <DependentUpon>UpdatePackage.xsd</DependentUpon>
     </None>
@@ -1010,50 +981,13 @@
       <DependentUpon>ImportFromAD.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Network\Pcap\PacketCapture.resx">
-      <DependentUpon>PacketCapture.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
     <EmbeddedResource Include="Network\PortScanner\PortScanner.resx">
       <SubType>Designer</SubType>
       <DependentUpon>PortScanner.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Network\WakeOnLAN\WakeOnLan.resx">
-      <SubType>Designer</SubType>
-      <DependentUpon>WakeOnLan.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Network\WMI\Services.resx">
       <SubType>Designer</SubType>
       <DependentUpon>Services.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Network\WMI\WMIServerCredentials.resx">
-      <SubType>Designer</SubType>
-      <DependentUpon>WMIServerCredentials.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SSHClient\KeyChooser.resx">
-      <DependentUpon>KeyChooser.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SSHClient\KeyGenForm.resx">
-      <DependentUpon>KeyGenForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SSHClient\Preferences.resx">
-      <DependentUpon>Preferences.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Wizard\CommonOptions.resx">
-      <DependentUpon>CommonOptions.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Wizard\DefaultCredentials.resx">
-      <DependentUpon>DefaultCredentials.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Wizard\EnterPassword.resx">
-      <SubType>Designer</SubType>
-      <DependentUpon>EnterPassword.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Wizard\MasterPassword.resx">
-      <DependentUpon>MasterPassword.cs</DependentUpon>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Wizard\FirstRunWizard.resx">
       <SubType>Designer</SubType>
@@ -1063,45 +997,13 @@
       <SubType>Designer</SubType>
       <DependentUpon>DNSLookup.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Network\InterfacesList.resx">
-      <SubType>Designer</SubType>
-      <DependentUpon>InterfacesList.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Network\LocalConnections.resx">
       <SubType>Designer</SubType>
       <DependentUpon>LocalConnections.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Network\Ping\Ping.resx">
-      <DependentUpon>Ping.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Network\NTP\NetworkTime.resx">
-      <SubType>Designer</SubType>
-      <DependentUpon>NetworkTime.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Network\Servers\TerminalServerManager.resx">
       <SubType>Designer</SubType>
       <DependentUpon>TerminalServerManager.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Network\TraceRoute\TraceRouteControl.resx">
-      <DependentUpon>TraceRouteControl.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Network\WMI\NetworkShares.resx">
-      <SubType>Designer</SubType>
-      <DependentUpon>NetworkShares.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Network\WhoIs\WhoIs.resx">
-      <SubType>Designer</SubType>
-      <DependentUpon>WhoIs.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Wizard\AddExistingRDPConnections.resx">
-      <SubType>Designer</SubType>
-      <DependentUpon>AddExistingRDPConnections.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Wizard\IntroForm.resx">
-      <SubType>Designer</SubType>
-      <DependentUpon>IntroForm.cs</DependentUpon>
     </EmbeddedResource>
     <Content Include="Terminals.log4net.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -1120,6 +1022,10 @@
       <Project>{D7ADC901-E1C4-480E-8F6D-B1FFD5CF87E8}</Project>
       <Name>Geckofx-Winforms</Name>
     </ProjectReference>
+    <ProjectReference Include="..\CodeEditor\CodeEditor.csproj">
+      <Project>{FB3E07AB-E0FA-4122-BE64-BFFEF510201B}</Project>
+      <Name>CodeEditor</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DotRas-ChangeSet-99043\Trunk\Source\DotRas\DotRas\DotRas.csproj">
       <Project>{09EB2D48-2A3B-4AA7-BDC5-908E103B1E13}</Project>
       <Name>DotRas</Name>
@@ -1132,9 +1038,9 @@
       <Project>{9780D85D-2E12-4747-9E08-DEDB95A71FC3}</Project>
       <Name>Granados</Name>
     </ProjectReference>
-    <ProjectReference Include="..\keepass2-master\KeePassLib\KeePassLib.csproj">
-      <Project>{53573E4E-33CB-4FDB-8698-C95F5E40E7F3}</Project>
-      <Name>KeePassLib</Name>
+    <ProjectReference Include="..\Kohl.Framework\Kohl.Framework.csproj">
+      <Project>{2E4E3508-2275-4A32-9A0D-9A95B134407B}</Project>
+      <Name>Kohl.Framework</Name>
     </ProjectReference>
     <ProjectReference Include="..\Metro\Metro.csproj">
       <Project>{4F3A4024-5A19-4F08-823A-B75D6AFE5CD8}</Project>

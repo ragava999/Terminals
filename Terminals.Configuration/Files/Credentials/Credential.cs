@@ -67,5 +67,39 @@
 
             return credential;
         }
+        
+        public bool IsSetUserNameAndDomainName
+        {
+        	get
+        	{
+        		return IsSetDomainName && IsSetUserName;
+        	}
+        }
+        
+        
+    	public bool IsSetPassword
+        {
+        	get
+        	{
+        		return !string.IsNullOrWhiteSpace(Password);
+        	}
+        }
+        	
+        
+    	public bool IsSetUserName
+        {
+        	get
+        	{
+        		return !string.IsNullOrWhiteSpace(UserName);
+        	}
+        }
+        	
+        public bool IsSetDomainName
+        {
+        	get
+        	{
+        		return !string.IsNullOrWhiteSpace(DomainName);
+        	}
+        }
     }
 }

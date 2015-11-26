@@ -899,7 +899,7 @@ namespace Terminals.Connections
             if (String.IsNullOrEmpty(desktopShare))
             {
 				MessageBox.Show(this, "A desktop share was not defined for this connection.\nPlease define a share in the connection properties window (under the Local Resources tab).",
-                                AssemblyInfo.Title(), MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                                AssemblyInfo.Title, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             else
             {

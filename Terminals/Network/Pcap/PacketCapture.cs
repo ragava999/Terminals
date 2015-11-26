@@ -66,7 +66,7 @@ namespace Terminals.Network.Pcap
                 if (exc is BadImageFormatException)
                 {
 					Log.Info("Terminals packet capture is not configured to work with this system (Bad Image Format Exception)", exc);
-					MessageBox.Show("Terminals packet capture is not configured to work with this system (Bad Image Format Exception)", AssemblyInfo.Title(), MessageBoxButtons.OK, MessageBoxIcon.Information);
+					MessageBox.Show("Terminals packet capture is not configured to work with this system (Bad Image Format Exception)", AssemblyInfo.Title, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else if (exc is DllNotFoundException)
                 {

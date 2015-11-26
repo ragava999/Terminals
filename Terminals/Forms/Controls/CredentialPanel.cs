@@ -51,7 +51,7 @@ namespace Terminals.Forms.Controls
 
             if (!favorite.Credential.IsSetPassword && favorite.Credential.IsSetEncryptedPassword)
             {
-                MessageBox.Show("There was an issue decrypting your password.\n\nPlease provide a new password and save the favorite.", AssemblyInfo.Title(), MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("There was an issue decrypting your password.\n\nPlease provide a new password and save the favorite.", AssemblyInfo.Title, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 this.txtPassword.Text = "";
                 this.FavoritePassword = "";
                 this.txtPassword.Focus();

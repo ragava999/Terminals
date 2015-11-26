@@ -46,9 +46,6 @@
     <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Kohl.Framework">
-      <HintPath>..\DLLs\Kohl.Framework.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Drawing" />
@@ -77,6 +74,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Kohl.Framework\Kohl.Framework.csproj">
+      <Project>{2E4E3508-2275-4A32-9A0D-9A95B134407B}</Project>
+      <Name>Kohl.Framework</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Kohl.TinyMce\Kohl.TinyMce.csproj">
       <Project>{5e55661d-14a8-42e5-b443-ec76519dca7a}</Project>
       <Name>Kohl.TinyMce</Name>
@@ -94,11 +95,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Panels\FavoritePanels\TextFavoritePanel.resx">
-      <DependentUpon>TextFavoritePanel.cs</DependentUpon>
-      <SubType>Designer</SubType>
-      <Generator>ResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
     <EmbeddedResource Include="Panels\OptionPanels\TextEnableForProtocolsOptionPanel.resx">
       <DependentUpon>TextEnableForProtocolsOptionPanel.cs</DependentUpon>
       <SubType>Designer</SubType>

@@ -24,7 +24,7 @@ namespace Terminals.Updates
             // is lower then the current assembly version, check for config updates
             if (Settings.ConfigVersion == null || Settings.ConfigVersion < AssemblyInfo.Version)
             {
-                Log.Info(string.Format("Updating your {0} configuration file from version {1} to version {2}", AssemblyInfo.Title(), Settings.ConfigVersion, AssemblyInfo.Version));
+                Log.Info(string.Format("Updating your {0} configuration file from version {1} to version {2}", AssemblyInfo.Title, Settings.ConfigVersion, AssemblyInfo.Version));
 
                 // keep update sequence ordered!
                 UpdateObsoleteConfigVersions();
@@ -116,12 +116,6 @@ namespace Terminals.Updates
                     {
                         case "http://":
                         case "https://":
-                        case "http://www.kohl.bz/":
-                        case "http://www.kohl.bz":
-                        case "http://www.omantl.at/":
-                        case "http://www.codeplex.com/terminals":
-                        case "http://www.omantl.at/terminals":
-                        case "http://www.omantl.at":
                             favorite.Url = null;
                             break;
                     }

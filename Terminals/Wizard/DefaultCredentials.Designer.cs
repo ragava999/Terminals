@@ -30,7 +30,6 @@ namespace Terminals.Wizard
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DefaultCredentials));
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -47,7 +46,7 @@ namespace Terminals.Wizard
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(360, 84);
             this.label2.TabIndex = 6;
-            this.label2.Text = resources.GetString("label2.Text");
+            this.label2.Text = "Setting a master password allows Terminals to store your connection information in a much more secure manner. Having a password set allows you to transport your Terminals on an USB stick or to port Terminals from one computer to another. Although it is not required, it is highly recommended that you set it now.";
             // 
             // label1
             // 
@@ -57,7 +56,7 @@ namespace Terminals.Wizard
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(249, 26);
             this.label1.TabIndex = 5;
-            this.label1.Text = "Welcome to " + AssemblyInfo.Title();
+            this.label1.Text = "Welcome to " + AssemblyInfo.Title;
             // 
             // label3
             // 

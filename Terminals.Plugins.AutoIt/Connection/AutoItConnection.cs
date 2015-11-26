@@ -128,12 +128,12 @@
                 }
 
                 string includeFileContent = "; #STRUCTURE# ===================================================================================================================\n";
-                includeFileContent += "; Name...........: " + AssemblyInfo.Title() + ".au3\n";
+                includeFileContent += "; Name...........: " + AssemblyInfo.Title + ".au3\n";
                 includeFileContent += "; Description ...: Returns the favorite's properties.\n";
                 includeFileContent += "; Author ........: " + AssemblyInfo.Author + "\n";
-                includeFileContent += "; Remarks .......: This file will be generated dynamically by " + AssemblyInfo.Title() + ". Please don't change this file.\n";
+                includeFileContent += "; Remarks .......: This file will be generated dynamically by " + AssemblyInfo.Title + ". Please don't change this file.\n";
                 includeFileContent += "; Related .......: " + AssemblyInfo.Url + "\n";
-                includeFileContent += "; Usage   .......: #include <" + AssemblyInfo.Title() + ".au3>\n";
+                includeFileContent += "; Usage   .......: #include <" + AssemblyInfo.Title + ".au3>\n";
                 includeFileContent += "; ===============================================================================================================================\n";
                 includeFileContent += "Global Const $Terminals_Protocol           = \"" + this.Favorite.Protocol + "\"\n";
                 includeFileContent += "Global Const $Terminals_ServerName         = \"" + this.Favorite.ServerName + "\"\n";

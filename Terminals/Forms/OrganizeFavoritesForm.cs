@@ -126,7 +126,7 @@ namespace Terminals.Forms
                 string message =
                     String.Format("A connection named \"{0}\" already exists\r\nDo you want to overwrite it?", copy.Name);
                 if (
-                    MessageBox.Show(this, message, AssemblyInfo.Title(), MessageBoxButtons.YesNo, MessageBoxIcon.Question) ==
+                    MessageBox.Show(this, message, AssemblyInfo.Title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) ==
                     DialogResult.Yes)
                 {
                     this.ReplaceFavoriteInBindingSource(copy);
@@ -276,10 +276,10 @@ namespace Terminals.Forms
             FavoriteConfigurationElement favorite = this.GetSelectedFavorite();
             if (favorite != null)
             {
-                InputBoxResult result = InputBox.Show("New Connection Name");
-                if (result.ReturnCode == DialogResult.OK && !string.IsNullOrEmpty(result.Text))
+            	string input = "New Connection Name";
+                if (InputBox.Show(ref input) == DialogResult.OK && !string.IsNullOrEmpty(input))
                 {
-                    this.CopySelectedFavorite(favorite, result.Text);
+                    this.CopySelectedFavorite(favorite, input);
                 }
             }
         }

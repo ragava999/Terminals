@@ -1,12 +1,3 @@
-/*
- * Created by SharpDevelop.
- * User: CableJ01
- * Date: 18/01/2009
- * Time: 13:57
- * 
- * To change this template use Tools | Options | Coding | Edit Standard Headers.
- */
-
 using System;
 using System.Net.Sockets;
 using Granados;

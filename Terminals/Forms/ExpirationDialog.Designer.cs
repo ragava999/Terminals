@@ -88,7 +88,7 @@ namespace Terminals.Forms
             this.lblThankYou.Name = "lblThankYou";
             this.lblThankYou.Size = new System.Drawing.Size(307, 40);
             this.lblThankYou.TabIndex = 4;
-            this.lblThankYou.Text = "Thank you for using " + AssemblyInfo.Title() + ".";
+            this.lblThankYou.Text = "Thank you for using " + AssemblyInfo.Title + ".";
             this.lblThankYou.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // ExpirationDialog

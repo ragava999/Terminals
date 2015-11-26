@@ -75,8 +75,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Geckofx-Core", "BitBucket G
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Geckofx-Winforms", "BitBucket Gecko\Geckofx-Winforms\Geckofx-Winforms.csproj", "{D7ADC901-E1C4-480E-8F6D-B1FFD5CF87E8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeePassLib", "keepass2-master\KeePassLib\KeePassLib.csproj", "{53573E4E-33CB-4FDB-8698-C95F5E40E7F3}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kohl.Framework", "Kohl.Framework\Kohl.Framework.csproj", "{2E4E3508-2275-4A32-9A0D-9A95B134407B}"
 EndProject
 Global
@@ -177,10 +175,6 @@ Global
 		{D7ADC901-E1C4-480E-8F6D-B1FFD5CF87E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D7ADC901-E1C4-480E-8F6D-B1FFD5CF87E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D7ADC901-E1C4-480E-8F6D-B1FFD5CF87E8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{53573E4E-33CB-4FDB-8698-C95F5E40E7F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{53573E4E-33CB-4FDB-8698-C95F5E40E7F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{53573E4E-33CB-4FDB-8698-C95F5E40E7F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{53573E4E-33CB-4FDB-8698-C95F5E40E7F3}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2E4E3508-2275-4A32-9A0D-9A95B134407B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2E4E3508-2275-4A32-9A0D-9A95B134407B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2E4E3508-2275-4A32-9A0D-9A95B134407B}.Release|Any CPU.ActiveCfg = Release|Any CPU

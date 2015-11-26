@@ -8,7 +8,6 @@
     // Terminals namespaces
     using Configuration.Files.Main.Favorites;
     using Connection; 
-    using Kohl.Framework.Localization;
     using Terminals.Connection.Manager;
     using Terminals.Connection.Panels.FavoritePanels;
 
@@ -42,8 +41,6 @@
                 tinyMce.BackColor = System.Drawing.Color.Red;
                 splitContainer1.Panel2.Controls.Add(tinyMce);
             }
-
-            Localization.SetLanguage(this);
         }
         #endregion
 

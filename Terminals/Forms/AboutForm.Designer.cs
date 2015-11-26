@@ -49,7 +49,7 @@ namespace Terminals.Forms
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(486, 30);
             this.label1.TabIndex = 0;
-            this.label1.Text = AssemblyInfo.Title() + " is a multi tab terminal services/remote desktop client.";
+            this.label1.Text = AssemblyInfo.Title + " is a multi tab terminal services/remote desktop client.";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblTerminals
@@ -62,7 +62,7 @@ namespace Terminals.Forms
             this.lblTerminals.Size = new System.Drawing.Size(486, 27);
             this.lblTerminals.TabIndex = 1;
             this.lblTerminals.TabStop = true;
-            this.lblTerminals.Text = AssemblyInfo.Title() + " Home Page";
+            this.lblTerminals.Text = AssemblyInfo.Title + " Home Page";
             this.lblTerminals.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblTerminals.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblTerminals_LinkClicked);
             // 
@@ -108,7 +108,7 @@ namespace Terminals.Forms
             this.lblVersion.Name = "lblVersion";
             this.lblVersion.Size = new System.Drawing.Size(486, 13);
             this.lblVersion.TabIndex = 9;
-            this.lblVersion.Text = AssemblyInfo.Title() + " (RDP, VNC, VMRC, RAS, ICA Citrix, Telnet and SSH supported)";
+            this.lblVersion.Text = AssemblyInfo.Title + " (RDP, VNC, VMRC, RAS, ICA Citrix, Telnet and SSH supported)";
             this.lblVersion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label2
@@ -118,9 +118,7 @@ namespace Terminals.Forms
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(486, 51);
             this.label2.TabIndex = 12;
-            this.label2.Text = AssemblyInfo.Title() + " also handles a variety of networking operations such as: Ping, Trace Ro" +
-    "ute, WMI Explorer, TCP Connections, Network Interfaces, Whois, DNS Lookups, Shar" +
-    "es List, Time Syncronization";
+            this.label2.Text = AssemblyInfo.Title + " also handles a variety of networking operations such as: Ping, Trace Route, WMI Explorer, TCP Connections, Network Interfaces, Whois, DNS Lookups, Shares List, Time Synchronization";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // textBox1
@@ -157,7 +155,7 @@ namespace Terminals.Forms
             this.Name = "AboutForm";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "About " + AssemblyInfo.Title();
+            this.Text = "About " + AssemblyInfo.Title;
             this.Load += new System.EventHandler(this.AboutForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);

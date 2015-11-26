@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
-using Kohl.Framework.Localization;
 using Kohl.Framework.Logging;
 using Terminals.Configuration.Files.Main.Favorites;
 using Terminals.Connection.Properties;
@@ -108,7 +107,7 @@ namespace Terminals.Connection.Manager
             }
             catch (Exception ex)
             {
-                Log.Error(Localization.Text("Connections.ConnectionImageHandler.LoadImage", typeof(ConnectionImageHandler)), ex);
+                Log.Error("Error loading TreeView item image.", ex);
             }
 
             return defaultIcon;

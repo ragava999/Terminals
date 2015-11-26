@@ -117,44 +117,8 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="contextMenuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing">
     <value>17, 17</value>
-  </data>
-  <data name="DE_ConnectButton.Text" xml:space="preserve">
-    <value>Verbinden ...</value>
-  </data>
-  <data name="DE_label1.Text" xml:space="preserve">
-    <value>Terminalserver:</value>
-  </data>
-  <data name="DE_logoffSessionToolStripMenuItem.Text" xml:space="preserve">
-    <value>Sitzung abmelden</value>
-  </data>
-  <data name="DE_rebootServerToolStripMenuItem.Text" xml:space="preserve">
-    <value>Server neustarten</value>
-  </data>
-  <data name="DE_sendMessageToolStripMenuItem.Text" xml:space="preserve">
-    <value>Nachricht senden</value>
-  </data>
-  <data name="DE_shutdownServerToolStripMenuItem.Text" xml:space="preserve">
-    <value>Server herunterfahren</value>
-  </data>
-  <data name="EN_ConnectButton.Text" xml:space="preserve">
-    <value>Connect ...</value>
-  </data>
-  <data name="EN_label1.Text" xml:space="preserve">
-    <value>Terminal server:</value>
-  </data>
-  <data name="EN_logoffSessionToolStripMenuItem.Text" xml:space="preserve">
-    <value>Logoff session</value>
-  </data>
-  <data name="EN_rebootServerToolStripMenuItem.Text" xml:space="preserve">
-    <value>Reboot server</value>
-  </data>
-  <data name="EN_sendMessageToolStripMenuItem.Text" xml:space="preserve">
-    <value>Send message</value>
-  </data>
-  <data name="EN_shutdownServerToolStripMenuItem.Text" xml:space="preserve">
-    <value>Shutdown server</value>
   </data>
 </root>

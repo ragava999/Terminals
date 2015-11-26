@@ -1,6 +1,5 @@
 ﻿using System.Drawing;
 using System.Windows.Forms;
-using Kohl.Framework.Localization;
 using Terminals.Configuration.Files.Main.Favorites;
 using Terminals.Connection.Manager;
 using System;
@@ -55,8 +54,6 @@ namespace Terminals.Connection.Panels.FavoritePanels
         {
             System.AppDomain.CurrentDomain.AssemblyResolve += CurrentDomain_AssemblyResolve;
             InitializeComponent();
-
-            Localization.SetLanguage(this);
         }
 
         private System.Reflection.Assembly CurrentDomain_AssemblyResolve(object sender, System.ResolveEventArgs args)

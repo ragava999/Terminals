@@ -1,12 +1,4 @@
-﻿/*
- * Created by SharpDevelop.
- * User: cablej01
- * Date: 03/11/2008
- * Time: 18:30
- * 
- * To change this template use Tools | Options | Coding | Edit Standard Headers.
- */
-namespace Terminals.SSHClient
+﻿namespace Terminals.SSHClient
 {
 	partial class Preferences
 	{

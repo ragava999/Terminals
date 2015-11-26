@@ -1,1 +1,1403 @@
 _Versions
+/Be.Windows.Forms.HexBox/bin/Debug/Be.Windows.Forms.HexBox.dll
+/Be.Windows.Forms.HexBox/bin/Debug/Be.Windows.Forms.HexBox.pdb
+/Be.Windows.Forms.HexBox/bin/Debug/Be.Windows.Forms.HexBox.xml
+/Be.Windows.Forms.HexBox/obj/Debug/Be.Windows.Forms.HexBox.csproj.FileListAbsolute.txt
+/Be.Windows.Forms.HexBox/obj/Debug/Be.Windows.Forms.HexBox.csprojResolveAssemblyReference.cache
+/Be.Windows.Forms.HexBox/obj/Debug/Be.Windows.Forms.HexBox.dll
+/Be.Windows.Forms.HexBox/obj/Debug/Be.Windows.Forms.HexBox.pdb
+/BitBucket Gecko/Geckofx-Core/bin/Debug_Windows/Geckofx-Core.dll
+/BitBucket Gecko/Geckofx-Core/bin/Debug_Windows/Geckofx-Core.dll.config
+/BitBucket Gecko/Geckofx-Core/bin/Debug_Windows/Geckofx-Core.pdb
+/BitBucket Gecko/Geckofx-Core/obj/Debug_Windows/Geckofx-Core.csproj.FileListAbsolute.txt
+/BitBucket Gecko/Geckofx-Core/obj/Debug_Windows/Geckofx-Core.csprojResolveAssemblyReference.cache
+/BitBucket Gecko/Geckofx-Core/obj/Debug_Windows/Geckofx-Core.dll
+/BitBucket Gecko/Geckofx-Core/obj/Debug_Windows/Geckofx-Core.pdb
+/BitBucket Gecko/Geckofx-Winforms/bin/Debug/Geckofx-Core.dll
+/BitBucket Gecko/Geckofx-Winforms/bin/Debug/Geckofx-Core.dll.config
+/BitBucket Gecko/Geckofx-Winforms/bin/Debug/Geckofx-Core.pdb
+/BitBucket Gecko/Geckofx-Winforms/bin/Debug/Geckofx-Winforms.dll
+/BitBucket Gecko/Geckofx-Winforms/bin/Debug/Geckofx-Winforms.pdb
+/BitBucket Gecko/Geckofx-Winforms/obj/Debug/Geckofx-Winforms.csproj.FileListAbsolute.txt
+/BitBucket Gecko/Geckofx-Winforms/obj/Debug/Geckofx-Winforms.csprojResolveAssemblyReference.cache
+/BitBucket Gecko/Geckofx-Winforms/obj/Debug/Geckofx-Winforms.dll
+/BitBucket Gecko/Geckofx-Winforms/obj/Debug/Geckofx-Winforms.pdb
+/CodeEditor/bin/Bug in Scintilla.pdf
+/CodeEditor/bin/CodeEditor.dll
+/CodeEditor/bin/CodeEditor.pdb
+/CodeEditor/bin/Kohl.Framework.dll
+/CodeEditor/bin/Kohl.Framework.pdb
+/CodeEditor/bin/SciLexer.dll
+/CodeEditor/bin/SciLexer64.dll
+/CodeEditor/bin/ScintillaNET.dll
+/CodeEditor/bin/ScintillaNET.pdb
+/CodeEditor/bin/ScintillaNET.xml
+/CodeEditor/obj/Debug/CodeEditor.AboutForm.resources
+/CodeEditor/obj/Debug/CodeEditor.Edit.resources
+/CodeEditor/obj/Debug/CodeEditor.Properties.Resources.resources
+/CodeEditor/obj/Debug/CodeEditor.csproj.FileListAbsolute.txt
+/CodeEditor/obj/Debug/CodeEditor.csproj.GenerateResource.Cache
+/CodeEditor/obj/Debug/CodeEditor.csprojResolveAssemblyReference.cache
+/CodeEditor/obj/Debug/CodeEditor.dll
+/CodeEditor/obj/Debug/CodeEditor.pdb
+/DotRas-ChangeSet-99043/Trunk/Source/DotRas/DotRas/bin/Debug/DotRas.dll
+/DotRas-ChangeSet-99043/Trunk/Source/DotRas/DotRas/bin/Debug/DotRas.pdb
+/DotRas-ChangeSet-99043/Trunk/Source/DotRas/DotRas/obj/Debug/DotRas.Properties.Resources.resources
+/DotRas-ChangeSet-99043/Trunk/Source/DotRas/DotRas/obj/Debug/DotRas.csproj.FileListAbsolute.txt
+/DotRas-ChangeSet-99043/Trunk/Source/DotRas/DotRas/obj/Debug/DotRas.csproj.GenerateResource.Cache
+/DotRas-ChangeSet-99043/Trunk/Source/DotRas/DotRas/obj/Debug/DotRas.dll
+/DotRas-ChangeSet-99043/Trunk/Source/DotRas/DotRas/obj/Debug/DotRas.pdb
+/ExplorerBrowser/bin/Debug/ExplorerBrowser.dll
+/ExplorerBrowser/bin/Debug/ExplorerBrowser.pdb
+/ExplorerBrowser/bin/Debug/Microsoft.WindowsAPICodePack.Shell.dll
+/ExplorerBrowser/bin/Debug/Microsoft.WindowsAPICodePack.Shell.pdb
+/ExplorerBrowser/bin/Debug/Microsoft.WindowsAPICodePack.dll
+/ExplorerBrowser/bin/Debug/Microsoft.WindowsAPICodePack.pdb
+/ExplorerBrowser/obj/Debug/ExplorerBrowser.ControlStyler.resources
+/ExplorerBrowser/obj/Debug/ExplorerBrowser.ExplorerHeader.resources
+/ExplorerBrowser/obj/Debug/ExplorerBrowser.ExplorerNavigationButtons.resources
+/ExplorerBrowser/obj/Debug/ExplorerBrowser.ExporerNavigationComboBox.resources
+/ExplorerBrowser/obj/Debug/ExplorerBrowser.Multiplorer.resources
+/ExplorerBrowser/obj/Debug/ExplorerBrowser.Properties.Resources.resources
+/ExplorerBrowser/obj/Debug/ExplorerBrowser.Resources.resources
+/ExplorerBrowser/obj/Debug/ExplorerBrowser.csproj.FileListAbsolute.txt
+/ExplorerBrowser/obj/Debug/ExplorerBrowser.csproj.GenerateResource.Cache
+/ExplorerBrowser/obj/Debug/ExplorerBrowser.csprojResolveAssemblyReference.cache
+/ExplorerBrowser/obj/Debug/ExplorerBrowser.dll
+/ExplorerBrowser/obj/Debug/ExplorerBrowser.pdb
+/Granados/bin/Debug/Granados.dll
+/Granados/bin/Debug/Granados.pdb
+/Granados/obj/Debug/Granados.csproj.FileListAbsolute.txt
+/Granados/obj/Debug/Granados.csproj.GenerateResource.Cache
+/Granados/obj/Debug/Granados.dll
+/Granados/obj/Debug/Granados.pdb
+/Granados/obj/Debug/Granados.strings.resources
+/Granados/obj/Debug/Granados.strings_ja.resources
+/Kohl.Explorer/bin/Debug/ExplorerBrowser.dll
+/Kohl.Explorer/bin/Debug/ExplorerBrowser.pdb
+/Kohl.Explorer/bin/Debug/Kohl.Explorer.exe
+/Kohl.Explorer/bin/Debug/Kohl.Explorer.exe.config
+/Kohl.Explorer/bin/Debug/Kohl.Explorer.pdb
+/Kohl.Explorer/bin/Debug/Microsoft.WindowsAPICodePack.Shell.dll
+/Kohl.Explorer/bin/Debug/Microsoft.WindowsAPICodePack.Shell.pdb
+/Kohl.Explorer/bin/Debug/Microsoft.WindowsAPICodePack.dll
+/Kohl.Explorer/bin/Debug/Microsoft.WindowsAPICodePack.pdb
+/Kohl.Explorer/obj/Debug/Kohl.Explorer.Main.resources
+/Kohl.Explorer/obj/Debug/Kohl.Explorer.Properties.Resources.resources
+/Kohl.Explorer/obj/Debug/Kohl.Explorer.csproj.FileListAbsolute.txt
+/Kohl.Explorer/obj/Debug/Kohl.Explorer.csproj.GenerateResource.Cache
+/Kohl.Explorer/obj/Debug/Kohl.Explorer.csprojResolveAssemblyReference.cache
+/Kohl.Explorer/obj/Debug/Kohl.Explorer.exe
+/Kohl.Explorer/obj/Debug/Kohl.Explorer.pdb
+/Kohl.Framework/bin/Debug/Kohl.Framework.dll
+/Kohl.Framework/bin/Debug/Kohl.Framework.pdb
+/Kohl.Framework/obj/Debug/Kohl.Framework.csproj.FileListAbsolute.txt
+/Kohl.Framework/obj/Debug/Kohl.Framework.csprojResolveAssemblyReference.cache
+/Kohl.Framework/obj/Debug/Kohl.Framework.dll
+/Kohl.Framework/obj/Debug/Kohl.Framework.pdb
+/Kohl.TinyMce/bin/Debug/Kohl.TinyMce.dll
+/Kohl.TinyMce/bin/Debug/Kohl.TinyMce.pdb
+/Kohl.TinyMce/obj/Debug/Kohl.TinyMce.Properties.Resources.resources
+/Kohl.TinyMce/obj/Debug/Kohl.TinyMce.TinyMce.resources
+/Kohl.TinyMce/obj/Debug/Kohl.TinyMce.csproj.FileListAbsolute.txt
+/Kohl.TinyMce/obj/Debug/Kohl.TinyMce.csproj.GenerateResource.Cache
+/Kohl.TinyMce/obj/Debug/Kohl.TinyMce.csprojResolveAssemblyReference.cache
+/Kohl.TinyMce/obj/Debug/Kohl.TinyMce.dll
+/Kohl.TinyMce/obj/Debug/Kohl.TinyMce.pdb
+/Metro/bin/Debug/Metro.dll
+/Metro/bin/Debug/Metro.pdb
+/Metro/obj/Debug/Metro.csproj.FileListAbsolute.txt
+/Metro/obj/Debug/Metro.csprojResolveAssemblyReference.cache
+/Metro/obj/Debug/Metro.dll
+/Metro/obj/Debug/Metro.pdb
+/SharpPcap-4.1.0/SharpPcap/bin/Debug/PacketDotNet.dll
+/SharpPcap-4.1.0/SharpPcap/bin/Debug/PacketDotNet.pdb
+/SharpPcap-4.1.0/SharpPcap/bin/Debug/SharpPcap.dll
+/SharpPcap-4.1.0/SharpPcap/bin/Debug/SharpPcap.pdb
+/SharpPcap-4.1.0/SharpPcap/bin/Debug/log4net.dll
+/SharpPcap-4.1.0/SharpPcap/obj/Debug/SharpPcap.csproj.FileListAbsolute.txt
+/SharpPcap-4.1.0/SharpPcap/obj/Debug/SharpPcap.csprojResolveAssemblyReference.cache
+/SharpPcap-4.1.0/SharpPcap/obj/Debug/SharpPcap.dll
+/SharpPcap-4.1.0/SharpPcap/obj/Debug/SharpPcap.pdb
+/SharpZipLib/bin/Debug/ICSharpCode.SharpZipLib.dll
+/SharpZipLib/bin/Debug/ICSharpCode.SharpZipLib.pdb
+/SharpZipLib/obj/Debug/ICSharpCode.SharpZLib.csproj.FileListAbsolute.txt
+/SharpZipLib/obj/Debug/ICSharpCode.SharpZLib.csprojResolveAssemblyReference.cache
+/SharpZipLib/obj/Debug/ICSharpCode.SharpZipLib.dll
+/SharpZipLib/obj/Debug/ICSharpCode.SharpZipLib.pdb
+/TerminalEmulator/bin/Debug/TerminalEmulator.dll
+/TerminalEmulator/bin/Debug/TerminalEmulator.pdb
+/TerminalEmulator/obj/Debug/TerminalEmulator.csproj.FileListAbsolute.txt
+/TerminalEmulator/obj/Debug/TerminalEmulator.dll
+/TerminalEmulator/obj/Debug/TerminalEmulator.pdb
+/Terminals.Configuration/bin/Debug/KeePassLib.dll
+/Terminals.Configuration/bin/Debug/KeePassLib.xml
+/Terminals.Configuration/bin/Debug/Kohl.Framework.dll
+/Terminals.Configuration/bin/Debug/Kohl.Framework.pdb
+/Terminals.Configuration/bin/Debug/Terminals.Configuration.dll
+/Terminals.Configuration/bin/Debug/Terminals.Configuration.dll.config
+/Terminals.Configuration/bin/Debug/Terminals.Configuration.pdb
+/Terminals.Configuration/obj/Debug/Terminals.Configuration.Properties.Resources.resources
+/Terminals.Configuration/obj/Debug/Terminals.Configuration.csproj.FileListAbsolute.txt
+/Terminals.Configuration/obj/Debug/Terminals.Configuration.csproj.GenerateResource.Cache
+/Terminals.Configuration/obj/Debug/Terminals.Configuration.csprojResolveAssemblyReference.cache
+/Terminals.Configuration/obj/Debug/Terminals.Configuration.dll
+/Terminals.Configuration/obj/Debug/Terminals.Configuration.pdb
+/Terminals.Configuration/obj/Debug/edmxResourcesToEmbed/Sql/Terminals.csdl
+/Terminals.Configuration/obj/Debug/edmxResourcesToEmbed/Sql/Terminals.msl
+/Terminals.Configuration/obj/Debug/edmxResourcesToEmbed/Sql/Terminals.ssdl
+/Terminals.Configuration/packages.config
+/Terminals.Connection/bin/Debug/KeePassLib.dll
+/Terminals.Connection/bin/Debug/KeePassLib.xml
+/Terminals.Connection/bin/Debug/Kohl.Framework.dll
+/Terminals.Connection/bin/Debug/Kohl.Framework.pdb
+/Terminals.Connection/bin/Debug/Terminals.Configuration.dll
+/Terminals.Connection/bin/Debug/Terminals.Configuration.dll.config
+/Terminals.Connection/bin/Debug/Terminals.Configuration.pdb
+/Terminals.Connection/bin/Debug/Terminals.Connection.dll
+/Terminals.Connection/bin/Debug/Terminals.Connection.pdb
+/Terminals.Connection/obj/Debug/Terminals.Connection.Panels.OptionPanels.OptionPanel.resources
+/Terminals.Connection/obj/Debug/Terminals.Connection.PopupTerminal.resources
+/Terminals.Connection/obj/Debug/Terminals.Connection.Properties.Resources.resources
+/Terminals.Connection/obj/Debug/Terminals.Connection.ScreenCapture.CaptureManagerLayout.resources
+/Terminals.Connection/obj/Debug/Terminals.Connection.TabControl.TabPreview.resources
+/Terminals.Connection/obj/Debug/Terminals.Connection.csproj.FileListAbsolute.txt
+/Terminals.Connection/obj/Debug/Terminals.Connection.csproj.GenerateResource.Cache
+/Terminals.Connection/obj/Debug/Terminals.Connection.csprojResolveAssemblyReference.cache
+/Terminals.Connection/obj/Debug/Terminals.Connection.dll
+/Terminals.Connection/obj/Debug/Terminals.Connection.pdb
+/Terminals.Plugins.AutoIt/obj/Debug/Terminals.Plugins.AutoIt.Panels.OptionPanels.AutoItEnableForProtocolsOptionPanel.resources
+/Terminals.Plugins.AutoIt/obj/Debug/Terminals.Plugins.AutoIt.Panels.OptionPanels.AutoItOptionPanel.resources
+/Terminals.Plugins.AutoIt/obj/Debug/Terminals.Plugins.AutoIt.Properties.Resources.resources
+/Terminals.Plugins.AutoIt/obj/Debug/Terminals.Plugins.AutoIt.csproj.FileListAbsolute.txt
+/Terminals.Plugins.AutoIt/obj/Debug/Terminals.Plugins.AutoIt.csproj.GenerateResource.Cache
+/Terminals.Plugins.AutoIt/obj/Debug/Terminals.Plugins.AutoIt.csprojResolveAssemblyReference.cache
+/Terminals.Plugins.AutoIt/obj/Debug/Terminals.Plugins.AutoIt.dll
+/Terminals.Plugins.AutoIt/obj/Debug/Terminals.Plugins.AutoIt.pdb
+/Terminals.Plugins.InternetExplorer/obj/Debug/Terminals.Plugins.InternetExplorer.Properties.Resources.resources
+/Terminals.Plugins.InternetExplorer/obj/Debug/Terminals.Plugins.InternetExplorer.csproj.FileListAbsolute.txt
+/Terminals.Plugins.InternetExplorer/obj/Debug/Terminals.Plugins.InternetExplorer.csproj.GenerateResource.Cache
+/Terminals.Plugins.InternetExplorer/obj/Debug/Terminals.Plugins.InternetExplorer.csprojResolveAssemblyReference.cache
+/Terminals.Plugins.InternetExplorer/obj/Debug/Terminals.Plugins.InternetExplorer.dll
+/Terminals.Plugins.InternetExplorer/obj/Debug/Terminals.Plugins.InternetExplorer.pdb
+/Terminals.Plugins.Text/obj/Debug/Terminals.Plugins.Text.Panels.OptionPanels.TextEnableForProtocolsOptionPanel.resources
+/Terminals.Plugins.Text/obj/Debug/Terminals.Plugins.Text.Properties.Resources.resources
+/Terminals.Plugins.Text/obj/Debug/Terminals.Plugins.Text.csproj.FileListAbsolute.txt
+/Terminals.Plugins.Text/obj/Debug/Terminals.Plugins.Text.csproj.GenerateResource.Cache
+/Terminals.Plugins.Text/obj/Debug/Terminals.Plugins.Text.csprojResolveAssemblyReference.cache
+/Terminals.Plugins.Text/obj/Debug/Terminals.Plugins.Text.dll
+/Terminals.Plugins.Text/obj/Debug/Terminals.Plugins.Text.pdb
+/Terminals/bin/x86/Debug/AxInterop.MSTSCLib.dll
+/Terminals/bin/x86/Debug/AxInterop.Microsoft.VMRCClientControl.Interop.dll
+/Terminals/bin/x86/Debug/AxWFICALib.dll
+/Terminals/bin/x86/Debug/Be.Windows.Forms.HexBox.dll
+/Terminals/bin/x86/Debug/Be.Windows.Forms.HexBox.pdb
+/Terminals/bin/x86/Debug/Be.Windows.Forms.HexBox.xml
+/Terminals/bin/x86/Debug/Credentials.bak
+/Terminals/bin/x86/Debug/Credentials.xml
+/Terminals/bin/x86/Debug/DotRas.dll
+/Terminals/bin/x86/Debug/DotRas.pdb
+/Terminals/bin/x86/Debug/ExplorerBrowser.dll
+/Terminals/bin/x86/Debug/ExplorerBrowser.pdb
+/Terminals/bin/x86/Debug/Geckofx-Core.dll
+/Terminals/bin/x86/Debug/Geckofx-Core.dll.config
+/Terminals/bin/x86/Debug/Geckofx-Core.pdb
+/Terminals/bin/x86/Debug/Geckofx-Winforms.dll
+/Terminals/bin/x86/Debug/Geckofx-Winforms.pdb
+/Terminals/bin/x86/Debug/Granados.dll
+/Terminals/bin/x86/Debug/Granados.pdb
+/Terminals/bin/x86/Debug/ICSharpCode.SharpZipLib.dll
+/Terminals/bin/x86/Debug/ICSharpCode.SharpZipLib.pdb
+/Terminals/bin/x86/Debug/Interop.MSTSCLib.dll
+/Terminals/bin/x86/Debug/KeePassLib.dll
+/Terminals/bin/x86/Debug/KeePassLib.xml
+/Terminals/bin/x86/Debug/Kohl.Explorer.exe
+/Terminals/bin/x86/Debug/Kohl.Framework.dll
+/Terminals/bin/x86/Debug/Kohl.Framework.pdb
+/Terminals/bin/x86/Debug/Metro.dll
+/Terminals/bin/x86/Debug/Metro.pdb
+/Terminals/bin/x86/Debug/Microsoft.VMRCClientControl.Interop.dll
+/Terminals/bin/x86/Debug/Microsoft.WindowsAPICodePack.Shell.dll
+/Terminals/bin/x86/Debug/Microsoft.WindowsAPICodePack.Shell.pdb
+/Terminals/bin/x86/Debug/Microsoft.WindowsAPICodePack.dll
+/Terminals/bin/x86/Debug/Microsoft.WindowsAPICodePack.pdb
+/Terminals/bin/x86/Debug/PacketDotNet.dll
+/Terminals/bin/x86/Debug/PacketDotNet.pdb
+/Terminals/bin/x86/Debug/Plugins/AutoIt/AutoIt3.exe
+/Terminals/bin/x86/Debug/Plugins/AutoIt/Bug in Scintilla.pdf
+/Terminals/bin/x86/Debug/Plugins/AutoIt/CodeEditor.dll
+/Terminals/bin/x86/Debug/Plugins/AutoIt/CodeEditor.pdb
+/Terminals/bin/x86/Debug/Plugins/AutoIt/Kohl.Framework.dll
+/Terminals/bin/x86/Debug/Plugins/AutoIt/Kohl.Framework.pdb
+/Terminals/bin/x86/Debug/Plugins/AutoIt/SciLexer.dll
+/Terminals/bin/x86/Debug/Plugins/AutoIt/SciLexer64.dll
+/Terminals/bin/x86/Debug/Plugins/AutoIt/ScintillaNET.dll
+/Terminals/bin/x86/Debug/Plugins/AutoIt/ScintillaNET.pdb
+/Terminals/bin/x86/Debug/Plugins/AutoIt/ScintillaNET.xml
+/Terminals/bin/x86/Debug/Plugins/AutoIt/Terminals.Plugins.AutoIt.dll
+/Terminals/bin/x86/Debug/Plugins/AutoIt/Terminals.Plugins.AutoIt.pdb
+/Terminals/bin/x86/Debug/Plugins/InternetExplorer/Kohl.Framework.dll
+/Terminals/bin/x86/Debug/Plugins/InternetExplorer/Kohl.Framework.pdb
+/Terminals/bin/x86/Debug/Plugins/InternetExplorer/Terminals.Plugins.InternetExplorer.dll
+/Terminals/bin/x86/Debug/Plugins/InternetExplorer/Terminals.Plugins.InternetExplorer.pdb
+/Terminals/bin/x86/Debug/Plugins/Text/Kohl.Framework.dll
+/Terminals/bin/x86/Debug/Plugins/Text/Kohl.Framework.pdb
+/Terminals/bin/x86/Debug/Plugins/Text/Kohl.TinyMce.dll
+/Terminals/bin/x86/Debug/Plugins/Text/Kohl.TinyMce.pdb
+/Terminals/bin/x86/Debug/Plugins/Text/Terminals.Plugins.Text.dll
+/Terminals/bin/x86/Debug/Plugins/Text/Terminals.Plugins.Text.pdb
+/Terminals/bin/x86/Debug/RegisterVMRC.bat
+/Terminals/bin/x86/Debug/SharpPcap.dll
+/Terminals/bin/x86/Debug/SharpPcap.pdb
+/Terminals/bin/x86/Debug/TerminalEmulator.dll
+/Terminals/bin/x86/Debug/TerminalEmulator.pdb
+/Terminals/bin/x86/Debug/Terminals.Configuration.dll
+/Terminals/bin/x86/Debug/Terminals.Configuration.dll.config
+/Terminals/bin/x86/Debug/Terminals.Configuration.pdb
+/Terminals/bin/x86/Debug/Terminals.Connection.dll
+/Terminals/bin/x86/Debug/Terminals.Connection.pdb
+/Terminals/bin/x86/Debug/Terminals.bak
+/Terminals/bin/x86/Debug/Terminals.config
+/Terminals/bin/x86/Debug/Terminals.exe
+/Terminals/bin/x86/Debug/Terminals.log4net.config
+/Terminals/bin/x86/Debug/Terminals.pdb
+/Terminals/bin/x86/Debug/VMKeyboardHook.dll
+/Terminals/bin/x86/Debug/VMKeyboardHook64.dll
+/Terminals/bin/x86/Debug/VMRCActiveXClient.dll
+/Terminals/bin/x86/Debug/VMRCActiveXClient64.dll
+/Terminals/bin/x86/Debug/VncSharp.dll
+/Terminals/bin/x86/Debug/VncSharp.pdb
+/Terminals/bin/x86/Debug/WFICALib.dll
+/Terminals/bin/x86/Debug/ZedGraph.dll
+/Terminals/bin/x86/Debug/ZedGraph.pdb
+/Terminals/bin/x86/Debug/freebl3.dll
+/Terminals/bin/x86/Debug/gkmedias.dll
+/Terminals/bin/x86/Debug/libEGL.dll
+/Terminals/bin/x86/Debug/libGLESv2.dll
+/Terminals/bin/x86/Debug/log4net.dll
+/Terminals/bin/x86/Debug/mozalloc.dll
+/Terminals/bin/x86/Debug/mozglue.dll
+/Terminals/bin/x86/Debug/mozjs.dll
+/Terminals/bin/x86/Debug/nss3.dll
+/Terminals/bin/x86/Debug/nssckbi.dll
+/Terminals/bin/x86/Debug/nssdbm3.dll
+/Terminals/bin/x86/Debug/omni.ja
+/Terminals/bin/x86/Debug/plugin-container.exe
+/Terminals/bin/x86/Debug/softokn3.dll
+/Terminals/bin/x86/Debug/xul.dll
+/Terminals/obj/Debug/Terminals.Connections.MiniBrowser.resources
+/Terminals/obj/Debug/Terminals.ExportImport.ExportFrom.resources
+/Terminals/obj/Debug/Terminals.Forms.AboutForm.resources
+/Terminals/obj/Debug/Terminals.Forms.AddConnectionForm.resources
+/Terminals/obj/Debug/Terminals.Forms.Controls.HistoryTreeView.resources
+/Terminals/obj/Debug/Terminals.Forms.Credentials.CredentialManager.resources
+/Terminals/obj/Debug/Terminals.Forms.Credentials.ManageCredentialForm.resources
+/Terminals/obj/Debug/Terminals.Forms.DiskDrivesForm.resources
+/Terminals/obj/Debug/Terminals.Forms.ExpirationDialog.resources
+/Terminals/obj/Debug/Terminals.Forms.NewGroupForm.resources
+/Terminals/obj/Debug/Terminals.Forms.OrganizeFavoritesForm.resources
+/Terminals/obj/Debug/Terminals.Forms.OrganizeFavoritesToolbarForm.resources
+/Terminals/obj/Debug/Terminals.Forms.OrganizeGroupsForm.resources
+/Terminals/obj/Debug/Terminals.Forms.OrganizeShortcuts.resources
+/Terminals/obj/Debug/Terminals.Forms.QuickConnect.resources
+/Terminals/obj/Debug/Terminals.Forms.RequestPassword.resources
+/Terminals/obj/Debug/Terminals.Forms.SaveActiveConnectionsForm.resources
+/Terminals/obj/Debug/Terminals.MainForm.resources
+/Terminals/obj/Debug/Terminals.Network.AD.ImportFromAD.resources
+/Terminals/obj/Debug/Terminals.Network.DNS.DnsLookup.resources
+/Terminals/obj/Debug/Terminals.Network.LocalConnections.resources
+/Terminals/obj/Debug/Terminals.Network.PortScanner.PortScanner.resources
+/Terminals/obj/Debug/Terminals.Network.Servers.TerminalServerManager.resources
+/Terminals/obj/Debug/Terminals.Network.WMI.LoginForm.resources
+/Terminals/obj/Debug/Terminals.Network.WMI.Services.resources
+/Terminals/obj/Debug/Terminals.Network.WMI.WmiControl.resources
+/Terminals/obj/Debug/Terminals.Panels.FavoriteEditor.resources
+/Terminals/obj/Debug/Terminals.Panels.OptionEditor.resources
+/Terminals/obj/Debug/Terminals.Properties.Resources.resources
+/Terminals/obj/Debug/Terminals.Wizard.FirstRunWizard.resources
+/Terminals/obj/Debug/Terminals.csproj.FileListAbsolute.txt
+/Terminals/obj/Debug/Terminals.csproj.GenerateResource.Cache
+/Terminals/obj/Debug/Terminals.csprojResolveAssemblyReference.cache
+/Terminals/obj/Debug/Terminals.exe
+/Terminals/obj/Debug/Terminals.pdb
+/Terminals/packages.config
+/VncSharp/bin/Release/VncSharp.dll
+/VncSharp/bin/Release/VncSharp.pdb
+/VncSharp/obj/Release/VncSharp.PasswordDialog.resources
+/VncSharp/obj/Release/VncSharp.RemoteDesktop.resources
+/VncSharp/obj/Release/VncSharp.csproj.FileListAbsolute.txt
+/VncSharp/obj/Release/VncSharp.csproj.GenerateResource.Cache
+/VncSharp/obj/Release/VncSharp.dll
+/VncSharp/obj/Release/VncSharp.pdb
+/ZedGraph 5.1 (.net 2)/source/bin/Debug/ZedGraph.dll
+/ZedGraph 5.1 (.net 2)/source/bin/Debug/ZedGraph.pdb
+/ZedGraph 5.1 (.net 2)/source/obj/Debug/ZedGraph.csproj.FileListAbsolute.txt
+/ZedGraph 5.1 (.net 2)/source/obj/Debug/ZedGraph.csprojResolveAssemblyReference.cache
+/ZedGraph 5.1 (.net 2)/source/obj/Debug/ZedGraph.dll
+/ZedGraph 5.1 (.net 2)/source/obj/Debug/ZedGraph.pdb
+/netz-src/netz/bin/Debug/netz.exe
+/netz-src/netz/bin/Debug/netz.exe.config
+/netz-src/netz/bin/Debug/netz.pdb
+/netz-src/netz/obj/Debug/netz.csproj.FileListAbsolute.txt
+/netz-src/netz/obj/Debug/netz.exe
+/netz-src/netz/obj/Debug/netz.pdb
+/packages/KeePassLib.2.30/lib/KeePassLib.xml
+/Terminals/bin/x86/Distribution Debug/AxInterop.MSTSCLib.dll
+/Terminals/bin/x86/Distribution Debug/AxInterop.Microsoft.VMRCClientControl.Interop.dll
+/Terminals/bin/x86/Distribution Debug/AxWFICALib.dll
+/Terminals/bin/x86/Distribution Debug/Be.Windows.Forms.HexBox.dll
+/Terminals/bin/x86/Distribution Debug/Credentials.bak
+/Terminals/bin/x86/Distribution Debug/Credentials.xml
+/Terminals/bin/x86/Distribution Debug/DotRas.dll
+/Terminals/bin/x86/Distribution Debug/ExplorerBrowser.dll
+/Terminals/bin/x86/Distribution Debug/Geckofx-Core.dll
+/Terminals/bin/x86/Distribution Debug/Geckofx-Winforms.dll
+/Terminals/bin/x86/Distribution Debug/Granados.dll
+/Terminals/bin/x86/Distribution Debug/History.xml
+/Terminals/bin/x86/Distribution Debug/ICSharpCode.SharpZipLib.dll
+/Terminals/bin/x86/Distribution Debug/Interop.MSTSCLib.dll
+/Terminals/bin/x86/Distribution Debug/KeePassLib.dll
+/Terminals/bin/x86/Distribution Debug/Kohl.Explorer.exe
+/Terminals/bin/x86/Distribution Debug/Kohl.Framework.dll
+/Terminals/bin/x86/Distribution Debug/Logs/Terminals.txt
+/Terminals/bin/x86/Distribution Debug/Metro.dll
+/Terminals/bin/x86/Distribution Debug/Microsoft.VMRCClientControl.Interop.dll
+/Terminals/bin/x86/Distribution Debug/Microsoft.WindowsAPICodePack.Shell.dll
+/Terminals/bin/x86/Distribution Debug/Microsoft.WindowsAPICodePack.dll
+/Terminals/bin/x86/Distribution Debug/PacketDotNet.dll
+/Terminals/bin/x86/Distribution Debug/Plugins/AutoIt/AutoIt3.exe
+/Terminals/bin/x86/Distribution Debug/Plugins/AutoIt/Bug in Scintilla.pdf
+/Terminals/bin/x86/Distribution Debug/Plugins/AutoIt/CodeEditor.dll
+/Terminals/bin/x86/Distribution Debug/Plugins/AutoIt/CodeEditor.pdb
+/Terminals/bin/x86/Distribution Debug/Plugins/AutoIt/Kohl.Framework.dll
+/Terminals/bin/x86/Distribution Debug/Plugins/AutoIt/Kohl.Framework.pdb
+/Terminals/bin/x86/Distribution Debug/Plugins/AutoIt/SciLexer.dll
+/Terminals/bin/x86/Distribution Debug/Plugins/AutoIt/SciLexer64.dll
+/Terminals/bin/x86/Distribution Debug/Plugins/AutoIt/ScintillaNET.dll
+/Terminals/bin/x86/Distribution Debug/Plugins/AutoIt/ScintillaNET.pdb
+/Terminals/bin/x86/Distribution Debug/Plugins/AutoIt/ScintillaNET.xml
+/Terminals/bin/x86/Distribution Debug/Plugins/AutoIt/Terminals.Plugins.AutoIt.dll
+/Terminals/bin/x86/Distribution Debug/Plugins/AutoIt/Terminals.Plugins.AutoIt.pdb
+/Terminals/bin/x86/Distribution Debug/Plugins/InternetExplorer/Kohl.Framework.dll
+/Terminals/bin/x86/Distribution Debug/Plugins/InternetExplorer/Kohl.Framework.pdb
+/Terminals/bin/x86/Distribution Debug/Plugins/InternetExplorer/Terminals.Plugins.InternetExplorer.dll
+/Terminals/bin/x86/Distribution Debug/Plugins/InternetExplorer/Terminals.Plugins.InternetExplorer.pdb
+/Terminals/bin/x86/Distribution Debug/Plugins/Text/Kohl.Framework.dll
+/Terminals/bin/x86/Distribution Debug/Plugins/Text/Kohl.Framework.pdb
+/Terminals/bin/x86/Distribution Debug/Plugins/Text/Kohl.TinyMce.dll
+/Terminals/bin/x86/Distribution Debug/Plugins/Text/Kohl.TinyMce.pdb
+/Terminals/bin/x86/Distribution Debug/Plugins/Text/Terminals.Plugins.Text.dll
+/Terminals/bin/x86/Distribution Debug/Plugins/Text/Terminals.Plugins.Text.pdb
+/Terminals/bin/x86/Distribution Debug/Radmin Viewer 3/CHATLOGS/info.txt
+/Terminals/bin/x86/Distribution Debug/Radmin Viewer 3/ChatLPCx.dll
+/Terminals/bin/x86/Distribution Debug/Radmin Viewer 3/Radmin.exe
+/Terminals/bin/x86/Distribution Debug/Radmin Viewer 3/Radmin30.chm
+/Terminals/bin/x86/Distribution Debug/Radmin Viewer 3/WinLpcDl.dll
+/Terminals/bin/x86/Distribution Debug/Radmin Viewer 3/amt.dll
+/Terminals/bin/x86/Distribution Debug/Radmin Viewer 3/amt.ini
+/Terminals/bin/x86/Distribution Debug/Radmin Viewer 3/boot.txt
+/Terminals/bin/x86/Distribution Debug/Radmin Viewer 3/eula.txt
+/Terminals/bin/x86/Distribution Debug/Radmin Viewer 3/imrsdk.dll
+/Terminals/bin/x86/Distribution Debug/Radmin Viewer 3/raudiox.dll
+/Terminals/bin/x86/Distribution Debug/Radmin Viewer 3/rchatx.dll
+/Terminals/bin/x86/Distribution Debug/Radmin Viewer 3/unicows.dll
+/Terminals/bin/x86/Distribution Debug/Radmin Viewer 3/vcintcx.dll
+/Terminals/bin/x86/Distribution Debug/Radmin Viewer 3/vcintsx.dll
+/Terminals/bin/x86/Distribution Debug/Radmin Viewer 3/voicex.dll
+/Terminals/bin/x86/Distribution Debug/RegisterVMRC.bat
+/Terminals/bin/x86/Distribution Debug/SharpPcap.dll
+/Terminals/bin/x86/Distribution Debug/TerminalEmulator.dll
+/Terminals/bin/x86/Distribution Debug/Terminals.Configuration.dll
+/Terminals/bin/x86/Distribution Debug/Terminals.Connection.dll
+/Terminals/bin/x86/Distribution Debug/Terminals.bak
+/Terminals/bin/x86/Distribution Debug/Terminals.config
+/Terminals/bin/x86/Distribution Debug/Terminals.exe
+/Terminals/bin/x86/Distribution Debug/Terminals.log4net.config
+/Terminals/bin/x86/Distribution Debug/VMKeyboardHook.dll
+/Terminals/bin/x86/Distribution Debug/VMKeyboardHook64.dll
+/Terminals/bin/x86/Distribution Debug/VMRCActiveXClient.dll
+/Terminals/bin/x86/Distribution Debug/VMRCActiveXClient64.dll
+/Terminals/bin/x86/Distribution Debug/VncSharp.dll
+/Terminals/bin/x86/Distribution Debug/WFICALib.dll
+/Terminals/bin/x86/Distribution Debug/ZedGraph.dll
+/Terminals/bin/x86/Distribution Debug/freebl3.dll
+/Terminals/bin/x86/Distribution Debug/gkmedias.dll
+/Terminals/bin/x86/Distribution Debug/libEGL.dll
+/Terminals/bin/x86/Distribution Debug/libGLESv2.dll
+/Terminals/bin/x86/Distribution Debug/log4net.dll
+/Terminals/bin/x86/Distribution Debug/mozalloc.dll
+/Terminals/bin/x86/Distribution Debug/mozglue.dll
+/Terminals/bin/x86/Distribution Debug/mozjs.dll
+/Terminals/bin/x86/Distribution Debug/nss3.dll
+/Terminals/bin/x86/Distribution Debug/nssckbi.dll
+/Terminals/bin/x86/Distribution Debug/nssdbm3.dll
+/Terminals/bin/x86/Distribution Debug/omni.ja
+/Terminals/bin/x86/Distribution Debug/plugin-container.exe
+/Terminals/bin/x86/Distribution Debug/putty.exe
+/Terminals/bin/x86/Distribution Debug/softokn3.dll
+/Terminals/bin/x86/Distribution Debug/xul.dll
+/CodeEditor/bin/log4net.dll
+/CodeEditor/bin/log4net.xml
+/Kohl.Framework/bin/Debug/log4net.dll
+/Kohl.Framework/bin/Debug/log4net.xml
+/TerminalEmulator/obj/Debug/TerminalEmulator.csprojResolveAssemblyReference.cache
+/Terminals.Configuration/bin/Debug/log4net.dll
+/Terminals.Configuration/bin/Debug/log4net.xml
+/Terminals.Connection/bin/Debug/log4net.dll
+/Terminals.Connection/bin/Debug/log4net.xml
+/Terminals/bin/x86/Debug/Bug in Scintilla.pdf
+/Terminals/bin/x86/Debug/CodeEditor.dll
+/Terminals/bin/x86/Debug/CodeEditor.pdb
+/Terminals/bin/x86/Debug/History.xml
+/Terminals/bin/x86/Debug/Logs/Terminals.txt
+/Terminals/bin/x86/Debug/ScintillaNET.dll
+/Terminals/bin/x86/Debug/ScintillaNET.pdb
+/Terminals/bin/x86/Debug/ScintillaNET.xml
+/Terminals/bin/x86/Debug/log4net.xml
+/Terminals/bin/x86/Distribution Debug/CodeEditor.dll
+/Terminals/bin/x86/Distribution Debug/ScintillaNET.dll
+/Terminals/obj/Debug/Terminals.Panels.OptionPanels.DefaultPasswordOptionPanel.resources
+/VncSharp/obj/Release/VncSharp.csprojResolveAssemblyReference.cache
+/Be.Windows.Forms.HexBox/bin/Release/Be.Windows.Forms.HexBox.dll
+/Be.Windows.Forms.HexBox/obj/Release/Be.Windows.Forms.HexBox.csproj.FileListAbsolute.txt
+/Be.Windows.Forms.HexBox/obj/Release/Be.Windows.Forms.HexBox.csprojResolveAssemblyReference.cache
+/Be.Windows.Forms.HexBox/obj/Release/Be.Windows.Forms.HexBox.dll
+/BitBucket Gecko/Geckofx-Core/bin/Release_Windows/Geckofx-Core.dll
+/BitBucket Gecko/Geckofx-Core/bin/Release_Windows/Geckofx-Core.dll.config
+/BitBucket Gecko/Geckofx-Core/bin/Release_Windows/Geckofx-Core.pdb
+/BitBucket Gecko/Geckofx-Core/obj/Release_Windows/Geckofx-Core.csproj.FileListAbsolute.txt
+/BitBucket Gecko/Geckofx-Core/obj/Release_Windows/Geckofx-Core.csprojResolveAssemblyReference.cache
+/BitBucket Gecko/Geckofx-Core/obj/Release_Windows/Geckofx-Core.dll
+/BitBucket Gecko/Geckofx-Core/obj/Release_Windows/Geckofx-Core.pdb
+/BitBucket Gecko/Geckofx-Winforms/bin/Release/Geckofx-Core.dll
+/BitBucket Gecko/Geckofx-Winforms/bin/Release/Geckofx-Core.dll.config
+/BitBucket Gecko/Geckofx-Winforms/bin/Release/Geckofx-Core.pdb
+/BitBucket Gecko/Geckofx-Winforms/bin/Release/Geckofx-Winforms.dll
+/BitBucket Gecko/Geckofx-Winforms/bin/Release/Geckofx-Winforms.pdb
+/BitBucket Gecko/Geckofx-Winforms/obj/Release/Geckofx-Winforms.csproj.FileListAbsolute.txt
+/BitBucket Gecko/Geckofx-Winforms/obj/Release/Geckofx-Winforms.csprojResolveAssemblyReference.cache
+/BitBucket Gecko/Geckofx-Winforms/obj/Release/Geckofx-Winforms.dll
+/BitBucket Gecko/Geckofx-Winforms/obj/Release/Geckofx-Winforms.pdb
+/CodeEditor/obj/Release/CodeEditor.AboutForm.resources
+/CodeEditor/obj/Release/CodeEditor.Edit.resources
+/CodeEditor/obj/Release/CodeEditor.Properties.Resources.resources
+/CodeEditor/obj/Release/CodeEditor.csproj.FileListAbsolute.txt
+/CodeEditor/obj/Release/CodeEditor.csproj.GenerateResource.Cache
+/CodeEditor/obj/Release/CodeEditor.csprojResolveAssemblyReference.cache
+/CodeEditor/obj/Release/CodeEditor.dll
+/DotRas-ChangeSet-99043/Trunk/Source/DotRas/DotRas/bin/Release/DotRas.dll
+/DotRas-ChangeSet-99043/Trunk/Source/DotRas/DotRas/obj/Release/DotRas.Properties.Resources.resources
+/DotRas-ChangeSet-99043/Trunk/Source/DotRas/DotRas/obj/Release/DotRas.csproj.FileListAbsolute.txt
+/DotRas-ChangeSet-99043/Trunk/Source/DotRas/DotRas/obj/Release/DotRas.csproj.GenerateResource.Cache
+/DotRas-ChangeSet-99043/Trunk/Source/DotRas/DotRas/obj/Release/DotRas.dll
+/ExplorerBrowser/bin/Release/ExplorerBrowser.dll
+/ExplorerBrowser/bin/Release/ExplorerBrowser.pdb
+/ExplorerBrowser/bin/Release/Microsoft.WindowsAPICodePack.Shell.dll
+/ExplorerBrowser/bin/Release/Microsoft.WindowsAPICodePack.Shell.pdb
+/ExplorerBrowser/bin/Release/Microsoft.WindowsAPICodePack.dll
+/ExplorerBrowser/bin/Release/Microsoft.WindowsAPICodePack.pdb
+/ExplorerBrowser/obj/Release/ExplorerBrowser.ControlStyler.resources
+/ExplorerBrowser/obj/Release/ExplorerBrowser.ExplorerHeader.resources
+/ExplorerBrowser/obj/Release/ExplorerBrowser.ExplorerNavigationButtons.resources
+/ExplorerBrowser/obj/Release/ExplorerBrowser.ExporerNavigationComboBox.resources
+/ExplorerBrowser/obj/Release/ExplorerBrowser.Multiplorer.resources
+/ExplorerBrowser/obj/Release/ExplorerBrowser.Properties.Resources.resources
+/ExplorerBrowser/obj/Release/ExplorerBrowser.Resources.resources
+/ExplorerBrowser/obj/Release/ExplorerBrowser.csproj.FileListAbsolute.txt
+/ExplorerBrowser/obj/Release/ExplorerBrowser.csproj.GenerateResource.Cache
+/ExplorerBrowser/obj/Release/ExplorerBrowser.csprojResolveAssemblyReference.cache
+/ExplorerBrowser/obj/Release/ExplorerBrowser.dll
+/ExplorerBrowser/obj/Release/ExplorerBrowser.pdb
+/Granados/bin/Release/Granados.dll
+/Granados/obj/Release/Granados.csproj.FileListAbsolute.txt
+/Granados/obj/Release/Granados.csproj.GenerateResource.Cache
+/Granados/obj/Release/Granados.dll
+/Granados/obj/Release/Granados.strings.resources
+/Granados/obj/Release/Granados.strings_ja.resources
+/Kohl.Explorer/bin/Release/ExplorerBrowser.dll
+/Kohl.Explorer/bin/Release/ExplorerBrowser.pdb
+/Kohl.Explorer/bin/Release/Kohl.Explorer.exe
+/Kohl.Explorer/bin/Release/Kohl.Explorer.exe.config
+/Kohl.Explorer/bin/Release/Microsoft.WindowsAPICodePack.Shell.dll
+/Kohl.Explorer/bin/Release/Microsoft.WindowsAPICodePack.Shell.pdb
+/Kohl.Explorer/bin/Release/Microsoft.WindowsAPICodePack.dll
+/Kohl.Explorer/bin/Release/Microsoft.WindowsAPICodePack.pdb
+/Kohl.Explorer/obj/Release/Kohl.Explorer.Main.resources
+/Kohl.Explorer/obj/Release/Kohl.Explorer.Properties.Resources.resources
+/Kohl.Explorer/obj/Release/Kohl.Explorer.csproj.FileListAbsolute.txt
+/Kohl.Explorer/obj/Release/Kohl.Explorer.csproj.GenerateResource.Cache
+/Kohl.Explorer/obj/Release/Kohl.Explorer.csprojResolveAssemblyReference.cache
+/Kohl.Explorer/obj/Release/Kohl.Explorer.exe
+/Kohl.Framework/bin/Release/Kohl.Framework.dll
+/Kohl.Framework/bin/Release/Kohl.Framework.pdb
+/Kohl.Framework/bin/Release/log4net.dll
+/Kohl.Framework/bin/Release/log4net.xml
+/Kohl.Framework/obj/Release/Kohl.Framework.csproj.FileListAbsolute.txt
+/Kohl.Framework/obj/Release/Kohl.Framework.csprojResolveAssemblyReference.cache
+/Kohl.Framework/obj/Release/Kohl.Framework.dll
+/Kohl.Framework/obj/Release/Kohl.Framework.pdb
+/Kohl.TinyMce/bin/Release/Kohl.TinyMce.dll
+/Kohl.TinyMce/obj/Release/Kohl.TinyMce.Properties.Resources.resources
+/Kohl.TinyMce/obj/Release/Kohl.TinyMce.TinyMce.resources
+/Kohl.TinyMce/obj/Release/Kohl.TinyMce.csproj.FileListAbsolute.txt
+/Kohl.TinyMce/obj/Release/Kohl.TinyMce.csproj.GenerateResource.Cache
+/Kohl.TinyMce/obj/Release/Kohl.TinyMce.csprojResolveAssemblyReference.cache
+/Kohl.TinyMce/obj/Release/Kohl.TinyMce.dll
+/Metro/bin/Release/Metro.dll
+/Metro/obj/Release/Metro.csproj.FileListAbsolute.txt
+/Metro/obj/Release/Metro.csprojResolveAssemblyReference.cache
+/Metro/obj/Release/Metro.dll
+/SharpPcap-4.1.0/SharpPcap/bin/Release/PacketDotNet.dll
+/SharpPcap-4.1.0/SharpPcap/bin/Release/SharpPcap.dll
+/SharpPcap-4.1.0/SharpPcap/obj/Release/SharpPcap.csproj.FileListAbsolute.txt
+/SharpPcap-4.1.0/SharpPcap/obj/Release/SharpPcap.csprojResolveAssemblyReference.cache
+/SharpPcap-4.1.0/SharpPcap/obj/Release/SharpPcap.dll
+/SharpZipLib/bin/Release/ICSharpCode.SharpZipLib.dll
+/SharpZipLib/obj/Release/ICSharpCode.SharpZLib.csproj.FileListAbsolute.txt
+/SharpZipLib/obj/Release/ICSharpCode.SharpZLib.csprojResolveAssemblyReference.cache
+/SharpZipLib/obj/Release/ICSharpCode.SharpZipLib.dll
+/TerminalEmulator/bin/Release/TerminalEmulator.dll
+/TerminalEmulator/obj/Release/TerminalEmulator.csproj.FileListAbsolute.txt
+/TerminalEmulator/obj/Release/TerminalEmulator.dll
+/Terminals.Configuration/bin/Release/KeePassLib.dll
+/Terminals.Configuration/bin/Release/KeePassLib.xml
+/Terminals.Configuration/bin/Release/Kohl.Framework.dll
+/Terminals.Configuration/bin/Release/Kohl.Framework.pdb
+/Terminals.Configuration/bin/Release/Terminals.Configuration.dll
+/Terminals.Configuration/bin/Release/Terminals.Configuration.dll.config
+/Terminals.Configuration/bin/Release/log4net.dll
+/Terminals.Configuration/bin/Release/log4net.xml
+/Terminals.Configuration/obj/Release/Terminals.Configuration.Properties.Resources.resources
+/Terminals.Configuration/obj/Release/Terminals.Configuration.csproj.FileListAbsolute.txt
+/Terminals.Configuration/obj/Release/Terminals.Configuration.csproj.GenerateResource.Cache
+/Terminals.Configuration/obj/Release/Terminals.Configuration.csprojResolveAssemblyReference.cache
+/Terminals.Configuration/obj/Release/Terminals.Configuration.dll
+/Terminals.Configuration/obj/Release/edmxResourcesToEmbed/Sql/Terminals.csdl
+/Terminals.Configuration/obj/Release/edmxResourcesToEmbed/Sql/Terminals.msl
+/Terminals.Configuration/obj/Release/edmxResourcesToEmbed/Sql/Terminals.ssdl
+/Terminals.Connection/bin/Release/KeePassLib.dll
+/Terminals.Connection/bin/Release/KeePassLib.xml
+/Terminals.Connection/bin/Release/Kohl.Framework.dll
+/Terminals.Connection/bin/Release/Kohl.Framework.pdb
+/Terminals.Connection/bin/Release/Terminals.Configuration.dll
+/Terminals.Connection/bin/Release/Terminals.Configuration.dll.config
+/Terminals.Connection/bin/Release/Terminals.Connection.dll
+/Terminals.Connection/bin/Release/log4net.dll
+/Terminals.Connection/bin/Release/log4net.xml
+/Terminals.Connection/obj/Release/Terminals.Connection.Panels.OptionPanels.OptionPanel.resources
+/Terminals.Connection/obj/Release/Terminals.Connection.PopupTerminal.resources
+/Terminals.Connection/obj/Release/Terminals.Connection.Properties.Resources.resources
+/Terminals.Connection/obj/Release/Terminals.Connection.ScreenCapture.CaptureManagerLayout.resources
+/Terminals.Connection/obj/Release/Terminals.Connection.TabControl.TabPreview.resources
+/Terminals.Connection/obj/Release/Terminals.Connection.csproj.FileListAbsolute.txt
+/Terminals.Connection/obj/Release/Terminals.Connection.csproj.GenerateResource.Cache
+/Terminals.Connection/obj/Release/Terminals.Connection.csprojResolveAssemblyReference.cache
+/Terminals.Connection/obj/Release/Terminals.Connection.dll
+/Terminals.Plugins.AutoIt/obj/Release/Terminals.Plugins.AutoIt.Panels.OptionPanels.AutoItEnableForProtocolsOptionPanel.resources
+/Terminals.Plugins.AutoIt/obj/Release/Terminals.Plugins.AutoIt.Panels.OptionPanels.AutoItOptionPanel.resources
+/Terminals.Plugins.AutoIt/obj/Release/Terminals.Plugins.AutoIt.Properties.Resources.resources
+/Terminals.Plugins.AutoIt/obj/Release/Terminals.Plugins.AutoIt.csproj.FileListAbsolute.txt
+/Terminals.Plugins.AutoIt/obj/Release/Terminals.Plugins.AutoIt.csproj.GenerateResource.Cache
+/Terminals.Plugins.AutoIt/obj/Release/Terminals.Plugins.AutoIt.csprojResolveAssemblyReference.cache
+/Terminals.Plugins.AutoIt/obj/Release/Terminals.Plugins.AutoIt.dll
+/Terminals.Plugins.InternetExplorer/obj/Release/Terminals.Plugins.InternetExplorer.Properties.Resources.resources
+/Terminals.Plugins.InternetExplorer/obj/Release/Terminals.Plugins.InternetExplorer.csproj.FileListAbsolute.txt
+/Terminals.Plugins.InternetExplorer/obj/Release/Terminals.Plugins.InternetExplorer.csproj.GenerateResource.Cache
+/Terminals.Plugins.InternetExplorer/obj/Release/Terminals.Plugins.InternetExplorer.csprojResolveAssemblyReference.cache
+/Terminals.Plugins.InternetExplorer/obj/Release/Terminals.Plugins.InternetExplorer.dll
+/Terminals.Plugins.Text/obj/Release/Terminals.Plugins.Text.Panels.OptionPanels.TextEnableForProtocolsOptionPanel.resources
+/Terminals.Plugins.Text/obj/Release/Terminals.Plugins.Text.Properties.Resources.resources
+/Terminals.Plugins.Text/obj/Release/Terminals.Plugins.Text.csproj.FileListAbsolute.txt
+/Terminals.Plugins.Text/obj/Release/Terminals.Plugins.Text.csproj.GenerateResource.Cache
+/Terminals.Plugins.Text/obj/Release/Terminals.Plugins.Text.csprojResolveAssemblyReference.cache
+/Terminals.Plugins.Text/obj/Release/Terminals.Plugins.Text.dll
+/Terminals/bin/x86/Distribution Release/AxInterop.MSTSCLib.dll
+/Terminals/bin/x86/Distribution Release/AxInterop.Microsoft.VMRCClientControl.Interop.dll
+/Terminals/bin/x86/Distribution Release/AxWFICALib.dll
+/Terminals/bin/x86/Distribution Release/Be.Windows.Forms.HexBox.dll
+/Terminals/bin/x86/Distribution Release/CodeEditor.dll
+/Terminals/bin/x86/Distribution Release/Credentials.xml
+/Terminals/bin/x86/Distribution Release/DotRas.dll
+/Terminals/bin/x86/Distribution Release/ExplorerBrowser.dll
+/Terminals/bin/x86/Distribution Release/Geckofx-Core.dll
+/Terminals/bin/x86/Distribution Release/Geckofx-Winforms.dll
+/Terminals/bin/x86/Distribution Release/Granados.dll
+/Terminals/bin/x86/Distribution Release/ICSharpCode.SharpZipLib.dll
+/Terminals/bin/x86/Distribution Release/Interop.MSTSCLib.dll
+/Terminals/bin/x86/Distribution Release/KeePassLib.dll
+/Terminals/bin/x86/Distribution Release/Kohl.Explorer.exe
+/Terminals/bin/x86/Distribution Release/Kohl.Framework.dll
+/Terminals/bin/x86/Distribution Release/Metro.dll
+/Terminals/bin/x86/Distribution Release/Microsoft.VMRCClientControl.Interop.dll
+/Terminals/bin/x86/Distribution Release/Microsoft.WindowsAPICodePack.Shell.dll
+/Terminals/bin/x86/Distribution Release/Microsoft.WindowsAPICodePack.dll
+/Terminals/bin/x86/Distribution Release/Out/AxInterop.MSTSCLib.dll
+/Terminals/bin/x86/Distribution Release/Out/Geckofx-Core.dll
+/Terminals/bin/x86/Distribution Release/Out/Geckofx-Winforms.dll
+/Terminals/bin/x86/Distribution Release/Out/ICSharpCode.SharpZipLib.dll
+/Terminals/bin/x86/Distribution Release/Out/Interop.MSTSCLib.dll
+/Terminals/bin/x86/Distribution Release/Out/Kohl.Explorer.exe
+/Terminals/bin/x86/Distribution Release/Out/Kohl.Framework.dll
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Au3Info.exe
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Au3Info_x64.exe
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Au3Record/ASWhook.dll
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Au3Record/Au3Record.exe
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Aut2Exe/Aut2exe.exe
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Aut2Exe/Aut2exe_x64.exe
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Aut2Exe/Icons/AutoIt_Main_v10_256x256_RGB-A.ico
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Aut2Exe/Icons/AutoIt_Main_v10_48x48_256.ico
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Aut2Exe/Icons/AutoIt_Main_v10_48x48_RGB-A.ico
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Aut2Exe/Icons/AutoIt_Main_v9_48x48_256.ico
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Aut2Exe/Icons/AutoIt_Main_v9_48x48_RGB-A.ico
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Aut2Exe/Icons/AutoIt_Old1.ico
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Aut2Exe/Icons/AutoIt_Old2.ico
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Aut2Exe/Icons/AutoIt_Old3.ico
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Aut2Exe/Icons/AutoIt_Old4.ico
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Aut2Exe/Icons/SETUP01.ICO
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Aut2Exe/Icons/SETUP02.ICO
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Aut2Exe/Icons/SETUP03.ICO
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Aut2Exe/Icons/SETUP04.ICO
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Aut2Exe/Icons/SETUP05.ICO
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Aut2Exe/Icons/SETUP06.ICO
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Aut2Exe/Icons/SETUP07.ICO
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Aut2Exe/Icons/SETUP08.ICO
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Aut2Exe/Icons/SETUP09.ICO
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Aut2Exe/Icons/SETUP10.ICO
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Aut2Exe/Icons/SETUP11.ICO
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Aut2Exe/Icons/SETUP12.ICO
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Aut2Exe/upx.exe
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/AutoIt3.exe
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/AutoIt3_x64.exe
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Bug in Scintilla.pdf
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/CodeEditor.dll
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/CodeEditor.pdb
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/APIComConstants.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/APIConstants.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/APIDiagConstants.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/APIDlgConstants.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/APIErrorsConstants.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/APIFilesConstants.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/APIGdiConstants.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/APILocaleConstants.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/APIMiscConstants.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/APIProcConstants.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/APIRegConstants.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/APIResConstants.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/APIShPathConstants.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/APIShellExConstants.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/APISysConstants.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/APIThemeConstants.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/AVIConstants.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/Array.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/AutoItConstants.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/BorderConstants.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/ButtonConstants.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/Clipboard.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/Color.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/ColorConstants.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/ComboConstants.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/Constants.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/Crypt.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/Date.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/DateTimeConstants.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/Debug.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/DirConstants.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/EditConstants.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/EventLog.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/Excel.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/ExcelConstants.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/FTPEx.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/File.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/FileConstants.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/FontConstants.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/FrameConstants.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/GDIPlus.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/GDIPlusConstants.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/GUIConstants.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/GUIConstantsEx.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/GuiAVI.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/GuiButton.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/GuiComboBox.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/GuiComboBoxEx.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/GuiDateTimePicker.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/GuiEdit.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/GuiHeader.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/GuiIPAddress.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/GuiImageList.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/GuiListBox.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/GuiListView.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/GuiMenu.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/GuiMonthCal.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/GuiReBar.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/GuiRichEdit.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/GuiScrollBars.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/GuiSlider.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/GuiStatusBar.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/GuiTab.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/GuiToolTip.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/GuiToolbar.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/GuiTreeView.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/HeaderConstants.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/IE.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/IPAddressConstants.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/ImageListConstants.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/Inet.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/InetConstants.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/ListBoxConstants.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/ListViewConstants.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/Math.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/Memory.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/MemoryConstants.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/MenuConstants.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/Misc.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/MsgBoxConstants.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/NTSTATUSConstants.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/NamedPipes.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/NetShare.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/Process.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/ProcessConstants.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/ProgressConstants.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/RebarConstants.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/RichEditConstants.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/SQLite.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/SQLite.dll.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/ScreenCapture.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/ScrollBarConstants.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/ScrollBarsConstants.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/Security.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/SecurityConstants.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/SendMessage.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/SliderConstants.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/Sound.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/StaticConstants.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/StatusBarConstants.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/String.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/StringConstants.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/StructureConstants.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/TabConstants.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/Timers.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/ToolTipConstants.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/ToolbarConstants.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/TrayConstants.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/TreeViewConstants.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/UDFGlobalID.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/UpDownConstants.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/Visa.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/WinAPI.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/WinAPICom.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/WinAPIConstants.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/WinAPIDiag.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/WinAPIDlg.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/WinAPIError.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/WinAPIEx.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/WinAPIFiles.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/WinAPIGdi.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/WinAPIInternals.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/WinAPILocale.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/WinAPIMisc.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/WinAPIProc.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/WinAPIReg.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/WinAPIRes.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/WinAPIShPath.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/WinAPIShellEx.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/WinAPISys.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/WinAPITheme.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/WinAPIlangConstants.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/WinAPIsysinfoConstants.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/WinAPIvkeysConstants.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/WinNet.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/WindowsConstants.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/Word.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Include/WordConstants.au3
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Kohl.Framework.dll
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Kohl.Framework.pdb
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/SciLexer.dll
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/SciLexer64.dll
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/ScintillaNET.dll
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/ScintillaNET.xml
+/Terminals/bin/x86/Distribution Release/Out/Plugins/AutoIt/Terminals.Plugins.AutoIt.dll
+/Terminals/bin/x86/Distribution Release/Out/Plugins/InternetExplorer/Kohl.Framework.dll
+/Terminals/bin/x86/Distribution Release/Out/Plugins/InternetExplorer/Kohl.Framework.pdb
+/Terminals/bin/x86/Distribution Release/Out/Plugins/InternetExplorer/Terminals.Plugins.InternetExplorer.dll
+/Terminals/bin/x86/Distribution Release/Out/Plugins/Text/Kohl.Framework.dll
+/Terminals/bin/x86/Distribution Release/Out/Plugins/Text/Kohl.Framework.pdb
+/Terminals/bin/x86/Distribution Release/Out/Plugins/Text/Kohl.TinyMce.dll
+/Terminals/bin/x86/Distribution Release/Out/Plugins/Text/Terminals.Plugins.Text.dll
+/Terminals/bin/x86/Distribution Release/Out/Radmin Viewer 3/CHATLOGS/info.txt
+/Terminals/bin/x86/Distribution Release/Out/Radmin Viewer 3/ChatLPCx.dll
+/Terminals/bin/x86/Distribution Release/Out/Radmin Viewer 3/Radmin.exe
+/Terminals/bin/x86/Distribution Release/Out/Radmin Viewer 3/Radmin30.chm
+/Terminals/bin/x86/Distribution Release/Out/Radmin Viewer 3/WinLpcDl.dll
+/Terminals/bin/x86/Distribution Release/Out/Radmin Viewer 3/amt.dll
+/Terminals/bin/x86/Distribution Release/Out/Radmin Viewer 3/amt.ini
+/Terminals/bin/x86/Distribution Release/Out/Radmin Viewer 3/boot.txt
+/Terminals/bin/x86/Distribution Release/Out/Radmin Viewer 3/eula.txt
+/Terminals/bin/x86/Distribution Release/Out/Radmin Viewer 3/imrsdk.dll
+/Terminals/bin/x86/Distribution Release/Out/Radmin Viewer 3/raudiox.dll
+/Terminals/bin/x86/Distribution Release/Out/Radmin Viewer 3/rchatx.dll
+/Terminals/bin/x86/Distribution Release/Out/Radmin Viewer 3/unicows.dll
+/Terminals/bin/x86/Distribution Release/Out/Radmin Viewer 3/vcintcx.dll
+/Terminals/bin/x86/Distribution Release/Out/Radmin Viewer 3/vcintsx.dll
+/Terminals/bin/x86/Distribution Release/Out/Radmin Viewer 3/voicex.dll
+/Terminals/bin/x86/Distribution Release/Out/RegisterVMRC.bat
+/Terminals/bin/x86/Distribution Release/Out/Terminals.Configuration.dll
+/Terminals/bin/x86/Distribution Release/Out/Terminals.Connection.dll
+/Terminals/bin/x86/Distribution Release/Out/Terminals.exe
+/Terminals/bin/x86/Distribution Release/Out/Terminals.log4net.config
+/Terminals/bin/x86/Distribution Release/Out/VMKeyboardHook.dll
+/Terminals/bin/x86/Distribution Release/Out/VMKeyboardHook64.dll
+/Terminals/bin/x86/Distribution Release/Out/VMRCActiveXClient.dll
+/Terminals/bin/x86/Distribution Release/Out/VMRCActiveXClient64.dll
+/Terminals/bin/x86/Distribution Release/Out/freebl3.dll
+/Terminals/bin/x86/Distribution Release/Out/gkmedias.dll
+/Terminals/bin/x86/Distribution Release/Out/gkmedias.upx
+/Terminals/bin/x86/Distribution Release/Out/libEGL.dll
+/Terminals/bin/x86/Distribution Release/Out/libGLESv2.dll
+/Terminals/bin/x86/Distribution Release/Out/mozalloc.dll
+/Terminals/bin/x86/Distribution Release/Out/mozglue.dll
+/Terminals/bin/x86/Distribution Release/Out/mozjs.dll
+/Terminals/bin/x86/Distribution Release/Out/nss3.dll
+/Terminals/bin/x86/Distribution Release/Out/nssckbi.dll
+/Terminals/bin/x86/Distribution Release/Out/nssdbm3.dll
+/Terminals/bin/x86/Distribution Release/Out/omni.ja
+/Terminals/bin/x86/Distribution Release/Out/plugin-container.exe
+/Terminals/bin/x86/Distribution Release/Out/putty.exe
+/Terminals/bin/x86/Distribution Release/Out/softokn3.dll
+/Terminals/bin/x86/Distribution Release/Out/xul.dll
+/Terminals/bin/x86/Distribution Release/PacketDotNet.dll
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Au3Info.exe
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Au3Info_x64.exe
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Au3Record/ASWhook.dll
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Au3Record/Au3Record.exe
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Aut2Exe/Aut2exe.exe
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Aut2Exe/Aut2exe_x64.exe
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Aut2Exe/Icons/AutoIt_Main_v10_256x256_RGB-A.ico
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Aut2Exe/Icons/AutoIt_Main_v10_48x48_256.ico
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Aut2Exe/Icons/AutoIt_Main_v10_48x48_RGB-A.ico
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Aut2Exe/Icons/AutoIt_Main_v9_48x48_256.ico
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Aut2Exe/Icons/AutoIt_Main_v9_48x48_RGB-A.ico
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Aut2Exe/Icons/AutoIt_Old1.ico
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Aut2Exe/Icons/AutoIt_Old2.ico
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Aut2Exe/Icons/AutoIt_Old3.ico
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Aut2Exe/Icons/AutoIt_Old4.ico
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Aut2Exe/Icons/SETUP01.ICO
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Aut2Exe/Icons/SETUP02.ICO
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Aut2Exe/Icons/SETUP03.ICO
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Aut2Exe/Icons/SETUP04.ICO
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Aut2Exe/Icons/SETUP05.ICO
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Aut2Exe/Icons/SETUP06.ICO
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Aut2Exe/Icons/SETUP07.ICO
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Aut2Exe/Icons/SETUP08.ICO
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Aut2Exe/Icons/SETUP09.ICO
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Aut2Exe/Icons/SETUP10.ICO
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Aut2Exe/Icons/SETUP11.ICO
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Aut2Exe/Icons/SETUP12.ICO
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Aut2Exe/upx.exe
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/AutoIt3.exe
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/AutoIt3_x64.exe
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Bug in Scintilla.pdf
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/CodeEditor.dll
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/CodeEditor.pdb
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/APIComConstants.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/APIConstants.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/APIDiagConstants.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/APIDlgConstants.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/APIErrorsConstants.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/APIFilesConstants.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/APIGdiConstants.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/APILocaleConstants.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/APIMiscConstants.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/APIProcConstants.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/APIRegConstants.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/APIResConstants.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/APIShPathConstants.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/APIShellExConstants.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/APISysConstants.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/APIThemeConstants.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/AVIConstants.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/Array.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/AutoItConstants.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/BorderConstants.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/ButtonConstants.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/Clipboard.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/Color.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/ColorConstants.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/ComboConstants.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/Constants.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/Crypt.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/Date.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/DateTimeConstants.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/Debug.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/DirConstants.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/EditConstants.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/EventLog.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/Excel.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/ExcelConstants.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/FTPEx.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/File.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/FileConstants.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/FontConstants.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/FrameConstants.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/GDIPlus.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/GDIPlusConstants.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/GUIConstants.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/GUIConstantsEx.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/GuiAVI.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/GuiButton.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/GuiComboBox.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/GuiComboBoxEx.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/GuiDateTimePicker.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/GuiEdit.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/GuiHeader.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/GuiIPAddress.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/GuiImageList.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/GuiListBox.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/GuiListView.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/GuiMenu.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/GuiMonthCal.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/GuiReBar.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/GuiRichEdit.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/GuiScrollBars.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/GuiSlider.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/GuiStatusBar.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/GuiTab.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/GuiToolTip.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/GuiToolbar.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/GuiTreeView.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/HeaderConstants.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/IE.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/IPAddressConstants.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/ImageListConstants.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/Inet.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/InetConstants.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/ListBoxConstants.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/ListViewConstants.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/Math.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/Memory.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/MemoryConstants.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/MenuConstants.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/Misc.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/MsgBoxConstants.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/NTSTATUSConstants.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/NamedPipes.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/NetShare.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/Process.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/ProcessConstants.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/ProgressConstants.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/RebarConstants.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/RichEditConstants.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/SQLite.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/SQLite.dll.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/ScreenCapture.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/ScrollBarConstants.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/ScrollBarsConstants.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/Security.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/SecurityConstants.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/SendMessage.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/SliderConstants.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/Sound.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/StaticConstants.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/StatusBarConstants.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/String.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/StringConstants.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/StructureConstants.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/TabConstants.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/Timers.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/ToolTipConstants.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/ToolbarConstants.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/TrayConstants.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/TreeViewConstants.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/UDFGlobalID.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/UpDownConstants.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/Visa.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/WinAPI.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/WinAPICom.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/WinAPIConstants.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/WinAPIDiag.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/WinAPIDlg.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/WinAPIError.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/WinAPIEx.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/WinAPIFiles.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/WinAPIGdi.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/WinAPIInternals.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/WinAPILocale.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/WinAPIMisc.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/WinAPIProc.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/WinAPIReg.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/WinAPIRes.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/WinAPIShPath.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/WinAPIShellEx.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/WinAPISys.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/WinAPITheme.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/WinAPIlangConstants.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/WinAPIsysinfoConstants.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/WinAPIvkeysConstants.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/WinNet.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/WindowsConstants.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/Word.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Include/WordConstants.au3
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Kohl.Framework.dll
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Kohl.Framework.pdb
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/SciLexer.dll
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/SciLexer64.dll
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/ScintillaNET.dll
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/ScintillaNET.xml
+/Terminals/bin/x86/Distribution Release/Plugins/AutoIt/Terminals.Plugins.AutoIt.dll
+/Terminals/bin/x86/Distribution Release/Plugins/InternetExplorer/Kohl.Framework.dll
+/Terminals/bin/x86/Distribution Release/Plugins/InternetExplorer/Kohl.Framework.pdb
+/Terminals/bin/x86/Distribution Release/Plugins/InternetExplorer/Terminals.Plugins.InternetExplorer.dll
+/Terminals/bin/x86/Distribution Release/Plugins/Text/Kohl.Framework.dll
+/Terminals/bin/x86/Distribution Release/Plugins/Text/Kohl.Framework.pdb
+/Terminals/bin/x86/Distribution Release/Plugins/Text/Kohl.TinyMce.dll
+/Terminals/bin/x86/Distribution Release/Plugins/Text/Terminals.Plugins.Text.dll
+/Terminals/bin/x86/Distribution Release/Radmin Viewer 3/CHATLOGS/info.txt
+/Terminals/bin/x86/Distribution Release/Radmin Viewer 3/ChatLPCx.dll
+/Terminals/bin/x86/Distribution Release/Radmin Viewer 3/Radmin.exe
+/Terminals/bin/x86/Distribution Release/Radmin Viewer 3/Radmin30.chm
+/Terminals/bin/x86/Distribution Release/Radmin Viewer 3/WinLpcDl.dll
+/Terminals/bin/x86/Distribution Release/Radmin Viewer 3/amt.dll
+/Terminals/bin/x86/Distribution Release/Radmin Viewer 3/amt.ini
+/Terminals/bin/x86/Distribution Release/Radmin Viewer 3/boot.txt
+/Terminals/bin/x86/Distribution Release/Radmin Viewer 3/eula.txt
+/Terminals/bin/x86/Distribution Release/Radmin Viewer 3/imrsdk.dll
+/Terminals/bin/x86/Distribution Release/Radmin Viewer 3/raudiox.dll
+/Terminals/bin/x86/Distribution Release/Radmin Viewer 3/rchatx.dll
+/Terminals/bin/x86/Distribution Release/Radmin Viewer 3/unicows.dll
+/Terminals/bin/x86/Distribution Release/Radmin Viewer 3/vcintcx.dll
+/Terminals/bin/x86/Distribution Release/Radmin Viewer 3/vcintsx.dll
+/Terminals/bin/x86/Distribution Release/Radmin Viewer 3/voicex.dll
+/Terminals/bin/x86/Distribution Release/RegisterVMRC.bat
+/Terminals/bin/x86/Distribution Release/ScintillaNET.dll
+/Terminals/bin/x86/Distribution Release/SharpPcap.dll
+/Terminals/bin/x86/Distribution Release/TerminalEmulator.dll
+/Terminals/bin/x86/Distribution Release/Terminals.Configuration.dll
+/Terminals/bin/x86/Distribution Release/Terminals.Connection.dll
+/Terminals/bin/x86/Distribution Release/Terminals.config
+/Terminals/bin/x86/Distribution Release/Terminals.exe
+/Terminals/bin/x86/Distribution Release/Terminals.log4net.config
+/Terminals/bin/x86/Distribution Release/VMKeyboardHook.dll
+/Terminals/bin/x86/Distribution Release/VMKeyboardHook64.dll
+/Terminals/bin/x86/Distribution Release/VMRCActiveXClient.dll
+/Terminals/bin/x86/Distribution Release/VMRCActiveXClient64.dll
+/Terminals/bin/x86/Distribution Release/VncSharp.dll
+/Terminals/bin/x86/Distribution Release/WFICALib.dll
+/Terminals/bin/x86/Distribution Release/ZedGraph.dll
+/Terminals/bin/x86/Distribution Release/freebl3.dll
+/Terminals/bin/x86/Distribution Release/gkmedias.dll
+/Terminals/bin/x86/Distribution Release/libEGL.dll
+/Terminals/bin/x86/Distribution Release/libGLESv2.dll
+/Terminals/bin/x86/Distribution Release/log4net.dll
+/Terminals/bin/x86/Distribution Release/mozalloc.dll
+/Terminals/bin/x86/Distribution Release/mozglue.dll
+/Terminals/bin/x86/Distribution Release/mozjs.dll
+/Terminals/bin/x86/Distribution Release/nss3.dll
+/Terminals/bin/x86/Distribution Release/nssckbi.dll
+/Terminals/bin/x86/Distribution Release/nssdbm3.dll
+/Terminals/bin/x86/Distribution Release/omni.ja
+/Terminals/bin/x86/Distribution Release/plugin-container.exe
+/Terminals/bin/x86/Distribution Release/putty.exe
+/Terminals/bin/x86/Distribution Release/softokn3.dll
+/Terminals/bin/x86/Distribution Release/xul.dll
+/Terminals/bin/x86/Release/AxInterop.MSTSCLib.dll
+/Terminals/bin/x86/Release/AxInterop.Microsoft.VMRCClientControl.Interop.dll
+/Terminals/bin/x86/Release/AxWFICALib.dll
+/Terminals/bin/x86/Release/Be.Windows.Forms.HexBox.dll
+/Terminals/bin/x86/Release/Bug in Scintilla.pdf
+/Terminals/bin/x86/Release/CodeEditor.dll
+/Terminals/bin/x86/Release/CodeEditor.pdb
+/Terminals/bin/x86/Release/Credentials.bak
+/Terminals/bin/x86/Release/Credentials.xml
+/Terminals/bin/x86/Release/DotRas.dll
+/Terminals/bin/x86/Release/ExplorerBrowser.dll
+/Terminals/bin/x86/Release/ExplorerBrowser.pdb
+/Terminals/bin/x86/Release/Geckofx-Core.dll
+/Terminals/bin/x86/Release/Geckofx-Core.dll.config
+/Terminals/bin/x86/Release/Geckofx-Core.pdb
+/Terminals/bin/x86/Release/Geckofx-Winforms.dll
+/Terminals/bin/x86/Release/Geckofx-Winforms.pdb
+/Terminals/bin/x86/Release/Granados.dll
+/Terminals/bin/x86/Release/ICSharpCode.SharpZipLib.dll
+/Terminals/bin/x86/Release/Interop.MSTSCLib.dll
+/Terminals/bin/x86/Release/KeePassLib.dll
+/Terminals/bin/x86/Release/KeePassLib.xml
+/Terminals/bin/x86/Release/Kohl.Explorer.exe
+/Terminals/bin/x86/Release/Kohl.Framework.dll
+/Terminals/bin/x86/Release/Kohl.Framework.pdb
+/Terminals/bin/x86/Release/Metro.dll
+/Terminals/bin/x86/Release/Microsoft.VMRCClientControl.Interop.dll
+/Terminals/bin/x86/Release/Microsoft.WindowsAPICodePack.Shell.dll
+/Terminals/bin/x86/Release/Microsoft.WindowsAPICodePack.Shell.pdb
+/Terminals/bin/x86/Release/Microsoft.WindowsAPICodePack.dll
+/Terminals/bin/x86/Release/Microsoft.WindowsAPICodePack.pdb
+/Terminals/bin/x86/Release/PacketDotNet.dll
+/Terminals/bin/x86/Release/Plugins/AutoIt/Au3Info.exe
+/Terminals/bin/x86/Release/Plugins/AutoIt/Au3Info_x64.exe
+/Terminals/bin/x86/Release/Plugins/AutoIt/Au3Record/ASWhook.dll
+/Terminals/bin/x86/Release/Plugins/AutoIt/Au3Record/Au3Record.exe
+/Terminals/bin/x86/Release/Plugins/AutoIt/Aut2Exe/Aut2exe.exe
+/Terminals/bin/x86/Release/Plugins/AutoIt/Aut2Exe/Aut2exe_x64.exe
+/Terminals/bin/x86/Release/Plugins/AutoIt/Aut2Exe/Icons/AutoIt_Main_v10_256x256_RGB-A.ico
+/Terminals/bin/x86/Release/Plugins/AutoIt/Aut2Exe/Icons/AutoIt_Main_v10_48x48_256.ico
+/Terminals/bin/x86/Release/Plugins/AutoIt/Aut2Exe/Icons/AutoIt_Main_v10_48x48_RGB-A.ico
+/Terminals/bin/x86/Release/Plugins/AutoIt/Aut2Exe/Icons/AutoIt_Main_v9_48x48_256.ico
+/Terminals/bin/x86/Release/Plugins/AutoIt/Aut2Exe/Icons/AutoIt_Main_v9_48x48_RGB-A.ico
+/Terminals/bin/x86/Release/Plugins/AutoIt/Aut2Exe/Icons/AutoIt_Old1.ico
+/Terminals/bin/x86/Release/Plugins/AutoIt/Aut2Exe/Icons/AutoIt_Old2.ico
+/Terminals/bin/x86/Release/Plugins/AutoIt/Aut2Exe/Icons/AutoIt_Old3.ico
+/Terminals/bin/x86/Release/Plugins/AutoIt/Aut2Exe/Icons/AutoIt_Old4.ico
+/Terminals/bin/x86/Release/Plugins/AutoIt/Aut2Exe/Icons/SETUP01.ICO
+/Terminals/bin/x86/Release/Plugins/AutoIt/Aut2Exe/Icons/SETUP02.ICO
+/Terminals/bin/x86/Release/Plugins/AutoIt/Aut2Exe/Icons/SETUP03.ICO
+/Terminals/bin/x86/Release/Plugins/AutoIt/Aut2Exe/Icons/SETUP04.ICO
+/Terminals/bin/x86/Release/Plugins/AutoIt/Aut2Exe/Icons/SETUP05.ICO
+/Terminals/bin/x86/Release/Plugins/AutoIt/Aut2Exe/Icons/SETUP06.ICO
+/Terminals/bin/x86/Release/Plugins/AutoIt/Aut2Exe/Icons/SETUP07.ICO
+/Terminals/bin/x86/Release/Plugins/AutoIt/Aut2Exe/Icons/SETUP08.ICO
+/Terminals/bin/x86/Release/Plugins/AutoIt/Aut2Exe/Icons/SETUP09.ICO
+/Terminals/bin/x86/Release/Plugins/AutoIt/Aut2Exe/Icons/SETUP10.ICO
+/Terminals/bin/x86/Release/Plugins/AutoIt/Aut2Exe/Icons/SETUP11.ICO
+/Terminals/bin/x86/Release/Plugins/AutoIt/Aut2Exe/Icons/SETUP12.ICO
+/Terminals/bin/x86/Release/Plugins/AutoIt/Aut2Exe/upx.exe
+/Terminals/bin/x86/Release/Plugins/AutoIt/AutoIt3.exe
+/Terminals/bin/x86/Release/Plugins/AutoIt/AutoIt3_x64.exe
+/Terminals/bin/x86/Release/Plugins/AutoIt/Bug in Scintilla.pdf
+/Terminals/bin/x86/Release/Plugins/AutoIt/CodeEditor.dll
+/Terminals/bin/x86/Release/Plugins/AutoIt/CodeEditor.pdb
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/APIComConstants.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/APIConstants.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/APIDiagConstants.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/APIDlgConstants.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/APIErrorsConstants.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/APIFilesConstants.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/APIGdiConstants.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/APILocaleConstants.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/APIMiscConstants.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/APIProcConstants.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/APIRegConstants.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/APIResConstants.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/APIShPathConstants.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/APIShellExConstants.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/APISysConstants.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/APIThemeConstants.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/AVIConstants.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/Array.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/AutoItConstants.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/BorderConstants.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/ButtonConstants.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/Clipboard.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/Color.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/ColorConstants.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/ComboConstants.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/Constants.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/Crypt.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/Date.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/DateTimeConstants.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/Debug.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/DirConstants.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/EditConstants.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/EventLog.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/Excel.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/ExcelConstants.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/FTPEx.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/File.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/FileConstants.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/FontConstants.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/FrameConstants.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/GDIPlus.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/GDIPlusConstants.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/GUIConstants.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/GUIConstantsEx.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/GuiAVI.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/GuiButton.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/GuiComboBox.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/GuiComboBoxEx.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/GuiDateTimePicker.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/GuiEdit.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/GuiHeader.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/GuiIPAddress.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/GuiImageList.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/GuiListBox.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/GuiListView.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/GuiMenu.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/GuiMonthCal.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/GuiReBar.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/GuiRichEdit.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/GuiScrollBars.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/GuiSlider.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/GuiStatusBar.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/GuiTab.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/GuiToolTip.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/GuiToolbar.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/GuiTreeView.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/HeaderConstants.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/IE.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/IPAddressConstants.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/ImageListConstants.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/Inet.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/InetConstants.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/ListBoxConstants.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/ListViewConstants.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/Math.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/Memory.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/MemoryConstants.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/MenuConstants.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/Misc.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/MsgBoxConstants.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/NTSTATUSConstants.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/NamedPipes.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/NetShare.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/Process.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/ProcessConstants.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/ProgressConstants.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/RebarConstants.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/RichEditConstants.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/SQLite.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/SQLite.dll.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/ScreenCapture.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/ScrollBarConstants.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/ScrollBarsConstants.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/Security.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/SecurityConstants.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/SendMessage.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/SliderConstants.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/Sound.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/StaticConstants.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/StatusBarConstants.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/String.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/StringConstants.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/StructureConstants.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/TabConstants.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/Timers.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/ToolTipConstants.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/ToolbarConstants.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/TrayConstants.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/TreeViewConstants.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/UDFGlobalID.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/UpDownConstants.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/Visa.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/WinAPI.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/WinAPICom.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/WinAPIConstants.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/WinAPIDiag.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/WinAPIDlg.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/WinAPIError.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/WinAPIEx.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/WinAPIFiles.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/WinAPIGdi.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/WinAPIInternals.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/WinAPILocale.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/WinAPIMisc.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/WinAPIProc.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/WinAPIReg.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/WinAPIRes.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/WinAPIShPath.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/WinAPIShellEx.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/WinAPISys.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/WinAPITheme.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/WinAPIlangConstants.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/WinAPIsysinfoConstants.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/WinAPIvkeysConstants.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/WinNet.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/WindowsConstants.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/Word.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Include/WordConstants.au3
+/Terminals/bin/x86/Release/Plugins/AutoIt/Kohl.Framework.dll
+/Terminals/bin/x86/Release/Plugins/AutoIt/Kohl.Framework.pdb
+/Terminals/bin/x86/Release/Plugins/AutoIt/SciLexer.dll
+/Terminals/bin/x86/Release/Plugins/AutoIt/SciLexer64.dll
+/Terminals/bin/x86/Release/Plugins/AutoIt/ScintillaNET.dll
+/Terminals/bin/x86/Release/Plugins/AutoIt/ScintillaNET.pdb
+/Terminals/bin/x86/Release/Plugins/AutoIt/ScintillaNET.xml
+/Terminals/bin/x86/Release/Plugins/AutoIt/Terminals.Plugins.AutoIt.dll
+/Terminals/bin/x86/Release/Plugins/InternetExplorer/Kohl.Framework.dll
+/Terminals/bin/x86/Release/Plugins/InternetExplorer/Kohl.Framework.pdb
+/Terminals/bin/x86/Release/Plugins/InternetExplorer/Terminals.Plugins.InternetExplorer.dll
+/Terminals/bin/x86/Release/Plugins/Text/Kohl.Framework.dll
+/Terminals/bin/x86/Release/Plugins/Text/Kohl.Framework.pdb
+/Terminals/bin/x86/Release/Plugins/Text/Kohl.TinyMce.dll
+/Terminals/bin/x86/Release/Plugins/Text/Terminals.Plugins.Text.dll
+/Terminals/bin/x86/Release/RegisterVMRC.bat
+/Terminals/bin/x86/Release/ScintillaNET.dll
+/Terminals/bin/x86/Release/ScintillaNET.pdb
+/Terminals/bin/x86/Release/ScintillaNET.xml
+/Terminals/bin/x86/Release/SharpPcap.dll
+/Terminals/bin/x86/Release/TerminalEmulator.dll
+/Terminals/bin/x86/Release/Terminals.Configuration.dll
+/Terminals/bin/x86/Release/Terminals.Configuration.dll.config
+/Terminals/bin/x86/Release/Terminals.Connection.dll
+/Terminals/bin/x86/Release/Terminals.bak
+/Terminals/bin/x86/Release/Terminals.config
+/Terminals/bin/x86/Release/Terminals.exe
+/Terminals/bin/x86/Release/Terminals.log4net.config
+/Terminals/bin/x86/Release/VMKeyboardHook.dll
+/Terminals/bin/x86/Release/VMKeyboardHook64.dll
+/Terminals/bin/x86/Release/VMRCActiveXClient.dll
+/Terminals/bin/x86/Release/VMRCActiveXClient64.dll
+/Terminals/bin/x86/Release/VncSharp.dll
+/Terminals/bin/x86/Release/VncSharp.pdb
+/Terminals/bin/x86/Release/WFICALib.dll
+/Terminals/bin/x86/Release/ZedGraph.dll
+/Terminals/bin/x86/Release/freebl3.dll
+/Terminals/bin/x86/Release/gkmedias.dll
+/Terminals/bin/x86/Release/libEGL.dll
+/Terminals/bin/x86/Release/libGLESv2.dll
+/Terminals/bin/x86/Release/log4net.dll
+/Terminals/bin/x86/Release/log4net.xml
+/Terminals/bin/x86/Release/mozalloc.dll
+/Terminals/bin/x86/Release/mozglue.dll
+/Terminals/bin/x86/Release/mozjs.dll
+/Terminals/bin/x86/Release/nss3.dll
+/Terminals/bin/x86/Release/nssckbi.dll
+/Terminals/bin/x86/Release/nssdbm3.dll
+/Terminals/bin/x86/Release/omni.ja
+/Terminals/bin/x86/Release/plugin-container.exe
+/Terminals/bin/x86/Release/softokn3.dll
+/Terminals/bin/x86/Release/xul.dll
+/Terminals/obj/Release/Terminals.Connections.MiniBrowser.resources
+/Terminals/obj/Release/Terminals.ExportImport.ExportFrom.resources
+/Terminals/obj/Release/Terminals.Forms.AboutForm.resources
+/Terminals/obj/Release/Terminals.Forms.AddConnectionForm.resources
+/Terminals/obj/Release/Terminals.Forms.Controls.HistoryTreeView.resources
+/Terminals/obj/Release/Terminals.Forms.Credentials.CredentialManager.resources
+/Terminals/obj/Release/Terminals.Forms.Credentials.ManageCredentialForm.resources
+/Terminals/obj/Release/Terminals.Forms.DiskDrivesForm.resources
+/Terminals/obj/Release/Terminals.Forms.ExpirationDialog.resources
+/Terminals/obj/Release/Terminals.Forms.NewGroupForm.resources
+/Terminals/obj/Release/Terminals.Forms.OrganizeFavoritesForm.resources
+/Terminals/obj/Release/Terminals.Forms.OrganizeFavoritesToolbarForm.resources
+/Terminals/obj/Release/Terminals.Forms.OrganizeGroupsForm.resources
+/Terminals/obj/Release/Terminals.Forms.OrganizeShortcuts.resources
+/Terminals/obj/Release/Terminals.Forms.QuickConnect.resources
+/Terminals/obj/Release/Terminals.Forms.RequestPassword.resources
+/Terminals/obj/Release/Terminals.Forms.SaveActiveConnectionsForm.resources
+/Terminals/obj/Release/Terminals.MainForm.resources
+/Terminals/obj/Release/Terminals.Network.AD.ImportFromAD.resources
+/Terminals/obj/Release/Terminals.Network.DNS.DnsLookup.resources
+/Terminals/obj/Release/Terminals.Network.LocalConnections.resources
+/Terminals/obj/Release/Terminals.Network.PortScanner.PortScanner.resources
+/Terminals/obj/Release/Terminals.Network.Servers.TerminalServerManager.resources
+/Terminals/obj/Release/Terminals.Network.WMI.LoginForm.resources
+/Terminals/obj/Release/Terminals.Network.WMI.Services.resources
+/Terminals/obj/Release/Terminals.Network.WMI.WmiControl.resources
+/Terminals/obj/Release/Terminals.Panels.FavoriteEditor.resources
+/Terminals/obj/Release/Terminals.Panels.OptionEditor.resources
+/Terminals/obj/Release/Terminals.Panels.OptionPanels.DefaultPasswordOptionPanel.resources
+/Terminals/obj/Release/Terminals.Properties.Resources.resources
+/Terminals/obj/Release/Terminals.Wizard.FirstRunWizard.resources
+/Terminals/obj/Release/Terminals.csproj.FileListAbsolute.txt
+/Terminals/obj/Release/Terminals.csproj.GenerateResource.Cache
+/Terminals/obj/Release/Terminals.csprojResolveAssemblyReference.cache
+/Terminals/obj/Release/Terminals.exe
+/ZedGraph 5.1 (.net 2)/source/bin/Release/ZedGraph.dll
+/ZedGraph 5.1 (.net 2)/source/obj/Release/ZedGraph.csproj.FileListAbsolute.txt
+/ZedGraph 5.1 (.net 2)/source/obj/Release/ZedGraph.csprojResolveAssemblyReference.cache
+/ZedGraph 5.1 (.net 2)/source/obj/Release/ZedGraph.dll
+/netz-src/netz/bin/Release/defcomp.dll
+/netz-src/netz/bin/Release/netz.exe
+/netz-src/netz/bin/Release/netz.exe.config
+/netz-src/netz/bin/Release/zip.dll
+/netz-src/netz/obj/Debug/netz.csprojResolveAssemblyReference.cache
+/netz-src/netz/obj/Release/netz.csproj.FileListAbsolute.txt
+/netz-src/netz/obj/Release/netz.exe
+/TerminalEmulator/obj/Release/TerminalEmulator.csprojResolveAssemblyReference.cache
+/Terminals/bin/x86/Release/History.xml

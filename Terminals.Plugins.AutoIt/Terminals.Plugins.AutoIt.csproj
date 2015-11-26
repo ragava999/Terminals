@@ -46,9 +46,6 @@
     <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Kohl.Framework">
-      <HintPath>..\DLLs\Kohl.Framework.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Drawing" />
@@ -95,6 +92,10 @@
       <Project>{fb3e07ab-e0fa-4122-be64-bffef510201b}</Project>
       <Name>CodeEditor</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Kohl.Framework\Kohl.Framework.csproj">
+      <Project>{2E4E3508-2275-4A32-9A0D-9A95B134407B}</Project>
+      <Name>Kohl.Framework</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Terminals.Configuration\Terminals.Configuration.csproj">
       <Project>{fceb7dac-e7be-4b40-976f-0687b9f36cd1}</Project>
       <Name>Terminals.Configuration</Name>
@@ -107,9 +108,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Panels\FavoritePanels\AutoItFavoritePanel.resx">
-      <DependentUpon>AutoItFavoritePanel.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Panels\OptionPanels\AutoItEnableForProtocolsOptionPanel.resx">
       <DependentUpon>AutoItEnableForProtocolsOptionPanel.cs</DependentUpon>
     </EmbeddedResource>

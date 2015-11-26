@@ -63,6 +63,7 @@ namespace Terminals.Configuration.Files.Main
 
         public void UpdatePasswordsByNewKeyMaterial(string newKeyMaterial)
         {
+        	this.EncryptedKeePassPassword = PasswordFunctions.EncryptPassword(this.KeePassPassword, newKeyMaterial);
             this.EncryptedDefaultPassword = PasswordFunctions.EncryptPassword(this.DefaultPassword, newKeyMaterial);
             this.EncryptedAmazonAccessKey = PasswordFunctions.EncryptPassword(this.AmazonAccessKey, newKeyMaterial);
             this.EncryptedAmazonSecretKey = PasswordFunctions.EncryptPassword(this.AmazonSecretKey, newKeyMaterial);
@@ -287,12 +288,18 @@ namespace Terminals.Configuration.Files.Main
             set { this["KeePassPath"] = value; }
         }
         
-        [ConfigurationProperty("KeePassPassword")]
+        
+        [ConfigurationProperty("encryptedKeePassPassword", IsRequired = false)]
+        public string EncryptedKeePassPassword
+        {
+            get { return (string) this["encryptedKeePassPassword"]; }
+            set { this["encryptedKeePassPassword"] = value; }
+        }
+        
         public string KeePassPassword
         {
-            get { return (String) this["KeePassPassword"]; }
-
-            set { this["KeePassPassword"] = value; }
+        	get { return PasswordFunctions.DecryptPassword(this.EncryptedKeePassPassword, "KeePassPassword"); }
+			set { this.EncryptedKeePassPassword = PasswordFunctions.EncryptPassword(value); }
         }
         #endregion
         

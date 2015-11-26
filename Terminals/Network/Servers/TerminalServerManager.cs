@@ -127,14 +127,14 @@ namespace Terminals.Network.Servers
         {
             if (this.SelectedSession != null)
             {
-                InputBoxResult result =
-					InputBox.Show("Please enter the message to send..");
-                if (result.ReturnCode == DialogResult.OK && result.Text.Trim() != null)
+            	string input = "Please enter the message to send..";
+
+            	if (InputBox.Show(ref input) == DialogResult.OK && !string.IsNullOrWhiteSpace(input))
                 {
                     TerminalServicesAPI.SendMessage(this.SelectedSession,
                                                     
-						"Message from your administrator (sent via Terminals)",
-                                                    result.Text.Trim(), 0, 10, false);
+						"Message from your administrator (sent via " + Kohl.Framework.Info.AssemblyInfo.Title + ")",
+                                                    input.Trim(), 0, 10, false);
                 }
             }
         }

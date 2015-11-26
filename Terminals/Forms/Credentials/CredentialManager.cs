@@ -14,7 +14,7 @@ namespace Terminals.Forms.Credentials
         public CredentialManager()
         {
             this.InitializeComponent();
-            this.Text = AssemblyInfo.Title() + " - " +
+            this.Text = AssemblyInfo.Title + " - " +
                         "Credential manager";
             StoredCredentials.CredentialsChanged += this.CredentialsChanged;
                         

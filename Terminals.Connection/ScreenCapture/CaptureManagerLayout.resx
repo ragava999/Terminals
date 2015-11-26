@@ -117,7 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="treeContextMenu.TrayLocation" type="System.Drawing.Point, System.Drawing">
     <value>120, 17</value>
   </data>
@@ -126,10 +126,10 @@
   </data>
   <data name="imageListTree.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
     <value>
-        AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj0yLjAuMC4w
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAACG
-        EwAAAk1TRnQBSQFMAgEBAgEAASABAAEkAQABFQEAARUBAAT/ASEBEAj/AUIBTQE2BwABNgMAASgDAAFU
+        EwAAAk1TRnQBSQFMAgEBAgEAASABAAEoAQABFQEAARUBAAT/ASEBEAj/AUIBTQE2BwABNgMAASgDAAFU
         AwABFQMAAQEBAAEgBQABkAEb/wD/ALsAAQEDBQEHAwYBCAMGAQgDBgEIAwYBCAMGAQgDBgEIAwYBCAMG
         AQgDBgEIAwYBCAMGAQgDBgEIAwYBCAMGAQgDBgEIAwYBCAMFAQcDAAEBBAADHgErAzEBTwMyAVADNAFV
         AzQBVQM0AVUDNAFVAzQBVQM0AVUDNAFVAzQBVQM0AVUDNAFVAzQBVQM0AVUDNAFVAzQBVQM0AVUDMAFN
@@ -220,71 +220,5 @@
   </data>
   <data name="imageList.TrayLocation" type="System.Drawing.Point, System.Drawing">
     <value>17, 17</value>
-  </data>
-  <data name="DE_copyImagePathToClipboardToolStripMenuItem.Text" xml:space="preserve">
-    <value>Bilderpfad in die Zwischenablage kopieren</value>
-  </data>
-  <data name="DE_copyImageToClipboardToolStripMenuItem.Text" xml:space="preserve">
-    <value>Bild in die Zwischenablage kopieren</value>
-  </data>
-  <data name="DE_deleteButton.Text" xml:space="preserve">
-    <value>Löschen</value>
-  </data>
-  <data name="DE_deleteFolderToolStripMenuItem.Text" xml:space="preserve">
-    <value>Ordner löschen</value>
-  </data>
-  <data name="DE_deleteToolStripMenuItem.Text" xml:space="preserve">
-    <value>Löschen</value>
-  </data>
-  <data name="DE_gBoxComments.Text" xml:space="preserve">
-    <value>Ausgewähltes Bild</value>
-  </data>
-  <data name="DE_lblComments.Text" xml:space="preserve">
-    <value>Kommentare:</value>
-  </data>
-  <data name="DE_lblView.Text" xml:space="preserve">
-    <value>Ansicht</value>
-  </data>
-  <data name="DE_lblZoom.Text" xml:space="preserve">
-    <value>Vergrößern</value>
-  </data>
-  <data name="DE_newFolderToolStripMenuItem.Text" xml:space="preserve">
-    <value>Neuer Ordner</value>
-  </data>
-  <data name="DE_saveButton.Text" xml:space="preserve">
-    <value>Speichern</value>
-  </data>
-  <data name="EN_copyImagePathToClipboardToolStripMenuItem.Text" xml:space="preserve">
-    <value>Copy Image path to clipboard</value>
-  </data>
-  <data name="EN_copyImageToClipboardToolStripMenuItem.Text" xml:space="preserve">
-    <value>Copy image to clipboard</value>
-  </data>
-  <data name="EN_deleteButton.Text" xml:space="preserve">
-    <value>Delete</value>
-  </data>
-  <data name="EN_deleteFolderToolStripMenuItem.Text" xml:space="preserve">
-    <value>Delete folder</value>
-  </data>
-  <data name="EN_deleteToolStripMenuItem.Text" xml:space="preserve">
-    <value>Delete</value>
-  </data>
-  <data name="EN_gBoxComments.Text" xml:space="preserve">
-    <value>Selected picture</value>
-  </data>
-  <data name="EN_lblComments.Text" xml:space="preserve">
-    <value>Comments:</value>
-  </data>
-  <data name="EN_lblView.Text" xml:space="preserve">
-    <value>View</value>
-  </data>
-  <data name="EN_lblZoom.Text" xml:space="preserve">
-    <value>Zoom</value>
-  </data>
-  <data name="EN_newFolderToolStripMenuItem.Text" xml:space="preserve">
-    <value>New folder</value>
-  </data>
-  <data name="EN_saveButton.Text" xml:space="preserve">
-    <value>Save</value>
   </data>
 </root>

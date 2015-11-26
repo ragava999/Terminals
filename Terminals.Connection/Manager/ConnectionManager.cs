@@ -9,7 +9,6 @@ using System.Reflection;
 using System.Threading;
 using System.Windows.Forms;
 using Kohl.Framework.Info;
-using Kohl.Framework.Localization;
 using Kohl.Framework.Logging;
 using Terminals.Configuration.Files.Credentials;
 using Terminals.Configuration.Files.Main.Favorites;
@@ -211,7 +210,7 @@ namespace Terminals.Connection.Manager
             // if the user has a freeware version.
             if (Limit.Contains(favorite.Protocol.ToUpper()) || terminalTabPage == null)
             {
-                MessageBox.Show("You are not allowed to use that kind of connection! Please upgrade your license.", AssemblyInfo.Title(), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("You are not allowed to use that kind of connection! Please upgrade your license.", AssemblyInfo.Title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
             
@@ -420,15 +419,10 @@ namespace Terminals.Connection.Manager
             }
             else
             {
-                string message = Localization.Text("Connections.ConnectionManager.CreateConnection", typeof(TerminalTabsSelectionControler));
-
-                if (string.IsNullOrEmpty(message))
-                {
-                    message = "The user has no file system permissions to use the " + favorite.Protocol + " connection '" + favorite.Name + "'. Please change your credentials or allow access to the " + AssemblyInfo.Title() + " directory.";
-                }
+            	string message = "Sorry, " + AssemblyInfo.Title + " was unable to create the connection. Try again or check the log for more information.";
 
                 Log.Error(message);
-                MessageBox.Show(message, AssemblyInfo.Title(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(message, AssemblyInfo.Title, MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 if (parentForm.InvokeRequired)
                     parentForm.Invoke(new MethodInvoker(delegate { parentForm.RemoveAndUnSelect(terminalTabPage); }));

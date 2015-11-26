@@ -20,7 +20,7 @@ namespace Terminals.Forms.Credentials
 
             this.FillControlsFromCredential(editedCredential);
 
-            this.Text = AssemblyInfo.Title() + " - " +
+            this.Text = AssemblyInfo.Title + " - " +
 				"Credential manager";
 
             this.txtPassword.PasswordChar = CredentialPanel.HIDDEN_PASSWORD_CHAR;

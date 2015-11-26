@@ -1,7 +1,5 @@
 ﻿namespace Terminals.Connection.Panels.OptionPanels
 {
-    using Kohl.Framework.Localization;
-
     using Terminals.Connection.Manager;
 
     using Configuration.Files.Main.Settings;
@@ -26,14 +24,13 @@
         {
             get
             {
-                return string.Format(Localization.Text("EnableProtocolOptionPanel.Text", typeof(EnableProtocolOptionPanel)), ConnectionManager.GetProtcolNameCamalCase(this.DefaultProtocolName));
+                return string.Format("Enable protocols for {0} plugin.", ConnectionManager.GetProtcolNameCamalCase(this.DefaultProtocolName));
             }
         }
 
         public EnableProtocolOptionPanel()
         {
             this.InitializeComponent();
-            Localization.SetLanguage(this);
         }
 
         protected List<string> ExcludeProtocols = new List<string>();

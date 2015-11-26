@@ -325,7 +325,7 @@ namespace Terminals.Panels
 
             if (favorite.ToolBarIcon != null && File.Exists(favorite.ToolBarIcon))
             {
-                Image image = Kohl.Framework.Drawing.Image.FromFile(favorite.ToolBarIcon);
+            	Image image = Image.FromFile(favorite.ToolBarIcon);
 
                 this.picCustomIcon.Image = (Image)image.Clone();
 
@@ -545,7 +545,7 @@ namespace Terminals.Panels
 
         private void ShowErrorMessageBox(string message)
         {
-            MessageBox.Show(this, message, AssemblyInfo.Title(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show(this, message, AssemblyInfo.Title, MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         /// <summary>
@@ -1035,7 +1035,8 @@ namespace Terminals.Panels
             if (File.Exists(fileName))
                 File.Delete(fileName);
 
-            Kohl.Framework.Drawing.Image.ToFile(image, fileName);
+            image.Save(fileName);
+            
             string returnValue = SetToolBarIcon(fileName, ref image, overwrite);
 
             if (image != null)
@@ -1064,14 +1065,14 @@ namespace Terminals.Panels
         {
             try
             {
-                image = Kohl.Framework.Drawing.Image.FromFile(filename);
+                image = Image.FromFile(filename);
 
                 if (image != null)
                 {
                     String newFile = Path.Combine(Kohl.Framework.Info.AssemblyInfo.DirectoryConfigFiles, Path.GetFileName(filename));
 
                     if (newFile != filename && (!File.Exists(newFile) || overwrite))
-                        Kohl.Framework.IO.File.Copy(filename, newFile);
+                        File.Copy(filename, newFile);
 
                     return newFile;
                 }

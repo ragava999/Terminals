@@ -42,8 +42,8 @@ namespace Terminals.Network.Services
 
         #endregion
 
-        private readonly string INSTANCELOCK_NAME = AssemblyInfo.Title() + ".SingleInstance";
-        private readonly string STARTUPLOCK_NAME = AssemblyInfo.Title() + ".CommandServerStartUp";
+        private readonly string INSTANCELOCK_NAME = AssemblyInfo.Title + ".SingleInstance";
+        private readonly string STARTUPLOCK_NAME = AssemblyInfo.Title + ".CommandServerStartUp";
         private readonly bool firstInstance;
 
         /// <summary>

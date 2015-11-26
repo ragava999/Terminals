@@ -117,7 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="bsComputers.TrayLocation" type="System.Drawing.Point, System.Drawing">
     <value>17, 17</value>
   </data>
@@ -1252,71 +1252,5 @@
         AAAAAAB//wAAAAAAAAAAAAAAAAAAf/8AAAAAAAAAAAAAAAAAAH//////////////////////////////
         //////////////////////////////////8=
 </value>
-  </data>
-  <data name="DE_$this.Text" xml:space="preserve">
-    <value>Terminals - Active Directory Werkzeug</value>
-  </data>
-  <data name="DE_btnSelectAll.Text" xml:space="preserve">
-    <value>Alle auswählen</value>
-  </data>
-  <data name="DE_btnSelectNone.Text" xml:space="preserve">
-    <value>Keinen auswählen</value>
-  </data>
-  <data name="DE_ButtonCancel.Text" xml:space="preserve">
-    <value>Abbrechen</value>
-  </data>
-  <data name="DE_ButtonImport.Text" xml:space="preserve">
-    <value>Ausgewählte importieren</value>
-  </data>
-  <data name="DE_ButtonScanAD.Text" xml:space="preserve">
-    <value>Scannen</value>
-  </data>
-  <data name="DE_computerNameDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
-    <value>Computername</value>
-  </data>
-  <data name="DE_label1.Text" xml:space="preserve">
-    <value>Dieses Fenster erlaubt es Ihnen Computer aus Ihrer Active Directory Domaine zu importieren und in Terminals zu übernehmen.</value>
-  </data>
-  <data name="DE_label2.Text" xml:space="preserve">
-    <value>Domaine:</value>
-  </data>
-  <data name="DE_lblProgressStatus.Text" xml:space="preserve">
-    <value>Fortschritt ...</value>
-  </data>
-  <data name="DE_operatingSystemDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
-    <value>Betriebssystem</value>
-  </data>
-  <data name="EN_$this.Text" xml:space="preserve">
-    <value>Terminals - Active Directory tool</value>
-  </data>
-  <data name="EN_btnSelectAll.Text" xml:space="preserve">
-    <value>Select all</value>
-  </data>
-  <data name="EN_btnSelectNone.Text" xml:space="preserve">
-    <value>Select none</value>
-  </data>
-  <data name="EN_ButtonCancel.Text" xml:space="preserve">
-    <value>Schließen</value>
-  </data>
-  <data name="EN_ButtonImport.Text" xml:space="preserve">
-    <value>Import selected</value>
-  </data>
-  <data name="EN_ButtonScanAD.Text" xml:space="preserve">
-    <value>Scan</value>
-  </data>
-  <data name="EN_computerNameDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
-    <value>Computer name</value>
-  </data>
-  <data name="EN_label1.Text" xml:space="preserve">
-    <value>This dialog allows you to import Computers from your Active Directory Domain directly into Terminals.</value>
-  </data>
-  <data name="EN_label2.Text" xml:space="preserve">
-    <value>Domain:</value>
-  </data>
-  <data name="EN_lblProgressStatus.Text" xml:space="preserve">
-    <value>Progress ...</value>
-  </data>
-  <data name="EN_operatingSystemDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
-    <value>Operating system</value>
   </data>
 </root>

@@ -47,9 +47,6 @@
     <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Kohl.Framework">
-      <HintPath>..\DLLs\Kohl.Framework.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Drawing" />
@@ -92,16 +89,6 @@
     <Compile Include="Panels\OptionPanels\IHostingForm.cs" />
     <Compile Include="Panels\OptionPanels\IOptionPanel.cs">
       <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="LocalizedValues_de.Designer.cs">
-      <DependentUpon>LocalizedValues_de.resx</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="LocalizedValues_en.Designer.cs">
-      <DependentUpon>LocalizedValues_en.resx</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Native\WindowsAPI.cs" />
     <Compile Include="Native\ManagedRectangle.cs" />
@@ -157,27 +144,18 @@
     <Compile Include="TabControl\TerminalTabsSelectionControler.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Kohl.Framework\Kohl.Framework.csproj">
+      <Project>{2E4E3508-2275-4A32-9A0D-9A95B134407B}</Project>
+      <Name>Kohl.Framework</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Terminals.Configuration\Terminals.Configuration.csproj">
       <Project>{fceb7dac-e7be-4b40-976f-0687b9f36cd1}</Project>
       <Name>Terminals.Configuration</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Panels\OptionPanels\EnableProtocolOptionPanel.resx">
-      <DependentUpon>EnableProtocolOptionPanel.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="ScreenCapture\CaptureManagerLayout.resx">
       <DependentUpon>CaptureManagerLayout.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="LocalizedValues_de.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>LocalizedValues_de.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="LocalizedValues_en.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>LocalizedValues_en.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Panels\OptionPanels\OptionPanel.resx">
       <DependentUpon>OptionPanel.cs</DependentUpon>
@@ -190,9 +168,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Panels\FavoritePanels\FavoritePanel.resx">
-      <DependentUpon>FavoritePanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TabControl\TabPreview.resx">
       <DependentUpon>TabPreview.cs</DependentUpon>

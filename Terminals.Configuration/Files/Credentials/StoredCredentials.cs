@@ -19,7 +19,7 @@ namespace Terminals.Configuration.Files.Credentials
 
         private static readonly List<CredentialSet> cache;
 
-        private static readonly Mutex fileLock = new Mutex(false, AssemblyInfo.Title() + "." + CONFIG_FILE);
+        private static readonly Mutex fileLock = new Mutex(false, AssemblyInfo.Title + "." + CONFIG_FILE);
         private static DataFileWatcher fileWatcher;
 
         /// <summary>
@@ -129,34 +129,22 @@ namespace Terminals.Configuration.Files.Credentials
 				foreach (var entry in entries)
 				{
 					string title = entry.Strings.ReadSafe("Title");
-					string userNameAndDomain = entry.Strings.ReadSafe("UserName");
+					string userName = entry.Strings.ReadSafe("UserName");
+					string domain = entry.Strings.ReadSafe("Domain");
 					
-					if (!string.IsNullOrEmpty(title) && !string.IsNullOrEmpty(userNameAndDomain))
+					if (!string.IsNullOrEmpty(title) && !string.IsNullOrEmpty(userName))
 					{
 						list.Add(new CredentialSet
 		                {
 		                    Name = title,
-		                    Username = (userNameAndDomain.Contains("\\") ? userNameAndDomain.Split(new string[] {"\\"}, StringSplitOptions.None)[1] : userNameAndDomain),
-		                    Domain = (userNameAndDomain.Contains("\\") ? userNameAndDomain.Split(new string[] {"\\"}, StringSplitOptions.None)[0] : ""),
+		                    Username = string.IsNullOrEmpty(domain) && userName.Contains("\\")  ? userName.Split(new string[] {"\\"}, StringSplitOptions.None)[1] : userName,
+		                    Domain = string.IsNullOrEmpty(domain) && userName.Contains("\\")  ? userName.Split(new string[] {"\\"}, StringSplitOptions.None)[0] : domain,
 		                    Password = entry.Strings.ReadSafe("Password")
 				         });
 					}
 				}
 
-				/*
-				var kpdata = (from entry in entries
-					where (!string.IsNullOrEmpty(entry.Strings.ReadSafe("Title")) && !string.IsNullOrEmpty(entry.Strings.ReadSafe("UserName")))
-	                select new CredentialSet
-	                {
-	                    Name = entry.Strings.ReadSafe("Title"),
-	                    Username = (entry.Strings.ReadSafe("UserName").Contains("\\") ? entry.Strings.ReadSafe("UserName").Split(new string[] {"\\"}, StringSplitOptions.None)[1] : entry.Strings.ReadSafe("UserName")),
-	                    Domain = (entry.Strings.ReadSafe("UserName").Contains("\\") ? entry.Strings.ReadSafe("UserName").Split(new string[] {"\\"}, StringSplitOptions.None)[0] : ""),
-	                    SecretKey = entry.Strings.ReadSafe("Password")
-	                }).ToList();
-				*/
 				db.Close();
-				
-				//return kpdata;
 				
 				return list;
         	} catch (Exception ex)

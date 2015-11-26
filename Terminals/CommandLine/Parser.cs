@@ -310,7 +310,7 @@ namespace Terminals.CommandLine
                     // "CommandLine.Parser.ReportUnrecognizedArgument")
                     // e.g. Error: Das Kommandozeilenargument 'terminals.exe' konnte nicht erkannt werden.
                     // e.g. Error: Unrecognized command line argument 'terminals.exe'
-                    if (argument.ToLower().Contains(AssemblyInfo.Title().ToLower() + ".exe") | argument.ToLower().Contains(AssemblyInfo.Title().ToLower() + ".vshost.exe"))
+                    if (argument.ToLower().Contains(AssemblyInfo.Title.ToLower() + ".exe") | argument.ToLower().Contains(AssemblyInfo.Title.ToLower() + ".vshost.exe"))
                         continue;
 
                     // Skip the arguments if we don't parse the HelpArguments, but any program specific arguments

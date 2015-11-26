@@ -1,4 +1,5 @@
 ﻿using System.Windows.Forms;
+using System;
 
 using Terminals.Configuration.Files.Main.Settings;
 using Terminals.Connection.Panels.OptionPanels;
@@ -28,8 +29,6 @@ namespace Terminals.Panels.OptionPanels
 
             if (!string.IsNullOrEmpty(file) && File.Exists(file))
                 picImage.BackgroundImage = System.Drawing.Bitmap.FromFile(file);
-
-            chkRun.Checked = Kohl.Framework.Application.AutoRun.IsEnabled;
         }
 
         public override void SaveSettings()
@@ -41,11 +40,6 @@ namespace Terminals.Panels.OptionPanels
             Settings.ImagePath = this.txtImage.Text;
             Settings.DashBoardBackgroundColor = Kohl.Framework.Converters.ColorParser.ToString(picColor.BackColor);
             Settings.ImageStyle = this.cmbStyle.SelectedIndex;
-
-            if (chkRun.Checked)
-                Kohl.Framework.Application.AutoRun.Enable();
-            else
-                Kohl.Framework.Application.AutoRun.Disable();
         }
 
         public IHostingForm IHostingForm { get; set; }

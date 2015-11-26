@@ -6,7 +6,7 @@ namespace Terminals.Network.Services
 {
     public class CommandLineServer : ServiceHost
     {
-        private static readonly string BASE_ADDRESS = "net.pipe://localhost/" + AssemblyInfo.Title() +
+        private static readonly string BASE_ADDRESS = "net.pipe://localhost/" + AssemblyInfo.Title +
                                                       "/CommandLineService";
 
         public CommandLineServer(MainForm mainForm)

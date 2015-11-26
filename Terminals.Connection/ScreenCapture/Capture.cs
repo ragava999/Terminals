@@ -2,7 +2,6 @@ using System;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
-using Kohl.Framework.Localization;
 using Kohl.Framework.Logging;
 using Terminals.Configuration.Files.Main.Settings;
 
@@ -29,7 +28,7 @@ namespace Terminals.Connection.ScreenCapture
             get
             {
                 return Path.Combine(Path.GetDirectoryName(this.FilePath),
-                                    string.Format(Localization.Text("CaputureManager.Capture.CommentsFileName", typeof(Capture)),
+                                    string.Format("{0}.comments",
                                                   Path.GetFileName(this.filepath)));
             }
         }
@@ -100,7 +99,7 @@ namespace Terminals.Connection.ScreenCapture
             }
             catch (Exception ec)
             {
-                Log.Error(Localization.Text("CaputureManager.Capture.Delete", typeof(Capture)), ec);
+                Log.Error("Error trying to delete the screenshot.", ec);
             }
         }
 
@@ -117,7 +116,7 @@ namespace Terminals.Connection.ScreenCapture
                     File.Move(this.FilePath, Destination);
                 }
 
-                Destination = string.Format(Localization.Text("CaputureManager.Capture.CommentsFileName", typeof(Capture)), Destination);
+                Destination = string.Format("{0}.comments", Destination);
 
                 if (File.Exists(Destination))
                 {
@@ -130,7 +129,7 @@ namespace Terminals.Connection.ScreenCapture
             }
             catch (Exception exc)
             {
-                Log.Error(Localization.Text("CaputureManager.Capture.Move_Error", typeof(Capture)), exc);
+                Log.Error("Error trying to move the screenshot.", exc);
             }
         }
 

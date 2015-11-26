@@ -26,7 +26,7 @@ namespace Terminals.Forms
                 string.Format(
                     "{0}\r\nConfig File:\r\n{1}\r\n\r\n{2}\r\n\r\n{3}\r\n{4}\r\n{5}\r\n{6}\r\n{7}\r\n{8}\r\n{9}\r\n{10}\r\n\r\n{11}\r\n\r\n{12}",
                     this.textBox1.Text, Settings.ConfigurationFileLocation,
-                    string.Format("This version of " + AssemblyInfo.Title() + " has been built for you on {0} at {1}",
+                    string.Format("This version of " + Kohl.Framework.Info.AssemblyInfo.Title + " has been built for you on {0} at {1}",
                                   dt.ToLongDateString(), dt.ToLongTimeString()),
                     String.Format("Version:\t\t\t{0}", AssemblyInfo.Version),
                     String.Format("Current directory:\t\t{0}", Environment.CurrentDirectory),

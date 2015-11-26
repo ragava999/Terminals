@@ -151,7 +151,7 @@ namespace Terminals.Updates
                                 (TerminalsUpdates) Serialize.DeSerializeXml(contents, typeof (TerminalsUpdates));
                             if (updates != null)
                             {
-                                String currentMD5 = GetMD5HashFromFile(AssemblyInfo.Title() + ".exe");
+                                String currentMD5 = GetMD5HashFromFile(AssemblyInfo.Title + ".exe");
                                 if (currentMD5 != null)
                                 {
                                     //get the latest build
@@ -186,7 +186,7 @@ namespace Terminals.Updates
                                                     "New Build", MessageBoxButtons.OKCancel) == DialogResult.OK)
                                             {
                                                 DirectoryInfo parent = FindFileInFolder(new DirectoryInfo(finalFolder),
-                                                                                        AssemblyInfo.Title() + ".exe");
+                                                                                        AssemblyInfo.Title + ".exe");
                                                 if (parent == null)
                                                     return;
 
@@ -194,21 +194,21 @@ namespace Terminals.Updates
 
                                                 File.Copy(Settings.CONFIG_FILE_NAME,
                                                           Path.Combine(finalFolder, Settings.CONFIG_FILE_NAME), true);
-                                                File.Copy(AssemblyInfo.Title() + ".log4net.config",
+                                                File.Copy(AssemblyInfo.Title + ".log4net.config",
                                                           Path.Combine(finalFolder,
-                                                                       AssemblyInfo.Title() + ".log4net.config"), true);
+                                                                       AssemblyInfo.Title + ".log4net.config"), true);
 
                                                 String temp =
                                                     Environment.GetFolderPath(
                                                         Environment.SpecialFolder.LocalApplicationData);
                                                 String updaterExe = Path.Combine(temp,
-                                                                                 AssemblyInfo.Title() + "Updater.exe");
+                                                                                 AssemblyInfo.Title + "Updater.exe");
                                                 if (
                                                     File.Exists(Path.Combine(finalFolder,
-                                                                             AssemblyInfo.Title() + "Updater.exe")))
+                                                                             AssemblyInfo.Title + "Updater.exe")))
                                                 {
                                                     File.Copy(
-                                                        Path.Combine(finalFolder, AssemblyInfo.Title() + "Updater.exe"),
+                                                        Path.Combine(finalFolder, AssemblyInfo.Title + "Updater.exe"),
                                                         updaterExe, true);
                                                 }
 

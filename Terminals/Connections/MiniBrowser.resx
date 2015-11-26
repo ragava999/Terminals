@@ -117,11 +117,11 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="backButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wQAADsEBuJFr7QAADeRJREFUeF7tm2lUVGeax3Nmvsw5M3O6v80kIrH7TCMQlUWTdMdkFDsNGI0ajeYk
+        wAAADsABataJCQAADeRJREFUeF7tm2lUVGeax3Nmvsw5M3O6v80kIrH7TCMQlUWTdMdkFDsNGI0ajeYk
         ro0rKFBsBbIIAoKACigWi+yb7BQFRRU7tVAgCK6J0SQqrTHJSXpLdyY5nY7/eZ67UAUWhsyZpQd8zvmd
         W1X33mf5v89b9VbdW089sSf2xJ7Y/5Y1WZpeKFQX/rP0dG7ZO5nvbNyUtslQ0lfyD9JLc8e2Z29f77LJ
         9bsVMStuAvg76eW5YRvTNm5YsHPBt3tUv4Z3vPcYCfD30q7ZbxtTN256duez3zYPn0fHVTWWR758ac4I
@@ -186,7 +186,7 @@
   <data name="homeButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wQAADsEBuJFr7QAAEEpJREFUaEPtmYlT1Fe2x/NXzFRlJpqocd+3uIvKJoiKbNI00DurghsuuEXRIKuo
+        wAAADsABataJCQAAEEpJREFUaEPtmYlT1Fe2x/NXzFRlJpqocd+3uIvKJoiKbNI00DurghsuuEXRIKuo
         gBoFEcVdQLaGZm+6gWan2UVQUWNUspDFiUn8vEs7M/XqJama0Ze8elOeqlv9W+7v3PM953vuPQfeeStv
         5a28FYs8//G+/d8v/yltjV2Ym2v5++3/H/n84TfczCiht+MBg08ekpuXztB3D/4JxNx5F5O5mZo2IzX1
         Otq6DdQ1F2Oo1VFjqkZfaeLxo2//b4AXaQu5eS2Xz+8PceRgLBH79/Dk6R2qDCXUN/ZYjGrp6qNvsJHu
@@ -262,7 +262,7 @@
   <data name="forwardButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wQAADsEBuJFr7QAADiNJREFUeF7tm3lQVHe2x633/nlVb1699997SZBkUi9sUTZNMhPNuExGQA0kGp1K
+        wAAADsABataJCQAADiNJREFUeF7tm3lQVHe2x633/nlVb1699997SZBkUi9sUTZNMhPNuExGQA0kGp1K
         XAdFBUWarUEWUUCQRQGFFgSbHdlpoLvZl26aBkHALTGaRGU0JqlktsxkkppM/M45d4EGWhOTem8s8FR9
         6sLt3+93zvmec2/f7nt73mN7bI/tsT0qVqAp+I96c/2L0r9zzwp7Cv9tfcp6w9sZb6+Tds0tA/Avy6KX
         XXNc7/TtlqwtPtLuuWMkwL+uils1ulP1Gzyz7Zlv1qWse116aW4YC7AkYulY2yUNGobO4ultT3+zLnnd
@@ -327,61 +327,25 @@
   </data>
   <data name="goButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        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
+        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
 </value>
   </data>
   <data name="toolStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing">
     <value>17, 17</value>
-  </data>
-  <data name="DE_backButton.Text" xml:space="preserve">
-    <value>Back</value>
-  </data>
-  <data name="DE_backButton.ToolTipText" xml:space="preserve">
-    <value>Go back.</value>
-  </data>
-  <data name="DE_forwardButton.Text" xml:space="preserve">
-    <value>Forward</value>
-  </data>
-  <data name="DE_forwardButton.ToolTipText" xml:space="preserve">
-    <value>Go forward.</value>
-  </data>
-  <data name="DE_homeButton.Text" xml:space="preserve">
-    <value>Home</value>
-  </data>
-  <data name="DE_homeButton.ToolTipText" xml:space="preserve">
-    <value>Back to the source URL.</value>
-  </data>
-  <data name="EN_backButton.Text" xml:space="preserve">
-    <value>Back</value>
-  </data>
-  <data name="EN_backButton.ToolTipText" xml:space="preserve">
-    <value>Go back.</value>
-  </data>
-  <data name="EN_forwardButton.Text" xml:space="preserve">
-    <value>Forward</value>
-  </data>
-  <data name="EN_forwardButton.ToolTipText" xml:space="preserve">
-    <value>Go forward.</value>
-  </data>
-  <data name="EN_homeButton.Text" xml:space="preserve">
-    <value>Home</value>
-  </data>
-  <data name="EN_homeButton.ToolTipText" xml:space="preserve">
-    <value>Back to the source URL.</value>
   </data>
 </root>

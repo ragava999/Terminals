@@ -23,14 +23,12 @@ namespace Terminals.ExportImport.Import
         public List<FavoriteConfigurationElement> ImportFavorites(string Filename)
         {
             List<FavoriteConfigurationElement> fav = new List<FavoriteConfigurationElement>();
-            InputBoxResult result =
-                InputBox.Show("Please enter the description vRD password.",
-                              "vRD Password", '*');
+            string input = "Please enter the description vRD password.";
 
-            if (result.ReturnCode == DialogResult.OK)
+            if (InputBox.Show(ref input, "vRD Password", '*') == DialogResult.OK)
             {
                 byte[] file = File.ReadAllBytes(Filename);
-                string xml = a(file, result.Text).Replace(" encoding=\"utf-16\"", "");
+                string xml = a(file, input).Replace(" encoding=\"utf-16\"", "");
                 byte[] data = Encoding.Default.GetBytes(xml);
                 using (MemoryStream sw = new MemoryStream(data))
                 {

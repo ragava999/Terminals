@@ -2,7 +2,6 @@ using System;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
-using Kohl.Framework.Localization;
 using Kohl.Framework.Logging;
 using Terminals.Configuration.Files.Main.Favorites;
 using Terminals.Configuration.Files.Main.Settings;
@@ -49,7 +48,7 @@ namespace Terminals.Connection.ScreenCapture
             }
             catch (Exception ex)
             {
-                Log.Error(Localization.Text("Connections.CaputureManagerConnection.Disconnect_Error", typeof(CaptureManagerConnection)), ex);
+                Log.Error("Error disconnecting from the capture manager.", ex);
             }
         }
 
@@ -61,7 +60,7 @@ namespace Terminals.Connection.ScreenCapture
             {
                 name = activeTab.Favorite.Name + "-";
             }
-            string filename = DateTime.Now.ToString(Localization.Text("CaputureManager.Capture.CaputureManager", typeof(CaptureManagerConnection)));
+            string filename = DateTime.Now.ToString("yyyy_MM_dd_hh_mm_ss");
 
             string rootPath = Settings.CaptureRoot.NormalizePath();
 

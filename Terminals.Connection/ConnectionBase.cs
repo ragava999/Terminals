@@ -155,7 +155,7 @@ namespace Terminals.Connection
         #region Protected Methods (2)
         protected void InvokeIfNecessary(MethodInvoker code)
         {
-            ((Control)ParentForm).InvokeIfNecessary(code);
+        	((ISynchronizeInvoke)((Control)ParentForm)).InvokeIfNecessary(code);
         }
 
         protected void CloseTabPage(bool checkNullException = true)

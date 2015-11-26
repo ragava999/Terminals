@@ -48,8 +48,8 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Kohl.Framework">
-      <HintPath>..\DLLs\Kohl.Framework.dll</HintPath>
+    <Reference Include="KeePassLib">
+      <HintPath>..\packages\KeePassLib.2.30\lib\KeePassLib.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
@@ -150,6 +150,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <None Include="packages.config" />
     <None Include="Resources\terminals.config" />
   </ItemGroup>
   <ItemGroup>
@@ -165,9 +166,9 @@
     </EntityDeploy>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\keepass2-master\KeePassLib\KeePassLib.csproj">
-      <Project>{53573E4E-33CB-4FDB-8698-C95F5E40E7F3}</Project>
-      <Name>KeePassLib</Name>
+    <ProjectReference Include="..\Kohl.Framework\Kohl.Framework.csproj">
+      <Project>{2E4E3508-2275-4A32-9A0D-9A95B134407B}</Project>
+      <Name>Kohl.Framework</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

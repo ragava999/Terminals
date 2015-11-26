@@ -30,7 +30,7 @@ namespace Terminals
         {
             using (RegistryKey trmKey = Registry.ClassesRoot.CreateSubKey(TRM_REGISTRY))
             {
-                trmKey.SetValue(null, "URL:" + AssemblyInfo.Title() + " Protocol");
+                trmKey.SetValue(null, "URL:" + AssemblyInfo.Title + " Protocol");
                 trmKey.SetValue("URL Protocol", "");
                 using (RegistryKey shellKey = trmKey.CreateSubKey("shell"))
                 {

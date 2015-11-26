@@ -110,7 +110,7 @@ namespace Terminals.Wizard
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FirstRunWizard";
-            this.Text = "Welcome to " + AssemblyInfo.Title() + "...";
+            this.Text = "Welcome to " + AssemblyInfo.Title + "...";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FirstRunWizard_FormClosing);
             this.Load += new System.EventHandler(this.FirstRunWizard_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

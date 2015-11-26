@@ -117,38 +117,8 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="contextMenuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing">
     <value>17, 17</value>
-  </data>
-  <data name="DE_copyRemoteAddressToolStripMenuItem.Text" xml:space="preserve">
-    <value>Zieladresse kopieren</value>
-  </data>
-  <data name="DE_label1.Text" xml:space="preserve">
-    <value>Ports:</value>
-  </data>
-  <data name="DE_label2.Text" xml:space="preserve">
-    <value>Adressen:</value>
-  </data>
-  <data name="DE_StartButton.Text" xml:space="preserve">
-    <value>Starten</value>
-  </data>
-  <data name="DE_StopButton.Text" xml:space="preserve">
-    <value>Stoppen</value>
-  </data>
-  <data name="EN_copyRemoteAddressToolStripMenuItem.Text" xml:space="preserve">
-    <value>Copy remote address</value>
-  </data>
-  <data name="EN_label1.Text" xml:space="preserve">
-    <value>Ports:</value>
-  </data>
-  <data name="EN_label2.Text" xml:space="preserve">
-    <value>Addresses:</value>
-  </data>
-  <data name="EN_StartButton.Text" xml:space="preserve">
-    <value>Start</value>
-  </data>
-  <data name="EN_StopButton.Text" xml:space="preserve">
-    <value>Stop</value>
   </data>
 </root>

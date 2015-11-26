@@ -15,6 +15,26 @@
 *
 **************************************************** R E L E A S E   N O T E S ****************************************************
 
+Release v 4.7.4.0
+~~~~~~~~~~~~~~~~~
+
+Date: 2015-11-26
+
+Integrated the following NuGet packages:
+	KeePassLib
+	log4net
+	Microsoft.WindowsAPICodePack
+	Microsoft.WindowsAPICodePack.Core
+	Microsoft.WindowsAPICodePack.Shell
+	
+Removed obsolete localization which went back to the time of .NET 1.0.
+Reduced the logging complexity
+Added output to .gitignore
+Removed obsolete files not any longer required
+KeePass:
+	Your password to your keepass store is now encrypted
+	The domain will be extracted from either the UserName field in KeePass (if it has the form of DOMAIN\USERNAME) or from and advanced filed called Domain.
+
 
 Release v 4.7.3.0
 ~~~~~~~~~~~~~~~~~

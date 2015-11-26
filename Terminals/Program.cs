@@ -68,8 +68,8 @@
         {
         	// Set the type to be reflected.
             AssemblyInfo.Assembly = System.Reflection.Assembly.GetAssembly(typeof(Program));
-
-            //Log.Info(String.Format("TerminalsStarted"), AssemblyInfo.Title(), AssemblyInfo.Version, AssemblyInfo.BuildDate));
+            
+            Log.Info(String.Format("-------------------------------{0} started. Version: {1}, Date: {2}-------------------------------", AssemblyInfo.Title, AssemblyInfo.Version, AssemblyInfo.BuildDate));
 
             string[] cmdLineArgs = Environment.GetCommandLineArgs();
 
@@ -275,8 +275,6 @@
                 LogTerminalsStopped();
                 return;
             }
-
-            System.Windows.Forms.Application.Exit();
             
             // UpdateManager.CheckForUpdates(commandLine);
 
@@ -291,7 +289,7 @@
 
         private static void LogTerminalsStopped()
         {
-			Log.Info(String.Format("-------------------------------{0} stopped. Version: {1}, Date: {2}-------------------------------", AssemblyInfo.Title(), AssemblyInfo.Version, AssemblyInfo.BuildDate));
+			Log.Info(String.Format("-------------------------------{0} stopped. Version: {1}, Date: {2}-------------------------------", AssemblyInfo.Title, AssemblyInfo.Version, AssemblyInfo.BuildDate));
         }
 
         private static void CreateConfigFileBackup()
@@ -299,7 +297,7 @@
             try
             {
                 if (File.Exists(Settings.ConfigurationFileLocation))
-                    File.Copy(Settings.ConfigurationFileLocation, Path.Combine(AssemblyInfo.Directory, AssemblyInfo.Title() + ".bak"), true);
+                    File.Copy(Settings.ConfigurationFileLocation, Path.Combine(AssemblyInfo.Directory, AssemblyInfo.Title + ".bak"), true);
 
                 if (File.Exists(Configuration.Files.Credentials.StoredCredentials.ConfigurationFileLocation))
                     File.Copy(Configuration.Files.Credentials.StoredCredentials.ConfigurationFileLocation, Path.Combine(AssemblyInfo.Directory, "Credentials.bak"), true);
@@ -322,7 +320,7 @@
             {
 				string message = "Write Access is denied. Please make sure your user account has sufficient permissions. Write access to the current directory is needed.";
                 Log.Fatal(message);
-                MessageBox.Show(message, AssemblyInfo.Title(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(message, AssemblyInfo.Title, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Exit();
             }
 
@@ -333,7 +331,7 @@
         {
             if (!UserInfo.IsAdministrator)
             {
-				Log.Info(string.Format("{0} is running in non-admin mode.", AssemblyInfo.Title()));
+				Log.Info(string.Format("{0} is running in non-admin mode.", AssemblyInfo.Title));
             }
         }
 

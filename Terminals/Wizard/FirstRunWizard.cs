@@ -179,7 +179,7 @@ namespace Terminals.Wizard
                 String message = String.Format("Automatic Discovery was able to find {0} connections.\r\n" +
                                                "Would you like to add them to your connections list?",
                                                this.rdp.DiscoveredConnections.Count);
-                if (MessageBox.Show(message, AssemblyInfo.Title() + " Confirmation", MessageBoxButtons.YesNo) ==
+                if (MessageBox.Show(message, AssemblyInfo.Title + " Confirmation", MessageBoxButtons.YesNo) ==
                     DialogResult.Yes)
                 {
                     List<FavoriteConfigurationElement> favoritesToImport = this.rdp.DiscoveredConnections.ToList();

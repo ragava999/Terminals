@@ -1,6 +1,5 @@
 ﻿namespace Terminals.Plugins.AutoIt.Panels.OptionPanels
 {
-    using Kohl.Framework.Localization;
     using Terminals.Connection.Panels.OptionPanels;
     using Terminals.Plugins.AutoIt.Connection;
     using Terminals.Connection.Manager;
@@ -13,7 +12,6 @@
             // Don't load the auto it connection, if the user has selected
             // the auto it editor in the favorites editor combobox.
             ExcludeProtocols.Add(typeof(AutoItEditorConnection).GetProtocolName());
-            Localization.SetLanguage(this);
         }
         #endregion
 

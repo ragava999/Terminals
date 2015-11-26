@@ -19,7 +19,7 @@ namespace Terminals.Configuration.Files.Main.Settings
         /// <summary>
         ///     Gets the name of custom user options configuration file
         /// </summary>
-        public static readonly String CONFIG_FILE_NAME = AssemblyInfo.Title() + ".config";
+        public static readonly String CONFIG_FILE_NAME = AssemblyInfo.Title + ".config";
 
         private static string configurationFileLocation;
 
@@ -29,7 +29,7 @@ namespace Terminals.Configuration.Files.Main.Settings
         /// <summary>
         ///     Prevent concurent updates on config file by another program
         /// </summary>
-        private static readonly Mutex fileLock = new Mutex(false, AssemblyInfo.Title() + ".Settings");
+        private static readonly Mutex fileLock = new Mutex(false, AssemblyInfo.Title + ".Settings");
 
         /// <summary>
         ///     Flag informing, that configuration shouldnt be saved imediately, but after explicit call

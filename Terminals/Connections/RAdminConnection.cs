@@ -543,7 +543,7 @@ namespace Terminals.Connections
                 {
                     this.Disconnect();
 					string error = "Please enter the user name in your RAdmin connection properties.";
-                    MessageBox.Show(error, AssemblyInfo.Title(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(error, AssemblyInfo.Title, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     Log.Error(error);
                     this.Disconnect();
                     this.connected = false;
@@ -554,7 +554,7 @@ namespace Terminals.Connections
                 {
                     this.Disconnect();
 					string error = "Please enter the password in your RAdmin connection properties.";
-                    MessageBox.Show(error, AssemblyInfo.Title(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(error, AssemblyInfo.Title, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     Log.Error(error);
                     this.Disconnect();
                     this.connected = false;

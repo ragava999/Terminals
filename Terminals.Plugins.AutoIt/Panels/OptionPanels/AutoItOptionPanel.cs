@@ -2,7 +2,6 @@
 {
     using Terminals.Connection.Panels.OptionPanels;
     using MainSettings = Configuration.Files.Main.Settings;
-    using Kohl.Framework.Localization;
 
     public partial class AutoItOptionPanel : OptionPanel
     {
@@ -10,7 +9,6 @@
         public AutoItOptionPanel()
         {
             this.InitializeComponent();
-            Localization.SetLanguage(this);
         }
         #endregion
 

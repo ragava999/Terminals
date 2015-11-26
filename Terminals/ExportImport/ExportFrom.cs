@@ -31,7 +31,7 @@ namespace Terminals.ExportImport
                 this.RunExport();
 
                 MessageBox.Show("Done exporting, you can find your exported file at " + this.saveFileDialog.FileName,
-                                AssemblyInfo.Title() + " export");
+                                AssemblyInfo.Title + " export");
                 this.Close();
             }
         }

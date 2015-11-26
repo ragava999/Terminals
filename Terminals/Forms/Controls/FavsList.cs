@@ -184,7 +184,7 @@
                     {
                         if (MagicPacket.ForceShutdown(fav.ServerName, shutdownStyle, fav.Credential) == 0)
                         {
-                            MessageBox.Show(AssemblyInfo.Title() + " successfully sent the shutdown command.");
+                            MessageBox.Show(AssemblyInfo.Title + " successfully sent the shutdown command.");
                             return;
                         }
                     }
@@ -246,13 +246,11 @@
         {
             String tagName = this.TreeView.SelectedNode.Name;
 
-            InputBoxResult result = InputBox.Show(
-                    "Set Credential by Tag\r\n\r\nThis will replace the credential used for all Favorites within this tag.\r\n\r\nUse at your own risk!",
-                    "Change Credential" + " - " + tagName);
-
-            if (result.ReturnCode == DialogResult.OK)
+            string input = "Set Credential by Tag\r\n\r\nThis will replace the credential used for all Favorites within this tag.\r\n\r\nUse at your own risk!";
+            
+            if (InputBox.Show(ref input, "Change Credential" + " - " + tagName) == DialogResult.OK)
             {
-                CredentialSet credentialSet = StoredCredentials.GetByName(result.Text);
+                CredentialSet credentialSet = StoredCredentials.GetByName(input);
 
                 if (credentialSet == null)
                 {
@@ -283,17 +281,15 @@
         private void setPasswordByTagToolStripMenuItem_Click(object sender, EventArgs e)
         {
             String tagName = this.TreeView.SelectedNode.Name;
-            InputBoxResult result =
-                InputBox.Show(
-                    "Set Password by Tag\r\n\r\nThis will replace the password for all Favorites within this tag.\r\n\r\nUse at your own risk!",
-                    "Change Password" + " - " + tagName, '*');
-            if (result.ReturnCode == DialogResult.OK)
+            string input = "Set Password by Tag\r\n\r\nThis will replace the password for all Favorites within this tag.\r\n\r\nUse at your own risk!";
+                
+            if (InputBox.Show(ref input, "Change Password" + " - " + tagName, '*') == DialogResult.OK)
             {
                 this.GetMainForm().Cursor = Cursors.WaitCursor;
                 Application.DoEvents();
 
                 List<FavoriteConfigurationElement> selectedFavorites = this.GetSelectedFavorites();
-                Settings.SetPasswordToAllSelectedFavorites(selectedFavorites, result.Text);
+                Settings.SetPasswordToAllSelectedFavorites(selectedFavorites, input);
 
                 this.GetMainForm().Cursor = Cursors.Default;
                 Application.DoEvents();
@@ -304,17 +300,15 @@
         private void setDomainByTagToolStripMenuItem_Click(object sender, EventArgs e)
         {
             String tagName = this.TreeView.SelectedNode.Name;
-            InputBoxResult result =
-                InputBox.Show(
-                    "Set Domain by Tag\r\n\r\nThis will replace the Domain for all Favorites within this tag.\r\n\r\nUse at your own risk!",
-                    "Change Domain" + " - " + tagName);
-            if (result.ReturnCode == DialogResult.OK)
+            string input = "Set Domain by Tag\r\n\r\nThis will replace the Domain for all Favorites within this tag.\r\n\r\nUse at your own risk!";
+                
+            if (InputBox.Show(ref input, "Change Domain" + " - " + tagName) == DialogResult.OK)
             {
                 this.GetMainForm().Cursor = Cursors.WaitCursor;
                 Application.DoEvents();
 
                 List<FavoriteConfigurationElement> selectedFavorites = this.GetSelectedFavorites();
-                Settings.ApplyDomainNameToAllSelectedFavorites(selectedFavorites, result.Text);
+                Settings.ApplyDomainNameToAllSelectedFavorites(selectedFavorites, input);
 
                 this.GetMainForm().Cursor = Cursors.Default;
                 Application.DoEvents();
@@ -325,17 +319,15 @@
         private void setUsernameByTagToolStripMenuItem_Click(object sender, EventArgs e)
         {
             String tagName = this.TreeView.SelectedNode.Name;
-            InputBoxResult result =
-                InputBox.Show(
-                    "Set Username by Tag\r\n\r\nThis will replace the Username for all Favorites within this tag.\r\n\r\nUse at your own risk!",
-                    "Change Username" + " - " + tagName);
-            if (result.ReturnCode == DialogResult.OK)
+            string input = "Set Username by Tag\r\n\r\nThis will replace the Username for all Favorites within this tag.\r\n\r\nUse at your own risk!";
+            
+            if (InputBox.Show(ref input, "Change Username" + " - " + tagName) == DialogResult.OK)
             {
                 this.GetMainForm().Cursor = Cursors.WaitCursor;
                 Application.DoEvents();
 
                 List<FavoriteConfigurationElement> selectedFavorites = this.GetSelectedFavorites();
-                Settings.ApplyUserNameToAllSelectedFavorites(selectedFavorites, result.Text);
+                Settings.ApplyUserNameToAllSelectedFavorites(selectedFavorites, input);
 
                 this.GetMainForm().Cursor = Cursors.Default;
                 Application.DoEvents();
@@ -346,11 +338,8 @@
         private void deleteAllFavoritesByTagToolStripMenuItem_Click(object sender, EventArgs e)
         {
             String tagName = this.TreeView.SelectedNode.Name;
-            DialogResult result =
-                MessageBox.Show(
-                    "Delete all Favorites by Tag\r\n\r\nThis will DELETE all Favorites within this tag.\r\n\r\nUse at your own risk!",
-                    "Delete all Favorites by Tag" + " - " + tagName, MessageBoxButtons.OKCancel);
-            if (result == DialogResult.OK)
+                
+            if (MessageBox.Show("Delete all Favorites by Tag\r\n\r\nThis will DELETE all Favorites within this tag.\r\n\r\nUse at your own risk!", "Delete all Favorites by Tag" + " - " + tagName, MessageBoxButtons.OKCancel) == DialogResult.OK)
             {
                 this.GetMainForm().Cursor = Cursors.WaitCursor;
                 Application.DoEvents();
