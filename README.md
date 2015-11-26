@@ -1,7 +1,9 @@
 # Terminals
 Terminals is a multi-tab terminal services and remote desktop client. Moreover Terminals is capable beside RDP of supporting AutoIt, a shell explorer, http connections, ICA/Citrix connections, telnet, ssh, VNC and many other protocols.
 
-[Download the latest release here](https://github.com/OliverKohlDSc/Terminals/releases/download/4.7.4.0/Binaries_4.7.4.0.zip)
+Download the latest release:
+* [as a ZIP file](https://github.com/OliverKohlDSc/Terminals/releases/download/4.7.4.0/Binaries_4.7.4.0.zip) or
+* in form of an [installer/setup](https://github.com/OliverKohlDSc/Terminals/releases/download/4.7.4.0/Setup_4.7.4.0.exe)
 
 The [official website](http://oliverkohldsc.github.io/Terminals) can be found [here](http://oliverkohldsc.github.io/Terminals).
 
