@@ -1,11 +1,39 @@
 # Terminals
 Terminals is a multi-tab terminal services and remote desktop client. Moreover Terminals is capable beside RDP of supporting AutoIt, a shell explorer, http connections, ICA/Citrix connections, telnet, ssh, VNC and many other protocols.
 
-[Download the latest release here](https://github.com/OliverKohlDSc/Terminals/releases/download/4.7.3.0/Binaries_4.7.3.0.zip)
+Download the latest release:
+* [as a ZIP file](https://github.com/OliverKohlDSc/Terminals/releases/download/4.7.4.0/Binaries_4.7.4.0.zip) or
+* in form of an [installer/setup](https://github.com/OliverKohlDSc/Terminals/releases/download/4.7.4.0/Setup_4.7.4.0.exe)
 
 The [official website](http://oliverkohldsc.github.io/Terminals) can be found [here](http://oliverkohldsc.github.io/Terminals).
 
 [My personal website](http://www.kohl.bz)
+
+
+
+###Release v 4.7.4.0
+
+Date: 2015-11-26
+
+Integrated the following NuGet packages:
+* KeePassLib
+* log4net
+* Microsoft.WindowsAPICodePack
+* Microsoft.WindowsAPICodePack.Core
+* Microsoft.WindowsAPICodePack.Shell
+	
+Removed obsolete localization which went back to the time of .NET 1.0.
+
+Reduced the logging complexity
+
+Added output to .gitignore
+
+Removed obsolete files not any longer required
+
+KeePass:
+* Your password to your keepass store is now encrypted.
+* The domain will be extracted from either the UserName field in KeePass (if it has the form of DOMAIN\USERNAME) or from and advanced filed called Domain.
+
 
 ###Release v 4.7.3.0
 
@@ -26,6 +54,7 @@ Removed all obsolete code comments.
 TODO: KOHL> Remove localization and replace with state of the art model.
 
 TODO: KOHL> Decrypt/Hide password for keepass.
+
 
 ##Release v 4.7.0.0
 
@@ -56,7 +85,6 @@ Added compilation switch to remove the XUL code and to remove the dependencies t
 The next release will be a bug fixing release.
 
 
-
 ##Release v 4.6.0.1
 
 Date: 2014-10-13
@@ -64,7 +92,6 @@ Date: 2014-10-13
 Added new favorite properties to the PuttyConnection. X11 forwarding is now supported. It is now possible to ignore the domain part.
 
 It is now possible to abort the putty dialog before the connection is available.
-
 
 
 ##Release v 4.6.0.0
