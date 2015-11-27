@@ -26,7 +26,9 @@ Integrated the following NuGet packages:
 	Microsoft.WindowsAPICodePack
 	Microsoft.WindowsAPICodePack.Core
 	Microsoft.WindowsAPICodePack.Shell
-	
+
+Configuration files are now portable, if Terminals has write access to the local application directory it will put and read the files from there, otherwise if Terminals is for example located in "C:\Program Files (x86)\" or in "C:\Prgram Files\" it wil put the files here: ${LOCALAPPDATA}\Oliver Kohl D.Sc.\Terminals\xxx  
+
 Removed obsolete localization which went back to the time of .NET 1.0.
 Reduced the logging complexity
 Added output to .gitignore
