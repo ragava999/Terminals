@@ -10,18 +10,21 @@ if ([System.IO.File]::Exists("Terminals.zip"))
     [System.IO.File]::Delete("Terminals.zip")
 }
 
-Remove-Item "D:\Kohl\Projects\Code\Terminals\Terminals\bin\x86\Distribution Release\Out\RAdmin Viewer 3" -Recurse -Force
-Remove-Item "D:\Kohl\Projects\Code\Terminals\Terminals\bin\x86\Distribution Release\Out\putty.exe" -Force
-Remove-Item "D:\Kohl\Projects\Code\Terminals\Terminals\bin\x86\Distribution Release\Out\QDir.exe" -Force
+Remove-Item "C:\KOHL\Terminals\Git\Terminals\Terminals\bin\x86\Distribution Release\Out\RAdmin Viewer 3" -Recurse -Force -ErrorAction SilentlyContinue
+Remove-Item "C:\KOHL\Terminals\Git\Terminals\Terminals\bin\x86\Distribution Release\Out\putty.exe" -Force -ErrorAction SilentlyContinue
+Remove-Item "C:\KOHL\Terminals\Git\Terminals\Terminals\bin\x86\Distribution Release\Out\QDir.exe" -Force -ErrorAction SilentlyContinue
 
+ZipFiles Terminals.zip "C:\KOHL\Terminals\Git\Terminals\Terminals\bin\x86\Distribution Release\Out"
 
-ZipFiles Terminals.zip "D:\Kohl\Projects\Code\Terminals\Terminals\bin\x86\Distribution Release\Out"
-
-$strPath = 'D:\Kohl\Projects\Code\Terminals\Terminals\bin\x86\Distribution Release\Out\Terminals.exe'
+$strPath = 'C:\KOHL\Terminals\Git\Terminals\Terminals\bin\x86\Distribution Release\Terminals.exe'
 $Assembly = [Reflection.Assembly]::Loadfile($strPath)
 $Assemblyversion =  $Assembly.GetName().version
 
-$string = ("Terminals_"+$Assemblyversion.Major+"."+$Assemblyversion.Minor+"."+$Assemblyversion.Build+"."+$Assemblyversion.Revision);
+$string = ($Assemblyversion.Major.ToString()+"."+$Assemblyversion.Minor.ToString()+"."+$Assemblyversion.Build.ToString()+"."+$Assemblyversion.Revision.ToString());
 
-mv Terminals.zip ($string + ".zip") -Force
-mv Terminals.exe ($string + ".exe") -Force
+Remove-Item -Force -Recurse ("Terminals_"+$string) -ErrorAction SilentlyContinue
+mkdir $string
+
+Move-Item -Force Output\Setup_*.exe .\$string
+Remove-Item -Force -Recurse Output -ErrorAction SilentlyContinue
+Move-Item Terminals.zip .\$string\Terminals_$string.zip

@@ -171,7 +171,10 @@ rem Packing putty with upx results in an McAfee virus warning!
 cd ..\..
 
 echo.
-echo Done
+echo Done Building Terminals
 echo.
+rem echo Starting with Setup and Zip file creation
+rem cd .\Terminals.Setup\
+rem .\Compile.bat
 rem pause
 exit 0;
