@@ -72,7 +72,7 @@ namespace Terminals.Connections
                     if (this.browser != null)
                         browserType = this.browser.BrowserType.ToString() + " ";
 
-                    Log.Error(string.Format("Could not initialize the %TITLE% internet {0}browser. Check for missing DLLs.", browserType), ex);
+                    Log.Error(string.Format("Could not initialize the Terminals internet {0}browser. Check for missing DLLs.", browserType), ex);
 
                     return this.connected = false;
                 }

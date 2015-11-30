@@ -222,6 +222,13 @@ namespace Terminals.Configuration.Files.Main.Favorites
         }
 
         #region Credentials (4)
+        [ConfigurationProperty("tsgwcredential", IsRequired = false, DefaultValue = "")]
+        public String TsgwXmlCredentialSetName
+        {
+            get { return (String)this["tsgwcredential"]; }
+            set { this["tsgwcredential"] = value; }
+        }
+        
         [ConfigurationProperty("credential", IsRequired = false, DefaultValue = "")]
         public String XmlCredentialSetName
         {

@@ -19,8 +19,9 @@ copy "Terminals.config" "..\Distribution Debug\Terminals.config" /Y > NUL
 copy "Terminals.log4net.config" "..\Distribution Debug\Terminals.log4net.config" /Y > NUL
 
 echo.
-echo Copying Terminals.Configuration.dll.
+echo Copying Terminals.Configuration.dll & KeePassLib.dll.
 copy "Terminals.Configuration.dll" "..\Distribution Debug\Terminals.Configuration.dll" /Y > NUL
+copy "KeePassLib.dll" "..\Distribution Debug\KeePassLib.dll" /Y > NUL
 
 echo Copying FireFox dependencies.
 copy "..\..\..\..\DLLs\%XULRUNNER%\omni.ja" "omni.ja" /Y > NUL

@@ -117,34 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="DE_chkExecuteBeforeConnect.Text" xml:space="preserve">
-    <value>Vor der Verbindungsherstellung folgendes Kommando ausführen</value>
-  </data>
-  <data name="DE_chkWaitForExit.Text" xml:space="preserve">
-    <value>Warten bis das Kommando beendet wird</value>
-  </data>
-  <data name="DE_lblArguments.Text" xml:space="preserve">
-    <value>Argumente:</value>
-  </data>
-  <data name="DE_lblCommand.Text" xml:space="preserve">
-    <value>Kommando:</value>
-  </data>
-  <data name="DE_lblInitialDirectory.Text" xml:space="preserve">
-    <value>Arbeitsverzeichnis:</value>
-  </data>
-  <data name="EN_chkExecuteBeforeConnect.Text" xml:space="preserve">
-    <value>Enable execute before connect</value>
-  </data>
-  <data name="EN_chkWaitForExit.Text" xml:space="preserve">
-    <value>Wait for exit</value>
-  </data>
-  <data name="EN_lblArguments.Text" xml:space="preserve">
-    <value>Arguments:</value>
-  </data>
-  <data name="EN_lblCommand.Text" xml:space="preserve">
-    <value>Command:</value>
-  </data>
-  <data name="EN_lblInitialDirectory.Text" xml:space="preserve">
-    <value>Working directory:</value>
-  </data>
 </root>

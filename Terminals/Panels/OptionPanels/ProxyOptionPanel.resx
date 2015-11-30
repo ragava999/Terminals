@@ -117,28 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="DE_AutoProxyRadioButton.Text" xml:space="preserve">
-    <value>Proxy automatisch erkennen</value>
-  </data>
-  <data name="DE_lblAddress.Text" xml:space="preserve">
-    <value>Adresse:</value>
-  </data>
-  <data name="DE_lblport.Text" xml:space="preserve">
-    <value>Port:</value>
-  </data>
-  <data name="DE_ProxyRadionButton.Text" xml:space="preserve">
-    <value>Benutze den folgenden Proxyserver:</value>
-  </data>
-  <data name="EN_AutoProxyRadioButton.Text" xml:space="preserve">
-    <value>Automatically detect proxy</value>
-  </data>
-  <data name="EN_lblAddress.Text" xml:space="preserve">
-    <value>Address:</value>
-  </data>
-  <data name="EN_lblport.Text" xml:space="preserve">
-    <value>Port:</value>
-  </data>
-  <data name="EN_ProxyRadionButton.Text" xml:space="preserve">
-    <value>Use the following proxy server:</value>
-  </data>
 </root>

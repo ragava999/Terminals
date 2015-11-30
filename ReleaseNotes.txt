@@ -18,7 +18,7 @@
 Release v 4.7.4.0
 ~~~~~~~~~~~~~~~~~
 
-Date: 2015-11-26
+Date: 2015-11-30
 
 Integrated the following NuGet packages:
 	KeePassLib
@@ -29,13 +29,15 @@ Integrated the following NuGet packages:
 
 Configuration files are now portable, if Terminals has write access to the local application directory it will put and read the files from there, otherwise if Terminals is for example located in "C:\Program Files (x86)\" or in "C:\Prgram Files\" it wil put the files here: ${LOCALAPPDATA}\Oliver Kohl D.Sc.\Terminals\xxx  
 
+Now the user can actively choose if he or she desires to use either the Credentials.xml file or a KeePass database as the default credential store.
+
 Removed obsolete localization which went back to the time of .NET 1.0.
 Reduced the logging complexity
 Added output to .gitignore
 Removed obsolete files not any longer required
 KeePass:
 	Your password to your keepass store is now encrypted
-	The domain will be extracted from either the UserName field in KeePass (if it has the form of DOMAIN\USERNAME) or from and advanced filed called Domain.
+	The domain will be extracted from either the UserName field in KeePass (if it has the form of DOMAIN\USERNAME) or from and advanced field called Domain.
 
 
 Release v 4.7.3.0

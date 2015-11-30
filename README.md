@@ -13,7 +13,7 @@ The [official website](http://oliverkohldsc.github.io/Terminals) can be found [h
 
 ###Release v 4.7.4.0
 
-Date: 2015-11-26
+Date: 2015-11-30
 
 Integrated the following NuGet packages:
 * KeePassLib
@@ -21,7 +21,11 @@ Integrated the following NuGet packages:
 * Microsoft.WindowsAPICodePack
 * Microsoft.WindowsAPICodePack.Core
 * Microsoft.WindowsAPICodePack.Shell
-	
+
+Configuration files are now portable, if Terminals has write access to the local application directory it will put and read the files from there, otherwise if Terminals is for example located in "C:\Program Files (x86)\" or in "C:\Prgram Files\" it wil put the files here: ${LOCALAPPDATA}\Oliver Kohl D.Sc.\Terminals\xxx  
+
+Now the user can actively choose if he or she desires to use either the Credentials.xml file or a KeePass database as the default credential store.
+
 Removed obsolete localization which went back to the time of .NET 1.0.
 
 Reduced the logging complexity

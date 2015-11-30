@@ -61,7 +61,7 @@ namespace Terminals.Connections
                 }
                 catch (Exception ex)
                 {
-					Log.Fatal("It seems that your VMRC COM components are not registered. Please run the 'RegisterVMRC.bat' in your %TITLE% directory as administrator to register the components.", ex);
+					Log.Fatal("It seems that your VMRC COM components are not registered. Please run the 'RegisterVMRC.bat' in your Terminals directory as administrator to register the components.", ex);
                     return false;
                 }
 

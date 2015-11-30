@@ -31,13 +31,8 @@ namespace Terminals.Panels.OptionPanels
         private void InitializeComponent()
         {
         	this.panel1 = new System.Windows.Forms.Panel();
-        	
-        	this.lblKeePassPath = new System.Windows.Forms.Label();
-        	this.lblKeePassPassword = new System.Windows.Forms.Label();
-        	this.txtKeePassPath = new System.Windows.Forms.TextBox();
-        	this.txtKeePassPassword = new System.Windows.Forms.TextBox();
         	this.groupBox3 = new System.Windows.Forms.GroupBox();
-        	this.grpKeePass = new System.Windows.Forms.GroupBox();
+        	this.lblMasterPasswordCaption = new System.Windows.Forms.Label();
         	this.lblPasswordsMatch = new System.Windows.Forms.Label();
         	this.chkPasswordProtectTerminals = new System.Windows.Forms.CheckBox();
         	this.lblPassword = new System.Windows.Forms.Label();
@@ -46,13 +41,11 @@ namespace Terminals.Panels.OptionPanels
         	this.ConfirmPasswordTextBox = new System.Windows.Forms.TextBox();
         	this.panel1.SuspendLayout();
         	this.groupBox3.SuspendLayout();
-        	this.grpKeePass.SuspendLayout();
         	this.SuspendLayout();
         	// 
         	// panel1
         	// 
         	this.panel1.Controls.Add(this.groupBox3);
-        	this.panel1.Controls.Add(this.grpKeePass);
         	this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
         	this.panel1.Location = new System.Drawing.Point(0, 0);
         	this.panel1.Name = "panel1";
@@ -61,70 +54,31 @@ namespace Terminals.Panels.OptionPanels
         	// 
         	// groupBox3
         	// 
+        	this.groupBox3.Controls.Add(this.lblMasterPasswordCaption);
         	this.groupBox3.Controls.Add(this.lblPasswordsMatch);
         	this.groupBox3.Controls.Add(this.chkPasswordProtectTerminals);
         	this.groupBox3.Controls.Add(this.lblPassword);
         	this.groupBox3.Controls.Add(this.PasswordTextbox);
         	this.groupBox3.Controls.Add(this.lblConfirm);
         	this.groupBox3.Controls.Add(this.ConfirmPasswordTextBox);
-        	this.groupBox3.Location = new System.Drawing.Point(6, 3);
+        	this.groupBox3.Location = new System.Drawing.Point(5, 3);
         	this.groupBox3.Name = "groupBox3";
-        	this.groupBox3.Size = new System.Drawing.Size(500, 112);
+        	this.groupBox3.Size = new System.Drawing.Size(500, 144);
         	this.groupBox3.TabIndex = 0;
         	this.groupBox3.TabStop = false;
-        	
-        	
-        	
         	// 
-        	// grpKeePass
-        	this.grpKeePass.Controls.Add(this.lblKeePassPath);
-        	this.grpKeePass.Controls.Add(this.txtKeePassPath);
-        	this.grpKeePass.Controls.Add(this.lblKeePassPassword);
-        	this.grpKeePass.Controls.Add(this.txtKeePassPassword);
-        	this.grpKeePass.Location = new System.Drawing.Point(6, 200);
-        	this.grpKeePass.Name = "grpKeePass";
-        	this.grpKeePass.Size = new System.Drawing.Size(500, 112);
-        	this.grpKeePass.TabIndex = 13;
-        	this.grpKeePass.TabStop = false;
-			// 
-        	// lblKeePassPath
+        	// lblMasterPasswordCaption
         	// 
-        	this.lblKeePassPath.AutoSize = true;
-        	this.lblKeePassPath.Location = new System.Drawing.Point(13, 45);
-        	this.lblKeePassPath.Name = "lblKeePassPath";
-        	this.lblKeePassPath.Size = new System.Drawing.Size(56, 13);
-        	this.lblKeePassPath.TabIndex = 3;
-        	this.lblKeePassPath.Text = "KDBX path:";
-        	// 
-        	// txtKeePassPath
-        	// 
-        	this.txtKeePassPath.Location = new System.Drawing.Point(113, 42);
-        	this.txtKeePassPath.Name = "txtKeePassPath";
-        	this.txtKeePassPath.Size = new System.Drawing.Size(176, 20);
-        	this.txtKeePassPath.TabIndex = 1;
-        	// 
-        	// lblKeePassPassword
-        	// 
-        	this.lblKeePassPassword.AutoSize = true;
-        	this.lblKeePassPassword.Location = new System.Drawing.Point(13, 73);
-        	this.lblKeePassPassword.Name = "lblKeePassPassword";
-        	this.lblKeePassPassword.Size = new System.Drawing.Size(45, 13);
-        	this.lblKeePassPassword.TabIndex = 4;
-        	this.lblKeePassPassword.Text = "Password:";
-        	// 
-        	// txtKeePassPassword
-        	// 
-        	this.txtKeePassPassword.Location = new System.Drawing.Point(113, 70);
-        	this.txtKeePassPassword.Name = "txtKeePassPassword";
-        	this.txtKeePassPassword.Size = new System.Drawing.Size(176, 20);
-        	this.txtKeePassPassword.TabIndex = 2;
-        	this.txtKeePassPassword.TextChanged += new System.EventHandler(this.ConfirmPasswordTextBox_TextChanged);
+        	this.lblMasterPasswordCaption.Location = new System.Drawing.Point(13, 16);
+        	this.lblMasterPasswordCaption.Name = "lblMasterPasswordCaption";
+        	this.lblMasterPasswordCaption.Size = new System.Drawing.Size(481, 32);
+        	this.lblMasterPasswordCaption.TabIndex = 27;
         	// 
         	// lblPasswordsMatch
         	// 
         	this.lblPasswordsMatch.AutoSize = true;
         	this.lblPasswordsMatch.ForeColor = System.Drawing.SystemColors.ControlText;
-        	this.lblPasswordsMatch.Location = new System.Drawing.Point(305, 73);
+        	this.lblPasswordsMatch.Location = new System.Drawing.Point(305, 112);
         	this.lblPasswordsMatch.Name = "lblPasswordsMatch";
         	this.lblPasswordsMatch.Size = new System.Drawing.Size(0, 13);
         	this.lblPasswordsMatch.TabIndex = 6;
@@ -132,7 +86,7 @@ namespace Terminals.Panels.OptionPanels
         	// chkPasswordProtectTerminals
         	// 
         	this.chkPasswordProtectTerminals.AutoSize = true;
-        	this.chkPasswordProtectTerminals.Location = new System.Drawing.Point(13, 20);
+        	this.chkPasswordProtectTerminals.Location = new System.Drawing.Point(13, 59);
         	this.chkPasswordProtectTerminals.Name = "chkPasswordProtectTerminals";
         	this.chkPasswordProtectTerminals.Size = new System.Drawing.Size(109, 17);
         	this.chkPasswordProtectTerminals.TabIndex = 0;
@@ -143,7 +97,7 @@ namespace Terminals.Panels.OptionPanels
         	// lblPassword
         	// 
         	this.lblPassword.AutoSize = true;
-        	this.lblPassword.Location = new System.Drawing.Point(13, 45);
+        	this.lblPassword.Location = new System.Drawing.Point(13, 84);
         	this.lblPassword.Name = "lblPassword";
         	this.lblPassword.Size = new System.Drawing.Size(56, 13);
         	this.lblPassword.TabIndex = 3;
@@ -152,7 +106,7 @@ namespace Terminals.Panels.OptionPanels
         	// PasswordTextbox
         	// 
         	this.PasswordTextbox.Enabled = false;
-        	this.PasswordTextbox.Location = new System.Drawing.Point(113, 42);
+        	this.PasswordTextbox.Location = new System.Drawing.Point(113, 81);
         	this.PasswordTextbox.Name = "PasswordTextbox";
         	this.PasswordTextbox.Size = new System.Drawing.Size(176, 20);
         	this.PasswordTextbox.TabIndex = 1;
@@ -161,7 +115,7 @@ namespace Terminals.Panels.OptionPanels
         	// lblConfirm
         	// 
         	this.lblConfirm.AutoSize = true;
-        	this.lblConfirm.Location = new System.Drawing.Point(13, 73);
+        	this.lblConfirm.Location = new System.Drawing.Point(13, 112);
         	this.lblConfirm.Name = "lblConfirm";
         	this.lblConfirm.Size = new System.Drawing.Size(45, 13);
         	this.lblConfirm.TabIndex = 4;
@@ -170,7 +124,7 @@ namespace Terminals.Panels.OptionPanels
         	// ConfirmPasswordTextBox
         	// 
         	this.ConfirmPasswordTextBox.Enabled = false;
-        	this.ConfirmPasswordTextBox.Location = new System.Drawing.Point(113, 70);
+        	this.ConfirmPasswordTextBox.Location = new System.Drawing.Point(113, 109);
         	this.ConfirmPasswordTextBox.Name = "ConfirmPasswordTextBox";
         	this.ConfirmPasswordTextBox.Size = new System.Drawing.Size(176, 20);
         	this.ConfirmPasswordTextBox.TabIndex = 2;
@@ -184,25 +138,20 @@ namespace Terminals.Panels.OptionPanels
         	this.panel1.ResumeLayout(false);
         	this.groupBox3.ResumeLayout(false);
         	this.groupBox3.PerformLayout();
-        	this.grpKeePass.ResumeLayout(false);
-        	this.grpKeePass.PerformLayout();
         	this.ResumeLayout(false);
+
         }
 
         #endregion
 
-        private Label lblKeePassPath;
-        private TextBox txtKeePassPath;
-        private Label lblKeePassPassword;
-        private TextBox txtKeePassPassword;
         private Panel panel1;
         private GroupBox groupBox3;
-        private GroupBox grpKeePass;
         private Label lblPasswordsMatch;
         private CheckBox chkPasswordProtectTerminals;
         private Label lblPassword;
         private TextBox PasswordTextbox;
         private Label lblConfirm;
         private TextBox ConfirmPasswordTextBox;
+        private System.Windows.Forms.Label lblMasterPasswordCaption;
     }
 }

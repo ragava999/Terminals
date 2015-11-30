@@ -10,15 +10,25 @@ namespace Terminals.Panels.OptionPanels
 {
     public partial class MasterPasswordOptionPanel : IOptionPanel
     {
+    	public static readonly string MasterPasswordCaption = "";
+    	
+    	static MasterPasswordOptionPanel()
+    	{
+    		// This prevents SharpDevelop and Visual Studio from both an exception in design mode for controls using this HistoryTreeView and from crashing when opening the
+            // designer for this class.
+            if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Designtime)
+                return;
+            
+    		MasterPasswordCaption = "By setting your Master Password allows " + Kohl.Framework.Info.AssemblyInfo.Title + " to store your connection information in a much more secure manner.  Although it is not required, it is highly recommended";
+    	}
+    	
         public MasterPasswordOptionPanel()
-        {
+        {      	
             this.InitializeComponent();
 
             this.lblPasswordsMatch.Text = string.Empty;
-
-            
-
-            this.txtKeePassPassword.PasswordChar = this.ConfirmPasswordTextBox.PasswordChar = this.PasswordTextbox.PasswordChar = Terminals.Forms.Controls.CredentialPanel.HIDDEN_PASSWORD_CHAR;
+            this.ConfirmPasswordTextBox.PasswordChar = this.PasswordTextbox.PasswordChar = Terminals.Forms.Controls.CredentialPanel.HIDDEN_PASSWORD_CHAR;
+            this.lblMasterPasswordCaption.Text = MasterPasswordCaption + ".";
         }
 
         private bool PasswordsMatch
@@ -40,9 +50,7 @@ namespace Terminals.Panels.OptionPanels
             this.chkPasswordProtectTerminals.Checked = Settings.IsMasterPasswordDefined;
             this.PasswordTextbox.Enabled = Settings.IsMasterPasswordDefined;
             this.ConfirmPasswordTextBox.Enabled = Settings.IsMasterPasswordDefined;
-            this.txtKeePassPassword.Text = Settings.KeePassPassword;
-            this.txtKeePassPath.Text = Settings.KeePassPath;
-            
+
             this.FillTextBoxesByMasterPassword(Settings.IsMasterPasswordDefined);
         }
 
@@ -60,20 +68,6 @@ namespace Terminals.Panels.OptionPanels
                 {
                     Settings.UpdateMasterPassword(this.PasswordTextbox.Text);
                 }
-            }
- 
-            bool restart = false;
-            if (Settings.KeePassPassword != txtKeePassPassword.Text || Settings.KeePassPath != txtKeePassPath.Text)
-            {
-            	restart = true;
-            }
-            
-            Settings.KeePassPassword = txtKeePassPassword.Text;
-            Settings.KeePassPath = txtKeePassPath.Text;
-            
-            if (restart)
-            {
-            	MessageBox.Show("Your Credential configuration has changed. Please close your existing connections and restart Terminals.");
             }
         }
 

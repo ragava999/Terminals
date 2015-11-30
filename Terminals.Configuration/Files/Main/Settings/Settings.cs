@@ -85,12 +85,28 @@ namespace Terminals.Configuration.Files.Main.Settings
         }
         #endregion
 
-        #region KeePass settings (2)
-        public static bool KeePassUse
+        public static CredentialStoreType CredentialStore
         {
-        	get { return !string.IsNullOrEmpty(KeePassPath) && !string.IsNullOrEmpty(KeePassPassword); }
+        	get
+        	{
+        		TerminalsConfigurationSection config = GetSection();
+                if (config != null)
+                {
+                    string dsp = config.CredentialStore;
+                    return (CredentialStoreType) Enum.Parse(typeof (CredentialStoreType), dsp);
+                }
+
+        		return CredentialStoreType.Xml;
+        	}
+
+            set
+            {
+                GetSection().CredentialStore = value.ToString();
+                SaveImmediatelyIfRequested();
+            }
         }
         
+        #region KeePass settings (2)
         public static string KeePassPath
         {
             get { return GetSection().KeePassPath; }

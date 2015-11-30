@@ -25,8 +25,9 @@ copy "Terminals.config" "..\Distribution Release\Terminals.config" /Y > NUL
 copy "Terminals.log4net.config" "..\Distribution Release\Terminals.log4net.config" /Y > NUL
 
 echo.
-echo Copying Terminals.Configuration.dll.
+echo Copying Terminals.Configuration.dll & KeePassLib.dll.
 copy "Terminals.Configuration.dll" "..\Distribution Release\Terminals.Configuration.dll" /Y > NUL
+copy "KeePassLib.dll" "..\Distribution Release\KeePassLib.dll" /Y > NUL
 
 echo Copying FireFox dependencies.
 copy "..\..\..\..\DLLs\%XULRUNNER%\omni.ja" "omni.ja" /Y > NUL
@@ -93,6 +94,7 @@ echo Copy the Terminals DLLs and config to the output folder
 copy /Y "Terminals.log4net.config" "Out\Terminals.log4net.config"
 copy /Y "Kohl.Framework.dll" "Out\Kohl.Framework.dll"
 copy /Y "Terminals.Configuration.dll" "Out\Terminals.Configuration.dll"
+copy /Y "KeePassLib.dll" "Out\KeePassLib.dll"
 copy /Y "Terminals.Connection.dll" "Out\Terminals.Connection.dll"
 
 echo Copy the XUL DLLs to the output folder

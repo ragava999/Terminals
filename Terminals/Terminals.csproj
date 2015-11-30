@@ -302,6 +302,10 @@
     <Compile Include="Panels\FavoritePanels\RdpFavoritePanel.Designer.cs">
       <DependentUpon>RdpFavoritePanel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Panels\OptionPanels\CredentialStoreOptionPanel.cs" />
+    <Compile Include="Panels\OptionPanels\CredentialStoreOptionPanel.Designer.cs">
+      <DependentUpon>CredentialStoreOptionPanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Panels\OptionPanels\PuttyOptionPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -472,7 +476,7 @@
       <DependentUpon>InterfaceOptionPanel.cs</DependentUpon>
     </Compile>
     <Compile Include="Panels\OptionPanels\MasterPasswordOptionPanel.Designer.cs">
-      <DependentUpon>MasterPasswordOptionpanel.cs</DependentUpon>
+      <DependentUpon>MasterPasswordOptionPanel.cs</DependentUpon>
     </Compile>
     <Compile Include="Panels\OptionPanels\ProxyOptionPanel.Designer.cs">
       <DependentUpon>ProxyOptionPanel.cs</DependentUpon>
@@ -569,7 +573,7 @@
     <Compile Include="Panels\OptionPanels\InterfaceOptionPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Panels\OptionPanels\MasterPasswordOptionpanel.cs">
+    <Compile Include="Panels\OptionPanels\MasterPasswordOptionPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Panels\OptionPanels\ProxyOptionPanel.cs">
@@ -905,8 +909,14 @@
       <SubType>Designer</SubType>
       <DependentUpon>OrganizeShortcuts.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Panels\OptionPanels\CredentialStoreOptionPanel.resx">
+      <DependentUpon>CredentialStoreOptionPanel.Designer.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Panels\OptionPanels\DefaultPasswordOptionPanel.resx">
       <DependentUpon>DefaultPasswordOptionPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Panels\OptionPanels\StartShutdownOptionPanel.resx">
+      <DependentUpon>StartShutdownOptionPanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
@@ -948,6 +958,12 @@
     <Compile Include="Wizard\MMC\MMCFile.cs" />
     <Compile Include="Wizard\PasswordStrength.cs" />
     <Compile Include="Wizard\SpecialCommandsWizard.cs" />
+    <None Include="..\README.md">
+      <Link>README.md</Link>
+    </None>
+    <None Include="..\ReadMe_Description.txt">
+      <Link>ReadMe_Description.txt</Link>
+    </None>
     <None Include="..\ReleaseNotes.txt">
       <Link>ReleaseNotes.txt</Link>
     </None>

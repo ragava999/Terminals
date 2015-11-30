@@ -14,7 +14,7 @@ namespace Terminals.ExportImport.Import
     {
         public const string TERMINALS_FILEEXTENSION = ".xml";
 
-        public static readonly string PROVIDER_NAME = "%TITLE% favorites";
+        public static readonly string PROVIDER_NAME = "Terminals favorites";
 
         List<FavoriteConfigurationElement> IImport.ImportFavorites(string Filename)
         {

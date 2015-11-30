@@ -16,6 +16,7 @@ namespace Terminals.Forms.Controls
     {
         public const char HIDDEN_PASSWORD_CHAR = '●';
         public const String HIDDEN_PASSWORD = "●●●●●●●●●●●●●●●●";
+        public static readonly String Custom = "(custom)";
 
         public CredentialPanel()
         {
@@ -114,7 +115,7 @@ namespace Terminals.Forms.Controls
         {
             this.CredentialDropdown.Items.Clear();
             List<CredentialSet> creds = StoredCredentials.Items;
-            this.CredentialDropdown.Items.Add("(custom)");
+            this.CredentialDropdown.Items.Add(Custom);
 
             Int32 selIndex = 0;
             if (creds != null)

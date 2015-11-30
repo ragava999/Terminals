@@ -278,8 +278,20 @@ namespace Terminals.Configuration.Files.Main
             set { this["askToReconnect"] = value; }
         }
         #endregion
-
-        #region KeePass section (2)
+        
+        [ConfigurationProperty("credentialStore", DefaultValue = "Xml")]
+        public string CredentialStore
+        {
+            get
+            {
+                if (this["credentialStore"] == null || this["credentialStore"].ToString() == string.Empty)
+                    return "Xml";
+                return this["credentialStore"].ToString();
+            }
+            set { this["credentialStore"] = value; }
+        }
+        
+        #region KeePass section (3)
         [ConfigurationProperty("KeePassPath")]
         public string KeePassPath
         {
@@ -287,7 +299,6 @@ namespace Terminals.Configuration.Files.Main
 
             set { this["KeePassPath"] = value; }
         }
-        
         
         [ConfigurationProperty("encryptedKeePassPassword", IsRequired = false)]
         public string EncryptedKeePassPassword

@@ -24,10 +24,8 @@ namespace Terminals.Forms.Credentials
 				"Credential manager";
 
             this.txtPassword.PasswordChar = CredentialPanel.HIDDEN_PASSWORD_CHAR;
-
             
-            
-            if (Terminals.Configuration.Files.Main.Settings.Settings.KeePassUse)
+            if (Terminals.Configuration.Files.Main.Settings.Settings.CredentialStore == Terminals.Configuration.Files.Main.CredentialStoreType.KeePass)
             {
             	SaveButton_cred.Enabled = false;
             }

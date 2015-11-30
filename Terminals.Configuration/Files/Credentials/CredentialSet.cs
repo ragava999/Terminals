@@ -53,7 +53,7 @@ namespace Terminals.Configuration.Files.Credentials
         {
             get
             {
-            	if (Main.Settings.Settings.KeePassUse)
+            	if (Main.Settings.Settings.CredentialStore != Terminals.Configuration.Files.Main.CredentialStoreType.Xml)
             		return this.Password;
             		
                 if (!string.IsNullOrEmpty(this.Password))
@@ -63,7 +63,7 @@ namespace Terminals.Configuration.Files.Credentials
             }
             set
             {
-            	if (Main.Settings.Settings.KeePassUse)
+            	if (Main.Settings.Settings.CredentialStore != Terminals.Configuration.Files.Main.CredentialStoreType.Xml)
             		this.Password = value;
             	else
 	                if (string.IsNullOrEmpty(value))

@@ -66,6 +66,9 @@ namespace Terminals.Panels.FavoritePanels
         {
             InitializeComponent();
 
+            chkTSGWlogin.Checked = this.pnlTSGWlogon.Enabled = false;
+            this.pnlTSGWlogon.FillCredentials(null);
+            
             // move following line down to default value only once smart card access worked out.
             this.cmbTSGWLogonMethod.SelectedIndex = 0;
 
@@ -83,8 +86,6 @@ namespace Terminals.Panels.FavoritePanels
             this.groupBox1.Enabled = true;
             this.chkConnectToConsole.Enabled = true;
             this.LocalResourceGroupBox.Enabled = true;
-
-            this.txtTSGWPassword.PasswordChar = Terminals.Forms.Controls.CredentialPanel.HIDDEN_PASSWORD_CHAR;
         }
 
         private void RDPSubTabPage_SelectedIndexChanged(object sender, EventArgs e)
@@ -152,9 +153,14 @@ namespace Terminals.Panels.FavoritePanels
             }
 
             this.txtTSGWServer.Text = favorite.TsgwHostname;
-            this.txtTSGWDomain.Text = favorite.TsgwDomain;
-            this.txtTSGWUserName.Text = favorite.TsgwUsername;
-            this.txtTSGWPassword.Text = favorite.TsgwPassword;
+
+			// TSGW            
+			if (favorite.TsgwXmlCredentialSetName == Terminals.Forms.Controls.CredentialPanel.Custom)
+            {
+            	this.pnlTSGWlogon.FillControls(new FavoriteConfigurationElement() { DomainName = favorite.TsgwDomain, UserName = favorite.TsgwUsername, Password = favorite.TsgwPassword  });
+			}
+            this.pnlTSGWlogon.FillCredentials(favorite.TsgwXmlCredentialSetName);
+
             this.chkTSGWlogin.Checked = favorite.TsgwSeparateLogin;
             this.cmbTSGWLogonMethod.SelectedIndex = favorite.TsgwCredsSource;
 
@@ -227,9 +233,20 @@ namespace Terminals.Panels.FavoritePanels
             favorite.Sounds = (RemoteSounds)this.cmbSounds.SelectedIndex;
 
             favorite.TsgwHostname = this.txtTSGWServer.Text;
-            favorite.TsgwDomain = this.txtTSGWDomain.Text;
-            favorite.TsgwUsername = this.txtTSGWUserName.Text;
-            favorite.TsgwPassword = this.txtTSGWPassword.Text;
+            
+            FavoriteConfigurationElement tswgFavorite = new FavoriteConfigurationElement();
+            
+            // TSGW            
+            this.pnlTSGWlogon.FillFavorite(tswgFavorite);
+            favorite.TsgwXmlCredentialSetName = this.pnlTSGWlogon.SelectedCredentialSet == null || string.IsNullOrWhiteSpace(this.pnlTSGWlogon.SelectedCredentialSet.Name) ? Terminals.Forms.Controls.CredentialPanel.Custom : this.pnlTSGWlogon.SelectedCredentialSet.Name;
+            
+            if (favorite.TsgwXmlCredentialSetName == Terminals.Forms.Controls.CredentialPanel.Custom)
+            {
+            	favorite.TsgwDomain = tswgFavorite.Credential.DomainName;
+            	favorite.TsgwUsername = tswgFavorite.Credential.UserName;
+            	favorite.TsgwPassword = tswgFavorite.Credential.Password;
+            }
+            
             favorite.TsgwSeparateLogin = this.chkTSGWlogin.Checked;
             favorite.TsgwCredsSource = this.cmbTSGWLogonMethod.SelectedIndex;
 

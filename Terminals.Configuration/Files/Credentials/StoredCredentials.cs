@@ -29,7 +29,7 @@ namespace Terminals.Configuration.Files.Credentials
         {
             cache = new List<CredentialSet>();
 
-            if (Main.Settings.Settings.KeePassUse)
+            if (Main.Settings.Settings.CredentialStore != Terminals.Configuration.Files.Main.CredentialStoreType.Xml)
             	LoadStoredCredentials(configFileLocation);
             else
             {
@@ -79,7 +79,7 @@ namespace Terminals.Configuration.Files.Credentials
 
         private static void CredentialsFileChanged(object sender, EventArgs e)
         {
-        	if (Main.Settings.Settings.KeePassUse)
+        	if (Main.Settings.Settings.CredentialStore != Terminals.Configuration.Files.Main.CredentialStoreType.Xml)
         		return;
         	
             LoadStoredCredentials(configFileLocation);
@@ -96,16 +96,19 @@ namespace Terminals.Configuration.Files.Credentials
         {
         	List<CredentialSet> loaded = null;
         	
-        	if (Main.Settings.Settings.KeePassUse)
+        	if (Main.Settings.Settings.CredentialStore == Terminals.Configuration.Files.Main.CredentialStoreType.KeePass)
         	{
         		loaded = LoadKeePass();
+        	}
+        	else if (Main.Settings.Settings.CredentialStore == Terminals.Configuration.Files.Main.CredentialStoreType.DB)
+        	{
+        		
         	}
             else
 				loaded = LoadFile(configFileName);
             
             if (loaded != null)
             {
-            	
                 cache.Clear();
                 cache.AddRange(loaded);
             }
@@ -156,7 +159,7 @@ namespace Terminals.Configuration.Files.Credentials
 
         private static List<CredentialSet> LoadFile(string configFileName)
         {
-        	if (Main.Settings.Settings.KeePassUse)
+        	if (Main.Settings.Settings.CredentialStore != Terminals.Configuration.Files.Main.CredentialStoreType.Xml)
         		return new List<CredentialSet>();
         	
             try
@@ -179,7 +182,7 @@ namespace Terminals.Configuration.Files.Credentials
         
         public static void Save()
         {
-        	if (Main.Settings.Settings.KeePassUse)
+        	if (Main.Settings.Settings.CredentialStore != Terminals.Configuration.Files.Main.CredentialStoreType.Xml)
         		return;
         	
             try
@@ -229,7 +232,7 @@ namespace Terminals.Configuration.Files.Credentials
 
         public static void UpdatePasswordsByNewKeyMaterial(string newKeyMaterial)
         {
-			if (Main.Settings.Settings.KeePassUse)
+			if (Main.Settings.Settings.CredentialStore != Terminals.Configuration.Files.Main.CredentialStoreType.Xml)
         		return;
         	        	
             foreach (CredentialSet credentials in cache)

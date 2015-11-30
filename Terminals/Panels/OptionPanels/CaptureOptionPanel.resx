@@ -117,34 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="DE_ButtonBrowseCaptureFolder.Text" xml:space="preserve">
-    <value>Durchsuchen ...</value>
-  </data>
-  <data name="DE_chkAutoSwitchToCaptureCheckbox.Text" xml:space="preserve">
-    <value>Automatisch zum Bildverwaltungsmanager nach einem geschossenem Foto wechseln.</value>
-  </data>
-  <data name="DE_chkEnableCaptureToClipboard.Text" xml:space="preserve">
-    <value>Geschossenes Bild in die Zwischenablage kopieren</value>
-  </data>
-  <data name="DE_chkEnableCaptureToFolder.Text" xml:space="preserve">
-    <value>Geschossenes Bild in einem Ordner ablegen</value>
-  </data>
-  <data name="DE_label23.Text" xml:space="preserve">
-    <value>Verzeichnis zur Speicherung geschossener Bilder:</value>
-  </data>
-  <data name="EN_ButtonBrowseCaptureFolder.Text" xml:space="preserve">
-    <value>Browse ...</value>
-  </data>
-  <data name="EN_chkAutoSwitchToCaptureCheckbox.Text" xml:space="preserve">
-    <value>Auto switch to manager on capture</value>
-  </data>
-  <data name="EN_chkEnableCaptureToClipboard.Text" xml:space="preserve">
-    <value>Enable screen capture to clipboard</value>
-  </data>
-  <data name="EN_chkEnableCaptureToFolder.Text" xml:space="preserve">
-    <value>Enable screen capture to folder</value>
-  </data>
-  <data name="EN_label23.Text" xml:space="preserve">
-    <value>Screen capture root folder:</value>
-  </data>
 </root>

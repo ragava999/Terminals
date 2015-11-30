@@ -71,15 +71,15 @@ namespace Terminals.Panels.OptionPanels
         	// lblText
         	// 
         	this.lblText.ForeColor = System.Drawing.Color.Black;
-        	this.lblText.Location = new System.Drawing.Point(6, 16);
+        	this.lblText.Location = new System.Drawing.Point(16, 16);
         	this.lblText.Name = "lblText";
-        	this.lblText.Size = new System.Drawing.Size(469, 134);
+        	this.lblText.Size = new System.Drawing.Size(469, 49);
         	this.lblText.TabIndex = 0;
         	this.lblText.Text = resources.GetString("lblText.Text");
         	// 
         	// passwordTextBox
         	// 
-        	this.passwordTextBox.Location = new System.Drawing.Point(95, 223);
+        	this.passwordTextBox.Location = new System.Drawing.Point(105, 128);
         	this.passwordTextBox.Name = "passwordTextBox";
         	this.passwordTextBox.Size = new System.Drawing.Size(149, 20);
         	this.passwordTextBox.TabIndex = 25;
@@ -87,7 +87,7 @@ namespace Terminals.Panels.OptionPanels
         	// lblPassword
         	// 
         	this.lblPassword.AutoSize = true;
-        	this.lblPassword.Location = new System.Drawing.Point(6, 226);
+        	this.lblPassword.Location = new System.Drawing.Point(16, 131);
         	this.lblPassword.Name = "lblPassword";
         	this.lblPassword.Size = new System.Drawing.Size(56, 13);
         	this.lblPassword.TabIndex = 24;
@@ -95,7 +95,7 @@ namespace Terminals.Panels.OptionPanels
         	// 
         	// usernameTextbox
         	// 
-        	this.usernameTextbox.Location = new System.Drawing.Point(95, 196);
+        	this.usernameTextbox.Location = new System.Drawing.Point(105, 101);
         	this.usernameTextbox.Name = "usernameTextbox";
         	this.usernameTextbox.Size = new System.Drawing.Size(149, 20);
         	this.usernameTextbox.TabIndex = 23;
@@ -103,7 +103,7 @@ namespace Terminals.Panels.OptionPanels
         	// lblUsername
         	// 
         	this.lblUsername.AutoSize = true;
-        	this.lblUsername.Location = new System.Drawing.Point(6, 199);
+        	this.lblUsername.Location = new System.Drawing.Point(16, 104);
         	this.lblUsername.Name = "lblUsername";
         	this.lblUsername.Size = new System.Drawing.Size(58, 13);
         	this.lblUsername.TabIndex = 22;
@@ -111,7 +111,7 @@ namespace Terminals.Panels.OptionPanels
         	// 
         	// domainTextbox
         	// 
-        	this.domainTextbox.Location = new System.Drawing.Point(95, 169);
+        	this.domainTextbox.Location = new System.Drawing.Point(105, 74);
         	this.domainTextbox.Name = "domainTextbox";
         	this.domainTextbox.Size = new System.Drawing.Size(149, 20);
         	this.domainTextbox.TabIndex = 21;
@@ -119,7 +119,7 @@ namespace Terminals.Panels.OptionPanels
         	// lblDomain
         	// 
         	this.lblDomain.AutoSize = true;
-        	this.lblDomain.Location = new System.Drawing.Point(6, 172);
+        	this.lblDomain.Location = new System.Drawing.Point(16, 77);
         	this.lblDomain.Name = "lblDomain";
         	this.lblDomain.Size = new System.Drawing.Size(46, 13);
         	this.lblDomain.TabIndex = 20;

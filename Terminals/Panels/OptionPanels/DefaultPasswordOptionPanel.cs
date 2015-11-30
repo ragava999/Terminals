@@ -11,6 +11,7 @@ namespace Terminals.Panels.OptionPanels
         public DefaultPasswordOptionPanel()
         {
             this.InitializeComponent();
+            this.passwordTextBox.PasswordChar = Terminals.Forms.Controls.CredentialPanel.HIDDEN_PASSWORD_CHAR;
         }
 
         public override void LoadSettings()

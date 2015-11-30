@@ -18,7 +18,7 @@ namespace Terminals.Forms.Credentials
                         "Credential manager";
             StoredCredentials.CredentialsChanged += this.CredentialsChanged;
                         
-            if (Terminals.Configuration.Files.Main.Settings.Settings.KeePassUse)
+            if (Terminals.Configuration.Files.Main.Settings.Settings.CredentialStore == Terminals.Configuration.Files.Main.CredentialStoreType.KeePass)
             {
             	AddButton.Enabled = false;
             	DeleteButton.Enabled = false;

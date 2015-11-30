@@ -147,6 +147,7 @@ namespace Terminals.Panels.OptionPanels
         	this.groupBox5.ResumeLayout(false);
         	this.groupBox5.PerformLayout();
         	this.ResumeLayout(false);
+
         }
 
         #endregion

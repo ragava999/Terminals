@@ -117,16 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="DE_grpRAdminDefaultPort.Text" xml:space="preserve">
-    <value>Standardport für RAdmin</value>
-  </data>
-  <data name="DE_grpRAdminPath.Text" xml:space="preserve">
-    <value>Pfad zur ausführbaren RAdmin Anwendung</value>
-  </data>
-  <data name="EN_grpRAdminDefaultPort.Text" xml:space="preserve">
-    <value>RAdmin default port</value>
-  </data>
-  <data name="EN_grpRAdminPath.Text" xml:space="preserve">
-    <value>Path to the RAdmin executable</value>
-  </data>
 </root>

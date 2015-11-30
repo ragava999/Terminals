@@ -871,7 +871,7 @@ namespace Terminals.Connections
 
                     if (this.HWnd == IntPtr.Zero)
                     {
-                        Log.Error("The process' main window hasn't been found. Therefore %TITLE% Terminals was not able to create a connection.");
+                        Log.Error("The process' main window hasn't been found. Therefore Terminals was not able to create a connection.");
                         return this.connected = false;
                     }
                 }

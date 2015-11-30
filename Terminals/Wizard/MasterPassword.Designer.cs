@@ -41,9 +41,6 @@ namespace Terminals.Wizard
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(360, 62);
             this.label2.TabIndex = 4;
-            this.label2.Text = "By setting your Master Password allows " + AssemblyInfo.Title + " to store your connection informa" +
-                "tion in a much more secure manner.  Although it is not required, it is highly re" +
-                "commended that you do set it now.";
             // 
             // label1
             // 

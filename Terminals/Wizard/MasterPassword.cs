@@ -7,6 +7,7 @@ namespace Terminals.Wizard
         public MasterPassword()
         {
             this.InitializeComponent();
+            this.label2.Text = Terminals.Panels.OptionPanels.MasterPasswordOptionPanel.MasterPasswordCaption + " that you do set it now.";
         }
 
         public bool StorePassword
