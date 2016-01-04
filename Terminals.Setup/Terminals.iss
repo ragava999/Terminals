@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Terminals"
-#define MyAppVersion "4.7.4.0"
+#define MyAppVersion "4.7.5.0"
 #define MyAppPublisher "Oliver Kohl D.Sc."
 #define MyAppURL "https://github.com/OliverKohlDSc/Terminals"
 #define MyAppExeName "Terminals.exe"
