@@ -7,6 +7,11 @@ set XULRUNNER=xulrunner-29.0.en-US.win32\xulrunner
 rem Copy SciLexer.dll and SciLexer64.dll from Scintilla to the Plugin directory.
 copy "..\..\..\..\DLLs\ScintillaNET v2.5.2\SciLex*.dll" "Plugins\AutoIt\SciLex*.dll" /Y > NUL
 
+rem Delete plugin files from the root of Terminals (files are intended for AutoIt plugin not for Terminals itself)
+del /Q /F "Bug in Scintilla.pdf"
+del /Q /F "CodeEditor.*"
+del /Q /F "ScintillaNET.dll"
+
 rem Copy AutoIt to Plugin directory
 xcopy "..\..\..\..\DLLs\Tools\AutoIt" "Plugins\AutoIt" /E /C /R /I /K /Y > NUL
  
@@ -88,7 +93,7 @@ echo Packing and compressing the distributable version.
 
 "..\..\..\..\netz-src\netz\bin\Release\netz.exe" -z -w -o Out -s -so -x86 Kohl.Explorer.exe Microsoft.WindowsAPICodePack.dll ICSharpCode.SharpZipLib.dll Microsoft.WindowsAPICodePack.Shell.dll ExplorerBrowser.dll
 rem It is not a good idea to embed the AxInterop.MSTSCLib.dll
-"..\..\..\..\netz-src\netz\bin\Release\netz.exe" -z -w -o Out -s -so -x86 Terminals.exe AxInterop.Microsoft.VMRCClientControl.Interop.dll AxWFICALib.dll Be.Windows.Forms.HexBox.dll DotRas.dll ICSharpCode.SharpZipLib.dll log4net.dll Metro.dll Microsoft.VMRCClientControl.Interop.dll PacketDotNet.dll SharpPcap.dll TerminalEmulator.dll VncSharp.dll WFICALib.dll ZedGraph.dll Microsoft.WindowsAPICodePack.dll Microsoft.WindowsAPICodePack.Shell.dll ExplorerBrowser.dll
+"..\..\..\..\netz-src\netz\bin\Release\netz.exe" -z -w -o Out -s -so -x86 Terminals.exe AxInterop.Microsoft.VMRCClientControl.Interop.dll AxWFICALib.dll Be.Windows.Forms.HexBox.dll DotRas.dll ICSharpCode.SharpZipLib.dll log4net.dll Metro.dll Microsoft.VMRCClientControl.Interop.dll PacketDotNet.dll SharpPcap.dll TerminalEmulator.dll VncSharp.dll WFICALib.dll Microsoft.WindowsAPICodePack.dll Microsoft.WindowsAPICodePack.Shell.dll ExplorerBrowser.dll
 
 echo Copy the Terminals DLLs and config to the output folder
 copy /Y "Terminals.log4net.config" "Out\Terminals.log4net.config"
@@ -125,6 +130,9 @@ copy /Y "VMRCActiveXClient64.dll" "Out\VMRCActiveXClient64.dll"
 copy /Y "AxInterop.MSTSCLib.dll" "Out\AxInterop.MSTSCLib.dll"
 copy /Y "Interop.MSTSCLib.dll" "Out\Interop.MSTSCLib.dll"
 copy /Y ICSharpCode.SharpZipLib.dll Out\ICSharpCode.SharpZipLib.dll
+copy /Y ZedGraph.dll Out\ZedGraph.dll
+copy /Y Granados.dll Out\Granados.dll
+copy /Y PostSharp.dll Out\PostSharp.dll
 rem copy /Y "..\..\..\..\netz-src\netz\compress\zip.dll" Out\zip.dll
 rem copy /Y "..\..\..\..\netz-src\netz\compress\defcomp.dll" Out\defcomp.dll
 
@@ -167,6 +175,7 @@ rem Packing putty with upx results in an McAfee virus warning!
 ..\..\..\..\..\Resources\Packer\upx308w\upx.exe -9 VMRCActiveXClient.dll
 "..\..\..\..\..\Resources\mpress\mpress.exe" -s VMRCActiveXClient64.dll
 ..\..\..\..\..\Resources\Packer\upx308w\upx.exe -9 xul.dll
+..\..\..\..\..\Resources\Packer\upx308w\upx.exe -9 ZedGraph.dll
 
 cd ..\..
 

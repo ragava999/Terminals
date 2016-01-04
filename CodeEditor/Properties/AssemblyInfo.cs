@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Oliver Kohl D.Sc.")]
 [assembly: AssemblyProduct("Terminal code editor")]
-[assembly: AssemblyCopyright("Copyright © Oliver Kohl D.Sc. 2015")]
+[assembly: AssemblyCopyright("Copyright © Oliver Kohl D.Sc. 2016")]
 [assembly: AssemblyTrademark("http://www.kohl.bz")]
 [assembly: AssemblyCulture("")]
 
@@ -22,9 +22,9 @@ using System.Runtime.InteropServices;
 //      Revision
 //
 
-[assembly: AssemblyVersion("2.9.0.2")]
-[assembly: AssemblyFileVersion("2.9.0.2")]
-[assembly: AssemblyInformationalVersion("2.9.0.2 RTM")]
+[assembly: AssemblyVersion("2.9.1.0")]
+[assembly: AssemblyFileVersion("2.9.1.0")]
+[assembly: AssemblyInformationalVersion("2.9.1.0 RTM")]
 
 [assembly: NeutralResourcesLanguageAttribute("en-US")]
 [assembly: ComVisibleAttribute(false)]

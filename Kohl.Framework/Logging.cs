@@ -2,6 +2,7 @@
 using System.IO;
 using Kohl.Framework.Info;
 using System.Linq;
+using System.Diagnostics;
 
 namespace Kohl.Framework.Logging
 {
@@ -66,7 +67,16 @@ namespace Kohl.Framework.Logging
 		{
 			log.Debug(message, ex);
 		}
+		
+		public static void InsideMethod()
+		{
+			// get call stack
+			StackTrace stackTrace = new StackTrace();
 			
+			// get calling method name
+			Debug("Inside method '" + stackTrace.GetFrame(1).GetMethod().DeclaringType.FullName + "." + stackTrace.GetFrame(1).GetMethod().Name + "'.");
+		}
+		
 		public static void Info (Exception ex)
 		{
 			Info (null, ex);

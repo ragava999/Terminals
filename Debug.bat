@@ -7,6 +7,11 @@ set XULRUNNER=xulrunner-29.0.en-US.win32\xulrunner
 rem Copy SciLexer.dll and SciLexer64.dll from Scintilla to the Plugin directory.
 copy "..\..\..\..\DLLs\ScintillaNET v2.5.2\SciLex*.dll" "Plugins\AutoIt\SciLex*.dll" /Y > NUL
 
+rem Delete plugin files from the root of Terminals (files are intended for AutoIt plugin not for Terminals itself)
+del /Q /F "Bug in Scintilla.pdf"
+del /Q /F "CodeEditor.*"
+del /Q /F "ScintillaNET.dll"
+
 rem Copy AutoIt to Plugin directory
 copy "..\..\..\..\DLLs\Tools\AutoIt\AutoIt3.exe" "Plugins\AutoIt\AutoIt3.exe" /Y > NUL
 

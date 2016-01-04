@@ -9,7 +9,7 @@ using System.Reflection;
 [assembly: AssemblyConfiguration ("")]
 [assembly: AssemblyCompany ("Oliver Kohl D.Sc.")]
 [assembly: AssemblyProduct ("Terminals by Oliver Kohl D.Sc.")]
-[assembly: AssemblyCopyright ("Copyright © Oliver Kohl D.Sc. 2015")]
+[assembly: AssemblyCopyright ("Copyright © Oliver Kohl D.Sc. 2016")]
 [assembly: AssemblyTrademark ("http://www.kohl.bz")]
 [assembly: AssemblyCulture ("")]
 // Version information for an assembly consists of the following four values:
@@ -19,9 +19,9 @@ using System.Reflection;
 //      Build Number
 //      Revision
 //
-[assembly: AssemblyVersion ("4.7.4.0")]
-[assembly: AssemblyFileVersion ("4.7.4.0")]
-[assembly: AssemblyInformationalVersion ("4.7.4.0 RTM")]
+[assembly: AssemblyVersion ("4.7.5.0")]
+[assembly: AssemblyFileVersion ("4.7.5.0")]
+[assembly: AssemblyInformationalVersion ("4.7.5.0 RTM")]
 /*
 AssemblyVersion
 

@@ -23,18 +23,20 @@
 
         [DllImport("kernel32.dll")]
         private static extern IntPtr LoadLibrary(string dllToLoad);
-
+        
         static Edit()
         {
             string nativeDllName = IntPtr.Size == 4 ? "SciLexer.dll" : "SciLexer64.dll";
-            string path = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+            // would return the wrong path the the Exe's Location not to the plugin directory
+            //string path = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+            string path = Path.GetDirectoryName(System.Reflection.Assembly.GetAssembly(typeof(Edit)).Location);
             string name = System.IO.Path.Combine(path, nativeDllName);
 
-            Log.Debug("Loading native dll '" + name + "' dynamically.");
+            Log.Debug("Loading native dll '" + name + "' for AutoIt plugin dynamically.");
 
             if (LoadLibrary(name) == IntPtr.Zero)
             {
-                Log.Fatal("Error loading native dll " + nativeDllName + " at '" + path + "'.");
+                Log.Fatal("Error loading native dll " + nativeDllName + " at '" + path + "' for AutoIt plugin.");
             }
         }
 
@@ -91,6 +93,9 @@
 
         public void SetLanguage(string extension)
         {
+        	if (label1 == null)
+                return;
+        	
             try
             {
                 if (!string.IsNullOrEmpty(extension) && extension.StartsWith(".") && extension.Length > 1)
@@ -158,11 +163,17 @@
 
         private void autoCompleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
+        	if (label1 == null)
+            	return;
+        	
             label1.AutoComplete.Show();
         }
 
         private void clearBookmarksToolStripMenuItem_Click(object sender, EventArgs e)
         {
+        	if (label1 == null)
+            	return;
+        	
             try
             {
                 label1.Markers.DeleteAll(0);
@@ -175,21 +186,33 @@
 
         private void collectToolStripMenuItem_Click(object sender, EventArgs e)
         {
+        	if (label1 == null)
+            	return;
+        	
             label1.DropMarkers.Collect();
         }
 
         private void commentLineToolStripMenuItem_Click(object sender, EventArgs e)
         {
+        	if (label1 == null)
+            	return;
+        	
             label1.Commands.Execute(BindableCommand.LineComment);
         }
 
         private void commentStreamToolStripMenuItem_Click(object sender, EventArgs e)
         {
+        	if (label1 == null)
+            	return;
+        	
             label1.Commands.Execute(BindableCommand.StreamComment);
         }
 
         private void copyToolStripMenuItem_Click(object sender, EventArgs e)
         {
+        	if (label1 == null)
+            	return;
+        	
             label1.Clipboard.Copy();
         }
 
@@ -200,17 +223,25 @@
 
         private void cutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+			if (label1 == null)
+            	return;
+			
             label1.Clipboard.Cut();
         }
 
         private void dropToolStripMenuItem_Click(object sender, EventArgs e)
         {
+        	if (label1 == null)
+            	return;
+        	
             label1.DropMarkers.Drop();
         }
 
         private void endOfLineToolStripMenuItem_Click(object sender, EventArgs e)
         {
+        	if (label1 == null)
+            	return;
+        	
             // Toggle EOL visibility for all open files
             endOfLineToolStripMenuItem.Checked = !endOfLineToolStripMenuItem.Checked;
             label1.EndOfLine.IsVisible = endOfLineToolStripMenuItem.Checked;
@@ -228,6 +259,9 @@
 
         public bool ExportAsHtml()
         {
+        	if (label1 == null)
+            	return false;
+        	
             using (SaveFileDialog dialog = new SaveFileDialog())
             {
                 string fileName = (Text.EndsWith(" *") ? Text.Substring(0, Text.Length - 2) : Text);
@@ -248,16 +282,25 @@
 
         private void findToolStripMenuItem_Click(object sender, EventArgs e)
         {
+        	if (label1 == null)
+            	return;
+        	
             label1.FindReplace.ShowFind();
         }
 
         private void foldLevelToolStripMenuItem_Click(object sender, EventArgs e)
         {
+        	if (label1 == null)
+            	return;
+        	
             label1.Lines.Current.FoldExpanded = true;
         }
 
         private void goToToolStripMenuItem_Click(object sender, EventArgs e)
         {
+        	if (label1 == null)
+            	return;
+        	
             label1.GoTo.ShowGoToDialog();
         }
 
@@ -273,11 +316,17 @@
 
         private void insertSnippetToolStripMenuItem_Click(object sender, EventArgs e)
         {
+        	if (label1 == null)
+            	return;
+        	
             label1.Snippets.ShowSnippetList();
         }
 
         private void lineNumbersToolStripMenuItem_Click(object sender, EventArgs e)
         {
+        	if (label1 == null)
+            	return;
+        	
             // Toggle the line numbers margin for all documents
             lineNumbersToolStripMenuItem.Checked = !lineNumbersToolStripMenuItem.Checked;
 
@@ -321,11 +370,17 @@
 
         private void makeLowerCaseToolStripMenuItem_Click(object sender, EventArgs e)
         {
+        	if (label1 == null)
+            	return;
+        	
             label1.Commands.Execute(BindableCommand.LowerCase);
         }
 
         private void makeUpperCaseToolStripMenuItem_Click(object sender, EventArgs e)
         {
+        	if (label1 == null)
+            	return;
+        	
             label1.Commands.Execute(BindableCommand.UpperCase);
         }
 
@@ -336,11 +391,17 @@
 
         private void navigateBackwardToolStripMenuItem_Click(object sender, EventArgs e)
         {
+        	if (label1 == null)
+            	return;
+        	
             label1.DocumentNavigation.NavigateBackward();
         }
 
         private void navigateForwardToolStripMenuItem_Click(object sender, EventArgs e)
         {
+        	if (label1 == null)
+            	return;
+        	
             label1.DocumentNavigation.NavigateForward();
         }
 
@@ -351,7 +412,9 @@
 
         private void nextBookmarkToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //	 I've got to redo this whole FindNextMarker/FindPreviousMarker Scheme
+        	if (label1 == null)
+            	return;
+        	
             Line l = label1.Lines.Current.FindNextMarker(1);
             if (l != null)
                 l.Goto();
@@ -359,6 +422,9 @@
 
         public void NewDocument()
         {
+        	if (label1 == null)
+        		return;
+        	
             SetScintillaToCurrentOptions(label1);
 
             // Change label
@@ -391,6 +457,9 @@
 
         private void AddOrRemoveAsteric()
         {
+        	if (label1 == null)
+            	return;
+        	
             if (label1.Modified)
             {
                 if (!Text.EndsWith(" *"))
@@ -453,6 +522,9 @@
 
         private void OpenFile(string filePath)
         {
+        	if (label1 == null)
+        		return;
+        	
             SetScintillaToCurrentOptions(label1);
 
             using (FileStream fs = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite & FileShare.Delete))
@@ -479,6 +551,9 @@
 
         private void pasteToolStripMenuItem_Click(object sender, EventArgs e)
         {
+        	if (label1 == null)
+            	return;
+        	
             label1.Clipboard.Paste();
         }
 
@@ -489,7 +564,9 @@
 
         private void previosBookmarkToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //	 I've got to redo this whole FindNextMarker/FindPreviousMarker Scheme
+        	if (label1 == null)
+            	return;
+            
             Line l = label1.Lines.Current.FindPreviousMarker(1);
             if (l != null)
                 l.Goto();
@@ -497,11 +574,17 @@
 
         private void printPreviewToolStripMenuItem_Click(object sender, EventArgs e)
         {
+        	if (label1 == null)
+            	return;
+        	
             label1.Printing.PrintPreview();
         }
 
         private void printToolStripMenuItem_Click(object sender, EventArgs e)
         {
+        	if (label1 == null)
+            	return;
+        	
             label1.Printing.Print();
         }
 
@@ -512,11 +595,17 @@
 
         private void redoToolStripMenuItem_Click(object sender, EventArgs e)
         {
+        	if (label1 == null)
+            	return;
+        	
             label1.UndoRedo.Redo();
         }
 
         private void replaceToolStripMenuItem_Click(object sender, EventArgs e)
         {
+        	if (label1 == null)
+            	return;
+        	
             label1.FindReplace.ShowReplace();
         }
 
@@ -546,6 +635,9 @@
 
         public bool Save(string filePath)
         {
+        	if (label1 == null)
+            	return false;
+        	
             using (FileStream fs = File.Create(filePath))
             using (BinaryWriter bw = new BinaryWriter(fs))
                 bw.Write(label1.RawText, 0, label1.RawText.Length - 1); // Omit trailing NULL
@@ -567,11 +659,17 @@
 
         private void selectAllToolStripMenuItem_Click(object sender, EventArgs e)
         {
+        	if (label1 == null)
+            	return;
+        	
             label1.Selection.SelectAll();
         }
 
         private void SetLang(string language)
         {
+        	if (label1 == null)
+            	return;
+        	
             Log.Info("Trying to set style for " + language + " language.");
 
             if ("ini".Equals(language, StringComparison.OrdinalIgnoreCase))
@@ -594,6 +692,9 @@
 
         private void SetScintillaToCurrentOptions(Scintilla scintilla)
         {
+        	if (scintilla == null)
+        		return;
+        	
             // Turn on line numbers?
             if (lineNumbersToolStripMenuItem.Checked)
                 scintilla.Margins.Margin0.Width = LINE_NUMBERS_MARGIN_WIDTH;
@@ -621,11 +722,17 @@
 
         private void surroundWithToolStripMenuItem_Click(object sender, EventArgs e)
         {
+        	if (label1 == null)
+            	return;
+        	
             label1.Snippets.ShowSurroundWithList();
         }
 
         private void toggleBookmarkToolStripMenuItem_Click(object sender, EventArgs e)
         {
+        	if (label1 == null)
+            	return;
+        	
             Line currentLine = label1.Lines.Current;
             if (label1.Markers.GetMarkerMask(currentLine) == 0)
             {
@@ -646,16 +753,25 @@
 
         private void uncommentLineToolStripMenuItem_Click(object sender, EventArgs e)
         {
+        	if (label1 == null)
+            	return;
+        	
             label1.Commands.Execute(BindableCommand.LineUncomment);
         }
 
         private void undoToolStripMenuItem_Click(object sender, EventArgs e)
         {
+        	if (label1 == null)
+            	return;
+        	
             label1.UndoRedo.Undo();
         }
 
         private void unfoldAllToolStripMenuItem_Click(object sender, EventArgs e)
         {
+        	if (label1 == null)
+            	return;
+        	
             foreach (Line l in label1.Lines)
             {
                 l.FoldExpanded = false;
@@ -664,6 +780,9 @@
 
         private void foldAllToolStripMenuItem_Click(object sender, EventArgs e)
         {
+        	if (label1 == null)
+            	return;
+        	
             foreach (Line l in label1.Lines)
             {
                 l.FoldExpanded = true;
@@ -672,11 +791,17 @@
 
         private void unfoldLevelToolStripMenuItem_Click(object sender, EventArgs e)
         {
+        	if (label1 == null)
+            	return;
+        	
             label1.Lines.Current.FoldExpanded = false;
         }
 
         private void UpdateAllScintillaZoom()
         {
+        	if (label1 == null)
+            	return;
+        	
             // Update zoom level
             label1.Zoom = _zoomLevel;
         }
@@ -688,6 +813,9 @@
 
         private void whitespaceToolStripMenuItem_Click(object sender, EventArgs e)
         {
+        	if (label1 == null)
+            	return;
+        	
             // Toggle the whitespace mode for all open files
             whitespaceToolStripMenuItem.Checked = !whitespaceToolStripMenuItem.Checked;
 
@@ -699,6 +827,9 @@
 
         private void wordWrapToolStripMenuItem_Click(object sender, EventArgs e)
         {
+        	if (label1 == null)
+            	return;
+        	
             // Toggle word wrap for all open files
             wordWrapToolStripMenuItem.Checked = !wordWrapToolStripMenuItem.Checked;
 
