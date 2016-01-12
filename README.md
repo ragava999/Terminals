@@ -3,7 +3,7 @@ Terminals is a multi-tab terminal services and remote desktop client. Moreover T
 
 Download the latest release:
 * [as a ZIP file](https://github.com/OliverKohlDSc/Terminals/releases/download/4.7.5.0/Terminals_4.7.5.0.zip) or
-* in form of an [installer](https://github.com/OliverKohlDSc/Terminals/releases/download/4.7.5.0/Setup_4.7.5.0.exe).
+* in form of an [installer/setup](https://github.com/OliverKohlDSc/Terminals/releases/download/4.7.5.0/Setup_4.7.5.0.exe)
 
 The [official website](http://oliverkohldsc.github.io/Terminals) can be found [here](http://oliverkohldsc.github.io/Terminals).
 

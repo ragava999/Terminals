@@ -1634,3 +1634,5 @@ _Versions
 /Terminals/bin/x86/Release/Out/softokn3.dll
 /Terminals/bin/x86/Release/Out/xul.dll
 /Terminals/bin/x86/Release/Terminals.exe.config
+/Granados/obj/Release/*.cache
+/netz-src/netz/obj/Release/*.cache
