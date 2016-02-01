@@ -787,20 +787,42 @@ namespace Terminals.Connections
         {
             // Terminal Server Gateway Settings
             this.client.TransportSettings.GatewayUsageMethod = (uint)this.Favorite.TsgwUsageMethod;
-            this.client.TransportSettings.GatewayCredsSource = (uint)this.Favorite.TsgwCredsSource;
-            this.client.TransportSettings.GatewayHostname = this.Favorite.TsgwHostname;
-            this.client.TransportSettings2.GatewayDomain = this.Favorite.TsgwDomain;
-            this.client.TransportSettings2.GatewayProfileUsageMethod = 1;
-
-            if (this.Favorite.TsgwSeparateLogin)
+            
+            if (this.client.TransportSettings.GatewayUsageMethod != 0)
             {
-                this.client.TransportSettings2.GatewayUsername = this.Favorite.TsgwUsername;
-                this.client.TransportSettings2.GatewayPassword = this.Favorite.TsgwPassword;
-            }
-            else
-            {
-                this.client.TransportSettings2.GatewayUsername = this.Favorite.Credential.UserName;
-                this.client.TransportSettings2.GatewayPassword = this.Favorite.Credential.Password;
+            	Log.Info("Terminals connection has been configured to use a gateway for connection.");
+            	
+            	if (string.IsNullOrEmpty(this.Favorite.TsgwHostname))
+            	{
+            		Log.Warn("Gateway server hasn't been set. Please check your configuration. Either disable the usage of a terminal services gateway server or specify a gateway server to be used for this connection.");
+            	}
+            	
+		        this.client.TransportSettings.GatewayCredsSource = (uint)this.Favorite.TsgwCredsSource;
+		        this.client.TransportSettings.GatewayHostname = this.Favorite.TsgwHostname;
+		        
+		        this.client.TransportSettings2.GatewayProfileUsageMethod = 1;
+		
+		        // SMART CARD Auth
+		        if (this.Favorite.TsgwCredsSource == 1)
+		        {
+		        	Log.Info("Neither gateway nor connection credentials will be used for the terminal services gateway connection. SMART Card has been selected. Please insert your smart card.");
+		        }
+		        else
+		        	// NTLM Auth
+			        if (this.Favorite.TsgwSeparateLogin)
+			        {
+			        	Log.Info("Using the specified gateway credentials.");
+			            this.client.TransportSettings2.GatewayUsername = this.Favorite.TsgwUsername;
+			            this.client.TransportSettings2.GatewayPassword = this.Favorite.TsgwPassword;
+			            this.client.TransportSettings2.GatewayDomain = this.Favorite.TsgwDomain;
+			        }
+			        else
+			        {
+			        	Log.Info("Using the connection credentials as gateway credentials.");
+			            this.client.TransportSettings2.GatewayUsername = this.Favorite.Credential.UserName;
+			            this.client.TransportSettings2.GatewayPassword = this.Favorite.Credential.Password;
+			            this.client.TransportSettings2.GatewayDomain = this.Favorite.Credential.Domain;
+			        }
             }
         }
 

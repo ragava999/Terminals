@@ -29,6 +29,7 @@ namespace Terminals.Network.Servers
         private void InitializeComponent()
         {
         	this.components = new System.ComponentModel.Container();
+        	System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TerminalServerManager));
         	this.ConnectButton = new System.Windows.Forms.Button();
         	this.label1 = new System.Windows.Forms.Label();
         	this.splitContainer1 = new System.Windows.Forms.SplitContainer();
@@ -44,18 +45,23 @@ namespace Terminals.Network.Servers
         	this.shutdownServerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
         	this.dataGridView2 = new System.Windows.Forms.DataGridView();
         	this.propertyGrid1 = new System.Windows.Forms.PropertyGrid();
+        	this.progress = new System.Windows.Forms.PictureBox();
+        	((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
         	this.splitContainer1.Panel1.SuspendLayout();
         	this.splitContainer1.Panel2.SuspendLayout();
         	this.splitContainer1.SuspendLayout();
+        	((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
         	this.splitContainer2.Panel1.SuspendLayout();
         	this.splitContainer2.Panel2.SuspendLayout();
         	this.splitContainer2.SuspendLayout();
+        	((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).BeginInit();
         	this.splitContainer3.Panel1.SuspendLayout();
         	this.splitContainer3.Panel2.SuspendLayout();
         	this.splitContainer3.SuspendLayout();
         	((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
         	this.contextMenuStrip1.SuspendLayout();
         	((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+        	((System.ComponentModel.ISupportInitialize)(this.progress)).BeginInit();
         	this.SuspendLayout();
         	// 
         	// ConnectButton
@@ -160,11 +166,11 @@ namespace Terminals.Network.Servers
         	// contextMenuStrip1
         	// 
         	this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-        	        	        	this.sendMessageToolStripMenuItem,
-        	        	        	this.logoffSessionToolStripMenuItem,
-        	        	        	this.toolStripSeparator1,
-        	        	        	this.rebootServerToolStripMenuItem,
-        	        	        	this.shutdownServerToolStripMenuItem});
+			this.sendMessageToolStripMenuItem,
+			this.logoffSessionToolStripMenuItem,
+			this.toolStripSeparator1,
+			this.rebootServerToolStripMenuItem,
+			this.shutdownServerToolStripMenuItem});
         	this.contextMenuStrip1.Name = "contextMenuStrip1";
         	this.contextMenuStrip1.Size = new System.Drawing.Size(164, 98);
         	// 
@@ -222,10 +228,21 @@ namespace Terminals.Network.Servers
         	this.propertyGrid1.Size = new System.Drawing.Size(176, 376);
         	this.propertyGrid1.TabIndex = 4;
         	// 
+        	// progress
+        	// 
+        	this.progress.BackColor = System.Drawing.Color.Transparent;
+        	this.progress.Image = ((System.Drawing.Image)(resources.GetObject("progress.Image")));
+        	this.progress.Location = new System.Drawing.Point(108, 65);
+        	this.progress.Name = "progress";
+        	this.progress.Size = new System.Drawing.Size(297, 297);
+        	this.progress.TabIndex = 4;
+        	this.progress.TabStop = false;
+        	// 
         	// TerminalServerManager
         	// 
         	this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
         	this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+        	this.Controls.Add(this.progress);
         	this.Controls.Add(this.splitContainer1);
         	this.Name = "TerminalServerManager";
         	this.Size = new System.Drawing.Size(702, 426);
@@ -233,17 +250,22 @@ namespace Terminals.Network.Servers
         	this.splitContainer1.Panel1.ResumeLayout(false);
         	this.splitContainer1.Panel1.PerformLayout();
         	this.splitContainer1.Panel2.ResumeLayout(false);
+        	((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
         	this.splitContainer1.ResumeLayout(false);
         	this.splitContainer2.Panel1.ResumeLayout(false);
         	this.splitContainer2.Panel2.ResumeLayout(false);
+        	((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
         	this.splitContainer2.ResumeLayout(false);
         	this.splitContainer3.Panel1.ResumeLayout(false);
         	this.splitContainer3.Panel2.ResumeLayout(false);
+        	((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
         	this.splitContainer3.ResumeLayout(false);
         	((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
         	this.contextMenuStrip1.ResumeLayout(false);
         	((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+        	((System.ComponentModel.ISupportInitialize)(this.progress)).EndInit();
         	this.ResumeLayout(false);
+
         }
 
         #endregion
@@ -263,5 +285,6 @@ namespace Terminals.Network.Servers
         private System.Windows.Forms.ComboBox ServerNameComboBox;
         private System.Windows.Forms.SplitContainer splitContainer3;
         private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.PictureBox progress;
     }
 }

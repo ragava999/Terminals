@@ -30,6 +30,19 @@ namespace Terminals.Panels
             }
         }
 
+        public Credential Credentials
+        {
+        	get
+        	{
+        		Credential credential = this.CredentialPanel.SelectedCredential;
+        		
+        		if (credential != null & !credential.IsSetUserName && !credential.IsSetPassword)
+        			credential = null;
+        		
+        		return credential;
+        	}
+        }
+        
         public bool SaveInDB { get; set; }
 
         private List<String> oldTags = new List<string>();

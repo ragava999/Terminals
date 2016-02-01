@@ -11,6 +11,15 @@ The [official website](http://oliverkohldsc.github.io/Terminals) can be found [h
 
 
 
+###Release v 4.8.0.0
+
+Date: 2016-02-01
+
+Fixed a TSGW bug.
+
+Improved the handling of RDP session enumeration and added the possibility to impersonate
+
+
 ###Release v 4.7.5.0
 
 Date: 2016-01-04

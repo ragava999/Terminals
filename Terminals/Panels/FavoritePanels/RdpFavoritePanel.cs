@@ -87,34 +87,17 @@ namespace Terminals.Panels.FavoritePanels
             this.chkConnectToConsole.Enabled = true;
             this.LocalResourceGroupBox.Enabled = true;
         }
-
+        
         private void RDPSubTabPage_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string name = ((FavoriteEditor)this.ParentForm).Server;
-
-            if (string.IsNullOrEmpty(name))
-                return;
-
-            if (this.RDPSubTabPage.SelectedTab == this.tabPage10)
-            {
-                if (terminalServerManager == null)
-                {
-                    this.terminalServerManager = new TerminalServerManager()
-                    {
-                        SaveInDB = ((FavoriteEditor)this.ParentForm).SaveInDB,
-                        Dock = DockStyle.Fill,
-                        Location = new Point(0, 0),
-                        Name = "terminalServerManager1",
-                        Size = new Size(748, 309),
-                        TabIndex = 0
-                    };
-
-                    this.tabPage10.Controls.Add(this.terminalServerManager);
-                }
-
-                this.terminalServerManager.Connect(name, true);
-                this.terminalServerManager.Invalidate();
-            }
+			if (this.RDPSubTabPage.SelectedTab == this.tabPage10)
+			{
+				if (terminalServerManager != null)
+				{
+		            this.terminalServerManager.Connect(((FavoriteEditor)this.ParentForm).Server, true, ((FavoriteEditor)this.ParentForm).Credentials);
+					this.terminalServerManager.Invalidate();
+				}
+			}
         }
 
         public override void FillControls(FavoriteConfigurationElement favorite)
@@ -154,12 +137,44 @@ namespace Terminals.Panels.FavoritePanels
 
             this.txtTSGWServer.Text = favorite.TsgwHostname;
 
-			// TSGW            
-			if (favorite.TsgwXmlCredentialSetName == Terminals.Forms.Controls.CredentialPanel.Custom)
-            {
-            	this.pnlTSGWlogon.FillControls(new FavoriteConfigurationElement() { DomainName = favorite.TsgwDomain, UserName = favorite.TsgwUsername, Password = favorite.TsgwPassword  });
+			// A seperate login hasn't been specified - so clear the TSGW credentials
+			if (!favorite.TsgwSeparateLogin)
+				favorite.TsgwDomain = favorite.TsgwUsername = favorite.TsgwPassword = favorite.TsgwXmlCredentialSetName = string.Empty;
+			
+			// Use the tswg credentials
+			else
+			{
+				if (favorite.TsgwXmlCredentialSetName == Terminals.Forms.Controls.CredentialPanel.Custom)
+	            {
+	            	this.pnlTSGWlogon.FillControls(new FavoriteConfigurationElement() { DomainName = favorite.TsgwDomain, UserName = favorite.TsgwUsername, Password = favorite.TsgwPassword  });
+				}
+	            this.pnlTSGWlogon.FillCredentials(favorite.TsgwXmlCredentialSetName);
+	            
+	            // if the credential store isn't either set/filled or set to the storename "custom" than check if
+	            // the values contain garbage -> if so clear the store and set seperate login to false.
+	            if (string.IsNullOrEmpty(favorite.TsgwXmlCredentialSetName) || favorite.TsgwXmlCredentialSetName == Terminals.Forms.Controls.CredentialPanel.Custom)
+		            // if there are no credentials in the store and no custom ones -> clear the the TSGW credentials and disable the checkbox
+		            if (string.IsNullOrEmpty(favorite.TsgwDomain) && string.IsNullOrEmpty(favorite.TsgwUsername) && string.IsNullOrEmpty(favorite.TsgwPassword))
+		            {
+		            	favorite.TsgwXmlCredentialSetName = string.Empty;
+		            	favorite.TsgwSeparateLogin = false;
+		            }
 			}
-            this.pnlTSGWlogon.FillCredentials(favorite.TsgwXmlCredentialSetName);
+
+            if (terminalServerManager == null)
+            {
+                this.terminalServerManager = new TerminalServerManager()
+                {
+                    SaveInDB = ((FavoriteEditor)this.ParentForm).SaveInDB,
+                    Dock = DockStyle.Fill,
+                    Location = new Point(0, 0),
+                    Name = "terminalServerManager1",
+                    Size = new Size(748, 309),
+                    TabIndex = 0
+                };
+
+                this.tabPage10.Controls.Add(this.terminalServerManager);
+            }
 
             this.chkTSGWlogin.Checked = favorite.TsgwSeparateLogin;
             this.cmbTSGWLogonMethod.SelectedIndex = favorite.TsgwCredsSource;
@@ -239,15 +254,27 @@ namespace Terminals.Panels.FavoritePanels
             // TSGW            
             this.pnlTSGWlogon.FillFavorite(tswgFavorite);
             favorite.TsgwXmlCredentialSetName = this.pnlTSGWlogon.SelectedCredentialSet == null || string.IsNullOrWhiteSpace(this.pnlTSGWlogon.SelectedCredentialSet.Name) ? Terminals.Forms.Controls.CredentialPanel.Custom : this.pnlTSGWlogon.SelectedCredentialSet.Name;
+
+			favorite.TsgwSeparateLogin = this.chkTSGWlogin.Checked;
             
-            if (favorite.TsgwXmlCredentialSetName == Terminals.Forms.Controls.CredentialPanel.Custom)
-            {
-            	favorite.TsgwDomain = tswgFavorite.Credential.DomainName;
-            	favorite.TsgwUsername = tswgFavorite.Credential.UserName;
-            	favorite.TsgwPassword = tswgFavorite.Credential.Password;
-            }
+			if (!favorite.TsgwSeparateLogin)
+			{
+				favorite.TsgwDomain = favorite.TsgwUsername = favorite.TsgwPassword = string.Empty;
+			}
+			else			
+	            if (favorite.TsgwXmlCredentialSetName == Terminals.Forms.Controls.CredentialPanel.Custom)
+	            {
+	            	favorite.TsgwDomain = tswgFavorite.Credential.DomainName;
+	            	favorite.TsgwUsername = tswgFavorite.Credential.UserName;
+	            	favorite.TsgwPassword = tswgFavorite.Credential.Password;
+	            	
+	            	if (string.IsNullOrEmpty(favorite.TsgwDomain) && string.IsNullOrEmpty(favorite.TsgwUsername) && string.IsNullOrEmpty(favorite.TsgwPassword))
+	            	{
+	            		favorite.TsgwSeparateLogin = false;
+	            		favorite.TsgwXmlCredentialSetName = string.Empty;
+	            	}
+	            }
             
-            favorite.TsgwSeparateLogin = this.chkTSGWlogin.Checked;
             favorite.TsgwCredsSource = this.cmbTSGWLogonMethod.SelectedIndex;
 
             //extended settings

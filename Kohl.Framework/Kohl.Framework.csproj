@@ -106,6 +106,7 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Security\Credential.cs" />
+    <Compile Include="Security\Impersonator.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

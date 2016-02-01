@@ -63,6 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Files\Credentials\Credential.cs" />
+    <Compile Include="Files\Credentials\ExtensionMethod.cs" />
     <Compile Include="Files\Main\CredentialStoreType.cs" />
     <Compile Include="Files\Main\Favorites\AuthMethod.cs" />
     <Compile Include="Files\Main\Favorites\BrowserAuthentication.cs" />

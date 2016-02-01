@@ -11,7 +11,7 @@ using Kohl.Framework.Logging;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Oliver Kohl D.Sc.")]
 [assembly: AssemblyProduct("Terminals.Configuration")]
-[assembly: AssemblyCopyright("Copyright © Oliver Kohl D.Sc. 2015")]
+[assembly: AssemblyCopyright("Copyright © Oliver Kohl D.Sc. 2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -33,9 +33,9 @@ using Kohl.Framework.Logging;
 //      Revision
 //
 
-[assembly: AssemblyVersion("2.2.2.1")]
-[assembly: AssemblyFileVersion("2.2.2.1")]
-[assembly: AssemblyInformationalVersion("2.2.2.1 RTM")]
+[assembly: AssemblyVersion("2.3.0.0")]
+[assembly: AssemblyFileVersion("2.3.0.0")]
+[assembly: AssemblyInformationalVersion("2.3 RTM")]
 
 /*
 AssemblyVersion

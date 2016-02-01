@@ -994,42 +994,42 @@ namespace Terminals.Configuration.Files.Main.Favorites
         ///     TSC_PROXY_MODE_NONE_DETECT 4 (0x4)
         ///     Do not use an RD Gateway server. In the RDC client UI, the Bypass RD Gateway server for local addresses check box is selected.
         /// </summary>
-        [ConfigurationProperty("tsgwUsageMethod", DefaultValue = 0)]
+        [ConfigurationProperty("tsgwUsageMethod", IsRequired = false, DefaultValue = 0)]
         public Int32 TsgwUsageMethod
         {
             get { return (Int32)this["tsgwUsageMethod"]; }
             set { this["tsgwUsageMethod"] = value; }
         }
 
-        [ConfigurationProperty("tsgwHostname", DefaultValue = "")]
+        [ConfigurationProperty("tsgwHostname", IsRequired = false, DefaultValue = "")]
         public String TsgwHostname
         {
             get { return (String)this["tsgwHostname"]; }
             set { this["tsgwHostname"] = value; }
         }
 
-        [ConfigurationProperty("tsgwCredsSource", DefaultValue = 0)]
+        [ConfigurationProperty("tsgwCredsSource", IsRequired = false, DefaultValue = 0)]
         public Int32 TsgwCredsSource
         {
             get { return (Int32)this["tsgwCredsSource"]; }
             set { this["tsgwCredsSource"] = value; }
         }
 
-        [ConfigurationProperty("tsgwSeparateLogin", DefaultValue = false)]
+        [ConfigurationProperty("tsgwSeparateLogin", IsRequired = false, DefaultValue = false)]
         public Boolean TsgwSeparateLogin
         {
             get { return (Boolean)this["tsgwSeparateLogin"]; }
             set { this["tsgwSeparateLogin"] = value; }
         }
 
-        [ConfigurationProperty("tsgwUsername", DefaultValue = "")]
+        [ConfigurationProperty("tsgwUsername", IsRequired = false, DefaultValue = "")]
         public String TsgwUsername
         {
             get { return (String)this["tsgwUsername"]; }
             set { this["tsgwUsername"] = value; }
         }
 
-        [ConfigurationProperty("tsgwDomain", DefaultValue = "")]
+        [ConfigurationProperty("tsgwDomain", IsRequired = false, DefaultValue = "")]
         public String TsgwDomain
         {
             get { return (String)this["tsgwDomain"]; }

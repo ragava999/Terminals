@@ -1636,3 +1636,8 @@ _Versions
 /Terminals/bin/x86/Release/Terminals.exe.config
 /Granados/obj/Release/*.cache
 /netz-src/netz/obj/Release/*.cache
+/Terminals/bin/x86/Debug/Logs
+/packages/log4net.2.0.5/lib/net35-full/log4net.xml
+/packages/log4net.2.0.5/lib/net40-full/log4net.xml
+/packages/log4net.2.0.5/lib/net45-full/log4net.xml
+/DLLs/ScintillaNET v2.5.2/ScintillaNET.pdb

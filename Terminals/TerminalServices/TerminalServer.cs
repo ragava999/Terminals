@@ -20,9 +20,22 @@ namespace Terminals.TerminalServices
 
         public IntPtr ServerPointer { get; set; }
 
-        public static TerminalServer LoadServer(string serverName)
+        public static TerminalServer LoadServer(string serverName, Kohl.Framework.Security.Credential credentials)
         {
-            return TerminalServicesAPI.GetSessions(serverName);
+        	TerminalServer server = null;
+        	
+        	System.Threading.Thread t = new System.Threading.Thread(() => server =TerminalServicesAPI.GetSessions(serverName, credentials));
+        	
+        	t.Start();
+        	
+        	while (t.ThreadState == System.Threading.ThreadState.Running)
+        	{
+        		System.Windows.Forms.Application.DoEvents();
+        		System.Threading.Thread.Sleep(100);
+        	}
+        	
+        	return server;
+        	//return TerminalServicesAPI.GetSessions(serverName, credentials);
         }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Text;
 using Kohl.Framework.Logging;
+using System.Threading.Tasks;
 
 namespace Terminals.TerminalServices
 {
@@ -185,15 +186,15 @@ namespace Terminals.TerminalServices
             return false;
         }
 
-        public static TerminalServer GetSessions(string ServerName)
+        public static TerminalServer GetSessions(string ServerName, Kohl.Framework.Security.Credential credential)
         {
             TerminalServer Data = new TerminalServer {ServerName = ServerName};
 
             IntPtr ptrOpenedServer = IntPtr.Zero;
             try
             {
-                ptrOpenedServer = WTSOpenServer(ServerName);
-
+            	ptrOpenedServer = WTSOpenServer(ServerName);
+            	
                 if (ptrOpenedServer == IntPtr.Zero)
                 {
                     Data.IsATerminalServer = false;
@@ -206,6 +207,11 @@ namespace Terminals.TerminalServices
                 IntPtr ppSessionInfo = IntPtr.Zero;
                 Int32 Count = 0;
 
+                Kohl.Framework.Security.Impersonator impersonator = null;
+                
+                if (credential != null)
+                	impersonator = new Kohl.Framework.Security.Impersonator(credential);
+                
                 try
                 {
                     Int32 FRetVal = WTSEnumerateSessions(ptrOpenedServer, 0, 1, ref ppSessionInfo, ref Count);
@@ -247,6 +253,9 @@ namespace Terminals.TerminalServices
                     Log.Error("Get Sessions Inner", ex);
                     Data.Errors.Add(ex.Message + "\r\n" + Marshal.GetLastWin32Error());
                 }
+                
+                if (impersonator != null)
+                	impersonator.Dispose();
             }
             catch (Exception ex)
             {

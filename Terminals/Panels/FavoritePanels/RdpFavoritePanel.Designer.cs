@@ -894,7 +894,7 @@
         	this.pnlTSGWsettings.Enabled = false;
         	this.pnlTSGWsettings.Location = new System.Drawing.Point(6, 51);
         	this.pnlTSGWsettings.Name = "pnlTSGWsettings";
-        	this.pnlTSGWsettings.Size = new System.Drawing.Size(388, 78);
+        	this.pnlTSGWsettings.Size = new System.Drawing.Size(462, 78);
         	this.pnlTSGWsettings.TabIndex = 8;
         	// 
         	// chkTSGWlocalBypass
@@ -929,19 +929,18 @@
         	// 
         	this.txtTSGWServer.Location = new System.Drawing.Point(113, 3);
         	this.txtTSGWServer.Name = "txtTSGWServer";
-        	this.txtTSGWServer.Size = new System.Drawing.Size(224, 20);
+        	this.txtTSGWServer.Size = new System.Drawing.Size(346, 20);
         	this.txtTSGWServer.TabIndex = 3;
         	// 
         	// cmbTSGWLogonMethod
         	// 
-        	this.cmbTSGWLogonMethod.Enabled = false;
         	this.cmbTSGWLogonMethod.FormattingEnabled = true;
         	this.cmbTSGWLogonMethod.Items.AddRange(new object[] {
-			"Ask for Password (NTLM)",
+			"NTLM - Ask for password if no credentials specified or wrong ones",
 			"Smart Card"});
         	this.cmbTSGWLogonMethod.Location = new System.Drawing.Point(113, 31);
         	this.cmbTSGWLogonMethod.Name = "cmbTSGWLogonMethod";
-        	this.cmbTSGWLogonMethod.Size = new System.Drawing.Size(224, 21);
+        	this.cmbTSGWLogonMethod.Size = new System.Drawing.Size(346, 21);
         	this.cmbTSGWLogonMethod.TabIndex = 4;
         	// 
         	// RdpFavoritePanel

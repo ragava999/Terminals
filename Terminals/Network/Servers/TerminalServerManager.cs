@@ -17,11 +17,11 @@ namespace Terminals.Network.Servers
     {
         private Session SelectedSession;
         private TerminalServer server;
-
+        
         public TerminalServerManager()
         {
             this.InitializeComponent();
-            
+            progress.Visible = false;
         }
 
         public void ForceTSAdmin(string Host)
@@ -37,22 +37,7 @@ namespace Terminals.Network.Servers
 
         private void button1_Click(object sender, EventArgs e)
         {
-            this.SelectedSession = null;
-            this.dataGridView1.DataSource = null;
-            this.dataGridView2.DataSource = null;
-            this.propertyGrid1.SelectedObject = null;
-            Application.DoEvents();
-            this.server = TerminalServer.LoadServer(this.ServerNameComboBox.Text);
-
-            if (this.server.IsATerminalServer)
-            {
-                this.dataGridView1.DataSource = this.server.Sessions;
-                this.dataGridView1.Columns[1].Visible = false;
-            }
-            else
-            {
-				MessageBox.Show("This machine does not appear to be a terminal server.");
-            }
+            Connect(credentials);
         }
 
         private void dataGridView1_RowEnter(object sender, DataGridViewCellEventArgs e)
@@ -73,13 +58,48 @@ namespace Terminals.Network.Servers
             }
         }
 
-        public void Connect(string server, bool headless)
+        public void Connect(Kohl.Framework.Security.Credential credentials)
+        {
+        	progress.Visible = true;
+        	splitContainer1.Visible = false;
+        	
+        	this.SelectedSession = null;
+            this.dataGridView1.DataSource = null;
+            this.dataGridView2.DataSource = null;
+            this.propertyGrid1.SelectedObject = null;
+            
+            this.server = TerminalServer.LoadServer(this.ServerNameComboBox.Text, credentials);
+
+            progress.Visible = false;
+            splitContainer1.Visible = true;
+            
+            if (this.server.IsATerminalServer)
+            {            	
+                this.dataGridView1.DataSource = this.server.Sessions;
+                
+                if (this.dataGridView1.Columns.Count > 0)
+                	this.dataGridView1.Columns[1].Visible = false;
+                
+                if (this.server.Sessions == null)
+                	MessageBox.Show("Terminals was unable to enumerate your server's sessions." + (this.server.Errors != null & this.server.Errors.Count > 0 ? "\n" +this.server.Errors[0] : "" ));
+            }
+            else
+            {
+				MessageBox.Show("This machine does not appear to be a terminal server.");
+            }
+        }
+        
+        Kohl.Framework.Security.Credential credentials = null;
+        
+        public void Connect(string server, bool headless, Kohl.Framework.Security.Credential credentials)
         {
             // This prevents SharpDevelop and Visual Studio from both an exception in design mode for controls using this HistoryTreeView and from crashing when opening the
             // designer for this class.
             if (LicenseManager.UsageMode == LicenseUsageMode.Designtime)
                 return;
 
+            this.credentials = credentials;
+            
             try
             {
                 this.splitContainer1.Panel1Collapsed = headless;
@@ -87,7 +107,7 @@ namespace Terminals.Network.Servers
                 if (server != "")
                 {
                     this.ServerNameComboBox.Text = server;
-                    this.button1_Click(null, null);
+                    Connect(credentials);
                 }
             }
             catch (Exception exc)
@@ -137,6 +157,8 @@ namespace Terminals.Network.Servers
                                                     input.Trim(), 0, 10, false);
                 }
             }
+            else
+            	MessageBox.Show("Please select a session");
         }
 
         private void logoffSessionToolStripMenuItem_Click(object sender, EventArgs e)
@@ -151,6 +173,8 @@ namespace Terminals.Network.Servers
                     TerminalServicesAPI.LogOffSession(this.SelectedSession, false);
                 }
             }
+            else
+            	MessageBox.Show("Please select a session");
         }
 
         private void rebootServerToolStripMenuItem_Click(object sender, EventArgs e)
