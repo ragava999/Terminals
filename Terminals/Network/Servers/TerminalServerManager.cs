@@ -1,12 +1,9 @@
 using System;
 using System.ComponentModel;
 using System.Windows.Forms;
-
 using Kohl.Framework.Logging;
-using Kohl.Framework.WinForms;
 using Terminals.Configuration.Files.Main.Favorites;
 using Terminals.Configuration.Files.Main.Settings;
-using Terminals.Connection;
 using Terminals.Connection.Manager;
 using Terminals.Connections;
 using Terminals.TerminalServices;
@@ -47,7 +44,7 @@ namespace Terminals.Network.Servers
             if (LicenseManager.UsageMode == LicenseUsageMode.Designtime)
                 return;
 
-            if (this.server.IsATerminalServer)
+            if (this.server.IsTerminalServer)
             {
                 if (this.dataGridView1.DataSource != null)
                 {
@@ -73,7 +70,7 @@ namespace Terminals.Network.Servers
             progress.Visible = false;
             splitContainer1.Visible = true;
             
-            if (this.server.IsATerminalServer)
+            if (this.server.IsTerminalServer)
             {            	
                 this.dataGridView1.DataSource = this.server.Sessions;
                 
@@ -151,7 +148,7 @@ namespace Terminals.Network.Servers
 
             	if (InputBox.Show(ref input) == DialogResult.OK && !string.IsNullOrWhiteSpace(input))
                 {
-                    TerminalServicesAPI.SendMessage(this.SelectedSession,
+                    TerminalServicesApi.SendMessage(this.SelectedSession,
                                                     
 						"Message from your administrator (sent via " + Kohl.Framework.Info.AssemblyInfo.Title + ")",
                                                     input.Trim(), 0, 10, false);
@@ -170,7 +167,7 @@ namespace Terminals.Network.Servers
 						"Confirmation required ...",
                                     MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation) == DialogResult.OK)
                 {
-                    TerminalServicesAPI.LogOffSession(this.SelectedSession, false);
+                    TerminalServicesApi.LogOffSession(this.SelectedSession, false);
                 }
             }
             else
@@ -179,28 +176,28 @@ namespace Terminals.Network.Servers
 
         private void rebootServerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (this.server.IsATerminalServer)
+            if (this.server.IsTerminalServer)
             {
                 if (
 					MessageBox.Show("Are you sure you want to reboot this server?",
 						"Confirmation required ...",
                                     MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation) == DialogResult.OK)
                 {
-                    TerminalServicesAPI.ShutdownSystem(this.server, true);
+                    TerminalServicesApi.ShutdownSystem(this.server, true);
                 }
             }
         }
 
         private void shutdownServerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (this.server.IsATerminalServer)
+            if (this.server.IsTerminalServer)
             {
                 if (
 					MessageBox.Show("Are you sure you want to shutdown this server?",
 						"Confirmation required ...",
                                     MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation) == DialogResult.OK)
                 {
-                    TerminalServicesAPI.ShutdownSystem(this.server, false);
+                    TerminalServicesApi.ShutdownSystem(this.server, false);
                 }
             }
         }
@@ -212,5 +209,9 @@ namespace Terminals.Network.Servers
                 this.button1_Click(null, null);
             }
         }
+		void PropertyGrid1Click(object sender, EventArgs e)
+		{
+	
+		}
     }
 }

@@ -1,45 +1,40 @@
-using System;
-using System.Net;
-using Kohl.Framework.Logging;
-
 namespace Terminals.TerminalServices
 {
+	using System;
+	using System.Configuration;
+	using System.Reflection;
+
+	[System.ComponentModel.Category("Client")]
     public class Client
     {
-        public bool Status { private get; set; }
+    	[System.ComponentModel.Category("Client")]
+        public string Status { get; set; }
 
-        public string UserName { private get; set; }
+        [System.ComponentModel.Category("Client")]
+        public string UserName { get; set; }
 
-        public string StationName { private get; set; }
+        [System.ComponentModel.Category("Client")]
+        public string StationName { get; set; }
 
-        public string DomianName { private get; set; }
+        [System.ComponentModel.Category("Client")]
+        public string DomianName { get; set; }
 
-        public string ClientName { private get; set; }
+        [System.ComponentModel.Category("Client")]
+        public string ClientName { get; set; }
 
-        public int AddressFamily { private get; set; }
+        [System.ComponentModel.Category("Client")]
+        public string AddressFamily { get; set; }
 
-        public byte[] Address { private get; set; }
-
-        private IPAddress IPAddress
-        {
-            get
-            {
-                try
-                {
-                    return new IPAddress(this.Address);
-                }
-                catch (Exception exc)
-                {
-                    Log.Error("IP Address", exc);
-                }
-                return new IPAddress(0);
-            }
-        }
-
+        [System.ComponentModel.Category("Client")]
+        public string Address { get; set; }
+		
+        [System.ComponentModel.Category("Client")]
+        public uint SessionId { get; set; }
+        
         public override string ToString()
         {
             return string.Format("Domain:{0}, Client:{1}, Station:{2}, Address:{3}, Username:{4}, Status:{5}",
-                                 this.DomianName, this.ClientName, this.StationName, this.IPAddress, this.UserName,
+                                 this.DomianName, this.ClientName, this.StationName, this.Address, this.UserName,
                                  this.Status);
         }
     }

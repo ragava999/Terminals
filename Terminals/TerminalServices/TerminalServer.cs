@@ -14,7 +14,7 @@ namespace Terminals.TerminalServices
 
         public List<Session> Sessions { get; set; }
 
-        public bool IsATerminalServer { get; set; }
+        public bool IsTerminalServer { get; set; }
 
         public string ServerName { get; set; }
 
@@ -24,7 +24,7 @@ namespace Terminals.TerminalServices
         {
         	TerminalServer server = null;
         	
-        	System.Threading.Thread t = new System.Threading.Thread(() => server =TerminalServicesAPI.GetSessions(serverName, credentials));
+        	System.Threading.Thread t = new System.Threading.Thread(() => server =TerminalServicesApi.GetSessions(serverName, credentials));
         	
         	t.Start();
         	
@@ -35,7 +35,6 @@ namespace Terminals.TerminalServices
         	}
         	
         	return server;
-        	//return TerminalServicesAPI.GetSessions(serverName, credentials);
         }
     }
 }

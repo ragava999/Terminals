@@ -9,17 +9,15 @@ namespace Terminals.TerminalServices
             this.Processes = new List<SessionProcess>();
         }
 
-        public bool IsTheActiveSession { private get; set; }
-
         public string ServerName { get; set; }
 
-        public Client Client { get; set; }
+        public Client Client { internal get; set; }
 
         public int SessionId { get; set; }
 
-        public string WindowsStationName { private get; set; }
+        public string WindowsStationName { get; set; }
 
-        public ConnectionStates State { private get; set; }
+        public ConnectionStates State { internal get; set; }
 
         public List<SessionProcess> Processes { get; set; }
     }

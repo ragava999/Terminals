@@ -261,9 +261,6 @@ namespace WalburySoftware
 
         public StringCollection ScreenScrape(Int32 StartRow, Int32 StartColumn, Int32 EndRow, Int32 EndColumn)
         {
-            ////this.CharGrid[7][13] TODO what happened to this ?
-            ////this.CharGrid[ROW][COL]
-
             StringCollection ScrapedText = new StringCollection();
 
             String row = String.Empty;

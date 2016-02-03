@@ -43,8 +43,8 @@ namespace Terminals.Network.Servers
         	this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
         	this.rebootServerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
         	this.shutdownServerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-        	this.dataGridView2 = new System.Windows.Forms.DataGridView();
         	this.propertyGrid1 = new System.Windows.Forms.PropertyGrid();
+        	this.dataGridView2 = new System.Windows.Forms.DataGridView();
         	this.progress = new System.Windows.Forms.PictureBox();
         	((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
         	this.splitContainer1.Panel1.SuspendLayout();
@@ -66,7 +66,7 @@ namespace Terminals.Network.Servers
         	// 
         	// ConnectButton
         	// 
-        	this.ConnectButton.Location = new System.Drawing.Point(360, 8);
+        	this.ConnectButton.Location = new System.Drawing.Point(458, 8);
         	this.ConnectButton.Name = "ConnectButton";
         	this.ConnectButton.Size = new System.Drawing.Size(94, 23);
         	this.ConnectButton.TabIndex = 1;
@@ -108,7 +108,7 @@ namespace Terminals.Network.Servers
         	this.ServerNameComboBox.FormattingEnabled = true;
         	this.ServerNameComboBox.Location = new System.Drawing.Point(119, 10);
         	this.ServerNameComboBox.Name = "ServerNameComboBox";
-        	this.ServerNameComboBox.Size = new System.Drawing.Size(225, 21);
+        	this.ServerNameComboBox.Size = new System.Drawing.Size(333, 21);
         	this.ServerNameComboBox.TabIndex = 0;
         	this.ServerNameComboBox.Text = "localhost";
         	this.ServerNameComboBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.ServerNameComboBox_KeyUp);
@@ -118,6 +118,7 @@ namespace Terminals.Network.Servers
         	this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
         	this.splitContainer2.Location = new System.Drawing.Point(0, 0);
         	this.splitContainer2.Name = "splitContainer2";
+        	this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
         	// 
         	// splitContainer2.Panel1
         	// 
@@ -125,9 +126,9 @@ namespace Terminals.Network.Servers
         	// 
         	// splitContainer2.Panel2
         	// 
-        	this.splitContainer2.Panel2.Controls.Add(this.propertyGrid1);
+        	this.splitContainer2.Panel2.Controls.Add(this.dataGridView2);
         	this.splitContainer2.Size = new System.Drawing.Size(702, 376);
-        	this.splitContainer2.SplitterDistance = 522;
+        	this.splitContainer2.SplitterDistance = 219;
         	this.splitContainer2.TabIndex = 0;
         	// 
         	// splitContainer3
@@ -135,7 +136,6 @@ namespace Terminals.Network.Servers
         	this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
         	this.splitContainer3.Location = new System.Drawing.Point(0, 0);
         	this.splitContainer3.Name = "splitContainer3";
-        	this.splitContainer3.Orientation = System.Windows.Forms.Orientation.Horizontal;
         	// 
         	// splitContainer3.Panel1
         	// 
@@ -143,24 +143,32 @@ namespace Terminals.Network.Servers
         	// 
         	// splitContainer3.Panel2
         	// 
-        	this.splitContainer3.Panel2.Controls.Add(this.dataGridView2);
-        	this.splitContainer3.Size = new System.Drawing.Size(522, 376);
-        	this.splitContainer3.SplitterDistance = 188;
-        	this.splitContainer3.TabIndex = 2;
+        	this.splitContainer3.Panel2.Controls.Add(this.propertyGrid1);
+        	this.splitContainer3.Size = new System.Drawing.Size(702, 219);
+        	this.splitContainer3.SplitterDistance = 380;
+        	this.splitContainer3.TabIndex = 0;
         	// 
         	// dataGridView1
         	// 
         	this.dataGridView1.AllowUserToAddRows = false;
         	this.dataGridView1.AllowUserToDeleteRows = false;
+        	this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+        	this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
         	this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
         	this.dataGridView1.ContextMenuStrip = this.contextMenuStrip1;
         	this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
         	this.dataGridView1.Location = new System.Drawing.Point(0, 0);
         	this.dataGridView1.Name = "dataGridView1";
         	this.dataGridView1.ReadOnly = true;
+        	this.dataGridView1.RowHeadersVisible = false;
         	this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-        	this.dataGridView1.Size = new System.Drawing.Size(522, 188);
-        	this.dataGridView1.TabIndex = 2;
+        	this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+        	this.dataGridView1.ShowCellErrors = false;
+        	this.dataGridView1.ShowCellToolTips = false;
+        	this.dataGridView1.ShowEditingIcon = false;
+        	this.dataGridView1.ShowRowErrors = false;
+        	this.dataGridView1.Size = new System.Drawing.Size(380, 219);
+        	this.dataGridView1.TabIndex = 15;
         	this.dataGridView1.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_RowEnter);
         	// 
         	// contextMenuStrip1
@@ -207,35 +215,47 @@ namespace Terminals.Network.Servers
         	this.shutdownServerToolStripMenuItem.Text = "Shutdown Server";
         	this.shutdownServerToolStripMenuItem.Click += new System.EventHandler(this.shutdownServerToolStripMenuItem_Click);
         	// 
+        	// propertyGrid1
+        	// 
+        	this.propertyGrid1.CanShowVisualStyleGlyphs = false;
+        	this.propertyGrid1.CommandsVisibleIfAvailable = false;
+        	this.propertyGrid1.Dock = System.Windows.Forms.DockStyle.Fill;
+        	this.propertyGrid1.HelpVisible = false;
+        	this.propertyGrid1.Location = new System.Drawing.Point(0, 0);
+        	this.propertyGrid1.Name = "propertyGrid1";
+        	this.propertyGrid1.Size = new System.Drawing.Size(318, 219);
+        	this.propertyGrid1.TabIndex = 16;
+        	this.propertyGrid1.ToolbarVisible = false;
+        	this.propertyGrid1.Click += new System.EventHandler(this.PropertyGrid1Click);
+        	// 
         	// dataGridView2
         	// 
         	this.dataGridView2.AllowUserToAddRows = false;
         	this.dataGridView2.AllowUserToDeleteRows = false;
+        	this.dataGridView2.AllowUserToResizeRows = false;
         	this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
         	this.dataGridView2.Dock = System.Windows.Forms.DockStyle.Fill;
+        	this.dataGridView2.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
         	this.dataGridView2.Location = new System.Drawing.Point(0, 0);
         	this.dataGridView2.Name = "dataGridView2";
         	this.dataGridView2.ReadOnly = true;
+        	this.dataGridView2.RowHeadersVisible = false;
         	this.dataGridView2.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-        	this.dataGridView2.Size = new System.Drawing.Size(522, 184);
-        	this.dataGridView2.TabIndex = 3;
-        	// 
-        	// propertyGrid1
-        	// 
-        	this.propertyGrid1.Dock = System.Windows.Forms.DockStyle.Fill;
-        	this.propertyGrid1.Location = new System.Drawing.Point(0, 0);
-        	this.propertyGrid1.Name = "propertyGrid1";
-        	this.propertyGrid1.Size = new System.Drawing.Size(176, 376);
-        	this.propertyGrid1.TabIndex = 4;
+        	this.dataGridView2.ShowCellErrors = false;
+        	this.dataGridView2.ShowCellToolTips = false;
+        	this.dataGridView2.ShowEditingIcon = false;
+        	this.dataGridView2.ShowRowErrors = false;
+        	this.dataGridView2.Size = new System.Drawing.Size(702, 153);
+        	this.dataGridView2.TabIndex = 11;
         	// 
         	// progress
         	// 
         	this.progress.BackColor = System.Drawing.Color.Transparent;
         	this.progress.Image = ((System.Drawing.Image)(resources.GetObject("progress.Image")));
-        	this.progress.Location = new System.Drawing.Point(108, 65);
+        	this.progress.Location = new System.Drawing.Point(87, 8);
         	this.progress.Name = "progress";
         	this.progress.Size = new System.Drawing.Size(297, 297);
-        	this.progress.TabIndex = 4;
+        	this.progress.TabIndex = 19;
         	this.progress.TabStop = false;
         	// 
         	// TerminalServerManager
@@ -273,7 +293,6 @@ namespace Terminals.Network.Servers
         private System.Windows.Forms.Button ConnectButton;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.SplitContainer splitContainer2;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.PropertyGrid propertyGrid1;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
@@ -283,8 +302,9 @@ namespace Terminals.Network.Servers
         private System.Windows.Forms.ToolStripMenuItem rebootServerToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem shutdownServerToolStripMenuItem;
         private System.Windows.Forms.ComboBox ServerNameComboBox;
-        private System.Windows.Forms.SplitContainer splitContainer3;
         private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.SplitContainer splitContainer2;
+        private System.Windows.Forms.SplitContainer splitContainer3;
         private System.Windows.Forms.PictureBox progress;
     }
 }
