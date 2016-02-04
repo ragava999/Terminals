@@ -15,6 +15,26 @@
 *
 **************************************************** R E L E A S E   N O T E S ****************************************************
 
+TODO:
+Select screen capture path <- filled with nonsense
+radmin options -> browse button
+putty options -> browse button
+
+Terminal News -> Don't show terminal news on startup             <-Delete
+
+Done:
+Improved Terminal Services Manager (Part 2 of 2)
+
+The Terminal Services API code has been improved again.
+Improved the stability of the autoit editor (scintilla)
+Fixed a bug where the credential synchronizer tried to synchronize a missing credentials.xml file if KeePass credentials are in use.
+Improved logging for the favorites tool tip in the favslist for unresolvable dns names. The server name will now be logged too.
+The flag 'DontLoadMe' has been introduced in the FavoritePanel class to prevent loading broken favorite panels in the favorites editor.
+The AutoItFavoritePanel class is now capable to react on errors in the underlying code e.g. unmanaged code and reports it now to the logger.
+The Framework DLL has been excluded from the plugin directories - one, located under the root of Terminals, is fully enough
+A typo has been fixed in the CredentialStoreOptionPanel.Designer.cs file
+
+
 
 Release v 4.8.0.0
 ~~~~~~~~~~~~~~~~~
