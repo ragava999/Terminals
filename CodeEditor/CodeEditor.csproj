@@ -116,7 +116,6 @@
     <Compile Include="AboutForm.Designer.cs">
       <DependentUpon>AboutForm.cs</DependentUpon>
     </Compile>
-    <None Include="Terminals.sln" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\ImageFilePrintPreview.png" />

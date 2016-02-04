@@ -40,22 +40,22 @@ namespace Terminals.TerminalServices
         /// <summary>
         /// The page file usage of the process, in bytes.
         /// </summary>
-        public int PagefileUsage { get; set; }
+        public string PagefileUsage { get; set; }
         
         /// <summary>
         /// The peak page file usage of the process, in bytes.
         /// </summary>
-        public int PeakPagefileUsage { get; set; }
+        public string PeakPagefileUsage { get; set; }
         
         /// <summary>
         /// The working set size of the process, in bytes.
         /// </summary>
-        public int WorkingSetSize { get; set; }
+        public string WorkingSetSize { get; set; }
         
         /// <summary>
         /// The peak working set size of the process, in bytes.
         /// </summary>
-        public int PeakWorkingSetSize { get; set; }
+        public string PeakWorkingSetSize { get; set; }
         
         /// <summary>
         /// The amount of time, in milliseconds, the process has been running in user mode.

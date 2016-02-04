@@ -804,6 +804,8 @@ namespace Terminals.Panels
 
             List<Type> favoritePanelTypes = ConnectionManager.GetFavoritePanels();
 
+            List<string> panelsToSkip = new List<string>();
+            
             // Load all favorite tab pages, set the name to match the protocol name
             // Either an existing favorite tab page or a existing panel or initialize one.
             foreach (Type type in favoritePanelTypes)
@@ -835,10 +837,21 @@ namespace Terminals.Panels
                     {
                         //string message = ex.InnerException.Message;
                         Log.Debug("ERROR ceating favorite panel! Type name: " + type.Name, ex);
+                        panelsToSkip.Add(type.Name);
                         continue;
                     }
                 }
 
+                // If an error occured during load
+                // e.g. unmanaged resources haven't been load
+                // skip the Plugin
+                if (panel == null || panel.DontLoadMe)
+                {
+                	panelsToSkip.Add(type.Name);
+                	Log.Fatal("Plugin has been skipped due to errors.");
+                	continue;
+                }
+                	
                 if (tabPage == null)
                     tabPage = AddTabPage(panel, panel.Name);
 
@@ -867,6 +880,9 @@ namespace Terminals.Panels
             {
                 FavoritePanel panel = (FavoritePanel)page.Controls[0];
 
+                if (panel == null || panel.DontLoadMe || panelsToSkip.Contains(panel.Name))
+                	continue;
+                
                 panel.ParentForm = this;
                 panel.HandleSelectionChanged(this.ProtocolComboBox.Text, isEditing);
 

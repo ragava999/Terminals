@@ -77,6 +77,7 @@
     <ProjectReference Include="..\Kohl.Framework\Kohl.Framework.csproj">
       <Project>{2E4E3508-2275-4A32-9A0D-9A95B134407B}</Project>
       <Name>Kohl.Framework</Name>
+      <Private>False</Private>
     </ProjectReference>
     <ProjectReference Include="..\Kohl.TinyMce\Kohl.TinyMce.csproj">
       <Project>{5e55661d-14a8-42e5-b443-ec76519dca7a}</Project>

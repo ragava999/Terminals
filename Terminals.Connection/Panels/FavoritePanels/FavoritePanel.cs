@@ -11,6 +11,8 @@ namespace Terminals.Connection.Panels.FavoritePanels
     {
         private string[] enabledForProtocols = null;
 
+        public bool DontLoadMe { get; set; }
+        
         public virtual string DefaultProtocolName
         {
             get

@@ -232,20 +232,24 @@ namespace Terminals.Network.Servers
         	// 
         	this.dataGridView2.AllowUserToAddRows = false;
         	this.dataGridView2.AllowUserToDeleteRows = false;
+        	this.dataGridView2.AllowUserToOrderColumns = true;
         	this.dataGridView2.AllowUserToResizeRows = false;
         	this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
         	this.dataGridView2.Dock = System.Windows.Forms.DockStyle.Fill;
         	this.dataGridView2.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
         	this.dataGridView2.Location = new System.Drawing.Point(0, 0);
+        	this.dataGridView2.MultiSelect = false;
         	this.dataGridView2.Name = "dataGridView2";
         	this.dataGridView2.ReadOnly = true;
         	this.dataGridView2.RowHeadersVisible = false;
         	this.dataGridView2.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
+        	this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
         	this.dataGridView2.ShowCellErrors = false;
         	this.dataGridView2.ShowCellToolTips = false;
         	this.dataGridView2.ShowEditingIcon = false;
         	this.dataGridView2.ShowRowErrors = false;
         	this.dataGridView2.Size = new System.Drawing.Size(702, 153);
+        	this.dataGridView2.StandardTab = true;
         	this.dataGridView2.TabIndex = 11;
         	// 
         	// progress

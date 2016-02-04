@@ -22,9 +22,9 @@ using System.Runtime.InteropServices;
 //      Revision
 //
 
-[assembly: AssemblyVersion("2.9.1.0")]
-[assembly: AssemblyFileVersion("2.9.1.0")]
-[assembly: AssemblyInformationalVersion("2.9.1.0 RTM")]
+[assembly: AssemblyVersion("2.9.2.0")]
+[assembly: AssemblyFileVersion("2.9.2.0")]
+[assembly: AssemblyInformationalVersion("2.9.2.0 RTM")]
 
 [assembly: NeutralResourcesLanguageAttribute("en-US")]
 [assembly: ComVisibleAttribute(false)]

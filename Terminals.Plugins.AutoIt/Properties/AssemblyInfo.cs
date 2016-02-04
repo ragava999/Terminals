@@ -9,7 +9,7 @@
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Oliver Kohl D.Sc.")]
 [assembly: AssemblyProduct("Terminals.Plugins.AutoIt by Oliver Kohl D.Sc.")]
-[assembly: AssemblyCopyright("Copyright © Oliver Kohl D.Sc. 2015")]
+[assembly: AssemblyCopyright("Copyright © Oliver Kohl D.Sc. 2016")]
 [assembly: AssemblyTrademark("http://www.kohl.bz")]
 [assembly: AssemblyCulture("")]
 
@@ -21,9 +21,9 @@
 //      Revision
 //
 
-[assembly: AssemblyVersion("1.9.1.0")]
-[assembly: AssemblyFileVersion("1.9.1.0")]
-[assembly: AssemblyInformationalVersion("1.9.1 RTM")]
+[assembly: AssemblyVersion("1.9.2.0")]
+[assembly: AssemblyFileVersion("1.9.2.0")]
+[assembly: AssemblyInformationalVersion("1.9.2 RTM")]
 
 /*
 AssemblyVersion

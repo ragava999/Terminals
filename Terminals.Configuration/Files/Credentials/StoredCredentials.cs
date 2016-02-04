@@ -89,7 +89,10 @@ namespace Terminals.Configuration.Files.Credentials
 
         public static void AssignSynchronizationObject(ISynchronizeInvoke synchronizer)
         {
-            fileWatcher.AssignSynchronizer(synchronizer);
+        	if (Main.Settings.Settings.CredentialStore != Terminals.Configuration.Files.Main.CredentialStoreType.Xml)
+        		return;
+            
+        	fileWatcher.AssignSynchronizer(synchronizer);
         }
 
         private static void LoadStoredCredentials(string configFileName)

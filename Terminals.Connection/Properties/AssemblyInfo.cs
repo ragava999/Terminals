@@ -9,7 +9,7 @@
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Oliver Kohl D.Sc.")]
 [assembly: AssemblyProduct("Terminals.Connection by Oliver Kohl D.Sc.")]
-[assembly: AssemblyCopyright("Copyright © Oliver Kohl D.Sc. 2015")]
+[assembly: AssemblyCopyright("Copyright © Oliver Kohl D.Sc. 2016")]
 [assembly: AssemblyTrademark("http://www.kohl.bz")]
 [assembly: AssemblyCulture("")]
 
@@ -21,9 +21,9 @@
 //      Revision
 //
 
-[assembly: AssemblyVersion("4.4.2.3")]
-[assembly: AssemblyFileVersion("4.4.2.3")]
-[assembly: AssemblyInformationalVersion("4.4.2.3 RTM")]
+[assembly: AssemblyVersion("4.4.3.0")]
+[assembly: AssemblyFileVersion("4.4.3.0")]
+[assembly: AssemblyInformationalVersion("4.4.3.9 RTM")]
 /*
 AssemblyVersion
 

@@ -95,6 +95,7 @@
     <ProjectReference Include="..\Kohl.Framework\Kohl.Framework.csproj">
       <Project>{2E4E3508-2275-4A32-9A0D-9A95B134407B}</Project>
       <Name>Kohl.Framework</Name>
+      <Private>False</Private>
     </ProjectReference>
     <ProjectReference Include="..\Terminals.Configuration\Terminals.Configuration.csproj">
       <Project>{fceb7dac-e7be-4b40-976f-0687b9f36cd1}</Project>

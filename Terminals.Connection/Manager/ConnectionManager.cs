@@ -585,7 +585,7 @@ namespace Terminals.Connection.Manager
                             }
                             catch (Exception ex)
                             { 
-                                Log.Warn("Error resolving host name: " + ex.Message + ". Connection name: " + favorite.Name); 
+                                Log.Warn("Error resolving host name: \"" + favorite.ServerName + "\", connection name: \"" + favorite.Name + "\". " + ex.Message); 
                             }
 
                             if (hostName == ip || string.IsNullOrEmpty(hostName))
@@ -600,7 +600,7 @@ namespace Terminals.Connection.Manager
                 }
                 catch (Exception ex)
                 {
-                    Log.Warn("The following error occured while trying to resolve the connection's server or ip: " + ex.Message + ". Connection name: " + favorite.Name);
+                    Log.Warn("The following error occured while trying to resolve the connection's server or ip: " + ex.Message + ". Host name: \"" + favorite.ServerName + "\". Connection name: \"" + favorite.Name  + "\". ");
                     return serverName;
                 }
             }

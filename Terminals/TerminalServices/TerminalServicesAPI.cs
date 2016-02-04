@@ -96,7 +96,7 @@ namespace Terminals.TerminalServices
             
             return terminalServer;
         }
-
+	
         private static void GetProcessInfos(TerminalServer terminalServer)
         {
 			try
@@ -105,7 +105,7 @@ namespace Terminals.TerminalServices
 	            int processCount = 0;
 	            IntPtr useProcessesExStructure = new IntPtr(1);
 	            
-	            if (WTSEnumerateProcessesEx(terminalServer.ServerPointer, ref useProcessesExStructure, WTS_ANY_SESSION, ref pProcessInfo, ref processCount))
+	            if (WTSEnumerateProcessesExW(terminalServer.ServerPointer, ref useProcessesExStructure, WTS_ANY_SESSION, ref pProcessInfo, ref processCount))
 	            {
 	            	const int NO_ERROR = 0;
 	            	const int ERROR_INSUFFICIENT_BUFFER = 122;
@@ -120,16 +120,16 @@ namespace Terminals.TerminalServices
 						{
 		                   SessionID = processInfos[i].SessionID,
 						   ProcessID = processInfos[i].ProcessID,
-						   ProcessName = Marshal.PtrToStringAnsi(processInfos[i].ProcessName),
+						   ProcessName = processInfos[i].ProcessName,
 						   NumberOfThreads = processInfos[i].NumberOfThreads,
 						   HandleCount = processInfos[i].HandleCount,
-						   PagefileUsage = processInfos[i].PagefileUsage,
-						   PeakPagefileUsage = processInfos[i].PeakPagefileUsage,
-						   WorkingSetSize = processInfos[i].WorkingSetSize,
-						   PeakWorkingSetSize = processInfos[i].PeakWorkingSetSize,
+						   PagefileUsage = (processInfos[i].PagefileUsage / 1024.0 / 1024.0).ToString("##0.## MB"),
+						   PeakPagefileUsage = (processInfos[i].PeakPagefileUsage / 1024.0 / 1024.0).ToString("##0.## MB"),
+						   WorkingSetSize = (processInfos[i].WorkingSetSize / 1024.0 / 1024.0).ToString("##0.## MB"),
+						   PeakWorkingSetSize = (processInfos[i].PeakWorkingSetSize / 1024.0 / 1024.0).ToString("##0.## MB"),
 						   KernelTime = processInfos[i].KernelTime,
 						   UserTime = processInfos[i].UserTime 
-						};	               
+						};
 		                
 		                if (processInfos[i].UserSid != IntPtr.Zero)
 		                {
@@ -164,7 +164,7 @@ namespace Terminals.TerminalServices
 		                }
 	
 		                terminalServer.Sessions.FirstOrDefault(s => s.SessionId == p.SessionID).Processes.Add(p);
-	                	pProcessInfo = (IntPtr) ((int) pProcessInfo + Marshal.SizeOf(processInfos[i]));
+		                pProcessInfo = (IntPtr) ((int) pProcessInfo + Marshal.SizeOf(processInfos[i]));
 		            }
 	            }
 	            
@@ -291,12 +291,14 @@ namespace Terminals.TerminalServices
 
         #region Windows Native Api
         
-                
+        [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Unicode)]
+        [System.Runtime.InteropServices.BestFitMapping(true)]
         private struct WTS_PROCESS_INFO_EX
         {
         	public Int32 SessionID;			// The Remote Desktop Services session identifier for the session associated with the process.
             public Int32 ProcessID;			// The process identifier that uniquely identifies the process on the RD Session Host server.
-            public IntPtr ProcessName;		// A pointer to a null-terminated string that contains the name of the executable file associated with the process.
+            [MarshalAs(UnmanagedType.LPWStr)]
+            public string ProcessName;		// A pointer to a null-terminated string that contains the name of the executable file associated with the process.
             public IntPtr UserSid;			// A pointer to the user security identifiers (SIDs) in the primary access token of the process. 
             public Int32 NumberOfThreads;	// The number of threads in the process.
             public Int32 HandleCount;		// The number of handles in the process.
@@ -404,7 +406,7 @@ namespace Terminals.TerminalServices
         private static extern bool WTSQuerySessionInformation(IntPtr hServer, int sessionId, WTS_INFO_CLASS wtsInfoClass, ref IntPtr ppBuffer, ref int pBytesReturned);
 
         [DllImport("wtsapi32.dll", SetLastError = true)]
-        private static extern bool WTSEnumerateProcessesEx(
+        private static extern bool WTSEnumerateProcessesExW(
             IntPtr hServer, // A handle to an RD Session Host server.. 
             ref IntPtr pLevel, // must be 1 - To return an array of WTS_PROCESS_INFO_EX structures, specify one.
             Int32 SessionID, // The session for which to enumerate processes. To enumerate processes for all sessions on the server, specify WTS_ANY_SESSION.

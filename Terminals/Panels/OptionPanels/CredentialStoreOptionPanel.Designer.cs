@@ -115,7 +115,7 @@ namespace Terminals.Panels.OptionPanels
         	this.label1.Size = new System.Drawing.Size(481, 32);
         	this.label1.TabIndex = 27;
         	this.label1.Text = "Hint: The domain will be extracted from either the UserName field in KeePass (if " +
-	"it has the form of DOMAIN\\USERNAME) or from and advanced field called Domain.";
+	"it has the form of DOMAIN\\USERNAME) or from an advanced field called Domain.";
         	// 
         	// lblKeePassCaption
         	// 
