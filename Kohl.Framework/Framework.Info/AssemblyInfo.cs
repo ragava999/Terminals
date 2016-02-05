@@ -49,6 +49,17 @@ namespace Kohl.Framework.Info
 			}
 		}
 		
+		/// <summary>
+		/// The directory for newer Terminals binaries
+		/// </summary>
+		public static string UpgradeDirectory
+		{
+			get
+			{
+				return Path.Combine(DirectoryConfigFiles, "Upgrade");
+			}
+		}
+		
 		public static System.Reflection.Assembly Assembly
 		{
 			get
@@ -180,26 +191,6 @@ namespace Kohl.Framework.Info
 			}
 		}
 
-		/*
-		// Covered by Directory-Property
-		public static string StartupPath
-		{
-			get
-			{
-				string baseDirectory;
-				try
-				{
-					baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
-				}
-				catch
-				{
-					baseDirectory = null;
-				}
-				return baseDirectory;
-			}
-		}
-		*/
-		
 		public static string Title
 		{
 			get

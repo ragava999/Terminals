@@ -178,7 +178,7 @@
                     return;
                 }
 
-                if (MessageBox.Show(msg, "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show(msg, "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
                 {
                     try
                     {
@@ -589,5 +589,10 @@
                                                                        };
             Settings.AddFavorites(selectedFavorites);
         }
+		void FavsTreeKeyUp(object sender, KeyEventArgs e)
+		{
+			if (e.KeyCode == Keys.Delete)
+				deleteToolStripMenuItem_Click(sender, e);
+		}
     }
 }

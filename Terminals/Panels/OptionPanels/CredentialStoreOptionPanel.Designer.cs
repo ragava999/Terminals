@@ -128,7 +128,7 @@ namespace Terminals.Panels.OptionPanels
         	// 
         	// ButtonBrowseCaptureFolder
         	// 
-        	this.ButtonBrowseCaptureFolder.Location = new System.Drawing.Point(305, 49);
+        	this.ButtonBrowseCaptureFolder.Location = new System.Drawing.Point(304, 49);
         	this.ButtonBrowseCaptureFolder.Name = "ButtonBrowseCaptureFolder";
         	this.ButtonBrowseCaptureFolder.Size = new System.Drawing.Size(111, 23);
         	this.ButtonBrowseCaptureFolder.TabIndex = 25;

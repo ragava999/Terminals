@@ -35,6 +35,7 @@ namespace Terminals.Panels.OptionPanels
         	this.txtRAdminDefaultPort = new System.Windows.Forms.TextBox();
         	this.grpRAdminPath = new System.Windows.Forms.GroupBox();
         	this.txtRAdminPath = new System.Windows.Forms.TextBox();
+        	this.ButtonBrowseCaptureFolder = new System.Windows.Forms.Button();
         	this.panRAdmin.SuspendLayout();
         	this.grpRAdminDefaultPort.SuspendLayout();
         	this.grpRAdminPath.SuspendLayout();
@@ -69,6 +70,7 @@ namespace Terminals.Panels.OptionPanels
         	// 
         	// grpRAdminPath
         	// 
+        	this.grpRAdminPath.Controls.Add(this.ButtonBrowseCaptureFolder);
         	this.grpRAdminPath.Controls.Add(this.txtRAdminPath);
         	this.grpRAdminPath.Location = new System.Drawing.Point(8, 3);
         	this.grpRAdminPath.Name = "grpRAdminPath";
@@ -81,8 +83,18 @@ namespace Terminals.Panels.OptionPanels
         	// 
         	this.txtRAdminPath.Location = new System.Drawing.Point(11, 30);
         	this.txtRAdminPath.Name = "txtRAdminPath";
-        	this.txtRAdminPath.Size = new System.Drawing.Size(354, 20);
+        	this.txtRAdminPath.Size = new System.Drawing.Size(234, 20);
         	this.txtRAdminPath.TabIndex = 19;
+        	// 
+        	// ButtonBrowseCaptureFolder
+        	// 
+        	this.ButtonBrowseCaptureFolder.Location = new System.Drawing.Point(254, 28);
+        	this.ButtonBrowseCaptureFolder.Name = "ButtonBrowseCaptureFolder";
+        	this.ButtonBrowseCaptureFolder.Size = new System.Drawing.Size(111, 23);
+        	this.ButtonBrowseCaptureFolder.TabIndex = 26;
+        	this.ButtonBrowseCaptureFolder.Text = "Browse...";
+        	this.ButtonBrowseCaptureFolder.UseVisualStyleBackColor = true;
+        	this.ButtonBrowseCaptureFolder.Click += new System.EventHandler(this.ButtonBrowseCaptureFolderClick);
         	// 
         	// RAdminOptionPanel
         	// 
@@ -105,5 +117,6 @@ namespace Terminals.Panels.OptionPanels
         private TextBox txtRAdminPath;
         private GroupBox grpRAdminDefaultPort;
         private TextBox txtRAdminDefaultPort;
+        private System.Windows.Forms.Button ButtonBrowseCaptureFolder;
     }
 }

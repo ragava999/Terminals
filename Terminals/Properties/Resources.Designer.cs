@@ -657,40 +657,20 @@ namespace Terminals.Properties {
 		/// <summary>
 		///   Looks up a localized resource of type System.Drawing.Bitmap.
 		/// </summary>
-		public static System.Drawing.Bitmap Localization1 {
-			get {
-				object obj = ResourceManager.GetObject("Localization1", resourceCulture);
-				return ((System.Drawing.Bitmap)(obj));
-			}
-		}
-		
-		/// <summary>
-		///   Looks up a localized resource of type System.Drawing.Bitmap.
-		/// </summary>
-		public static System.Drawing.Bitmap Localization2 {
-			get {
-				object obj = ResourceManager.GetObject("Localization2", resourceCulture);
-				return ((System.Drawing.Bitmap)(obj));
-			}
-		}
-		
-		/// <summary>
-		///   Looks up a localized resource of type System.Drawing.Bitmap.
-		/// </summary>
-		public static System.Drawing.Bitmap Localization3 {
-			get {
-				object obj = ResourceManager.GetObject("Localization3", resourceCulture);
-				return ((System.Drawing.Bitmap)(obj));
-			}
-		}
-		
-		/// <summary>
-		///   Looks up a localized resource of type System.Drawing.Bitmap.
-		/// </summary>
 		public static System.Drawing.Bitmap options {
 			get {
 				object obj = ResourceManager.GetObject("options", resourceCulture);
 				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+		/// </summary>
+		public static System.Drawing.Icon Oxygen_Icons_org_Oxygen_Actions_trash_empty {
+			get {
+				object obj = ResourceManager.GetObject("Oxygen-Icons.org-Oxygen-Actions-trash-empty", resourceCulture);
+				return ((System.Drawing.Icon)(obj));
 			}
 		}
 		
@@ -790,6 +770,16 @@ namespace Terminals.Properties {
 		public static System.Drawing.Bitmap RDP {
 			get {
 				object obj = ResourceManager.GetObject("RDP", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized resource of type System.Drawing.Bitmap.
+		/// </summary>
+		public static System.Drawing.Bitmap recycle_bin {
+			get {
+				object obj = ResourceManager.GetObject("recycle_bin", resourceCulture);
 				return ((System.Drawing.Bitmap)(obj));
 			}
 		}
@@ -941,6 +931,16 @@ namespace Terminals.Properties {
 			get {
 				object obj = ResourceManager.GetObject("terminalsicon", resourceCulture);
 				return ((System.Drawing.Icon)(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Looks up a localized resource of type System.Drawing.Bitmap.
+		/// </summary>
+		public static System.Drawing.Bitmap Trash {
+			get {
+				object obj = ResourceManager.GetObject("Trash", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
 			}
 		}
 		

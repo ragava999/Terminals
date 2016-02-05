@@ -1,13 +1,12 @@
-﻿using System;
-using System.Drawing;
-using System.Windows.Forms;
-
-using Terminals.Configuration.Files.Main.Settings;
-using Terminals.Connection.Panels.OptionPanels;
-using Terminals.Forms.Controls;
-
-namespace Terminals.Panels.OptionPanels
+﻿namespace Terminals.Panels.OptionPanels
 {
+	using System;
+	using System.Windows.Forms;
+	
+	using Terminals.Configuration.Files.Main.Settings;
+	using Terminals.Connection.Panels.OptionPanels;
+	using Terminals.Forms.Controls;
+
     public partial class CredentialStoreOptionPanel : IOptionPanel
     {
         public CredentialStoreOptionPanel()
@@ -63,6 +62,7 @@ namespace Terminals.Panels.OptionPanels
                 }
             }
 		}
+		
 		void CredentialStoreChanged(object sender, EventArgs e)
 		{
 			if (!rdoUseKeePass.Checked)

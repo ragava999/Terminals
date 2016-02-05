@@ -31,7 +31,7 @@ namespace Terminals
     using Network.Services;
     using Properties;
     using TerminalServices;
-    using Updates.RSS.RssItem;
+   
     using Wizard;
     using VncSharp;
 
@@ -345,14 +345,14 @@ namespace Terminals
                 {
                     FavoriteConfigurationElement release = FavoritesFactory.GetOrCreateReleaseFavorite();
 
-                    Thread.Sleep(5000);
+                    //Thread.Sleep(5000);
                     if (OnReleaseIsAvailable != null)
                         OnReleaseIsAvailable(release);
                 }
             }
         }
 
-        public static RssItem ReleaseDescription { private get; set; }
+        public static string ReleaseDescription { private get; set; }
 
         private Boolean IsMouseDown { get; set; }
         private Point MouseDownLocation { get; set; }
@@ -924,6 +924,8 @@ namespace Terminals
             Boolean connectToConsole = commandLineArgs.Console;
             this.fullScreenSwitch.FullScreen = commandLineArgs.Fullscreen;
 
+            Terminals.Updates.UpdateManager.CheckForUpdates(commandLineArgs);
+            
             if (commandLineArgs.HasUrlDefined)
                 this.QuickConnect(commandLineArgs.UrlServer, commandLineArgs.UrlPort, connectToConsole, commandLineArgs.ProtcolName, commandLineArgs.UrlServer, commandLineArgs.UseDbFavorite);
             else if (commandLineArgs.HasMachineDefined)
@@ -1996,10 +1998,10 @@ namespace Terminals
                 if (ReleaseAvailable && this.updateToolStripItem != null)
                 {
                     this.updateToolStripItem.Visible = ReleaseAvailable;
-                    if (ReleaseDescription != null)
+                    if (! string.IsNullOrEmpty(ReleaseDescription))
                     {
                         this.updateToolStripItem.Text = String.Format("{0} - {1}", this.updateToolStripItem.Text,
-                                                                      ReleaseDescription.Title);
+                                                                      ReleaseDescription);
                     }
                 }
             }
@@ -2211,6 +2213,18 @@ namespace Terminals
             // Normal resize
             this.terminalsControler.Resize(null);
             switching = false;
+		}
+		void EmptyLogFileToolStripMenuItemClick(object sender, EventArgs e)
+		{
+			try
+			{
+				if (File.Exists(Log.CurrentLogFile))
+					File.WriteAllText(Log.CurrentLogFile, "");
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show("Terminals was unable to clear the contents of the file" + Environment.NewLine + ex.Message, "Error");
+			}
 		}
     }
 }

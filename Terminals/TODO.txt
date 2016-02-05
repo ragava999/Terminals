@@ -1,0 +1,1 @@
+﻿Terminal News -> Don't show terminal news on startup             <-Delete

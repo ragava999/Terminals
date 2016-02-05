@@ -15,14 +15,14 @@
 *
 **************************************************** R E L E A S E   N O T E S ****************************************************
 
-TODO:
-Select screen capture path <- filled with nonsense
-radmin options -> browse button
-putty options -> browse button
 
-Terminal News -> Don't show terminal news on startup             <-Delete
 
-Done:
+
+Release v 4.8.1.0
+~~~~~~~~~~~~~~~~~
+
+Date: 2016-02-05
+
 Improved Terminal Services Manager (Part 2 of 2)
 
 The Terminal Services API code has been improved again.
@@ -33,8 +33,13 @@ The flag 'DontLoadMe' has been introduced in the FavoritePanel class to prevent 
 The AutoItFavoritePanel class is now capable to react on errors in the underlying code e.g. unmanaged code and reports it now to the logger.
 The Framework DLL has been excluded from the plugin directories - one, located under the root of Terminals, is fully enough
 A typo has been fixed in the CredentialStoreOptionPanel.Designer.cs file
-
-
+Changed the default button for a server reboot or shutdown in the favorites list to "No" instead of "Yes".
+Added browse button in the RAdmin options
+Added browse button in the putty options
+Fixed a bug that occured in the screen capture option's folder selection menu
+The locking model of log4net has been changed to minimal locking - which enables one to truncate the file or just delete it.
+A new menu entry in Terminals main window has been added to truncate the current log file.
+Reimplemented the Terminals release update mechanism.
 
 Release v 4.8.0.0
 ~~~~~~~~~~~~~~~~~

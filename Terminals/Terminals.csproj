@@ -654,37 +654,7 @@
     <Compile Include="SSHClient\Protocol.cs" />
     <Compile Include="SSHClient\SSH2UserAuthKey.cs" />
     <Compile Include="SSHClient\SShTraceLissener.cs" />
-    <Compile Include="Updates\UpdatePackage.cs" />
-    <Compile Include="Updates\UpdatePackage.designer.cs">
-      <DependentUpon>UpdatePackage.cs</DependentUpon>
-    </Compile>
     <Compile Include="Updates\Web.cs" />
-    <Compile Include="Updates\RSS\Collections\ExceptionCollection.cs" />
-    <Compile Include="Updates\RSS\Collections\RssCategoryCollection.cs" />
-    <Compile Include="Updates\RSS\Collections\RssChannelCollection.cs" />
-    <Compile Include="Updates\RSS\Collections\RssItemCollection.cs" />
-    <Compile Include="Updates\RSS\Collections\RssModuleCollection.cs" />
-    <Compile Include="Updates\RSS\Collections\RssModuleItemCollection.cs" />
-    <Compile Include="Updates\RSS\Collections\RssModuleItemCollectionCollection.cs" />
-    <Compile Include="Updates\RSS\RssChannel\RssChannel.cs" />
-    <Compile Include="Updates\RSS\RssChannel\RssCloud.cs" />
-    <Compile Include="Updates\RSS\RssChannel\RssImage.cs" />
-    <Compile Include="Updates\RSS\RssChannel\RssTextInput.cs" />
-    <Compile Include="Updates\RSS\RssFeed.cs" />
-    <Compile Include="Updates\RSS\RssItem\RssEnclosure.cs" />
-    <Compile Include="Updates\RSS\RssItem\RssGuid.cs" />
-    <Compile Include="Updates\RSS\RssItem\RssItem.cs" />
-    <Compile Include="Updates\RSS\RssItem\RssSource.cs" />
-    <Compile Include="Updates\RSS\RssModule.cs" />
-    <Compile Include="Updates\RSS\RssModuleItem.cs" />
-    <Compile Include="Updates\RSS\RssReader.cs" />
-    <Compile Include="Updates\RSS\RssWriter.cs" />
-    <Compile Include="Updates\RSS\Shared\DBBool.cs" />
-    <Compile Include="Updates\RSS\Shared\RssCategory.cs" />
-    <Compile Include="Updates\RSS\Shared\RssDefault.cs" />
-    <Compile Include="Updates\RSS\Shared\RssElement.cs" />
-    <Compile Include="Updates\RSS\Shared\RssCloudProtocol.cs" />
-    <Compile Include="Updates\RSS\Shared\RssVersion.cs" />
     <Compile Include="Updates\UpdateManager.cs" />
     <Compile Include="Updates\UpdateConfig.cs" />
     <Compile Include="Wizard\BindingElement.cs" />
@@ -971,17 +941,7 @@
     <Content Include="terminalsicon.ico" />
     <None Include="app.config" />
     <None Include="packages.config" />
-    <None Include="Updates\UpdatePackage.xsc">
-      <DependentUpon>UpdatePackage.xsd</DependentUpon>
-    </None>
-    <None Include="Updates\UpdatePackage.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>UpdatePackage1.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Updates\UpdatePackage.xss">
-      <DependentUpon>UpdatePackage.xsd</DependentUpon>
-    </None>
+    <None Include="TODO.txt" />
     <None Include="TerminalServices\WTSApi32.cs" />
     <EmbeddedResource Include="Forms\Controls\HistoryTreeView.resx">
       <DependentUpon>HistoryTreeView.cs</DependentUpon>

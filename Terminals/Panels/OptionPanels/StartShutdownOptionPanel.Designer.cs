@@ -142,7 +142,7 @@ namespace Terminals.Panels.OptionPanels
         	this.btnBrowse.Name = "btnBrowse";
         	this.btnBrowse.Size = new System.Drawing.Size(83, 23);
         	this.btnBrowse.TabIndex = 2;
-        	this.btnBrowse.Text = "Browse";
+        	this.btnBrowse.Text = "Browse...";
         	this.btnBrowse.UseVisualStyleBackColor = true;
         	this.btnBrowse.Click += new System.EventHandler(this.btnBrowse_Click);
         	// 

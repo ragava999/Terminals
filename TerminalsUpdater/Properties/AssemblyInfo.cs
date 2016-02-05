@@ -5,8 +5,8 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle ("Terminals")]
-[assembly: AssemblyDescription ("Terminals is a multi-tab terminal services and remote desktop client. Moreover Terminals is capable beside RDP of supporting AutoIt, a shell explorer, http connections, ICA/Citrix connections, telnet, ssh, VNC and many other protocols.")]
+[assembly: AssemblyTitle ("TerminalsUpdater")]
+[assembly: AssemblyDescription ("")]
 [assembly: AssemblyConfiguration ("")]
 [assembly: AssemblyCompany ("Oliver Kohl D.Sc.")]
 [assembly: AssemblyProduct ("Terminals by Oliver Kohl D.Sc.")]
@@ -48,5 +48,5 @@ The Product version of the assembly. This is the version you would use when talk
 
 I use the format: major.minor [revision as string]. This would result in:
 [assembly: AssemblyInformationalVersion("1.0 RC1")] 
-*/[assembly: Guid ("d2d6d110-9846-4c33-acb9-657cfa994890")]
-[assembly: AssemblyFlags (AssemblyNameFlags.PublicKey | AssemblyNameFlags.EnableJITcompileOptimizer)]
+*/[assembly: CLSCompliant (true)]
+[assembly: Guid ("1c065176-d97a-48d0-a3c2-5791e199991e")]

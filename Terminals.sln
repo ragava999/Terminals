@@ -75,6 +75,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Geckofx-Winforms", "BitBuck
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kohl.Framework", "Kohl.Framework\Kohl.Framework.csproj", "{2E4E3508-2275-4A32-9A0D-9A95B134407B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TerminalsUpdater", "TerminalsUpdater\TerminalsUpdater.csproj", "{F277791A-5F96-48CF-AF38-02F1DA36B06B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -173,6 +175,10 @@ Global
 		{2E4E3508-2275-4A32-9A0D-9A95B134407B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2E4E3508-2275-4A32-9A0D-9A95B134407B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2E4E3508-2275-4A32-9A0D-9A95B134407B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F277791A-5F96-48CF-AF38-02F1DA36B06B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F277791A-5F96-48CF-AF38-02F1DA36B06B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F277791A-5F96-48CF-AF38-02F1DA36B06B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F277791A-5F96-48CF-AF38-02F1DA36B06B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

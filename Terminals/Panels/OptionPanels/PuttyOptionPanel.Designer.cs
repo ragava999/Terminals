@@ -33,6 +33,7 @@ namespace Terminals.Panels.OptionPanels
         	this.panPutty = new System.Windows.Forms.Panel();
         	this.grpPuttyPath = new System.Windows.Forms.GroupBox();
         	this.txtPuttyPath = new System.Windows.Forms.TextBox();
+        	this.ButtonBrowseCaptureFolder = new System.Windows.Forms.Button();
         	this.panPutty.SuspendLayout();
         	this.grpPuttyPath.SuspendLayout();
         	this.SuspendLayout();
@@ -48,6 +49,7 @@ namespace Terminals.Panels.OptionPanels
         	// 
         	// grpPuttyPath
         	// 
+        	this.grpPuttyPath.Controls.Add(this.ButtonBrowseCaptureFolder);
         	this.grpPuttyPath.Controls.Add(this.txtPuttyPath);
         	this.grpPuttyPath.Location = new System.Drawing.Point(7, 3);
         	this.grpPuttyPath.Name = "grpPuttyPath";
@@ -60,8 +62,18 @@ namespace Terminals.Panels.OptionPanels
         	// 
         	this.txtPuttyPath.Location = new System.Drawing.Point(11, 30);
         	this.txtPuttyPath.Name = "txtPuttyPath";
-        	this.txtPuttyPath.Size = new System.Drawing.Size(471, 20);
+        	this.txtPuttyPath.Size = new System.Drawing.Size(366, 20);
         	this.txtPuttyPath.TabIndex = 19;
+        	// 
+        	// ButtonBrowseCaptureFolder
+        	// 
+        	this.ButtonBrowseCaptureFolder.Location = new System.Drawing.Point(383, 28);
+        	this.ButtonBrowseCaptureFolder.Name = "ButtonBrowseCaptureFolder";
+        	this.ButtonBrowseCaptureFolder.Size = new System.Drawing.Size(111, 23);
+        	this.ButtonBrowseCaptureFolder.TabIndex = 26;
+        	this.ButtonBrowseCaptureFolder.Text = "Browse...";
+        	this.ButtonBrowseCaptureFolder.UseVisualStyleBackColor = true;
+        	this.ButtonBrowseCaptureFolder.Click += new System.EventHandler(this.ButtonBrowseCaptureFolderClick);
         	// 
         	// PuttyOptionPanel
         	// 
@@ -80,5 +92,6 @@ namespace Terminals.Panels.OptionPanels
         private Panel panPutty;
         private GroupBox grpPuttyPath;
         private TextBox txtPuttyPath;
+        private System.Windows.Forms.Button ButtonBrowseCaptureFolder;
     }
 }

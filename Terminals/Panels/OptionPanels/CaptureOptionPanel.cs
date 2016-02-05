@@ -57,7 +57,7 @@ namespace Terminals.Panels.OptionPanels
                     if (!selectedFld.Equals(String.Empty))
                         selectedFld = (selectedFld.EndsWith("\\")) ? selectedFld : selectedFld + "\\";
 
-                    this.txtScreenCaptureFolder.Text = selectedFld.GetRelativePath();
+                    this.txtScreenCaptureFolder.Text = selectedFld;
                     this.txtScreenCaptureFolder.SelectionStart = this.txtScreenCaptureFolder.Text.Length;
                     this.txtScreenCaptureFolder.Focus();
                 }

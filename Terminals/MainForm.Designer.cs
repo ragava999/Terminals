@@ -127,6 +127,7 @@ namespace Terminals
         	this.sendCTRLESCKeysToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
         	this.sentCTRLALTDELETEKeysToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
         	this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
+        	this.emptyLogFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
         	this.ShortcutsContextMenu.SuspendLayout();
         	this.toolStripContainer.ContentPanel.SuspendLayout();
         	this.toolStripContainer.TopToolStripPanel.SuspendLayout();
@@ -340,7 +341,7 @@ namespace Terminals
 			this.helpToolStripMenuItem});
         	this.menuStrip.Location = new System.Drawing.Point(3, 0);
         	this.menuStrip.Name = "menuStrip";
-        	this.menuStrip.Size = new System.Drawing.Size(317, 24);
+        	this.menuStrip.Size = new System.Drawing.Size(466, 24);
         	this.menuStrip.Stretch = false;
         	this.menuStrip.TabIndex = 1;
         	this.menuStrip.Text = "menuStrip1";
@@ -556,6 +557,7 @@ namespace Terminals
 			this.toolStripMenuItem6,
 			this.openLogFolderToolStripMenuItem,
 			this.openLogFileToolStripMenuItem,
+			this.emptyLogFileToolStripMenuItem,
 			this.toolStripMenuItem2,
 			this.optionsToolStripMenuItem});
         	this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
@@ -1058,6 +1060,14 @@ namespace Terminals
         	this.toolStripButton5.Text = "Computer Management (MMC)";
         	this.toolStripButton5.Click += new System.EventHandler(this.toolStripButton5_Click);
         	// 
+        	// emptyLogFileToolStripMenuItem
+        	// 
+        	this.emptyLogFileToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("emptyLogFileToolStripMenuItem.Image")));
+        	this.emptyLogFileToolStripMenuItem.Name = "emptyLogFileToolStripMenuItem";
+        	this.emptyLogFileToolStripMenuItem.Size = new System.Drawing.Size(276, 22);
+        	this.emptyLogFileToolStripMenuItem.Text = "Empty Log File";
+        	this.emptyLogFileToolStripMenuItem.Click += new System.EventHandler(this.EmptyLogFileToolStripMenuItemClick);
+        	// 
         	// MainForm
         	// 
         	this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -1198,5 +1208,6 @@ namespace Terminals
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem4;
         private System.Windows.Forms.ToolStripMenuItem openLogFolderToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem openLogFileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem emptyLogFileToolStripMenuItem;
     }
 }

@@ -461,7 +461,7 @@ namespace Terminals.Connection.Manager
                 if (Directory.Exists(pluginPath))
                 {
                     // Get all dlls in the plugin folder and under it.
-                    var assemblies = from assembly in new DirectoryInfo(pluginPath).GetFiles("*.dll", SearchOption.AllDirectories) select assembly.FullName;
+                    var assemblies = from assembly in new DirectoryInfo(pluginPath).GetFiles("*.dll", SearchOption.AllDirectories) where !assembly.FullName.ToUpperInvariant().StartsWith(AssemblyInfo.UpgradeDirectory.ToUpperInvariant()) select assembly.FullName;
 
                     // Now load the external types and add them to the list.
                     foreach (string assemblyFile in assemblies)
