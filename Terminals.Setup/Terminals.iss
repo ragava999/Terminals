@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Terminals"
-#define MyAppVersion "4.8.0.0"
+#define MyAppVersion "4.9.0.0"
 #define MyAppPublisher "Oliver Kohl D.Sc."
 #define MyAppURL "https://github.com/OliverKohlDSc/Terminals"
 #define MyAppExeName "Terminals.exe"
@@ -65,6 +65,7 @@ Name: "quicklaunchicon"; Description: "{cm:CreateQuickLaunchIcon}"; GroupDescrip
 
 [Files]
 Source: "C:\KOHL\Terminals\Git\Terminals\Terminals\bin\x86\Distribution Release\Out\Terminals.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\KOHL\Terminals\Git\Terminals\Terminals\bin\x86\Distribution Release\Out\TerminalsUpdater.exe"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\KOHL\Terminals\Git\Terminals\Terminals\bin\x86\Distribution Release\Out\AxInterop.MSTSCLib.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\KOHL\Terminals\Git\Terminals\Terminals\bin\x86\Distribution Release\Out\freebl3.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\KOHL\Terminals\Git\Terminals\Terminals\bin\x86\Distribution Release\Out\Geckofx-Core.dll"; DestDir: "{app}"; Flags: ignoreversion

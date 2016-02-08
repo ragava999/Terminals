@@ -2,13 +2,47 @@
 Terminals is a multi-tab terminal services and remote desktop client. Moreover Terminals is capable beside RDP of supporting AutoIt, a shell explorer, http connections, ICA/Citrix connections, telnet, ssh, VNC and many other protocols.
 
 Download the latest release:
-* [as a ZIP file](https://github.com/OliverKohlDSc/Terminals/releases/download/4.8.0.0/Terminals_4.8.0.0.zip) or
-* in form of an [installer/setup](https://github.com/OliverKohlDSc/Terminals/releases/download/4.8.0.0/Setup_4.8.0.0.exe)
+* [as a ZIP file](https://github.com/OliverKohlDSc/Terminals/releases/download/4.9.0.0/Terminals_4.9.0.0.zip) or
+* in form of an [installer/setup](https://github.com/OliverKohlDSc/Terminals/releases/download/4.9.0.0/Setup_4.9.0.0.exe)
 
 The [official website](http://oliverkohldsc.github.io/Terminals) can be found [here](http://oliverkohldsc.github.io/Terminals).
 
 [My personal website](http://www.kohl.bz)
 
+
+###Release v 4.9.0.0
+
+Date: 2016-02-08
+
+The Terminal Services API code has been improved again.
+
+Improved the stability of the autoit editor (scintilla)
+
+Fixed a bug where the credential synchronizer tried to synchronize a missing credentials.xml file if KeePass credentials are in use.
+
+Improved logging for the favorites tool tip in the favslist for unresolvable dns names. The server name will now be logged too.
+
+The flag 'DontLoadMe' has been introduced in the FavoritePanel class to prevent loading broken favorite panels in the favorites editor.
+
+The AutoItFavoritePanel class is now capable to react on errors in the underlying code e.g. unmanaged code and reports it now to the logger.
+
+The Framework DLL has been excluded from the plugin directories - one, located under the root of Terminals, is fully enough
+
+A typo has been fixed in the CredentialStoreOptionPanel.Designer.cs file
+
+Changed the default button for a server reboot or shutdown in the favorites list to "No" instead of "Yes".
+
+Added browse button in the RAdmin options
+
+Added browse button in the putty options
+
+Fixed a bug that occured in the screen capture option's folder selection menu
+
+The locking model of log4net has been changed to minimal locking - which enables one to truncate the file or just delete it.
+
+A new menu entry in Terminals main window has been added to truncate the current log file.
+
+Reimplemented the Terminals release update mechanism.
 
 
 ###Release v 4.8.0.0

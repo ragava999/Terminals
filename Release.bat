@@ -4,6 +4,9 @@ rem Set the XulRunner runtime version (i.e. the Mozilla engine), ATTENTION: the 
 set XULRUNNER=xulrunner-16.0.2.en-US.win32\xulrunner
 set XULRUNNER=xulrunner-29.0.en-US.win32\xulrunner
 
+rem Copy the Terminals updater to the build directory
+copy "..\..\..\..\TerminalsUpdater\bin\Release\TerminalsUpdater.exe" "TerminalsUpdater.exe" /Y > NUL
+
 rem Copy SciLexer.dll and SciLexer64.dll from Scintilla to the Plugin directory.
 copy "..\..\..\..\DLLs\ScintillaNET v2.5.2\SciLex*.dll" "Plugins\AutoIt\SciLex*.dll" /Y > NUL
 
@@ -66,6 +69,7 @@ copy "*.pak" "..\Distribution Release\*.pak" /Y > NUL
 copy "*.bat" "..\Distribution Release\*.bat" /Y > NUL
 copy "Kohl.Explorer.exe" "..\Distribution Release\Kohl.Explorer.exe" /Y > NUL
 copy "Terminals.exe" "..\Distribution Release\Terminals.exe" /Y > NUL
+copy "TerminalsUpdater.exe" "..\Distribution Release\TerminalsUpdater.exe" /Y > NUL
 copy "plugin-container.exe" "..\Distribution Release\plugin-container.exe" /Y > NUL
 copy "Kohl.Explorer.exe" "..\Distribution Release\Kohl.Explorer.exe" /Y > NUL
 copy "omni.ja" "..\Distribution Release\omni.ja" /Y > NUL
@@ -95,12 +99,16 @@ echo Packing and compressing the distributable version.
 rem It is not a good idea to embed the AxInterop.MSTSCLib.dll
 "..\..\..\..\netz-src\netz\bin\Release\netz.exe" -z -w -o Out -s -so -x86 Terminals.exe AxInterop.Microsoft.VMRCClientControl.Interop.dll AxWFICALib.dll Be.Windows.Forms.HexBox.dll DotRas.dll ICSharpCode.SharpZipLib.dll log4net.dll Metro.dll Microsoft.VMRCClientControl.Interop.dll PacketDotNet.dll SharpPcap.dll TerminalEmulator.dll VncSharp.dll WFICALib.dll Microsoft.WindowsAPICodePack.dll Microsoft.WindowsAPICodePack.Shell.dll ExplorerBrowser.dll
 
+"..\..\..\..\netz-src\netz\bin\Release\netz.exe" -z -w -o Out -s -so TerminalsUpdater.exe log4net.dll
+
 echo Copy the Terminals DLLs and config to the output folder
 copy /Y "Terminals.log4net.config" "Out\Terminals.log4net.config"
 copy /Y "Kohl.Framework.dll" "Out\Kohl.Framework.dll"
 copy /Y "Terminals.Configuration.dll" "Out\Terminals.Configuration.dll"
 copy /Y "KeePassLib.dll" "Out\KeePassLib.dll"
 copy /Y "Terminals.Connection.dll" "Out\Terminals.Connection.dll"
+
+rem copy /Y "TerminalsUpdater.exe" "Out\TerminalsUpdater.exe"
 
 echo Copy the XUL DLLs to the output folder
 copy /Y "omni.ja" "Out\omni.ja"
@@ -177,13 +185,13 @@ rem Packing putty with upx results in an McAfee virus warning!
 ..\..\..\..\..\Resources\Packer\upx308w\upx.exe -9 xul.dll
 ..\..\..\..\..\Resources\Packer\upx308w\upx.exe -9 ZedGraph.dll
 
-cd ..\..
-
 echo.
 echo Done Building Terminals
 echo.
-rem echo Starting with Setup and Zip file creation
-rem cd .\Terminals.Setup\
-rem .\Compile.bat
-rem pause
-exit 0;
+
+echo Starting with Setup and Zip file creation
+cd ..\..\..\..\..\Terminals.Setup\
+
+.\Compile.bat
+
+exit /b 0

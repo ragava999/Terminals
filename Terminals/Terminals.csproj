@@ -929,16 +929,28 @@
     <Compile Include="Wizard\MMC\MMCFile.cs" />
     <Compile Include="Wizard\PasswordStrength.cs" />
     <Compile Include="Wizard\SpecialCommandsWizard.cs" />
+    <None Include="..\Clean.bat">
+      <Link>Clean.bat</Link>
+    </None>
+    <None Include="..\Debug.bat">
+      <Link>Debug.bat</Link>
+    </None>
     <None Include="..\README.md">
       <Link>README.md</Link>
     </None>
     <None Include="..\ReadMe_Description.txt">
       <Link>ReadMe_Description.txt</Link>
     </None>
+    <None Include="..\Release.bat">
+      <Link>Release.bat</Link>
+    </None>
     <None Include="..\ReleaseNotes.txt">
       <Link>ReleaseNotes.txt</Link>
     </None>
     <Content Include="terminalsicon.ico" />
+    <None Include="..\Terminals.Setup\Terminals.iss">
+      <Link>Terminals.iss</Link>
+    </None>
     <None Include="app.config" />
     <None Include="packages.config" />
     <None Include="TODO.txt" />

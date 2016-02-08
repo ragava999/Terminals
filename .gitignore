@@ -1652,3 +1652,7 @@ _Versions
 /Terminals/bin/x86/Debug/Upgrade
 /Terminals/bin/x86/Debug/LastUpdateCheck.txt
 /TerminalsUpdater/obj/Debug
+/Terminals/bin
+/TerminalsUpdater/bin/Debug
+/TerminalsUpdater/bin/Release
+/TerminalsUpdater/obj/Release

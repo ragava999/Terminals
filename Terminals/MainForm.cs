@@ -923,8 +923,8 @@ namespace Terminals
         	
             Boolean connectToConsole = commandLineArgs.Console;
             this.fullScreenSwitch.FullScreen = commandLineArgs.Fullscreen;
-
-            Terminals.Updates.UpdateManager.CheckForUpdates(commandLineArgs);
+            
+            Terminals.Updates.UpdateManager.CheckForUpdates(this, commandLineArgs);
             
             if (commandLineArgs.HasUrlDefined)
                 this.QuickConnect(commandLineArgs.UrlServer, commandLineArgs.UrlPort, connectToConsole, commandLineArgs.ProtcolName, commandLineArgs.UrlServer, commandLineArgs.UseDbFavorite);

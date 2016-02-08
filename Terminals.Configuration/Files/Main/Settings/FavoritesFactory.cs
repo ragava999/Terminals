@@ -26,7 +26,7 @@ namespace Terminals.Configuration.Files.Main.Settings
             if (release == null)
             {
                 release = new FavoriteConfigurationElement(TerminalsReleasesFavoriteName);
-                release.Url = AssemblyInfo.Url;
+                release.Url = Url.GitHubLatestRelease_Link;
                 release.Tags = "Terminals";
                 release.Protocol = "HTTP";
                 Settings.AddFavorite(release);

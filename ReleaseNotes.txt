@@ -16,14 +16,10 @@
 **************************************************** R E L E A S E   N O T E S ****************************************************
 
 
-
-
 Release v 4.8.1.0
 ~~~~~~~~~~~~~~~~~
 
-Date: 2016-02-05
-
-Improved Terminal Services Manager (Part 2 of 2)
+Date: 2016-02-08
 
 The Terminal Services API code has been improved again.
 Improved the stability of the autoit editor (scintilla)
@@ -40,6 +36,7 @@ Fixed a bug that occured in the screen capture option's folder selection menu
 The locking model of log4net has been changed to minimal locking - which enables one to truncate the file or just delete it.
 A new menu entry in Terminals main window has been added to truncate the current log file.
 Reimplemented the Terminals release update mechanism.
+
 
 Release v 4.8.0.0
 ~~~~~~~~~~~~~~~~~

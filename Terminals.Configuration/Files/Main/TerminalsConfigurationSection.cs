@@ -726,7 +726,7 @@ namespace Terminals.Configuration.Files.Main
             {
                 if (this["updateSource"] == null || (this["updateSource"] as string) == "")
                 {
-                    this["updateSource"] = @"http://www.kohl.bz/TerminalsUpdates.xml";
+                	this["updateSource"] = string.Empty;
                 }
                 return (string) this["updateSource"];
             }

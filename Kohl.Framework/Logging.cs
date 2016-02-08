@@ -15,8 +15,15 @@ namespace Kohl.Framework.Logging
 		
 		static Log()
 		{
-			//log4net.Config.XmlConfigurator.Configure();
-			log4net.Config.XmlConfigurator.Configure(new FileInfo(Path.Combine(AssemblyInfo.Directory, AssemblyInfo.Title+".log4net.config")));
+			SetXmlConfig();
+		}
+		
+		public static void SetXmlConfig(string configName = null)
+		{
+			if (string.IsNullOrEmpty(configName))
+			    configName = AssemblyInfo.Title;
+			
+			log4net.Config.XmlConfigurator.Configure(new FileInfo(Path.Combine(AssemblyInfo.Directory, configName+".log4net.config")));
 		}
 		
 		public static string CurrentLogFolder 

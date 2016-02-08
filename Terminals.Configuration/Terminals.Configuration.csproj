@@ -141,6 +141,7 @@
       <AutoGen>True</AutoGen>
     </Compile>
     <Compile Include="Sql\TerminalsEdmxExtension.cs" />
+    <Compile Include="Url.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">

@@ -20,9 +20,9 @@ using System.Runtime.InteropServices;
 //      Build Number
 //      Revision
 //
-[assembly: AssemblyVersion ("4.8.1.0")]
-[assembly: AssemblyFileVersion ("4.8.1.0")]
-[assembly: AssemblyInformationalVersion ("4.8.1 RC1")]
+[assembly: AssemblyVersion ("4.9.0.0")]
+[assembly: AssemblyFileVersion ("4.9.0.0")]
+[assembly: AssemblyInformationalVersion ("4.9 RTM")]
 /*
 AssemblyVersion
 
@@ -48,5 +48,5 @@ The Product version of the assembly. This is the version you would use when talk
 
 I use the format: major.minor [revision as string]. This would result in:
 [assembly: AssemblyInformationalVersion("1.0 RC1")] 
-*/[assembly: Guid ("d2d6d110-9846-4c33-acb9-657cfa994890")]
+*/[assembly: Guid ("76d9dac2-b9e2-44d8-ae9c-22a4585e14e3")]
 [assembly: AssemblyFlags (AssemblyNameFlags.PublicKey | AssemblyNameFlags.EnableJITcompileOptimizer)]

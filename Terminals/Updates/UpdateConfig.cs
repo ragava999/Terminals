@@ -104,6 +104,7 @@ namespace Terminals.Updates
 
         private static void UpdateObsoleteConfigVersions()
         {
+        	/*
             if (Settings.ConfigVersion != null && Settings.ConfigVersion <= new Version(4, 0, 0, 1))
             {
                 Log.Info("Upgrading configuration to version level 4.0.0.2.");
@@ -151,6 +152,7 @@ namespace Terminals.Updates
                 // Save the new configuration file.
                 SaveConfigurationFile(newConfig);
             }
+            */
         }
 
         public static void SaveConfigurationFile(string fullyCompleteConfigurationContent)
@@ -182,134 +184,5 @@ namespace Terminals.Updates
                 Log.Error("Unable to upgrade the configruation file.", ex);
             }
         }
-        
-        /*
-        private static void UpdateObsoleteConfigVersions()
-        {
-            // The config version might be null, if Terminals has been started the first time
-            // without a Terminals.config or if the config is wrong that it will be replaced by
-            // an empty one -> and therefore the ConfigVersion will be empty again.
-
-            // We've changed the sections in the Terminals.config 3.8
-            // So update any version below 3.7 to match the new 3.8 structure.
-            if (Settings.ConfigVersion != null && Settings.ConfigVersion <= new Version(3, 7, 0, 0))
-            {
-                //Terminals 3.7.0.0
-                //Terminals.Configuration.KeysSection, Terminals.Configuration, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-                //Terminals.Configuration.TerminalsConfigurationSection, Terminals.Configuration
-                //
-                //Terminals 3.8.0.0
-                //Terminals.Configuration.Files.Main.Keys.KeysSection, Terminals.Configuration, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-                //Terminals.Configuration.Files.Main.TerminalsConfigurationSection, Terminals.Configuration
-                string newConfig =
-                    System.IO.File.ReadAllText(Settings.ConfigurationFileLocation)
-                          .Replace("type=\"Terminals.Configuration.KeysSection, Terminals.Configuration",
-                                   "type=\"Terminals.Configuration.Files.Main.Keys.KeysSection, Terminals.Configuration")
-                          .Replace(
-                              "type=\"Terminals.Configuration.TerminalsConfigurationSection, Terminals.Configuration",
-                              "type=\"Terminals.Configuration.Files.Main.TerminalsConfigurationSection, Terminals.Configuration");
-
-                // Remove the savedCredentials attribute
-                newConfig = newConfig.ReplaceAttribute("savedCredentials");
-
-                // Save the new configuration file.
-                System.IO.File.WriteAllText(Settings.ConfigurationFileLocation, newConfig);
-            }
-            
-            if (Settings.ConfigVersion != null && Settings.ConfigVersion <= new Version(3, 8, 0, 0))
-            {
-                // Remove the savedCredentials attribute
-                string newConfig = System.IO.File.ReadAllText(Settings.ConfigurationFileLocation).ReplaceAttribute("telnet");
-                newConfig = newConfig.ReplaceAttribute("telnetrows");
-                newConfig = newConfig.ReplaceAttribute("telnetcols");
-
-                //
-                //[ConfigurationProperty("telnet", IsRequired = false, DefaultValue = true)]
-                //public Boolean Telnet
-                //{
-                //    get { return (Boolean)this["telnet"]; }
-                //    set { this["telnet"] = value; }
-                //}
-                //
-                //[ConfigurationProperty("telnetrows", IsRequired = false, DefaultValue = 33)]
-                //public Int32 TelnetRows
-                //{
-                //    get { return (Int32)this["telnetrows"]; }
-                //    set { this["telnetrows"] = value; }
-                //}
-                //
-                //[ConfigurationProperty("telnetcols", IsRequired = false, DefaultValue = 110)]
-                //public Int32 TelnetCols
-                //{
-                //    get { return (Int32)this["telnetcols"]; }
-                //    set { this["telnetcols"] = value; }
-                //}
-                //
-
-                newConfig = newConfig.ReplaceAttribute("telnetfont");
-                newConfig = newConfig.ReplaceAttribute("telnetbackcolor");
-                newConfig = newConfig.ReplaceAttribute("telnettextcolor");
-                newConfig = newConfig.ReplaceAttribute("telnetcursorcolor");
-
-
-                //[ConfigurationProperty("telnetfont", IsRequired = false, DefaultValue = "[Font: Name=Courier New, Size=10, Units=3, GdiCharSet=0, GdiVerticalFont=False, Style=0]")]
-                //public String TelnetFont
-                //{
-                //    get
-                //    {
-                //        String font = (String)this["telnetfont"];
-                //        if (String.IsNullOrEmpty(font))
-                //            font = "[Font: Name=Courier New, Size=10, Units=3, GdiCharSet=0, GdiVerticalFont=False, Style=0]";
-                //
-                //        return font;
-                //    }
-                //    set { this["telnetfont"] = value; }
-                //}
-                //
-                //[ConfigurationProperty("telnetbackcolor", IsRequired = false, DefaultValue = "Black")]
-                //public String TelnetBackColor
-                //{
-                //    get { return (String)this["telnetbackcolor"]; }
-                //    set { this["telnetbackcolor"] = value; }
-                //}
-                //
-                //[ConfigurationProperty("telnettextcolor", IsRequired = false, DefaultValue = "White")]
-                //public String TelnetTextColor
-                //{
-                //    get { return (String)this["telnettextcolor"]; }
-                //    set { this["telnettextcolor"] = value; }
-                //} 
-                //
-                //[ConfigurationProperty("telnetcursorcolor", IsRequired = false, DefaultValue = "Green")]
-                //public String TelnetCursorColor
-                //{
-                //    get { return (String)this["telnetcursorcolor"]; }
-                //    set { this["telnetcursorcolor"] = value; }
-                //}
-
-
-                // Save the new configuration file.
-                System.IO.File.WriteAllText(Settings.ConfigurationFileLocation, newConfig);
-
-                FavoriteConfigurationElementCollection favorites = Settings.GetFavorites();
-
-
-                // Sample for updating the news favorites
-                //FavoriteConfigurationElement newsFavorite = favorites[FavoritesFactory.TerminalsReleasesFavoriteName];
-
-                //if (newsFavorite != null)
-                //{
-                //    newsFavorite.Url = AssemblyInfo.Url;
-                //    Settings.SaveDefaultFavorite(newsFavorite);
-                //}
-
-
-                foreach (FavoriteConfigurationElement favorite in favorites)
-                {
-                    favorite.ClearHtmlFormFields();
-                }
-            }
-        }
-        */
     }
 }
