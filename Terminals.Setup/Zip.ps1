@@ -22,8 +22,8 @@ $Assemblyversion =  $Assembly.GetName().version
 
 $string = ($Assemblyversion.Major.ToString()+"."+$Assemblyversion.Minor.ToString()+"."+$Assemblyversion.Build.ToString()+"."+$Assemblyversion.Revision.ToString());
 
-Remove-Item -Force -Recurse ("Terminals_"+$string) -ErrorAction SilentlyContinue
-mkdir $string
+Remove-Item -Force -Recurse (".\"+$string+"\") -ErrorAction SilentlyContinue
+mkdir $string -Force -ErrorAction SilentlyContinue | Out-Null
 
 Move-Item -Force Output\Setup_*.exe .\$string
 Remove-Item -Force -Recurse Output -ErrorAction SilentlyContinue

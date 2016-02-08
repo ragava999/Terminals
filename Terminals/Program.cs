@@ -297,10 +297,10 @@
             try
             {
                 if (File.Exists(Settings.ConfigurationFileLocation))
-                    File.Copy(Settings.ConfigurationFileLocation, Path.Combine(AssemblyInfo.Directory, AssemblyInfo.Title + ".bak"), true);
+                    File.Copy(Settings.ConfigurationFileLocation, Path.Combine(AssemblyInfo.DirectoryConfigFiles, AssemblyInfo.Title + ".bak"), true);
 
                 if (File.Exists(Configuration.Files.Credentials.StoredCredentials.ConfigurationFileLocation))
-                    File.Copy(Configuration.Files.Credentials.StoredCredentials.ConfigurationFileLocation, Path.Combine(AssemblyInfo.Directory, "Credentials.bak"), true);
+                    File.Copy(Configuration.Files.Credentials.StoredCredentials.ConfigurationFileLocation, Path.Combine(AssemblyInfo.DirectoryConfigFiles, "Credentials.bak"), true);
 
 				Log.Info("Configuration file backup has been created successfully.");
             }

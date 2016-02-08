@@ -7,5 +7,4 @@ rem Set the path back to the application directory
 powershell -Command "&{ Set-Content ((Get-Content -Path 'C:\KOHL\Terminals\Git\Terminals\Terminals\bin\x86\Distribution Release\Out\Terminals.log4net.config').Replace('${LOCALAPPDATA}\\Oliver Kohl D.Sc.\\Terminals\\Logs\\Terminals.txt', 'Logs\\Terminals.txt')) -Path 'C:\KOHL\Terminals\Git\Terminals\Terminals\bin\x86\Distribution Release\Out\Terminals.log4net.config' }"
 powershell ./Zip.ps1
 
-move /Y Output\Setup_*.exe .
-rmdir /S /Q Output
+exit /b 0

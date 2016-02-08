@@ -67,10 +67,10 @@ namespace Terminals.Updates
         private static void CheckForNewRelease(CommandLineArgs commandLineArgs)
         {
             Boolean checkForUpdate = true;
-            const string releaseFile = "LastUpdateCheck.txt";
+            string releaseFile = Path.Combine(AssemblyInfo.DirectoryConfigFiles, "LastUpdateCheck.txt");
+            
             if (File.Exists(releaseFile))
             {
-
                 string text = null;
                 using (FileStream fs = new FileStream(releaseFile, FileMode.Open, FileAccess.Read, FileShare.ReadWrite & FileShare.Delete))
                 {
