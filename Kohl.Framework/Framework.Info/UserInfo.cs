@@ -40,10 +40,16 @@ namespace Kohl.Framework.Info
 			}
 		}
 
+		[DllImport ("libc")]
+		private static extern uint getuid ();
+
 		public static string UserSid
 		{
 			get
 			{
+				if (MachineInfo.IsUnixOrMac)
+					return getuid().ToString();
+
 				return WindowsIdentity.GetCurrent().User.ToString();
 			}
 		}

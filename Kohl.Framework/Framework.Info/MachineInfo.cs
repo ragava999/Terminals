@@ -30,6 +30,19 @@ namespace Kohl.Framework.Info
 			}
 		}
 
+		public static bool IsUnixOrMac
+		{
+			get
+			{
+				int p = (int) Environment.OSVersion.Platform;
+				if ((p == 4) || (p == 6) || (p == 128)) {
+					// if we are running on Unix (p := 4, p := 128) or on MacOSX (p := 6)
+					return true;
+				} else
+					return false;
+			}
+		}
+
 		public static string BuildGuid
 		{
 			get
@@ -229,10 +242,13 @@ namespace Kohl.Framework.Info
 				{
 					return true;
 				}
-				if (DeveloperTools.DoesWin32MethodExist("kernel32.dll", "IsWow64Process") && MachineInfo.IsWow64Process(MachineInfo.GetCurrentProcess(), out flag))
-				{
-					return flag;
-				}
+
+				if (!MachineInfo.IsUnixOrMac)
+					if (DeveloperTools.DoesWin32MethodExist("kernel32.dll", "IsWow64Process") && MachineInfo.IsWow64Process(MachineInfo.GetCurrentProcess(), out flag))
+					{
+						return flag;
+					}
+
 				return false;
 			}
 		}

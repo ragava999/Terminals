@@ -173,6 +173,9 @@ namespace Terminals.Configuration.Files.Main.Favorites
         /// <exception cref="global::System.Configuration.ConfigurationErrorsException">The element identified by <paramref name="elementName"/> is locked.- or -One or more of the element's attributes is locked.- or -<paramref name="elementName"/> is unrecognized, or the element has an unrecognized attribute.- or -The element has a Boolean attribute with an invalid value.- or -An attempt was made to deserialize a property more than once.- or -An attempt was made to deserialize a property that is not a valid member of the element.- or -The element cannot contain a CDATA or text element.</exception>
         protected override bool OnDeserializeUnrecognizedElement(string elementName, global::System.Xml.XmlReader reader)
         {
+			if (Kohl.Framework.Info.MachineInfo.IsUnixOrMac)
+				return false;
+			
             if (elementName == PluginConfigurationPropertyName && reader.AttributeCount > 0)
             {
                 PluginConfiguration config = new PluginConfiguration(reader[0].ToString());

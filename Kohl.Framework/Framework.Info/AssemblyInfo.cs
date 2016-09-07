@@ -39,22 +39,16 @@ namespace Kohl.Framework.Info
 		
 		    return Environment.GetEnvironmentVariable("ProgramFiles");
 		}
-		
+			
 		public static string DirectoryConfigFiles
 		{
 			get
 			{
-				int p = (int) Environment.OSVersion.Platform;
-				if ((p == 4) || (p == 6) || (p == 128))
-				{
-					// if we are running on Unix (p := 4, p := 128) or on MacOSX (p := 6)
-				}
-				else
+				if (!MachineInfo.IsUnixOrMac)
 				{
 					// If we are running on Windows
 					if (Directory.ToLower().Contains(ProgramFilesx86().ToLower()) || Directory.ToLower().Contains(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles).ToLower()) || !Directory.CanWriteToFolder())
 						return Path.Combine(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), Author), Title);
-					
 				}
 
 				return Directory;
