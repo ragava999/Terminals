@@ -1,0 +1,424 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<code>
+  <!--
+      RPX 
+      
+      THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, 
+      EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED 
+      WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
+      
+      Copyright (C) 2008 Phill Tew. All rights reserved.
+  --> 
+  <!--  Namespace Includes -->
+  <code>
+    <![CDATA[
+using System;
+using System.Collections.Generic;
+using System.Reflection;
+using System.IO;
+using System.IO.Packaging;
+    ]]>
+
+
+    <code defines="UseCryptography">
+      <![CDATA[
+using System.Security.Cryptography;
+using System.Text;
+    ]]>
+    </code>
+
+    <code defines="WinExec">
+      <![CDATA[
+using System.Windows.Forms;
+     ]]>
+    </code>
+  </code>
+
+  <!--  Assembly Info -->
+  <code>
+    <code defines="!ExpliciteInfo">
+      <![CDATA[
+[#AssemblyInfo.cs#]
+    ]]>
+    </code>
+
+
+    <code defines="ExpliciteInfo">
+      <![CDATA[
+[assembly: AssemblyTitle("[Asm_Title]")]
+[assembly: AssemblyDescription("[Asm_Description]")]
+[assembly: AssemblyConfiguration("[Asm_Configuration]")]
+[assembly: AssemblyCompany("[Asm_Company]")]
+[assembly: AssemblyProduct("[Asm_Product]")]
+[assembly: AssemblyCopyright("[Asm_Copyright]")]
+[assembly: AssemblyTrademark("[Asm_Trademark]")]
+[assembly: AssemblyCulture("[Asm_Culture]")]
+[assembly: AssemblyVersion("[Asm_Version]")]
+[assembly: AssemblyFileVersion("[Asm_FileVersion]")]
+    ]]>
+    </code>
+  </code>
+
+  <!--  Class Definition -->
+  <code>
+    <![CDATA[
+namespace R
+{
+  static class P
+  {
+  ]]>
+  </code>
+
+  <!--  Load Assembly From Embedded Resource -->
+  <code>
+    <![CDATA[
+    private static Assembly L(Package p, string u)
+    {
+      byte[] bytes;
+
+      Uri pathUri = new Uri(u, UriKind.Relative);
+
+      using (Stream stream = p.GetPart(pathUri).GetStream())
+      {
+        bytes = new byte[(int)stream.Length];
+        stream.Read(bytes, 0, bytes.Length);
+      }
+
+      Assembly assembly = Assembly.Load(bytes);
+
+      if (null == assembly)
+        throw new ArgumentException("Unable to load assembly: " + u);
+
+      return assembly;
+    }
+    ]]>
+  </code>
+
+  <!-- Loading Additonal Assemblys -->
+  <code defines="HasAdditionalAssemblys">
+    <code foreach="Assemblys" >
+      <![CDATA[
+    private static Assembly [#Asm_IdStr#];
+      ]]>
+    </code>    
+    
+    <![CDATA[      
+    private static Assembly F(object sender, ResolveEventArgs e)
+    {
+      ]]>
+    <code foreach="Assemblys">
+      <![CDATA[      
+      if (e.Name.Equals([#Asm_IdStr#].FullName)) return [#Asm_IdStr#];
+      ]]>
+    </code>
+    <![CDATA[            
+      return null;
+    }
+  ]]>
+  </code>
+
+  <!-- Start Main Method -->
+  <code>
+    <![CDATA[ 
+  [STAThread]
+  static void Main(string[] args)
+  {
+    int argIndex = 0;
+  ]]>
+
+    <code defines="!WinExec,Decorate">
+      <![CDATA[ 
+      Console.ForegroundColor = ConsoleColor.Gray;
+
+      if (Console.BackgroundColor != ConsoleColor.Black)
+      {
+        Console.BackgroundColor = ConsoleColor.Black;
+        try { Console.Clear(); } catch { }
+      }
+  ]]>
+    </code>
+
+    <![CDATA[         
+      try
+      {
+  ]]>
+    <code defines="HasAdditionalAssemblys">
+      <![CDATA[ 
+          AppDomain.CurrentDomain.AssemblyResolve += new ResolveEventHandler(F);
+      ]]>
+    </code>
+  </code>
+  
+  <!-- Hidden or Encrypted Resources -->
+  <code>
+    <code defines="Hidden">
+      <code defines="UseCryptography">
+        <![CDATA[ 
+          if (args.Length < argIndex + 1) 
+          {
+        ]]>
+        <code defines="WinExec">
+          <![CDATA[          
+            MessageBox.Show("You must supply a password");
+        ]]>
+        </code>
+        <code defines="!WinExec">
+          <code defines="Decorate">
+            <![CDATA[          
+            Console.ForegroundColor = ConsoleColor.DarkRed;
+            Console.WriteLine("You must supply a password");
+            Console.ResetColor();
+        ]]>
+          </code>
+          <code defines="!Decorate">
+            <![CDATA[          
+            Console.WriteLine("You must supply a password");
+        ]]>
+          </code>
+        </code>
+        <![CDATA[                    
+            return; 
+          }
+
+          string passwordString = args[argIndex++];
+
+          PasswordDeriveBytes password = new PasswordDeriveBytes(passwordString, Encoding.ASCII.GetBytes("[#PasswordSalt#]"), "SHA1", [#PasswordStrength#]);
+          RijndaelManaged symmetricKey = new RijndaelManaged();
+          symmetricKey.Mode = CipherMode.CBC;
+          ICryptoTransform decryptor = symmetricKey.CreateDecryptor(password.GetBytes(256 / 8), Encoding.ASCII.GetBytes("[#PasswordVector#]"));
+          byte[] finalBytes;
+
+          Stream ManStream = typeof(P).Assembly.GetManifestResourceStream("#ResourceLocation#");
+          {
+            using (Stream Crypto = new CryptoStream(ManStream, decryptor, CryptoStreamMode.Read))
+            {
+              byte[] plainTextBytes = new byte[ManStream.Length];
+
+              // Start decrypting.
+              int decryptedByteCount = Crypto.Read(plainTextBytes, 0, plainTextBytes.Length);
+
+              finalBytes = new byte[decryptedByteCount];
+
+              for (int i = 0; i < decryptedByteCount; i++)
+                finalBytes[i] = plainTextBytes[i]; 
+            }
+          }
+
+          using (Stream file = new MemoryStream(finalBytes))
+     ]]>
+      </code>
+      <code defines="!UseCryptography">
+        <![CDATA[ 
+          Stream ManStream = typeof(P).Assembly.GetManifestResourceStream("#ResourceLocation#");
+
+          byte[] pt = new byte[ManStream.Length];
+          ManStream.Read(pt, 0, pt.Length);
+
+          Array.Reverse(pt);
+
+          using (Stream file = new MemoryStream(pt))
+    ]]>
+      </code>
+    </code>
+  </code>
+
+  <!-- Not Hidden Resources -->
+  <code defines="!Hidden">
+    <![CDATA[ 
+          using (Stream file = typeof(P).Assembly.GetManifestResourceStream("#ResourceLocation#"))
+  ]]>
+  </code>
+
+  <!-- Open Package Resource and Load Assembly -->
+  <code>
+    <![CDATA[ 
+          {
+            using (Package package = Package.Open(file, FileMode.Open, FileAccess.Read))
+            {
+  ]]>
+
+    <code defines="HasAdditionalAssemblys">
+      <code foreach="Assemblys" >
+        <![CDATA[
+              [#Asm_IdStr#] = L(package, "[#Asm_Path#]");
+        ]]>
+      </code>
+    </code>
+
+    <code defines="IsToolkit">
+        <![CDATA[ 
+              if (args.Length < argIndex + 1) 
+              {
+        ]]>
+      <code defines="WinExec">
+        <![CDATA[          
+                MessageBox.Show("You must supply a tool name. Valid tools are: [#ToolsString#]");
+        ]]>
+      </code>
+      <code defines="!WinExec">
+        <code defines="Decorate">
+          <![CDATA[          
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+                Console.WriteLine("You must supply a tool name");
+                Console.ResetColor();
+          ]]>
+        </code>
+        <code defines="!Decorate">
+          <![CDATA[          
+                Console.WriteLine("You must supply a tool name");
+          ]]>
+        </code>
+      </code>
+      <![CDATA[ 
+                return; 
+              }
+
+              string t = args[argIndex++]; 
+      ]]>
+      <code defines="!WinExec">
+        <![CDATA[
+              if (t == "/?")
+              {
+        ]]>
+        <code defines="Decorate">
+          <![CDATA[          
+                Console.ForegroundColor = ConsoleColor.White; 
+                Console.WriteLine("Valid tools are:");
+                Console.ForegroundColor = ConsoleColor.Gray;
+                Console.WriteLine("[#ToolsString#]");                   
+                Console.ResetColor();
+          ]]>
+        </code>
+        <code defines="!Decorate">
+          <![CDATA[          
+                Console.WriteLine("Valid tools are:");
+                Console.WriteLine("[#ToolsString#]");                   
+          ]]>
+        </code>
+        <![CDATA[ 
+                return; 
+              }
+        ]]>
+      </code>
+      <![CDATA[                    
+              Assembly init; 
+      ]]>
+      <code foreach="Tools" else-after-first="true" >
+        <![CDATA[
+              if (t.Equals("[#Tool_Name#]", StringComparison.CurrentCultureIgnoreCase)) init = [#Tool_Asm#];
+        ]]>
+      </code>
+      <![CDATA[              
+              else 
+              {
+      ]]>
+      <code defines="WinExec">
+        <![CDATA[          
+                MessageBox.Show("Unknown tool '" + t + "'");
+        ]]>
+      </code>
+      <code defines="!WinExec">
+        <code defines="Decorate">
+          <![CDATA[          
+                Console.ForegroundColor = ConsoleColor.Red; 
+                Console.WriteLine("Unknown tool '" + t + "'");
+                Console.ResetColor();
+          ]]>
+        </code>
+        <code defines="!Decorate">
+          <![CDATA[          
+                Console.WriteLine("Unknown tool '" + t + "'");
+          ]]>
+        </code>
+      </code>
+      <![CDATA[ 
+                return; 
+              }
+      ]]>
+      <code defines="PassArguments">
+        <![CDATA[ 
+              string[] sArgs = new string[args.Length - argIndex];
+
+              for (int i = argIndex; i < args.Length; i++) 
+                  sArgs[i - argIndex] = args[i];
+
+              init.EntryPoint.Invoke(null, new object[] { sArgs });
+        ]]>
+      </code>
+      <code defines="!PassArguments">
+        <![CDATA[ 
+              init.EntryPoint.Invoke(null, new object[0]);
+        ]]>
+      </code>
+    </code>
+    <code defines="!IsToolkit">
+      <![CDATA[ 
+              Assembly init = L(package, "#InitialAssemblyPath#");
+      ]]>
+      <code defines="PassArguments">
+        <![CDATA[  
+              init.EntryPoint.Invoke(null, new object[] { args });
+        ]]>
+      </code>
+      <code defines="!PassArguments">
+        <![CDATA[ 
+              init.EntryPoint.Invoke(null, new object[0]);     
+        ]]>
+      </code>
+    </code>  
+  <![CDATA[ 
+            }
+          }
+        }
+  ]]>
+  </code>
+  
+  <!-- Handel Exceptions -->
+  <code>
+    <![CDATA[ 
+        catch (Exception ex)
+        {
+  ]]>
+    <code defines="WinExec">
+      <![CDATA[ 
+          MessageBox.Show(ex.GetType().Name + "\n" +  ex.Message + "\n" + ex.StackTrace);
+  ]]>
+    </code>
+    <code defines="!WinExec">
+      <code defines="Decorate">
+        <![CDATA[ 
+          Console.ForegroundColor = ConsoleColor.Red; 
+
+          Console.WriteLine(ex.GetType().Name);
+          Console.ForegroundColor = ConsoleColor.DarkRed; 
+          Console.WriteLine(ex.Message); 
+          Console.ForegroundColor = ConsoleColor.DarkGray; 
+          Console.WriteLine(ex.StackTrace); 
+          Console.ResetColor();
+      ]]>
+      </code>
+      <code defines="Decorate">
+        <![CDATA[ 
+          Console.WriteLine(ex.GetType().Name + "\n" + ex.Message + "\n" + ex.StackTrace);
+      ]]>
+      </code>
+    </code>
+    <![CDATA[ 
+        }
+    ]]>
+  </code>
+
+  <!-- End of Main Method -->
+  <code>
+    <code defines="!WinExec, Decorate">
+      <![CDATA[ 
+      Console.ResetColor();
+      ]]>
+    </code>
+    <![CDATA[     
+    }
+  }
+}
+  ]]>
+  </code>
+</code>

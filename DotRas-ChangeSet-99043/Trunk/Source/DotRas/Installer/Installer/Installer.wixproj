@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>3.0</ProductVersion>
+    <ProjectGuid>{dc789f01-a6fe-443d-84f8-cbba4a5269dc}</ProjectGuid>
+    <SchemaVersion>2.0</SchemaVersion>
+    <OutputName>DotRas SDK</OutputName>
+    <OutputType>Package</OutputType>
+    <WixTargetsPath Condition=" '$(WixTargetsPath)' == '' AND '$(MSBuildExtensionsPath32)' != '' ">$(MSBuildExtensionsPath32)\Microsoft\WiX\v3.x\Wix.targets</WixTargetsPath>
+    <WixTargetsPath Condition=" '$(WixTargetsPath)' == '' ">$(MSBuildExtensionsPath)\Microsoft\WiX\v3.x\Wix.targets</WixTargetsPath>
+    <SccProjectName>SAK</SccProjectName>
+    <SccProvider>SAK</SccProvider>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+    <Name>Installer</Name>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <OutputPath>bin\$(Configuration)\</OutputPath>
+    <IntermediateOutputPath>obj\$(Configuration)\</IntermediateOutputPath>
+    <DefineConstants>Debug</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <OutputPath>bin\$(Configuration)\</OutputPath>
+    <IntermediateOutputPath>obj\$(Configuration)\</IntermediateOutputPath>
+    <SuppressPdbOutput>True</SuppressPdbOutput>
+    <DefineConstants>
+    </DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Staging|x86' ">
+    <OutputPath>bin\$(Platform)\$(Configuration)\</OutputPath>
+    <IntermediateOutputPath>obj\$(Platform)\$(Configuration)\</IntermediateOutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Staging|AnyCPU' ">
+    <OutputPath>bin\$(Platform)\$(Configuration)\</OutputPath>
+    <IntermediateOutputPath>obj\$(Platform)\$(Configuration)\</IntermediateOutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Staging|Any CPU' ">
+    <OutputPath>bin\$(Platform)\$(Configuration)\</OutputPath>
+    <IntermediateOutputPath>obj\$(Platform)\$(Configuration)\</IntermediateOutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Content\Components\ProgramFilesFolder.wxs" />
+    <Compile Include="Content\Components\ProgramFilesFolder\DocsFolder.wxs" />
+    <Compile Include="Content\Components\ProgramFilesFolder\ExamplesFolder.wxs" />
+    <Compile Include="Content\Components\ProgramFilesFolder\Libraries\DotNet2Folder.wxs" />
+    <Compile Include="Content\Components\ProgramFilesFolder\Libraries\DotNet4Folder.wxs" />
+    <Compile Include="Content\Components\ProgramMenuFolder.wxs" />
+    <Compile Include="Content\Components\Registry.wxs" />
+    <Compile Include="Content\Features.wxs" />
+    <Compile Include="Content\Components.wxs" />
+    <Compile Include="Product.wxs" />
+    <Compile Include="UI\UI.wxs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Content\Components\" />
+    <Folder Include="Content\Components\ProgramFilesFolder\" />
+    <Folder Include="Content\Components\ProgramFilesFolder\Libraries" />
+    <Folder Include="Images\" />
+    <Folder Include="Localization" />
+    <Folder Include="Content" />
+    <Folder Include="UI" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Localization\en-us.wxl" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Config.wxi" />
+    <Content Include="Images\Banner.bmp" />
+    <Content Include="Images\Dialog.bmp" />
+    <Content Include="Images\Info.ico" />
+    <Content Include="Images\Setup.ico" />
+    <Content Include="Images\Warning.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <WixExtension Include="WixVSExtension">
+      <HintPath>..\..\..\..\Components\Wix\WixVSExtension.dll</HintPath>
+      <Name>WixVSExtension</Name>
+    </WixExtension>
+    <WixExtension Include="WixUIExtension">
+      <HintPath>..\..\..\..\Components\Wix\WixUIExtension.dll</HintPath>
+      <Name>WixUIExtension</Name>
+    </WixExtension>
+  </ItemGroup>
+  <Import Project="$(WixTargetsPath)" />
+  <!--
+	To modify your build process, add your task inside one of the targets below and uncomment it.
+	Other similar extension points exist, see Wix.targets.
+	<Target Name="BeforeBuild">
+	</Target>
+	<Target Name="AfterBuild">
+	</Target>
+	-->
+</Project>

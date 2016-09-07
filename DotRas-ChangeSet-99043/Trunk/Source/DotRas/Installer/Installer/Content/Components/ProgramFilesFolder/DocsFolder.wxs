@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<?include "..\..\..\Config.wxi" ?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+	<Fragment>
+    <ComponentGroup Id="DocsComponentGroup">
+      <ComponentRef Id="DocsComponent"/>
+    </ComponentGroup>
+
+    <DirectoryRef Id="DocsFolder">
+      <Component Id="DocsComponent" Guid="{6F045663-8844-4A62-BC61-A9DB59C0DC63}">
+        <File Id="DotRas.chm" Source="SourceDir\Help\DotRas.chm" KeyPath="yes" />
+      </Component>
+    </DirectoryRef>
+    
+	</Fragment>
+</Wix>

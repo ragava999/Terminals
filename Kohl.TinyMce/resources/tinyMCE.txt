@@ -1,0 +1,95 @@
+﻿<meta http-equiv="X-UA-Compatible" content="IE=edge;no-cache;charset=windows-1250" />
+<script src="tinyMCE/tinymce/js/tinymce/tinymce.min.js"></script>
+<script type="text/javascript">
+tinymce.init({
+	selector: "textarea",
+	theme: "modern",
+	plugins: [
+		"advlist autolink lists link image charmap print preview hr anchor pagebreak",
+		"searchreplace wordcount visualblocks visualchars code fullscreen",
+		"insertdatetime media nonbreaking save table contextmenu directionality",
+		"emoticons template paste textcolor"
+	],
+
+	menubar: false,
+	toolbar_items_size: 'small',
+
+	entity_encoding : "named", //"raw",
+
+	// http://www.tinymce.com/wiki.php/Configuration:convert_newlines_to_brs
+	// If you set this option to true, newline characters codes get converted into br elements. This option is set to false by default.
+	convert_newlines_to_brs : false,
+
+	// http://www.tinymce.com/wiki.php/Configuration:extended_valid_elements
+	// This option is very similar to valid_elements. The only difference between this option and valid_elements is that this one gets added to the existing rule set. This can be very useful if the existing rule set is fine but you want to add some specific elements that also should be valid.
+	// When adding a new attribute by specifying an existing element rule (e.g. img), the entire rule for that element is over-ridden so be sure to include all valid attributes not just the one you wish to add. See valid_elements for default rules.
+	extended_valid_elements : "img[class|src|border=0|alt|title|hspace|vspace|width|height|align|onmouseover|onmouseout|name]",
+
+	// http://www.tinymce.com/wiki.php/Configuration:valid_elements
+	valid_elements : "a[href|target=_blank],strong/b,div[align],br",
+
+	// http://www.tinymce.com/wiki.php/Configuration:force_p_newlines
+	force_p_newlines : false,
+
+	// http://www.tinymce.com/wiki.php/Configuration:force_br_newlines
+	force_br_newlines : false,
+
+	// http://www.tinymce.com/wiki.php/Configuration:force_br_newlines
+	// http://www.tinymce.com/wiki.php/Configuration:forced_root_block
+	forced_root_block : '', // Needed for 3.x
+
+	// http://www.tinymce.com/wiki.php/Configuration:preformatted
+	preformatted : false,
+
+	// http://www.tinymce.com/wiki.php/Configuration:invalid_elements
+	invalid_elements : "",
+	
+	// Theme options
+	toolbar1: "save | newdocument fullpage | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | inserttime preview | forecolor backcolor | styleselect formatselect fontselect fontsizeselect",
+	toolbar2: "cut copy paste | searchreplace bullist numlist | outdent indent blockquote | undo redo | link unlink anchor image media code",
+	toolbar3: "table | hr removeformat | subscript superscript | charmap emoticons | print fullscreen | ltr rtl | spellchecker | visualchars visualblocks nonbreaking template pagebreak restoredraft",
+
+	// Example content CSS (should be your site CSS)
+	content_css : "",
+	
+	image_advtab: true,
+	templates: [
+		{title: 'Author', content: '<b>Oliver Kohl D.Sc.</b>'}
+	],
+	
+	//oninit : function(ed) {
+    //    tinyMCE.execCommand('mceFullScreen', true, 'ed.id');
+    //},
+	
+	apply_source_formatting : false,
+    cleanup_on_startup: false,
+    trim_span_elements: false,
+    verify_html: false,
+    cleanup: false,
+    convert_urls: false,
+	
+   extended_valid_elements : "img[align<bottom?left?middle?right?top|alt|border|class|dir<ltr?rtl|height"
+  +"|hspace|id|ismap<ismap|lang|longdesc|name|onclick|ondblclick|onkeydown"
+  +"|onkeypress|onkeyup|onmousedown|onmousemove|onmouseout|onmouseover"
+  +"|onmouseup|src|style|title|usemap|vspace|width],",
+			
+	
+	paste_data_images: true,
+
+	autosave_ask_before_unload: false
+		
+	/* ,
+	// Style formats
+	style_formats : [
+		{title : 'Bold text', inline : 'b'},
+		{title : 'Red text', inline : 'span', styles : {color : '#ff0000'}},
+		{title : 'Red header', block : 'h1', styles : {color : '#ff0000'}},
+		{title : 'Example 1', inline : 'span', classes : 'example1'},
+		{title : 'Example 2', inline : 'span', classes : 'example2'},
+		{title : 'Table styles'},
+		{title : 'Table row 1', selector : 'tr', classes : 'tablerow1'}
+	]
+	*/
+	
+});
+</script>

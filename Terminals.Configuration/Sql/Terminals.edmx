@@ -1,0 +1,838 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <edmx:Runtime>
+    <edmx:StorageModels>
+      <Schema Namespace="TerminalsModel" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl" Provider="System.Data.SqlClient" ProviderManifestToken="2008">
+        <EntityContainer Name="TerminalsStoreContainer">
+          <EntitySet Name="ConnectionParams" EntityType="TerminalsModel.ConnectionParams" Schema="dbo" store:Name="ConnectionParams" store:Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Connections" EntityType="TerminalsModel.Connections" Schema="dbo" store:Name="Connections" store:Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ConnectionsInGroup" EntityType="TerminalsModel.ConnectionsInGroup" Schema="dbo" store:Name="ConnectionsInGroup" store:Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CredentialLookup" EntityType="TerminalsModel.CredentialLookup" Schema="dbo" store:Name="CredentialLookup" store:Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Credentials" EntityType="TerminalsModel.Credentials" Schema="dbo" store:Name="Credentials" store:Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Groups" EntityType="TerminalsModel.Groups" Schema="dbo" store:Name="Groups" store:Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="History" EntityType="TerminalsModel.History" Schema="dbo" store:Name="History" store:Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Options" EntityType="TerminalsModel.Options" Schema="dbo" store:Name="Options" store:Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="TerminalsModel.User" Schema="dbo" store:Name="User" store:Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_ConnectionParams_Connections" Association="TerminalsModel.FK_ConnectionParams_Connections">
+            <End Role="Connections" EntitySet="Connections" />
+            <End Role="ConnectionParams" EntitySet="ConnectionParams" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FavoritesInGroup_Favorites" Association="TerminalsModel.FK_FavoritesInGroup_Favorites">
+            <End Role="Connections" EntitySet="Connections" />
+            <End Role="ConnectionsInGroup" EntitySet="ConnectionsInGroup" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FavoritesInGroup_Groups" Association="TerminalsModel.FK_FavoritesInGroup_Groups">
+            <End Role="Groups" EntitySet="Groups" />
+            <End Role="ConnectionsInGroup" EntitySet="ConnectionsInGroup" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Lookup_Favorites" Association="TerminalsModel.FK_Lookup_Favorites">
+            <End Role="Connections" EntitySet="Connections" />
+            <End Role="CredentialLookup" EntitySet="CredentialLookup" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Lookup_Credentials" Association="TerminalsModel.FK_Lookup_Credentials">
+            <End Role="Credentials" EntitySet="Credentials" />
+            <End Role="CredentialLookup" EntitySet="CredentialLookup" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Credentials_User" Association="TerminalsModel.FK_Credentials_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Credentials" EntitySet="Credentials" />
+          </AssociationSet>
+          <AssociationSet Name="FK_History_Favorites" Association="TerminalsModel.FK_History_Favorites">
+            <End Role="Connections" EntitySet="Connections" />
+            <End Role="History" EntitySet="History" />
+          </AssociationSet>
+          <AssociationSet Name="FK_History_User" Association="TerminalsModel.FK_History_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="History" EntitySet="History" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="ConnectionParams">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="ParamName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ParamValue" Type="nvarchar" Nullable="true" />
+          <Property Name="ConnectionId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Connections">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Protocol" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="500" Nullable="true" />
+          <Property Name="ToolBarIcon" Type="varbinary" Nullable="true" />
+          <Property Name="ServerName" Type="nvarchar" Nullable="true" />
+          <Property Name="NewWindow" Type="bit" Nullable="true" />
+          <Property Name="Port" Type="int" Nullable="true" />
+          <Property Name="DesktopSizeHeight" Type="int" Nullable="true" />
+          <Property Name="DesktopSizeWidth" Type="int" Nullable="true" />
+          <Property Name="DesktopSize" Type="int" Nullable="true" />
+          <Property Name="ExecuteBeforeConnect" Type="bit" Nullable="true" />
+          <Property Name="ExecuteBeforeConnectCommand" Type="nvarchar" Nullable="true" />
+          <Property Name="ExecuteBeforeConnectArgs" Type="nvarchar" Nullable="true" />
+          <Property Name="ExecuteBeforeConnectInitialDirectory" Type="nvarchar" Nullable="true" />
+          <Property Name="ExecuteBeforeConnectWaitForExit" Type="bit" Nullable="true" />
+          <Property Name="ExplorerStyle" Type="nvarchar" Nullable="true" />
+          <Property Name="ExplorerDirectory" Type="nvarchar" Nullable="true" />
+          <Property Name="ExplorerDirectoryDual" Type="nvarchar" Nullable="true" />
+          <Property Name="ExplorerDirectoryTripple" Type="nvarchar" Nullable="true" />
+          <Property Name="ExplorerDirectoryQuad" Type="nvarchar" Nullable="true" />
+          <Property Name="HtmlFormFieldsString" Type="nvarchar" Nullable="true" />
+          <Property Name="BrowserAuthentication" Type="int" Nullable="true" />
+          <Property Name="HttpBrowser" Type="int" Nullable="true" />
+          <Property Name="Url" Type="nvarchar" Nullable="true" />
+          <Property Name="PuttyConnectionType" Type="int" Nullable="true" />
+          <Property Name="PuttySession" Type="nvarchar" Nullable="true" />
+          <Property Name="PuttyCompression" Type="bit" Nullable="true" />
+          <Property Name="PuttyPasswordTimeout" Type="int" Nullable="true" />
+          <Property Name="PuttyVerbose" Type="bit" Nullable="true" />
+          <Property Name="PuttyShowOptions" Type="bit" Nullable="true" />
+          <Property Name="PuttyCloseWindowOnExit" Type="int" Nullable="true" />
+          <Property Name="GenericWorkingDirectory" Type="nvarchar" Nullable="true" />
+          <Property Name="GenericProgramPath" Type="nvarchar" Nullable="true" />
+          <Property Name="GenericArguments" Type="nvarchar" Nullable="true" />
+          <Property Name="RAdminPhonebookPath" Type="nvarchar" Nullable="true" />
+          <Property Name="RAdminThrough" Type="bit" Nullable="true" />
+          <Property Name="RAdminThroughServerName" Type="nvarchar" Nullable="true" />
+          <Property Name="RAdminThroughPort" Type="nvarchar" Nullable="true" />
+          <Property Name="RAdminStandardConnectionMode" Type="bit" Nullable="true" />
+          <Property Name="RAdminTelnetMode" Type="bit" Nullable="true" />
+          <Property Name="RAdminViewOnlyMode" Type="bit" Nullable="true" />
+          <Property Name="RAdminFileTransferMode" Type="bit" Nullable="true" />
+          <Property Name="RAdminShutdown" Type="bit" Nullable="true" />
+          <Property Name="RAdminChatMode" Type="bit" Nullable="true" />
+          <Property Name="RAdminVoiceChatMode" Type="bit" Nullable="true" />
+          <Property Name="RAdminSendTextMessageMode" Type="bit" Nullable="true" />
+          <Property Name="RAdminUseFullScreen" Type="bit" Nullable="true" />
+          <Property Name="RAdminUpdates" Type="int" Nullable="true" />
+          <Property Name="RAdminColorMode" Type="nvarchar" Nullable="true" />
+          <Property Name="ConsoleRows" Type="int" Nullable="true" />
+          <Property Name="ConsoleCols" Type="int" Nullable="true" />
+          <Property Name="ConsoleFont" Type="nvarchar" Nullable="true" />
+          <Property Name="ConsoleBackColor" Type="nvarchar" Nullable="true" />
+          <Property Name="ConsoleTextColor" Type="nvarchar" Nullable="true" />
+          <Property Name="ConsoleCursorColor" Type="nvarchar" Nullable="true" />
+          <Property Name="Ssh1" Type="bit" Nullable="true" />
+          <Property Name="AuthMethod" Type="int" Nullable="true" />
+          <Property Name="KeyTag" Type="nvarchar" Nullable="true" />
+          <Property Name="VncAutoScale" Type="bit" Nullable="true" />
+          <Property Name="VncViewOnly" Type="bit" Nullable="true" />
+          <Property Name="VncDisplayNumber" Type="int" Nullable="true" />
+          <Property Name="VmrcReducedColorsMode" Type="bit" Nullable="true" />
+          <Property Name="VmrcAdministratorMode" Type="bit" Nullable="true" />
+          <Property Name="IcaApplicationName" Type="nvarchar" Nullable="true" />
+          <Property Name="IcaServerIni" Type="nvarchar" Nullable="true" />
+          <Property Name="IcaClientIni" Type="nvarchar" Nullable="true" />
+          <Property Name="IcaEnableEncryption" Type="bit" Nullable="true" />
+          <Property Name="IcaEncryptionLevel" Type="nvarchar" Nullable="true" />
+          <Property Name="LoadBalanceInfo" Type="nvarchar" Nullable="true" />
+          <Property Name="ConnectToConsole" Type="bit" Nullable="true" />
+          <Property Name="RedirectPrinters" Type="bit" Nullable="true" />
+          <Property Name="RedirectSmartCards" Type="bit" Nullable="true" />
+          <Property Name="RedirectClipboard" Type="bit" Nullable="true" />
+          <Property Name="RedirectDevices" Type="bit" Nullable="true" />
+          <Property Name="TsgwUsageMethod" Type="int" Nullable="true" />
+          <Property Name="TsgwHostname" Type="nvarchar" Nullable="true" />
+          <Property Name="TsgwCredsSource" Type="int" Nullable="true" />
+          <Property Name="TsgwSeparateLogin" Type="bit" Nullable="true" />
+          <Property Name="TsgwUsername" Type="nvarchar" Nullable="true" />
+          <Property Name="TsgwDomain" Type="nvarchar" Nullable="true" />
+          <Property Name="TsgwEncryptedPassword" Type="nvarchar" Nullable="true" />
+          <Property Name="Sounds" Type="int" Nullable="true" />
+          <Property Name="RedirectedDrives" Type="nvarchar" Nullable="true" />
+          <Property Name="RedirectPorts" Type="bit" Nullable="true" />
+          <Property Name="ShutdownTimeout" Type="int" Nullable="true" />
+          <Property Name="OverallTimeout" Type="int" Nullable="true" />
+          <Property Name="ConnectionTimeout" Type="int" Nullable="true" />
+          <Property Name="IdleTimeout" Type="int" Nullable="true" />
+          <Property Name="SecurityWorkingFolder" Type="nvarchar" Nullable="true" />
+          <Property Name="SecurityStartProgram" Type="nvarchar" Nullable="true" />
+          <Property Name="SecurityFullScreen" Type="bit" Nullable="true" />
+          <Property Name="EnableSecuritySettings" Type="bit" Nullable="true" />
+          <Property Name="GrabFocusOnConnect" Type="bit" Nullable="true" />
+          <Property Name="EnableEncryption" Type="bit" Nullable="true" />
+          <Property Name="DisableWindowsKey" Type="bit" Nullable="true" />
+          <Property Name="DoubleClickDetect" Type="bit" Nullable="true" />
+          <Property Name="DisplayConnectionBar" Type="bit" Nullable="true" />
+          <Property Name="DisableControlAltDelete" Type="bit" Nullable="true" />
+          <Property Name="AcceleratorPassthrough" Type="bit" Nullable="true" />
+          <Property Name="EnableCompression" Type="bit" Nullable="true" />
+          <Property Name="BitmapPeristence" Type="bit" Nullable="true" />
+          <Property Name="EnableTlsAuthentication" Type="bit" Nullable="true" />
+          <Property Name="EnableNlaAuthentication" Type="bit" Nullable="true" />
+          <Property Name="AllowBackgroundInput" Type="bit" Nullable="true" />
+          <Property Name="DisableTheming" Type="bit" Nullable="true" />
+          <Property Name="DisableMenuAnimations" Type="bit" Nullable="true" />
+          <Property Name="DisableFullWindowDrag" Type="bit" Nullable="true" />
+          <Property Name="DisableCursorBlinking" Type="bit" Nullable="true" />
+          <Property Name="EnableDesktopComposition" Type="bit" Nullable="true" />
+          <Property Name="EnableFontSmoothing" Type="bit" Nullable="true" />
+          <Property Name="DisableCursorShadow" Type="bit" Nullable="true" />
+          <Property Name="DisableWallPaper" Type="bit" Nullable="true" />
+          <Property Name="Colors" Type="int" Nullable="true" />
+          <Property Name="DesktopShare" Type="nvarchar" Nullable="true" />
+        </EntityType>
+        <EntityType Name="ConnectionsInGroup">
+          <Key>
+            <PropertyRef Name="ConnectionId" />
+            <PropertyRef Name="GroupId" />
+          </Key>
+          <Property Name="ConnectionId" Type="int" Nullable="false" />
+          <Property Name="GroupId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CredentialLookup">
+          <Key>
+            <PropertyRef Name="ConnectionId" />
+            <PropertyRef Name="CredentialId" />
+          </Key>
+          <Property Name="ConnectionId" Type="int" Nullable="false" />
+          <Property Name="CredentialId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Credentials">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="nchar" MaxLength="50" Nullable="true" />
+          <Property Name="DomainName" Type="nchar" MaxLength="50" Nullable="true" />
+          <Property Name="Password" Type="nchar" MaxLength="50" Nullable="true" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="true" />
+        </EntityType>
+        <EntityType Name="Groups">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="History">
+          <Key>
+            <PropertyRef Name="FavoriteId" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="FavoriteId" Type="int" Nullable="false" />
+          <Property Name="LastUsedDate" Type="datetime" Nullable="false" />
+          <Property Name="UsageCount" Type="nchar" MaxLength="10" Nullable="true" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Options">
+          <Key>
+            <PropertyRef Name="PropertyName" />
+          </Key>
+          <Property Name="PropertyName" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Value" Type="nvarchar" Nullable="true" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DomainName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_ConnectionParams_Connections">
+          <End Role="Connections" Type="TerminalsModel.Connections" Multiplicity="1" />
+          <End Role="ConnectionParams" Type="TerminalsModel.ConnectionParams" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Connections">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ConnectionParams">
+              <PropertyRef Name="ConnectionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FavoritesInGroup_Favorites">
+          <End Role="Connections" Type="TerminalsModel.Connections" Multiplicity="1" />
+          <End Role="ConnectionsInGroup" Type="TerminalsModel.ConnectionsInGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Connections">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ConnectionsInGroup">
+              <PropertyRef Name="ConnectionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FavoritesInGroup_Groups">
+          <End Role="Groups" Type="TerminalsModel.Groups" Multiplicity="1" />
+          <End Role="ConnectionsInGroup" Type="TerminalsModel.ConnectionsInGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Groups">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ConnectionsInGroup">
+              <PropertyRef Name="GroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Lookup_Favorites">
+          <End Role="Connections" Type="TerminalsModel.Connections" Multiplicity="1" />
+          <End Role="CredentialLookup" Type="TerminalsModel.CredentialLookup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Connections">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CredentialLookup">
+              <PropertyRef Name="ConnectionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Lookup_Credentials">
+          <End Role="Credentials" Type="TerminalsModel.Credentials" Multiplicity="1" />
+          <End Role="CredentialLookup" Type="TerminalsModel.CredentialLookup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Credentials">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CredentialLookup">
+              <PropertyRef Name="CredentialId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Credentials_User">
+          <End Role="User" Type="TerminalsModel.User" Multiplicity="0..1" />
+          <End Role="Credentials" Type="TerminalsModel.Credentials" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Credentials">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_History_Favorites">
+          <End Role="Connections" Type="TerminalsModel.Connections" Multiplicity="1" />
+          <End Role="History" Type="TerminalsModel.History" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Connections">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="History">
+              <PropertyRef Name="FavoriteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_History_User">
+          <End Role="User" Type="TerminalsModel.User" Multiplicity="1" />
+          <End Role="History" Type="TerminalsModel.History" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="History">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <edmx:ConceptualModels>
+      <Schema Namespace="Terminals.Configuration" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="TerminalsObjectContext">
+          <EntitySet Name="ConnectionParams" EntityType="Terminals.Configuration.ConnectionParams" />
+          <EntitySet Name="Connections" EntityType="Terminals.Configuration.Connections" />
+          <EntitySet Name="Credentials" EntityType="Terminals.Configuration.Credentials" />
+          <EntitySet Name="Groups" EntityType="Terminals.Configuration.Groups" />
+          <EntitySet Name="History" EntityType="Terminals.Configuration.History" />
+          <EntitySet Name="Options" EntityType="Terminals.Configuration.Options" />
+          <EntitySet Name="User" EntityType="Terminals.Configuration.User" />
+          <AssociationSet Name="FK_ConnectionParams_Connections" Association="Terminals.Configuration.FK_ConnectionParams_Connections">
+            <End Role="ConnectionParams" EntitySet="ConnectionParams" />
+            <End Role="Connections" EntitySet="Connections" />
+          </AssociationSet>
+          <AssociationSet Name="FK_History_Favorites" Association="Terminals.Configuration.FK_History_Favorites">
+            <End Role="Connections" EntitySet="Connections" />
+            <End Role="History" EntitySet="History" />
+          </AssociationSet>
+          <AssociationSet Name="ConnectionsInGroup" Association="Terminals.Configuration.ConnectionsInGroup">
+            <End Role="Connections" EntitySet="Connections" />
+            <End Role="Groups" EntitySet="Groups" />
+          </AssociationSet>
+          <AssociationSet Name="CredentialLookup" Association="Terminals.Configuration.CredentialLookup">
+            <End Role="Connections" EntitySet="Connections" />
+            <End Role="Credentials" EntitySet="Credentials" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Credentials_User" Association="Terminals.Configuration.FK_Credentials_User">
+            <End Role="Credentials" EntitySet="Credentials" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_History_User" Association="Terminals.Configuration.FK_History_User">
+            <End Role="History" EntitySet="History" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="ConnectionParams" Abstract="false">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" ConcurrencyMode="None" Nullable="false" />
+          <Property Name="ParamName" Type="String" ConcurrencyMode="None" FixedLength="false" MaxLength="50" Nullable="false" Unicode="true" />
+          <Property Name="ParamValue" Type="String" ConcurrencyMode="None" FixedLength="false" MaxLength="4000" Nullable="true" Unicode="true" />
+          <Property Name="ConnectionId" Type="Int32" ConcurrencyMode="None" Nullable="false" />
+          <NavigationProperty Name="Connections" Relationship="Terminals.Configuration.FK_ConnectionParams_Connections" FromRole="ConnectionParams" ToRole="Connections" />
+        </EntityType>
+        <EntityType Name="Connections" Abstract="false">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" ConcurrencyMode="None" Nullable="false" />
+          <Property Name="Name" Type="String" ConcurrencyMode="None" FixedLength="false" MaxLength="255" Nullable="false" Unicode="true" />
+          <Property Name="Protocol" Type="String" ConcurrencyMode="None" FixedLength="false" MaxLength="10" Nullable="false" Unicode="true" />
+          <Property Name="Notes" Type="String" ConcurrencyMode="None" FixedLength="false" MaxLength="500" Nullable="true" Unicode="true" />
+          <Property Name="ToolBarIcon" Type="Binary" ConcurrencyMode="None" FixedLength="false" MaxLength="8000" Nullable="true" />
+          <Property Name="ServerName" Type="String" ConcurrencyMode="None" FixedLength="false" MaxLength="4000" Nullable="true" Unicode="true" />
+          <Property Name="NewWindow" Type="Boolean" ConcurrencyMode="None" Nullable="true" />
+          <Property Name="Port" Type="Int32" ConcurrencyMode="None" Nullable="true" />
+          <Property Name="DesktopSizeHeight" Type="Int32" ConcurrencyMode="None" Nullable="true" />
+          <Property Name="DesktopSizeWidth" Type="Int32" ConcurrencyMode="None" Nullable="true" />
+          <Property Name="DesktopSize" Type="Int32" ConcurrencyMode="None" Nullable="true" />
+          <Property Name="ExecuteBeforeConnect" Type="Boolean" ConcurrencyMode="None" Nullable="true" />
+          <Property Name="ExecuteBeforeConnectCommand" Type="String" ConcurrencyMode="None" FixedLength="false" MaxLength="4000" Nullable="true" Unicode="true" />
+          <Property Name="ExecuteBeforeConnectArgs" Type="String" ConcurrencyMode="None" FixedLength="false" MaxLength="4000" Nullable="true" Unicode="true" />
+          <Property Name="ExecuteBeforeConnectInitialDirectory" Type="String" ConcurrencyMode="None" FixedLength="false" MaxLength="4000" Nullable="true" Unicode="true" />
+          <Property Name="ExecuteBeforeConnectWaitForExit" Type="Boolean" ConcurrencyMode="None" Nullable="true" />
+          <Property Name="ExplorerStyle" Type="String" ConcurrencyMode="None" FixedLength="false" MaxLength="4000" Nullable="true" Unicode="true" />
+          <Property Name="ExplorerDirectory" Type="String" ConcurrencyMode="None" FixedLength="false" MaxLength="4000" Nullable="true" Unicode="true" />
+          <Property Name="ExplorerDirectoryDual" Type="String" ConcurrencyMode="None" FixedLength="false" MaxLength="4000" Nullable="true" Unicode="true" />
+          <Property Name="ExplorerDirectoryTripple" Type="String" ConcurrencyMode="None" FixedLength="false" MaxLength="4000" Nullable="true" Unicode="true" />
+          <Property Name="ExplorerDirectoryQuad" Type="String" ConcurrencyMode="None" FixedLength="false" MaxLength="4000" Nullable="true" Unicode="true" />
+          <Property Name="HtmlFormFieldsString" Type="String" ConcurrencyMode="None" FixedLength="false" MaxLength="4000" Nullable="true" Unicode="true" />
+          <Property Name="BrowserAuthentication" Type="Int32" ConcurrencyMode="None" Nullable="true" />
+          <Property Name="HttpBrowser" Type="Int32" ConcurrencyMode="None" Nullable="true" />
+          <Property Name="Url" Type="String" ConcurrencyMode="None" FixedLength="false" MaxLength="4000" Nullable="true" Unicode="true" />
+          <Property Name="PuttyConnectionType" Type="Int32" ConcurrencyMode="None" Nullable="true" />
+          <Property Name="PuttySession" Type="String" ConcurrencyMode="None" FixedLength="false" MaxLength="4000" Nullable="true" Unicode="true" />
+          <Property Name="PuttyCompression" Type="Boolean" ConcurrencyMode="None" Nullable="true" />
+          <Property Name="PuttyPasswordTimeout" Type="Int32" ConcurrencyMode="None" Nullable="true" />
+          <Property Name="PuttyVerbose" Type="Boolean" ConcurrencyMode="None" Nullable="true" />
+          <Property Name="PuttyShowOptions" Type="Boolean" ConcurrencyMode="None" Nullable="true" />
+          <Property Name="PuttyCloseWindowOnExit" Type="Int32" ConcurrencyMode="None" Nullable="true" />
+          <Property Name="GenericWorkingDirectory" Type="String" ConcurrencyMode="None" FixedLength="false" MaxLength="4000" Nullable="true" Unicode="true" />
+          <Property Name="GenericProgramPath" Type="String" ConcurrencyMode="None" FixedLength="false" MaxLength="4000" Nullable="true" Unicode="true" />
+          <Property Name="GenericArguments" Type="String" ConcurrencyMode="None" FixedLength="false" MaxLength="4000" Nullable="true" Unicode="true" />
+          <Property Name="RAdminPhonebookPath" Type="String" ConcurrencyMode="None" FixedLength="false" MaxLength="4000" Nullable="true" Unicode="true" />
+          <Property Name="RAdminThrough" Type="Boolean" ConcurrencyMode="None" Nullable="true" />
+          <Property Name="RAdminThroughServerName" Type="String" ConcurrencyMode="None" FixedLength="false" MaxLength="4000" Nullable="true" Unicode="true" />
+          <Property Name="RAdminThroughPort" Type="String" ConcurrencyMode="None" FixedLength="false" MaxLength="4000" Nullable="true" Unicode="true" />
+          <Property Name="RAdminStandardConnectionMode" Type="Boolean" ConcurrencyMode="None" Nullable="true" />
+          <Property Name="RAdminTelnetMode" Type="Boolean" ConcurrencyMode="None" Nullable="true" />
+          <Property Name="RAdminViewOnlyMode" Type="Boolean" ConcurrencyMode="None" Nullable="true" />
+          <Property Name="RAdminFileTransferMode" Type="Boolean" ConcurrencyMode="None" Nullable="true" />
+          <Property Name="RAdminShutdown" Type="Boolean" ConcurrencyMode="None" Nullable="true" />
+          <Property Name="RAdminChatMode" Type="Boolean" ConcurrencyMode="None" Nullable="true" />
+          <Property Name="RAdminVoiceChatMode" Type="Boolean" ConcurrencyMode="None" Nullable="true" />
+          <Property Name="RAdminSendTextMessageMode" Type="Boolean" ConcurrencyMode="None" Nullable="true" />
+          <Property Name="RAdminUseFullScreen" Type="Boolean" ConcurrencyMode="None" Nullable="true" />
+          <Property Name="RAdminUpdates" Type="Int32" ConcurrencyMode="None" Nullable="true" />
+          <Property Name="RAdminColorMode" Type="String" ConcurrencyMode="None" FixedLength="false" MaxLength="4000" Nullable="true" Unicode="true" />
+          <Property Name="ConsoleRows" Type="Int32" ConcurrencyMode="None" Nullable="true" />
+          <Property Name="ConsoleCols" Type="Int32" ConcurrencyMode="None" Nullable="true" />
+          <Property Name="ConsoleFont" Type="String" ConcurrencyMode="None" FixedLength="false" MaxLength="4000" Nullable="true" Unicode="true" />
+          <Property Name="ConsoleBackColor" Type="String" ConcurrencyMode="None" FixedLength="false" MaxLength="4000" Nullable="true" Unicode="true" />
+          <Property Name="ConsoleTextColor" Type="String" ConcurrencyMode="None" FixedLength="false" MaxLength="4000" Nullable="true" Unicode="true" />
+          <Property Name="ConsoleCursorColor" Type="String" ConcurrencyMode="None" FixedLength="false" MaxLength="4000" Nullable="true" Unicode="true" />
+          <Property Name="Ssh1" Type="Boolean" ConcurrencyMode="None" Nullable="true" />
+          <Property Name="AuthMethod" Type="Int32" ConcurrencyMode="None" Nullable="true" />
+          <Property Name="KeyTag" Type="String" ConcurrencyMode="None" FixedLength="false" MaxLength="4000" Nullable="true" Unicode="true" />
+          <Property Name="VncAutoScale" Type="Boolean" ConcurrencyMode="None" Nullable="true" />
+          <Property Name="VncViewOnly" Type="Boolean" ConcurrencyMode="None" Nullable="true" />
+          <Property Name="VncDisplayNumber" Type="Int32" ConcurrencyMode="None" Nullable="true" />
+          <Property Name="VmrcReducedColorsMode" Type="Boolean" ConcurrencyMode="None" Nullable="true" />
+          <Property Name="VmrcAdministratorMode" Type="Boolean" ConcurrencyMode="None" Nullable="true" />
+          <Property Name="IcaApplicationName" Type="String" ConcurrencyMode="None" FixedLength="false" MaxLength="4000" Nullable="true" Unicode="true" />
+          <Property Name="IcaServerIni" Type="String" ConcurrencyMode="None" FixedLength="false" MaxLength="4000" Nullable="true" Unicode="true" />
+          <Property Name="IcaClientIni" Type="String" ConcurrencyMode="None" FixedLength="false" MaxLength="4000" Nullable="true" Unicode="true" />
+          <Property Name="IcaEnableEncryption" Type="Boolean" ConcurrencyMode="None" Nullable="true" />
+          <Property Name="IcaEncryptionLevel" Type="String" ConcurrencyMode="None" FixedLength="false" MaxLength="4000" Nullable="true" Unicode="true" />
+          <Property Name="LoadBalanceInfo" Type="String" ConcurrencyMode="None" FixedLength="false" MaxLength="4000" Nullable="true" Unicode="true" />
+          <Property Name="ConnectToConsole" Type="Boolean" ConcurrencyMode="None" Nullable="true" />
+          <Property Name="RedirectPrinters" Type="Boolean" ConcurrencyMode="None" Nullable="true" />
+          <Property Name="RedirectSmartCards" Type="Boolean" ConcurrencyMode="None" Nullable="true" />
+          <Property Name="RedirectClipboard" Type="Boolean" ConcurrencyMode="None" Nullable="true" />
+          <Property Name="RedirectDevices" Type="Boolean" ConcurrencyMode="None" Nullable="true" />
+          <Property Name="TsgwUsageMethod" Type="Int32" ConcurrencyMode="None" Nullable="true" />
+          <Property Name="TsgwHostname" Type="String" ConcurrencyMode="None" FixedLength="false" MaxLength="4000" Nullable="true" Unicode="true" />
+          <Property Name="TsgwCredsSource" Type="Int32" ConcurrencyMode="None" Nullable="true" />
+          <Property Name="TsgwSeparateLogin" Type="Boolean" ConcurrencyMode="None" Nullable="true" />
+          <Property Name="TsgwUsername" Type="String" ConcurrencyMode="None" FixedLength="false" MaxLength="4000" Nullable="true" Unicode="true" />
+          <Property Name="TsgwDomain" Type="String" ConcurrencyMode="None" FixedLength="false" MaxLength="4000" Nullable="true" Unicode="true" />
+          <Property Name="TsgwEncryptedPassword" Type="String" ConcurrencyMode="None" FixedLength="false" MaxLength="4000" Nullable="true" Unicode="true" />
+          <Property Name="Sounds" Type="Int32" ConcurrencyMode="None" Nullable="true" />
+          <Property Name="RedirectedDrives" Type="String" ConcurrencyMode="None" FixedLength="false" MaxLength="4000" Nullable="true" Unicode="true" />
+          <Property Name="RedirectPorts" Type="Boolean" ConcurrencyMode="None" Nullable="true" />
+          <Property Name="ShutdownTimeout" Type="Int32" ConcurrencyMode="None" Nullable="true" />
+          <Property Name="OverallTimeout" Type="Int32" ConcurrencyMode="None" Nullable="true" />
+          <Property Name="ConnectionTimeout" Type="Int32" ConcurrencyMode="None" Nullable="true" />
+          <Property Name="IdleTimeout" Type="Int32" ConcurrencyMode="None" Nullable="true" />
+          <Property Name="SecurityWorkingFolder" Type="String" ConcurrencyMode="None" FixedLength="false" MaxLength="4000" Nullable="true" Unicode="true" />
+          <Property Name="SecurityStartProgram" Type="String" ConcurrencyMode="None" FixedLength="false" MaxLength="4000" Nullable="true" Unicode="true" />
+          <Property Name="SecurityFullScreen" Type="Boolean" ConcurrencyMode="None" Nullable="true" />
+          <Property Name="EnableSecuritySettings" Type="Boolean" ConcurrencyMode="None" Nullable="true" />
+          <Property Name="GrabFocusOnConnect" Type="Boolean" ConcurrencyMode="None" Nullable="true" />
+          <Property Name="EnableEncryption" Type="Boolean" ConcurrencyMode="None" Nullable="true" />
+          <Property Name="DisableWindowsKey" Type="Boolean" ConcurrencyMode="None" Nullable="true" />
+          <Property Name="DoubleClickDetect" Type="Boolean" ConcurrencyMode="None" Nullable="true" />
+          <Property Name="DisplayConnectionBar" Type="Boolean" ConcurrencyMode="None" Nullable="true" />
+          <Property Name="DisableControlAltDelete" Type="Boolean" ConcurrencyMode="None" Nullable="true" />
+          <Property Name="AcceleratorPassthrough" Type="Boolean" ConcurrencyMode="None" Nullable="true" />
+          <Property Name="EnableCompression" Type="Boolean" ConcurrencyMode="None" Nullable="true" />
+          <Property Name="BitmapPeristence" Type="Boolean" ConcurrencyMode="None" Nullable="true" />
+          <Property Name="EnableTlsAuthentication" Type="Boolean" ConcurrencyMode="None" Nullable="true" />
+          <Property Name="EnableNlaAuthentication" Type="Boolean" ConcurrencyMode="None" Nullable="true" />
+          <Property Name="AllowBackgroundInput" Type="Boolean" ConcurrencyMode="None" Nullable="true" />
+          <Property Name="DisableTheming" Type="Boolean" ConcurrencyMode="None" Nullable="true" />
+          <Property Name="DisableMenuAnimations" Type="Boolean" ConcurrencyMode="None" Nullable="true" />
+          <Property Name="DisableFullWindowDrag" Type="Boolean" ConcurrencyMode="None" Nullable="true" />
+          <Property Name="DisableCursorBlinking" Type="Boolean" ConcurrencyMode="None" Nullable="true" />
+          <Property Name="EnableDesktopComposition" Type="Boolean" ConcurrencyMode="None" Nullable="true" />
+          <Property Name="EnableFontSmoothing" Type="Boolean" ConcurrencyMode="None" Nullable="true" />
+          <Property Name="DisableCursorShadow" Type="Boolean" ConcurrencyMode="None" Nullable="true" />
+          <Property Name="DisableWallPaper" Type="Boolean" ConcurrencyMode="None" Nullable="true" />
+          <Property Name="Colors" Type="Int32" ConcurrencyMode="None" Nullable="true" />
+          <Property Name="DesktopShare" Type="String" ConcurrencyMode="None" FixedLength="false" MaxLength="4000" Nullable="true" Unicode="true" />
+          <NavigationProperty Name="ConnectionParams" Relationship="Terminals.Configuration.FK_ConnectionParams_Connections" FromRole="Connections" ToRole="ConnectionParams" />
+          <NavigationProperty Name="History" Relationship="Terminals.Configuration.FK_History_Favorites" FromRole="Connections" ToRole="History" />
+          <NavigationProperty Name="Groups" Relationship="Terminals.Configuration.ConnectionsInGroup" FromRole="Connections" ToRole="Groups" />
+          <NavigationProperty Name="Credentials" Relationship="Terminals.Configuration.CredentialLookup" FromRole="Connections" ToRole="Credentials" />
+        </EntityType>
+        <EntityType Name="Credentials" Abstract="false">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" ConcurrencyMode="None" Nullable="false" />
+          <Property Name="UserName" Type="String" ConcurrencyMode="None" FixedLength="true" MaxLength="50" Nullable="true" Unicode="true" />
+          <Property Name="DomainName" Type="String" ConcurrencyMode="None" FixedLength="true" MaxLength="50" Nullable="true" Unicode="true" />
+          <Property Name="Password" Type="String" ConcurrencyMode="None" FixedLength="true" MaxLength="50" Nullable="true" Unicode="true" />
+          <Property Name="Name" Type="String" ConcurrencyMode="None" FixedLength="false" MaxLength="255" Nullable="false" Unicode="true" />
+          <Property Name="UserId" Type="Int32" ConcurrencyMode="None" Nullable="true" />
+          <NavigationProperty Name="User" Relationship="Terminals.Configuration.FK_Credentials_User" FromRole="Credentials" ToRole="User" />
+          <NavigationProperty Name="Connections" Relationship="Terminals.Configuration.CredentialLookup" FromRole="Credentials" ToRole="Connections" />
+        </EntityType>
+        <EntityType Name="Groups" Abstract="false">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" ConcurrencyMode="None" Nullable="false" />
+          <Property Name="Name" Type="String" ConcurrencyMode="None" FixedLength="false" MaxLength="255" Nullable="false" Unicode="true" />
+          <NavigationProperty Name="Connections" Relationship="Terminals.Configuration.ConnectionsInGroup" FromRole="Groups" ToRole="Connections" />
+        </EntityType>
+        <EntityType Name="History" Abstract="false">
+          <Key>
+            <PropertyRef Name="FavoriteId" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="FavoriteId" Type="Int32" ConcurrencyMode="None" Nullable="false" />
+          <Property Name="LastUsedDate" Type="DateTime" ConcurrencyMode="None" Nullable="false" />
+          <Property Name="UsageCount" Type="String" ConcurrencyMode="None" FixedLength="true" MaxLength="10" Nullable="true" Unicode="true" />
+          <Property Name="UserId" Type="Int32" ConcurrencyMode="None" Nullable="false" />
+          <NavigationProperty Name="Connections" Relationship="Terminals.Configuration.FK_History_Favorites" FromRole="History" ToRole="Connections" />
+          <NavigationProperty Name="User" Relationship="Terminals.Configuration.FK_History_User" FromRole="History" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Options" Abstract="false">
+          <Key>
+            <PropertyRef Name="PropertyName" />
+          </Key>
+          <Property Name="PropertyName" Type="String" ConcurrencyMode="None" FixedLength="false" MaxLength="20" Nullable="false" Unicode="true" />
+          <Property Name="Value" Type="String" ConcurrencyMode="None" FixedLength="false" MaxLength="4000" Nullable="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="User" Abstract="false">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" ConcurrencyMode="None" Nullable="false" />
+          <Property Name="UserName" Type="String" ConcurrencyMode="None" FixedLength="false" MaxLength="50" Nullable="false" Unicode="true" />
+          <Property Name="DomainName" Type="String" ConcurrencyMode="None" FixedLength="false" MaxLength="50" Nullable="false" Unicode="true" />
+          <NavigationProperty Name="Credentials" Relationship="Terminals.Configuration.FK_Credentials_User" FromRole="User" ToRole="Credentials" />
+          <NavigationProperty Name="History" Relationship="Terminals.Configuration.FK_History_User" FromRole="User" ToRole="History" />
+        </EntityType>
+        <Association Name="FK_ConnectionParams_Connections">
+          <End Role="ConnectionParams" Type="Terminals.Configuration.ConnectionParams" Multiplicity="*" />
+          <End Role="Connections" Type="Terminals.Configuration.Connections" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Connections">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ConnectionParams">
+              <PropertyRef Name="ConnectionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_History_Favorites">
+          <End Role="Connections" Type="Terminals.Configuration.Connections" Multiplicity="1" />
+          <End Role="History" Type="Terminals.Configuration.History" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Connections">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="History">
+              <PropertyRef Name="FavoriteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ConnectionsInGroup">
+          <End Role="Connections" Type="Terminals.Configuration.Connections" Multiplicity="*" />
+          <End Role="Groups" Type="Terminals.Configuration.Groups" Multiplicity="*" />
+        </Association>
+        <Association Name="CredentialLookup">
+          <End Role="Connections" Type="Terminals.Configuration.Connections" Multiplicity="*" />
+          <End Role="Credentials" Type="Terminals.Configuration.Credentials" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_Credentials_User">
+          <End Role="Credentials" Type="Terminals.Configuration.Credentials" Multiplicity="*" />
+          <End Role="User" Type="Terminals.Configuration.User" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Credentials">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_History_User">
+          <End Role="History" Type="Terminals.Configuration.History" Multiplicity="*" />
+          <End Role="User" Type="Terminals.Configuration.User" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="History">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TerminalsStoreContainer" CdmEntityContainer="TerminalsObjectContext">
+          <EntitySetMapping Name="ConnectionParams">
+            <EntityTypeMapping TypeName="IsTypeOf(Terminals.Configuration.ConnectionParams)">
+              <MappingFragment StoreEntitySet="ConnectionParams">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ParamName" ColumnName="ParamName" />
+                <ScalarProperty Name="ParamValue" ColumnName="ParamValue" />
+                <ScalarProperty Name="ConnectionId" ColumnName="ConnectionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Connections">
+            <EntityTypeMapping TypeName="IsTypeOf(Terminals.Configuration.Connections)">
+              <MappingFragment StoreEntitySet="Connections">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Protocol" ColumnName="Protocol" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="ToolBarIcon" ColumnName="ToolBarIcon" />
+                <ScalarProperty Name="ServerName" ColumnName="ServerName" />
+                <ScalarProperty Name="NewWindow" ColumnName="NewWindow" />
+                <ScalarProperty Name="Port" ColumnName="Port" />
+                <ScalarProperty Name="DesktopSizeHeight" ColumnName="DesktopSizeHeight" />
+                <ScalarProperty Name="DesktopSizeWidth" ColumnName="DesktopSizeWidth" />
+                <ScalarProperty Name="DesktopSize" ColumnName="DesktopSize" />
+                <ScalarProperty Name="ExecuteBeforeConnect" ColumnName="ExecuteBeforeConnect" />
+                <ScalarProperty Name="ExecuteBeforeConnectCommand" ColumnName="ExecuteBeforeConnectCommand" />
+                <ScalarProperty Name="ExecuteBeforeConnectArgs" ColumnName="ExecuteBeforeConnectArgs" />
+                <ScalarProperty Name="ExecuteBeforeConnectInitialDirectory" ColumnName="ExecuteBeforeConnectInitialDirectory" />
+                <ScalarProperty Name="ExecuteBeforeConnectWaitForExit" ColumnName="ExecuteBeforeConnectWaitForExit" />
+                <ScalarProperty Name="ExplorerStyle" ColumnName="ExplorerStyle" />
+                <ScalarProperty Name="ExplorerDirectory" ColumnName="ExplorerDirectory" />
+                <ScalarProperty Name="ExplorerDirectoryDual" ColumnName="ExplorerDirectoryDual" />
+                <ScalarProperty Name="ExplorerDirectoryTripple" ColumnName="ExplorerDirectoryTripple" />
+                <ScalarProperty Name="ExplorerDirectoryQuad" ColumnName="ExplorerDirectoryQuad" />
+                <ScalarProperty Name="HtmlFormFieldsString" ColumnName="HtmlFormFieldsString" />
+                <ScalarProperty Name="BrowserAuthentication" ColumnName="BrowserAuthentication" />
+                <ScalarProperty Name="HttpBrowser" ColumnName="HttpBrowser" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="PuttyConnectionType" ColumnName="PuttyConnectionType" />
+                <ScalarProperty Name="PuttySession" ColumnName="PuttySession" />
+                <ScalarProperty Name="PuttyCompression" ColumnName="PuttyCompression" />
+                <ScalarProperty Name="PuttyPasswordTimeout" ColumnName="PuttyPasswordTimeout" />
+                <ScalarProperty Name="PuttyVerbose" ColumnName="PuttyVerbose" />
+                <ScalarProperty Name="PuttyShowOptions" ColumnName="PuttyShowOptions" />
+                <ScalarProperty Name="PuttyCloseWindowOnExit" ColumnName="PuttyCloseWindowOnExit" />
+                <ScalarProperty Name="GenericWorkingDirectory" ColumnName="GenericWorkingDirectory" />
+                <ScalarProperty Name="GenericProgramPath" ColumnName="GenericProgramPath" />
+                <ScalarProperty Name="GenericArguments" ColumnName="GenericArguments" />
+                <ScalarProperty Name="RAdminPhonebookPath" ColumnName="RAdminPhonebookPath" />
+                <ScalarProperty Name="RAdminThrough" ColumnName="RAdminThrough" />
+                <ScalarProperty Name="RAdminThroughServerName" ColumnName="RAdminThroughServerName" />
+                <ScalarProperty Name="RAdminThroughPort" ColumnName="RAdminThroughPort" />
+                <ScalarProperty Name="RAdminStandardConnectionMode" ColumnName="RAdminStandardConnectionMode" />
+                <ScalarProperty Name="RAdminTelnetMode" ColumnName="RAdminTelnetMode" />
+                <ScalarProperty Name="RAdminViewOnlyMode" ColumnName="RAdminViewOnlyMode" />
+                <ScalarProperty Name="RAdminFileTransferMode" ColumnName="RAdminFileTransferMode" />
+                <ScalarProperty Name="RAdminShutdown" ColumnName="RAdminShutdown" />
+                <ScalarProperty Name="RAdminChatMode" ColumnName="RAdminChatMode" />
+                <ScalarProperty Name="RAdminVoiceChatMode" ColumnName="RAdminVoiceChatMode" />
+                <ScalarProperty Name="RAdminSendTextMessageMode" ColumnName="RAdminSendTextMessageMode" />
+                <ScalarProperty Name="RAdminUseFullScreen" ColumnName="RAdminUseFullScreen" />
+                <ScalarProperty Name="RAdminUpdates" ColumnName="RAdminUpdates" />
+                <ScalarProperty Name="RAdminColorMode" ColumnName="RAdminColorMode" />
+                <ScalarProperty Name="ConsoleRows" ColumnName="ConsoleRows" />
+                <ScalarProperty Name="ConsoleCols" ColumnName="ConsoleCols" />
+                <ScalarProperty Name="ConsoleFont" ColumnName="ConsoleFont" />
+                <ScalarProperty Name="ConsoleBackColor" ColumnName="ConsoleBackColor" />
+                <ScalarProperty Name="ConsoleTextColor" ColumnName="ConsoleTextColor" />
+                <ScalarProperty Name="ConsoleCursorColor" ColumnName="ConsoleCursorColor" />
+                <ScalarProperty Name="Ssh1" ColumnName="Ssh1" />
+                <ScalarProperty Name="AuthMethod" ColumnName="AuthMethod" />
+                <ScalarProperty Name="KeyTag" ColumnName="KeyTag" />
+                <ScalarProperty Name="VncAutoScale" ColumnName="VncAutoScale" />
+                <ScalarProperty Name="VncViewOnly" ColumnName="VncViewOnly" />
+                <ScalarProperty Name="VncDisplayNumber" ColumnName="VncDisplayNumber" />
+                <ScalarProperty Name="VmrcReducedColorsMode" ColumnName="VmrcReducedColorsMode" />
+                <ScalarProperty Name="VmrcAdministratorMode" ColumnName="VmrcAdministratorMode" />
+                <ScalarProperty Name="IcaApplicationName" ColumnName="IcaApplicationName" />
+                <ScalarProperty Name="IcaServerIni" ColumnName="IcaServerIni" />
+                <ScalarProperty Name="IcaClientIni" ColumnName="IcaClientIni" />
+                <ScalarProperty Name="IcaEnableEncryption" ColumnName="IcaEnableEncryption" />
+                <ScalarProperty Name="IcaEncryptionLevel" ColumnName="IcaEncryptionLevel" />
+                <ScalarProperty Name="LoadBalanceInfo" ColumnName="LoadBalanceInfo" />
+                <ScalarProperty Name="ConnectToConsole" ColumnName="ConnectToConsole" />
+                <ScalarProperty Name="RedirectPrinters" ColumnName="RedirectPrinters" />
+                <ScalarProperty Name="RedirectSmartCards" ColumnName="RedirectSmartCards" />
+                <ScalarProperty Name="RedirectClipboard" ColumnName="RedirectClipboard" />
+                <ScalarProperty Name="RedirectDevices" ColumnName="RedirectDevices" />
+                <ScalarProperty Name="TsgwUsageMethod" ColumnName="TsgwUsageMethod" />
+                <ScalarProperty Name="TsgwHostname" ColumnName="TsgwHostname" />
+                <ScalarProperty Name="TsgwCredsSource" ColumnName="TsgwCredsSource" />
+                <ScalarProperty Name="TsgwSeparateLogin" ColumnName="TsgwSeparateLogin" />
+                <ScalarProperty Name="TsgwUsername" ColumnName="TsgwUsername" />
+                <ScalarProperty Name="TsgwDomain" ColumnName="TsgwDomain" />
+                <ScalarProperty Name="TsgwEncryptedPassword" ColumnName="TsgwEncryptedPassword" />
+                <ScalarProperty Name="Sounds" ColumnName="Sounds" />
+                <ScalarProperty Name="RedirectedDrives" ColumnName="RedirectedDrives" />
+                <ScalarProperty Name="RedirectPorts" ColumnName="RedirectPorts" />
+                <ScalarProperty Name="ShutdownTimeout" ColumnName="ShutdownTimeout" />
+                <ScalarProperty Name="OverallTimeout" ColumnName="OverallTimeout" />
+                <ScalarProperty Name="ConnectionTimeout" ColumnName="ConnectionTimeout" />
+                <ScalarProperty Name="IdleTimeout" ColumnName="IdleTimeout" />
+                <ScalarProperty Name="SecurityWorkingFolder" ColumnName="SecurityWorkingFolder" />
+                <ScalarProperty Name="SecurityStartProgram" ColumnName="SecurityStartProgram" />
+                <ScalarProperty Name="SecurityFullScreen" ColumnName="SecurityFullScreen" />
+                <ScalarProperty Name="EnableSecuritySettings" ColumnName="EnableSecuritySettings" />
+                <ScalarProperty Name="GrabFocusOnConnect" ColumnName="GrabFocusOnConnect" />
+                <ScalarProperty Name="EnableEncryption" ColumnName="EnableEncryption" />
+                <ScalarProperty Name="DisableWindowsKey" ColumnName="DisableWindowsKey" />
+                <ScalarProperty Name="DoubleClickDetect" ColumnName="DoubleClickDetect" />
+                <ScalarProperty Name="DisplayConnectionBar" ColumnName="DisplayConnectionBar" />
+                <ScalarProperty Name="DisableControlAltDelete" ColumnName="DisableControlAltDelete" />
+                <ScalarProperty Name="AcceleratorPassthrough" ColumnName="AcceleratorPassthrough" />
+                <ScalarProperty Name="EnableCompression" ColumnName="EnableCompression" />
+                <ScalarProperty Name="BitmapPeristence" ColumnName="BitmapPeristence" />
+                <ScalarProperty Name="EnableTlsAuthentication" ColumnName="EnableTlsAuthentication" />
+                <ScalarProperty Name="EnableNlaAuthentication" ColumnName="EnableNlaAuthentication" />
+                <ScalarProperty Name="AllowBackgroundInput" ColumnName="AllowBackgroundInput" />
+                <ScalarProperty Name="DisableTheming" ColumnName="DisableTheming" />
+                <ScalarProperty Name="DisableMenuAnimations" ColumnName="DisableMenuAnimations" />
+                <ScalarProperty Name="DisableFullWindowDrag" ColumnName="DisableFullWindowDrag" />
+                <ScalarProperty Name="DisableCursorBlinking" ColumnName="DisableCursorBlinking" />
+                <ScalarProperty Name="EnableDesktopComposition" ColumnName="EnableDesktopComposition" />
+                <ScalarProperty Name="EnableFontSmoothing" ColumnName="EnableFontSmoothing" />
+                <ScalarProperty Name="DisableCursorShadow" ColumnName="DisableCursorShadow" />
+                <ScalarProperty Name="DisableWallPaper" ColumnName="DisableWallPaper" />
+                <ScalarProperty Name="Colors" ColumnName="Colors" />
+                <ScalarProperty Name="DesktopShare" ColumnName="DesktopShare" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Credentials">
+            <EntityTypeMapping TypeName="IsTypeOf(Terminals.Configuration.Credentials)">
+              <MappingFragment StoreEntitySet="Credentials">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="DomainName" ColumnName="DomainName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Groups">
+            <EntityTypeMapping TypeName="IsTypeOf(Terminals.Configuration.Groups)">
+              <MappingFragment StoreEntitySet="Groups">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="History">
+            <EntityTypeMapping TypeName="IsTypeOf(Terminals.Configuration.History)">
+              <MappingFragment StoreEntitySet="History">
+                <ScalarProperty Name="FavoriteId" ColumnName="FavoriteId" />
+                <ScalarProperty Name="LastUsedDate" ColumnName="LastUsedDate" />
+                <ScalarProperty Name="UsageCount" ColumnName="UsageCount" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Options">
+            <EntityTypeMapping TypeName="IsTypeOf(Terminals.Configuration.Options)">
+              <MappingFragment StoreEntitySet="Options">
+                <ScalarProperty Name="PropertyName" ColumnName="PropertyName" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User">
+            <EntityTypeMapping TypeName="IsTypeOf(Terminals.Configuration.User)">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="DomainName" ColumnName="DomainName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="ConnectionsInGroup" TypeName="Terminals.Configuration.ConnectionsInGroup" StoreEntitySet="ConnectionsInGroup">
+            <EndProperty Name="Connections">
+              <ScalarProperty Name="Id" ColumnName="ConnectionId" />
+            </EndProperty>
+            <EndProperty Name="Groups">
+              <ScalarProperty Name="Id" ColumnName="GroupId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="CredentialLookup" TypeName="Terminals.Configuration.CredentialLookup" StoreEntitySet="CredentialLookup">
+            <EndProperty Name="Connections">
+              <ScalarProperty Name="Id" ColumnName="ConnectionId" />
+            </EndProperty>
+            <EndProperty Name="Credentials">
+              <ScalarProperty Name="Id" ColumnName="CredentialId" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <edmx:Designer>
+    <edmx:Connection>
+      <edmx:DesignerInfoPropertySet>
+        <edmx:DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </edmx:DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <edmx:DesignerInfoPropertySet>
+        <edmx:DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </edmx:DesignerInfoPropertySet>
+    </edmx:Options>
+    <edmx:Diagrams>
+      <DesignerViews>
+        <DesignerView Name="View" Zoom="100">
+          <DesignerType Name="ConnectionParams" Left="20" Top="20" IsExpanded="true" />
+          <DesignerType Name="Connections" Left="181" Top="20" IsExpanded="false" />
+          <DesignerType Name="Credentials" Left="434" Top="20" IsExpanded="true" />
+          <DesignerType Name="Groups" Left="580" Top="20" IsExpanded="true" />
+          <DesignerType Name="History" Left="726" Top="20" IsExpanded="true" />
+          <DesignerType Name="Options" Left="20" Top="2275" IsExpanded="false" />
+          <DesignerType Name="User" Left="155" Top="2275" IsExpanded="true" />
+        </DesignerView>
+      </DesignerViews>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

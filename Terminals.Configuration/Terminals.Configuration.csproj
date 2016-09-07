@@ -1,0 +1,193 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{FCEB7DAC-E7BE-4B40-976F-0687B9F36CD1}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Terminals.Configuration</RootNamespace>
+    <AssemblyName>Terminals.Configuration</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>4096</FileAlignment>
+    <TargetFrameworkProfile />
+    <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
+    <NoStdLib>False</NoStdLib>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <NoWin32Manifest>False</NoWin32Manifest>
+    <IntermediateOutputPath>obj\$(Configuration)\</IntermediateOutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugType>Full</DebugType>
+    <Optimize>False</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DebugSymbols>true</DebugSymbols>
+    <RegisterForComInterop>False</RegisterForComInterop>
+    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
+    <BaseAddress>4194304</BaseAddress>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>None</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <RegisterForComInterop>False</RegisterForComInterop>
+    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
+    <BaseAddress>4194304</BaseAddress>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Platform)' == 'AnyCPU' ">
+    <RegisterForComInterop>False</RegisterForComInterop>
+    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
+    <BaseAddress>4194304</BaseAddress>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
+    <BaseIntermediateOutputPath>obj\</BaseIntermediateOutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="KeePassLib">
+      <HintPath>..\packages\KeePassLib.2.30\lib\KeePassLib.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Files\Credentials\Credential.cs" />
+    <Compile Include="Files\Credentials\ExtensionMethod.cs" />
+    <Compile Include="Files\Main\CredentialStoreType.cs" />
+    <Compile Include="Files\Main\Favorites\AuthMethod.cs" />
+    <Compile Include="Files\Main\Favorites\BrowserAuthentication.cs" />
+    <Compile Include="Files\Main\Favorites\BrowserType.cs" />
+    <Compile Include="Files\Main\Favorites\Colors.cs" />
+    <Compile Include="Files\Main\Favorites\ConnectionImage.cs" />
+    <Compile Include="Files\Main\Favorites\FavoritesChangedEventHandler.cs" />
+    <Compile Include="Files\History\HistoryRecorded.cs" />
+    <Compile Include="Files\Main\Favorites\HtmlFormField.cs" />
+    <Compile Include="Files\Main\Favorites\PluginConfiguration.cs" />
+    <Compile Include="Files\Main\Favorites\PluginConfigurationElementCollection.cs" />
+    <Compile Include="Files\Main\Favorites\PuttyProxyTypes.cs" />
+    <Compile Include="Files\Main\Keys\KeyConfigElement.cs" />
+    <Compile Include="Files\Main\Keys\KeysCollection.cs" />
+    <Compile Include="Files\Credentials\CredentialSet.cs" />
+    <Compile Include="Files\Credentials\StoredCredentials.cs" />
+    <Compile Include="Files\Main\Favorites\DataDispatcher.cs" />
+    <Compile Include="Files\DataFileWatcher.cs" />
+    <Compile Include="Files\Main\Favorites\DesktopSize.cs" />
+    <Compile Include="Files\Main\Favorites\FavoriteAliasConfigurationElement.cs" />
+    <Compile Include="Files\Main\Favorites\FavoriteAliasConfigurationElementCollection.cs" />
+    <Compile Include="Files\Main\Favorites\FavoriteConfigurationElement.cs" />
+    <Compile Include="Files\Main\Favorites\FavoriteConfigurationElementCollection.cs" />
+    <Compile Include="Files\Main\Favorites\FavoritesChangedEventArgs.cs" />
+    <Compile Include="Files\Main\Groups\GroupConfigurationElement.cs" />
+    <Compile Include="Files\Main\Groups\GroupConfigurationElementCollection.cs" />
+    <Compile Include="Files\History\ConnectionHistory.cs" />
+    <Compile Include="Files\History\HistoryByFavorite.cs" />
+    <Compile Include="Files\History\HistoryItem.cs" />
+    <Compile Include="Files\History\HistoryRecordedEventArgs.cs" />
+    <Compile Include="Files\Main\Keys\KeysSection.cs" />
+    <Compile Include="Files\Main\MRU\MRUItemConfigurationElement.cs" />
+    <Compile Include="Files\Main\MRU\MRUItemConfigurationElementCollection.cs" />
+    <Compile Include="Files\Main\Favorites\PerfomanceOptions.cs" />
+    <Compile Include="Files\Main\Favorites\FavoritesDataDispatcher.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Files\Main\Favorites\PuttyCloseWindowOnExit.cs" />
+    <Compile Include="Files\Main\Favorites\PuttyConnectionType.cs" />
+    <Compile Include="Files\Main\Favorites\RemoteSounds.cs" />
+    <Compile Include="Security\Decryptor.cs" />
+    <Compile Include="Security\DecryptTransformer.cs" />
+    <Compile Include="Security\EncryptionAlgorithm.cs" />
+    <Compile Include="Security\Encryptor.cs" />
+    <Compile Include="Security\EncryptTransformer.cs" />
+    <Compile Include="Security\Hash.cs" />
+    <Compile Include="Security\PasswordFunctions.cs" />
+    <Compile Include="Serialization\SerializableDictionary.cs" />
+    <Compile Include="Serialization\SerializableSortedDictionary.cs" />
+    <Compile Include="Serialization\Serialize.cs" />
+    <Compile Include="Files\Main\Settings\ConfigurationChangedEventArgs.cs" />
+    <Compile Include="Files\Main\Settings\ConfigurationChangedHandler.cs" />
+    <Compile Include="Files\Main\Settings\FavoritesFactory.cs" />
+    <Compile Include="Files\Main\Settings\Settings.cs" />
+    <Compile Include="Files\Main\Settings\Settings_FavoriteButtons.cs" />
+    <Compile Include="Files\Main\Settings\Settings_Favorites.cs" />
+    <Compile Include="Files\Main\Settings\Settings_FileAccess.cs" />
+    <Compile Include="Files\Main\Settings\Settings_Groups.cs" />
+    <Compile Include="Files\Main\Settings\Settings_Tags.cs" />
+    <Compile Include="Files\Main\SortProperties.cs" />
+    <Compile Include="Files\Main\SpecialCommands\SpecialCommandConfigurationElement.cs" />
+    <Compile Include="Files\Main\SpecialCommands\SpecialCommandConfigurationElementCollection.cs" />
+    <Compile Include="Files\Main\Tags\TagsChangedArgs.cs" />
+    <Compile Include="Files\Main\Tags\TagsChangedEventHandler.cs" />
+    <Compile Include="Files\Main\TerminalsConfigurationSection.cs" />
+    <Compile Include="Files\Main\ToolTip\ToolStripSettingElement.cs" />
+    <Compile Include="Files\Main\ToolTip\ToolStripSettingElementCollection.cs" />
+    <Compile Include="Sql\ExtensionMethods.cs" />
+    <Compile Include="Sql\Terminals.Designer.cs">
+      <DependentUpon>Terminals.edmx</DependentUpon>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Sql\TerminalsEdmxExtension.cs" />
+    <Compile Include="Url.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <Content Include="Terminals.Configuration.dll.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\terminals.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Sql\CreateScript.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="Sql\Terminals.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Terminals.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Kohl.Framework\Kohl.Framework.csproj">
+      <Project>{2E4E3508-2275-4A32-9A0D-9A95B134407B}</Project>
+      <Name>Kohl.Framework</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

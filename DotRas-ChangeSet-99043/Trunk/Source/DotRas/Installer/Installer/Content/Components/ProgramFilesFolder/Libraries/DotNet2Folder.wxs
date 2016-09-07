@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+	<Fragment>
+    <ComponentGroup Id="DotNet2ComponentGroup">
+      <ComponentRef Id="DN2_WIN2K"/>
+      <ComponentRef Id="DN2_WINXP"/>
+      <ComponentRef Id="DN2_WIN2K8"/>
+      <ComponentRef Id="DN2_WIN7"/>
+      <ComponentRef Id="DN2_WIN8"/>
+    </ComponentGroup>
+
+    <DirectoryRef Id="DotNet2Folder">
+
+      <Directory Id="DN2_Win2kFolder" Name="WIN2K">
+        <Component Id="DN2_WIN2K" Guid="{8233F95F-E873-489F-B8D9-B8FA7557DD0E}">
+          <File Id="DN2_WIN2K.dll" Source="SourceDir\Libraries\NET20\WIN2K\DotRas.dll" />
+          <!--<File Id="DN2_WIN2K.pdb" Source="SourceDir\Libraries\NET20\WIN2K\DotRas.pdb" />-->
+          <File Id="DN2_WIN2K.xml" Source="SourceDir\Libraries\NET20\WIN2K\DotRas.xml" />
+        </Component>
+      </Directory>
+
+      <Directory Id="DN2_WinXpFolder" Name="WINXP">
+        <Component Id="DN2_WINXP" Guid="{11CEFE58-2146-409C-A24C-9CE9C10A7D54}">
+          <File Id="DN2_WINXP.dll" Source="SourceDir\Libraries\NET20\WINXP\DotRas.dll" />
+          <!--<File Id="DN2_WINXP.pdb" Source="SourceDir\Libraries\NET20\WINXP\DotRas.pdb" />-->
+          <File Id="DN2_WINXP.xml" Source="SourceDir\Libraries\NET20\WINXP\DotRas.xml" />
+        </Component>
+      </Directory>
+
+      <Directory Id="DN2_Win2k8Folder" Name="WIN2K8">
+        <Component Id="DN2_WIN2K8" Guid="{4D6534A0-E057-41D0-BB1C-B2339D5A6DB4}">
+          <File Id="DN2_WIN2K8.dll" Source="SourceDir\Libraries\NET20\WIN2K8\DotRas.dll" />
+          <!--<File Id="DN2_WIN2K8.pdb" Source="SourceDir\Libraries\NET20\WIN2K8\DotRas.pdb" />-->
+          <File Id="DN2_WIN2K8.xml" Source="SourceDir\Libraries\NET20\WIN2K8\DotRas.xml" />
+        </Component>
+      </Directory>
+
+      <Directory Id="DN2_Win7Folder" Name="WIN7">
+        <Component Id="DN2_WIN7" Guid="{9E0BA098-4860-4C8C-9F03-E2B33F3FEDB1}">
+          <File Id="DN2_WIN7.dll" Source="SourceDir\Libraries\NET20\WIN7\DotRas.dll" />
+          <!--<File Id="DN2_WIN7.pdb" Source="SourceDir\Libraries\NET20\WIN7\DotRas.pdb" />-->
+          <File Id="DN2_WIN7.xml" Source="SourceDir\Libraries\NET20\WIN7\DotRas.xml" />
+        </Component>
+      </Directory>
+
+      <Directory Id="DN2_Win8Folder" Name="WIN8">
+        <Component Id="DN2_WIN8" Guid="{E6EB5047-6A39-401C-941D-7CDCE8AE5B54}">
+          <File Id="DN2_WIN8.dll" Source="SourceDir\Libraries\NET20\WIN8\DotRas.dll" />
+          <!--<File Id="DN2_WIN8.pdb" Source="SourceDir\Libraries\NET20\WIN8\DotRas.pdb" />-->
+          <File Id="DN2_WIN8.xml" Source="SourceDir\Libraries\NET20\WIN8\DotRas.xml" />
+        </Component>
+      </Directory>
+    </DirectoryRef>
+	</Fragment>
+</Wix>

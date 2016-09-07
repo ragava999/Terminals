@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="17022986-83eb-42fb-90c0-dfa7009f2039" revisionNumber="1">
+  <developerConceptualDocument xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!--
+    <summary>
+      <para>Optional summary abstract</para>
+    </summary>
+    -->
+    <introduction>
+      <!-- Uncomment this to generate an outline of the section and sub-section
+           titles.  Specify a numeric value as the inner text to limit it to
+           a specific number of sub-topics when creating the outline.  Specify
+           zero (0) to limit it to top-level sections only.  -->
+      <!-- <autoOutline /> -->
+      <para>Version 1.1.0.0 was released September 1st, 2009.</para>
+    </introduction>
+    <!-- Add one or more top-level section elements.  These are collapsible.
+         If using <autoOutline />, add an address attribute to identify it
+         and specify a title so that it can be jumped to with a hyperlink. -->
+    <section address="Section1">
+      <title>Changes in this release</title>
+      <content>
+        <!-- Uncomment this to create a sub-section outline
+        <autoOutline /> -->
+        <para>
+          <list class="bullet">          	
+            <listItem><legacyBold>Features</legacyBold>
+              <list class="bullet">
+            	<listItem>Added support for generating LUID structures.</listItem>
+                <listItem>Support for the RasGetCountryInfo API has been added.</listItem>
+                <listItem>RasDevice.GetDeviceByName no longer requires callers to disable exact matching, it is turned off by default.</listItem>
+                <listItem>RasDevice.Create has been publicly exposed so devices can be created manually.</listItem>
+                <listItem>RasEntryNameValidator has been added to assist with verifying entry names for a phonebook.</listItem>
+                <listItem>RasAutoDialManager has been completely redesigned to make the component easier to work with.</listItem>
+                <listItem>Stored credentials used by RasDialer are now forcably destroyed rather than waiting for the garbage collector.</listItem>
+                <listItem>Marked all objects that can be serialized with the Serializable attribute to allow for serialization.</listItem>
+                <listItem>Added the connection handle to the UserState property when dialing connections with RasDialer.</listItem>
+                <listItem>RasEntry and RasSubEntry now both implement the ICloneable interface.</listItem>                
+              </list>
+            </listItem>
+            <listItem><legacyBold>Bug Fixes</legacyBold>
+              <list class="bullet">
+                <listItem>Fixed a bug with the RasPhoneBook component not loading the Options property on RasEntry.</listItem>
+                <listItem>Fixed a bug with the RasDialer component DialAsync method causing timeouts when it shouldn't.</listItem>
+                <listItem>Fixed an issue with the RasDialer component not being reusable when dialing synchronously.</listItem>
+                <listItem>Fixed an issue with RasConnection.HangUp allowing the application to exit before the operation has completed.</listItem>
+              </list>              
+            </listItem>
+            <listItem><legacyBold>Breaking Changes</legacyBold>
+              <list class="bullet">
+                <listItem>The RasDialer component must have the PhoneBookPath property set to prevent a non-descriptive error when attempting to use stored credentials.</listItem>
+                <listItem>Renamed the PhoneBookPath property name on RasConnection to comply with project naming guidelines.</listItem>
+              </list>
+            </listItem>
+            <listItem><legacyBold>Other Changes</legacyBold>
+              <list class="bullet">
+                <listItem>Added new example projects.</listItem>
+                <listItem>Created setup project for deployment rather than continuing to use multiple zip files.</listItem>
+                <listItem>Made many updates to the code documentation for the project.</listItem>
+                <listItem>Any entry points missing from rasapi32.dll will now throw NotSupportedExceptions, this is to prevent non-descriptive exceptions being thrown if a build from another platform is used on an earlier platform.</listItem>
+              </list>
+            </listItem>
+          </list>
+        </para>
+      </content>
+      <!-- If a section contains a sections element, its content creates
+           sub-sections.  These are not collapsible.
+      <sections>
+          <section address="SubSection1">
+              <title>Sub-section 1</title>
+              <content>
+                  <para>Sub-section content.</para>
+              </content>
+          </section>
+          <section address="SubSection2">
+              <title>Sub-section 2</title>
+              <content>
+                  <para>Sub-section content.</para>
+              </content>
+          </section>
+      </sections> -->
+    </section>
+    <relatedTopics>
+      <externalLink>
+        <linkText>Release Link</linkText>
+        <linkUri>http://dotras.codeplex.com/releases/view/26182</linkUri>
+      </externalLink>
+      <!-- One or more of the following:
+           - A local link
+           - An external link
+           - A code entity reference
+
+      <link xlink:href="Other Topic's ID"/>
+      <link xlink:href="Other Topic's ID">Link inner text</link>
+
+      <externalLink>
+          <linkText>Link text</linkText>
+          <linkAlternateText>Optional alternate link text</linkAlternateText>
+          <linkUri>URI</linkUri>
+      </externalLink>
+
+      <codeEntityReference>API member ID</codeEntityReference>
+
+      Examples:
+
+      <link xlink:href="00e97994-e9e6-46e0-b420-5be86b2f8270" />
+      <link xlink:href="00e97994-e9e6-46e0-b420-5be86b2f8278">Some other topic</link>
+
+      <externalLink>
+          <linkText>SHFB on CodePlex</linkText>
+          <linkAlternateText>Go to CodePlex</linkAlternateText>
+          <linkUri>http://shfb.codeplex.com</linkUri>
+      </externalLink>
+
+      <codeEntityReference>T:TestDoc.TestClass</codeEntityReference>
+      <codeEntityReference>P:TestDoc.TestClass.SomeProperty</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.#ctor</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.#ctor(System.String,System.Int32)</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.ToString</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.FirstMethod</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.SecondMethod(System.Int32,System.String)</codeEntityReference>
+      -->
+    </relatedTopics>
+  </developerConceptualDocument>
+</topic>

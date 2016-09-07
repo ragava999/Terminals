@@ -1,0 +1,57 @@
+machine:
+  timezone:
+    Europe/Vienna
+
+###############################
+
+general:
+  artifacts:
+    - Terminals/bin/x86/Release
+    - Terminals.Setup/Output
+
+###############################
+
+dependencies:
+  pre:
+    - sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
+    - echo "deb http://download.mono-project.com/repo/debian wheezy main" | sudo tee /etc/apt/sources.list.d/mono-xamarin.list
+    
+    ######## PREPARATION FOR WINE ########
+    - sudo dpkg --add-architecture i386
+    #- sudo sh -c "echo 'foreign-architecture i386' > /etc/dpkg/dpkg.cfg.d/multiarch"
+    #- sudo add-apt-repository ppa:wine/wine-builds -y
+    - sudo apt-get clean
+    - export DEBIAN_FRONTEND=noninteractive && sudo apt-get update > /dev/null 2> /dev/null
+    - sudo apt-get install cabextract
+    
+    ######## UPDATE/UPGRADE UBUNTU ########
+    # Remove the mysql crap which prevents me from upgrading the system and install missing stuff
+    #- export DEBIAN_FRONTEND=noninteractive && sudo apt-get -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" remove --purge mysql* -y -q && sudo apt-get install -f -y
+    # Upgrade the system and perform some cleanup
+    - export DEBIAN_FRONTEND=noninteractive && sudo apt-get -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" dist-upgrade -y -q && sudo apt-get autoremove --purge -y -q && sudo apt-get -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" upgrade -y -q
+    
+    ######## INSTALL WINE ########
+    # THIS WILL ACCEPT THE MICROSOFT EULA for the MS TTF core fonts
+    - echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | sudo debconf-set-selections && sudo apt-get install ttf-mscorefonts-installer
+    - rm -rf ~/.wine
+    - sudo apt-get install wine winetricks
+    - env WINEARCH=win32 WINEPREFIX=~/.wine32 winetricks win7
+    #- wineboot --update
+    
+    ######## INSTALL MONO ########
+    - sudo apt-get install  mono-devel
+    - sudo apt-get install  mono-complete
+    - sudo apt-get install  referenceassemblies-pcl
+    
+    ######## SYNC CERTIFICATE STORE & DOWNLOAD NuGet PACKAGES ########
+    - mozroots --import --sync
+    - mono .nuget/NuGet.exe restore -NonInteractive Terminals.sln
+    - sudo chmod +x ./Release.sh
+
+###############################
+
+test:
+  pre:
+    - REPLACE=`date "+%d-%m-%Y %H:%M:%S"` && sed -i -- "s/30.08.2016 12:30:00/$REPLACE/g" /home/ubuntu/Terminals/Terminals/Properties/AssemblyInfo.cs
+    - xbuild /t:Rebuild /p:WarningLevel=0 /p:Configuration=Release /p:RunCodeAnalysis=false "Terminals.sln"
+    - ./Release.sh

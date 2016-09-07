@@ -1,0 +1,177 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="c4cc43a1-588a-4453-95e3-bc22fd5fb4b3" revisionNumber="1">
+  <developerConceptualDocument xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!--
+    <summary>
+      <para>Optional summary abstract</para>
+    </summary>
+    -->
+    <introduction>
+      <!-- Uncomment this to generate an outline of the section and sub-section
+           titles.  Specify a numeric value as the inner text to limit it to
+           a specific number of sub-topics when creating the outline.  Specify
+           zero (0) to limit it to top-level sections only.  -->
+      <!-- <autoOutline /> -->
+    	<para>Version 1.2.0.0 was released June 1st, 2011.</para>
+    </introduction>
+    <!-- Add one or more top-level section elements.  These are collapsible.
+         If using <autoOutline />, add an address attribute to identify it
+         and specify a title so that it can be jumped to with a hyperlink. -->
+    <section address="Section1">
+      <title>Changes in this release</title>
+      <content>
+        <!-- Uncomment this to create a sub-section outline
+        <autoOutline /> -->
+      		<list class="bullet">
+      			<listItem><legacyBold>Features</legacyBold>
+      				<list class="bullet">
+      					<listItem>Windows 7 features (WIN7 build type) have been added; this operating system is now officially supported.
+      						<list class="bullet">
+      							<listItem>Added InterfaceIndex property to RasDialer for VPN connections.</listItem>
+      							<listItem>Added IPv6Address, IPv6PrefixLength, and NetworkOutageTime properties to RasEntry.</listItem>
+      							<listItem>Added LocalEndPoint, RemoteEndPoint, and ConnectionSubState properties to RasConnectionStatus.</listItem>
+      							<listItem>Added support for IKEv2 and PPP projection operations; see the GetProjectionInfo method on RasConnection.</listItem>
+      							<listItem>Added support for updating tunnel endpoints on IKEv2 connections; see the new UpdateConnection method.</listItem>
+      						</list>
+      					</listItem>
+      					<listItem>Added new static helper methods on RasConnection to assist in retrieving active connections.</listItem>
+      					<listItem>RasDialer can now update credentials after a successful connection attempt for both synchronous and asynchronous attempts.</listItem>
+      					<listItem>Added the AllowUseStoredCredentials property to RasDialer which enables or disables the retrieval of stored credentials when dialing a connection if no credentials are provided to the dialer. This value is false by default.</listItem>
+      					<listItem>RasEntry.CreateVpnEntry now allows callers to disable the remote default gateway rather than having to remove the flag after the method has completed.</listItem>
+      					<listItem>Added a new static method to RasEntry to assist with creating broadband connections.</listItem>
+      					<listItem>Added support for saving credentials from RasEntry to the all users profile when available.</listItem>
+      					<listItem>Exposed the polling interval used by the HangUp method on RasConnection and RasDialer to allow callers to specify their own interval if needed.</listItem>
+						    <listItem>Added the IsBusy property to RasDialer to indicate when the component is in use.</listItem>
+						    <listItem>Added support for using the equality/inequality operators on the RasHandle class when comparing handles.</listItem>
+						    <listItem>Added <codeInLine>RasConnection.GetActiveConnectionByHandle</codeInLine> method to allow retrieving a connection by the handle.</listItem>
+						    <listItem>Added the CredentialPromptDialog for requesting user credentials using the default Windows credential interface.</listItem>
+						    <listItem>Added the Handle property to the DialCompletedEventArgs class. This property will contain the handle whose connection just completed.</listItem>
+						    <listItem>Added support for retrieving and updating EAP user data on RasEntry.</listItem>
+                <listItem>Exposed the Text, Data, and CallbackId properties in RasPhoneBookDialog events.</listItem>
+      				</list>
+      			</listItem>
+      			<listItem><legacyBold>Breaking Changes</legacyBold>
+      				<list class="bullet">
+      					<listItem>Relocated the GetActiveConnections method from RasDialer to a static method on RasConnection. This was done to remove the need for a RasDialer instance when the class was not used by the method.</listItem>
+      					<listItem>The overloads containing NetworkCredential for the Dial and DialAsync methods on RasDialer have been relocated to the Credentials property on the component. This was done to add support for updating credentials stored for the entry once a connection was successful.</listItem>
+                        <listItem>The RasDialer component no longer assumes stored credentials should be used if the <codeInline>Credentials</codeInline> property is null. To allow stored credentials to be used, set the <codeInline>AllowUseStoredCredentials</codeInline> property to true.</listItem>
+      					<listItem><para>The following flags are no longer exposed as they are set based on the data from the parent RasEntry object.</para>
+      						<list class="bullet">
+      							<listItem><codeInline>SpecificIPAddress</codeInline> - Is now set by setting the IPAddress property on RasEntry.</listItem>
+      							<listItem><codeInline>SpecificNameServers</codeInline> - Is now set by setting the DnsAddress or DnsAddressAlt properties on RasEntry.</listItem>
+      							<listItem><codeInline>UseCountryAndAreaCodes</codeInline> - Is now set by setting either CountryId, CountryCode, or AreaCode properties on RasEntry.</listItem>
+      							<listItem><codeInline>IPv6SpecificAddress</codeInline> - Is now set by setting the IPv6Address property on RasEntry for WIN7 and later build types.</listItem>
+      							<listItem><codeInline>IPv6SpecificNameServers</codeInline> - Is now set by setting the IPv6DnsAddress or IPv6DnsAddressAlt properties on RasEntry.</listItem>
+      							<listItem><codeInline>IPv4ExplicitMetric</codeInline> - Is now set by setting the IPv4InterfaceMetric property on RasEntry for WIN2K8 or later build types.</listItem>
+      							<listItem><codeInline>IPv6ExplicitMetric</codeInline> - Is now set by setting the IPv6InterfaceMetric property on RasEntry for WIN2K8 or later build types.</listItem>
+      						</list>
+      					</listItem>
+      					<listItem>Renamed IsMultiLink properties to IsMultilink to comply with .NET naming guidelines on RasHandle and RasPppInfo objects.</listItem>
+      					<listItem><para>The following flags have been made internal and instead have exposed a class with the same name as each enum containing multiple booleans.</para>
+      						<list class="bullet">
+      							<listItem><codeInline>RasNetworkProtocols</codeInline></listItem>
+      							<listItem><codeInline>RasIkeV2Options</codeInline></listItem>
+      							<listItem><codeInline>RasCompressionOptions</codeInline></listItem>
+      							<listItem><codeInline>RasLcpOptions</codeInline></listItem>
+      							<listItem><codeInline>RasEntryOptions</codeInline> and <codeInline>RasEntryExtendedOptions</codeInline> - Both flags have been consolidated to the <codeInline>RasEntryOptions</codeInline> class to help assist with development.</listItem>
+      							<listItem><codeInline>RasIPOptions</codeInline></listItem>
+      						</list>
+      					</listItem>
+      					<listItem>The RasDialExtendedOptions flags enum has now been made internal and the RasDialOptions class is now exposed. Also, the following flags are no longer exposed as they are set based on other settings on the RasDialer.
+      						<list class="bullet">
+      							<listItem><codeInline>IgnoreModemSpeaker</codeInline> - Is now set by setting the SetModemSpeaker property on RasDialOptions.</listItem>
+      							<listItem><codeInline>IgnoreSoftwareCompression</codeInline> - Is now set by setting the SetSoftwareCompression property on RasDialOptions.</listItem>
+      						</list>
+      					</listItem>
+      					<listItem>The RasIPv6Info class has had the LocalInterfaceIdentifier, PeerInterfaceIdentifier, LocalCompressionProtocol, and PeerCompressionProtocol properties array return values converted to their respective numeric types.</listItem>
+      					<listItem>The connection handle that was being passed into the UserState property on DialCompletedEventArgs is now being passed into the Handle property.</listItem>      					
+      					<listItem>The RasEapInfo class has been removed and the entire EAP infrastructure has been completely redesigned.</listItem>
+      					<listItem>The RasDialer.EapData property has been removed. To set the EAP data used during dialing, use the SetEapUserData method.</listItem>
+      				</list>
+      			</listItem>
+      			<listItem><legacyBold>Bug Fixes</legacyBold>
+      				<list class="bullet">
+      					<listItem>Fixed a bug with RasPhoneBook that caused it to crash if the target directory did not already exist when opening a phonebook. The phone book will now always create the file when being opened to prevent this from happening.</listItem>
+      					<listItem>Fixed a bug with RasConnection when hanging up entries that experience a long delay when disconnecting not leaving the hangup method after 3 seconds. This will prevent the application possibly ending and causing the connection to be left in an inconsistent state.</listItem>
+      					<listItem>Fixed a bug with RasDialer causing an unhandled exception being thrown from the timeout callback if an error occurs during the timeout.</listItem>
+      					<listItem>Fixed a couple bugs with RasPhoneBook not handling alternate entries on dial-up connections properly. It can now retrieve multiples and save them correctly.</listItem>
+      					<listItem>Fixed an unhandled exception being thrown from RasDialer when attempting to hang up an already disconnected connection being reported from the RAS state callback.</listItem>
+      					<listItem>Fixed an issue when adding or updating a broadband connection.</listItem>
+      					<listItem>Fixed an issue when using RasDialer with Debian Linux VPN servers when providing invalid user credentials.</listItem>
+      					<listItem>Fixed an issue when retrieving connection statistics causing overflow problems.</listItem>
+      					<listItem>Fixed a bug with RasDialer leaving connections open when disconnected before the connection is considered active.</listItem>
+      					<listItem>Fixed a bug with RasDialer not being able to dial L2TP connections when using EAP and certificates for authentication.</listItem>
+      				</list>      				
+      			</listItem>      			
+      			<listItem><legacyBold>Other Changes</legacyBold>
+      				<list class="bullet">
+      				    <listItem>Removed the WINXPSP2 build type, use the WINXP build type instead.
+      						<para>The Windows XP SP2 build was checked whether it was truely needed. After verification against the Windows SDK, it was found this build type was not necessary. There were no changes to RAS between Windows XP (0x501) and Windows XP Service Pack 2 (0x502).</para>
+      					</listItem>
+      					<listItem>Added additional example projects.</listItem>
+      					<listItem>Changed the exception thrown from RasDialer when dialing connections by entry name with a null phonebook path from ArgumentException to an InvalidOperationException.</listItem>
+      					<listItem>Gave the installation package a much needed face lift.</listItem>
+      					<listItem>Changed the build system to allow for integration tests with multiple server operating systems for each available build type.</listItem>
+      					<listItem>Made many changes to the code documentation.</listItem>
+      					<listItem>Added disconnect button to the CreateAndDialVpnEntry example to show how to disconnect a connection attempt on an already connected entry.</listItem>
+      					<listItem>Added support for Authenticode certificates in the build process for the installation package and output binaries.</listItem>
+      				</list>
+      			</listItem>
+      		</list>
+      </content>      	
+      <!-- If a section contains a sections element, its content creates
+           sub-sections.  These are not collapsible.
+      <sections>
+          <section address="SubSection1">
+              <title>Sub-section 1</title>
+              <content>
+                  <para>Sub-section content.</para>
+              </content>
+          </section>
+          <section address="SubSection2">
+              <title>Sub-section 2</title>
+              <content>
+                  <para>Sub-section content.</para>
+              </content>
+          </section>
+      </sections> -->
+    </section>
+    <relatedTopics>
+      <!-- One or more of the following:
+           - A local link
+           - An external link
+           - A code entity reference
+
+      <link xlink:href="Other Topic's ID"/>
+      <link xlink:href="Other Topic's ID">Link inner text</link>
+
+      <externalLink>
+          <linkText>Link text</linkText>
+          <linkAlternateText>Optional alternate link text</linkAlternateText>
+          <linkUri>URI</linkUri>
+      </externalLink>
+
+      <codeEntityReference>API member ID</codeEntityReference>
+
+      Examples:
+
+      <link xlink:href="00e97994-e9e6-46e0-b420-5be86b2f8270" />
+      <link xlink:href="00e97994-e9e6-46e0-b420-5be86b2f8278">Some other topic</link>
+
+      <externalLink>
+          <linkText>SHFB on CodePlex</linkText>
+          <linkAlternateText>Go to CodePlex</linkAlternateText>
+          <linkUri>http://shfb.codeplex.com</linkUri>
+      </externalLink>
+
+      <codeEntityReference>T:TestDoc.TestClass</codeEntityReference>
+      <codeEntityReference>P:TestDoc.TestClass.SomeProperty</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.#ctor</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.#ctor(System.String,System.Int32)</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.ToString</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.FirstMethod</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.SecondMethod(System.Int32,System.String)</codeEntityReference>
+      -->
+    </relatedTopics>
+  </developerConceptualDocument>
+</topic>

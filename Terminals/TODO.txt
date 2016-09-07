@@ -1,0 +1,15 @@
+-> Add new import provider for RDM
+-> Create a new branch for testing
+-> Fix bugs repoted in GitHub
+-> Have a look at the compile time detection -> this is the only thing that is not working under mono - whyever?
+-> Create packages for MacOS X (DMG) and for unix like debian/ubuntu (DEB) and fedora/cent os/redhat (RPM)
+
+
+Terminals.Configuration.Files.Main.Favorites.FavoriteConfigurationElement:
+	LoadBalanceInfo			not used -> make use of for Azure
+
+TSGW -> credential set not working -> whereas direct entry works
+
+Farben werden nicht immer ¨¹bernommen -> erst wenn angeklickt oder neuer Tab
+
+background not working

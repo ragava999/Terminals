@@ -1,0 +1,200 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B7912BF3-A591-4011-B48E-9EAB91568BB3}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Terminals.Connection</RootNamespace>
+    <AssemblyName>Terminals.Connection</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>4096</FileAlignment>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <NoWin32Manifest>False</NoWin32Manifest>
+    <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
+    <NoStdLib>False</NoStdLib>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <IntermediateOutputPath>obj\$(Configuration)\</IntermediateOutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>Full</DebugType>
+    <Optimize>False</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <BaseAddress>4194304</BaseAddress>
+    <RegisterForComInterop>False</RegisterForComInterop>
+    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>None</DebugType>
+    <Optimize>True</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <BaseAddress>4194304</BaseAddress>
+    <RegisterForComInterop>False</RegisterForComInterop>
+    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
+    <BaseIntermediateOutputPath>obj\</BaseIntermediateOutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Platform)' == 'AnyCPU' ">
+    <BaseAddress>4194304</BaseAddress>
+    <PlatformTarget>x86</PlatformTarget>
+    <RegisterForComInterop>False</RegisterForComInterop>
+    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
+    <BaseIntermediateOutputPath>obj\</BaseIntermediateOutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Configuration" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DependencyResolver.cs" />
+    <Compile Include="IAfterConnectSupport.cs" />
+    <Compile Include="Panels\OptionPanels\EnableProtocolOptionPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Panels\OptionPanels\EnableProtocolOptionPanel.Designer.cs">
+      <DependentUpon>EnableProtocolOptionPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ScreenCapture\CaptureManagerConnection.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ScreenCapture\Capture.cs" />
+    <Compile Include="ScreenCapture\CaptureManagerLayout.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ScreenCapture\CaptureManagerLayout.Designer.cs">
+      <DependentUpon>CaptureManagerLayout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ScreenCapture\CaptureType.cs" />
+    <Compile Include="ScreenCapture\ImageFormatHandler.cs" />
+    <Compile Include="ScreenCapture\ImageFormatTypes.cs" />
+    <Compile Include="ScreenCapture\ScreenCapture.cs" />
+    <Compile Include="Connection.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ConnectionBase.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Manager\ConnectionImageHandler.cs" />
+    <Compile Include="Manager\ConnectionManager.cs" />
+    <Compile Include="Panels\OptionPanels\OptionPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Panels\OptionPanels\IHostingForm.cs" />
+    <Compile Include="Panels\OptionPanels\IOptionPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Native\WindowsAPI.cs" />
+    <Compile Include="Native\ManagedRectangle.cs" />
+    <Compile Include="Native\ShellFileOperation.cs" />
+    <Compile Include="Native\TextMetric.cs" />
+    <Compile Include="PopupTerminal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PopupTerminal.Designer.cs">
+      <DependentUpon>PopupTerminal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Panels\FavoritePanels\FavoritePanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TabControl\BaseStyledPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="TabControl\CollectionChange.cs" />
+    <Compile Include="TabControl\CollectionWithEvents.cs" />
+    <Compile Include="TabControl\TabControlItemClosingEventArgs.cs" />
+    <Compile Include="TabControl\ICaptionSupport.cs" />
+    <Compile Include="TabControl\TabControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="TabControl\TabControlCloseButton.cs" />
+    <Compile Include="TabControl\TabControlItem.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="TabControl\TabControlItemChangedEventArgs.cs" />
+    <Compile Include="TabControl\TabControlItemChangedHandler.cs" />
+    <Compile Include="TabControl\TabControlItemClosingHandler.cs" />
+    <Compile Include="TabControl\TabControlItemCollection.cs" />
+    <Compile Include="TabControl\TabControlMenuGlyph.cs" />
+    <Compile Include="TabControl\TabControlMouseEnteredTitleHandler.cs" />
+    <Compile Include="TabControl\TabControlMouseLeftTitleHandler.cs" />
+    <Compile Include="TabControl\TabControlMouseOnTitleEventArgs.cs" />
+    <Compile Include="TabControl\TabControlMouseOnTitleHandler.cs" />
+    <Compile Include="TabControl\TabPreview.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TabControl\TabPreview.designer.cs">
+      <DependentUpon>TabPreview.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TabControl\TerminalTabControlItem.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="TabControl\TerminalTabsSelectionControler.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Kohl.Framework\Kohl.Framework.csproj">
+      <Project>{2E4E3508-2275-4A32-9A0D-9A95B134407B}</Project>
+      <Name>Kohl.Framework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Terminals.Configuration\Terminals.Configuration.csproj">
+      <Project>{FCEB7DAC-E7BE-4B40-976F-0687B9F36CD1}</Project>
+      <Name>Terminals.Configuration</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ScreenCapture\CaptureManagerLayout.resx">
+      <DependentUpon>CaptureManagerLayout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Panels\OptionPanels\OptionPanel.resx">
+      <DependentUpon>OptionPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PopupTerminal.resx">
+      <DependentUpon>PopupTerminal.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TabControl\TabPreview.resx">
+      <DependentUpon>TabPreview.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\application_put.png" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
