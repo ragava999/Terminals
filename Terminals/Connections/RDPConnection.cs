@@ -615,7 +615,7 @@ namespace Terminals.Connections
 
         private void ConfigureRedirectedDrives()
         {
-            if (this.Favorite.RedirectedDrives.Count > 0 && this.Favorite.RedirectedDrives[0].Equals("true"))
+			if (this.Favorite.RedirectedDrivesList.Count > 0 && this.Favorite.RedirectedDrives[0].Equals("true"))
                 this.client.AdvancedSettings2.RedirectDrives = true;
             else
             {
@@ -624,7 +624,7 @@ namespace Terminals.Connections
                     for (int i = 0; i < nonScriptable.DriveCollection.DriveCount; i++)
                     {
                         IMsRdpDrive drive = nonScriptable.DriveCollection.get_DriveByIndex((uint)i);
-                        foreach (string str in this.Favorite.RedirectedDrives)
+							foreach (string str in this.Favorite.RedirectedDrivesList)
                         {
                             if (drive.Name.IndexOf(str) > -1)
                                 drive.RedirectionState = true;

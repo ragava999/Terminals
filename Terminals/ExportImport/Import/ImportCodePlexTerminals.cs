@@ -300,7 +300,7 @@ namespace Terminals.ExportImport.Import
                             context.Current.Port = context.Reader.ReadInt();
                             break;
                         case "redirectedDrives":
-                            context.Current.redirectedDrives = context.Reader.ReadString();
+                            context.Current.RedirectedDrives = context.Reader.ReadString();
                             break;
                         case "redirectPorts":
                             context.Current.RedirectPorts = context.Reader.ReadBool();

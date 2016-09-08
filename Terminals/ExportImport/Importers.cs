@@ -70,6 +70,7 @@ namespace Terminals.ExportImport
                 this.providers.Add(ImportvRD.FILE_EXTENSION, new ImportvRD());
                 this.providers.Add(ImportMuRD.FILE_EXTENSION, new ImportMuRD());
                 this.providers.Add("CodePlex_Terminals_" + ImportCodePlexTerminals.FILE_EXTENSION, new ImportCodePlexTerminals());
+				this.providers.Add("Remote Desktop Manager", new ImportRemoteDesktopManager());
             }
         }
     }

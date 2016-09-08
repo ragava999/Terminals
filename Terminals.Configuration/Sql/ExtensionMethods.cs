@@ -10,8 +10,15 @@ namespace Terminals.Configuration.Sql
 
     public static class ExtensionMethods
     {
+		// TODO: Check if DomainName and CredentialSet get set properly. (not sure for the ToFavorite method -> sure for ToConnection - but is it working!? -> needs to be tested)
+		// TODO: WHAT ABOUT THE 'PluginConfigurations'???
         public static FavoriteConfigurationElement ToFavorite(this Connections connection)
         {
+			// TODO: WHAT ABOUT THE 'PluginConfigurations'???
+			// TODO: Maybe there's a problem with the 'DomainName' and the 'CredentialSet' itself.
+
+			// Everything except 'EncryptedPassword' and 'IsDatabaseFavorite' will be syncronized
+
             string[] groups = (from g in connection.Groups select g.Name).Distinct().ToArray();
 
             FavoriteConfigurationElement favorite = new FavoriteConfigurationElement()
@@ -62,6 +69,32 @@ namespace Terminals.Configuration.Sql
                 Kohl.Framework.Logging.Log.Error("Unable to load the credential set from database for the connection.");
             }
             #endregion
+
+			/*
+			if (connection.PuttyDontAddDomainToUserName.HasValue)
+				favorite.PuttyDontAddDomainToUserName = connection.PuttyDontAddDomainToUserName.Value;
+
+			if (connection.PuttyEnableX11.HasValue)
+				favorite.PuttyEnableX11 = connection.PuttyEnableX11.Value;
+
+			if (connection.PuttyProxyHost.HasValue)
+				favorite.PuttyProxyHost = connection.PuttyProxyHost.Value;
+
+			if (connection.PuttyProxyPort.HasValue)
+				favorite.PuttyProxyPort = connection.PuttyProxyPort.Value;
+
+			if (connection.PuttyProxyType.HasValue)
+				favorite.PuttyProxyType = connection.PuttyProxyType.Value;
+
+			if (connection.PuttyProxyType.HasValue)
+				favorite.PuttyProxyType = connection.PuttyProxyType.Value;
+
+			if (connection.TabColor.HasValue)
+				favorite.TabColor = connection.TabColor.Value;
+
+			if (connection.TsgwXmlCredentialSetName.HasValue)
+				favorite.TsgwXmlCredentialSetName = connection.TsgwXmlCredentialSetName.Value;
+			*/
 
             if (connection.NewWindow.HasValue)
                 favorite.NewWindow = connection.NewWindow.Value;
@@ -253,7 +286,7 @@ namespace Terminals.Configuration.Sql
             if (connection.Sounds.HasValue)
                 favorite.Sounds = (RemoteSounds)connection.Sounds.Value;
 
-            favorite.redirectedDrives = connection.RedirectedDrives;
+            favorite.RedirectedDrives = connection.RedirectedDrives;
 
             if (connection.RedirectPorts.HasValue)
                 favorite.RedirectPorts = connection.RedirectPorts.Value;
@@ -374,13 +407,13 @@ namespace Terminals.Configuration.Sql
 
         public static Connections ToConnection(this FavoriteConfigurationElement favorite, TerminalsObjectContext dc, Connections connection = null)
         {
-            // Id won't either be changed or set.
+            // It won't either be changed or set.
             if (connection == null)
                 connection = new Connections();
+            
+			// TODO: WHAT ABOUT THE 'PluginConfigurations'???
 
-            connection.Name = favorite.Name;
-            connection.Notes = favorite.Notes;
-            connection.Protocol = favorite.Protocol;
+			// Everything except 'EncryptedPassword' and 'IsDatabaseFavorite' will be syncronized
 
             #region Tags
             connection.Groups.Clear();
@@ -514,119 +547,127 @@ namespace Terminals.Configuration.Sql
             }
             #endregion
 
-            //connection.ToolBarIcon = favorite.ToolBarIcon;
-
-            connection.ServerName = favorite.ServerName;
-            connection.NewWindow = favorite.NewWindow;
-            connection.Port = favorite.Port;
-            connection.DesktopSizeHeight = favorite.DesktopSizeHeight;
-            connection.DesktopSizeWidth = favorite.DesktopSizeWidth;
-            connection.DesktopSize = (int)favorite.DesktopSize;
-            connection.ExecuteBeforeConnect = favorite.ExecuteBeforeConnect;
-            connection.ExecuteBeforeConnectCommand = favorite.ExecuteBeforeConnectCommand;
-            connection.ExecuteBeforeConnectArgs = favorite.ExecuteBeforeConnectArgs;
-            connection.ExecuteBeforeConnectInitialDirectory = favorite.ExecuteBeforeConnectInitialDirectory;
-            connection.ExecuteBeforeConnectWaitForExit = favorite.ExecuteBeforeConnectWaitForExit;
-            connection.ExplorerStyle = favorite.ExplorerStyle;
-            connection.ExplorerDirectory = favorite.ExplorerDirectory;
-            connection.ExplorerDirectoryDual = favorite.ExplorerDirectoryDual;
-            connection.ExplorerDirectoryTripple = favorite.ExplorerDirectoryTripple;
-            connection.ExplorerDirectoryQuad = favorite.ExplorerDirectoryQuad;
-            connection.HtmlFormFieldsString = favorite.HtmlFormFieldsString;
-            connection.BrowserAuthentication = (int)favorite.BrowserAuthentication;
-            connection.HttpBrowser = (int) favorite.HttpBrowser;
-            connection.Url = favorite.Url;
-            connection.PuttyConnectionType = (int)favorite.PuttyConnectionType;
-            connection.PuttySession = favorite.PuttySession;
-            connection.PuttyCompression = favorite.PuttyCompression;
-            connection.PuttyPasswordTimeout = favorite.PuttyPasswordTimeout;
-            connection.PuttyVerbose = favorite.PuttyVerbose;
-            connection.PuttyShowOptions = favorite.PuttyShowOptions;
-            connection.PuttyCloseWindowOnExit = (int)favorite.PuttyCloseWindowOnExit;
-
-            connection.GenericWorkingDirectory = favorite.GenericWorkingDirectory;
-            connection.GenericProgramPath = favorite.GenericProgramPath;
-            connection.GenericArguments = favorite.GenericArguments;
-            connection.RAdminPhonebookPath = favorite.RAdminPhonebookPath;
-            connection.RAdminThrough = favorite.RAdminThrough;
-            connection.RAdminThroughServerName = favorite.RAdminThroughServerName;
-            connection.RAdminThroughPort = favorite.RAdminThroughPort;
-            connection.RAdminStandardConnectionMode = favorite.RAdminStandardConnectionMode;
-            connection.RAdminTelnetMode = favorite.RAdminTelnetMode;
-            connection.RAdminViewOnlyMode = favorite.RAdminViewOnlyMode;
-            connection.RAdminFileTransferMode = favorite.RAdminFileTransferMode;
-            connection.RAdminShutdown = favorite.RAdminShutdown;
-            connection.RAdminChatMode = favorite.RAdminChatMode;
-            connection.RAdminVoiceChatMode = favorite.RAdminVoiceChatMode;
-            connection.RAdminSendTextMessageMode = favorite.RAdminSendTextMessageMode;
-            connection.RAdminUseFullScreen = favorite.RAdminUseFullScreen;
-            connection.RAdminUpdates = favorite.RAdminUpdates;
-            connection.RAdminColorMode = favorite.RAdminColorMode;
-            connection.ConsoleRows = favorite.ConsoleRows;
-            connection.ConsoleCols = favorite.ConsoleCols;
-            connection.ConsoleFont = favorite.ConsoleFont;
-            connection.ConsoleBackColor = favorite.ConsoleBackColor;
-            connection.ConsoleTextColor = favorite.ConsoleTextColor;
-            connection.ConsoleCursorColor = favorite.ConsoleCursorColor;
-            connection.Ssh1 = favorite.Ssh1;
-            connection.AuthMethod = (int)favorite.AuthMethod;
-            connection.KeyTag = favorite.KeyTag;
-            connection.VncAutoScale = favorite.VncAutoScale;
-            connection.VncViewOnly = favorite.VncViewOnly;
-            connection.VncDisplayNumber = favorite.VncDisplayNumber;
-            connection.VmrcReducedColorsMode = favorite.VmrcReducedColorsMode;
-            connection.VmrcAdministratorMode = favorite.VmrcAdministratorMode;
-            connection.IcaApplicationName = favorite.IcaApplicationName;
-            connection.IcaServerIni = favorite.IcaServerIni;
-            connection.IcaClientIni = favorite.IcaClientIni;
-            connection.IcaEnableEncryption = favorite.IcaEnableEncryption;
-            connection.IcaEncryptionLevel = favorite.IcaEncryptionLevel;
-            connection.LoadBalanceInfo = favorite.LoadBalanceInfo;
-            connection.ConnectToConsole = favorite.ConnectToConsole;
-            connection.RedirectPrinters = favorite.RedirectPrinters;
-            connection.RedirectSmartCards = favorite.RedirectSmartCards;
-            connection.RedirectClipboard = favorite.RedirectClipboard;
-            connection.RedirectDevices = favorite.RedirectDevices;
-            connection.TsgwUsageMethod = favorite.TsgwUsageMethod;
-            connection.TsgwHostname = favorite.TsgwHostname;
-            connection.TsgwCredsSource = favorite.TsgwCredsSource;
-            connection.TsgwSeparateLogin = favorite.TsgwSeparateLogin;
-            connection.TsgwUsername = favorite.TsgwUsername;
-            connection.TsgwDomain = favorite.TsgwDomain;
-            connection.TsgwEncryptedPassword = favorite.TsgwEncryptedPassword;
-            connection.Sounds = (int)favorite.Sounds;
-            connection.RedirectedDrives = favorite.redirectedDrives;
-            connection.RedirectPorts = favorite.RedirectPorts;
-            connection.ShutdownTimeout = favorite.ShutdownTimeout;
-            connection.OverallTimeout = favorite.OverallTimeout;
-            connection.ConnectionTimeout = favorite.ConnectionTimeout;
-            connection.IdleTimeout = favorite.IdleTimeout;
-            connection.SecurityWorkingFolder = favorite.SecurityWorkingFolder;
-            connection.SecurityStartProgram = favorite.SecurityStartProgram;
-            connection.SecurityFullScreen = favorite.SecurityFullScreen;
-            connection.EnableSecuritySettings = favorite.EnableSecuritySettings;
-            connection.GrabFocusOnConnect = favorite.GrabFocusOnConnect;
-            connection.EnableEncryption = favorite.EnableEncryption;
-            connection.DisableWindowsKey = favorite.DisableWindowsKey;
-            connection.DoubleClickDetect = favorite.DoubleClickDetect;
-            connection.DisplayConnectionBar = favorite.DisplayConnectionBar;
-            connection.DisableControlAltDelete = favorite.DisableControlAltDelete;
-            connection.AcceleratorPassthrough = favorite.AcceleratorPassthrough;
-            connection.EnableCompression = favorite.EnableCompression;
-            connection.BitmapPeristence = favorite.BitmapPeristence;
-            connection.EnableTlsAuthentication = favorite.EnableTlsAuthentication;
-            connection.EnableNlaAuthentication = favorite.EnableNlaAuthentication;
-            connection.AllowBackgroundInput = favorite.AllowBackgroundInput;
-            connection.DisableTheming = favorite.DisableTheming;
-            connection.DisableMenuAnimations = favorite.DisableMenuAnimations;
-            connection.DisableFullWindowDrag = favorite.DisableFullWindowDrag;
-            connection.DisableCursorBlinking = favorite.DisableCursorBlinking;
-            connection.EnableDesktopComposition = favorite.EnableDesktopComposition;
-            connection.EnableFontSmoothing = favorite.EnableFontSmoothing;
-            connection.DisableCursorShadow = favorite.DisableCursorShadow;
-            connection.DisableWallPaper = favorite.DisableWallPaper;
-            connection.Colors = (int)favorite.Colors;
-            connection.DesktopShare = favorite.DesktopShare;
+			connection.AcceleratorPassthrough = favorite.AcceleratorPassthrough;
+			connection.AllowBackgroundInput = favorite.AllowBackgroundInput;
+			connection.AuthMethod = (int)favorite.AuthMethod;
+			connection.BitmapPeristence = favorite.BitmapPeristence;
+			connection.BrowserAuthentication = (int)favorite.BrowserAuthentication;
+			connection.Colors = (int)favorite.Colors;
+			connection.ConnectionTimeout = favorite.ConnectionTimeout;
+			connection.ConnectToConsole = favorite.ConnectToConsole;
+			connection.ConsoleBackColor = favorite.ConsoleBackColor;
+			connection.ConsoleCols = favorite.ConsoleCols;
+			connection.ConsoleCursorColor = favorite.ConsoleCursorColor;
+			connection.ConsoleFont = favorite.ConsoleFont;
+			connection.ConsoleRows = favorite.ConsoleRows;
+			connection.ConsoleTextColor = favorite.ConsoleTextColor;
+			connection.DesktopShare = favorite.DesktopShare;
+			connection.DesktopSize = (int)favorite.DesktopSize;
+			connection.DesktopSizeHeight = favorite.DesktopSizeHeight;
+			connection.DesktopSizeWidth = favorite.DesktopSizeWidth;
+			connection.DisableControlAltDelete = favorite.DisableControlAltDelete;
+			connection.DisableCursorBlinking = favorite.DisableCursorBlinking;
+			connection.DisableCursorShadow = favorite.DisableCursorShadow;
+			connection.DisableFullWindowDrag = favorite.DisableFullWindowDrag;
+			connection.DisableMenuAnimations = favorite.DisableMenuAnimations;
+			connection.DisableTheming = favorite.DisableTheming;
+			connection.DisableWallPaper = favorite.DisableWallPaper;
+			connection.DisableWindowsKey = favorite.DisableWindowsKey;
+			connection.DisplayConnectionBar = favorite.DisplayConnectionBar;
+			connection.DoubleClickDetect = favorite.DoubleClickDetect;
+			connection.EnableCompression = favorite.EnableCompression;
+			connection.EnableDesktopComposition = favorite.EnableDesktopComposition;
+			connection.EnableEncryption = favorite.EnableEncryption;
+			connection.EnableFontSmoothing = favorite.EnableFontSmoothing;
+			connection.EnableNlaAuthentication = favorite.EnableNlaAuthentication;
+			connection.EnableSecuritySettings = favorite.EnableSecuritySettings;
+			connection.EnableTlsAuthentication = favorite.EnableTlsAuthentication;
+			connection.ExecuteBeforeConnect = favorite.ExecuteBeforeConnect;
+			connection.ExecuteBeforeConnectArgs = favorite.ExecuteBeforeConnectArgs;
+			connection.ExecuteBeforeConnectCommand = favorite.ExecuteBeforeConnectCommand;
+			connection.ExecuteBeforeConnectInitialDirectory = favorite.ExecuteBeforeConnectInitialDirectory;
+			connection.ExecuteBeforeConnectWaitForExit = favorite.ExecuteBeforeConnectWaitForExit;
+			connection.ExplorerDirectory = favorite.ExplorerDirectory;
+			connection.ExplorerDirectoryDual = favorite.ExplorerDirectoryDual;
+			connection.ExplorerDirectoryQuad = favorite.ExplorerDirectoryQuad;
+			connection.ExplorerDirectoryTripple = favorite.ExplorerDirectoryTripple;
+			connection.ExplorerStyle = favorite.ExplorerStyle;
+			connection.GenericArguments = favorite.GenericArguments;
+			connection.GenericProgramPath = favorite.GenericProgramPath;
+			connection.GenericWorkingDirectory = favorite.GenericWorkingDirectory;
+			connection.GrabFocusOnConnect = favorite.GrabFocusOnConnect;
+			connection.HtmlFormFieldsString = favorite.HtmlFormFieldsString;
+			connection.HttpBrowser = (int) favorite.HttpBrowser;
+			connection.IcaApplicationName = favorite.IcaApplicationName;
+			connection.IcaClientIni = favorite.IcaClientIni;
+			connection.IcaEnableEncryption = favorite.IcaEnableEncryption;
+			connection.IcaEncryptionLevel = favorite.IcaEncryptionLevel;
+			connection.IcaServerIni = favorite.IcaServerIni;
+			connection.IdleTimeout = favorite.IdleTimeout;
+			connection.KeyTag = favorite.KeyTag;
+			connection.LoadBalanceInfo = favorite.LoadBalanceInfo;
+			connection.Name = favorite.Name;
+			connection.NewWindow = favorite.NewWindow;
+			connection.Notes = favorite.Notes;
+			connection.OverallTimeout = favorite.OverallTimeout;
+			connection.Port = favorite.Port;
+			connection.Protocol = favorite.Protocol;
+			connection.PuttyCloseWindowOnExit = (int)favorite.PuttyCloseWindowOnExit;
+			connection.PuttyCompression = favorite.PuttyCompression;
+			connection.PuttyConnectionType = (int)favorite.PuttyConnectionType;
+			//connection.PuttyDontAddDomainToUserName = favorite.PuttyDontAddDomainToUserName;
+			//connection.PuttyEnableX11 = favorite.PuttyEnableX11;
+			connection.PuttyPasswordTimeout = favorite.PuttyPasswordTimeout;
+			//connection.PuttyProxyHost = favorite.PuttyProxyHost;
+			//connection.PuttyProxyPort = favorite.PuttyProxyPort;
+			//connection.PuttyProxyType = (int)favorite.PuttyProxyType;
+			connection.PuttySession = favorite.PuttySession;
+			connection.PuttyShowOptions = favorite.PuttyShowOptions;
+			connection.PuttyVerbose = favorite.PuttyVerbose;
+			connection.RAdminChatMode = favorite.RAdminChatMode;
+			connection.RAdminColorMode = favorite.RAdminColorMode;
+			connection.RAdminFileTransferMode = favorite.RAdminFileTransferMode;
+			connection.RAdminPhonebookPath = favorite.RAdminPhonebookPath;
+			connection.RAdminSendTextMessageMode = favorite.RAdminSendTextMessageMode;
+			connection.RAdminShutdown = favorite.RAdminShutdown;
+			connection.RAdminStandardConnectionMode = favorite.RAdminStandardConnectionMode;
+			connection.RAdminTelnetMode = favorite.RAdminTelnetMode;
+			connection.RAdminThrough = favorite.RAdminThrough;
+			connection.RAdminThroughPort = favorite.RAdminThroughPort;
+			connection.RAdminThroughServerName = favorite.RAdminThroughServerName;
+			connection.RAdminUpdates = favorite.RAdminUpdates;
+			connection.RAdminUseFullScreen = favorite.RAdminUseFullScreen;
+			connection.RAdminViewOnlyMode = favorite.RAdminViewOnlyMode;
+			connection.RAdminVoiceChatMode = favorite.RAdminVoiceChatMode;
+			connection.RedirectClipboard = favorite.RedirectClipboard;
+			connection.RedirectDevices = favorite.RedirectDevices;
+			connection.RedirectedDrives = favorite.RedirectedDrives;
+			connection.RedirectPorts = favorite.RedirectPorts;
+			connection.RedirectPrinters = favorite.RedirectPrinters;
+			connection.RedirectSmartCards = favorite.RedirectSmartCards;
+			connection.SecurityFullScreen = favorite.SecurityFullScreen;
+			connection.SecurityStartProgram = favorite.SecurityStartProgram;
+			connection.SecurityWorkingFolder = favorite.SecurityWorkingFolder;
+			connection.ServerName = favorite.ServerName;
+			connection.ShutdownTimeout = favorite.ShutdownTimeout;
+			connection.Sounds = (int)favorite.Sounds;
+			connection.Ssh1 = favorite.Ssh1;
+			//connection.ToolBarIcon = favorite.ToolBarIcon;
+			//connection.TabColor = favorite.TabColor;
+			connection.TsgwCredsSource = favorite.TsgwCredsSource;
+			connection.TsgwDomain = favorite.TsgwDomain;
+			connection.TsgwEncryptedPassword = favorite.TsgwEncryptedPassword;
+			connection.TsgwHostname = favorite.TsgwHostname;
+			connection.TsgwSeparateLogin = favorite.TsgwSeparateLogin;
+			connection.TsgwUsageMethod = favorite.TsgwUsageMethod;
+			connection.TsgwUsername = favorite.TsgwUsername;
+			//connection.TsgwXmlCredentialSetName = favorite.TsgwXmlCredentialSetName;
+			connection.Url = favorite.Url;
+			connection.VmrcAdministratorMode = favorite.VmrcAdministratorMode;
+			connection.VmrcReducedColorsMode = favorite.VmrcReducedColorsMode;
+			connection.VncAutoScale = favorite.VncAutoScale;
+			connection.VncDisplayNumber = favorite.VncDisplayNumber;
+			connection.VncViewOnly = favorite.VncViewOnly;
 
             return connection;
         }

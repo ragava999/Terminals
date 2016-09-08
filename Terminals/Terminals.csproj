@@ -932,6 +932,7 @@
     </EmbeddedResource>
     <Compile Include="ExportImport\Import\ImportCodePlexTerminals.cs" />
     <None Include="Panels\FavoritePanels\TODO.txt" />
+    <Compile Include="ExportImport\Import\ImportRemoteDesktopManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Forms\DiskDrivesForm.resx">

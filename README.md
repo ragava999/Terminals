@@ -48,6 +48,12 @@ Import/Export features have been improved.
 
 Added import for the CodePlex Terminals 3.6.1 configuration file (e.g. Favorites.xml)
 
+Fixed some minor issues in the favorites configuration element.
+
+Beautified code and reordered some code parts.
+
+Added import for Remote Desktop Manager.
+
 
 ###Release v 4.9.0.0
 

@@ -192,9 +192,29 @@ namespace Terminals.Configuration.Files.Main.Settings
             List<String> tagsToAdd = new List<string>();
             foreach (FavoriteConfigurationElement favorite in favorites)
             {
-                AddFavoriteToSettings(favorite);
-                List<String> difference = favorite.TagList.GetMissingSourcesInTarget(tagsToAdd);
-                tagsToAdd.AddRange(difference);
+				try
+				{
+					if (favorite == null)
+						continue;
+
+					if (favorite.Tags == null)
+						favorite.Tags = "";
+
+					if (string.IsNullOrEmpty(favorite.Name))
+					{
+						string guid = Guid.NewGuid().ToString();
+						favorite.Name = guid;
+						Kohl.Framework.Logging.Log.Error ("Imported favorite has no name, choosing a guid instead '" + guid + "'.");
+					}
+
+	                AddFavoriteToSettings(favorite);
+	                List<String> difference = favorite.TagList.GetMissingSourcesInTarget(tagsToAdd);
+	                tagsToAdd.AddRange(difference);
+				}
+				catch (Exception ex)
+				{
+					Kohl.Framework.Logging.Log.Error ("Unable to add imported favorite " + favorite.Name + ".", ex);
+				}
             }
 
             List<String> addedTags = AddTagsToSettings(tagsToAdd, favorites[0].IsDatabaseFavorite);

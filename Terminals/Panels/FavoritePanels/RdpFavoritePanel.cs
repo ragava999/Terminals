@@ -22,7 +22,7 @@ namespace Terminals.Panels.FavoritePanels
             }
         }
 
-        public List<string> RedirectedDrives { get; set; }
+        public List<string> RedirectedDrivesList { get; set; }
         public bool RedirectDevices { get; set; }
 
         private TerminalServerManager terminalServerManager = null;
@@ -39,9 +39,9 @@ namespace Terminals.Panels.FavoritePanels
 
         private void btnDrives_Click(object sender, EventArgs e)
         {
-            DiskDrivesForm drivesForm = new DiskDrivesForm(((FavoriteEditor)this.ParentForm), this.RedirectedDrives, this.RedirectDevices);
+            DiskDrivesForm drivesForm = new DiskDrivesForm(((FavoriteEditor)this.ParentForm), this.RedirectedDrivesList, this.RedirectDevices);
             drivesForm.ShowDialog(this);
-            this.RedirectedDrives = drivesForm.RedirectedDrives;
+            this.RedirectedDrivesList = drivesForm.RedirectedDrives;
             this.RedirectDevices = drivesForm.RedirectDevices;
         }
 
@@ -80,7 +80,7 @@ namespace Terminals.Panels.FavoritePanels
             this.groupBox1.Enabled = false;
             this.chkConnectToConsole.Enabled = false;
 
-            this.RedirectedDrives = new List<String>();
+            this.RedirectedDrivesList = new List<String>();
             this.RedirectDevices = false;
 
             this.groupBox1.Enabled = true;
@@ -102,7 +102,7 @@ namespace Terminals.Panels.FavoritePanels
 
         public override void FillControls(FavoriteConfigurationElement favorite)
         {
-            this.RedirectedDrives = favorite.RedirectedDrives;
+			this.RedirectedDrivesList = favorite.RedirectedDrivesList;
             this.chkSerialPorts.Checked = favorite.RedirectPorts;
             this.chkPrinters.Checked = favorite.RedirectPrinters;
             this.chkRedirectClipboard.Checked = favorite.RedirectClipboard;
@@ -240,7 +240,7 @@ namespace Terminals.Panels.FavoritePanels
             favorite.DisableMenuAnimations = this.chkDisableMenuAnimations.Checked;
             favorite.DisableTheming = this.chkDisableThemes.Checked;
 
-            favorite.RedirectedDrives = this.RedirectedDrives;
+			favorite.RedirectedDrivesList = this.RedirectedDrivesList;
             favorite.RedirectPorts = this.chkSerialPorts.Checked;
             favorite.RedirectPrinters = this.chkPrinters.Checked;
             favorite.RedirectClipboard = this.chkRedirectClipboard.Checked;

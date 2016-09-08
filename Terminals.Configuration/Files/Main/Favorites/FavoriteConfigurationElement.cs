@@ -14,6 +14,183 @@ namespace Terminals.Configuration.Files.Main.Favorites
     using Kohl.Framework.Logging;
     using Security;
 
+	/// <summary>
+	/// A object that stores both the in memory representation of a connection and the resultset in the form of a XML.
+	/// </summary>
+	/// <remarks>
+	/// 
+	/// Please have a look at the <seealso cref="Terminals.Configuration.Sql.ExtensionMethods"/> class, which contains methods to
+	/// transform a favorite into a connectio object and vice versa. Check the methods 'ToFavorite' and 'ToConnection'
+	/// 
+	/// The following properties are used as XML attributes ...
+	/// 
+	/// ### Common (23) ###
+	/// Toolbar (1):
+	/// ToolBarIcon
+	/// 
+	/// Database (1):
+	/// IsDatabaseFavorite
+	/// 
+	/// Credentials (4):
+	/// EncryptedPassword
+	/// DomainName
+	/// UserName
+	/// XmlCredentialSetName
+	/// 
+	/// Tab Color Preferences (1):
+	/// TabColor
+	/// 
+	/// Basics (15):
+	/// DesktopSize
+	/// DesktopSizeHeight
+	/// DesktopSizeWidth
+	/// 
+	/// ExecuteBeforeConnect
+	/// ExecuteBeforeConnectArgs
+	/// ExecuteBeforeConnectCommand
+	/// ExecuteBeforeConnectInitialDirectory
+	/// ExecuteBeforeConnectWaitForExit
+	/// 
+	/// Name
+	/// NewWindow
+	/// Notes
+	/// Port
+	/// Protocol
+	/// ServerName
+	/// 
+	/// Tags
+	/// 
+	/// Plugin (1):
+	/// PluginConfigurations
+	/// ### Common (23) ###
+	/// 
+	/// Explorer connection (5):	
+	/// ExplorerDirectory
+	/// ExplorerDirectoryDual
+	/// ExplorerDirectoryTripple
+	/// ExplorerDirectoryQuad
+	/// ExplorerStyle
+	/// 
+	/// Http/Https connection (4):
+	/// BrowserAuthentication
+	/// HttpBrowser
+	/// HtmlFormFieldsString
+	/// Url
+	/// 
+	/// Putty connection (12):
+	/// PuttyCloseWindowOnExit
+	/// PuttyCompression
+	/// PuttyConnectionType
+	/// PuttyDontAddDomainToUserName
+	/// PuttyEnableX11
+	/// PuttyPasswordTimeout
+	/// PuttyProxyHost
+	/// PuttyProxyPort
+	/// PuttyProxyType
+	/// PuttySession
+	/// PuttyShowOptions
+	/// PuttyVerbose
+	/// 
+	/// Generic connection (3):
+	/// GenericArguments
+	/// GenericProgramPath
+	/// GenericWorkingDirectory
+	/// 
+	/// RAdmin connection (15):
+	/// RAdminChatMode
+	/// RAdminColorMode
+	/// RAdminFileTransferMode
+	/// RAdminPhonebookPath
+	/// RAdminSendTextMessageMode
+	/// RAdminShutdown
+	/// RAdminStandardConnectionMode
+	/// RAdminTelnetMode
+	/// RAdminThrough
+	/// RAdminThroughPort
+	/// RAdminThroughServerName
+	/// RAdminUpdates
+	/// RAdminUseFullScreen
+	/// RAdminViewOnlyMode
+	/// RAdminVoiceChatMode
+	/// 
+	/// Terminal connection (and Terminals.Forms.Controls.ConsolePreferences) (9):
+	/// AuthMethod
+	/// ConsoleBackColor
+	/// ConsoleCols
+	/// ConsoleCursorColor
+	/// ConsoleFont
+	/// ConsoleRows
+	/// ConsoleTextColor
+	/// KeyTag
+	/// Ssh1
+	/// 
+	/// VNC connection (3):
+	/// VncAutoScale
+	/// VncViewOnly
+	/// VncDisplayNumber
+	/// 
+	/// VMRC connection (2):
+	/// VmrcReducedColorsMode
+	/// VmrcAdministratorMode
+	/// 
+	/// ICA connection (5):
+	/// IcaApplicationName
+	/// IcaClientIni
+	/// IcaEnableEncryption
+	/// IcaEncryptionLevel
+	/// IcaServerIni
+	/// 
+	/// RDP connection (45):
+	/// AcceleratorPassthrough
+	/// AllowBackgroundInput
+	/// BitmapPeristence
+	/// ConnectionTimeout
+	/// ConnectToConsole
+	/// DisableControlAltDelete
+	/// DisableCursorBlinking
+	/// DisableCursorShadow
+	/// DisableFullWindowDrag
+	/// DisableMenuAnimations
+	/// DisableTheming
+	/// DisableWallPaper
+	/// DisableWindowsKey
+	/// DisplayConnectionBar
+	/// DoubleClickDetect
+	/// EnableCompression
+	/// EnableDesktopComposition
+	/// EnableEncryption
+	/// EnableFontSmoothing
+	/// EnableNlaAuthentication
+	/// EnableSecuritySettings
+	/// EnableTlsAuthentication
+	/// GrabFocusOnConnect
+	/// IdleTimeout
+	/// LoadBalanceInfo
+	/// OverallTimeout
+	/// RedirectClipboard
+	/// RedirectDevices
+	/// RedirectedDrives
+	/// RedirectPorts
+	/// RedirectPrinters
+	/// RedirectSmartCards
+	/// SecurityFullScreen
+	/// SecurityStartProgram
+	/// SecurityWorkingFolder
+	/// ShutdownTimeout
+	/// Sounds
+	/// TsgwCredsSource
+	/// TsgwDomain
+	/// TsgwEncryptedPassword
+	/// TsgwHostname
+	/// TsgwSeparateLogin
+	/// TsgwUsageMethod
+	/// TsgwUsername
+	/// TsgwXmlCredentialSetName
+	/// 
+	/// ICA connection & RDP connection (2):
+	/// Colors
+	/// DesktopShare
+	/// </remarks>
     [Serializable]
     public class FavoriteConfigurationElement : ConfigurationElement, ICloneable
     {
@@ -145,14 +322,14 @@ namespace Terminals.Configuration.Files.Main.Favorites
         #endregion
 
         #region RDPConnection (3)
-        public List<String> RedirectedDrives
+        public List<String> RedirectedDrivesList
         {
             get
             {
                 List<String> outputList = new List<String>();
-                if (!String.IsNullOrEmpty(this.redirectedDrives))
+                if (!String.IsNullOrEmpty(this.RedirectedDrives))
                 {
-                    String[] driveArray = this.redirectedDrives.Split(";".ToCharArray());
+                    String[] driveArray = this.RedirectedDrives.Split(";".ToCharArray());
                     foreach (String drive in driveArray)
                     {
                         outputList.Add(drive);
@@ -171,7 +348,7 @@ namespace Terminals.Configuration.Files.Main.Favorites
                         drives += ";";
                 }
 
-                this.redirectedDrives = drives;
+                this.RedirectedDrives = drives;
             }
         }
 
@@ -204,7 +381,7 @@ namespace Terminals.Configuration.Files.Main.Favorites
         #endregion
 
         #region Exposed Configuration Properties (123)
-        #region Common (22)
+        #region Common (23)
         #region Toolbar (1)
         [ConfigurationProperty("toolBarIcon", IsRequired = false, DefaultValue = "")]
         public String ToolBarIcon
@@ -214,21 +391,16 @@ namespace Terminals.Configuration.Files.Main.Favorites
         }
         #endregion
 
+		#region Database (1)
         [ConfigurationProperty("isDatabaseFavorite", IsRequired = false, DefaultValue = false)]
         public Boolean IsDatabaseFavorite
         {
             get { return (Boolean)this["isDatabaseFavorite"]; }
             set { this["isDatabaseFavorite"] = value; }
         }
+		#endregion
 
-        #region Credentials (4)
-        [ConfigurationProperty("tsgwcredential", IsRequired = false, DefaultValue = "")]
-        public String TsgwXmlCredentialSetName
-        {
-            get { return (String)this["tsgwcredential"]; }
-            set { this["tsgwcredential"] = value; }
-        }
-        
+        #region Credentials (4)        
         [ConfigurationProperty("credential", IsRequired = false, DefaultValue = "")]
         public String XmlCredentialSetName
         {
@@ -343,6 +515,7 @@ namespace Terminals.Configuration.Files.Main.Favorites
         }
         #endregion
 
+		#region Basics (15)
         [ConfigurationProperty("tags")]
         public String Tags
         {
@@ -468,6 +641,7 @@ namespace Terminals.Configuration.Files.Main.Favorites
             set { this["plugins"] = value; }
         }
         #endregion
+		#endregion
 
         #region ExplorerConnection (5)
         [ConfigurationProperty("explorerStyle", IsRequired = false, DefaultValue = null)]
@@ -570,7 +744,7 @@ namespace Terminals.Configuration.Files.Main.Favorites
         }
         #endregion
 
-        #region PuttyConnection (7)
+        #region PuttyConnection (12)
         [ConfigurationProperty("puttyConnectionType", IsRequired = false, DefaultValue = PuttyConnectionType.Ssh)]
         public PuttyConnectionType PuttyConnectionType
         {
@@ -934,7 +1108,7 @@ namespace Terminals.Configuration.Files.Main.Favorites
         }
         #endregion
 
-        #region RDPConnection (44)
+        #region RDPConnection (45)
         [ConfigurationProperty("loadBalanceInfo", DefaultValue = "")]
         public String LoadBalanceInfo
         {
@@ -976,6 +1150,13 @@ namespace Terminals.Configuration.Files.Main.Favorites
             get { return (Boolean)this["redirectDevices"]; }
             set { this["redirectDevices"] = value; }
         }
+			
+		[ConfigurationProperty("tsgwcredential", IsRequired = false, DefaultValue = "")]
+		public String TsgwXmlCredentialSetName
+		{
+			get { return (String)this["tsgwcredential"]; }
+			set { this["tsgwcredential"] = value; }
+		}
 
         /// <summary>
         ///     TSC_PROXY_MODE_NONE_DIRECT 0 (0x0)
@@ -1062,7 +1243,7 @@ namespace Terminals.Configuration.Files.Main.Favorites
         /// <see cref="Terminals.ExportImport.Import.ImportTerminals"/>.
         /// </remarks>
         [ConfigurationProperty("redirectDrives")]
-        public String redirectedDrives
+        public String RedirectedDrives
         {
             get { return (String)this["redirectDrives"]; }
             set { this["redirectDrives"] = value; }
@@ -1637,47 +1818,52 @@ namespace Terminals.Configuration.Files.Main.Favorites
         {
             FavoriteConfigurationElement fav = new FavoriteConfigurationElement
             {
-                #region Common (21)
+                #region Common (23)
                 #region Toolbar (1)
                 ToolBarIcon = this.ToolBarIcon,
                 #endregion
 
+				#region Database (1)
+				IsDatabaseFavorite = this.IsDatabaseFavorite,
+				#endregion
+
                 #region Credentials (4)
-                XmlCredentialSetName = this.XmlCredentialSetName,
                 DomainName = this.DomainName,
+				EncryptedPassword = this.EncryptedPassword,
                 UserName = this.UserName,
-                EncryptedPassword = this.EncryptedPassword,
+				XmlCredentialSetName = this.XmlCredentialSetName,
                 #endregion
 
                 #region Tab Color Preferences (1)
                 TabColor = this.TabColor,
                 #endregion
 
-                IsDatabaseFavorite = this.IsDatabaseFavorite,
+				#region Basics (15)
+				DesktopSize = this.DesktopSize,
+				DesktopSizeHeight = this.DesktopSizeHeight,
+				DesktopSizeWidth = this.DesktopSizeWidth,
 
-                Tags = this.Tags,
+				ExecuteBeforeConnect = this.ExecuteBeforeConnect,
+				ExecuteBeforeConnectArgs = this.ExecuteBeforeConnectArgs,
+				ExecuteBeforeConnectCommand = this.ExecuteBeforeConnectCommand,
+				ExecuteBeforeConnectInitialDirectory = this.ExecuteBeforeConnectInitialDirectory,
+				ExecuteBeforeConnectWaitForExit = this.ExecuteBeforeConnectWaitForExit,
 
-                ServerName = this.ServerName,
-                Name = this.Name,
-                NewWindow = this.NewWindow,
-                Notes = this.Notes,
-                Port = this.Port,
-                Protocol = this.Protocol,
+				Name = this.Name,
+				NewWindow = this.NewWindow,
+				Notes = this.Notes,
+				Port = this.Port,
+				Protocol = this.Protocol,
+				ServerName = this.ServerName,
 
-                DesktopSize = this.DesktopSize,
-                DesktopSizeHeight = this.DesktopSizeHeight,
-                DesktopSizeWidth = this.DesktopSizeWidth,
+				Tags = this.Tags,
 
-                ExecuteBeforeConnect = this.ExecuteBeforeConnect,
-                ExecuteBeforeConnectArgs = this.ExecuteBeforeConnectArgs,
-                ExecuteBeforeConnectCommand = this.ExecuteBeforeConnectCommand,
-                ExecuteBeforeConnectInitialDirectory = this.ExecuteBeforeConnectInitialDirectory,
-                ExecuteBeforeConnectWaitForExit = this.ExecuteBeforeConnectWaitForExit,
                 #endregion
 
                 #region Plugin (1)
                 PluginConfigurations = this.PluginConfigurations,
                 #endregion
+				#endregion
 
                 #region ExplorerConnection (5)
                 ExplorerDirectory = this.ExplorerDirectory,
@@ -1688,23 +1874,25 @@ namespace Terminals.Configuration.Files.Main.Favorites
                 #endregion
 
                 #region HTTPConnection, HTTPSConnection (4)
+				BrowserAuthentication = this.BrowserAuthentication,
+				HttpBrowser = this.HttpBrowser,
                 HtmlFormFields = this.HtmlFormFields,
-                BrowserAuthentication = this.BrowserAuthentication,
-                HttpBrowser = this.HttpBrowser,
                 Url = this.Url,
                 #endregion
 
-                #region PuttyConnection (7)
-                PuttyConnectionType = this.PuttyConnectionType,
-                PuttyCloseWindowOnExit = this.PuttyCloseWindowOnExit,
-                PuttyCompression = this.PuttyCompression,
-                PuttySession = this.PuttySession,
-                PuttyShowOptions = this.PuttyShowOptions,
-                PuttyVerbose = this.PuttyShowOptions,
-                PuttyPasswordTimeout = this.PuttyPasswordTimeout,
+                #region PuttyConnection (12)
+				PuttyCloseWindowOnExit = this.PuttyCloseWindowOnExit,
+				PuttyCompression = this.PuttyCompression,
+				PuttyConnectionType = this.PuttyConnectionType,
+				PuttyDontAddDomainToUserName = this.PuttyDontAddDomainToUserName,
+				PuttyEnableX11 = this.PuttyEnableX11,
+				PuttyPasswordTimeout = this.PuttyPasswordTimeout,
 				PuttyProxyHost = this.PuttyProxyHost,
-				PuttyProxyPort = PuttyProxyPort,
-				PuttyProxyType = PuttyProxyType,
+				PuttyProxyPort = this.PuttyProxyPort,
+				PuttyProxyType = this.PuttyProxyType,
+				PuttySession = this.PuttySession,
+				PuttyShowOptions = this.PuttyShowOptions,
+				PuttyVerbose = this.PuttyVerbose,
                 #endregion
 
                 #region GenericConnection (3)
@@ -1714,33 +1902,33 @@ namespace Terminals.Configuration.Files.Main.Favorites
                 #endregion
 
                 #region RAdminConnection (15)
-                RAdminStandardConnectionMode = this.RAdminStandardConnectionMode,
-                RAdminChatMode = this.RAdminChatMode,
-                RAdminColorMode = this.RAdminColorMode,
-                RAdminFileTransferMode = this.RAdminFileTransferMode,
-                RAdminPhonebookPath = this.RAdminPhonebookPath,
-                RAdminSendTextMessageMode = this.RAdminSendTextMessageMode,
-                RAdminShutdown = this.RAdminShutdown,
-                RAdminTelnetMode = this.RAdminTelnetMode,
-                RAdminThrough = this.RAdminThrough,
-                RAdminThroughPort = this.RAdminThroughPort,
-                RAdminThroughServerName = this.RAdminThroughServerName,
-                RAdminUpdates = this.RAdminUpdates,
-                RAdminUseFullScreen = this.RAdminUseFullScreen,
-                RAdminViewOnlyMode = this.RAdminViewOnlyMode,
-                RAdminVoiceChatMode = this.RAdminVoiceChatMode,
+				RAdminChatMode = this.RAdminChatMode,
+				RAdminColorMode = this.RAdminColorMode,
+				RAdminFileTransferMode = this.RAdminFileTransferMode,
+				RAdminPhonebookPath = this.RAdminPhonebookPath,
+				RAdminSendTextMessageMode = this.RAdminSendTextMessageMode,
+				RAdminShutdown = this.RAdminShutdown,
+				RAdminStandardConnectionMode = this.RAdminStandardConnectionMode,
+				RAdminTelnetMode = this.RAdminTelnetMode,
+				RAdminThrough = this.RAdminThrough,
+				RAdminThroughPort = this.RAdminThroughPort,
+				RAdminThroughServerName = this.RAdminThroughServerName,
+				RAdminUpdates = this.RAdminUpdates,
+				RAdminUseFullScreen = this.RAdminUseFullScreen,
+				RAdminViewOnlyMode = this.RAdminViewOnlyMode,
+				RAdminVoiceChatMode = this.RAdminVoiceChatMode,
                 #endregion
 
                 #region TerminalConnection (and Terminals.Forms.Controls.ConsolePreferences) (9)
-                ConsoleBackColor = this.ConsoleBackColor,
+				AuthMethod = this.AuthMethod,
+				ConsoleBackColor = this.ConsoleBackColor,
                 ConsoleCols = this.ConsoleCols,
                 ConsoleCursorColor = this.ConsoleCursorColor,
                 ConsoleFont = this.ConsoleFont,
                 ConsoleRows = this.ConsoleRows,
                 ConsoleTextColor = this.ConsoleTextColor,
+				KeyTag = this.KeyTag,
                 Ssh1 = this.Ssh1,
-                AuthMethod = this.AuthMethod,
-                KeyTag = this.KeyTag,
                 #endregion
 
                 #region VNCConnection (3)
@@ -1755,65 +1943,59 @@ namespace Terminals.Configuration.Files.Main.Favorites
                 #endregion
 
                 #region ICAConnection (5)
-                IcaApplicationName = this.IcaApplicationName,
-                IcaClientIni = this.IcaClientIni,
-                IcaEnableEncryption = this.IcaEnableEncryption,
-                IcaEncryptionLevel = this.IcaEncryptionLevel,
-                IcaServerIni = this.IcaServerIni,
+				IcaApplicationName = this.IcaApplicationName,
+				IcaClientIni = this.IcaClientIni,
+				IcaEnableEncryption = this.IcaEnableEncryption,
+				IcaEncryptionLevel = this.IcaEncryptionLevel,
+				IcaServerIni = this.IcaServerIni,
                 #endregion
 
-                #region RDPConnection (44)
-                LoadBalanceInfo = this.LoadBalanceInfo,
-                DisableControlAltDelete = this.DisableControlAltDelete,
-                DisableCursorBlinking = this.DisableCursorBlinking,
-                DisableCursorShadow = this.DisableCursorShadow,
-                DisableFullWindowDrag = this.DisableFullWindowDrag,
-                DisableMenuAnimations = this.DisableMenuAnimations,
-                DisableTheming = this.DisableTheming,
-                DisableWallPaper = this.DisableWallPaper,
-                DisableWindowsKey = this.DisableWindowsKey,
-                DisplayConnectionBar = this.DisplayConnectionBar,
-
-                EnableCompression = this.EnableCompression,
-                EnableDesktopComposition = this.EnableDesktopComposition,
-                EnableEncryption = this.EnableCompression,
-                EnableFontSmoothing = this.EnableFontSmoothing,
-                EnableSecuritySettings = this.EnableSecuritySettings,
-                EnableTlsAuthentication = this.EnableTlsAuthentication,
-                EnableNlaAuthentication = this.EnableNlaAuthentication,
-
-                AcceleratorPassthrough = this.AcceleratorPassthrough,
-                AllowBackgroundInput = this.AllowBackgroundInput,
-                BitmapPeristence = this.BitmapPeristence,
-                ConnectToConsole = this.ConnectToConsole,
-                DoubleClickDetect = this.DoubleClickDetect,
-                GrabFocusOnConnect = this.GrabFocusOnConnect,
-                Sounds = this.Sounds,
-
-                ConnectionTimeout = this.ConnectionTimeout,
-                IdleTimeout = this.IdleTimeout,
-                OverallTimeout = this.OverallTimeout,
-                ShutdownTimeout = this.ShutdownTimeout,
-
-                RedirectClipboard = this.RedirectClipboard,
-                RedirectDevices = this.RedirectDevices,
-                RedirectedDrives = this.RedirectedDrives,
-                RedirectPorts = this.RedirectPorts,
-                RedirectPrinters = this.RedirectPrinters,
-                RedirectSmartCards = this.RedirectSmartCards,
-
-                SecurityFullScreen = this.SecurityFullScreen,
-                SecurityStartProgram = this.SecurityStartProgram,
-                SecurityWorkingFolder = this.SecurityWorkingFolder,
-
+                #region RDPConnection (45)
+				AcceleratorPassthrough = this.AcceleratorPassthrough,
+				AllowBackgroundInput = this.AllowBackgroundInput,
+				BitmapPeristence = this.BitmapPeristence,
+				ConnectionTimeout = this.ConnectionTimeout,
+				ConnectToConsole = this.ConnectToConsole,
+				DisableControlAltDelete = this.DisableControlAltDelete,
+				DisableCursorBlinking = this.DisableCursorBlinking,
+				DisableCursorShadow = this.DisableCursorShadow,
+				DisableFullWindowDrag = this.DisableFullWindowDrag,
+				DisableMenuAnimations = this.DisableMenuAnimations,
+				DisableTheming = this.DisableTheming,
+				DisableWallPaper = this.DisableWallPaper,
+				DisableWindowsKey = this.DisableWindowsKey,
+				DisplayConnectionBar = this.DisplayConnectionBar,
+				DoubleClickDetect = this.DoubleClickDetect,
+				EnableCompression = this.EnableCompression,
+				EnableDesktopComposition = this.EnableDesktopComposition,
+				EnableEncryption = this.EnableEncryption,
+				EnableFontSmoothing = this.EnableFontSmoothing,
+				EnableNlaAuthentication = this.EnableNlaAuthentication,
+				EnableSecuritySettings = this.EnableSecuritySettings,
+				EnableTlsAuthentication = this.EnableTlsAuthentication,
+				GrabFocusOnConnect = this.GrabFocusOnConnect,
+				IdleTimeout = this.IdleTimeout,
+				LoadBalanceInfo = this.LoadBalanceInfo,
+				OverallTimeout = this.OverallTimeout,
+				RedirectClipboard = this.RedirectClipboard,
+				RedirectDevices = this.RedirectDevices,
+				RedirectedDrives = this.RedirectedDrives,
+				RedirectPorts = this.RedirectPorts,
+				RedirectPrinters = this.RedirectPrinters,
+				RedirectSmartCards = this.RedirectSmartCards,
+				SecurityFullScreen = this.SecurityFullScreen,
+				SecurityStartProgram = this.SecurityStartProgram,
+				SecurityWorkingFolder = this.SecurityWorkingFolder,
+				ShutdownTimeout = this.ShutdownTimeout,
+				Sounds = this.Sounds,
+				TsgwCredsSource = this.TsgwCredsSource,
+				TsgwDomain = this.TsgwDomain,
+				TsgwEncryptedPassword = this.TsgwEncryptedPassword,
+				TsgwHostname = this.TsgwHostname,
+				TsgwSeparateLogin = this.TsgwSeparateLogin,
+				TsgwUsageMethod = this.TsgwUsageMethod,
+				TsgwUsername = this.TsgwUsername,
 				TsgwXmlCredentialSetName = this.TsgwXmlCredentialSetName,
-                TsgwCredsSource = this.TsgwCredsSource,
-                TsgwDomain = this.TsgwDomain,
-                TsgwEncryptedPassword = this.TsgwEncryptedPassword,
-                TsgwHostname = this.TsgwHostname,
-                TsgwSeparateLogin = this.TsgwSeparateLogin,
-                TsgwUsageMethod = this.TsgwUsageMethod,
-                TsgwUsername = this.TsgwUsername,
                 #endregion
 
                 #region RDPConnection & ICAConnection (2)
