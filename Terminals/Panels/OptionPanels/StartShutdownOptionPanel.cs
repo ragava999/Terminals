@@ -74,7 +74,7 @@ namespace Terminals.Panels.OptionPanels
 
                     destFile = destFile.GetRelativePath(Kohl.Framework.Info.AssemblyInfo.DirectoryConfigFiles);
 
-                    this.txtImage.Text = destFile;
+                    this.txtImage.Text = destFile + Path.DirectorySeparatorChar + Path.GetFileName(dlg.FileName);
                     this.txtImage.SelectionStart = this.txtImage.Text.Length;
                     this.txtImage.Focus();
                 }

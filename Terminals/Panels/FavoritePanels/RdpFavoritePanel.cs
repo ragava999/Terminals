@@ -149,9 +149,10 @@ namespace Terminals.Panels.FavoritePanels
 	            	this.pnlTSGWlogon.FillControls(new FavoriteConfigurationElement() { DomainName = favorite.TsgwDomain, UserName = favorite.TsgwUsername, Password = favorite.TsgwPassword  });
 				}
 	            this.pnlTSGWlogon.FillCredentials(favorite.TsgwXmlCredentialSetName);
-	            
-	            // if the credential store isn't either set/filled or set to the storename "custom" than check if
-	            // the values contain garbage -> if so clear the store and set seperate login to false.
+
+	            // if the credential store isn't either set/filled or set to the 
+				// storename "custom" than check if the values contain garbage
+	            //  -> if so clear the store and set seperate login to false.
 	            if (string.IsNullOrEmpty(favorite.TsgwXmlCredentialSetName) || favorite.TsgwXmlCredentialSetName == Terminals.Forms.Controls.CredentialPanel.Custom)
 		            // if there are no credentials in the store and no custom ones -> clear the the TSGW credentials and disable the checkbox
 		            if (string.IsNullOrEmpty(favorite.TsgwDomain) && string.IsNullOrEmpty(favorite.TsgwUsername) && string.IsNullOrEmpty(favorite.TsgwPassword))
@@ -261,19 +262,21 @@ namespace Terminals.Panels.FavoritePanels
 			{
 				favorite.TsgwDomain = favorite.TsgwUsername = favorite.TsgwPassword = string.Empty;
 			}
-			else			
-	            if (favorite.TsgwXmlCredentialSetName == Terminals.Forms.Controls.CredentialPanel.Custom)
-	            {
-	            	favorite.TsgwDomain = tswgFavorite.Credential.DomainName;
-	            	favorite.TsgwUsername = tswgFavorite.Credential.UserName;
-	            	favorite.TsgwPassword = tswgFavorite.Credential.Password;
-	            	
-	            	if (string.IsNullOrEmpty(favorite.TsgwDomain) && string.IsNullOrEmpty(favorite.TsgwUsername) && string.IsNullOrEmpty(favorite.TsgwPassword))
-	            	{
-	            		favorite.TsgwSeparateLogin = false;
-	            		favorite.TsgwXmlCredentialSetName = string.Empty;
-	            	}
-	            }
+			else
+			{
+				favorite.TsgwDomain = tswgFavorite.Credential.DomainName;
+				favorite.TsgwUsername = tswgFavorite.Credential.UserName;
+				favorite.TsgwPassword = tswgFavorite.Credential.Password;
+
+				if (favorite.TsgwXmlCredentialSetName == Terminals.Forms.Controls.CredentialPanel.Custom)
+				{
+					if (string.IsNullOrEmpty (favorite.TsgwDomain) && string.IsNullOrEmpty (favorite.TsgwUsername) && string.IsNullOrEmpty (favorite.TsgwPassword))
+					{
+						favorite.TsgwSeparateLogin = false;
+						favorite.TsgwXmlCredentialSetName = string.Empty;
+					}
+				}
+			}
             
             favorite.TsgwCredsSource = this.cmbTSGWLogonMethod.SelectedIndex;
 

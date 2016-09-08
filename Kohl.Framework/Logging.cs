@@ -114,7 +114,12 @@ namespace Kohl.Framework.Logging
                                          .Root.Appenders.OfType<log4net.Appender.FileAppender>()
                                          .FirstOrDefault();
 
-				return rootAppender != null ? rootAppender.File : Path.Combine(Path.Combine(CurrentLogFolder, "Logs"), Kohl.Framework.Info.AssemblyInfo.Title + ".log");
+				string file = rootAppender != null ? rootAppender.File : Path.Combine(Path.Combine(CurrentLogFolder, "Logs"), Kohl.Framework.Info.AssemblyInfo.Title + ".log");
+
+				if (MachineInfo.IsUnixOrMac && file.Contains ("\\"))
+					file = file.Replace ("\\", Path.DirectorySeparatorChar.ToString());
+
+				return file;
 			}
 		}
 		

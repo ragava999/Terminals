@@ -926,12 +926,12 @@
     <None Include="..\Terminals.Setup\Terminals.iss">
       <Link>Terminals.iss</Link>
     </None>
-    <None Include="TODO.txt" />
     <None Include="TerminalServices\WTSApi32.cs" />
     <EmbeddedResource Include="Forms\Controls\HistoryTreeView.resx">
       <DependentUpon>HistoryTreeView.cs</DependentUpon>
     </EmbeddedResource>
     <Compile Include="ExportImport\Import\ImportCodePlexTerminals.cs" />
+    <None Include="Panels\FavoritePanels\TODO.txt" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Forms\DiskDrivesForm.resx">

@@ -598,8 +598,7 @@ namespace Terminals.Configuration.Files.Main.Favorites
             get { return (bool)this["puttyEnableX11"]; }
             set { this["puttyEnableX11"] = value; }
         }
-		
-        
+
         [ConfigurationProperty("puttyDontAddDomainToUserName", IsRequired = false, DefaultValue = true)]
         public bool PuttyDontAddDomainToUserName
         {
@@ -1434,17 +1433,17 @@ namespace Terminals.Configuration.Files.Main.Favorites
                         return htmlFormFields.ToArray();
                     }
 
-                    string[] fields = temp.Split(new[] { ":öä%&$$.°°°^..:" }, StringSplitOptions.None);
+                    string[] fields = temp.Split(new[] { ":ï¿½ï¿½%&$$.ï¿½ï¿½ï¿½^..:" }, StringSplitOptions.None);
 
                     foreach (string field in fields)
                     {
                         htmlFormFields.Add(new HtmlFormField
                         {
                             Key =
-                                field.Split(new[] { "=öä%&$$.°°°^..=" },
+                                field.Split(new[] { "=ï¿½ï¿½%&$$.ï¿½ï¿½ï¿½^..=" },
                                             StringSplitOptions.None)[0],
                             Value =
-                                field.Split(new[] { "=öä%&$$.°°°^..=" },
+                                field.Split(new[] { "=ï¿½ï¿½%&$$.ï¿½ï¿½ï¿½^..=" },
                                             StringSplitOptions.None)[1]
                         });
                     }
@@ -1481,7 +1480,7 @@ namespace Terminals.Configuration.Files.Main.Favorites
                 if (!string.IsNullOrEmpty(field.Key) || !string.IsNullOrEmpty(field.Value))
                     empty++;
 
-                result += field.Key + "=öä%&$$.°°°^..=" + field.Value + ":öä%&$$.°°°^..:";
+                result += field.Key + "=ï¿½ï¿½%&$$.ï¿½ï¿½ï¿½^..=" + field.Value + ":ï¿½ï¿½%&$$.ï¿½ï¿½ï¿½^..:";
             }
 
             // Ensure that we don't acquire unneed space in the 
@@ -1490,7 +1489,7 @@ namespace Terminals.Configuration.Files.Main.Favorites
                 result = null;
 
             if (!string.IsNullOrEmpty(result))
-                result = result.Remove(result.Length - ":öä%&$$.°°°^..:".Length, ":öä%&$$.°°°^..:".Length);
+                result = result.Remove(result.Length - ":ï¿½ï¿½%&$$.ï¿½ï¿½ï¿½^..:".Length, ":ï¿½ï¿½%&$$.ï¿½ï¿½ï¿½^..:".Length);
 
             this.HtmlFormFieldsString = result;
         }
@@ -1807,6 +1806,7 @@ namespace Terminals.Configuration.Files.Main.Favorites
                 SecurityStartProgram = this.SecurityStartProgram,
                 SecurityWorkingFolder = this.SecurityWorkingFolder,
 
+				TsgwXmlCredentialSetName = this.TsgwXmlCredentialSetName,
                 TsgwCredsSource = this.TsgwCredsSource,
                 TsgwDomain = this.TsgwDomain,
                 TsgwEncryptedPassword = this.TsgwEncryptedPassword,
