@@ -54,6 +54,8 @@ Beautified code and reordered some code parts.
 
 Added import for Remote Desktop Manager.
 
+Kicked Scintilla and replaced it with the SharpDevelop v4+ code editor.
+
 
 ###Release v 4.9.0.0
 

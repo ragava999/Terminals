@@ -21,9 +21,9 @@
 //      Revision
 //
 
-[assembly: AssemblyVersion("1.9.2.0")]
-[assembly: AssemblyFileVersion("1.9.2.0")]
-[assembly: AssemblyInformationalVersion("1.9.2 RTM")]
+[assembly: AssemblyVersion("2.0.0.0")]
+[assembly: AssemblyFileVersion("2.0.0.0")]
+[assembly: AssemblyInformationalVersion("2.0.0 RTM")]
 
 /*
 AssemblyVersion

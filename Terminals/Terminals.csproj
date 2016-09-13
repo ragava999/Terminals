@@ -38,7 +38,6 @@
     <WarningLevel>4</WarningLevel>
     <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
-    <DelaySign>False</DelaySign>
     <RunCodeAnalysis>False</RunCodeAnalysis>
     <NoWin32Manifest>False</NoWin32Manifest>
     <IntermediateOutputPath>obj\$(Configuration)\</IntermediateOutputPath>
@@ -65,7 +64,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>PdbOnly</DebugType>
     <OutputPath>bin\x86\Release\</OutputPath>
-    <DefineConstants>TRACE;GECKO</DefineConstants>
+    <DefineConstants>TRACE;GECKO;LIGHTBOX_FOR_SEARCH</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <RunCodeAnalysis Condition="'$(USERNAME)' == 'tfsservice1'">True</RunCodeAnalysis>
     <PlatformTarget>x86</PlatformTarget>
@@ -290,7 +289,9 @@
     <Compile Include="Panels\FavoritePanels\RdpFavoritePanel.Designer.cs">
       <DependentUpon>RdpFavoritePanel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Panels\OptionPanels\CredentialStoreOptionPanel.cs" />
+    <Compile Include="Panels\OptionPanels\CredentialStoreOptionPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Panels\OptionPanels\CredentialStoreOptionPanel.Designer.cs">
       <DependentUpon>CredentialStoreOptionPanel.cs</DependentUpon>
     </Compile>
@@ -986,10 +987,6 @@
     <ProjectReference Include="..\BitBucket Gecko\Geckofx-Winforms\Geckofx-Winforms.csproj">
       <Project>{D7ADC901-E1C4-480E-8F6D-B1FFD5CF87E8}</Project>
       <Name>Geckofx-Winforms</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\CodeEditor\CodeEditor.csproj">
-      <Project>{FB3E07AB-E0FA-4122-BE64-BFFEF510201B}</Project>
-      <Name>CodeEditor</Name>
     </ProjectReference>
     <ProjectReference Include="..\DotRas-ChangeSet-99043\Trunk\Source\DotRas\DotRas\DotRas.csproj">
       <Project>{09EB2D48-2A3B-4AA7-BDC5-908E103B1E13}</Project>

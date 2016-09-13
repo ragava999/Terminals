@@ -409,9 +409,18 @@ namespace Kohl.TinyMce
                 document = webBrowser.Document;
 
 			dynamic domdocument = document.DomDocument;
-			
-            dynamic element = domdocument.getElementById("elm1");
 
+            dynamic element = null;
+
+            try
+            {
+                element = domdocument.getElementById("elm1");
+            }
+            catch (System.NotSupportedException)
+            {
+                return;
+            }
+           
             if (element != null)
             {
                 if (this.Text != element.innerText)

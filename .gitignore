@@ -1,4 +1,5 @@
 _Versions
+.vs/
 Be.Windows.Forms.HexBox/bin/
 BitBucket Gecko/Geckofx-Core/bin/
 BitBucket Gecko/Geckofx-Winforms/bin/
@@ -22,6 +23,26 @@ Terminals.Plugins.Text/Terminals.Plugins.Text.OpenCover.Settings
 Terminals/Terminals.OpenCover.Settings
 packages/WindowsAPICodePack-Core.1.1.2/
 packages/WindowsAPICodePack-Shell.1.1.1/
+Be.Windows.Forms.HexBox/obj/
+BitBucket Gecko/Geckofx-Core/obj/
+BitBucket Gecko/Geckofx-Winforms/obj/
+DotRas-ChangeSet-99043/Trunk/Source/DotRas/DotRas/obj/
+ExplorerBrowser/obj/
+Granados/obj/
+Kohl.Explorer/obj/
+Kohl.Framework/obj/
+Terminals.Plugins.AutoIt/obj/
+Kohl.TinyMce/obj/
+Terminals.Plugins.Text/obj/
+VncSharp/obj/
+ZedGraph 5.1 (.net 2)/source/obj/
+Metro/obj/
+SharpPcap-4.1.0/SharpPcap/obj/
+SharpZipLib/obj/
+TerminalEmulator/bin/Release/
+TerminalEmulator/obj/
+Terminals.Configuration/obj/
+Terminals.Connection/obj/
 VncSharp/bin/
 netz-src/netz/bin/
 /Be.Windows.Forms.HexBox/bin/Debug/Be.Windows.Forms.HexBox.dll

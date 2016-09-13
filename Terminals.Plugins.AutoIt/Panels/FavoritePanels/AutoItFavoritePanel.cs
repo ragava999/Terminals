@@ -5,10 +5,11 @@
     using Terminals.Connection.Manager;
     using Terminals.Connection.Panels.FavoritePanels;
     using Terminals.Plugins.AutoIt.Connection;
+    using System.Windows.Forms.Integration;
 
     public partial class AutoItFavoritePanel : FavoritePanel
     {
-        #region Public Properties (4)
+        #region Public Properties (2)
         public override string DefaultProtocolName
         {
             get
@@ -33,9 +34,9 @@
             	{
 	                if (edit1 == null)
 	                    return null;
-	
-	                return edit1.Text;
-            	}
+
+                    return edit1.AvalonTextEditor.Text;
+                }
             	catch (Exception ex)
 	        	{
 	        		Kohl.Framework.Logging.Log.Error("Error loading AutoIt panel. Unable to retrieve text property.", ex);
@@ -48,8 +49,8 @@
             	{
 	                if (edit1 == null)
 	                    return;
-	
-	                edit1.Text = value;
+
+                    edit1.AvalonTextEditor.Text = value;
             	}
 	        	catch (Exception ex)
 	        	{
@@ -57,66 +58,23 @@
 	        	}
             }
         }
-        
-        public string Language
-        {
-            get
-            {
-            	try
-            	{
-	                if (edit1 == null)
-	                    return null;
-	
-	                return edit1.Language;
-            	}
-	        	catch (Exception ex)
-	        	{
-	        		Kohl.Framework.Logging.Log.Error("Error loading AutoIt panel. Unable to retrieve language.", ex);
-	        		return null;
-	        	}
-            }
-            set
-            {
-            	try
-            	{
-	                if (edit1 == null)
-	                    return;
-	
-	                edit1.Language = value;
-            	}
-	        	catch (Exception ex)
-	        	{
-	        		Kohl.Framework.Logging.Log.Error("Error loading AutoIt panel. Unable to set language.", ex);
-	        	}
-            }
-        }
-
-        public bool Modified
-        {
-            get
-            {
-            	try
-            	{
-	                if (edit1 == null)
-	                    return false;
-	
-	                return edit1.Modified;
-            	}
-	        	catch (Exception ex)
-	        	{
-	        		Kohl.Framework.Logging.Log.Error("Error loading AutoIt panel. Unable to retrieve modication state.", ex);
-	        		return false;
-	        	}
-            }
-        }
         #endregion
+
+        private TextEditor edit1 = null;
 
         #region Constructors (1)
         public AutoItFavoritePanel()
         {
             try
             {
+                edit1 = new TextEditor();
+                //edit1.AvalonTextEditor.Text = "; Your available predefined variables:\n; $Terminals_Protocol, $Terminals_ServerName, $Terminals_Port, $Terminals_ConnectionName,\n; $Terminals_CredentialName, $Terminals_User, $Terminals_Domain, $Terminals_Password\n; $Terminals_ConnectionHWND, $Terminals_ProcessId, $Terminals_Version, $Terminals_Directory\n; $Terminals_CurrentUser, $Terminals_CurrentUserDomain, $Terminals_CurrentUserSID, $Terminals_MachineDomain\n; Predefined functions: Func Embed($hWnd), Func Disconnect()\n\n#include <MsgBoxConstants.au3>\n\nLocal $iTimeout = 10\n\nMsgBox($MB_SYSTEMMODAL, \"Title\", \"This message box will timeout after \" & $iTimeout & \" seconds or select the OK button.\", $iTimeout)";
                 InitializeComponent();
+                ElementHost controlHost = new ElementHost();
+                controlHost.Dock = System.Windows.Forms.DockStyle.Fill;
+                controlHost.Child = edit1;
+                this.Controls.Add(controlHost);
+
                 this.Load += AutoItFavoritePanel_Load;
             }
             catch (Exception ex)
@@ -132,8 +90,7 @@
         {
         	try
         	{
-	            edit1.Text = favorite.AutoItScript();
-	            edit1.Language = "au3";
+	            edit1.AvalonTextEditor.Text = favorite.AutoItScript();
         	}
         	catch (Exception ex)
         	{
@@ -145,7 +102,7 @@
         {
         	try
         	{
-            	favorite.AutoItScript(edit1.Text);
+            	favorite.AutoItScript(edit1.AvalonTextEditor.Text);
         	}
         	catch (Exception ex)
         	{
@@ -159,7 +116,7 @@
         {
         	try
         	{
-            	edit1.Language = "au3";
+                
         	}
         	catch (Exception ex)
         	{

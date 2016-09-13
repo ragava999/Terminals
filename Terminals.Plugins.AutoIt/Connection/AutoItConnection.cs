@@ -21,9 +21,6 @@
         {
             get
             {
-                if (Terminals.Connection.Manager.ConnectionManager.GetProtocolName(typeof(AutoItEditorConnection)).ToUpper() == Favorite.Protocol.ToUpper())
-                    return false;
-
                 // Run the connection only if a script exists -> normal EXIT -> condition OK
                 if (string.IsNullOrEmpty(Script))
                     return false;

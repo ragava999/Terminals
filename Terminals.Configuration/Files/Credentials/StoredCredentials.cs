@@ -119,7 +119,20 @@ namespace Terminals.Configuration.Files.Credentials
                 cache.AddRange(loaded);
             }
         }
-        
+
+		public static CredentialSet GetKeePassCredentialById(string Id)
+		{
+			if (keyPassCredentialsById.Count == 0)
+				return null;
+
+			if (keyPassCredentialsById.ContainsKey(Id))
+				return keyPassCredentialsById[Id];
+
+			return null;
+		}
+
+		private static Dictionary<string, CredentialSet> keyPassCredentialsById = new Dictionary<string, CredentialSet>();
+
         private static List<CredentialSet> LoadKeePass()
         {        	
         	try
@@ -143,13 +156,20 @@ namespace Terminals.Configuration.Files.Credentials
 					
 					if (!string.IsNullOrEmpty(title) && !string.IsNullOrEmpty(userName))
 					{
-						list.Add(new CredentialSet
-		                {
-		                    Name = title,
-		                    Username = string.IsNullOrEmpty(domain) && userName.Contains("\\")  ? userName.Split(new string[] {"\\"}, StringSplitOptions.None)[1] : userName,
-		                    Domain = string.IsNullOrEmpty(domain) && userName.Contains("\\")  ? userName.Split(new string[] {"\\"}, StringSplitOptions.None)[0] : domain,
-		                    Password = entry.Strings.ReadSafe("Password")
-				         });
+						CredentialSet credentialSet = new CredentialSet
+						{
+							Name = title,
+							Username = string.IsNullOrEmpty(domain) && userName.Contains("\\") ? userName.Split(new string[] { "\\" }, StringSplitOptions.None)[1] : userName,
+							Domain = string.IsNullOrEmpty(domain) && userName.Contains("\\") ? userName.Split(new string[] { "\\" }, StringSplitOptions.None)[0] : domain,
+							Password = entry.Strings.ReadSafe("Password")
+						};
+
+						list.Add(credentialSet);
+
+						string id = entry.Uuid.ToHexString();
+
+						if (!keyPassCredentialsById.ContainsKey(id))
+							keyPassCredentialsById.Add(id, credentialSet);
 					}
 				}
 

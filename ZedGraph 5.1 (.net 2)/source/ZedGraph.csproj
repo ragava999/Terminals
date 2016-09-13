@@ -35,7 +35,6 @@
     <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
     <TargetFrameworkProfile />
     <NoWin32Manifest>False</NoWin32Manifest>
-    <DelaySign>False</DelaySign>
     <AssemblyOriginatorKeyMode>File</AssemblyOriginatorKeyMode>
     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
     <IntermediateOutputPath>obj\$(Configuration)\</IntermediateOutputPath>

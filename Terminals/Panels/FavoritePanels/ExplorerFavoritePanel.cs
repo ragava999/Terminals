@@ -21,11 +21,19 @@ namespace Terminals.Panels.FavoritePanels
         {
             this.InitializeComponent();
 
-            // Load default values
-            string[] strings = new ExplorerBrowser.Explorer().KnownFolders;
-        	this.cmbDirectory.Items.AddRange(strings);
-        	this.cmbDirectory.Sorted = true;
-        	this.cmbDirectoryDual.Items.AddRange(strings);
+            try
+            {
+                // Load default values
+                string[] strings = new ExplorerBrowser.Explorer().KnownFolders;
+                this.cmbDirectory.Items.AddRange(strings);
+                this.cmbDirectoryDual.Items.AddRange(strings);
+            }
+            catch (System.IO.FileNotFoundException ex)
+            {
+                Kohl.Framework.Logging.Log.Warn("Unable to load load " + this.GetType().Name + " dependencies: " + ex.Message);
+            }
+
+            this.cmbDirectory.Sorted = true;
         	this.cmbDirectory.Sorted = true;
 			this.cmbExplorerStyle.Items.AddRange(Enum.GetNames(typeof(ExplorerBrowser.ControlStyle)));
 			

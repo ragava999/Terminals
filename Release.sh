@@ -8,13 +8,6 @@ cd $ARTIFACTS
 cp "/home/ubuntu/Terminals/TerminalsUpdater/bin/Release/TerminalsUpdater.exe" .
 cp "/home/ubuntu/Terminals/Kohl.Explorer/bin/Release/Kohl.Explorer.exe" .
 
-# Copy ScintillaNET.dll to the AutoIt plugin directory and the win32 & win64 scintilla dependencies to the root dir of Terminals.
-#cp "/home/ubuntu/Terminals/DLLs/ScintillaNET v2.5.2/SciLexer.dll" "Plugins/AutoIt/"
-#cp "/home/ubuntu/Terminals/DLLs/ScintillaNET v2.5.2/SciLexer64.dll" "Plugins/AutoIt/"
-cp "/home/ubuntu/Terminals/DLLs/ScintillaNET v2.5.2/SciLexer.dll" .
-cp "/home/ubuntu/Terminals/DLLs/ScintillaNET v2.5.2/SciLexer64.dll" .
-cp "/home/ubuntu/Terminals/DLLs/ScintillaNET v2.5.2/ScintillaNET.dll" "Plugins/AutoIt/"
-
 # Copy AutoIt to Plugin directory
 cp "/home/ubuntu/Terminals/DLLs/Tools/AutoIt/Au3Info.exe" "Plugins/AutoIt/"
 cp "/home/ubuntu/Terminals/DLLs/Tools/AutoIt/Au3Info_x64.exe" "Plugins/AutoIt/"
@@ -56,18 +49,18 @@ cp "/home/ubuntu/Terminals/DLLs/Tools/Putty/putty.exe" .
 cp -r "/home/ubuntu/Terminals/DLLs/Tools/Radmin Viewer 3" .
 
 # Delete files from the root of Terminals which are already part of our plugins (the files are intended for AutoIt plugin not for Terminals itself)
-rm -f "Bug in Scintilla.pdf"
-rm -f "CodeEditor.*"
-rm -f "ScintillaNET.dll"
 rm -f "Terminals.exe.config"
 
 # Remove things not needed in the root folder of the plugins
 rm -rf "Plugins/Kohl.*"
-rm -f "Plugins/AutoIt/ScintillaNET.pdb"
 rm -f "Plugins/AutoIt/log4net.dll"
+rm -f "Plugins/AutoIt/ICSharpCode.AvalonEdit.xml"
+rm -f "Plugins/AutoIt/Terminals.Plugins.AutoIt.pdb"
+rm -f "Plugins/AutoIt/Terminals.Plugins.AutoIt.mdb"
 rm -f "Plugins/log4net.dll"
 rm -f "Plugins/Terminals.Connection.dll"
 rm -f "Plugins/Terminals.Connection.pdb"
+rm -f "Plugins/Terminals.Connection.mdb"
 rm -f "Plugins/Terminals.Configuration.dll"
 
 # Remove debugging symbols

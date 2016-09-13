@@ -58,10 +58,21 @@
     <BaseIntermediateOutputPath>obj\</BaseIntermediateOutputPath>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ICSharpCode.AvalonEdit, Version=5.0.1.0, Culture=neutral, PublicKeyToken=9cc39be672370310, processorArchitecture=MSIL">
+      <HintPath>..\packages\AvalonEdit.5.0.2\lib\Net40\ICSharpCode.AvalonEdit.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Configuration" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.XML" />
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Connection\AutoItConnection.cs">
@@ -71,12 +82,6 @@
       <DependentUpon>AutoItConnection.cs</DependentUpon>
     </Compile>
     <Compile Include="FavoriteExtensions.cs" />
-    <Compile Include="Connection\AutoItEditorConnection.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Connection\AutoItEditorConnection.Designer.cs">
-      <DependentUpon>AutoItEditorConnection.cs</DependentUpon>
-    </Compile>
     <Compile Include="Panels\FavoritePanels\AutoItFavoritePanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -96,14 +101,16 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <DependentUpon>Resources.resx</DependentUpon>
       <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="SettingsExtensions.cs" />
+    <Compile Include="TextEditor\BraceFoldingStrategy.cs" />
+    <Compile Include="TextEditor\ColorizeAvalonEdit.cs" />
+    <Compile Include="TextEditor\ImageElementGenerator.cs" />
+    <Compile Include="TextEditor\MyCompletionData.cs" />
+    <Compile Include="TextEditor\TextEditor.xaml.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CodeEditor\CodeEditor.csproj">
-      <Project>{FB3E07AB-E0FA-4122-BE64-BFFEF510201B}</Project>
-      <Name>CodeEditor</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Kohl.Framework\Kohl.Framework.csproj">
       <Project>{2E4E3508-2275-4A32-9A0D-9A95B134407B}</Project>
       <Name>Kohl.Framework</Name>
@@ -121,6 +128,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Panels\FavoritePanels\AutoItFavoritePanel.resx">
+      <DependentUpon>AutoItFavoritePanel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Panels\OptionPanels\AutoItEnableForProtocolsOptionPanel.resx">
       <DependentUpon>AutoItEnableForProtocolsOptionPanel.cs</DependentUpon>
     </EmbeddedResource>
@@ -133,7 +143,25 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="packages.config" />
     <None Include="Resources\AutoIt.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="TextEditor\TextEditor.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="TextEditor\Copy.png" />
+    <Resource Include="TextEditor\Cut.png" />
+    <Resource Include="TextEditor\Delete.png" />
+    <Resource Include="TextEditor\Open.png" />
+    <Resource Include="TextEditor\Paste.png" />
+    <Resource Include="TextEditor\Redo.png" />
+    <Resource Include="TextEditor\Save.png" />
+    <Resource Include="TextEditor\Undo.png" />
+    <Resource Include="TextEditor\WordWrap.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

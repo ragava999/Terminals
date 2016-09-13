@@ -457,6 +457,8 @@ namespace Terminals.Connection.Manager
                 // Load external types
                 string pluginPath = Path.Combine(AssemblyInfo.Directory, "Plugins");
 
+                Log.Debug("Plugins path: " + pluginPath);
+
                 // Check if the plugin folder exists
                 if (Directory.Exists(pluginPath))
                 {

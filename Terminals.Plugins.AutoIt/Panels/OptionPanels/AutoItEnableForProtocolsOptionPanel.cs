@@ -11,7 +11,7 @@
         {
             // Don't load the auto it connection, if the user has selected
             // the auto it editor in the favorites editor combobox.
-            ExcludeProtocols.Add(typeof(AutoItEditorConnection).GetProtocolName());
+            //ExcludeProtocols.Add(typeof(AutoItEditorConnection).GetProtocolName());
         }
         #endregion
 

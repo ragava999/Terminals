@@ -5,8 +5,12 @@ using System.Runtime.InteropServices;
 using System.Xml.Serialization;
 using System.Collections.Generic;
 
+using System.Reflection;
+
 using Kohl.Framework.Logging;
 using Terminals.Configuration.Files.Main.Favorites;
+using System.Text;
+using System.ComponentModel;
 
 namespace Terminals.ExportImport.Import
 {
@@ -16,7 +20,9 @@ namespace Terminals.ExportImport.Import
 
 		public static readonly string PROVIDER_NAME = "Remote Desktop Manager";
 
-		List<FavoriteConfigurationElement> IImport.ImportFavorites(string fileName)
+		Dictionary<string, Terminals.Configuration.Files.Credentials.CredentialSet> resolvedCredentials = new Dictionary<string, Terminals.Configuration.Files.Credentials.CredentialSet>();
+
+        List<FavoriteConfigurationElement> IImport.ImportFavorites(string fileName)
 		{
 			List <FavoriteConfigurationElement> favorites = new List<FavoriteConfigurationElement> ();
 
@@ -25,22 +31,21 @@ namespace Terminals.ExportImport.Import
 				XmlSerializer serializer = new XmlSerializer(typeof(RemoteDesktopManager));
 				RemoteDesktopManager result = (RemoteDesktopManager)serializer.Deserialize (fileStream);
 
-				List<Terminals.Configuration.Files.Credentials.Credential> credentials = new List<Terminals.Configuration.Files.Credentials.Credential> ();
-
 				foreach (RemoteDesktopManager.Connection connection in result.Connections)
 				{
 					if (connection.ConnectionType == "Credential")
 					{
 						if (connection.Credentials.CredentialType == "KeePass")
 						{
-							// Parse KeePass credentials and add the result to the list of credentials
-							credentials.Add (new Terminals.Configuration.Files.Credentials.Credential());
+							Terminals.Configuration.Files.Credentials.CredentialSet credentialSet = Terminals.Configuration.Files.Credentials.StoredCredentials.GetKeePassCredentialById(connection.Credentials.KeepassUuid);
+
+							if (credentialSet != null)
+							{
+								if (!resolvedCredentials.ContainsKey(connection.Credentials.KeepassUuid))
+									// Parse KeePass credentials and add the result to the list of credentials
+									resolvedCredentials.Add(connection.ID, credentialSet);
+							}
 						}
-						else
-						{
-							// Parse "normal" credentials and add the result to the list of credentials
-							credentials.Add (new Terminals.Configuration.Files.Credentials.Credential());
-						}	
 					}
 				}
 
@@ -64,6 +69,27 @@ namespace Terminals.ExportImport.Import
 						Log.Warn("FTP connection will be skipped.");
 						continue;
 					}
+
+					bool gotCredentials = false;
+
+					if (!string.IsNullOrEmpty(connection.CredentialConnectionID) && resolvedCredentials.ContainsKey(connection.CredentialConnectionID))
+					{
+						// Set the KeePass credentials
+						favorite.XmlCredentialSetName = resolvedCredentials[connection.CredentialConnectionID].Name;
+						favorite.UserName = resolvedCredentials[connection.CredentialConnectionID].Username;
+						favorite.DomainName = resolvedCredentials[connection.CredentialConnectionID].Domain;
+						favorite.Password = resolvedCredentials[connection.CredentialConnectionID].Password;
+						gotCredentials = true;
+					}
+					else
+					{
+						// Credentials haven't been found in KeePass.
+						// Try to filter out the user name and domain name from the RDM file itself.
+						favorite.UserName = connection.UserName;
+						favorite.DomainName = connection.Domain;
+                        favorite.Password = connection.SafePassword;
+
+                    }
 
 					if (connection.ConnectionType == "WebBrowser")
 					{
@@ -122,18 +148,38 @@ namespace Terminals.ExportImport.Import
 						favorite.Protocol = "Explorer";
 						string folder = connection.AddOn.Properties;
 
-						if (folder.Contains ("&lt;Folder&gt;"))
+						if (folder.Contains ("<Folder>"))
 						{
-							int start = folder.IndexOf ("&lt;Folder&gt;");
-							int end = folder.LastIndexOf ("&lt;Folder&gt;");
+							int start = folder.IndexOf ("<Folder>");
+							int end = folder.IndexOf("</Folder>");
 
-							folder = folder.Substring (start + 14, end);
+							folder = folder.Substring (start + 8, end-(start + 8));
 							favorite.ExplorerDirectory = folder;
 						}
 					}
 					else if (connection.ConnectionType == "RDPConfigured")
 					{
 						favorite.Protocol = "RDP";
+
+                        favorite.ServerName = connection.Url;
+
+                        favorite.EnableNlaAuthentication = !string.IsNullOrEmpty(connection.RDP.NetworkLevelAuthentication) ? connection.RDP.NetworkLevelAuthentication.ToLower().Equals("true") : favorite.EnableNlaAuthentication;
+
+                        // If we haven't found any KeePass credentials and the credentials
+                        // haven't been set in the generic part of the RDM file try to search
+                        // for the credentials in the RDP settings of the RDM file itself.
+                        if (!gotCredentials && string.IsNullOrEmpty(connection.UserName))
+                        {
+                            favorite.TsgwXmlCredentialSetName = Terminals.Forms.Controls.CredentialPanel.Custom;
+                            favorite.UserName = connection.RDP.UserName;
+                        }
+
+						if (!gotCredentials && string.IsNullOrEmpty(connection.Domain))
+							favorite.DomainName = connection.RDP.Domain;
+
+						if (!gotCredentials && string.IsNullOrEmpty(favorite.Password))
+                            if (!string.IsNullOrEmpty(connection.RDP.SafePassword))
+							    favorite.Password = connection.SafePassword;
 					}
 					else if (connection.ConnectionType == "ICA")
 					{
@@ -272,6 +318,8 @@ namespace Terminals.ExportImport.Import
 			public string Domain { get; set; }
 			[XmlElement(ElementName="UserName")]
 			public string UserName { get; set; }
+			[XmlElement(ElementName = "SafePassword")]
+			public string SafePassword { get; set; }
 			[XmlElement(ElementName="DisableBitmapCache")]
 			public string DisableBitmapCache { get; set; }
 			[XmlElement(ElementName="Putty")]
