@@ -119,6 +119,9 @@ namespace Terminals.Connections
 
         public override void Disconnect()
         {
+            if (!connected)
+                return;
+
             try
             {
                 this.connected = false;
@@ -130,6 +133,8 @@ namespace Terminals.Connections
 					string.Format("Unable to disconnect form the {0} connection named \"{1}\".", this.Favorite.Protocol,
                                   this.Favorite.Name), ex);
             }
+
+            InvokeIfNecessary(() => base.Disconnect());
         }
     }
 }

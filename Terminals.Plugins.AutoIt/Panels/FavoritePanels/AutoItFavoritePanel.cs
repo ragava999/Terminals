@@ -5,7 +5,7 @@
     using Terminals.Connection.Manager;
     using Terminals.Connection.Panels.FavoritePanels;
     using Terminals.Plugins.AutoIt.Connection;
-    using System.Windows.Forms.Integration;
+    using System.Windows.Forms;
 
     public partial class AutoItFavoritePanel : FavoritePanel
     {
@@ -30,50 +30,23 @@
     	{
             get
             {
-            	try
-            	{
-	                if (edit1 == null)
-	                    return null;
-
-                    return edit1.AvalonTextEditor.Text;
-                }
-            	catch (Exception ex)
-	        	{
-	        		Kohl.Framework.Logging.Log.Error("Error loading AutoIt panel. Unable to retrieve text property.", ex);
-	        		return null;
-	        	}
+                return edit1.Text;
             }
             set
-            {
-            	try
-            	{
-	                if (edit1 == null)
-	                    return;
-
-                    edit1.AvalonTextEditor.Text = value;
-            	}
-	        	catch (Exception ex)
-	        	{
-	        		Kohl.Framework.Logging.Log.Error("Error loading AutoIt panel. Unable to set text property.", ex);
-	        	}
+            { 
+                edit1.Text = value;
             }
         }
         #endregion
-
-        private TextEditor edit1 = null;
 
         #region Constructors (1)
         public AutoItFavoritePanel()
         {
             try
             {
-                edit1 = new TextEditor();
-                //edit1.AvalonTextEditor.Text = "; Your available predefined variables:\n; $Terminals_Protocol, $Terminals_ServerName, $Terminals_Port, $Terminals_ConnectionName,\n; $Terminals_CredentialName, $Terminals_User, $Terminals_Domain, $Terminals_Password\n; $Terminals_ConnectionHWND, $Terminals_ProcessId, $Terminals_Version, $Terminals_Directory\n; $Terminals_CurrentUser, $Terminals_CurrentUserDomain, $Terminals_CurrentUserSID, $Terminals_MachineDomain\n; Predefined functions: Func Embed($hWnd), Func Disconnect()\n\n#include <MsgBoxConstants.au3>\n\nLocal $iTimeout = 10\n\nMsgBox($MB_SYSTEMMODAL, \"Title\", \"This message box will timeout after \" & $iTimeout & \" seconds or select the OK button.\", $iTimeout)";
                 InitializeComponent();
-                ElementHost controlHost = new ElementHost();
-                controlHost.Dock = System.Windows.Forms.DockStyle.Fill;
-                controlHost.Child = edit1;
-                this.Controls.Add(controlHost);
+
+                edit1.Text = "; Your available predefined variables:\n; $Terminals_Protocol, $Terminals_ServerName, $Terminals_Port, $Terminals_ConnectionName,\n; $Terminals_CredentialName, $Terminals_User, $Terminals_Domain, $Terminals_Password\n; $Terminals_ConnectionHWND, $Terminals_ProcessId, $Terminals_Version, $Terminals_Directory\n; $Terminals_CurrentUser, $Terminals_CurrentUserDomain, $Terminals_CurrentUserSID, $Terminals_MachineDomain\n; Predefined functions: Func Embed($hWnd), Func Disconnect()\n\n#include <MsgBoxConstants.au3>\n\nLocal $iTimeout = 10\n\n; MsgBox($MB_SYSTEMMODAL, \"Title\", \"This message box will timeout after \" & $iTimeout & \" seconds or select the OK button.\", $iTimeout)\"";
 
                 this.Load += AutoItFavoritePanel_Load;
             }
@@ -90,7 +63,7 @@
         {
         	try
         	{
-	            edit1.AvalonTextEditor.Text = favorite.AutoItScript();
+	            edit1.Text = favorite.AutoItScript();
         	}
         	catch (Exception ex)
         	{
@@ -102,7 +75,7 @@
         {
         	try
         	{
-            	favorite.AutoItScript(edit1.AvalonTextEditor.Text);
+            	favorite.AutoItScript(edit1.Text);
         	}
         	catch (Exception ex)
         	{

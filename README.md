@@ -54,7 +54,9 @@ Beautified code and reordered some code parts.
 
 Added import for Remote Desktop Manager.
 
-Kicked Scintilla and replaced it with the SharpDevelop v4+ code editor.
+Kicked Scintilla and replaced it with a richt text box.
+
+Improved connect and disconnect logic of autoit plugin.
 
 
 ###Release v 4.9.0.0

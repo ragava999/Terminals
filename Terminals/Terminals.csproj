@@ -97,7 +97,7 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <OutputPath>bin\x86\Release\</OutputPath>
-    <DefineConstants>TRACE;GECKO</DefineConstants>
+    <DefineConstants>TRACE;GECKO;LIGHTBOX_FOR_SEARCH</DefineConstants>
     <DebugType>None</DebugType>
     <PlatformTarget>x86</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>

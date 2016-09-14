@@ -412,7 +412,10 @@ namespace Terminals.Connections
 
         public override void Disconnect()
         {
-      		System.Diagnostics.Process.GetProcessById(process.Id).Kill();
+            if (!connected)
+                return;
+
+            System.Diagnostics.Process.GetProcessById(process.Id).Kill();
         	
         	if (this.HWnd != IntPtr.Zero)
             {
@@ -427,7 +430,7 @@ namespace Terminals.Connections
                 SendMessage(ptr, 0x0112 /* WM_SYSCOMMAND */, 0xF060 /* SC_CLOSE */, null);
             }
             
-            base.Disconnect();
+            InvokeIfNecessary(() => base.Disconnect());
         }
         
         private IntPtr GetSessionDukeessionDialog(int attempts = 1000)

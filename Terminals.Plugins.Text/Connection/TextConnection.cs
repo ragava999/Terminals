@@ -104,6 +104,9 @@ namespace Terminals.Plugins.Text.Connection
 
         public override void Disconnect()
         {
+            if (!connected)
+                return;
+
             // Dispose Tiny Mce
             if (tinyMce != null)
                 tinyMce.Dispose();
@@ -114,6 +117,8 @@ namespace Terminals.Plugins.Text.Connection
             if (Favorite != null)
 	            // Close the tab page
 	            this.CloseTabPage();
+
+            InvokeIfNecessary(() => base.Disconnect());
         }
 
         protected override void ChangeDesktopSize(DesktopSize desktopSize, System.Drawing.Size size)

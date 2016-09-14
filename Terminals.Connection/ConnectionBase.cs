@@ -16,6 +16,9 @@ namespace Terminals.Connection
 
     public abstract class ConnectionBase : Control
     {
+        public delegate void OnDisconnectNotify();
+        public event OnDisconnectNotify Disconnected;
+
 		public ConnectionBase()
 		{
             // This prevents SharpDevelop and Visual Studio from both an exception in design mode for controls using this HistoryTreeView and from crashing when opening the
@@ -51,9 +54,12 @@ namespace Terminals.Connection
         public abstract bool Connected { get; }
         #endregion
 
-        #region Public Abstract Methods (2)
+        #region Public Abstract/Virtual Methods (2)
         public abstract bool Connect();
-        public abstract void Disconnect();
+        public virtual void Disconnect()
+        {
+            Disconnected?.Invoke();
+        }
         #endregion
 
         public void AfterConnectPlugins()
@@ -79,8 +85,17 @@ namespace Terminals.Connection
                 conn.TerminalTabPage = this.TerminalTabPage;
 
                 if (((IAfterConnectSupport)conn).IsAfterConnectEnabled)
+                {
                     Manager.ConnectionManager.CreateConnection(Favorite, this.ParentForm, false, TerminalTabPage, conn);
+                    this.Disconnected += conn.Connection_OnDisconnected;
+                    conn.Disconnected += Connection_OnDisconnected;
+                }
             }
+        }
+
+        public void Connection_OnDisconnected()
+        {
+            this.Disconnect();
         }
 
         #region Public Fields (1)

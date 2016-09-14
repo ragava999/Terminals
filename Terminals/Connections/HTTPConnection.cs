@@ -103,11 +103,16 @@ namespace Terminals.Connections
 
         public override void Disconnect()
         {
+            if (!connected)
+                return;
+            
             this.connected = false;
 
             this.browser.Dispose();
 
             this.CloseTabPage();
+
+            InvokeIfNecessary(() => base.Disconnect());
         }
     }
 }

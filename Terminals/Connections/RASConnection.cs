@@ -191,6 +191,9 @@ namespace Terminals.Connections
 
         public override void Disconnect()
         {
+            if (!connected)
+                return;
+
             this.connected = false;
 
             if (this.rasDialer.IsBusy)
@@ -218,6 +221,8 @@ namespace Terminals.Connections
                 rasProperties.Dispose();
                 rasProperties = null;
             }
+
+            InvokeIfNecessary(() => base.Disconnect());
         }
     }
 }

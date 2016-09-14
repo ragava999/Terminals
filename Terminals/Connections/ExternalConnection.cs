@@ -1045,6 +1045,9 @@ namespace Terminals.Connections
 
         public override void Disconnect()
         {
+            if (!connected)
+                return;
+
             try
             {
                 this.disconnecting = true;
@@ -1076,6 +1079,8 @@ namespace Terminals.Connections
                 }
 
                 this.CloseTabPage();
+
+                InvokeIfNecessary(() => base.Disconnect());
             }
             catch (Exception ex)
             {

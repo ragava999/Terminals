@@ -243,6 +243,9 @@
 
         public override void Disconnect()
         {
+            if (!connected)
+                return;
+
             if (process != null)
             {
                 if (!process.HasExited)
@@ -256,8 +259,10 @@
             this.CloseTabPage(false);
             CleanUp();
             connected = false;
-			
-			this.Dispose(true);
+
+            InvokeIfNecessary(() => this.Dispose(true));
+
+            InvokeIfNecessary(() => base.Disconnect());
         }
 
         protected override void ChangeDesktopSize(DesktopSize size, System.Drawing.Size siz)

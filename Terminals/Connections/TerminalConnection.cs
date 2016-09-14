@@ -147,10 +147,15 @@ namespace Terminals.Connections
 
         private void OnDisconnected()
         {
-			Log.Fatal(String.Format("{0} connection \"{1}\" has been lost.",
+            if (!connected)
+                return;
+
+            Log.Fatal(String.Format("{0} connection \"{1}\" has been lost.",
                                     this.Favorite.Protocol, this.Favorite.Name));
             this.connected = false;
             this.CloseTabPage();
+
+            InvokeIfNecessary(() => base.Disconnect());
         }
 
         public override void Disconnect()

@@ -905,6 +905,8 @@ namespace Terminals.Connections
             {
 				Log.Error("Unable to disconnect form the {0} connection named \"{1}\".", ex);
             }
+
+            InvokeIfNecessary(() => base.Disconnect());
         }
         
         private void client_OnConnected(object sender, EventArgs e)
@@ -995,6 +997,7 @@ namespace Terminals.Connections
         {
             this.CloseTabPage();
             this.FireDisconnected();
+            InvokeIfNecessary(() => base.Disconnect());
         }
 
         private void ShowDisconnetMessageBox(IMsTscAxEvents_OnDisconnectedEvent e)

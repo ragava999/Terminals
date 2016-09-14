@@ -28,12 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.edit1 = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
+            // 
+            // edit1
+            // 
+            this.edit1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.edit1.Location = new System.Drawing.Point(0, 0);
+            this.edit1.Name = "edit1";
+            this.edit1.Size = new System.Drawing.Size(512, 322);
+            this.edit1.TabIndex = 0;
+            this.edit1.Text = "";
             // 
             // AutoItFavoritePanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.edit1);
             this.Name = "AutoItFavoritePanel";
             this.ResumeLayout(false);
 
@@ -44,5 +55,7 @@
 
 
         #endregion
+
+        private System.Windows.Forms.RichTextBox edit1;
     }
 }
