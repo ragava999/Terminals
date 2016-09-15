@@ -87,8 +87,9 @@ namespace Terminals.Panels
 
         private void UpdateLookAndFeel()
         {
-            // Update the old treeview theme to the new theme
-            WindowsApi.SetWindowTheme(this.OptionsTreeView.Handle, "Explorer", null);
+			if (!Kohl.Framework.Info.MachineInfo.IsUnixOrMac)
+	            // Update the old treeview theme to the new theme
+	            WindowsApi.SetWindowTheme(this.OptionsTreeView.Handle, "Explorer", null);
 
             this.currentPanel = this.panelStartupShutdown;
             this.OptionsTreeView.SelectedNode = this.OptionsTreeView.Nodes[0];

@@ -169,6 +169,11 @@ namespace Terminals.Forms.Controls.IPAddressControl
         {
             get
             {
+				if (Kohl.Framework.Info.MachineInfo.IsUnixOrMac)
+				{
+					return 200;
+				}
+
                 TextMetric textMetric = GetTextMetrics(this.Handle, this.Font);
 
                 int offset = textMetric.tmAscent + 1;
@@ -494,10 +499,14 @@ namespace Terminals.Forms.Controls.IPAddressControl
             return this._referenceTextBox.Height;
         }
 
-        [SuppressMessage("Microsoft.Usage", "CA1806", Justification = "What should be done if ReleaseDC() doesn't work?"
-            )]
         private static TextMetric GetTextMetrics(IntPtr hwnd, Font font)
         {
+			if (Kohl.Framework.Info.MachineInfo.IsUnixOrMac)
+			{
+				Kohl.Framework.Logging.Log.Fatal("Screen caputure is only supported on Windows at the moment.");
+				return new TextMetric();
+			}
+
             IntPtr hdc = WindowsApi.GetWindowDC(hwnd);
 
             TextMetric textMetric;

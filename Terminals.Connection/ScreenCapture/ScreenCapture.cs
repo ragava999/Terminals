@@ -87,6 +87,12 @@ namespace Terminals.Connection.ScreenCapture
 
         private Bitmap capture(Control window, Rectangle rc)
         {
+			if (Kohl.Framework.Info.MachineInfo.IsUnixOrMac)
+			{
+				Log.Fatal("Screen caputure is only supported on Windows at the moment.");
+				return new Bitmap(0, 0);
+			}
+
             Bitmap memoryImage = null;
             this.images = new Bitmap[1];
 
@@ -115,6 +121,12 @@ namespace Terminals.Connection.ScreenCapture
 
         public virtual Bitmap Capture(IntPtr handle)
         {
+			if (Kohl.Framework.Info.MachineInfo.IsUnixOrMac)
+			{
+				Log.Fatal("Screen caputure is only supported on Windows at the moment.");
+				return new Bitmap(0,0);
+			}
+
             WindowsApi.BringWindowToTop(handle);
             CaptureHandleDelegateHandler dlg = this.CaptureHandle;
             IAsyncResult result = dlg.BeginInvoke(handle, null, null);
@@ -123,6 +135,12 @@ namespace Terminals.Connection.ScreenCapture
 
         protected virtual Bitmap CaptureHandle(IntPtr handle)
         {
+			if (Kohl.Framework.Info.MachineInfo.IsUnixOrMac)
+			{
+				Log.Fatal("Screen caputure is only supported on Windows at the moment.");
+				return new Bitmap(0, 0);
+			}
+
             Bitmap memoryImage = null;
             this.images = new Bitmap[1];
             try
@@ -160,6 +178,12 @@ namespace Terminals.Connection.ScreenCapture
 
         public virtual Bitmap[] Capture(CaptureType typeOfCapture)
         {
+			if (Kohl.Framework.Info.MachineInfo.IsUnixOrMac)
+			{
+				Log.Fatal("Screen caputure is only supported on Windows at the moment.");
+				return new Bitmap[] { new Bitmap(0, 0)};
+			}
+
             Bitmap memoryImage;
             int count = 1;
 

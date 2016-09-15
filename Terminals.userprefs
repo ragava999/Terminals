@@ -1,0 +1,16 @@
+<Properties StartupItem="Terminals/Terminals.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Users/oliverkohldsc/Documents/Code/Terminals/Terminals.Configuration/Files/Main/Settings/Settings.cs" line="92" column="11" />
+      <Breakpoint file="/Users/oliverkohldsc/Documents/Code/Terminals/Terminals/Program.cs" line="303" column="1" />
+      <Breakpoint file="/Users/oliverkohldsc/Documents/Code/Terminals/Terminals/Program.cs" line="305" column="1" />
+      <Breakpoint file="/Users/oliverkohldsc/Documents/Code/Terminals/Terminals.Configuration/Files/Main/Settings/Settings_FileAccess.cs" line="572" column="1" />
+      <Breakpoint file="/Users/oliverkohldsc/Documents/Code/Terminals/Kohl.Framework/Framework.Info/UserInfo.cs" line="50" column="1" />
+      <Breakpoint file="/Users/oliverkohldsc/Documents/Code/Terminals/Terminals/Program.cs" line="302" column="1" />
+      <Breakpoint file="/Users/oliverkohldsc/Documents/Code/Terminals/Terminals/Program.cs" line="396" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

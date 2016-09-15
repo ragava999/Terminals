@@ -37,10 +37,13 @@
 
                 CredSet = new CredentialSet();
 
-                // Update the old treeview theme to the new theme from Win Vista and up
-                WindowsApi.SetWindowTheme(this.favsTree.Handle, "Explorer", null);
-                WindowsApi.SetWindowTheme(this.dbTreeView1.Handle, "Explorer", null);
-                WindowsApi.SetWindowTheme(this.historyTreeView.Handle, "Explorer", null);
+				if (!MachineInfo.IsUnixOrMac)
+				{
+					// Update the old treeview theme to the new theme from Win Vista and up
+					WindowsApi.SetWindowTheme(this.favsTree.Handle, "Explorer", null);
+					WindowsApi.SetWindowTheme(this.dbTreeView1.Handle, "Explorer", null);
+					WindowsApi.SetWindowTheme(this.historyTreeView.Handle, "Explorer", null);
+				}
 
                 this.historyTreeView.DoubleClick += this.HistoryTreeView_DoubleClick;
 

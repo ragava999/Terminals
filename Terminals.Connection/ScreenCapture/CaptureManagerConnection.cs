@@ -54,6 +54,12 @@ namespace Terminals.Connection.ScreenCapture
 
         public static void PerformScreenCapture(TabControl.TabControl tab)
         {
+			if (Kohl.Framework.Info.MachineInfo.IsUnixOrMac)
+			{
+				Log.Fatal("Screen caputure is only supported on Windows at the moment.");
+				return;
+			}
+
             TerminalTabControlItem activeTab = tab.SelectedItem as TerminalTabControlItem;
             string name = "";
             if (activeTab != null && activeTab.Favorite != null && !string.IsNullOrEmpty(activeTab.Favorite.Name))

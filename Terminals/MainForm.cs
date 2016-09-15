@@ -303,8 +303,9 @@ namespace Terminals
                 // main designer procedure
                 this.InitializeComponent();
 
-                // Set notifyicon icon from embedded png image
-                this.MainWindowNotifyIcon.Icon = Resources.terminalsicon;
+				if (!MachineInfo.IsUnixOrMac)
+	                // Set notifyicon icon from embedded png image
+	                this.MainWindowNotifyIcon.Icon = Resources.terminalsicon;
 
                 this.terminalsControler = new TerminalTabsSelectionControler(this, this.tcTerminals);
 
@@ -550,8 +551,10 @@ namespace Terminals
         {
         	Log.InsideMethod();
         	
-            this.MainWindowNotifyIcon.Visible = Settings.MinimizeToTray;
-            if (!Settings.MinimizeToTray && !this.Visible)
+			if (!MachineInfo.IsUnixOrMac)
+            	this.MainWindowNotifyIcon.Visible = Settings.MinimizeToTray;
+            
+			if (!Settings.MinimizeToTray && !this.Visible)
                 this.Visible = true;
 
             this.lockToolbarsToolStripMenuItem.Checked = Settings.ToolbarsLocked;
@@ -584,9 +587,10 @@ namespace Terminals
             else
                 ToolStripManager.Renderer = new ToolStripProfessionalRenderer();
 
-            // Update the old treeview theme to the new theme from Win Vista and up
-            WindowsApi.SetWindowTheme(this.menuStrip.Handle, "Explorer", null);
-        }
+			if (!MachineInfo.IsUnixOrMac)
+	            // Update the old treeview theme to the new theme from Win Vista and up
+	            WindowsApi.SetWindowTheme(this.menuStrip.Handle, "Explorer", null);
+	    }
 
         private void ShowWizardAndReloadSpecialCommands()
         {
@@ -611,10 +615,14 @@ namespace Terminals
             if (!this.Visible)
             {
                 this.Show();
-                if (this.WindowState == FormWindowState.Minimized)
-                    WindowsApi.ShowWindow(new HandleRef(this, this.Handle), 9);
 
-                WindowsApi.SetForegroundWindow(new HandleRef(this, this.Handle));
+				if (!MachineInfo.IsUnixOrMac)
+				{
+					if (this.WindowState == FormWindowState.Minimized)
+						WindowsApi.ShowWindow(new HandleRef(this, this.Handle), 9);
+
+					WindowsApi.SetForegroundWindow(new HandleRef(this, this.Handle));
+				}
             }
         }
 
@@ -1046,7 +1054,9 @@ namespace Terminals
             if (this.fullScreenSwitch.FullScreen)
                 this.fullScreenSwitch.FullScreen = false;
 
-            this.MainWindowNotifyIcon.Visible = false;
+			if (!MachineInfo.IsUnixOrMac)
+            	this.MainWindowNotifyIcon.Visible = false;
+			
             this.CloseOpenedConnections(e);
             this.toolStripContainer.SaveLayout();
 
