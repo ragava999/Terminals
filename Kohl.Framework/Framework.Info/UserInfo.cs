@@ -28,6 +28,11 @@ namespace Kohl.Framework.Info
 		{
 			get
 			{
+				if (MachineInfo.IsMac)
+				{
+					return System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo("osascript", "-e \"long user name of (system info)\"") { RedirectStandardOutput = true, UseShellExecute = false }).StandardOutput.ReadLine().Trim();
+				}
+
 				return null;
 			}
 		}

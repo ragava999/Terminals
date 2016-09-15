@@ -4,7 +4,6 @@ using System.Configuration;
 using System.IO;
 using System.Reflection;
 using System.Threading;
-using System.Windows.Forms;
 using System.Xml;
 using Kohl.Framework.Info;
 using Kohl.Framework.Logging;
@@ -364,7 +363,7 @@ namespace Terminals.Configuration.Files.Main.Settings
                 fileWatcher.StartObservation();
 
             // get a list of the properties on the Settings object (static props)
-            PropertyInfo[] propList = typeof (Settings).GetProperties(BindingFlags.Public | BindingFlags.Static | BindingFlags.SetProperty);
+            PropertyInfo[] propList = typeof(Settings).GetProperties(BindingFlags.Public | BindingFlags.Static | BindingFlags.SetProperty);
 
             // Load the whole xml file
             // No problem if this line fails -> the plain new copy is
@@ -376,6 +375,9 @@ namespace Terminals.Configuration.Files.Main.Settings
             
             bool terminalsPasswordDetected = false;
             
+			if (root.Attributes.Count == 0)
+				Log.Warn("The old configuration file doesn't contain any Terminals settings.");
+
             try
             {
                 // for each setting's attribute
@@ -441,13 +443,11 @@ namespace Terminals.Configuration.Files.Main.Settings
             	Log.Debug("No Terminals password has been found in the broken configuration file.");
             }
             
+			// TODO: Noch zu überprüfen
             // pluginOptions
             // favoritesButtonsList
             // toolStripSettings
             // savedConnectionsList
-            
-            // -> WAS ist mit Groups und anderen Objekten in den Favorites im Code? -> Code-Tree überprüfen
-            
             // usersMRUList
             // serversMRUList
             // domainsMRUList
@@ -459,7 +459,11 @@ namespace Terminals.Configuration.Files.Main.Settings
             
             // Work through every favorite configuration element
             XmlNodeList favs = doc.SelectNodes("/configuration/settings/favorites/add");
-            try
+
+			if (favs.Count == 0)
+				Log.Warn("Your old configuration file doesn't contain any Terminals favorites.");
+
+			try
             {
                 foreach (XmlNode fav in favs)
             	{
@@ -545,15 +549,12 @@ namespace Terminals.Configuration.Files.Main.Settings
                 Log.Error("Error remapping favorites: " + exc.Message);
                 remappingInProgress = false;
 	            return Config;
-	            //return _config;
-	            //return OpenConfiguration();
             }
             
             File.Delete(tempFile);
 			remappingInProgress = false;
             Save();
             return _config;
-            //return OpenConfiguration();
         }
         
         private static TerminalsConfigurationSection GetSection()
@@ -583,7 +584,7 @@ namespace Terminals.Configuration.Files.Main.Settings
                 }
                 catch (Exception importException)
                 {
-                    Log.Info("Terminals was able to automatically upgrade your existing connections.", importException);
+                    Log.Error("Terminals was unable to automatically upgrade your existing connections.", importException);
                     return new TerminalsConfigurationSection();
                 }
             }

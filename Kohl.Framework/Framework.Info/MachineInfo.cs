@@ -43,6 +43,20 @@ namespace Kohl.Framework.Info
 			}
 		}
 
+		public static bool IsMac
+		{
+			get
+			{
+				if (IsUnixOrMac)
+				{
+					string os = System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo("uname", "-s") { RedirectStandardOutput = true, UseShellExecute = false }).StandardOutput.ReadLine().Trim();
+
+					return os.ToLowerInvariant() == "darwin";
+				}
+				return false;
+			}
+		}
+
 		public static string BuildGuid
 		{
 			get
@@ -353,6 +367,61 @@ namespace Kohl.Framework.Info
 		{
 			get
 			{
+				if (MachineInfo.IsUnixOrMac)
+				{
+					if (IsMac)
+					{
+						string version = System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo("sw_vers", "-productVersion") { RedirectStandardOutput = true, UseShellExecute = false }).StandardOutput.ReadLine().Trim();
+
+						switch (version)
+						{
+							case "10.12":
+								version = "macOS Sierra";
+								break;
+							case "10.11":
+								version = "OS X El Capitan";
+								break;
+							case "10.10":
+								version = "OS X Yosemite";
+								break;
+							case "10.9":
+								version = "OS X Mavericks";
+								break;
+							case "10.8":
+								version = "OS X Mountain Lion";
+								break;
+							case "10.7":
+								version = "Mac OS X Lion";
+								break;
+							case "10.6":
+								version = "Mac OS X Snow Leopard";
+								break;
+							case "10.5":
+								version = "Mac OS X Leopard";
+								break;
+							case "10.4":
+								version = "Mac OS X Tiger";
+								break;
+							case "10.3":
+								version = "Mac OS X Panther";
+								break;
+							case "10.2":
+								version = "Mac OS X 10.2 (Jaguar)";
+								break;
+							case "10.1":
+								version = "Mac OS X 10.1 (Puma)";
+								break;
+							case "10.0":
+								version = "Mac OS X 10.0 (Cheetah)";
+								break;
+							default:
+								version = "macOS " + version;
+								break;
+						}
+						return version;
+					}
+				}
+
 				string str;
 				try
 				{

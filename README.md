@@ -14,7 +14,7 @@ The [official website](http://oliverkohldsc.github.io/Terminals) can be found [h
 
 ###Release v 4.9.1.0
 
-Date: 2016-09-06
+Date: 2016-09-15
 
 Added a more reliable way of detecting the build date of Terminals.exe (The 'AssemblyTimeStampAttribute' attribute has been implemented in the namespace 'Kohl.Framework.Info')
 
@@ -42,7 +42,11 @@ Improved the Terminals.Updates.UpdateManager by enabling proxy support, added a 
 
 Improved the option panel for the proxy configuration.
 
-Trying to get Terminals working under MacOSX -> Folder detection has been improved.
+Trying to get Terminals working under MacOSX
+   -> Folder detection has been improved.
+   -> Mac OS X version is now getting reported
+   -> Terminals starts without any error
+   -> Some minor issues remaining
 
 Import/Export features have been improved.
 
@@ -57,6 +61,8 @@ Added import for Remote Desktop Manager.
 Kicked Scintilla and replaced it with a richt text box.
 
 Improved connect and disconnect logic of autoit plugin.
+
+Improved deserialization of the plugin options, because had just functioned under Windows with .NET and mono.
 
 
 ###Release v 4.9.0.0

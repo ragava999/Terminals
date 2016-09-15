@@ -1,12 +1,13 @@
 namespace Terminals.Configuration.Files.Main.Favorites
 {
     using System;
+	using System.Linq;
 
     /// <summary>
     /// A collection of PluginConfiguration instances.
     /// </summary>
     [Serializable]
-    [global::System.Configuration.ConfigurationCollectionAttribute(typeof(PluginConfiguration), CollectionType = global::System.Configuration.ConfigurationElementCollectionType.AddRemoveClearMap, AddItemName = PluginConfigurationPropertyName)]
+	[global::System.Configuration.ConfigurationCollection(typeof(global::System.Configuration.ConfigurationElementCollection))]
     public class PluginConfigurationElementCollection : global::System.Configuration.ConfigurationElementCollection
     {
         #region Constructor (1)
@@ -21,6 +22,10 @@ namespace Terminals.Configuration.Files.Main.Favorites
         /// The XML name of the individual <see cref="PluginConfiguration"/> instances in this collection.
         /// </summary>
         internal const string PluginConfigurationPropertyName = "plugin";
+		/// <summary>
+        /// The XML name of the collection <see cref="PluginConfigurationElementCollection"/> itself.
+        /// </summary>
+		internal readonly string PluginConfigurationCollectionPropertyName = "pluginOptions";
         #endregion
 
         #region Overrides (5)
@@ -32,7 +37,7 @@ namespace Terminals.Configuration.Files.Main.Favorites
         {
             get
             {
-                return global::System.Configuration.ConfigurationElementCollectionType.BasicMapAlternate;
+				return global::System.Configuration.ConfigurationElementCollectionType.AddRemoveClearMap; // BasicMapAlternate;
             }
         }
 
@@ -43,7 +48,7 @@ namespace Terminals.Configuration.Files.Main.Favorites
         {
             get
             {
-                return PluginConfigurationElementCollection.PluginConfigurationPropertyName;
+				return PluginConfigurationElementCollection.PluginConfigurationPropertyName;
             }
         }
 
@@ -161,35 +166,44 @@ namespace Terminals.Configuration.Files.Main.Favorites
         }
         #endregion
 
-        #region Custom Child Elements (1)
-        /// <summary>
-        /// Gets a value indicating whether an unknown element is encountered during deserialization.
-        /// </summary>
-        /// <param name="elementName">The name of the unknown subelement.</param>
-        /// <param name="reader">The <see cref="global::System.Xml.XmlReader"/> being used for deserialization.</param>
-        /// <returns>
-        /// <see langword="true"/> when an unknown element is encountered while deserializing; otherwise, <see langword="false"/>.
-        /// </returns>
-        /// <exception cref="global::System.Configuration.ConfigurationErrorsException">The element identified by <paramref name="elementName"/> is locked.- or -One or more of the element's attributes is locked.- or -<paramref name="elementName"/> is unrecognized, or the element has an unrecognized attribute.- or -The element has a Boolean attribute with an invalid value.- or -An attempt was made to deserialize a property more than once.- or -An attempt was made to deserialize a property that is not a valid member of the element.- or -The element cannot contain a CDATA or text element.</exception>
-        protected override bool OnDeserializeUnrecognizedElement(string elementName, global::System.Xml.XmlReader reader)
-        {
-			if (Kohl.Framework.Info.MachineInfo.IsUnixOrMac)
-				return false;
-			
-            if (elementName == PluginConfigurationPropertyName && reader.AttributeCount > 0)
-            {
-                PluginConfiguration config = new PluginConfiguration(reader[0].ToString());
+		protected override object OnRequiredPropertyNotFound(string name)
+		{
+			return base.OnRequiredPropertyNotFound(name);
+		}
 
-                if (reader.AttributeCount == 3)
-                    config.SetValue(reader[1].ToString(), reader[2].ToString());
-                else if (reader.AttributeCount == 2)
-                    config.SetValue(reader[1].ToString());
+        #region DeserializeElement (1)
+		/// <summary>
+		/// Default deserzialization perfectly works on .NET and mono for Windows, but not on any mono platforms other than windows. To prevent the mono framework on non Windows platforms to throw errors kick into the deserialization and override the default one.
+		/// </summary>
+		/// <param name="reader">Reader.</param>
+		/// <param name="serializeCollectionKey">If set to <c>true</c> serialize collection key.</param>
+        protected override void DeserializeElement(System.Xml.XmlReader reader, bool serializeCollectionKey)
+		{
+			if (reader.Name.ToLowerInvariant() == this.PluginConfigurationCollectionPropertyName.ToLowerInvariant())
+			{
+				Kohl.Framework.Logging.Log.Info("Reading plugin options.");
 
-                this.Add(config);
-            }
+				while (reader.Read())
+				{
+					if (reader.Name.ToLowerInvariant() == PluginConfigurationPropertyName.ToLowerInvariant())
+					{
+						if (!this.BaseGetAllKeys().Contains(reader[0].ToString()))
+						{
+							PluginConfiguration config = new PluginConfiguration(reader[0].ToString());
 
-            return true;
-        }
+							if (reader.AttributeCount == 3)
+								config.SetValue(reader[1].ToString(), reader[2].ToString());
+							else if (reader.AttributeCount == 2)
+								config.SetValue(reader[1].ToString());
+
+							this.Add(config);
+						}
+					}
+					if (reader.Name.ToLowerInvariant() == this.PluginConfigurationCollectionPropertyName.ToLowerInvariant())
+						return;
+				}
+			}
+		}
         #endregion
     }
 }

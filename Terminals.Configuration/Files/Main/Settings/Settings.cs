@@ -18,20 +18,6 @@ namespace Terminals.Configuration.Files.Main.Settings
         {
             get
             {
-                // If we use the below uncommented code ->
-                // we'd force terminals to replace the config
-                // due to parsing errors before being able to kick
-                // into the routine (e.g. UpdateConfig.UpdateObsoleteConfigVersions())
-
-                /*
-                string configVersion = GetSection().ConfigVersion;
-
-                if (configVersion != String.Empty)
-                    return new Version(configVersion);
-
-                return null;
-                */
-
                 try
                 {
                     XmlAttribute obj = LoadDocument(ConfigurationFileLocation).SelectSingleNode("/configuration/settings").Attributes["ConfigVersion"];
@@ -89,14 +75,22 @@ namespace Terminals.Configuration.Files.Main.Settings
         {
         	get
         	{
-        		TerminalsConfigurationSection config = GetSection();
-                if (config != null)
+                try
                 {
-                    string dsp = config.CredentialStore;
-                    return (CredentialStoreType) Enum.Parse(typeof (CredentialStoreType), dsp);
-                }
+                    XmlAttribute obj = LoadDocument(ConfigurationFileLocation).SelectSingleNode("/configuration/settings").Attributes["credentialStore"];
 
-        		return CredentialStoreType.Xml;
+					if (obj == null || obj.Value == null)
+						return CredentialStoreType.Xml;
+
+					if (obj.Value != String.Empty)
+						return (CredentialStoreType)Enum.Parse(typeof(CredentialStoreType), obj.Value);
+
+					return CredentialStoreType.Xml;
+				}
+				catch
+				{
+					return CredentialStoreType.Xml;
+				}
         	}
 
             set
@@ -463,15 +457,6 @@ namespace Terminals.Configuration.Files.Main.Settings
 
         private static string GetMasterPasswordHash()
         {
-            // If we use the below uncommented code ->
-            // we'd force terminals to replace the config
-            // due to parsing errors before being able to kick
-            // into the routine (e.g. UpdateConfig.UpdateObsoleteConfigVersions())
-
-            /*
-            return GetSection().TerminalsPassword;
-            */
-
             try
             {
                 XmlAttribute obj = Terminals.Configuration.Files.Main.Settings.Settings.LoadDocument(Terminals.Configuration.Files.Main.Settings.Settings.ConfigurationFileLocation).SelectSingleNode("/configuration/settings").Attributes["terminalsPassword"];
@@ -998,8 +983,25 @@ namespace Terminals.Configuration.Files.Main.Settings
 
         public static bool ShowWizard
         {
-            get { return GetSection().ShowWizard; }
+            get
+			{ 
+			 try
+                {
+                    XmlAttribute obj = LoadDocument(ConfigurationFileLocation).SelectSingleNode("/configuration/settings").Attributes["credentialStore"];
+						
+					if (obj == null || obj.Value == null)
+						return true;
 
+					if (obj.Value != String.Empty)
+						return Convert.ToBoolean(obj.Value);
+
+					return true;
+				}
+				catch
+				{
+					return true;
+				}
+			}
             set
             {
                 GetSection().ShowWizard = value;
