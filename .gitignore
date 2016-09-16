@@ -322,6 +322,7 @@
 /Terminals.Plugins.Text/obj/Release/Terminals.Plugins.Text.dll
 /Terminals.Plugins.Text/obj/Release/Terminals.Plugins.Text.Panels.OptionPanels.TextEnableForProtocolsOptionPanel.resources
 /Terminals.Plugins.Text/obj/Release/Terminals.Plugins.Text.Properties.Resources.resources
+/Terminals.userprefs
 /Terminals/bin
 /Terminals/bin/x86/Debug/AxInterop.Microsoft.VMRCClientControl.Interop.dll
 /Terminals/bin/x86/Debug/AxInterop.MSTSCLib.dll

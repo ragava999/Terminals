@@ -348,7 +348,7 @@ namespace Terminals.Connections
 		    }
 		}
 		
-        public delegate void Disconnected(RDPConnection Connection);
+        public new delegate void Disconnected(RDPConnection Connection);
         public event Disconnected OnDisconnected;
         public delegate void ConnectionEstablish(RDPConnection Connection);
         public event ConnectionEstablish OnConnected;
