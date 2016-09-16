@@ -3,6 +3,7 @@ namespace Terminals.Configuration.Files.Main.Keys
     using System;
     using System.Configuration;
 
+    [Serializable]
     [ConfigurationCollection(typeof (KeyConfigElement), CollectionType = ConfigurationElementCollectionType.AddRemoveClearMap)]
     public class KeysCollection : ConfigurationElementCollection
     {

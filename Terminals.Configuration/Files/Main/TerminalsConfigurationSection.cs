@@ -774,7 +774,7 @@ namespace Terminals.Configuration.Files.Main
         }
 
         [ConfigurationProperty("favorites")]
-        [ConfigurationCollection(typeof (FavoriteConfigurationElementCollection))]
+        [ConfigurationCollection(typeof (FavoriteConfigurationElementCollection), AddItemName = "add")]
         public FavoriteConfigurationElementCollection Favorites
         {
             get { return (FavoriteConfigurationElementCollection) this["favorites"]; }

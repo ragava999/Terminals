@@ -8,6 +8,7 @@ namespace Terminals.Configuration.Files.Main.MRU
     /// <summary>
     /// Most-recently-used (MRU) lists.
     /// </summary>
+    [Serializable]
     public class MRUItemConfigurationElementCollection : ConfigurationElementCollection
     {
         public override ConfigurationElementCollectionType CollectionType

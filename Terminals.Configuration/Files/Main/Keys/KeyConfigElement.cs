@@ -3,6 +3,7 @@ namespace Terminals.Configuration.Files.Main.Keys
     using System;
     using System.Configuration;
 
+    [Serializable]
     public class KeyConfigElement : ConfigurationElement
     {
         // Constructor allowing name, and key to be specified.

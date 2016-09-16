@@ -1,3 +1,4 @@
+using System;
 using System.Configuration;
 
 namespace Terminals.Configuration.Files.Main.Keys
@@ -5,6 +6,7 @@ namespace Terminals.Configuration.Files.Main.Keys
     /// <summary>
     ///     SSHKeysSection is a special configuration section for SSH keys.
     /// </summary>
+    [Serializable]
     public class KeysSection : ConfigurationSection
     {
         // Declare a collection element represented

@@ -3,6 +3,7 @@ namespace Terminals.Configuration.Files.Main.Groups
     using System;
     using System.Configuration;
 
+    [Serializable]
     public class GroupConfigurationElementCollection : ConfigurationElementCollection
     {
         public override ConfigurationElementCollectionType CollectionType

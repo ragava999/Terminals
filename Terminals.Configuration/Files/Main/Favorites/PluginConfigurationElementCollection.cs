@@ -179,13 +179,18 @@ namespace Terminals.Configuration.Files.Main.Favorites
 		/// <param name="serializeCollectionKey">If set to <c>true</c> serialize collection key.</param>
         protected override void DeserializeElement(System.Xml.XmlReader reader, bool serializeCollectionKey)
 		{
-			if (reader.Name.ToLowerInvariant() == this.PluginConfigurationCollectionPropertyName.ToLowerInvariant())
+			if (reader.Name.ToLowerInvariant() == this.PluginConfigurationCollectionPropertyName.ToLowerInvariant() || reader.Name.ToLowerInvariant() == "plugins")
 			{
-				Kohl.Framework.Logging.Log.Info("Reading plugin options.");
+                if (reader.Name.ToLowerInvariant() == this.PluginConfigurationCollectionPropertyName.ToLowerInvariant())
+				    Kohl.Framework.Logging.Log.Info("Reading plugin options.");
 
-				while (reader.Read())
+                if (reader.Name.ToLowerInvariant() == "plugins")
+                    Kohl.Framework.Logging.Log.Info("Reading options for favorite.");
+
+
+                while (reader.Read())
 				{
-					if (reader.Name.ToLowerInvariant() == PluginConfigurationPropertyName.ToLowerInvariant())
+					if (reader.Name.ToLowerInvariant() == PluginConfigurationPropertyName.ToLowerInvariant() || reader.Name.ToLowerInvariant() == "add")
 					{
 						if (!this.BaseGetAllKeys().Contains(reader[0].ToString()))
 						{
@@ -199,7 +204,7 @@ namespace Terminals.Configuration.Files.Main.Favorites
 							this.Add(config);
 						}
 					}
-					if (reader.Name.ToLowerInvariant() == this.PluginConfigurationCollectionPropertyName.ToLowerInvariant())
+					if (reader.Name.ToLowerInvariant() == this.PluginConfigurationCollectionPropertyName.ToLowerInvariant() || reader.Name.ToLowerInvariant() == "plugins")
 						return;
 				}
 			}

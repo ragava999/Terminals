@@ -6,10 +6,17 @@ namespace Terminals.Configuration.Files.Main.Favorites
     using System.Linq;
     using Kohl.Framework.Lists;
 
+    [Serializable]
+    [ConfigurationCollection(typeof(FavoriteConfigurationElement))]
     public class FavoriteConfigurationElementCollection : ConfigurationElementCollection
     {
         public FavoriteConfigurationElementCollection() : base(StringComparer.CurrentCultureIgnoreCase)
         {
+        }
+
+        protected override bool IsElementName(string elementName)
+        {
+            return elementName.ToLowerInvariant() == "add";
         }
 
         public override ConfigurationElementCollectionType CollectionType

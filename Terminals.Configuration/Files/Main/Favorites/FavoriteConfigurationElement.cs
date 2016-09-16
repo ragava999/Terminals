@@ -634,14 +634,14 @@ namespace Terminals.Configuration.Files.Main.Favorites
 
         #region Plugin (1)
         [ConfigurationCollection(typeof(PluginConfigurationElementCollection))]
-        [ConfigurationPropertyAttribute("plugins", IsRequired = false, IsKey = false, IsDefaultCollection = false)]
+        [ConfigurationProperty("plugins", IsRequired = false, IsKey = false, IsDefaultCollection = false)]
         public PluginConfigurationElementCollection PluginConfigurations
         {
             get { return (PluginConfigurationElementCollection)this["plugins"]; }
             set { this["plugins"] = value; }
         }
         #endregion
-		#endregion
+        #endregion
 
         #region ExplorerConnection (5)
         [ConfigurationProperty("explorerStyle", IsRequired = false, DefaultValue = null)]

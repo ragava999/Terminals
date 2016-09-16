@@ -1,8 +1,10 @@
 namespace Terminals.Configuration.Files.Main.Groups
 {
+    using System;
     using System.Configuration;
-    using Terminals.Configuration.Files.Main.Favorites;
+    using Favorites;
 
+    [Serializable]
     public class GroupConfigurationElement : ConfigurationElement
     {
         [ConfigurationProperty("name", IsRequired = true)]

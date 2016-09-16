@@ -3,6 +3,7 @@ using System.Configuration;
 
 namespace Terminals.Configuration.Files.Main.ToolTip
 {
+    [Serializable]
     public class ToolStripSettingElement : ConfigurationElement
     {
         [ConfigurationProperty("name", IsRequired = true)]
