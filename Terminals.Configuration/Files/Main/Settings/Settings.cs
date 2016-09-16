@@ -73,25 +73,17 @@ namespace Terminals.Configuration.Files.Main.Settings
 
         public static CredentialStoreType CredentialStore
         {
-        	get
-        	{
-                try
-                {
-                    XmlAttribute obj = LoadDocument(ConfigurationFileLocation).SelectSingleNode("/configuration/settings").Attributes["credentialStore"];
-
-					if (obj == null || obj.Value == null)
-						return CredentialStoreType.Xml;
-
-					if (obj.Value != String.Empty)
-						return (CredentialStoreType)Enum.Parse(typeof(CredentialStoreType), obj.Value);
-
-					return CredentialStoreType.Xml;
-				}
-				catch
+			get
+			{
+				TerminalsConfigurationSection config = GetSection();
+				if (config != null)
 				{
-					return CredentialStoreType.Xml;
+					string dsp = config.CredentialStore;
+					return (CredentialStoreType)Enum.Parse(typeof(CredentialStoreType), dsp);
 				}
-        	}
+
+				return CredentialStoreType.Xml;
+			}
 
             set
             {
@@ -983,25 +975,8 @@ namespace Terminals.Configuration.Files.Main.Settings
 
         public static bool ShowWizard
         {
-            get
-			{ 
-			 try
-                {
-                    XmlAttribute obj = LoadDocument(ConfigurationFileLocation).SelectSingleNode("/configuration/settings").Attributes["credentialStore"];
-						
-					if (obj == null || obj.Value == null)
-						return true;
+			get { return GetSection().ShowWizard; }
 
-					if (obj.Value != String.Empty)
-						return Convert.ToBoolean(obj.Value);
-
-					return true;
-				}
-				catch
-				{
-					return true;
-				}
-			}
             set
             {
                 GetSection().ShowWizard = value;
