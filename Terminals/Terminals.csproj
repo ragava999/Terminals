@@ -934,6 +934,9 @@
     <Compile Include="ExportImport\Import\ImportCodePlexTerminals.cs" />
     <None Include="Panels\FavoritePanels\TODO.txt" />
     <Compile Include="ExportImport\Import\ImportRemoteDesktopManager.cs" />
+    <None Include="TerminalsBuildDate">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Forms\DiskDrivesForm.resx">

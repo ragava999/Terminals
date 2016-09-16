@@ -6,7 +6,13 @@
     <BreakpointStore>
       <Breakpoint file="/Users/oliverkohldsc/Documents/Code/Terminals/Terminals.Configuration/Files/Main/Settings/Settings_FileAccess.cs" line="384" column="1" />
       <Breakpoint file="/Users/oliverkohldsc/Documents/Code/Terminals/Terminals/Program.cs" line="403" column="1" />
+      <Breakpoint file="C:\KOHL\Cloud\Terminals\Kohl.Framework\Framework.Info\DeveloperTools.cs" line="107" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.Workbench />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Kohl.Framework\Framework.Info\DeveloperTools.cs">
+    <Files>
+      <File FileName="Kohl.Framework\Framework.Info\AssemblyInfo.cs" Line="228" Column="35" />
+      <File FileName="Kohl.Framework\Framework.Info\DeveloperTools.cs" Line="108" Column="5" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
 </Properties>

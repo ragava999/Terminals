@@ -53,5 +53,6 @@ dependencies:
 test:
   pre:
     - REPLACE=`date "+%d-%m-%Y %H:%M:%S"` && sed -i -- "s/30.08.2016 12:30:00/$REPLACE/g" /home/ubuntu/Terminals/Terminals/Properties/AssemblyInfo.cs
+	- REPLACE=`date "+%d-%m-%Y %H:%M:%S"` && sed -i -- "s/30.08.2016 12:30:00/$REPLACE/g" /home/ubuntu/Terminals/Terminals/TerminalsBuildDate
     - xbuild /t:Rebuild /p:WarningLevel=0 /p:Configuration=Release /p:RunCodeAnalysis=false "Terminals.sln"
     - ./Release.sh

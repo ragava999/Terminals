@@ -57,7 +57,19 @@ namespace Kohl.Framework.Info
 			}
 		}
 
-		public static string BuildGuid
+        public static bool IsUnix
+        {
+            get
+            {
+                if (IsUnixOrMac && !IsMac)
+                {
+                    return true;
+                }
+                return false;
+            }
+        }
+
+        public static string BuildGuid
 		{
 			get
 			{

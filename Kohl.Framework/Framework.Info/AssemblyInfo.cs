@@ -98,7 +98,7 @@ namespace Kohl.Framework.Info
 					{
 						try
 						{
-							buildDate = new PeHeaderReader(Location).TimeStamp;
+							buildDate = new PeHeaderReader(ExeFilePath).TimeStamp;
 						}
 						catch (Exception ex)
 						{
@@ -117,7 +117,7 @@ namespace Kohl.Framework.Info
 						if (dateTime.Equals(DateTime.MinValue))
 						{
 							Logging.Log.Debug ("Unable to parse assembly date time by custom attribute AssemblyTimeStampAttribute.");
-							return buildDate = DeveloperTools.RetrieveLinkerTimestamp(AssemblyInfo.Location);
+							return buildDate = DeveloperTools.RetrieveLinkerTimestamp(AssemblyInfo.ExeFilePath);
 						}
 
 						return buildDate = dateTime;
@@ -125,7 +125,7 @@ namespace Kohl.Framework.Info
 					catch
 					{
 						Logging.Log.Debug ("Unable to retrieve assembly date time by custom attribute AssemblyTimeStampAttribute.");
-						buildDate = DeveloperTools.RetrieveLinkerTimestamp (AssemblyInfo.Location);
+						buildDate = DeveloperTools.RetrieveLinkerTimestamp (AssemblyInfo.ExeFilePath);
 						
 						return buildDate;
 					}
@@ -156,7 +156,7 @@ namespace Kohl.Framework.Info
 				{
 					commandLine = commandLine.Remove(commandLine.Length - 2, 1);
 				}
-				commandLine = commandLine.Replace(AssemblyInfo.Location, "").Replace(AssemblyInfo.LocationVsHost, "").TrimEnd(new char[0]);
+				commandLine = commandLine.Replace(AssemblyInfo.ExeFilePath, "").Replace(AssemblyInfo.ExeFilePathVsHost, "").TrimEnd(new char[0]);
 				if (string.IsNullOrEmpty(commandLine))
 				{
 					return null;
@@ -181,7 +181,7 @@ namespace Kohl.Framework.Info
 		{
 			get
 			{
-				if (string.IsNullOrEmpty(AssemblyInfo.Location))
+				if (string.IsNullOrEmpty(AssemblyInfo.ExeFilePath))
 				{
 					return null;
 				}
@@ -189,7 +189,7 @@ namespace Kohl.Framework.Info
 				{
 					return null;
 				}
-				return Path.GetDirectoryName(AssemblyInfo.Location);
+				return Path.GetDirectoryName(AssemblyInfo.ExeFilePath);
 			}
 		}
 
@@ -209,7 +209,7 @@ namespace Kohl.Framework.Info
 		/// Get the fully qualified original local location of the currently executing assembly.
 		/// </summary>
 		/// <example>C:\Kohl\Terminal\Terminals.exe</example>
-		public static string Location
+		public static string ExeFilePath
 		{
 			get
 			{
@@ -225,16 +225,16 @@ namespace Kohl.Framework.Info
 		/// Get the fully qualified original local location of the currently executing debug assembly.
 		/// </summary>
 		/// <example>C:\Kohl\Terminal\Terminals.vshost.exe</example>
-		public static string LocationVsHost
+		public static string ExeFilePathVsHost
 		{
 			get
 			{
-				if (string.IsNullOrEmpty(AssemblyInfo.Location))
+				if (string.IsNullOrEmpty(AssemblyInfo.ExeFilePath))
 				{
 					return null;
 				}
-				int length = (new FileInfo(AssemblyInfo.Location)).Extension.Length;
-				return string.Concat(AssemblyInfo.Location.Remove(AssemblyInfo.Location.Length - length, length), ".vshost.exe");
+				int length = (new FileInfo(AssemblyInfo.ExeFilePath)).Extension.Length;
+				return string.Concat(AssemblyInfo.ExeFilePath.Remove(AssemblyInfo.ExeFilePath.Length - length, length), ".vshost.exe");
 			}
 		}
 
