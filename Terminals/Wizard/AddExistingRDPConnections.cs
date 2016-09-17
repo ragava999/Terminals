@@ -36,14 +36,16 @@ namespace Terminals.Wizard
 
             this.dataGridView1.Visible = false;
             this._miv = this.UpdateConnections;
-            try
-            {
-                this._nil = new NetworkInterfaceList();
-            }
-            catch (Exception exc)
-            {
-                Log.Error("Could not new up Metro.NetworkInterfaceList in AddExistingRDPConnections", exc);
-            }
+
+			if (!Kohl.Framework.Info.MachineInfo.IsUnixOrMac)
+	            try
+	            {
+	                this._nil = new NetworkInterfaceList();
+	            }
+	            catch (Exception exc)
+	            {
+	                Log.Error("Could not new up Metro.NetworkInterfaceList in AddExistingRDPConnections", exc);
+	            }
         }
 
         public List<FavoriteConfigurationElement> DiscoveredConnections { get; private set; }

@@ -14,7 +14,13 @@
     {
         private static DirectoryInfo SystemRoot
         {
-            get { return new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.System)); }
+            get
+			{
+				if (!Kohl.Framework.Info.MachineInfo.IsUnixOrMac)
+					return new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.System));
+
+				return null;
+			}
         }
 
         public static SpecialCommandConfigurationElementCollection LoadSpecialCommands()
@@ -31,6 +37,9 @@
 
         private static void AddControlPanelApplets(SpecialCommandConfigurationElementCollection cmdList)
         {
+			if (SystemRoot == null)
+				return;
+
             foreach (FileInfo file in SystemRoot.GetFiles("*.cpl"))
             {
                 SpecialCommandConfigurationElement elm1 = new SpecialCommandConfigurationElement(file.Name);
@@ -49,6 +58,9 @@
 
         private static void AddMmcCommands(SpecialCommandConfigurationElementCollection cmdList)
         {
+			if (SystemRoot == null)
+				return;
+			
             Icon[] IconsList = IconHandler.IconsFromFile(Path.Combine(SystemRoot.FullName, "mmc.exe"),
                                                          IconSize.Small);
             Random rnd = new Random();
@@ -80,6 +92,9 @@
 
         private static void AddRegEditCommand(SpecialCommandConfigurationElementCollection cmdList)
         {
+			if (SystemRoot == null)
+				return;
+			
             string regEditFile = Path.Combine(SystemRoot.FullName, "regedt32.exe");
             Icon[] regeditIcons = IconHandler.IconsFromFile(regEditFile, IconSize.Small);
             SpecialCommandConfigurationElement regEditElm = new SpecialCommandConfigurationElement("Registry Editor");
@@ -95,10 +110,19 @@
 
         private static void AddCmdCommand(SpecialCommandConfigurationElementCollection cmdList)
         {
-            cmdList.Add(new SpecialCommandConfigurationElement("Command Shell")
-                                                         {
-                                                             Executable = @"%systemroot%\system32\cmd.exe"
-                                                         });
+			if (!Kohl.Framework.Info.MachineInfo.IsUnixOrMac)
+	            cmdList.Add(new SpecialCommandConfigurationElement("Command Shell")
+	                                                         {
+	                                                             Executable = @"%systemroot%\system32\cmd.exe"
+	                                                         });
+
+			if (Kohl.Framework.Info.MachineInfo.IsMac)
+			{
+				cmdList.Add(new SpecialCommandConfigurationElement("Command Shell")
+															{
+																Executable = @"Terminal.app"
+															});
+			}
         }
     }
 }

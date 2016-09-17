@@ -576,17 +576,24 @@ namespace Terminals
             this.ApplyTheme();
         }
 
-        private void ApplyTheme()
-        {
-        	Log.InsideMethod();
-        	
-            if (Settings.Office2007BlueFeel)
-                ToolStripManager.Renderer = Office2007Renderer.GetRenderer(RenderColors.Blue);
-            else if (Settings.Office2007BlackFeel)
-                ToolStripManager.Renderer = Office2007Renderer.GetRenderer(RenderColors.Black);
-            else
-                ToolStripManager.Renderer = new ToolStripProfessionalRenderer();
+		private void ApplyTheme()
+		{
+			Log.InsideMethod();
 
+			if (Settings.Office2007BlueFeel)
+				ToolStripManager.Renderer = Office2007Renderer.GetRenderer(RenderColors.Blue);
+			else if (Settings.Office2007BlackFeel)
+				ToolStripManager.Renderer = Office2007Renderer.GetRenderer(RenderColors.Black);
+			else
+				if (!MachineInfo.IsUnixOrMac)
+				{
+					ToolStripManager.Renderer = new ToolStripProfessionalRenderer();
+				}
+				else
+				{
+					ToolStripManager.RenderMode = ToolStripManagerRenderMode.System;
+				}
+		
 			if (!MachineInfo.IsUnixOrMac)
 	            // Update the old treeview theme to the new theme from Win Vista and up
 	            WindowsApi.SetWindowTheme(this.menuStrip.Handle, "Explorer", null);
@@ -1710,7 +1717,12 @@ namespace Terminals
         private void UpdateCaptureButtonEnabled()
         {
         	Log.InsideMethod();
+
             Boolean enableCapture = Settings.EnabledCaptureToFolderAndClipBoard;
+
+			if (Kohl.Framework.Info.MachineInfo.IsUnixOrMac)
+				enableCapture = false;
+			
             this.CaptureScreenToolStripButton.Enabled = enableCapture;
             this.captureTerminalScreenToolStripMenuItem.Enabled = enableCapture;
             this.terminalsControler.UpdateCaptureButtonOnDetachedPopUps();
@@ -2097,7 +2109,11 @@ namespace Terminals
                     }
             }
 
-            lastOpenLogFileProcessId = Process.Start("notepad.exe", Log.CurrentLogFile).Id;
+			if (MachineInfo.IsMac)
+				lastOpenLogFileProcessId = Process.Start("open", "-a TextEdit " + Log.CurrentLogFile).Id;
+			else
+            	lastOpenLogFileProcessId = Process.Start("notepad.exe", Log.CurrentLogFile).Id;
+			
             Log.Info("Notepad has been started containing the current log file.");
         }
 

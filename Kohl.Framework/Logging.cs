@@ -89,12 +89,23 @@ namespace Kohl.Framework.Logging
 		public static void SetXmlConfig(string configName = null)
 		{
 			if (string.IsNullOrEmpty(ConfigName = configName))
-			    ConfigName = AssemblyInfo.Title;
-			
+				ConfigName = AssemblyInfo.Title;
+
 			log4net.Config.XmlConfigurator.Configure(new FileInfo(Log4NetConfig));
+
+			// If the path has only been configure for Windows in the Log4Net config ->
+			// then fix it end set it for unix systems
+			if (MachineInfo.IsUnixOrMac)
+			{
+				if (GetRootAppenderFileName != CurrentLogFile)
+				{
+					GetRootAppender.File = CurrentLogFile;
+					GetRootAppender.ActivateOptions();
+				}
+			}
 		}
 		
-		public static string CurrentLogFolder 
+		public static string CurrentLogFolder
 		{
 			get
 			{
@@ -106,18 +117,33 @@ namespace Kohl.Framework.Logging
 				return Path.GetDirectoryName(file);
 			}
 		}
-		
-		public static string CurrentLogFile {
+
+		private static log4net.Appender.FileAppender GetRootAppender
+		{
+			get
+			{
+				return ((log4net.Repository.Hierarchy.Hierarchy)log4net.LogManager.GetRepository())
+										 .Root.Appenders.OfType<log4net.Appender.FileAppender>()
+										 .FirstOrDefault(); 
+			}
+		}
+
+		private static string GetRootAppenderFileName
+		{
+			get
+			{
+				return (GetRootAppender != null ? GetRootAppender.File : Path.Combine(Path.Combine(CurrentLogFolder, "Logs"), AssemblyInfo.Title + ".log"));
+			}
+		}
+
+		public static string CurrentLogFile
+		{
 			get 
 			{
-				var rootAppender = ((log4net.Repository.Hierarchy.Hierarchy)log4net.LogManager.GetRepository())
-                                         .Root.Appenders.OfType<log4net.Appender.FileAppender>()
-                                         .FirstOrDefault();
+				string file = GetRootAppenderFileName;
 
-				string file = rootAppender != null ? rootAppender.File : Path.Combine(Path.Combine(CurrentLogFolder, "Logs"), Kohl.Framework.Info.AssemblyInfo.Title + ".log");
-
-				if (MachineInfo.IsUnixOrMac && file.Contains ("\\"))
-					file = file.Replace ("\\", Path.DirectorySeparatorChar.ToString());
+				if (MachineInfo.IsUnixOrMac && file.Contains ("\\\\"))
+					file = file.Replace ("\\\\", Path.DirectorySeparatorChar.ToString());
 
 				return file;
 			}
