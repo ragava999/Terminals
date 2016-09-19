@@ -7,7 +7,7 @@ using System.IO;
 
 namespace Terminals.Panels.OptionPanels
 {
-    public partial class StartShutdownOptionPanel : IOptionPanel
+	public partial class StartShutdownOptionPanel : IOptionPanel
     {
         public StartShutdownOptionPanel()
         {
@@ -19,6 +19,7 @@ namespace Terminals.Panels.OptionPanels
         {
             this.chkSingleInstance.Checked = Settings.SingleInstance;
             this.chkNeverShowTerminalsCheckbox.Checked = Settings.NeverShowTerminalsWindow;
+            this.chkCheckForNewRelease.Checked = Settings.CheckForNewRelease;
             this.chkShowConfirmDialog.Checked = Settings.ShowConfirmDialog;
             this.chkSaveConnections.Checked = Settings.SaveConnectionsOnClose;
             this.txtImage.Text = Settings.ImagePath;
@@ -35,6 +36,7 @@ namespace Terminals.Panels.OptionPanels
         {
             Settings.SingleInstance = this.chkSingleInstance.Checked;
             Settings.NeverShowTerminalsWindow = this.chkNeverShowTerminalsCheckbox.Checked;
+            Settings.CheckForNewRelease = this.chkCheckForNewRelease.Checked;
             Settings.ShowConfirmDialog = this.chkShowConfirmDialog.Checked;
             Settings.SaveConnectionsOnClose = this.chkSaveConnections.Checked;
             Settings.ImagePath = this.txtImage.Text;

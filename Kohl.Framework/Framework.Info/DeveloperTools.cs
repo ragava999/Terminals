@@ -100,26 +100,7 @@ namespace Kohl.Framework.Info
 
 		private static DateTime GetAssmeblyDateFallback(string location) 
 		{
-			Logging.Log.Debug ("Unable to retrieve linker timestamp.");
-
-			string file = Path.Combine(AssemblyInfo.Directory, AssemblyInfo.Title) + "BuildDate";
-
-			if (File.Exists(file))
-			{
-				string date = new StreamReader(new FileStream(file, FileMode.Open, FileAccess.Read)).ReadLine();
-
-				if (!string.IsNullOrWhiteSpace(date))
-				{
-					date = date.Trim();
-
-					DateTime dateTime = DateTime.MinValue;
-					if (DateTime.TryParse(date, out dateTime))
-						if (!(dateTime.Equals(new DateTime(1970, 1, 1, 0, 0, 0)) || dateTime.Equals(DateTime.MinValue)))
-							return dateTime;
-				}
-			}
-
-			Logging.Log.Debug("Falling back to last assembly write time.");
+			Logging.Log.Debug ("Unable to retrieve linker timestamp. Falling back to last assembly write time.");
 
 			try
 			{

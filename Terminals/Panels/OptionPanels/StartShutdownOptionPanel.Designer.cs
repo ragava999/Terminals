@@ -44,6 +44,7 @@ namespace Terminals.Panels.OptionPanels
         	this.chkSaveConnections = new System.Windows.Forms.CheckBox();
         	this.chkShowConfirmDialog = new System.Windows.Forms.CheckBox();
         	this.groupBoxStartup = new System.Windows.Forms.GroupBox();
+        	this.chkCheckForNewRelease = new System.Windows.Forms.CheckBox();
         	this.chkNeverShowTerminalsCheckbox = new System.Windows.Forms.CheckBox();
         	this.chkSingleInstance = new System.Windows.Forms.CheckBox();
         	this.panel1.SuspendLayout();
@@ -203,6 +204,7 @@ namespace Terminals.Panels.OptionPanels
         	// 
         	// groupBoxStartup
         	// 
+        	this.groupBoxStartup.Controls.Add(this.chkCheckForNewRelease);
         	this.groupBoxStartup.Controls.Add(this.chkNeverShowTerminalsCheckbox);
         	this.groupBoxStartup.Controls.Add(this.chkSingleInstance);
         	this.groupBoxStartup.Location = new System.Drawing.Point(6, 3);
@@ -211,6 +213,16 @@ namespace Terminals.Panels.OptionPanels
         	this.groupBoxStartup.TabIndex = 0;
         	this.groupBoxStartup.TabStop = false;
         	this.groupBoxStartup.Text = "Startup";
+        	// 
+        	// chkCheckForNewRelease
+        	// 
+        	this.chkCheckForNewRelease.AutoSize = true;
+        	this.chkCheckForNewRelease.Location = new System.Drawing.Point(264, 19);
+        	this.chkCheckForNewRelease.Name = "chkCheckForNewRelease";
+        	this.chkCheckForNewRelease.Size = new System.Drawing.Size(191, 17);
+        	this.chkCheckForNewRelease.TabIndex = 5;
+        	this.chkCheckForNewRelease.Text = "Check for a new release on startup";
+        	this.chkCheckForNewRelease.UseVisualStyleBackColor = true;
         	// 
         	// chkNeverShowTerminalsCheckbox
         	// 
@@ -271,5 +283,6 @@ namespace Terminals.Panels.OptionPanels
         private Label lblStyle;
         private ComboBox cmbStyle;
         private PictureBox picColor;
+        private CheckBox chkCheckForNewRelease;
     }
 }

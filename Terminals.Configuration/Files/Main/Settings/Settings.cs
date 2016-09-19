@@ -172,6 +172,17 @@ namespace Terminals.Configuration.Files.Main.Settings
             }
         }
 
+        public static bool CheckForNewRelease
+        {
+            get { return GetSection().CheckForNewRelease; }
+
+            set
+            {
+                GetSection().CheckForNewRelease = value;
+                SaveImmediatelyIfRequested();
+            }
+        }
+
         public static bool NeverShowTerminalsWindow
         {
             get { return GetSection().NeverShowTerminalsWindow; }

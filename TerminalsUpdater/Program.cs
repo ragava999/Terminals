@@ -27,8 +27,10 @@ namespace TerminalsUpdater {
             	return;
             }
             
+			/*
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+			*/
 
             Args = args;
 

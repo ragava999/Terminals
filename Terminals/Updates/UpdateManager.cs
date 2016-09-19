@@ -66,6 +66,12 @@ namespace Terminals.Updates
         /// </summary>
         private static void CheckForNewRelease(CommandLineArgs commandLineArgs)
         {
+            if (!Settings.CheckForNewRelease)
+            {
+            	Log.Debug("The user has choosen to deny Terminals the update check.");
+            	return;
+            }
+        	
             Boolean checkForUpdate = true;
             string releaseFile = Path.Combine(AssemblyInfo.DirectoryConfigFiles, "LastUpdateCheck.txt");
             
@@ -119,7 +125,7 @@ namespace Terminals.Updates
 					    Log.Debug("Release '" + title + "' has been discovered.");
 					    
 	                    //check the date the item was published.  
-	                    //Is it after the currently executing application BuildDate? if so, then its probably a new build!
+	                    //Is it after the currently executing application BuildDate? if so, then it is probably a new build!
 	                    if (date > AssemblyInfo.BuildDate)
 	                    {
 							Log.Debug("Release '" + title + "'(" + date.ToString() + ") is newer than the currently installed Terminals version '" + AssemblyInfo.Version + "'(" + AssemblyInfo.BuildDate.ToString() + ").");

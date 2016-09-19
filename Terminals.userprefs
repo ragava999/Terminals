@@ -1,21 +1,12 @@
 ﻿<Properties StartupConfiguration="{9ECB9FEF-89D1-4144-BAD4-5F3218545B2B}|Default">
   <MonoDevelop.Ide.ItemProperties.Terminals PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Terminals Status">
-    <Files>
-      <File FileName="Terminals Status" />
-    </Files>
-  </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release|x86" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Breakpoint file="/Users/oliverkohldsc/Documents/Code/Terminals/Terminals.Configuration/Files/Main/Settings/Settings_FileAccess.cs" line="384" column="1" />
-      <Breakpoint file="/Users/oliverkohldsc/Documents/Code/Terminals/Terminals/MainForm.cs" line="1137" column="1" />
-      <Breakpoint file="/Users/oliverkohldsc/Documents/Code/Terminals/Terminals/MainForm.cs" line="1017" column="1" />
-      <Breakpoint file="/Users/oliverkohldsc/Documents/Code/Terminals/Terminals/MainForm.cs" line="1025" column="1" />
-      <Breakpoint file="/Users/oliverkohldsc/Documents/Code/Terminals/Terminals/MainForm.cs" line="1590" column="1" />
-      <Breakpoint file="/Users/oliverkohldsc/Documents/Code/Terminals/Terminals/MainForm.cs" line="1863" column="1" />
-      <Breakpoint file="/Users/oliverkohldsc/Documents/Code/Terminals/Terminals/MainForm.cs" line="1058" column="1" />
+      <Breakpoint file="/Users/oliverkohldsc/Documents/Code/Terminals/Terminals/Program.cs" line="403" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workbench />
 </Properties>

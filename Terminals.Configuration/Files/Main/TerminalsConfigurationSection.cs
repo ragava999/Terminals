@@ -134,6 +134,13 @@ namespace Terminals.Configuration.Files.Main
             set { this["SortTabPagesByCaption"] = value; }
         }
 
+        [ConfigurationProperty("checkForNewRelease", DefaultValue = true, IsRequired = false)]
+        public bool CheckForNewRelease
+        {
+            get { return (bool)this["checkForNewRelease"]; }
+            set { this["checkForNewRelease"] = value; }
+        }
+
         [ConfigurationProperty("NeverShowTerminalsWindow")]
         public bool NeverShowTerminalsWindow
         {

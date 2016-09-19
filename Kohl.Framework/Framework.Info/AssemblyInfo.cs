@@ -94,6 +94,23 @@ namespace Kohl.Framework.Info
 			{
 				if (buildDate.Equals(DateTime.MinValue))
 				{
+					string file = Path.Combine(AssemblyInfo.Directory, AssemblyInfo.Title) + "BuildDate";
+
+					if (File.Exists(file))
+					{
+						string date = new StreamReader(new FileStream(file, FileMode.Open, FileAccess.Read)).ReadLine();
+
+						if (!string.IsNullOrWhiteSpace(date))
+						{
+							date = date.Trim();
+
+							DateTime dateTime = DateTime.MinValue;
+							if (DateTime.TryParse(date, out dateTime))
+								if (!(dateTime.Equals(new DateTime(1970, 1, 1, 0, 0, 0)) || dateTime.Equals(DateTime.MinValue)))
+									return buildDate = dateTime;
+						}
+					}
+
 					try
 					{
 						try
