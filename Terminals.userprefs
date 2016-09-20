@@ -1,6 +1,6 @@
 ﻿<Properties StartupConfiguration="{9ECB9FEF-89D1-4144-BAD4-5F3218545B2B}|Default">
   <MonoDevelop.Ide.ItemProperties.Terminals PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release|x86" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
