@@ -120,8 +120,11 @@ namespace Terminals.Panels.OptionPanels
         			ProxyCredentials.Enabled = false;
         		
     		if (rdoDontUseProxy.Checked)
-    			ProxyCredentials.Enabled =false;
-		}
+    			ProxyCredentials.Enabled = false;
+
+            this.txtProxyAddress.Enabled = rdoProxy.Checked;
+            this.txtProxyPort.Enabled = rdoProxy.Checked;
+        }
 		
 		private void CredentialsCheckedChanged(object sender, EventArgs e)
 		{

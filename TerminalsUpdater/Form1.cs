@@ -22,7 +22,7 @@ namespace TerminalsUpdater
         	
         	try
         	{
-        		/*
+                /*
 	            Mutex mtx = new Mutex(false, "Terminals");
 	            bool isAppRunning = true;
 	
@@ -30,10 +30,9 @@ namespace TerminalsUpdater
 	            {
 	                isAppRunning = !mtx.WaitOne(0, false);
 	            }
-	            */
-
+                */
 	            //wait for the process to completely end
-	            Thread.Sleep(5000);
+	            //Thread.Sleep(5000);
 	
 	            string source = Program.Args[0];
 	            string destination = Program.Args[1];
@@ -55,11 +54,13 @@ namespace TerminalsUpdater
 		                
 		                try
 		                {
-		                	if (fi.CreationTime != file.CreationTime) file.CopyTo(dest, true);
-		                }
+                            /*if (fi.CreationTime != file.CreationTime)*/
+                            file.CopyTo(dest, true);
+                            Log.Info("Replaced file " + dest);
+                        }
 		                catch
 		                {
-		                	Log.Warn("Unable to copy file " + file.Name);
+		                	Log.Fatal("Unable to copy file " + file.Name);
 		                }
 		            }
 	            }
@@ -67,7 +68,9 @@ namespace TerminalsUpdater
 	            {
 	            	Log.Error ("Unable to update Terminals, the source directory " + source + " doesn't exist");
 	            }
-	            
+
+                Thread.Sleep(3000);
+
 	            Process.Start(Path.Combine(destination, "Terminals.exe"));
 
 	            Application.Exit();
@@ -79,20 +82,30 @@ namespace TerminalsUpdater
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-        	foreach (Process process in Process.GetProcesses().Where(x => x.ProcessName == "Terminals" && (new FileInfo(x.MainModule.FileName).Directory.FullName == Program.Args[1])))
-        	{
-        		try
-        		{
-        			process.Kill();
-        			Log.Info("Killed '" + process.MainModule.FileName);
-        		}
-        		catch (Exception ex)
-        		{
-        			Log.Fatal("Unable to terminate the Terminals process " + process.MainModule.FileName + " (" + process.Id +  ").", ex);
-        			Application.Exit();
-        		}
-        	}
-        	
+            Thread.Sleep(5000);
+
+            try
+            {
+                foreach (Process process in Process.GetProcesses().Where(x => x.ProcessName == "Terminals" && (new FileInfo(x.MainModule.FileName).Directory.FullName == Program.Args[1])))
+                {
+                    try
+                    {
+                        process.Kill();
+                        Thread.Sleep(5000);
+                        Log.Info("Killed '" + process.MainModule.FileName);
+                    }
+                    catch (Exception ex)
+                    {
+                        Log.Fatal("Unable to terminate the Terminals process " + process.MainModule.FileName + " (" + process.Id + ").", ex);
+                        Application.Exit();
+                    }
+                }
+            }
+            catch
+            {
+                Log.Warn("Unable to check if Terminals is still active.");
+            }
+
             ThreadPool.QueueUserWorkItem(new WaitCallback(Update), null);
         }
 

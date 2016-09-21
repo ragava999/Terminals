@@ -97,7 +97,7 @@ namespace Terminals.Forms.Controls
                 overwriteResult =
                     MessageBox.Show(
                         String.Format(
-							"There are {0} connections to import, which already exist.\nDo you want to rename them?\nSelect\n   -&gt; Yes to rename the newly imported items with \"{1}\" suffix\n   -&gt; No to overwrite existing items\n   -&gt; Cancel to interupt the import",
+							"There are {0} connections to import, which already exist.\nDo you want to rename them?\nSelect\n   -> Yes to rename the newly imported items with \"{1}\" suffix\n   -> No to overwrite existing items\n   -> Cancel to interupt the import",
                             conflictingFavoritesCount, importSuffix),
 						"Terminals - conflicts found in import",
                         MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);

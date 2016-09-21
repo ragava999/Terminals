@@ -543,7 +543,7 @@ namespace Terminals
         	Log.InsideMethod();
         	
             this.CallExecuteBeforeConnectedFromSettings();
-            this.CallExecuteFeforeConnectedFromFavorite(favorite);
+            this.CallExecuteBeforeConnectedFromFavorite(favorite);
             this.TryConnectTabPage(favorite, waitForEnd);
         }
 
@@ -710,21 +710,30 @@ namespace Terminals
             return terminalTabPage;
         }
 
-        private void CallExecuteFeforeConnectedFromFavorite(FavoriteConfigurationElement favorite)
+        private void CallExecuteBeforeConnectedFromFavorite(FavoriteConfigurationElement favorite)
         {
         	Log.InsideMethod();
         	
             if (favorite.ExecuteBeforeConnect && !string.IsNullOrEmpty(favorite.ExecuteBeforeConnectCommand))
             {
-                ProcessStartInfo processStartInfo = new ProcessStartInfo(favorite.ExecuteBeforeConnectCommand,
-                                                                         favorite.ExecuteBeforeConnectArgs)
-                                                        {
-                                                            WorkingDirectory = favorite.ExecuteBeforeConnectInitialDirectory
-                                                        };
-                Process process = Process.Start(processStartInfo);
-                if (favorite.ExecuteBeforeConnectWaitForExit)
+                try
                 {
-                    process.WaitForExit();
+                    ProcessStartInfo processStartInfo = new ProcessStartInfo(favorite.ExecuteBeforeConnectCommand,
+                                                                             favorite.ExecuteBeforeConnectArgs)
+                    {
+                        WorkingDirectory = favorite.ExecuteBeforeConnectInitialDirectory
+                    };
+
+                    Process process = Process.Start(processStartInfo);
+
+                    if (favorite.ExecuteBeforeConnectWaitForExit)
+                    {
+                        process.WaitForExit();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Log.Error("Execute before connect failed. Please have a look at your favorites configuration and check the 'Execute' tab.", ex);
                 }
             }
         }

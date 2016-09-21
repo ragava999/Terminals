@@ -732,7 +732,7 @@ namespace Terminals.Connections
             GCHandle gch = GCHandle.FromIntPtr(pointer);
             List<IntPtr> list = gch.Target as List<IntPtr>;
             if (list == null)
-                throw new InvalidCastException("GCHandle target could not be cast to List&lt;IntPtr&gt;.");
+                throw new InvalidCastException("GCHandle target could not be cast to List<IntPtr>.");
 
             list.Add(handle);
             return true;

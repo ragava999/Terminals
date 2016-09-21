@@ -14,7 +14,7 @@ The [official website](http://oliverkohldsc.github.io/Terminals) can be found [h
 
 ###Release v 4.9.1.0
 
-Date: 2016-09-15
+Date: 2016-09-21
 
 Added a more reliable way of detecting the build date of Terminals.exe (The 'AssemblyTimeStampAttribute' attribute has been implemented in the namespace 'Kohl.Framework.Info')
 
@@ -57,6 +57,7 @@ Fixed some minor issues in the favorites configuration element.
 Beautified code and reordered some code parts.
 
 Added import for Remote Desktop Manager.
+	-> TODO: Putty, SSH, RAdmin
 
 Kicked Scintilla and replaced it with a richt text box.
 

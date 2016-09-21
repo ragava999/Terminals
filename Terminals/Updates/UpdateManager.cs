@@ -183,7 +183,61 @@ namespace Terminals.Updates
                     filename = Path.Combine(AssemblyInfo.UpgradeDirectory, filename);
                     Boolean downloaded = true;
 
-                    if (!File.Exists(filename))
+                    // if the file has already been downloaded
+                    if (File.Exists(filename))
+                        // and if it has already been extracted
+                        if (Directory.Exists(finalFolder))
+                        {
+                            string buildDateFile = Path.Combine(finalFolder, "TerminalsBuildDate");
+
+                            // and the build date exists
+                            // check if we need to download the new release (i.e. the extract is old)
+                            // might be because of TerminalVersion remains the same and the build date
+                            // has changed e.g. this might occur in cases of backports.
+                            if (File.Exists(buildDateFile))
+                            {
+                                string buildDate = null;
+                                using (FileStream fs = new FileStream(buildDateFile, FileMode.Open, FileAccess.Read, FileShare.Read))
+                                {
+                                    using (StreamReader stream = new StreamReader(fs))
+                                    {
+                                        buildDate = stream.ReadToEnd().Trim(); ;
+                                    }
+                                }
+
+                                // if we got some result
+                                if (!string.IsNullOrWhiteSpace(buildDate))
+                                {
+                                    DateTime buildDateResult = DateTime.MinValue;
+
+                                    // check if the result is a valid date time value -> if not download the new build
+                                    if (!DateTime.TryParse(buildDate, out buildDateResult))
+                                        downloaded = DownloadNewBuild(url, filename);
+
+                                    // if the build date is equal to the min value or the build date is equal or lower to the current build date or this build is older than one month
+                                    else if (buildDateResult == DateTime.MinValue || buildDateResult.Equals(new DateTime(1970, 1, 1, 0, 0, 0)) || buildDateResult <= AssemblyInfo.BuildDate || AssemblyInfo.BuildDate < DateTime.Now.Subtract(new TimeSpan(30,0,0,0,0)))
+                                        downloaded = DownloadNewBuild(url, filename);
+                                }
+                                // no valid date -> download new one
+                                else
+                                    downloaded = DownloadNewBuild(url, filename);
+                            }
+                            // no build date file has been found -> delete everything i.e. the extracted zip
+                            // and the zip file itself
+                            else
+                            {
+                                Directory.Delete(finalFolder, true);
+                                File.Delete(filename);
+                                downloaded = DownloadNewBuild(url, filename);
+                            }
+                        }
+                        // if it hasn't been extracted delete the downloaded zip file
+                        else
+                        {
+                            File.Delete(filename);
+                            downloaded = DownloadNewBuild(url, filename);
+                        }
+                    else
                         downloaded = DownloadNewBuild(url, filename);
 
                     if (downloaded && File.Exists(filename))

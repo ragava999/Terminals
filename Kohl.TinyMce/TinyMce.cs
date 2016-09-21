@@ -423,10 +423,22 @@ namespace Kohl.TinyMce
            
             if (element != null)
             {
-                if (this.Text != element.innerText)
+                string innerText = string.Empty;
+
+                // Check if an inner Text exists
+                try
+                {
+                    innerText = element.innerText;
+                }
+                catch
+                {
+                    return;
+                }
+
+                if (this.Text != innerText)
                 {
                     string oldText = this.Text;
-                    this.Text = element.innerText;
+                    this.Text = innerText;
                     this.OnTextChanged(oldText, EventArgs.Empty);
                 }
             }

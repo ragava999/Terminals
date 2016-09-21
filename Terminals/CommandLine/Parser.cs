@@ -934,7 +934,7 @@ namespace Terminals.CommandLine
                 {
                     if (this.IsDefault)
                         this.reporter(
-                            string.Format("Missing required argument '&lt;{0}&gt;'.",
+                            string.Format("Missing required argument '<{0}>'.",
                                           this.LongName));
                     else
                         this.reporter(

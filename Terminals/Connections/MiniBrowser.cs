@@ -737,7 +737,7 @@ namespace Terminals.Connections
                                 else
                                     context.EvaluateScript(string.Format("document.GetElementsByName('{0}')[0].value = '{1}';", id, this.ParseValue(value)), out result);
 
-                                if (result.Equals("undefined"))
+                                if (result == null || result.Equals("undefined"))
                                 {
                                     return;
                                 }

@@ -182,10 +182,10 @@ namespace Terminals.Configuration.Files.Main.Favorites
 			if (reader.Name.ToLowerInvariant() == this.PluginConfigurationCollectionPropertyName.ToLowerInvariant() || reader.Name.ToLowerInvariant() == "plugins")
 			{
                 if (reader.Name.ToLowerInvariant() == this.PluginConfigurationCollectionPropertyName.ToLowerInvariant())
-				    Kohl.Framework.Logging.Log.Info("Reading plugin options.");
+				    Kohl.Framework.Logging.Log.Debug("Reading plugin options.");
 
                 if (reader.Name.ToLowerInvariant() == "plugins")
-                    Kohl.Framework.Logging.Log.Info("Reading options for favorite.");
+                    Kohl.Framework.Logging.Log.Debug("Reading options for favorite.");
 
 
                 while (reader.Read())

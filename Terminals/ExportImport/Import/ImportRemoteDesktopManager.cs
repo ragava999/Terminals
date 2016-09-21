@@ -45,6 +45,12 @@ namespace Terminals.ExportImport.Import
 									// Parse KeePass credentials and add the result to the list of credentials
 									resolvedCredentials.Add(connection.ID, credentialSet);
 							}
+                            else
+                                if (string.IsNullOrWhiteSpace(Terminals.Configuration.Files.Main.Settings.Settings.KeePassPath) || string.IsNullOrWhiteSpace(Terminals.Configuration.Files.Main.Settings.Settings.KeePassPassword))
+                                {
+                                    Log.Fatal("Terminals was unable to lookup your KeePass credentials. Please configure your KeePass settings in the Terminals options.");
+                                    break;   
+                                }
 						}
 					}
 				}
@@ -127,17 +133,50 @@ namespace Terminals.ExportImport.Import
 						}
 
 						favorite.Url = connection.WebBrowserUrl;
-					}
+                        List<HtmlFormField> formFields = new List<HtmlFormField>();
+
+                        // username id
+                        if (!string.IsNullOrWhiteSpace(connection.Web.UserNameControlId))
+                            formFields.Add(new HtmlFormField() { Key = connection.Web.UserNameControlId, Value = Terminals.Connection.Manager.ConnectionManager.ParsingConstants.UserName });
+
+                        // domain id
+                        if (!string.IsNullOrWhiteSpace(connection.Web.DomainControlId))
+                            formFields.Add(new HtmlFormField() { Key = connection.Web.DomainControlId, Value = Terminals.Connection.Manager.ConnectionManager.ParsingConstants.DomainName });
+
+                        // password id
+                        if (!string.IsNullOrWhiteSpace(connection.Web.PasswordControlId))
+                            formFields.Add(new HtmlFormField() { Key = connection.Web.PasswordControlId, Value = Terminals.Connection.Manager.ConnectionManager.ParsingConstants.Password });
+
+                        // Login button ID
+                        if (!string.IsNullOrWhiteSpace(connection.Web.SubmitControlId))
+                            formFields.Add(new HtmlFormField() { Key = connection.Web.SubmitControlId, Value = Terminals.Connection.Manager.ConnectionManager.ParsingConstants.Click });
+
+                        if (formFields.Count > 0)
+                        {
+                            favorite.BrowserAuthentication = BrowserAuthentication.Forms;
+                            favorite.HtmlFormFields = formFields.ToArray();
+                        }
+                        else if (!string.IsNullOrWhiteSpace(connection.Web.AuthenticationMode) && connection.Web.AuthenticationMode.ToLowerInvariant() == "basic")
+                            favorite.BrowserAuthentication = BrowserAuthentication.Basic;
+                        else
+                            favorite.BrowserAuthentication = BrowserAuthentication.None;
+                    }
 					else if (connection.ConnectionType == "CommandLine" || connection.ConnectionType == "SessionTool")
 					{
 						favorite.Protocol = "Generic";
 
 						if (!string.IsNullOrEmpty(connection.CommandLine))
 						{
-							if (connection.CommandLine.Contains (" "))
+                            if (File.Exists(connection.CommandLine) || Directory.Exists(connection.CommandLine))
+                                favorite.GenericProgramPath = connection.CommandLine;
+                            else if (connection.CommandLine.StartsWith("\"") && connection.CommandLine.EndsWith("\""))
+                            {
+                                favorite.GenericProgramPath = connection.CommandLine;
+                            }
+                            else if (connection.CommandLine.Contains (" "))
 							{
 								favorite.GenericProgramPath = connection.CommandLine.Split (new string[] {" "}, StringSplitOptions.None) [0];
-								favorite.GenericArguments = connection.CommandLine.Substring (favorite.GenericProgramPath.Length, connection.CommandLine.Length - favorite.GenericProgramPath.Length - 1);
+								favorite.GenericArguments = connection.CommandLine.Substring (favorite.GenericProgramPath.Length+1, connection.CommandLine.Length - favorite.GenericProgramPath.Length-1);
 							}
 							else
 								favorite.GenericProgramPath = connection.CommandLine;
@@ -184,7 +223,17 @@ namespace Terminals.ExportImport.Import
 					else if (connection.ConnectionType == "ICA")
 					{
 						favorite.Protocol = "Ica";
-					}
+
+                        if (connection.Citrix != null && !string.IsNullOrWhiteSpace(connection.Citrix.ApplicationName))
+                            favorite.IcaApplicationName = connection.Citrix.ApplicationName;
+
+                        if (connection.Citrix != null && !string.IsNullOrWhiteSpace(connection.Citrix.Host))
+                            favorite.ServerName = connection.Citrix.Host;
+
+                        int port = 0;
+                        if (connection.Citrix != null && !string.IsNullOrWhiteSpace(connection.Citrix.Port) && Int32.TryParse(connection.Citrix.Port, out port) && port > 0)
+                            favorite.Port = port;
+                    }
 					else if (connection.ConnectionType == "Putty")
 					{
 						favorite.Protocol = "Putty";
@@ -197,6 +246,41 @@ namespace Terminals.ExportImport.Import
 					{
 						Log.Warn(string.Format("Skipping RDM connection '{0}' of type {1}.", connection.Name, connection.ConnectionType));
 					}
+
+                    if (connection.Events != null)
+                    {
+                        // Add an AutoIt message box
+                        if (!string.IsNullOrWhiteSpace(connection.Events.BeforeConnectionPromptMessage))
+                        {
+                            PluginConfiguration autoItPlugin = new PluginConfiguration("AUTOIT_Script");
+                            autoItPlugin.SetValue("#include <MsgBoxConstants.au3>\n\nMsgBox($MB_SYSTEMMODAL, \"Message\", \"" + connection.Events.BeforeConnectionPromptMessage + "\")");
+                            favorite.PluginConfigurations.Add(autoItPlugin);
+                        }
+
+                        // Execute before connect -> command line <- POWERSHELL
+                        if (!string.IsNullOrWhiteSpace(connection.Events.BeforeConnectionEmbeddedPowerShellScript))
+                        {
+                            favorite.ExecuteBeforeConnect = true;
+                            favorite.ExecuteBeforeConnectCommand = "cmd.exe /c TYPE \"" + connection.Events.BeforeConnectionEmbeddedPowerShellScript + "\" | powershell.exe -noprofile -";
+                            favorite.ExecuteBeforeConnectWaitForExit = (!string.IsNullOrWhiteSpace(connection.Events.BeforeConnectionWaitForExit) ? connection.Events.BeforeConnectionWaitForExit.ToLowerInvariant() == "true" : true);
+                        }
+
+                        // Execute before connect -> command line <- VBSCRIPT
+                        if (!string.IsNullOrWhiteSpace(connection.Events.BeforeConnectionScriptFileName))
+                        {
+                            favorite.ExecuteBeforeConnect = true;
+                            favorite.ExecuteBeforeConnectCommand = "cscript.exe \"" + connection.Events.BeforeConnectionScriptFileName + "\"";
+                            favorite.ExecuteBeforeConnectWaitForExit = (!string.IsNullOrWhiteSpace(connection.Events.BeforeConnectionWaitForExit) ? connection.Events.BeforeConnectionWaitForExit.ToLowerInvariant() == "true" : true);
+                        }
+
+                        // Execute before connect -> command line <- CMD or any other command
+                        if (!string.IsNullOrWhiteSpace(connection.Events.BeforeConnectionCommandLine))
+                        {
+                            favorite.ExecuteBeforeConnect = true;
+                            favorite.ExecuteBeforeConnectCommand = connection.Events.BeforeConnectionCommandLine;
+                            favorite.ExecuteBeforeConnectWaitForExit = (!string.IsNullOrWhiteSpace(connection.Events.BeforeConnectionWaitForExit) ? connection.Events.BeforeConnectionWaitForExit.ToLowerInvariant() == "true" : true);
+                        }
+                    }
 
 					favorites.Add (favorite);
 				}
@@ -472,7 +556,15 @@ namespace Terminals.ExportImport.Import
 			public string AfterConnectionMode { get; set; }
 			[XmlElement(ElementName="AfterConnectionTypingMacroID")]
 			public string AfterConnectionTypingMacroID { get; set; }
-		}
+            [XmlElement(ElementName = "BeforeConnectionEmbeddedPowerShellScript")]
+            public string BeforeConnectionEmbeddedPowerShellScript { get; set; }
+            [XmlElement(ElementName = "BeforeConnectionCommandLine")]
+            public string BeforeConnectionCommandLine { get; set; }
+            [XmlElement(ElementName = "BeforeConnectionWaitForExit")]
+            public string BeforeConnectionWaitForExit { get; set; }
+            [XmlElement(ElementName = "BeforeConnectionScriptFileName")]
+            public string BeforeConnectionScriptFileName { get; set; }
+        }
 
 		[XmlRoot(ElementName="PasswordHistory")]
 		public class PasswordHistory {
