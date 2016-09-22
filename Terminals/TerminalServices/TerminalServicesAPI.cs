@@ -1,9 +1,9 @@
+using Kohl.Framework.Logging;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
-using Kohl.Framework.Logging;
-using System.Linq;
 
 namespace Terminals.TerminalServices
 {
@@ -45,131 +45,131 @@ namespace Terminals.TerminalServices
         }
 
         public static TerminalServer GetSessions(string serverName, Kohl.Framework.Security.Credential credential)
-        {        	
-            TerminalServer terminalServer = new TerminalServer {ServerName = serverName};
+        {
+            TerminalServer terminalServer = new TerminalServer { ServerName = serverName };
 
             Kohl.Framework.Security.Impersonator impersonator = null;
-        	
+
             // Start impersonation if we requested to do so ...
             try
             {
-	            if (credential != null)
-	            	impersonator = new Kohl.Framework.Security.Impersonator(credential);
+                if (credential != null)
+                    impersonator = new Kohl.Framework.Security.Impersonator(credential);
             }
             catch (Exception ex)
             {
                 Log.Warn("Error impersonating RDP session enumerator. Trying to query RDP session details without impersonation ...", ex);
             }
-            
+
             // Open a WTS connection to the server to be able to get details about the sessions and processes running on it
             IntPtr ptrOpenedServer = IntPtr.Zero;
             try
             {
-	            ptrOpenedServer = WTSOpenServer(terminalServer.ServerName);
+                ptrOpenedServer = WTSOpenServer(terminalServer.ServerName);
             }
             catch (Exception ex)
             {
-        		Log.Error("Error opening WTS server connection. Aborting to query RDP sessions.", ex);
-        		return terminalServer;
+                Log.Error("Error opening WTS server connection. Aborting to query RDP sessions.", ex);
+                return terminalServer;
             }
-            
+
             if (ptrOpenedServer == IntPtr.Zero)
             {
                 terminalServer.IsTerminalServer = false;
                 return terminalServer;
             }
-            
+
             terminalServer.ServerPointer = ptrOpenedServer;
             terminalServer.IsTerminalServer = true;
-            
+
             // Try to get information about the sessions and the clients connected to it.
             GetClientInfos(terminalServer);
-            
+
             // Try to get information about the server's processes.
             GetProcessInfos(terminalServer);
 
             if (ptrOpenedServer != IntPtr.Zero)
-            	WTSCloseServer(ptrOpenedServer);
-            
+                WTSCloseServer(ptrOpenedServer);
+
             if (impersonator != null)
-            	impersonator.Dispose();
-            
+                impersonator.Dispose();
+
             return terminalServer;
         }
-	
+
         private static void GetProcessInfos(TerminalServer terminalServer)
         {
-			try
-            {        	
-	           	IntPtr pProcessInfo = IntPtr.Zero;
-	            int processCount = 0;
-	            IntPtr useProcessesExStructure = new IntPtr(1);
-	            
-	            if (WTSEnumerateProcessesExW(terminalServer.ServerPointer, ref useProcessesExStructure, WTS_ANY_SESSION, ref pProcessInfo, ref processCount))
-	            {
-	            	const int NO_ERROR = 0;
-	            	const int ERROR_INSUFFICIENT_BUFFER = 122;
-	
-		            WTS_PROCESS_INFO_EX[] processInfos = new WTS_PROCESS_INFO_EX[processCount];
-		
-		            for (int i = 0; i < processCount; i++)
-		            {
-		                processInfos[i] = (WTS_PROCESS_INFO_EX) Marshal.PtrToStructure(pProcessInfo, typeof (WTS_PROCESS_INFO_EX));
-		                
-		                SessionProcess p = new SessionProcess
-						{
-		                   SessionID = processInfos[i].SessionID,
-						   ProcessID = processInfos[i].ProcessID,
-						   ProcessName = processInfos[i].ProcessName,
-						   NumberOfThreads = processInfos[i].NumberOfThreads,
-						   HandleCount = processInfos[i].HandleCount,
-						   PagefileUsage = (processInfos[i].PagefileUsage / 1024.0 / 1024.0).ToString("##0.## MB"),
-						   PeakPagefileUsage = (processInfos[i].PeakPagefileUsage / 1024.0 / 1024.0).ToString("##0.## MB"),
-						   WorkingSetSize = (processInfos[i].WorkingSetSize / 1024.0 / 1024.0).ToString("##0.## MB"),
-						   PeakWorkingSetSize = (processInfos[i].PeakWorkingSetSize / 1024.0 / 1024.0).ToString("##0.## MB"),
-						   KernelTime = processInfos[i].KernelTime,
-						   UserTime = processInfos[i].UserTime 
-						};
-		                
-		                if (processInfos[i].UserSid != IntPtr.Zero)
-		                {
-		                    byte[] Sid = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-		                    Marshal.Copy(processInfos[i].UserSid, Sid, 0, 14);
-		                    StringBuilder name = new StringBuilder();
-		
-		                    uint cchName = (uint) name.Capacity;
-		                    SID_NAME_USE sidUse;
-		                    StringBuilder referencedDomainName = new StringBuilder();
-		
-		                    uint cchReferencedDomainName = (uint) referencedDomainName.Capacity;
-		
-		                    if (LookupAccountSid(terminalServer.ServerName, Sid, name, ref cchName, referencedDomainName, ref cchReferencedDomainName, out sidUse))
-		                    {
-		                        int err = Marshal.GetLastWin32Error();
-		
-		                        if (err == ERROR_INSUFFICIENT_BUFFER)
-		                        {
-		                            name.EnsureCapacity((int) cchName);
-		                            referencedDomainName.EnsureCapacity((int) cchReferencedDomainName);
-		                            
-		                            err = NO_ERROR;
-		
-		                            if (!LookupAccountSid(null, Sid, name, ref cchName, referencedDomainName, ref cchReferencedDomainName, out sidUse))
-		                                err = Marshal.GetLastWin32Error();
-		                        }
-		
-		                        p.Sid = sidUse.ToString();
-		                        p.User = name.ToString();
-		                    }
-		                }
-	
-		                terminalServer.Sessions.FirstOrDefault(s => s.SessionId == p.SessionID).Processes.Add(p);
-		                pProcessInfo = (IntPtr) ((int) pProcessInfo + Marshal.SizeOf(processInfos[i]));
-		            }
-	            }
-	            
-	            if (pProcessInfo != IntPtr.Zero)
-	            	WTSFreeMemory(pProcessInfo);
+            try
+            {
+                IntPtr pProcessInfo = IntPtr.Zero;
+                int processCount = 0;
+                IntPtr useProcessesExStructure = new IntPtr(1);
+
+                if (WTSEnumerateProcessesExW(terminalServer.ServerPointer, ref useProcessesExStructure, WTS_ANY_SESSION, ref pProcessInfo, ref processCount))
+                {
+                    const int NO_ERROR = 0;
+                    const int ERROR_INSUFFICIENT_BUFFER = 122;
+
+                    WTS_PROCESS_INFO_EX[] processInfos = new WTS_PROCESS_INFO_EX[processCount];
+
+                    for (int i = 0; i < processCount; i++)
+                    {
+                        processInfos[i] = (WTS_PROCESS_INFO_EX)Marshal.PtrToStructure(pProcessInfo, typeof(WTS_PROCESS_INFO_EX));
+
+                        SessionProcess p = new SessionProcess
+                        {
+                            SessionID = processInfos[i].SessionID,
+                            ProcessID = processInfos[i].ProcessID,
+                            ProcessName = processInfos[i].ProcessName,
+                            NumberOfThreads = processInfos[i].NumberOfThreads,
+                            HandleCount = processInfos[i].HandleCount,
+                            PagefileUsage = (processInfos[i].PagefileUsage / 1024.0 / 1024.0).ToString("##0.## MB"),
+                            PeakPagefileUsage = (processInfos[i].PeakPagefileUsage / 1024.0 / 1024.0).ToString("##0.## MB"),
+                            WorkingSetSize = (processInfos[i].WorkingSetSize / 1024.0 / 1024.0).ToString("##0.## MB"),
+                            PeakWorkingSetSize = (processInfos[i].PeakWorkingSetSize / 1024.0 / 1024.0).ToString("##0.## MB"),
+                            KernelTime = processInfos[i].KernelTime,
+                            UserTime = processInfos[i].UserTime
+                        };
+
+                        if (processInfos[i].UserSid != IntPtr.Zero)
+                        {
+                            byte[] Sid = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+                            Marshal.Copy(processInfos[i].UserSid, Sid, 0, 14);
+                            StringBuilder name = new StringBuilder();
+
+                            uint cchName = (uint)name.Capacity;
+                            SID_NAME_USE sidUse;
+                            StringBuilder referencedDomainName = new StringBuilder();
+
+                            uint cchReferencedDomainName = (uint)referencedDomainName.Capacity;
+
+                            if (LookupAccountSid(terminalServer.ServerName, Sid, name, ref cchName, referencedDomainName, ref cchReferencedDomainName, out sidUse))
+                            {
+                                int err = Marshal.GetLastWin32Error();
+
+                                if (err == ERROR_INSUFFICIENT_BUFFER)
+                                {
+                                    name.EnsureCapacity((int)cchName);
+                                    referencedDomainName.EnsureCapacity((int)cchReferencedDomainName);
+
+                                    err = NO_ERROR;
+
+                                    if (!LookupAccountSid(null, Sid, name, ref cchName, referencedDomainName, ref cchReferencedDomainName, out sidUse))
+                                        err = Marshal.GetLastWin32Error();
+                                }
+
+                                p.Sid = sidUse.ToString();
+                                p.User = name.ToString();
+                            }
+                        }
+
+                        terminalServer.Sessions.FirstOrDefault(s => s.SessionId == p.SessionID).Processes.Add(p);
+                        pProcessInfo = (IntPtr)((int)pProcessInfo + Marshal.SizeOf(processInfos[i]));
+                    }
+                }
+
+                if (pProcessInfo != IntPtr.Zero)
+                    WTSFreeMemory(pProcessInfo);
             }
             catch (Exception ex)
             {
@@ -177,14 +177,14 @@ namespace Terminals.TerminalServices
                 terminalServer.Errors.Add(ex.Message + "\r\n" + Marshal.GetLastWin32Error());
             }
         }
-        
+
         private static void GetClientInfos(TerminalServer terminalServer)
         {
-        	try
+            try
             {
                 IntPtr ppSessionInfo = IntPtr.Zero;
                 Int32 Count = 0;
-                            
+
                 Int32 FRetVal = WTSEnumerateSessions(terminalServer.ServerPointer, 0, 1, ref ppSessionInfo, ref Count);
 
                 if (FRetVal != 0)
@@ -194,20 +194,20 @@ namespace Terminals.TerminalServices
 
                     for (int i = 0; i <= Count - 1; i++)
                     {
-                        IntPtr session_ptr = new IntPtr(ppSessionInfo.ToInt32() + (i*Marshal.SizeOf(sessionInfo[i])));
-                        sessionInfo[i] = (WTS_SESSION_INFO) Marshal.PtrToStructure(session_ptr, typeof (WTS_SESSION_INFO));
-                        
+                        IntPtr session_ptr = new IntPtr(ppSessionInfo.ToInt32() + (i * Marshal.SizeOf(sessionInfo[i])));
+                        sessionInfo[i] = (WTS_SESSION_INFO)Marshal.PtrToStructure(session_ptr, typeof(WTS_SESSION_INFO));
+
                         Session session = new Session
-                                        {
-                                            SessionId = sessionInfo[i].SessionID,
-                                            State = (ConnectionStates) (int) sessionInfo[i].State,
-                                            WindowsStationName = string.IsNullOrWhiteSpace(sessionInfo[i].pWinStationName) ? "RPD-Tcp#?" : sessionInfo[i].pWinStationName,
-                                            ServerName = terminalServer.ServerName
-                                        };
-                        
+                        {
+                            SessionId = sessionInfo[i].SessionID,
+                            State = (ConnectionStates)(int)sessionInfo[i].State,
+                            WindowsStationName = string.IsNullOrWhiteSpace(sessionInfo[i].pWinStationName) ? "RPD-Tcp#?" : sessionInfo[i].pWinStationName,
+                            ServerName = terminalServer.ServerName
+                        };
+
                         session.Client = GetClientInfoForSession(terminalServer.ServerPointer, session.SessionId);
-                    	session.Client.Status = Enum.GetName(typeof(ConnectionStates), session.State).Replace("WTS", "");
-                        
+                        session.Client.Status = Enum.GetName(typeof(ConnectionStates), session.State).Replace("WTS", "");
+
                         terminalServer.Sessions.Add(session);
                     }
 
@@ -220,22 +220,22 @@ namespace Terminals.TerminalServices
                 terminalServer.Errors.Add(ex.Message + "\r\n" + Marshal.GetLastWin32Error());
             }
         }
-        
+
         private static Client GetClientInfoForSession(IntPtr ptrOpenedServer, int sessionId)
         {
-        	Client client = new Client();
+            Client client = new Client();
 
-        	client.SessionId = (uint)sessionId;
+            client.SessionId = (uint)sessionId;
             client.ClientName = GetString(ptrOpenedServer, sessionId, WTS_INFO_CLASS.WTSClientName);
             client.StationName = GetString(ptrOpenedServer, sessionId, WTS_INFO_CLASS.WTSWinStationName);
             client.DomianName = GetString(ptrOpenedServer, sessionId, WTS_INFO_CLASS.WTSDomainName);
             client.UserName = GetString(ptrOpenedServer, sessionId, WTS_INFO_CLASS.WTSUserName);
-            
+
             //Get connection state
             IntPtr ppBuffer = IntPtr.Zero;
-	        int iReturned = 0;
+            int iReturned = 0;
 
-	        /*
+            /*
             if (WTSQuerySessionInformation(ptrOpenedServer, sessionId, WTS_INFO_CLASS.WTSConnectState, ref ppBuffer, ref iReturned))
             {
 	        	var iDataSize = Marshal.SizeOf(typeof(WTS_SESSION_INFO));
@@ -251,7 +251,7 @@ namespace Terminals.TerminalServices
 	        iReturned = 0;
 	        */
 
-			//Get client IP address	        
+            //Get client IP address	        
             if (WTSQuerySessionInformation(ptrOpenedServer,
                sessionId,
                 WTS_INFO_CLASS.WTSClientAddress,
@@ -259,20 +259,20 @@ namespace Terminals.TerminalServices
                 ref iReturned))
             {
                 var clientAddress = (_WTS_CLIENT_ADDRESS)Marshal.PtrToStructure(ppBuffer, typeof(_WTS_CLIENT_ADDRESS));
-                client.AddressFamily = Enum.GetName(typeof(AddressFamilyType), clientAddress.AddressFamily).Replace("AF_","");
+                client.AddressFamily = Enum.GetName(typeof(AddressFamilyType), clientAddress.AddressFamily).Replace("AF_", "");
 
                 if (clientAddress.AddressFamily == AddressFamilyType.AF_INET)
                 {
-                	if (client.StationName.ToUpper() != "RDP-TCP" && client.StationName.ToLower() != "services" && client.StationName.ToLower() != "console")
-                	{
-                		// IPv4 address
-                    	client.Address = string.Join(".", clientAddress.Address.Skip(2).Take(4));
-                	}
+                    if (client.StationName.ToUpper() != "RDP-TCP" && client.StationName.ToLower() != "services" && client.StationName.ToLower() != "console")
+                    {
+                        // IPv4 address
+                        client.Address = string.Join(".", clientAddress.Address.Skip(2).Take(4));
+                    }
                 }
             }
-			else
-				Log.Warn("Unable to get the IP address of the client for session " + sessionId.ToString());
-            
+            else
+                Log.Warn("Unable to get the IP address of the client for session " + sessionId.ToString());
+
             return client;
         }
 
@@ -290,12 +290,12 @@ namespace Terminals.TerminalServices
         }
 
         #region Windows Native Api
-        
+
         [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Unicode)]
         [System.Runtime.InteropServices.BestFitMapping(true)]
         private struct WTS_PROCESS_INFO_EX
         {
-        	public Int32 SessionID;			// The Remote Desktop Services session identifier for the session associated with the process.
+            public Int32 SessionID;			// The Remote Desktop Services session identifier for the session associated with the process.
             public Int32 ProcessID;			// The process identifier that uniquely identifies the process on the RD Session Host server.
             [MarshalAs(UnmanagedType.LPWStr)]
             public string ProcessName;		// A pointer to a null-terminated string that contains the name of the executable file associated with the process.
@@ -324,18 +324,19 @@ namespace Terminals.TerminalServices
         private struct _WTS_CLIENT_ADDRESS
         {
             public readonly AddressFamilyType AddressFamily;
-            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 20)] public readonly byte[] Address;
+            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 20)]
+            public readonly byte[] Address;
         }
 
         private enum AddressFamilyType
         {
             AF_INET,
-            AF_INET6, 
-            AF_IPX, 
-            AF_NETBIOS, 
+            AF_INET6,
+            AF_IPX,
+            AF_NETBIOS,
             AF_UNSPEC
         }
-        
+
         private enum SID_NAME_USE
         {
             User = 1,
@@ -392,8 +393,8 @@ namespace Terminals.TerminalServices
 
         private const long WTS_WSD_REBOOT = 0x00000004;
         private const long WTS_WSD_SHUTDOWN = 0x00000002;
-        private const Int32 WTS_ANY_SESSION	= -2;
-        
+        private const Int32 WTS_ANY_SESSION = -2;
+
         [DllImport("WtsApi32.dll", EntryPoint = "WTSQuerySessionInformationW", CharSet = CharSet.Ansi, SetLastError = true, ExactSpelling = true)]
         private static extern bool WTSQuerySessionInformation(IntPtr hServer, int sessionId, WTS_INFO_CLASS wtsInfoClass, ref IntPtr ppBuffer, ref int pBytesReturned);
 
@@ -470,7 +471,7 @@ namespace Terminals.TerminalServices
 
         [DllImport("wtsapi32.dll", SetLastError = true)]
         private static extern int WTSShutdownSystem(IntPtr ServerHandle, long ShutdownFlags);
-    
+
         #endregion
     }
 }

@@ -1,9 +1,9 @@
-﻿using System;
+﻿using Kohl.Framework.Logging;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
-using Kohl.Framework.Logging;
 using Terminals.Panels;
 
 namespace Terminals.Forms
@@ -39,7 +39,7 @@ namespace Terminals.Forms
                     try
                     {
                         string name = drive.Name.TrimEnd("\\".ToCharArray());
-                        TreeNode tn = new TreeNode(name + " (" + drive.VolumeLabel + ")") {Name = name};
+                        TreeNode tn = new TreeNode(name + " (" + drive.VolumeLabel + ")") { Name = name };
                         if (_redirectedDrives != null && _redirectedDrives.Contains(name))
                             tn.Checked = true;
                         this.treeView1.Nodes["NodeDrives"].Nodes.Add(tn);

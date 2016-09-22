@@ -2,18 +2,14 @@ using Terminals.Connection.Manager;
 
 namespace Terminals.Connections
 {
-    // .NET namespaces
-    using System.Drawing;
-
-    // Terminals namespaces
-    using Connection;
     using Properties;
+    using System.Drawing;
 
     public class GenericConnection : ExternalConnection
     {
         protected override Image[] images
         {
-            get { return new Image[] {Resources.GenericApplication2}; }
+            get { return new Image[] { Resources.GenericApplication2 }; }
         }
 
         public override bool IsPortRequired

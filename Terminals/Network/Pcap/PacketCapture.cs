@@ -1,17 +1,16 @@
-﻿using System;
+﻿using Be.Windows.Forms;
+using Kohl.Framework.Info;
+using Kohl.Framework.Logging;
+using SharpPcap;
+using SharpPcap.LibPcap;
+using SharpPcap.WinPcap;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
-using Be.Windows.Forms;
-using Kohl.Framework.Info;
-
-using Kohl.Framework.Logging;
-using SharpPcap;
-using SharpPcap.LibPcap;
-using SharpPcap.WinPcap;
 using Terminals.Properties;
 
 namespace Terminals.Network.Pcap
@@ -29,7 +28,6 @@ namespace Terminals.Network.Pcap
         public PacketCapture()
         {
             this.InitializeComponent();
-            
         }
 
         public new void Dispose()
@@ -65,17 +63,17 @@ namespace Terminals.Network.Pcap
                 this.Enabled = false;
                 if (exc is BadImageFormatException)
                 {
-					Log.Info("Terminals packet capture is not configured to work with this system (Bad Image Format Exception)", exc);
-					MessageBox.Show("Terminals packet capture is not configured to work with this system (Bad Image Format Exception)", AssemblyInfo.Title, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Log.Info("Terminals packet capture is not configured to work with this system (Bad Image Format Exception)", exc);
+                    MessageBox.Show("Terminals packet capture is not configured to work with this system (Bad Image Format Exception)", AssemblyInfo.Title, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else if (exc is DllNotFoundException)
                 {
                     Log.Info("Network.Pcap.PacketCapture_Info2", exc);
                     if (
                         MessageBox.Show(
-							"It appears that WinPcap is not installed.  In order to use this feature within Terminals you must first install that product. " +
-							"Do you wish to visit the download location right now?",
-							"Download WinPcap?", MessageBoxButtons.OKCancel) ==
+                            "It appears that WinPcap is not installed.  In order to use this feature within Terminals you must first install that product. " +
+                            "Do you wish to visit the download location right now?",
+                            "Download WinPcap?", MessageBoxButtons.OKCancel) ==
                         DialogResult.OK)
                     {
                         Process.Start("http://www.winpcap.org/install/default.htm");
@@ -97,7 +95,7 @@ namespace Terminals.Network.Pcap
 
         private void StartCapture(object state)
         {
-            WinPcapDevice device = (WinPcapDevice) state;
+            WinPcapDevice device = (WinPcapDevice)state;
             device.Open(this.promiscuousCheckbox.Checked ? DeviceMode.Promiscuous : DeviceMode.Normal);
 
             try
@@ -106,10 +104,10 @@ namespace Terminals.Network.Pcap
             }
             catch (Exception exc)
             {
-				MessageBox.Show(string.Format("Failed to set the filter {0}.",
+                MessageBox.Show(string.Format("Failed to set the filter {0}.",
                                               this.FilterTextBox.Text));
                 Log.Info(
-					string.Format("Failed to set the filter {0}.", this.FilterTextBox.Text),
+                    string.Format("Failed to set the filter {0}.", this.FilterTextBox.Text),
                     exc);
             }
 
@@ -192,7 +190,7 @@ namespace Terminals.Network.Pcap
 
         private void StopCapture(object state)
         {
-            PcapDevice device = (PcapDevice) state;
+            PcapDevice device = (PcapDevice)state;
             device.StopCaptureTimeout = new TimeSpan(0, 0, 0, 0, 500);
             try
             {
@@ -200,7 +198,7 @@ namespace Terminals.Network.Pcap
             }
             catch
             {
-				Log.Warn("Terminals needed more than 500 milliseconds to abort the PCap thread.");
+                Log.Warn("Terminals needed more than 500 milliseconds to abort the PCap thread.");
             }
 
             device.Close();
@@ -231,8 +229,8 @@ namespace Terminals.Network.Pcap
                 this.hexBox1.ByteProvider = provider;
                 this.textBox1.Text = Encoding.Default.GetString(packet.Data);
                 this.treeView1.Nodes.Clear();
-				TreeNode header = this.treeView1.Nodes.Add("Header");
-				header.Nodes.Add(string.Format("Length: {0}",
+                TreeNode header = this.treeView1.Nodes.Add("Header");
+                header.Nodes.Add(string.Format("Length: {0}",
                                                packet.Data.Length));
 
                 StringBuilder sb = new StringBuilder();
@@ -241,14 +239,14 @@ namespace Terminals.Network.Pcap
                     sb.Append(b.ToString("00"));
                     sb.Append(" ");
                 }
-				header.Nodes.Add(string.Format("Data: {0}", sb));
-				header.Nodes.Add(string.Format("Data length: {0}",
+                header.Nodes.Add(string.Format("Data: {0}", sb));
+                header.Nodes.Add(string.Format("Data length: {0}",
                                                packet.Data.Length.ToString()));
-				header.Nodes.Add(string.Format("Date: {0}",
+                header.Nodes.Add(string.Format("Date: {0}",
                                                packet.Timeval.Date.ToString()));
-				header.Nodes.Add(string.Format("Microseconds: {0}",
+                header.Nodes.Add(string.Format("Microseconds: {0}",
                                                packet.Timeval.MicroSeconds.ToString()));
-				header.Nodes.Add(string.Format("Seconds: {0}",
+                header.Nodes.Add(string.Format("Seconds: {0}",
                                                packet.Timeval.Seconds.ToString()));
 
                 this.treeView1.ExpandAll();

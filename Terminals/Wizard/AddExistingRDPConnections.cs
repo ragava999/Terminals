@@ -1,15 +1,13 @@
+using Kohl.Framework.Logging;
+using Metro;
+using Metro.Scanning;
 using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Threading;
 using System.Windows.Forms;
-using Kohl.Framework.Logging;
-using Metro;
-using Metro.Scanning;
-using Terminals.Configuration;
 using Terminals.Configuration.Files.Main.Favorites;
 using Terminals.Configuration.Files.Main.Settings;
-using Terminals.Connection;
 using Terminals.Connection.Manager;
 using Terminals.Connections;
 using Terminals.ExportImport.Import;
@@ -37,15 +35,15 @@ namespace Terminals.Wizard
             this.dataGridView1.Visible = false;
             this._miv = this.UpdateConnections;
 
-			if (!Kohl.Framework.Info.MachineInfo.IsUnixOrMac)
-	            try
-	            {
-	                this._nil = new NetworkInterfaceList();
-	            }
-	            catch (Exception exc)
-	            {
-	                Log.Error("Could not new up Metro.NetworkInterfaceList in AddExistingRDPConnections", exc);
-	            }
+            if (!Kohl.Framework.Info.MachineInfo.IsUnixOrMac)
+                try
+                {
+                    this._nil = new NetworkInterfaceList();
+                }
+                catch (Exception exc)
+                {
+                    Log.Error("Could not new up Metro.NetworkInterfaceList in AddExistingRDPConnections", exc);
+                }
         }
 
         public List<FavoriteConfigurationElement> DiscoveredConnections { get; private set; }
@@ -133,7 +131,7 @@ namespace Terminals.Wizard
         {
             try
             {
-                this._pendingRequests = 254*5;
+                this._pendingRequests = 254 * 5;
                 string ipAddress = this._endPointAddress.ToString();
                 string start = ipAddress.Substring(0, ipAddress.LastIndexOf('.')) + ".";
                 for (int x = 1; x < 255; x++)
@@ -158,15 +156,13 @@ namespace Terminals.Wizard
                 scanner.PortReply += this.Scanner_PortReply;
                 scanner.ScanComplete += this.Scanner_ScanComplete;
 
-                IPAddress address = (IPAddress) machine;
+                IPAddress address = (IPAddress)machine;
                 this._scannerList.Add(scanner);
                 scanner.StartScan(address, ConnectionManager.GetPorts(), 1000, 100, true);
                 this._scannerCount++;
             }
             catch (Exception)
             {
-                //its safe to ignore exceptions here as well  
-                //Terminals.Log.Info("", e); 
                 lock (this._uiElementsLock)
                 {
                     this._pendingRequests = this._pendingRequests - 5;
@@ -204,10 +200,10 @@ namespace Terminals.Wizard
                 string serverName = endPoint.Address.ToString();
                 string connectionName = serverName;
                 FavoriteConfigurationElement newFavorite = FavoritesFactory.CreateNewFavorite(connectionName, serverName,
-                                                                                              typeof (RDPConnection)
+                                                                                              typeof(RDPConnection)
                                                                                                   .GetProtocolName(),
                                                                                               ConnectionManager.GetPort(
-                                                                                                  typeof (RDPConnection)
+                                                                                                  typeof(RDPConnection)
                                                                                                       .GetProtocolName()));
                 this.AddFavoriteToDiscovered(newFavorite);
             }

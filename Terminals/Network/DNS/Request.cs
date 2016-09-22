@@ -78,17 +78,17 @@ namespace Terminals.Network.DNS
             // tell it how many questions
             unchecked
             {
-                data.Add((byte) (this._questions.Count >> 8));
-                data.Add((byte) this._questions.Count);
+                data.Add((byte)(this._questions.Count >> 8));
+                data.Add((byte)this._questions.Count);
             }
 
             // the are no requests, name servers or additional records in a request
-            data.Add((byte) 0);
-            data.Add((byte) 0);
-            data.Add((byte) 0);
-            data.Add((byte) 0);
-            data.Add((byte) 0);
-            data.Add((byte) 0);
+            data.Add((byte)0);
+            data.Add((byte)0);
+            data.Add((byte)0);
+            data.Add((byte)0);
+            data.Add((byte)0);
+            data.Add((byte)0);
 
             // that's the header done - now add the questions
             foreach (Question question in this._questions)
@@ -96,10 +96,10 @@ namespace Terminals.Network.DNS
                 AddDomain(data, question.Domain);
                 unchecked
                 {
-                    data.Add((byte) 0);
-                    data.Add((byte) question.Type);
-                    data.Add((byte) 0);
-                    data.Add((byte) question.Class);
+                    data.Add((byte)0);
+                    data.Add((byte)question.Type);
+                    data.Add((byte)0);
+                    data.Add((byte)question.Class);
                 }
             }
 
@@ -129,12 +129,12 @@ namespace Terminals.Network.DNS
                 if (length < 0) length = domainName.Length - position;
 
                 // add the length
-                data.Add((byte) length);
+                data.Add((byte)length);
 
                 // copy a char at a time to the array
                 while (length-- > 0)
                 {
-                    data.Add((byte) domainName[position++]);
+                    data.Add((byte)domainName[position++]);
                 }
 
                 // step over '.'
@@ -142,7 +142,7 @@ namespace Terminals.Network.DNS
             }
 
             // end of domain names
-            data.Add((byte) 0);
+            data.Add((byte)0);
         }
     }
 }

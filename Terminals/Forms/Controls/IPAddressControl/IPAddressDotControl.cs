@@ -119,7 +119,7 @@ namespace Terminals.Forms.Controls.IPAddressControl
 
             using (SolidBrush foreBrush = new SolidBrush(textColor))
             {
-                float x = this.ClientRectangle.Width/2F - this._sizeText.Width/2F;
+                float x = this.ClientRectangle.Width / 2F - this._sizeText.Width / 2F;
                 e.Graphics.DrawString(this.Text, this.Font, foreBrush,
                                       new RectangleF(x, 0F, this._sizeText.Width, this._sizeText.Height),
                                       this._stringFormat);

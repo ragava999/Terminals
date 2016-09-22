@@ -14,7 +14,7 @@ namespace Terminals.Forms.Controls
     {
         private const int SplitSectionWidth = 18;
 
-        private static readonly int BorderSize = SystemInformation.Border3DSize.Width*2;
+        private static readonly int BorderSize = SystemInformation.Border3DSize.Width * 2;
         private PushButtonState _state;
         private Rectangle dropDownRectangle;
         private bool isMouseEntered;
@@ -319,7 +319,7 @@ namespace Terminals.Forms.Controls
                 new Rectangle(internalBorder - 1,
                               internalBorder - 1,
                               bounds.Width - this.dropDownRectangle.Width - internalBorder,
-                              bounds.Height - (internalBorder*2) + 2);
+                              bounds.Height - (internalBorder * 2) + 2);
 
             bool drawSplitLine = (this.State == PushButtonState.Hot || this.State == PushButtonState.Pressed ||
                                   !Application.RenderWithVisualStyles);
@@ -402,11 +402,11 @@ namespace Terminals.Forms.Controls
 
         private void PaintArrow(Graphics g, Rectangle dropDownRect)
         {
-            Point middle = new Point(Convert.ToInt32(dropDownRect.Left + dropDownRect.Width/2),
-                                     Convert.ToInt32(dropDownRect.Top + dropDownRect.Height/2));
+            Point middle = new Point(Convert.ToInt32(dropDownRect.Left + dropDownRect.Width / 2),
+                                     Convert.ToInt32(dropDownRect.Top + dropDownRect.Height / 2));
 
             //if the width is odd - favor pushing it over one pixel right.
-            middle.X += (dropDownRect.Width%2);
+            middle.X += (dropDownRect.Width % 2);
 
             Point[] arrow = new[]
                                 {
@@ -429,7 +429,7 @@ namespace Terminals.Forms.Controls
 
                 if (!string.IsNullOrEmpty(this.Text) &&
                     TextRenderer.MeasureText(this.Text, this.Font).Width + SplitSectionWidth > preferredSize.Width)
-                    return preferredSize + new Size(SplitSectionWidth + BorderSize*2, 0);
+                    return preferredSize + new Size(SplitSectionWidth + BorderSize * 2, 0);
             }
 
             return preferredSize;
@@ -574,7 +574,7 @@ namespace Terminals.Forms.Controls
                 case TextImageRelation.Overlay:
                     // Overlay is easy, text always goes here
                     textRectangle = OverlayObjectRect(ref content_rect, ref text_size, this.TextAlign);
-                        // Rectangle.Inflate(content_rect, -4, -4);
+                    // Rectangle.Inflate(content_rect, -4, -4);
 
                     //Offset on Windows 98 style when button is pressed
                     if (this._state == PushButtonState.Pressed && !Application.RenderWithVisualStyles)
@@ -620,7 +620,7 @@ namespace Terminals.Forms.Controls
                     y = 4;
                     break;
                 case ContentAlignment.TopCenter:
-                    x = (container.Width - sizeOfObject.Width)/2;
+                    x = (container.Width - sizeOfObject.Width) / 2;
                     y = 4;
                     break;
                 case ContentAlignment.TopRight:
@@ -629,22 +629,22 @@ namespace Terminals.Forms.Controls
                     break;
                 case ContentAlignment.MiddleLeft:
                     x = 4;
-                    y = (container.Height - sizeOfObject.Height)/2;
+                    y = (container.Height - sizeOfObject.Height) / 2;
                     break;
                 case ContentAlignment.MiddleCenter:
-                    x = (container.Width - sizeOfObject.Width)/2;
-                    y = (container.Height - sizeOfObject.Height)/2;
+                    x = (container.Width - sizeOfObject.Width) / 2;
+                    y = (container.Height - sizeOfObject.Height) / 2;
                     break;
                 case ContentAlignment.MiddleRight:
                     x = container.Width - sizeOfObject.Width - 4;
-                    y = (container.Height - sizeOfObject.Height)/2;
+                    y = (container.Height - sizeOfObject.Height) / 2;
                     break;
                 case ContentAlignment.BottomLeft:
                     x = 4;
                     y = container.Height - sizeOfObject.Height - 4;
                     break;
                 case ContentAlignment.BottomCenter:
-                    x = (container.Width - sizeOfObject.Width)/2;
+                    x = (container.Width - sizeOfObject.Width) / 2;
                     y = container.Height - sizeOfObject.Height - 4;
                     break;
                 case ContentAlignment.BottomRight:
@@ -691,9 +691,9 @@ namespace Terminals.Forms.Controls
                 offset = excess_width;
             else if (h_image == HorizontalAlignment.Center &&
                      (h_text == HorizontalAlignment.Left || h_text == HorizontalAlignment.Center))
-                offset += excess_width/3;
+                offset += excess_width / 3;
             else
-                offset += 2*(excess_width/3);
+                offset += 2 * (excess_width / 3);
 
             if (textFirst)
             {
@@ -752,9 +752,9 @@ namespace Terminals.Forms.Controls
                 offset = excess_height;
             else if (v_image == VerticalAlignment.Center &&
                      (v_text == VerticalAlignment.Top || v_text == VerticalAlignment.Center))
-                offset += excess_height/3;
+                offset += excess_height / 3;
             else
-                offset += 2*(excess_height/3);
+                offset += 2 * (excess_height / 3);
 
             if (textFirst)
             {
@@ -832,7 +832,7 @@ namespace Terminals.Forms.Controls
                 x = outer.X;
             else if (align == ContentAlignment.BottomCenter || align == ContentAlignment.MiddleCenter ||
                      align == ContentAlignment.TopCenter)
-                x = Math.Max(outer.X + ((outer.Width - inner.Width)/2), outer.Left);
+                x = Math.Max(outer.X + ((outer.Width - inner.Width) / 2), outer.Left);
             else if (align == ContentAlignment.BottomRight || align == ContentAlignment.MiddleRight ||
                      align == ContentAlignment.TopRight)
                 x = outer.Right - inner.Width;
@@ -841,7 +841,7 @@ namespace Terminals.Forms.Controls
                 y = outer.Y;
             else if (align == ContentAlignment.MiddleCenter || align == ContentAlignment.MiddleLeft ||
                      align == ContentAlignment.MiddleRight)
-                y = outer.Y + (outer.Height - inner.Height)/2;
+                y = outer.Y + (outer.Height - inner.Height) / 2;
             else if (align == ContentAlignment.BottomCenter || align == ContentAlignment.BottomRight ||
                      align == ContentAlignment.BottomLeft)
                 y = outer.Bottom - inner.Height;

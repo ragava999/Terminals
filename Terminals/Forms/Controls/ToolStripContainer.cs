@@ -18,7 +18,7 @@ namespace Terminals.Forms.Controls
         public ToolStrip SpecialCommandsToolStrip { private get; set; }
         public ToolStripMenuItem shortcutsToolStripMenuItem { private get; set; }
         public MenuStrip menuStrip { private get; set; }
-        
+
         public void AssignToolStripsLocationChangedEventHandler()
         {
             this.toolbarStd.EndDrag += this.OnToolStripLocationChanged;
@@ -62,14 +62,14 @@ namespace Terminals.Forms.Controls
             foreach (ToolStrip strip in row.Controls)
             {
                 newSettings.Add(new ToolStripSettingElement
-                                    {
-                                        Dock = position,
-                                        Row = rowIndex,
-                                        Left = strip.Left,
-                                        Top = strip.Top,
-                                        Name = strip.Name,
-                                        Visible = strip.Visible
-                                    });
+                {
+                    Dock = position,
+                    Row = rowIndex,
+                    Left = strip.Left,
+                    Top = strip.Top,
+                    Name = strip.Name,
+                    Visible = strip.Visible
+                });
             }
         }
 

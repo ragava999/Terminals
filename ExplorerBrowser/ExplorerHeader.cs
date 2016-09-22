@@ -1,11 +1,11 @@
-﻿using System;
+﻿using Microsoft.WindowsAPICodePack.Controls;
+using Microsoft.WindowsAPICodePack.Shell;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
-using Microsoft.WindowsAPICodePack.Controls;
-using Microsoft.WindowsAPICodePack.Shell;
-using System.Linq;
 
 namespace ExplorerBrowser
 {
@@ -32,7 +32,7 @@ namespace ExplorerBrowser
         public Color ColorTop
         {
             get { return colorTop; }
-            set { colorTop = value; } 
+            set { colorTop = value; }
         }
 
         private string initDirectory = null;
@@ -74,7 +74,7 @@ namespace ExplorerBrowser
         public Color ColorBottom
         {
             get { return colorBottom; }
-            set { colorBottom = value; } 
+            set { colorBottom = value; }
         }
 
         public string[] KnownFolders { get; private set; }
@@ -82,8 +82,8 @@ namespace ExplorerBrowser
         public ExplorerHeader(Microsoft.WindowsAPICodePack.Controls.WindowsForms.ExplorerBrowser explorerBrowser)
         {
             // Initialize our logging delegates
-            logInfo += delegate(string message) { };
-            logError += delegate(string message) { };
+            logInfo += delegate (string message) { };
+            logError += delegate (string message) { };
 
             this.explorerBrowser = explorerBrowser;
 
@@ -92,8 +92,8 @@ namespace ExplorerBrowser
             InitializeComponent();
 
             this.height = this.Size.Height;
-           
-             // Optimize Painting.
+
+            // Optimize Painting.
             SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.DoubleBuffer | ControlStyles.ResizeRedraw | ControlStyles.UserPaint, true);
 
             // initialize known folder combo box
@@ -147,14 +147,14 @@ namespace ExplorerBrowser
         void ExplorerHeader_Paint(object sender, PaintEventArgs e)
         {
             // Fill the controls background with a windows 7 like background style.
-           e.Graphics
-               .FillRectangle(
-                   new System.Drawing.Drawing2D.LinearGradientBrush(new Point(0, 0), new Point(0, this.pathEdit.Location.Y),
-                                                                    ColorTop,
-                                                                    ColorBottom), ClientRectangle);
+            e.Graphics
+                .FillRectangle(
+                    new System.Drawing.Drawing2D.LinearGradientBrush(new Point(0, 0), new Point(0, this.pathEdit.Location.Y),
+                                                                     ColorTop,
+                                                                     ColorBottom), ClientRectangle);
 
             // Fill the remaining space with the brighter solid color.
-           e.Graphics.FillRectangle(new SolidBrush(ColorBottom), 0, this.pathEdit.Location.Y, this.Width, this.Height);
+            e.Graphics.FillRectangle(new SolidBrush(ColorBottom), 0, this.pathEdit.Location.Y, this.Width, this.Height);
         }
 
         void NavigationLog_NavigationLogChanged(object sender, NavigationLogEventArgs args)
@@ -170,7 +170,7 @@ namespace ExplorerBrowser
             }
 
             // This event is BeginInvoked to decouple the explorerBrowser UI from this UI
-            this.BeginInvoke(new MethodInvoker(delegate()
+            this.BeginInvoke(new MethodInvoker(delegate ()
             {
                 // update history combo box
                 if (args.LocationsChanged)
@@ -183,7 +183,7 @@ namespace ExplorerBrowser
                     }
                 }
 
-                for (int i = 0; i < this.contextMenu.Items.Count; i++ )
+                for (int i = 0; i < this.contextMenu.Items.Count; i++)
                     this.contextMenu.Items[i].Image = null;
 
                 if (this.explorerBrowser.NavigationLog.CurrentLocationIndex != -1)
@@ -195,7 +195,7 @@ namespace ExplorerBrowser
         void explorerBrowser_NavigationComplete(object sender, NavigationCompleteEventArgs args)
         {
             // This event is BeginInvoked to decouple the explorerBrowser UI from this UI
-            this.BeginInvoke(new MethodInvoker(delegate()
+            this.BeginInvoke(new MethodInvoker(delegate ()
             {
                 // update event history
                 if (args.NewLocation == null)
@@ -214,7 +214,7 @@ namespace ExplorerBrowser
         void explorerBrowser_NavigationFailed(object sender, NavigationFailedEventArgs args)
         {
             // This event is BeginInvoked to decouple the explorerBrowser UI from this UI
-            this.BeginInvoke(new MethodInvoker(delegate()
+            this.BeginInvoke(new MethodInvoker(delegate ()
             {
                 // update event history
                 logError("Navigation failed. Failed Location = " + ((args.FailedLocation == null) ? "(unknown)" : args.FailedLocation.Name));

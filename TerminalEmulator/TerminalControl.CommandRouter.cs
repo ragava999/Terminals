@@ -46,13 +46,13 @@ namespace WalburySoftware
                     break;
 
                 case "\x1b" + "8": // DECRC Restore Cursor position and attributes
-                    this.Caret.Pos = ((uc_CaretAttribs) this.SavedCarets[this.SavedCarets.Count - 1]).Pos;
-                    this.CharAttribs = ((uc_CaretAttribs) this.SavedCarets[this.SavedCarets.Count - 1]).Attribs;
+                    this.Caret.Pos = ((uc_CaretAttribs)this.SavedCarets[this.SavedCarets.Count - 1]).Pos;
+                    this.CharAttribs = ((uc_CaretAttribs)this.SavedCarets[this.SavedCarets.Count - 1]).Attribs;
 
-                    this.G0.Set = ((uc_CaretAttribs) this.SavedCarets[this.SavedCarets.Count - 1]).G0Set;
-                    this.G1.Set = ((uc_CaretAttribs) this.SavedCarets[this.SavedCarets.Count - 1]).G1Set;
-                    this.G2.Set = ((uc_CaretAttribs) this.SavedCarets[this.SavedCarets.Count - 1]).G2Set;
-                    this.G3.Set = ((uc_CaretAttribs) this.SavedCarets[this.SavedCarets.Count - 1]).G3Set;
+                    this.G0.Set = ((uc_CaretAttribs)this.SavedCarets[this.SavedCarets.Count - 1]).G0Set;
+                    this.G1.Set = ((uc_CaretAttribs)this.SavedCarets[this.SavedCarets.Count - 1]).G1Set;
+                    this.G2.Set = ((uc_CaretAttribs)this.SavedCarets[this.SavedCarets.Count - 1]).G2Set;
+                    this.G3.Set = ((uc_CaretAttribs)this.SavedCarets[this.SavedCarets.Count - 1]).G3Set;
 
                     this.SavedCarets.RemoveAt(this.SavedCarets.Count - 1);
 

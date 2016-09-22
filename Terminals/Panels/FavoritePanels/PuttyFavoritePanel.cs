@@ -1,6 +1,5 @@
-﻿using System;
-
-using Microsoft.Win32;
+﻿using Microsoft.Win32;
+using System;
 using Terminals.Configuration.Files.Main.Favorites;
 using Terminals.Connection.Manager;
 using Terminals.Connection.Panels.FavoritePanels;
@@ -21,13 +20,13 @@ namespace Terminals.Panels.FavoritePanels
         public PuttyFavoritePanel()
         {
             this.InitializeComponent();
-            
+
             LoadPuttyStrings();
         }
 
         public override void FillControls(FavoriteConfigurationElement favorite)
         {
-            this.cmbPuttyProtocol.Text = Enum.GetName(typeof (PuttyConnectionType), favorite.PuttyConnectionType);
+            this.cmbPuttyProtocol.Text = Enum.GetName(typeof(PuttyConnectionType), favorite.PuttyConnectionType);
 
             if (!string.IsNullOrEmpty(favorite.PuttySession))
             {
@@ -37,48 +36,48 @@ namespace Terminals.Panels.FavoritePanels
                 }
             }
 
-            this.cmbPuttyCloseWindowOnExit.Text = Enum.GetName(typeof (PuttyCloseWindowOnExit),
+            this.cmbPuttyCloseWindowOnExit.Text = Enum.GetName(typeof(PuttyCloseWindowOnExit),
                                                                favorite.PuttyCloseWindowOnExit);
-            
+
             this.chkPuttyCompress.Checked = favorite.PuttyCompression;
             this.chkPuttyVerbose.Checked = favorite.PuttyVerbose;
             this.chkPuttyShowOptions.Checked = favorite.PuttyShowOptions;
 
             this.nudPuttyPasswordTimeout.Value = favorite.PuttyPasswordTimeout;
-			
-			this.cmbProxyType.Text = Enum.GetName(typeof (PuttyProxyType), favorite.PuttyProxyType);
-			this.txtProxyHost.Text = favorite.PuttyProxyHost;
-			this.nudProxyPort.Value = favorite.PuttyProxyPort;
-			
-			this.chkPuttyEnableX11.Checked = favorite.PuttyEnableX11;
-			this.chkPuttyDontAddDomainToUserName.Checked = favorite.PuttyDontAddDomainToUserName;
+
+            this.cmbProxyType.Text = Enum.GetName(typeof(PuttyProxyType), favorite.PuttyProxyType);
+            this.txtProxyHost.Text = favorite.PuttyProxyHost;
+            this.nudProxyPort.Value = favorite.PuttyProxyPort;
+
+            this.chkPuttyEnableX11.Checked = favorite.PuttyEnableX11;
+            this.chkPuttyDontAddDomainToUserName.Checked = favorite.PuttyDontAddDomainToUserName;
         }
 
         public override void FillFavorite(FavoriteConfigurationElement favorite)
         {
             favorite.PuttyConnectionType =
-                (PuttyConnectionType) Enum.Parse(typeof (PuttyConnectionType), this.cmbPuttyProtocol.Text, true);
+                (PuttyConnectionType)Enum.Parse(typeof(PuttyConnectionType), this.cmbPuttyProtocol.Text, true);
 
             favorite.PuttySession = this.cmbPuttySession.Text;
             favorite.PuttyCloseWindowOnExit =
                 (PuttyCloseWindowOnExit)
-                Enum.Parse(typeof (PuttyCloseWindowOnExit), this.cmbPuttyCloseWindowOnExit.Text, true);
+                Enum.Parse(typeof(PuttyCloseWindowOnExit), this.cmbPuttyCloseWindowOnExit.Text, true);
 
             favorite.PuttyCompression = this.chkPuttyCompress.Checked;
             favorite.PuttyVerbose = this.chkPuttyVerbose.Checked;
             favorite.PuttyShowOptions = this.chkPuttyShowOptions.Checked;
 
-            favorite.PuttyPasswordTimeout = (int) this.nudPuttyPasswordTimeout.Value;
-			
-			favorite.PuttyProxyType =
-                (PuttyProxyType)
-                Enum.Parse(typeof (PuttyProxyType), this.cmbProxyType.Text, true);
+            favorite.PuttyPasswordTimeout = (int)this.nudPuttyPasswordTimeout.Value;
 
-			favorite.PuttyProxyHost = txtProxyHost.Text;
-			favorite.PuttyProxyPort = (int)nudProxyPort.Value;
-			
-			favorite.PuttyEnableX11 = this.chkPuttyEnableX11.Checked;
-			favorite.PuttyDontAddDomainToUserName = this.chkPuttyDontAddDomainToUserName.Checked;
+            favorite.PuttyProxyType =
+                (PuttyProxyType)
+                Enum.Parse(typeof(PuttyProxyType), this.cmbProxyType.Text, true);
+
+            favorite.PuttyProxyHost = txtProxyHost.Text;
+            favorite.PuttyProxyPort = (int)nudProxyPort.Value;
+
+            favorite.PuttyEnableX11 = this.chkPuttyEnableX11.Checked;
+            favorite.PuttyDontAddDomainToUserName = this.chkPuttyDontAddDomainToUserName.Checked;
         }
 
         private static bool DeletePuttySession(string name)
@@ -126,13 +125,13 @@ namespace Terminals.Panels.FavoritePanels
 
         public void LoadPuttyStrings()
         {
-            this.cmbPuttyProtocol.Items.AddRange(Enum.GetNames(typeof (PuttyConnectionType)));
+            this.cmbPuttyProtocol.Items.AddRange(Enum.GetNames(typeof(PuttyConnectionType)));
             this.cmbPuttyProtocol.SelectedIndex = 0;
 
-			this.cmbProxyType.Items.AddRange(Enum.GetNames(typeof (PuttyProxyType)));
+            this.cmbProxyType.Items.AddRange(Enum.GetNames(typeof(PuttyProxyType)));
             this.cmbProxyType.SelectedIndex = 0;
-			
-            this.cmbPuttyCloseWindowOnExit.Items.AddRange(Enum.GetNames(typeof (PuttyCloseWindowOnExit)));
+
+            this.cmbPuttyCloseWindowOnExit.Items.AddRange(Enum.GetNames(typeof(PuttyCloseWindowOnExit)));
             this.cmbPuttyCloseWindowOnExit.SelectedIndex = 0;
 
             string[] keys = GetPuttySessions();

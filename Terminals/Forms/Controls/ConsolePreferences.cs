@@ -1,9 +1,8 @@
 ﻿namespace Terminals.Forms.Controls
 {
+    using Configuration.Files.Main.Favorites;
     using System;
     using System.Windows.Forms;
-
-    using Terminals.Configuration.Files.Main.Favorites;
 
     public partial class ConsolePreferences : UserControl
     {

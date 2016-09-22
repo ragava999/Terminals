@@ -1,9 +1,8 @@
+using Kohl.Framework.Logging;
 using System;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
-
-using Kohl.Framework.Logging;
 
 namespace Terminals.Network.WhoIs
 {
@@ -39,7 +38,7 @@ namespace Terminals.Network.WhoIs
             }
             catch (Exception e)
             {
-				Log.Error("Could not connect to the WhoIs server. Check if you are allowed to use port 43 or please try again later.", e);
+                Log.Error("Could not connect to the WhoIs server. Check if you are allowed to use port 43 or please try again later.", e);
             }
             finally
             {
@@ -68,7 +67,7 @@ namespace Terminals.Network.WhoIs
             //String host = (cc + ".whois-servers.net");
             const string host = ("whois-servers.net");
             //String host = ("whois.crsnic.net");
-            
+
             return Whois(domain, host);
         }
     }

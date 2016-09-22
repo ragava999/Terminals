@@ -151,14 +151,14 @@ namespace Terminals.Forms
         private void executableBrowseButton_Click(object sender, EventArgs e)
         {
             OpenFileDialog ofd = new OpenFileDialog
-                                     {
-                                         CheckFileExists = true,
-                                         CheckPathExists = true,
-                                         Filter = "Executable Files|*.exe",
-                                         Multiselect = false,
-                                         ShowReadOnly = true,
-                                         Title = "Browse for executable..."
-                                     };
+            {
+                CheckFileExists = true,
+                CheckPathExists = true,
+                Filter = "Executable Files|*.exe",
+                Multiselect = false,
+                ShowReadOnly = true,
+                Title = "Browse for executable..."
+            };
             if (ofd.ShowDialog() == DialogResult.OK)
             {
                 this.executableTextBox.Text = ofd.FileName;

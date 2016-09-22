@@ -1,9 +1,9 @@
 namespace Terminals.Updates
 {
+    using Configuration.Files.Main.Settings;
     using System.IO;
     using System.Net;
     using System.Text;
-    using Terminals.Configuration.Files.Main.Settings;
 
     public static class Web
     {
@@ -32,25 +32,25 @@ namespace Terminals.Updates
             // if UseAuto := true -> use Windows default credentials
             if (Settings.ProxyUseAuth)
             {
-            	webProxy.Credentials = System.Net.CredentialCache.DefaultCredentials;
-            	//webProxy.UseDefaultCredentials = true;
+                webProxy.Credentials = System.Net.CredentialCache.DefaultCredentials;
+                //webProxy.UseDefaultCredentials = true;
             }
-            
+
             if (Settings.ProxyUseAuthCustom)
             {
-            	webProxy.Credentials = new NetworkCredential("", "");
-            }    
+                webProxy.Credentials = new NetworkCredential("", "");
+            }
         }
 
-        private static WebResponse HTTPAsWebResponse(string URL, byte[] Data,  bool DoPOST)
+        private static WebResponse HTTPAsWebResponse(string URL, byte[] Data, bool DoPOST)
         {
-			// Proxy auto detection is true in .NET by default
-        	bool UseProxy_AutoDetect = false;
-			string Username = Settings.ProxyUserName;
-			string Password = Settings.ProxyPassword;
-			string Domain = Settings.ProxyDomainName;
-			string ProxyAddress = string.Empty;
-			int ProxyPort = 0;
+            // Proxy auto detection is true in .NET by default
+            bool UseProxy_AutoDetect = false;
+            string Username = Settings.ProxyUserName;
+            string Password = Settings.ProxyPassword;
+            string Domain = Settings.ProxyDomainName;
+            string ProxyAddress = string.Empty;
+            int ProxyPort = 0;
 
             if (Settings.ProxyUse)
             {
@@ -73,32 +73,38 @@ namespace Terminals.Updates
             if (DoPOST)
                 wreq.Method = "POST";
 
-			if (Settings.ProxyUse)
-			if (ProxyAddress != null && ProxyAddress.Trim () != string.Empty && ProxyPort > 0) {
-				// Proxy autodetection is default in .NET
-				// if neither set nor null -> auto detected proxy will be used.
-				if (!UseProxy_AutoDetect) {
-					WebProxy webProxy = new WebProxy (ProxyAddress, ProxyPort) { BypassProxyOnLocal = true };
-					SetCredentials (webProxy);
-					wreq.Proxy = webProxy;
-				}
-			} else {
-				// Proxy autodetection is default in .NET
-				// if neither set nor null -> auto detected proxy will be used.
-				if (!UseProxy_AutoDetect) {
-					wreq.Proxy = WebRequest.DefaultWebProxy;
-					SetCredentials (wreq.Proxy);
-				}
-			}
-			// Nothing has been changed in the proxy option panel ->
-			// use the default IE settings with the default auth.
-			else if (Settings.ProxyAutoDetect) {
-				wreq.Proxy = WebRequest.DefaultWebProxy;
-				SetCredentials (wreq.Proxy);
-			}
-			else
-				wreq.Proxy = null;
-	        
+            if (Settings.ProxyUse)
+                if (ProxyAddress != null && ProxyAddress.Trim() != string.Empty && ProxyPort > 0)
+                {
+                    // Proxy autodetection is default in .NET
+                    // if neither set nor null -> auto detected proxy will be used.
+                    if (!UseProxy_AutoDetect)
+                    {
+                        WebProxy webProxy = new WebProxy(ProxyAddress, ProxyPort) { BypassProxyOnLocal = true };
+                        SetCredentials(webProxy);
+                        wreq.Proxy = webProxy;
+                    }
+                }
+                else
+                {
+                    // Proxy autodetection is default in .NET
+                    // if neither set nor null -> auto detected proxy will be used.
+                    if (!UseProxy_AutoDetect)
+                    {
+                        wreq.Proxy = WebRequest.DefaultWebProxy;
+                        SetCredentials(wreq.Proxy);
+                    }
+                }
+            // Nothing has been changed in the proxy option panel ->
+            // use the default IE settings with the default auth.
+            else if (Settings.ProxyAutoDetect)
+            {
+                wreq.Proxy = WebRequest.DefaultWebProxy;
+                SetCredentials(wreq.Proxy);
+            }
+            else
+                wreq.Proxy = null;
+
             if (Username != null && Password != null && Domain != null && Username.Trim() != string.Empty &&
                 Password.Trim() != null && Domain.Trim() != null)
                 wreq.Credentials = new NetworkCredential(Username, Password, Domain);
@@ -140,7 +146,7 @@ namespace Terminals.Updates
 
             br.Close();
             stm.Position = 0;
-            byte[] final = new byte[(int) stm.Length];
+            byte[] final = new byte[(int)stm.Length];
             stm.Read(final, 0, final.Length);
             stm.Close();
             return final;
@@ -172,14 +178,14 @@ namespace Terminals.Updates
             return false;
         }
 
-		public static string HTTPAsString(string URL)
-		{
-			return HTTPAsString(URL, null, false);
-		}
+        public static string HTTPAsString(string URL)
+        {
+            return HTTPAsString(URL, null, false);
+        }
 
         public static bool SaveHTTPToFile(string URL, string Filename)
         {
-			return SaveHTTPToFile(URL, null, Filename, false);
+            return SaveHTTPToFile(URL, null, Filename, false);
         }
 
         /// <summary>
@@ -191,7 +197,7 @@ namespace Terminals.Updates
                 return false;
 
             FileStream fs = new FileStream(Filename, FileMode.Open);
-            byte[] d = new byte[(int) fs.Length];
+            byte[] d = new byte[(int)fs.Length];
             fs.Read(d, 0, d.Length);
             fs.Close();
             if (d != null)

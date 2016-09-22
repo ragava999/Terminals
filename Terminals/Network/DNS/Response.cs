@@ -1,8 +1,7 @@
 namespace Terminals.Network.DNS
 {
-    using System;
-
     using Kohl.Framework.Logging;
+    using System;
 
     /// <summary>
     ///     A Response is a logical representation of the byte data returned from a DNS query
@@ -40,7 +39,7 @@ namespace Terminals.Network.DNS
                 }
                 catch (Exception ex)
                 {
-					Log.Error("A DNS response question failure occured.", ex);
+                    Log.Error("A DNS response question failure occured.", ex);
                     // something grim has happened, we can't continue
                     throw new InvalidResponseException(ex);
                 }
@@ -73,7 +72,7 @@ namespace Terminals.Network.DNS
         /// <returns> short representation of the two bytes </returns>
         private static short GetShort(byte[] message, int position)
         {
-            return (short) (message[position] << 8 | message[position + 1]);
+            return (short)(message[position] << 8 | message[position + 1]);
         }
     }
 }

@@ -1,9 +1,8 @@
+using Kohl.Framework.Logging;
 using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Windows.Forms;
-
-using Kohl.Framework.Logging;
 
 namespace Terminals.Network.DNS
 {

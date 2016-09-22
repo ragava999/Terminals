@@ -46,7 +46,6 @@ Trying to get Terminals working under MacOSX
    -> Folder detection has been improved.
    -> Mac OS X version is now getting reported
    -> Terminals starts without any error
-   -> Some minor issues remaining
 
 Import/Export features have been improved.
 
@@ -57,7 +56,6 @@ Fixed some minor issues in the favorites configuration element.
 Beautified code and reordered some code parts.
 
 Added import for Remote Desktop Manager.
-	-> TODO: Putty, SSH, RAdmin
 
 Kicked Scintilla and replaced it with a richt text box.
 

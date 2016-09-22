@@ -1,7 +1,5 @@
 namespace Terminals.CommandLine
 {
-
-
     /// <summary>
     ///     Allows control of command line parsing.
     ///     Attach this attribute to instance fields of types used

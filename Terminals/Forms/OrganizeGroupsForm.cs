@@ -67,7 +67,7 @@ namespace Terminals.Forms
         private GroupConfigurationElement GetSelectedGroup()
         {
             if (this.lvGroups.SelectedItems.Count > 0)
-                return (GroupConfigurationElement) this.lvGroups.SelectedItems[0].Tag;
+                return (GroupConfigurationElement)this.lvGroups.SelectedItems[0].Tag;
             return null;
         }
 
@@ -134,10 +134,10 @@ namespace Terminals.Forms
                 if (frmNewGroup.ShowDialog() == DialogResult.OK)
                 {
                     GroupConfigurationElement serversGroup = new GroupConfigurationElement
-                                                                 {
-                                                                     Name = frmNewGroup.txtGroupName.Text,
-                                                                     FavoriteAliases = new FavoriteAliasConfigurationElementCollection()
-                                                                 };
+                    {
+                        Name = frmNewGroup.txtGroupName.Text,
+                        FavoriteAliases = new FavoriteAliasConfigurationElementCollection()
+                    };
                     Settings.AddGroup(serversGroup);
                     this.LoadGroups();
                 }

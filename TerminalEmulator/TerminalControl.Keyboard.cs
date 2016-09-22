@@ -297,15 +297,15 @@ namespace WalburySoftware
                     this.Elements.Add(new uc_KeyInfo(72, true, "Key", "\x1B[A", uc_Mode.CursorAppln, 0)); //CursorUp
                     this.Elements.Add(new uc_KeyInfo(80, true, "Key", "\x1B[B", uc_Mode.CursorAppln, 0)); //CursorDown
                     this.Elements.Add(new uc_KeyInfo(77, true, "Key", "\x1B[C", uc_Mode.CursorAppln, 0));
-                        //CursorKeyRight
+                    //CursorKeyRight
                     this.Elements.Add(new uc_KeyInfo(75, true, "Key", "\x1B[D", uc_Mode.CursorAppln, 0));
-                        //CursorKeyLeft
+                    //CursorKeyLeft
                     this.Elements.Add(new uc_KeyInfo(72, true, "Key", "\x1BOA", uc_Mode.CursorAppln, 1)); //CursorUp
                     this.Elements.Add(new uc_KeyInfo(80, true, "Key", "\x1BOB", uc_Mode.CursorAppln, 1)); //CursorDown
                     this.Elements.Add(new uc_KeyInfo(77, true, "Key", "\x1BOC", uc_Mode.CursorAppln, 1));
-                        //CursorKeyRight
+                    //CursorKeyRight
                     this.Elements.Add(new uc_KeyInfo(75, true, "Key", "\x1BOD", uc_Mode.CursorAppln, 1));
-                        //CursorKeyLeft
+                    //CursorKeyLeft
                     this.Elements.Add(new uc_KeyInfo(82, false, "Key", "\x1BOp", uc_Mode.KeypadAppln, 1)); //Keypad0
                     this.Elements.Add(new uc_KeyInfo(79, false, "Key", "\x1BOq", uc_Mode.KeypadAppln, 1)); //Keypad1
                     this.Elements.Add(new uc_KeyInfo(80, false, "Key", "\x1BOr", uc_Mode.KeypadAppln, 1)); //Keypad2
@@ -318,7 +318,7 @@ namespace WalburySoftware
                     this.Elements.Add(new uc_KeyInfo(73, false, "Key", "\x1BOy", uc_Mode.KeypadAppln, 1)); //Keypad9
                     this.Elements.Add(new uc_KeyInfo(74, false, "Key", "\x1BOm", uc_Mode.KeypadAppln, 1)); //Keypad-
                     this.Elements.Add(new uc_KeyInfo(78, false, "Key", "\x1BOl", uc_Mode.KeypadAppln, 1));
-                        //Keypad+ (use instead of comma)
+                    //Keypad+ (use instead of comma)
                     this.Elements.Add(new uc_KeyInfo(83, false, "Key", "\x1BOn", uc_Mode.KeypadAppln, 1)); //Keypad.
                     this.Elements.Add(new uc_KeyInfo(28, true, "Key", "\x1BOM", uc_Mode.KeypadAppln, 1)); //Keypad Enter
                     this.Elements.Add(new uc_KeyInfo(03, false, "Ctrl", "\x00", uc_Mode.Any, 0)); //Ctrl2->Null
@@ -341,7 +341,7 @@ namespace WalburySoftware
 
                     for (Int32 i = 0; i < this.Elements.Count; i++)
                     {
-                        uc_KeyInfo Element = (uc_KeyInfo) this.Elements[i];
+                        uc_KeyInfo Element = (uc_KeyInfo)this.Elements[i];
 
                         if (Element.ScanCode == ScanCode &&
                             Element.ExtendFlag == ExtendFlag &&

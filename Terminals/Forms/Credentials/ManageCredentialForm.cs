@@ -1,7 +1,6 @@
-﻿using System;
+﻿using Kohl.Framework.Info;
+using System;
 using System.Windows.Forms;
-using Kohl.Framework.Info;
-
 using Terminals.Configuration.Files.Credentials;
 using Terminals.Forms.Controls;
 
@@ -21,13 +20,13 @@ namespace Terminals.Forms.Credentials
             this.FillControlsFromCredential(editedCredential);
 
             this.Text = AssemblyInfo.Title + " - " +
-				"Credential manager";
+                "Credential manager";
 
             this.txtPassword.PasswordChar = CredentialPanel.HIDDEN_PASSWORD_CHAR;
-            
+
             if (Terminals.Configuration.Files.Main.Settings.Settings.CredentialStore == Terminals.Configuration.Files.Main.CredentialStoreType.KeePass)
             {
-            	SaveButton_cred.Enabled = false;
+                SaveButton_cred.Enabled = false;
             }
         }
 
@@ -48,8 +47,8 @@ namespace Terminals.Forms.Credentials
         {
             if (string.IsNullOrEmpty(this.txtName.Text) || string.IsNullOrEmpty(this.txtUserName.Text))
             {
-				MessageBox.Show("You must enter both a name and a user name for the credential.",
-					"Credential manager",
+                MessageBox.Show("You must enter both a name and a user name for the credential.",
+                    "Credential manager",
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 this.txtName.Focus();
                 return;
@@ -96,8 +95,8 @@ namespace Terminals.Forms.Credentials
         private bool UpdateConflicting(CredentialSet conflicting, CredentialSet oldItem)
         {
             DialogResult result =
-				MessageBox.Show("The credential name you entered already exists.\nDo you want to overwrite it?",
-			"Credential manager",
+                MessageBox.Show("The credential name you entered already exists.\nDo you want to overwrite it?",
+            "Credential manager",
                                 MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (result != DialogResult.Yes)
                 return false;
@@ -158,13 +157,13 @@ namespace Terminals.Forms.Credentials
                 this.lastString = this.txtPassword.Text;
 
                 if (this.lastString == CredentialPanel.HIDDEN_PASSWORD)
-				{
-					this.txtPassword.Text = StoredCredentials.GetByName(this.editedCredentialName).SecretKey;
+                {
+                    this.txtPassword.Text = StoredCredentials.GetByName(this.editedCredentialName).SecretKey;
 
-					if (!string.IsNullOrEmpty(StoredCredentials.GetByName(this.editedCredentialName).SecretKey))
-						Clipboard.SetText(StoredCredentials.GetByName(this.editedCredentialName).SecretKey);
-				}
-				
+                    if (!string.IsNullOrEmpty(StoredCredentials.GetByName(this.editedCredentialName).SecretKey))
+                        Clipboard.SetText(StoredCredentials.GetByName(this.editedCredentialName).SecretKey);
+                }
+
                 this.txtPassword.PasswordChar = '\0';
                 this.reset = true;
                 this.timer = new Timer();

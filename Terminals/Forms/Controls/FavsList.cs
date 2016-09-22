@@ -1,5 +1,14 @@
 ﻿namespace Terminals.Forms.Controls
 {
+    using Configuration.Files.Credentials;
+    using Configuration.Files.Main.Favorites;
+    using Configuration.Files.Main.Settings;
+    using Connection.Native;
+    using Credentials;
+    using ExportImport;
+    using Kohl.Framework.Info;
+    using Kohl.Framework.Logging;
+    using Network.WakeOnLAN;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel;
@@ -9,18 +18,6 @@
     using System.Management;
     using System.Text.RegularExpressions;
     using System.Windows.Forms;
-    using Kohl.Framework.Info;
-
-    using Kohl.Framework.Logging;
-    using Kohl.Framework.WinForms;
-
-    using Configuration.Files.Credentials;
-    using Configuration.Files.Main.Favorites;
-    using Configuration.Files.Main.Settings;
-    using Connection.Native;
-    using ExportImport;
-    using Credentials;
-    using Network.WakeOnLAN;
 
     public partial class FavsList : UserControl
     {

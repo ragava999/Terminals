@@ -49,7 +49,7 @@ namespace WalburySoftware
             // with an offset. This is annoying when the other draw commands do not print with an offset
             // this method returns a point defining the offset so we can take it off the printstring command.
 
-            CharacterRange[] characterRanges = {new CharacterRange(0, 1)};
+            CharacterRange[] characterRanges = { new CharacterRange(0, 1) };
             RectangleF layoutRect = new RectangleF(X, Y, 100, 100);
             StringFormat stringFormat = new StringFormat();
             stringFormat.SetMeasurableCharacterRanges(characterRanges);
@@ -62,7 +62,7 @@ namespace WalburySoftware
                 stringFormat);
 
             RectangleF measureRect1 = stringRegions[0].GetBounds(CurGraphics);
-            return new Point((Int32) (measureRect1.X + 0.5), (Int32) (measureRect1.Y + 0.5));
+            return new Point((Int32)(measureRect1.X + 0.5), (Int32)(measureRect1.Y + 0.5));
         }
 
         private Point GetCharSize(Graphics CurGraphics)
@@ -71,7 +71,7 @@ namespace WalburySoftware
             // with an offset. This is annoying when the other draw commands do not print with an offset
             // this method returns a point defining the offset so we can take it off the printstring command.
 
-            CharacterRange[] characterRanges = {new CharacterRange(0, 1)};
+            CharacterRange[] characterRanges = { new CharacterRange(0, 1) };
             RectangleF layoutRect = new RectangleF(0, 0, 100, 100);
             StringFormat stringFormat = new StringFormat();
             stringFormat.SetMeasurableCharacterRanges(characterRanges);
@@ -84,7 +84,7 @@ namespace WalburySoftware
                 stringFormat);
 
             RectangleF measureRect1 = stringRegions[0].GetBounds(CurGraphics);
-            return new Point((Int32) (measureRect1.Width + 0.5), (Int32) (measureRect1.Height + 0.5));
+            return new Point((Int32)(measureRect1.Width + 0.5), (Int32)(measureRect1.Height + 0.5));
         }
 
         private void AssignColors(CharAttribStruct CurAttribs, ref Color CurFGColor, ref Color CurBGColor)
@@ -200,114 +200,114 @@ namespace WalburySoftware
                 case '`': // diamond
                     Point[] CurPoints = new Point[4];
 
-                    CurPoints[0] = new Point(X + this.CharSize.Width/2, Y + this.CharSize.Height/6);
-                    CurPoints[1] = new Point(X + 5*this.CharSize.Width/6, Y + this.CharSize.Height/2);
-                    CurPoints[2] = new Point(X + this.CharSize.Width/2, Y + 5*this.CharSize.Height/6);
-                    CurPoints[3] = new Point(X + this.CharSize.Width/6, Y + this.CharSize.Height/2);
+                    CurPoints[0] = new Point(X + this.CharSize.Width / 2, Y + this.CharSize.Height / 6);
+                    CurPoints[1] = new Point(X + 5 * this.CharSize.Width / 6, Y + this.CharSize.Height / 2);
+                    CurPoints[2] = new Point(X + this.CharSize.Width / 2, Y + 5 * this.CharSize.Height / 6);
+                    CurPoints[3] = new Point(X + this.CharSize.Width / 6, Y + this.CharSize.Height / 2);
 
                     CurGraphics.FillPolygon(new SolidBrush(CurFGColor), CurPoints);
                     break;
 
                 case 'l': // top left bracket
                     CurGraphics.DrawLine(new Pen(CurFGColor, 1),
-                                         X + this.CharSize.Width/2 - 1, Y + this.CharSize.Height/2,
-                                         X + this.CharSize.Width, Y + this.CharSize.Height/2);
+                                         X + this.CharSize.Width / 2 - 1, Y + this.CharSize.Height / 2,
+                                         X + this.CharSize.Width, Y + this.CharSize.Height / 2);
 
                     CurGraphics.DrawLine(new Pen(CurFGColor, 1),
-                                         X + this.CharSize.Width/2, Y + this.CharSize.Height/2,
-                                         X + this.CharSize.Width/2, Y + this.CharSize.Height);
+                                         X + this.CharSize.Width / 2, Y + this.CharSize.Height / 2,
+                                         X + this.CharSize.Width / 2, Y + this.CharSize.Height);
                     break;
 
                 case 'q': // horizontal line
                     CurGraphics.DrawLine(new Pen(CurFGColor, 1),
-                                         X, Y + this.CharSize.Height/2,
-                                         X + this.CharSize.Width, Y + this.CharSize.Height/2);
+                                         X, Y + this.CharSize.Height / 2,
+                                         X + this.CharSize.Width, Y + this.CharSize.Height / 2);
                     break;
 
                 case 'w': // top tee-piece
                     CurGraphics.DrawLine(new Pen(CurFGColor, 1),
-                                         X, Y + this.CharSize.Height/2,
-                                         X + this.CharSize.Width, Y + this.CharSize.Height/2);
+                                         X, Y + this.CharSize.Height / 2,
+                                         X + this.CharSize.Width, Y + this.CharSize.Height / 2);
 
                     CurGraphics.DrawLine(new Pen(CurFGColor, 1),
-                                         X + this.CharSize.Width/2, Y + this.CharSize.Height/2,
-                                         X + this.CharSize.Width/2, Y + this.CharSize.Height);
+                                         X + this.CharSize.Width / 2, Y + this.CharSize.Height / 2,
+                                         X + this.CharSize.Width / 2, Y + this.CharSize.Height);
                     break;
 
                 case 'k': // top right bracket
                     CurGraphics.DrawLine(new Pen(CurFGColor, 1),
-                                         X, Y + this.CharSize.Height/2,
-                                         X + this.CharSize.Width/2, Y + this.CharSize.Height/2);
+                                         X, Y + this.CharSize.Height / 2,
+                                         X + this.CharSize.Width / 2, Y + this.CharSize.Height / 2);
 
                     CurGraphics.DrawLine(new Pen(CurFGColor, 1),
-                                         X + this.CharSize.Width/2, Y + this.CharSize.Height/2,
-                                         X + this.CharSize.Width/2, Y + this.CharSize.Height);
+                                         X + this.CharSize.Width / 2, Y + this.CharSize.Height / 2,
+                                         X + this.CharSize.Width / 2, Y + this.CharSize.Height);
                     break;
 
                 case 'x': // vertical line
                     CurGraphics.DrawLine(new Pen(CurFGColor, 1),
-                                         X + this.CharSize.Width/2, Y,
-                                         X + this.CharSize.Width/2, Y + this.CharSize.Height);
+                                         X + this.CharSize.Width / 2, Y,
+                                         X + this.CharSize.Width / 2, Y + this.CharSize.Height);
                     break;
 
                 case 't': // left hand tee-piece
                     CurGraphics.DrawLine(new Pen(CurFGColor, 1),
-                                         X + this.CharSize.Width/2, Y,
-                                         X + this.CharSize.Width/2, Y + this.CharSize.Height);
+                                         X + this.CharSize.Width / 2, Y,
+                                         X + this.CharSize.Width / 2, Y + this.CharSize.Height);
 
                     CurGraphics.DrawLine(new Pen(CurFGColor, 1),
-                                         X + this.CharSize.Width/2, Y + this.CharSize.Height/2,
-                                         X + this.CharSize.Width, Y + this.CharSize.Height/2);
+                                         X + this.CharSize.Width / 2, Y + this.CharSize.Height / 2,
+                                         X + this.CharSize.Width, Y + this.CharSize.Height / 2);
                     break;
 
                 case 'n': // cross piece
                     CurGraphics.DrawLine(new Pen(CurFGColor, 1),
-                                         X + this.CharSize.Width/2, Y,
-                                         X + this.CharSize.Width/2, Y + this.CharSize.Height);
+                                         X + this.CharSize.Width / 2, Y,
+                                         X + this.CharSize.Width / 2, Y + this.CharSize.Height);
 
                     CurGraphics.DrawLine(new Pen(CurFGColor, 1),
-                                         X, Y + this.CharSize.Height/2,
-                                         X + this.CharSize.Width, Y + this.CharSize.Height/2);
+                                         X, Y + this.CharSize.Height / 2,
+                                         X + this.CharSize.Width, Y + this.CharSize.Height / 2);
                     break;
 
                 case 'u': // right hand tee-piece
                     CurGraphics.DrawLine(new Pen(CurFGColor, 1),
-                                         X, Y + this.CharSize.Height/2,
-                                         X + this.CharSize.Width/2, Y + this.CharSize.Height/2);
+                                         X, Y + this.CharSize.Height / 2,
+                                         X + this.CharSize.Width / 2, Y + this.CharSize.Height / 2);
 
                     CurGraphics.DrawLine(new Pen(CurFGColor, 1),
-                                         X + this.CharSize.Width/2, Y,
-                                         X + this.CharSize.Width/2, Y + this.CharSize.Height);
+                                         X + this.CharSize.Width / 2, Y,
+                                         X + this.CharSize.Width / 2, Y + this.CharSize.Height);
                     break;
 
                 case 'm': // bottom left bracket
                     CurGraphics.DrawLine(new Pen(CurFGColor, 1),
-                                         X + this.CharSize.Width/2, Y + this.CharSize.Height/2,
-                                         X + this.CharSize.Width, Y + this.CharSize.Height/2);
+                                         X + this.CharSize.Width / 2, Y + this.CharSize.Height / 2,
+                                         X + this.CharSize.Width, Y + this.CharSize.Height / 2);
 
                     CurGraphics.DrawLine(new Pen(CurFGColor, 1),
-                                         X + this.CharSize.Width/2, Y,
-                                         X + this.CharSize.Width/2, Y + this.CharSize.Height/2);
+                                         X + this.CharSize.Width / 2, Y,
+                                         X + this.CharSize.Width / 2, Y + this.CharSize.Height / 2);
                     break;
 
                 case 'v': // bottom tee-piece
                     CurGraphics.DrawLine(new Pen(CurFGColor, 1),
-                                         X, Y + this.CharSize.Height/2,
-                                         X + this.CharSize.Width, Y + this.CharSize.Height/2);
+                                         X, Y + this.CharSize.Height / 2,
+                                         X + this.CharSize.Width, Y + this.CharSize.Height / 2);
 
                     CurGraphics.DrawLine(new Pen(CurFGColor, 1),
-                                         X + this.CharSize.Width/2, Y,
-                                         X + this.CharSize.Width/2, Y + this.CharSize.Height/2);
+                                         X + this.CharSize.Width / 2, Y,
+                                         X + this.CharSize.Width / 2, Y + this.CharSize.Height / 2);
                     break;
 
                 case 'j': // bottom right bracket
                     CurGraphics.DrawLine(new Pen(CurFGColor, 1),
-                                         X, Y + this.CharSize.Height/2,
-                                         X + this.CharSize.Width/2, Y + this.CharSize.Height/2);
+                                         X, Y + this.CharSize.Height / 2,
+                                         X + this.CharSize.Width / 2, Y + this.CharSize.Height / 2);
 
                     CurGraphics.DrawLine(new Pen(CurFGColor, 1),
-                                         X + this.CharSize.Width/2, Y,
-                                         X + this.CharSize.Width/2, Y + this.CharSize.Height/2);
+                                         X + this.CharSize.Width / 2, Y,
+                                         X + this.CharSize.Width / 2, Y + this.CharSize.Height / 2);
                     break;
 
                 default:
@@ -419,7 +419,7 @@ namespace WalburySoftware
                         continue;
                     }
 
-                    CurPoint = new Point(X*this.CharSize.Width, Y*this.CharSize.Height);
+                    CurPoint = new Point(X * this.CharSize.Width, Y * this.CharSize.Height);
                     this.ShowChar(CurGraphics, CurChar, CurPoint.Y, CurPoint.X, this.AttribGrid[Y][X]);
                 }
             }

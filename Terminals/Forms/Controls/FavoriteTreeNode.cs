@@ -2,11 +2,10 @@
 
 namespace Terminals.Forms.Controls
 {
+    using Configuration.Files.Main;
+    using Configuration.Files.Main.Favorites;
+    using Configuration.Files.Main.Settings;
     using System.Windows.Forms;
-    using Terminals.Configuration.Files.Main;
-    using Terminals.Configuration.Files.Main.Favorites;
-    using Terminals.Configuration.Files.Main.Settings;
-    using Terminals.Connection;
 
     public class FavoriteTreeNode : TreeNode
     {

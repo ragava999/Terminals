@@ -1,8 +1,7 @@
-﻿using System;
+﻿using Kohl.Framework.Logging;
+using System;
 using System.IO;
 using System.Text;
-
-using Kohl.Framework.Logging;
 using Terminals.Configuration.Files.Main.Favorites;
 using Terminals.ExportImport.Import;
 
@@ -83,17 +82,12 @@ namespace Terminals.ExportImport.Export
             AppendPropertyLine(fileContent, ImportRDP.ENABLEFONTSMOOTHING, ConvertToString(favorite.EnableFontSmoothing));
             AppendPropertyLine(fileContent, ImportRDP.REDIRECTCLIPBOARD, ConvertToString(favorite.RedirectClipboard));
             AppendPropertyLine(fileContent, ImportRDP.DISABLEWINDOWSKEY, ConvertToString(favorite.DisableWindowsKey));
-            AppendPropertyLine(fileContent, ImportRDP.DISPLAYCONNECTIONBAR,
-                               ConvertToString(favorite.DisplayConnectionBar));
-            AppendPropertyLine(fileContent, ImportRDP.DISABLEMENUANIMATIONS,
-                               ConvertToString(favorite.DisableMenuAnimations));
+            AppendPropertyLine(fileContent, ImportRDP.DISPLAYCONNECTIONBAR, ConvertToString(favorite.DisplayConnectionBar));
+            AppendPropertyLine(fileContent, ImportRDP.DISABLEMENUANIMATIONS, ConvertToString(favorite.DisableMenuAnimations));
             AppendPropertyLine(fileContent, ImportRDP.DISABLETHEMING, ConvertToString(favorite.DisableTheming));
-            AppendPropertyLine(fileContent, ImportRDP.DISABLEFULLWINDOWDRAG,
-                               ConvertToString(favorite.DisableFullWindowDrag));
-            AppendPropertyLine(fileContent, ImportRDP.ENABLEDESKTOPCOMPOSITION,
-                               ConvertToString(favorite.EnableDesktopComposition));
-            bool disablecursorsettings = favorite.DisableCursorBlinking && favorite.DisableCursorShadow;
-            AppendPropertyLine(fileContent, ImportRDP.DISABLECURSORSETTING, ConvertToString(disablecursorsettings));
+            AppendPropertyLine(fileContent, ImportRDP.DISABLEFULLWINDOWDRAG, ConvertToString(favorite.DisableFullWindowDrag));
+            AppendPropertyLine(fileContent, ImportRDP.ENABLEDESKTOPCOMPOSITION, ConvertToString(favorite.EnableDesktopComposition));
+            AppendPropertyLine(fileContent, ImportRDP.DISABLECURSORSETTING, ConvertToString(favorite.DisableCursorBlinking && favorite.DisableCursorShadow));
             AppendPropertyLine(fileContent, ImportRDP.BITMAPPERISTENCE, ConvertToString(favorite.BitmapPeristence));
             AppendPropertyLine(fileContent, ImportRDP.REDIRECTDEVICES, ConvertToString(favorite.RedirectDevices));
             AppendPropertyLine(fileContent, ImportRDP.TSGWCREDSSOURCE, favorite.TsgwCredsSource.ToString());

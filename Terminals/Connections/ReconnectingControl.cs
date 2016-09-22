@@ -17,7 +17,7 @@ namespace Terminals.Connections
         /// <summary>
         /// Gets or sets the state of the "Reconnect when ready" checkbox.
         /// </summary>
-        internal bool Reconnect 
+        internal bool Reconnect
         {
             get { return this.reconnectCheckBox.Checked; }
             set { this.reconnectCheckBox.Checked = value; }
@@ -48,7 +48,7 @@ namespace Terminals.Connections
         {
             if (this.oldParent != null)
                 this.oldParent.Resize -= Parent_Resize;
-            
+
             if (this.Parent == null)
                 return;
 

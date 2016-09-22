@@ -11,7 +11,7 @@ using Terminals.Connection.Native;
 
 namespace Terminals.Forms.Controls.IPAddressControl
 {
-    [Designer(typeof (IPAddressControlDesigner))]
+    [Designer(typeof(IPAddressControlDesigner))]
     public class IPAddressControl : ContainerControl
     {
         #region Fields
@@ -169,10 +169,10 @@ namespace Terminals.Forms.Controls.IPAddressControl
         {
             get
             {
-				if (Kohl.Framework.Info.MachineInfo.IsUnixOrMac)
-				{
-					return 200;
-				}
+                if (Kohl.Framework.Info.MachineInfo.IsUnixOrMac)
+                {
+                    return 200;
+                }
 
                 TextMetric textMetric = GetTextMetrics(this.Handle, this.Font);
 
@@ -254,7 +254,7 @@ namespace Terminals.Forms.Controls.IPAddressControl
             get
             {
                 StringBuilder sb = new StringBuilder();
-                
+
                 for (int index = 0; index < this.ipAddressFieldControls.Length; ++index)
                 {
                     sb.Append(this.ipAddressFieldControls[index].Text);
@@ -501,11 +501,11 @@ namespace Terminals.Forms.Controls.IPAddressControl
 
         private static TextMetric GetTextMetrics(IntPtr hwnd, Font font)
         {
-			if (Kohl.Framework.Info.MachineInfo.IsUnixOrMac)
-			{
-				Kohl.Framework.Logging.Log.Fatal("Screen caputure is only supported on Windows at the moment.");
-				return new TextMetric();
-			}
+            if (Kohl.Framework.Info.MachineInfo.IsUnixOrMac)
+            {
+                Kohl.Framework.Logging.Log.Fatal("Screen caputure is only supported on Windows at the moment.");
+                return new TextMetric();
+            }
 
             IntPtr hdc = WindowsApi.GetWindowDC(hwnd);
 
@@ -547,8 +547,8 @@ namespace Terminals.Forms.Controls.IPAddressControl
 
             int numOffsets = this.ipAddressFieldControls.Length + this.ipAddressDotControls.Length + 1;
 
-            int div = difference/(numOffsets);
-            int mod = difference%(numOffsets);
+            int div = difference / (numOffsets);
+            int mod = difference % (numOffsets);
 
             int[] offsets = new int[numOffsets];
 
@@ -676,7 +676,7 @@ namespace Terminals.Forms.Controls.IPAddressControl
         {
             if (null != this.FieldChangedEvent)
             {
-                FieldChangedEventArgs args = new FieldChangedEventArgs {FieldIndex = e.FieldIndex, Text = e.Text};
+                FieldChangedEventArgs args = new FieldChangedEventArgs { FieldIndex = e.FieldIndex, Text = e.Text };
                 this.FieldChangedEvent(this, args);
             }
 

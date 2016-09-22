@@ -1,8 +1,7 @@
+using Kohl.Framework.Info;
 using System;
 using System.Threading;
 using System.Windows.Forms;
-using Kohl.Framework.Info;
-
 
 namespace Terminals.Network.WhoIs
 {
@@ -12,7 +11,6 @@ namespace Terminals.Network.WhoIs
         {
             this.InitializeComponent();
             this.hostTextbox.Text = AssemblyInfo.Url;
-            
         }
 
         private void whoisButton_Click(object sender, EventArgs e)
@@ -25,7 +23,7 @@ namespace Terminals.Network.WhoIs
                 if (!server.StartsWith("=") && !server.ToLower().EndsWith(".ca"))
                     server = "=" + server;
 
-                server = server.Replace("https://", "").Replace("http://", "").Replace("www.","");
+                server = server.Replace("https://", "").Replace("http://", "").Replace("www.", "");
 
                 string result = null;
 
@@ -44,7 +42,7 @@ namespace Terminals.Network.WhoIs
                     this.whoisButton.Enabled = true;
                     return;
                 }
-                
+
                 result = result.Replace("\n", Environment.NewLine);
 
                 // Don't localize the below text -> this would break the functionality

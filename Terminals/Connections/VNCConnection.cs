@@ -1,8 +1,7 @@
+using Kohl.Framework.Logging;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
-
-using Kohl.Framework.Logging;
 using Terminals.Configuration.Files.Main.Favorites;
 using Terminals.Properties;
 using VncSharp;
@@ -17,7 +16,7 @@ namespace Terminals.Connections
 
         protected override Image[] images
         {
-            get { return new Image[] {Resources.VNC}; }
+            get { return new Image[] { Resources.VNC }; }
         }
 
         public override ushort Port
@@ -46,11 +45,11 @@ namespace Terminals.Connections
             try
             {
                 this.rd = new RemoteDesktop
-                              {
-                                  AutoSizeMode = AutoSizeMode.GrowAndShrink,
-                                  AutoSize = true,
-                                  AutoScroll = true
-                              };
+                {
+                    AutoSizeMode = AutoSizeMode.GrowAndShrink,
+                    AutoSize = true,
+                    AutoScroll = true
+                };
 
                 this.vncPassword = this.Favorite.Credential.Password;
 
@@ -64,12 +63,12 @@ namespace Terminals.Connections
                 this.rd.GetPassword = this.VNCPassword;
 
                 if (this.InvokeRequired)
-					this.Invoke(new MethodInvoker(delegate { this.Text = "Connecting to VNC server ..."; }));
+                    this.Invoke(new MethodInvoker(delegate { this.Text = "Connecting to VNC server ..."; }));
                 else
-					this.Text = "Connecting to VNC server ...";
+                    this.Text = "Connecting to VNC server ...";
 
                 if (this.rd.InvokeRequired)
-                    this.rd.Invoke(new MethodInvoker(delegate { this.rd.Connect(this.Favorite.ServerName, this.Favorite.VncDisplayNumber, this.Favorite.VncViewOnly, this.Favorite.VncAutoScale);  }));
+                    this.rd.Invoke(new MethodInvoker(delegate { this.rd.Connect(this.Favorite.ServerName, this.Favorite.VncDisplayNumber, this.Favorite.VncViewOnly, this.Favorite.VncAutoScale); }));
                 else
                     this.rd.Connect(this.Favorite.ServerName, this.Favorite.VncDisplayNumber, this.Favorite.VncViewOnly, this.Favorite.VncAutoScale);
 
@@ -78,7 +77,7 @@ namespace Terminals.Connections
             }
             catch (Exception exc)
             {
-				Log.Error("Error occured while connecting to the VNC server.", exc);
+                Log.Error("Error occured while connecting to the VNC server.", exc);
                 return this.connected = false;
             }
         }
@@ -102,7 +101,7 @@ namespace Terminals.Connections
             try
             {
                 this.connected = true;
-                RemoteDesktop remoteDesktop = (RemoteDesktop) sender;
+                RemoteDesktop remoteDesktop = (RemoteDesktop)sender;
                 remoteDesktop.Visible = true;
                 remoteDesktop.BringToFront();
                 remoteDesktop.FullScreenUpdate();
@@ -111,7 +110,7 @@ namespace Terminals.Connections
             catch (Exception ex)
             {
                 Log.Fatal(
-					string.Format("Terminals was unable to create the {0} connection.", this.Favorite.Protocol),
+                    string.Format("Terminals was unable to create the {0} connection.", this.Favorite.Protocol),
                     ex);
             }
             // Change the Form's title to match desktop name
@@ -130,7 +129,7 @@ namespace Terminals.Connections
             catch (Exception ex)
             {
                 Log.Error(
-					string.Format("Unable to disconnect form the {0} connection named \"{1}\".", this.Favorite.Protocol,
+                    string.Format("Unable to disconnect form the {0} connection named \"{1}\".", this.Favorite.Protocol,
                                   this.Favorite.Name), ex);
             }
 

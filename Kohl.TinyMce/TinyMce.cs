@@ -1,14 +1,11 @@
-using System.Windows.Threading;
-
 namespace Kohl.TinyMce
 {
-    using System;
-    using System.Windows.Forms;
-    using System.Text;
-    using System.IO;
     using ICSharpCode.SharpZipLib.Zip;
-    
+    using System;
     using System.ComponentModel;
+    using System.IO;
+    using System.Text;
+    using System.Windows.Forms;
 
     /// <summary>
     /// TinyMCE editor encapsulated in a manged assembly.
@@ -110,7 +107,7 @@ namespace Kohl.TinyMce
                     Directory.CreateDirectory(GetWorkPath());
                 }
 
-               	
+
                 //const string tinyMceDirectory = "tinyMCE\\tinyMCE\\jscripts\\tiny_mce";
                 const string tinyMceDirectory = "tinymce\\js\\tinymce";
 
@@ -136,8 +133,8 @@ namespace Kohl.TinyMce
 
                 if (removeSaveButton && !string.IsNullOrWhiteSpace(mceSettings))
                 {
-                	// 	toolbar1: "save | newdocument fullpage | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | inserttime preview | forecolor backcolor | styleselect formatselect fontselect fontsizeselect",
-                	mceSettings = System.Text.RegularExpressions.Regex.Replace(mceSettings, @"(\s*toolbar[1-9][0-9]*[\w]*\s*:\s*""[\s|\w]*)(save[\s|]*)", "$1", System.Text.RegularExpressions.RegexOptions.Compiled);
+                    // 	toolbar1: "save | newdocument fullpage | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | inserttime preview | forecolor backcolor | styleselect formatselect fontselect fontsizeselect",
+                    mceSettings = System.Text.RegularExpressions.Regex.Replace(mceSettings, @"(\s*toolbar[1-9][0-9]*[\w]*\s*:\s*""[\s|\w]*)(save[\s|]*)", "$1", System.Text.RegularExpressions.RegexOptions.Compiled);
                 }
             }
         }
@@ -274,35 +271,35 @@ namespace Kohl.TinyMce
                 }
             }
         }
-        
+
         public void Save()
         {
-        	object result = InvokeScript("if (typeof tinyMCE != 'undefined') { return tinyMCE.activeEditor.getContent();}");
-        	
+            object result = InvokeScript("if (typeof tinyMCE != 'undefined') { return tinyMCE.activeEditor.getContent();}");
+
             if (result != null)
-            	this.Text = result.ToString();
+                this.Text = result.ToString();
         }
-        
+
         private object InvokeScript(string script)
         {
-        	HtmlDocument document = null;
+            HtmlDocument document = null;
 
             if (webBrowser.InvokeRequired)
                 webBrowser.Invoke(new MethodInvoker(delegate { document = webBrowser.Document; }));
             else
                 document = webBrowser.Document;
-        	
+
             HtmlElement head = document.GetElementsByTagName("head")[0];
             HtmlElement scriptElement = document.CreateElement("script");
-            
+
             string fn = GetScriptFunctionName(ref script);
-            
+
             scriptElement.SetAttribute("text", script);
             head.AppendChild(scriptElement);
-            
+
             return document.InvokeScript(fn);
         }
-        
+
         private string GetScriptFunctionName(ref string script)
         {
             string functionName = "FN_" + Guid.NewGuid().ToString().Replace("-", "");
@@ -321,7 +318,7 @@ namespace Kohl.TinyMce
 
             return functionName;
         }
-        
+
         void bw_DoWork(object sender, DoWorkEventArgs e)
         {
             do
@@ -408,7 +405,7 @@ namespace Kohl.TinyMce
             else
                 document = webBrowser.Document;
 
-			dynamic domdocument = document.DomDocument;
+            dynamic domdocument = document.DomDocument;
 
             dynamic element = null;
 
@@ -420,7 +417,7 @@ namespace Kohl.TinyMce
             {
                 return;
             }
-           
+
             if (element != null)
             {
                 string innerText = string.Empty;

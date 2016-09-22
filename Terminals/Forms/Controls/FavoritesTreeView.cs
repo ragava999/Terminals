@@ -1,16 +1,11 @@
 ﻿namespace Terminals.Forms.Controls
 {
+    using Configuration.Files.Main.Settings;
+    using Connection.Manager;
+    using Kohl.Framework.Converters;
     using System.ComponentModel;
     using System.Drawing;
-    using System.Linq;
     using System.Windows.Forms;
-    using Kohl.Framework.Converters;
-
-    using Configuration.Files.Main.Favorites;
-    using Configuration.Files.Main.Settings;
-    using Connection;
-
-    using Terminals.Connection.Manager;
 
     /// <summary>
     ///     Treeview in main window to present favorites organized by Tags

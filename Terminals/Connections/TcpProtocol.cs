@@ -69,7 +69,7 @@ namespace Terminals.Connections
 
         private void OnRead(IAsyncResult ar)
         {
-            State s = (State) ar.AsyncState;
+            State s = (State)ar.AsyncState;
             try
             {
                 int n = s.stream.EndRead(ar);

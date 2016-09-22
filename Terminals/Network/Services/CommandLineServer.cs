@@ -13,7 +13,7 @@ namespace Terminals.Network.Services
             : base(new CommandLineService(mainForm), new Uri(BASE_ADDRESS))
 
         {
-            this.AddServiceEndpoint(typeof (ICommandLineService), new NetNamedPipeBinding(), BASE_ADDRESS);
+            this.AddServiceEndpoint(typeof(ICommandLineService), new NetNamedPipeBinding(), BASE_ADDRESS);
         }
 
         public static ICommandLineService CreateClient()

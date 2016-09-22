@@ -1,24 +1,16 @@
-using Terminals.Connection.Manager;
-
 namespace Terminals.Connections
 {
-    // .NET namespace
+    using AxWFICALib;
+    using Configuration.Files.Main.Favorites;
+    using Connection;
+    using Kohl.Framework.Info;
+    using Kohl.Framework.Logging;
+    using Properties;
     using System;
     using System.Collections.Generic;
     using System.Drawing;
     using System.IO;
     using System.Windows.Forms;
-
-    // ICA namespace
-    using AxWFICALib;
-
-    // Terminals and framework namespaces
-    using Kohl.Framework.Info;
-
-    using Kohl.Framework.Logging;
-    using Configuration.Files.Main.Favorites;
-    using Connection;
-    using Properties;
 
     public class ICAConnection : Connection
     {
@@ -28,7 +20,7 @@ namespace Terminals.Connections
 
         protected override Image[] images
         {
-            get { return new Image[] {Resources.CITRIX}; }
+            get { return new Image[] { Resources.CITRIX }; }
         }
 
         public override ushort Port
@@ -57,8 +49,8 @@ namespace Terminals.Connections
                 this.iIcaClient = new AxICAClient();
 
                 // Register the event callbacks
-                ((Control) this.iIcaClient).DragEnter += this.ICAConnection_DragEnter;
-                ((Control) this.iIcaClient).DragDrop += this.ICAConnection_DragDrop;
+                ((Control)this.iIcaClient).DragEnter += this.ICAConnection_DragEnter;
+                ((Control)this.iIcaClient).DragDrop += this.ICAConnection_DragDrop;
                 this.iIcaClient.OnDisconnect += this.iIcaClient_OnDisconnect;
 
                 // Embed the control
@@ -122,7 +114,7 @@ namespace Terminals.Connections
                 //Set Server locator
                 this.iIcaClient.BrowserProtocol = "UDP";
                 this.iIcaClient.TCPBrowserAddress = this.Favorite.ServerName;
-                    // this is a metaframe server that has a UDP listener running.
+                // this is a metaframe server that has a UDP listener running.
 
                 // Set the protocol and timeout
                 this.iIcaClient.TransportDriver = "TCP/IP";
@@ -138,11 +130,11 @@ namespace Terminals.Connections
                 }
 
                 this.InvokeIfNecessary(() => this.Text = "Connecting to the Citrix ICA server ...");
-                
+
                 this.iIcaClient.Connect();
 
                 this.InvokeIfNecessary(() => this.iIcaClient.Focus());
-                
+
                 return this.connected = true;
             }
             catch (Exception ex)
@@ -162,9 +154,9 @@ namespace Terminals.Connections
 
         private void ICAConnection_DragDrop(object sender, DragEventArgs e)
         {
-            string[] files = (string[]) e.Data.GetData(DataFormats.FileDrop);
+            string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
             string desktopShare = this.GetDesktopShare();
-            
+
             if (String.IsNullOrEmpty(desktopShare))
             {
                 MessageBox.Show(this, "A desktop share was not defined for this connection. Please define a share in the connection properties window (under the Local Resources tab).",

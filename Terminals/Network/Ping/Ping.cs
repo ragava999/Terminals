@@ -1,3 +1,4 @@
+using Kohl.Framework.Logging;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -7,8 +8,6 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
-
-using Kohl.Framework.Logging;
 using ZedGraph;
 using Timer = System.Threading.Timer;
 
@@ -102,9 +101,7 @@ namespace Terminals.Network.Ping
                         this.destination = list[0].ToString();
 
                         IPAddress ip;
-                        this.hostName = (IPAddress.TryParse(this.TextHost.Text, out ip))
-                                            ? this.destination
-                                            : Dns.GetHostEntry(this.TextHost.Text).HostName;
+                        this.hostName = (IPAddress.TryParse(this.TextHost.Text, out ip)) ? this.destination : Dns.GetHostEntry(this.TextHost.Text).HostName;
 
                         this.counter = 1;
                         this.currentDelay = (Int32) this.DelayNumericUpDown.Value;

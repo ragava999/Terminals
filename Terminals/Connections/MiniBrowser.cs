@@ -10,21 +10,15 @@ namespace Terminals.Connections
     using System.Text;
     using System.Windows.Forms;
     using Microsoft.Win32;
-	using Terminals.CommandLine;
-    
-    #if GECKO
-	// Gecko namespaces
-	using Gecko;
-	using Gecko.DOM;
-	using Gecko.IO;
-    #endif
 
-
-    // Terminals and framework namespaces
-    using Kohl.Framework.Info;
+#if GECKO
+    // Gecko namespaces
+    using Gecko;
+    using Gecko.DOM;
+    using Gecko.IO;
+#endif
 
     using Configuration.Files.Main.Favorites;
-    using Connection;
     using Properties;
 
     [PermissionSet(SecurityAction.PermitOnly, Name = "FullTrust")]
@@ -47,11 +41,11 @@ namespace Terminals.Connections
         private BrowserCredentials browserCredential = new BrowserCredentials();
         private BrowserType browserType = BrowserType.InternetExplorer;
 
-        
-        #if GECKO
+
+#if GECKO
         private GeckoWebBrowser firefox;
-        #endif
-        
+#endif
+
         private string homeUrl = string.Empty;
         private IE internetExplorer;
 
@@ -97,7 +91,7 @@ namespace Terminals.Connections
                 this.internetExplorer = null;
                 base.Dispose();
             }
-            #if GECKO
+#if GECKO
             else if (this.firefox != null)
             {
                 this.firefox.Stop();
@@ -105,9 +99,9 @@ namespace Terminals.Connections
                 this.firefox = null;
                 base.Dispose();
             }
-            #endif
+#endif
         }
-			
+
         public event EventHandler BackActivated
         {
             add { this.backButton.Click += value; }
@@ -158,7 +152,7 @@ namespace Terminals.Connections
             this.Dispose();
         }
 
-        #if IEWORKAROUND
+#if IEWORKAROUND
         [System.Runtime.InteropServices.DllImport("urlmon.dll", CharSet = System.Runtime.InteropServices.CharSet.Ansi)]
 		private static extern int UrlMkSetSessionOption(int dwOption, string pBuffer, int dwBufferLength, int dwReserved);
 		const int URLMON_OPTION_USERAGENT = 0x10000001;
@@ -180,143 +174,143 @@ namespace Terminals.Connections
 	    
 	    const string IE10 = "Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; Trident/6.0)";
 	    const string IE11 = "Mozilla/5.0 (compatible, MSIE 11, Windows NT 6.3; Trident/7.0; rv:11.0) like Gecko";
-	   #endif
-	   
-	   public enum BrowserEmulationVersion
-		{
-		  Default = 0,
-		  Version7 = 7000,
-		  Version8 = 8000,
-		  Version8Standards = 8888,
-		  Version9 = 9000,
-		  Version9Standards = 9999,
-		  Version10 = 10000,
-		  Version10Standards = 10001,
-		  Version11 = 11000,
-		  Version11Edge = 11001
-		}
-	   
-	   
-	   // Code taken from http://www.codeproject.com/Articles/793687/Configuring-the-emulation-mode-of-an-Internet-Expl
-	   // Copyright belongs to the orignal author
-	   private const string InternetExplorerRootKey = @"Software\Microsoft\Internet Explorer";
-	   private const string BrowserEmulationKey = InternetExplorerRootKey + @"\Main\FeatureControl\FEATURE_BROWSER_EMULATION";
-	   
-	   public static bool SetBrowserEmulationVersion(BrowserEmulationVersion browserEmulationVersion)
-		{
-		  bool result;
-		
-		  result = false;
-		
-		  try
-		  {
-		    RegistryKey key;
-		
-		    key = Registry.CurrentUser.OpenSubKey(BrowserEmulationKey, true);
-		
-		    if (key != null)
-		    {
-		      string programName;
-		
-		      programName = Path.GetFileName(Environment.GetCommandLineArgs()[0]);
-		
-		      if (browserEmulationVersion != BrowserEmulationVersion.Default)
-		      {
-		        // if it's a valid value, update or create the value
-		        key.SetValue(programName, (int)browserEmulationVersion, RegistryValueKind.DWord);
-		      }
-		      else
-		      {
-		        // otherwise, remove the existing value
-		        key.DeleteValue(programName, false);
-		      }
-		
-		      result = true;
-		    }
-		  }
-		  catch (Exception ex)
-		  {
-		  	Kohl.Framework.Logging.Log.Error("Unable to set browser emulation mode", ex);
-		  }
-		
-		  return result;
-		}
-		
-	   public static int GetInternetExplorerMajorVersion()
-		{
-		  int result;
-		
-		  result = 0;
-		
-		  try
-		  {
-		    RegistryKey key;
-		
-		    key = Registry.LocalMachine.OpenSubKey(InternetExplorerRootKey);
-		
-		    if (key != null)
-		    {
-		      object value;
-		
-		      value = key.GetValue("svcVersion", null) ?? key.GetValue("Version", null);
-		
-		      if (value != null)
-		      {
-		        string version;
-		        int separator;
-		
-		        version = value.ToString();
-		        separator = version.IndexOf('.');
-		        if (separator != -1)
-		        {
-		          int.TryParse(version.Substring(0, separator), out result);
-		        }
-		      }
-		    }
-		  }
-		  catch (Exception ex)
-		  {
-		  	Kohl.Framework.Logging.Log.Error("Unable to set browser emulation mode", ex);
-		  }
-		
-		  return result;
-		}
-	   
-		public static bool SetBrowserEmulationVersion()
-		{
-		  int ieVersion;
-		  BrowserEmulationVersion emulationCode;
-		
-		  ieVersion = GetInternetExplorerMajorVersion();
-		
-		  Kohl.Framework.Logging.Log.Info("Setting browser emulation mode to version " + ieVersion);
-		  
-		  if (ieVersion >= 11)
-		  {
-		    emulationCode = BrowserEmulationVersion.Version11;
-		  }
-		  else
-		  {
-		    switch (ieVersion)
-		    {
-		      case 10:
-		        emulationCode = BrowserEmulationVersion.Version10;
-		        break;
-		      case 9:
-		        emulationCode = BrowserEmulationVersion.Version9;
-		        break;
-		      case 8:
-		        emulationCode = BrowserEmulationVersion.Version8;
-		        break;
-		      default:
-		        emulationCode = BrowserEmulationVersion.Version7;
-		        break;
-		    }
-		  }
-		
-		  return SetBrowserEmulationVersion(emulationCode);
-		}
-	   
+#endif
+
+        public enum BrowserEmulationVersion
+        {
+            Default = 0,
+            Version7 = 7000,
+            Version8 = 8000,
+            Version8Standards = 8888,
+            Version9 = 9000,
+            Version9Standards = 9999,
+            Version10 = 10000,
+            Version10Standards = 10001,
+            Version11 = 11000,
+            Version11Edge = 11001
+        }
+
+
+        // Code taken from http://www.codeproject.com/Articles/793687/Configuring-the-emulation-mode-of-an-Internet-Expl
+        // Copyright belongs to the orignal author
+        private const string InternetExplorerRootKey = @"Software\Microsoft\Internet Explorer";
+        private const string BrowserEmulationKey = InternetExplorerRootKey + @"\Main\FeatureControl\FEATURE_BROWSER_EMULATION";
+
+        public static bool SetBrowserEmulationVersion(BrowserEmulationVersion browserEmulationVersion)
+        {
+            bool result;
+
+            result = false;
+
+            try
+            {
+                RegistryKey key;
+
+                key = Registry.CurrentUser.OpenSubKey(BrowserEmulationKey, true);
+
+                if (key != null)
+                {
+                    string programName;
+
+                    programName = Path.GetFileName(Environment.GetCommandLineArgs()[0]);
+
+                    if (browserEmulationVersion != BrowserEmulationVersion.Default)
+                    {
+                        // if it's a valid value, update or create the value
+                        key.SetValue(programName, (int)browserEmulationVersion, RegistryValueKind.DWord);
+                    }
+                    else
+                    {
+                        // otherwise, remove the existing value
+                        key.DeleteValue(programName, false);
+                    }
+
+                    result = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                Kohl.Framework.Logging.Log.Error("Unable to set browser emulation mode", ex);
+            }
+
+            return result;
+        }
+
+        public static int GetInternetExplorerMajorVersion()
+        {
+            int result;
+
+            result = 0;
+
+            try
+            {
+                RegistryKey key;
+
+                key = Registry.LocalMachine.OpenSubKey(InternetExplorerRootKey);
+
+                if (key != null)
+                {
+                    object value;
+
+                    value = key.GetValue("svcVersion", null) ?? key.GetValue("Version", null);
+
+                    if (value != null)
+                    {
+                        string version;
+                        int separator;
+
+                        version = value.ToString();
+                        separator = version.IndexOf('.');
+                        if (separator != -1)
+                        {
+                            int.TryParse(version.Substring(0, separator), out result);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Kohl.Framework.Logging.Log.Error("Unable to set browser emulation mode", ex);
+            }
+
+            return result;
+        }
+
+        public static bool SetBrowserEmulationVersion()
+        {
+            int ieVersion;
+            BrowserEmulationVersion emulationCode;
+
+            ieVersion = GetInternetExplorerMajorVersion();
+
+            Kohl.Framework.Logging.Log.Info("Setting browser emulation mode to version " + ieVersion);
+
+            if (ieVersion >= 11)
+            {
+                emulationCode = BrowserEmulationVersion.Version11;
+            }
+            else
+            {
+                switch (ieVersion)
+                {
+                    case 10:
+                        emulationCode = BrowserEmulationVersion.Version10;
+                        break;
+                    case 9:
+                        emulationCode = BrowserEmulationVersion.Version9;
+                        break;
+                    case 8:
+                        emulationCode = BrowserEmulationVersion.Version8;
+                        break;
+                    default:
+                        emulationCode = BrowserEmulationVersion.Version7;
+                        break;
+                }
+            }
+
+            return SetBrowserEmulationVersion(emulationCode);
+        }
+
         private void InitializeBrowser()
         {
             this.Dispose();
@@ -324,21 +318,21 @@ namespace Terminals.Connections
             switch (this.browserType)
             {
                 case BrowserType.InternetExplorer:
-            		this.SetIsLoading(true);
-            		
-            		SetBrowserEmulationVersion();
-            		
+                    this.SetIsLoading(true);
+
+                    SetBrowserEmulationVersion();
+
                     this.internetExplorer = new IE
-                                                {
-                                                    Dock = DockStyle.Fill,
-                                                    // Never change this to true
-                                                    // There's a bug in IE!
-                                                    ScriptErrorsSuppressed = false
-                                                };
+                    {
+                        Dock = DockStyle.Fill,
+                        // Never change this to true
+                        // There's a bug in IE!
+                        ScriptErrorsSuppressed = false
+                    };
 
                     this.internetExplorer.DocumentCompleted += this.WebBrowser_DocumentCompleted;
-                    
-                    #if IEWORKAROUND
+
+#if IEWORKAROUND
                     dynamic activeXIE = this.internetExplorer.ActiveXInstance;
                     activeXIE.BeforeNavigate2 += new BeforeNavigate2((object pDisp,
 						ref dynamic url,
@@ -367,11 +361,11 @@ namespace Terminals.Connections
 							}
 							*/        
 						});
-                   #endif 
-                   
+#endif
+
                     this.browserContainer.Controls.Add(this.internetExplorer);
                     break;
-                #if GECKO
+#if GECKO
                 case BrowserType.Firefox:
                     // Workaround
                     this.SyncCerts();
@@ -395,11 +389,11 @@ namespace Terminals.Connections
                     pref.SetBoolPref("network.http.use-cache", false);
 
                     // disalbe memory caching
-                    pref.SetBoolPref("browser.cache.memory.enable", false);                    
+                    pref.SetBoolPref("browser.cache.memory.enable", false);
 
                     // Desktop Notification
                     pref.SetBoolPref("notification.feature.enabled", true);
-                    
+
                     // WebSMS
                     pref.SetBoolPref("dom.sms.enabled", true);
                     pref.SetCharPref("dom.sms.whitelist", "");
@@ -415,16 +409,16 @@ namespace Terminals.Connections
 
                     // WebSettings
                     pref.SetBoolPref("dom.mozSettings.enabled", true);
-                    
+
                     pref.SetBoolPref("network.jar.open-unsafe-types", true);
-                    pref.SetBoolPref("security.warn_entering_secure",    false);
-                    pref.SetBoolPref("security.warn_entering_weak",      false);
+                    pref.SetBoolPref("security.warn_entering_secure", false);
+                    pref.SetBoolPref("security.warn_entering_weak", false);
                     pref.SetBoolPref("security.warn_leaving_secure", false);
                     pref.SetBoolPref("security.warn_viewing_mixed", false);
                     pref.SetBoolPref("security.warn_submit_insecure", false);
-                    pref.SetIntPref("security.ssl.warn_missing_rfc5746",  1);
+                    pref.SetIntPref("security.ssl.warn_missing_rfc5746", 1);
                     pref.SetBoolPref("security.ssl.enable_false_start", false);
-                    pref.SetBoolPref("security.enable_ssl3",             true);
+                    pref.SetBoolPref("security.enable_ssl3", true);
                     pref.SetBoolPref("security.enable_tls", true);
                     pref.SetBoolPref("security.enable_tls_session_tickets", true);
                     pref.SetIntPref("privacy.popups.disable_from_plugins", 2);
@@ -437,18 +431,18 @@ namespace Terminals.Connections
                     pref.SetBoolPref("browser.fixup.hide_user_pass", false);
                     pref.SetBoolPref("privacy.item.passwords", true);
 
-                    this.firefox = new GeckoWebBrowser {Dock = DockStyle.Fill, AllowDrop = true};
+                    this.firefox = new GeckoWebBrowser { Dock = DockStyle.Fill, AllowDrop = true };
                     this.SetIsLoading(true);
                     this.firefox.DocumentCompleted += this.FireFox_DocumentCompleted;
                     this.browserContainer.Controls.Add(this.firefox);
-                    
+
                     break;
-                #endif
+#endif
             }
 
-            
+
         }
-        
+
         /// <summary>
         ///     Syncs the cert_override.txt from FireFox, Mozilla, etc.
         /// </summary>
@@ -517,7 +511,7 @@ namespace Terminals.Connections
             }
         }
 
-        #if GECKO
+#if GECKO
         private void FireFox_DocumentCompleted(object sender, EventArgs e)
         {
             this.SetIsLoading(false);
@@ -531,27 +525,27 @@ namespace Terminals.Connections
 
             // don't set the url in the textbox if it contains javascript code
             if (browser != null && browser.Url != null && !string.IsNullOrWhiteSpace(browser.Url.ToString()))
-            	if (!browser.Url.ToString().Trim().StartsWith("javascript:", StringComparison.InvariantCultureIgnoreCase))
-					urlTextBox.Text = browser.Url.ToString();
-			
+                if (!browser.Url.ToString().Trim().StartsWith("javascript:", StringComparison.InvariantCultureIgnoreCase))
+                    urlTextBox.Text = browser.Url.ToString();
+
             this.FillFormFields();
         }
-        #endif
+#endif
 
         private void WebBrowser_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
-        {        	
+        {
             if (e.Url.AbsoluteUri.Equals("about:blank"))
             {
                 return;
             }
 
             this.SetIsLoading(false);
-            
+
             // don't set the url in the textbox if it contains javascript code
             if (e != null && e.Url != null && !string.IsNullOrWhiteSpace(e.Url.AbsoluteUri))
-            	if (!e.Url.AbsoluteUri.Trim().StartsWith("javascript:", StringComparison.InvariantCultureIgnoreCase))
-					urlTextBox.Text = e.Url.AbsoluteUri;
-			
+                if (!e.Url.AbsoluteUri.Trim().StartsWith("javascript:", StringComparison.InvariantCultureIgnoreCase))
+                    urlTextBox.Text = e.Url.AbsoluteUri;
+
             this.FillFormFields();
         }
 
@@ -675,7 +669,7 @@ namespace Terminals.Connections
                             }
                         }
                     }
-                    else if (value == ConnectionManager.ParsingConstants.Redirect & redirected == false) 
+                    else if (value == ConnectionManager.ParsingConstants.Redirect & redirected == false)
                     {
                         redirected = true;
                         this.Home = id;
@@ -690,13 +684,13 @@ namespace Terminals.Connections
                         HtmlElement scriptElement = internetExplorer.Document.CreateElement("script");
                         scriptElement.SetAttribute("text", script);
                         head.AppendChild(scriptElement);
-                       
+
                         this.internetExplorer.Document.InvokeScript(functionName);
                     }
                 }
                 #endregion
                 #region FF
-                #if GECKO
+#if GECKO
                 else if (this.browserType == BrowserType.Firefox)
                 {
                     if (this.firefox.Document != null)
@@ -729,9 +723,9 @@ namespace Terminals.Connections
                             using (AutoJSContext context = new AutoJSContext(firefox.Window.JSContext))
                             {
                                 string result;
-                                
+
                                 // by id
-                                if(!useName)
+                                if (!useName)
                                     context.EvaluateScript(string.Format("document.getElementById('{0}').value = '{1}';", id, this.ParseValue(value)), out result);
                                 // by name
                                 else
@@ -814,14 +808,14 @@ namespace Terminals.Connections
                                 prevScript = script;
 
                             using (AutoJSContext context = new AutoJSContext(firefox.Window.JSContext))
-                            {                               
+                            {
                                 string result;
                                 context.EvaluateScript(script, out result);
                             }
                         }
                     }
                 }
-                #endif
+#endif
                 #endregion
             }
         }
@@ -868,8 +862,8 @@ namespace Terminals.Connections
         //     be retrieved from the underlying ActiveX WebBrowser control.
         public void Navigate(string urlString)
         {
-        	this.SetIsLoading(true);
-        	
+            this.SetIsLoading(true);
+
             urlString = ParseValue(urlString);
 
             if (!string.IsNullOrEmpty(urlString))
@@ -879,21 +873,21 @@ namespace Terminals.Connections
                 this.homeUrl = this.urlTextBox.Text;
 
             string url = this.urlTextBox.Text;
-            
+
             if (this.browserType == BrowserType.InternetExplorer)
             {
-                 if (this.BrowserCredential.Authentication == BrowserAuthentication.Basic)
-                 {
-                     Uri uri = new Uri(url);
+                if (this.BrowserCredential.Authentication == BrowserAuthentication.Basic)
+                {
+                    Uri uri = new Uri(url);
 
-                     string authHdr = "Authorization: Basic " + Convert.ToBase64String(Encoding.ASCII.GetBytes(this.browserCredential.UserName + ":" + this.browserCredential.Password)) + "\r\n";
+                    string authHdr = "Authorization: Basic " + Convert.ToBase64String(Encoding.ASCII.GetBytes(this.browserCredential.UserName + ":" + this.browserCredential.Password)) + "\r\n";
 
-                     this.internetExplorer.Navigate(uri, null, null, authHdr);
-                 }
-                 else
+                    this.internetExplorer.Navigate(uri, null, null, authHdr);
+                }
+                else
                     this.internetExplorer.Navigate(url);
             }
-            #if GECKO
+#if GECKO
             else if (this.browserType == BrowserType.Firefox)
             {
                 MimeInputStream headers = null;
@@ -909,17 +903,17 @@ namespace Terminals.Connections
 
                 this.firefox.Navigate(url, GeckoLoadFlags.BypassCache, null, null, headers);
             }
-            #endif
+#endif
         }
 
         private void backButton_Click(object sender, EventArgs e)
         {
             if (this.browserType == BrowserType.InternetExplorer)
                 this.internetExplorer.GoBack();
-            #if GECKO
+#if GECKO
             else
                 this.firefox.GoBack();
-            #endif
+#endif
         }
 
         private void homeButton_Click(object sender, EventArgs e)
@@ -931,20 +925,20 @@ namespace Terminals.Connections
 
             if (this.browserType == BrowserType.InternetExplorer)
                 this.internetExplorer.Navigate(this.Home);
-           	#if GECKO
+#if GECKO
             else
                 this.firefox.Navigate(this.Home);
-            #endif
+#endif
         }
 
         private void forwardButton_Click(object sender, EventArgs e)
         {
             if (this.browserType == BrowserType.InternetExplorer)
                 this.internetExplorer.GoForward();
-            #if GECKO
+#if GECKO
             else
                 this.firefox.GoForward();
-            #endif
+#endif
         }
 
         private void HandleGoButtonClick(object sender, EventArgs e)

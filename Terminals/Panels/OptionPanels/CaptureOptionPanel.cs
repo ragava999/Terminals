@@ -1,7 +1,5 @@
 ﻿using System;
-using System.IO;
 using System.Windows.Forms;
-
 using Terminals.Configuration.Files.Main.Settings;
 using Terminals.Connection.Panels.OptionPanels;
 

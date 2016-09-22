@@ -1,8 +1,7 @@
+using Kohl.Framework.Logging;
 using System;
 using System.Collections.Generic;
 using System.IO;
-
-using Kohl.Framework.Logging;
 using Terminals.Configuration.Files.Main.Favorites;
 
 namespace Terminals.ExportImport.Import
@@ -57,7 +56,7 @@ namespace Terminals.ExportImport.Import
                 if (File.Exists(filename))
                 {
                     string[] lines = File.ReadAllLines(filename);
-                    FavoriteConfigurationElement newFavorite = new FavoriteConfigurationElement {Name = name};
+                    FavoriteConfigurationElement newFavorite = new FavoriteConfigurationElement { Name = name };
                     ImportLines(newFavorite, lines);
                     imported.Add(newFavorite);
                 }

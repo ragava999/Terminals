@@ -1,9 +1,9 @@
 namespace Terminals.SSHClient
 {
-    using System;
-    using System.Windows.Forms;
     using Configuration.Files.Main.Favorites;
     using Configuration.Files.Main.Keys;
+    using System;
+    using System.Windows.Forms;
 
     /// <summary>
     ///     Description of Preferences.
@@ -96,7 +96,7 @@ namespace Terminals.SSHClient
 
         private void GenerateSSH2Key()
         {
-            KeyGenForm dlg = new KeyGenForm {KeyTag = this.comboBoxKey.Text};
+            KeyGenForm dlg = new KeyGenForm { KeyTag = this.comboBoxKey.Text };
             dlg.ShowDialog();
             if (dlg.Key != null)
             {
@@ -124,7 +124,7 @@ namespace Terminals.SSHClient
 
         private void comboBoxKey_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string tag = (string) this.comboBoxKey.SelectedItem;
+            string tag = (string)this.comboBoxKey.SelectedItem;
             string keytext = this.keysSection.Keys[tag].Key;
             SSH2UserAuthKey key = SSH2UserAuthKey.FromBase64String(keytext);
             this.openSSHTextBox.Text = key.PublicPartInOpenSSHStyle() + " " + tag;
@@ -132,7 +132,7 @@ namespace Terminals.SSHClient
 
         private void ButtonSSH1CheckedChanged(object sender, EventArgs e)
         {
-			// TODO: KOHL> Import PUTTY keys!
+            // TODO: KOHL> Import PUTTY keys!
             this.buttonGenerateKey.Text = this.buttonSSH1.Checked ? "Load" : "New";
         }
     }

@@ -18,8 +18,8 @@ namespace Terminals.Connections
             this.stream = s;
             this.local = new Options();
             this.remote = new Options();
-            this.local.supported[(int) OPT.TTYPE] = true; // terminal type
-            this.remote.supported[(int) OPT.ECHO] = true; // echo
+            this.local.supported[(int)OPT.TTYPE] = true; // terminal type
+            this.remote.supported[(int)OPT.ECHO] = true; // echo
         }
 
         #endregion
@@ -56,14 +56,17 @@ namespace Terminals.Connections
         private readonly NetworkStream stream;
         private string terminalType;
 
-		public string TerminalType {
-			get {
-				return terminalType;
-			}
-			set {
-				terminalType = value;
-			}
-		}
+        public string TerminalType
+        {
+            get
+            {
+                return terminalType;
+            }
+            set
+            {
+                terminalType = value;
+            }
+        }
 
         private bool first_tx;
 
@@ -98,8 +101,8 @@ namespace Terminals.Connections
             if (this.first_tx)
             {
                 this.first_tx = false;
-                if (this.remote.in_effect[(byte) OPT.ECHO] != tristate.on)
-                    this.TelnetCmd(CMD.DO, (byte) OPT.ECHO);
+                if (this.remote.in_effect[(byte)OPT.ECHO] != tristate.on)
+                    this.TelnetCmd(CMD.DO, (byte)OPT.ECHO);
             }
             int n = 0;
             // count the chars that look like IACs
@@ -122,7 +125,7 @@ namespace Terminals.Connections
                 for (int i = 0; i < length; i++)
                 {
                     byte b = data[offset + i];
-                    if (b == (byte) CMD.IAC)
+                    if (b == (byte)CMD.IAC)
                     {
                         this.stream.WriteByte(b);
                     }
@@ -145,27 +148,27 @@ namespace Terminals.Connections
                     {
                         break;
                     }
-                    if ((byte) b == (byte) CMD.IAC)
+                    if ((byte)b == (byte)CMD.IAC)
                     {
                         int cmd = this.stream.ReadByte();
                         if (cmd < 0)
                             break;
-                        if ((byte) cmd == (byte) CMD.IAC)
+                        if ((byte)cmd == (byte)CMD.IAC)
                         {
-                            m.WriteByte((byte) cmd);
+                            m.WriteByte((byte)cmd);
                         }
                         else
                         {
-                            this.process_telnet_command((byte) cmd, this.stream);
+                            this.process_telnet_command((byte)cmd, this.stream);
                         }
                     }
                     else
                     {
-                        m.WriteByte((byte) b);
+                        m.WriteByte((byte)b);
                     }
                 }
             }
-            return (int) m.Position;
+            return (int)m.Position;
         }
 
         public override void SetLength(long l)
@@ -185,11 +188,11 @@ namespace Terminals.Connections
 
         private void process_telnet_command(byte b, Stream s)
         {
-            
+
             if (b < 240)
                 return; // error
             int option = s.ReadByte();
-            switch ((CMD) b)
+            switch ((CMD)b)
             {
                 case CMD.SE:
                 case CMD.NOP:
@@ -211,12 +214,12 @@ namespace Terminals.Connections
                         if (this.remote.in_effect[option] != tristate.on)
                         {
                             this.remote.in_effect[option] = tristate.on;
-                            this.TelnetCmd(CMD.DO, (byte) option);
+                            this.TelnetCmd(CMD.DO, (byte)option);
                         }
                     }
                     else
                     {
-                        this.TelnetCmd(CMD.DONT, (byte) option);
+                        this.TelnetCmd(CMD.DONT, (byte)option);
                     }
                     break;
                 case CMD.WONT:
@@ -225,7 +228,7 @@ namespace Terminals.Connections
                         if (this.remote.in_effect[option] != tristate.off)
                         {
                             this.remote.in_effect[option] = tristate.off;
-                            this.TelnetCmd(CMD.DONT, (byte) option);
+                            this.TelnetCmd(CMD.DONT, (byte)option);
                         }
                     }
                     break;
@@ -235,13 +238,13 @@ namespace Terminals.Connections
                         if (this.local.in_effect[option] != tristate.on)
                         {
                             this.local.in_effect[option] = tristate.on;
-                            this.TelnetCmd(CMD.WILL, (byte) option);
+                            this.TelnetCmd(CMD.WILL, (byte)option);
                         }
                     }
                     else
                     {
                         this.local.in_effect[option] = tristate.off;
-                        this.TelnetCmd(CMD.WONT, (byte) option);
+                        this.TelnetCmd(CMD.WONT, (byte)option);
                     }
                     break;
                 case CMD.DONT:
@@ -250,7 +253,7 @@ namespace Terminals.Connections
                         if (this.local.in_effect[option] != tristate.off)
                         {
                             this.local.in_effect[option] = tristate.off;
-                            this.TelnetCmd(CMD.WONT, (byte) option);
+                            this.TelnetCmd(CMD.WONT, (byte)option);
                         }
                     }
                     break;
@@ -263,7 +266,7 @@ namespace Terminals.Connections
 
         private void TelnetCmd(CMD cmd, byte option)
         {
-            byte[] data = {(byte) CMD.IAC, (byte) cmd, option};
+            byte[] data = { (byte)CMD.IAC, (byte)cmd, option };
             this.stream.Write(data, 0, data.Length);
         }
 
@@ -272,14 +275,14 @@ namespace Terminals.Connections
             byte[] bval = (new ASCIIEncoding()).GetBytes(val);
             byte[] data = new byte[6 + val.Length];
             int i = 0;
-            data[i++] = (byte) CMD.IAC;
-            data[i++] = (byte) CMD.SB;
-            data[i++] = (byte) option;
+            data[i++] = (byte)CMD.IAC;
+            data[i++] = (byte)CMD.SB;
+            data[i++] = (byte)option;
             data[i++] = 0;
             bval.CopyTo(data, i);
             i += bval.Length;
-            data[i++] = (byte) CMD.IAC;
-            data[i++] = (byte) CMD.SE;
+            data[i++] = (byte)CMD.IAC;
+            data[i++] = (byte)CMD.SE;
             this.stream.Write(data, 0, data.Length);
         }
 
@@ -296,7 +299,7 @@ namespace Terminals.Connections
                 s.ReadByte();
                 return;
             }
-            switch ((OPT) option) // what happens if its undefined ?
+            switch ((OPT)option) // what happens if its undefined ?
             {
                 case OPT.TTYPE:
                     this.TelnetSendSubopt(OPT.TTYPE, this.terminalType);

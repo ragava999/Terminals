@@ -1,13 +1,11 @@
-﻿using System.Linq;
-
-namespace Terminals.Forms.Controls
+﻿namespace Terminals.Forms.Controls
 {
+    using Configuration.Files.Main.Favorites;
+    using Configuration.Files.Main.Settings;
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Windows.Forms;
-
-    using Terminals.Configuration.Files.Main.Favorites;
-    using Terminals.Configuration.Files.Main.Settings;
 
     /// <summary>
     ///     Calls import, asking user what to do, if there are duplicit items to import.
@@ -38,14 +36,14 @@ namespace Terminals.Forms.Controls
 
         private static void ShowImportResultMessage(Int32 importedItemsCount)
         {
-			string message = "1 item has been added to your favorites.";
+            string message = "1 item has been added to your favorites.";
 
             if (importedItemsCount > 1)
                 message =
-					String.Format("{0} items have been added to your favorites.",
+                    String.Format("{0} items have been added to your favorites.",
                                   importedItemsCount);
 
-			MessageBox.Show(message, "Terminals - Import result",
+            MessageBox.Show(message, "Terminals - Import result",
                             MessageBoxButtons.OK);
         }
 
@@ -97,9 +95,9 @@ namespace Terminals.Forms.Controls
                 overwriteResult =
                     MessageBox.Show(
                         String.Format(
-							"There are {0} connections to import, which already exist.\nDo you want to rename them?\nSelect\n   -> Yes to rename the newly imported items with \"{1}\" suffix\n   -> No to overwrite existing items\n   -> Cancel to interupt the import",
+                            "There are {0} connections to import, which already exist.\nDo you want to rename them?\nSelect\n   -> Yes to rename the newly imported items with \"{1}\" suffix\n   -> No to overwrite existing items\n   -> Cancel to interupt the import",
                             conflictingFavoritesCount, importSuffix),
-						"Terminals - conflicts found in import",
+                        "Terminals - conflicts found in import",
                         MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
             }
 

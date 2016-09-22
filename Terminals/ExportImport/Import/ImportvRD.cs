@@ -32,7 +32,7 @@ namespace Terminals.ExportImport.Import
                 using (MemoryStream sw = new MemoryStream(data))
                 {
                     if (sw.Position > 0 & sw.CanSeek) sw.Seek(0, SeekOrigin.Begin);
-                    XmlSerializer x = new XmlSerializer(typeof (vRDConfigurationFile));
+                    XmlSerializer x = new XmlSerializer(typeof(vRDConfigurationFile));
                     object results = x.Deserialize(sw);
 
                     List<Connection> connections = new List<Connection>();
@@ -202,7 +202,7 @@ namespace Terminals.ExportImport.Import
         private static FavoriteConfigurationElement ConvertVRDConnectionToLocal(
             Dictionary<string, vRDConfigurationFileCredentialsFolderCredentials> credentials, Connection con)
         {
-            FavoriteConfigurationElement fav = new FavoriteConfigurationElement {ServerName = con.ServerName};
+            FavoriteConfigurationElement fav = new FavoriteConfigurationElement { ServerName = con.ServerName };
 
             int p = 3389;
             int.TryParse(con.Port, out p);
@@ -234,7 +234,7 @@ namespace Terminals.ExportImport.Import
                     fav.Colors = Colors.Bit16;
                     break;
             }
-            
+
             fav.DesktopSize = DesktopSize.AutoScale;
             if (con.SeparateWindow == "true") fav.DesktopSize = DesktopSize.FullScreen;
 
@@ -335,7 +335,7 @@ namespace Terminals.ExportImport.Import
             Array.Copy(destinationArray, destinationArray.Length - 0x10, buffer4, 0, 0x10);
             Array.Copy(destinationArray, destinationArray.Length - 0x10, buffer4, 0x10, 0x10);
 
-            RijndaelManaged managed = new RijndaelManaged {KeySize = 0x100, IV = buffer3, Key = buffer4};
+            RijndaelManaged managed = new RijndaelManaged { KeySize = 0x100, IV = buffer3, Key = buffer4 };
 
             return managed;
         }
@@ -453,7 +453,7 @@ namespace Terminals.ExportImport.Import
 
             UnicodeEncoding encoding = new UnicodeEncoding();
 
-            return encoding.GetString(buffer, 0, count).TrimEnd(new[] {' '});
+            return encoding.GetString(buffer, 0, count).TrimEnd(new[] { ' ' });
         }
     }
 }

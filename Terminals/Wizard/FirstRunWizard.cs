@@ -1,10 +1,9 @@
+using Kohl.Framework.Info;
+using Kohl.Framework.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
-using Kohl.Framework.Info;
-using Kohl.Framework.Logging;
-using Terminals.Configuration;
 using Terminals.Configuration.Files.Main.Favorites;
 using Terminals.Configuration.Files.Main.Settings;
 using Terminals.Forms.Controls;
@@ -29,7 +28,7 @@ namespace Terminals.Wizard
 
         private void FirstRunWizard_Load(object sender, EventArgs e)
         {
-            IntroForm frm = new IntroForm {Dock = DockStyle.Fill};
+            IntroForm frm = new IntroForm { Dock = DockStyle.Fill };
             this.panel1.Controls.Add(frm);
             Settings.StartDelayedUpdate();
         }

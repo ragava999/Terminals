@@ -1,9 +1,9 @@
+using Kohl.Framework.Converters;
+using Kohl.Framework.Logging;
 using System;
 using System.Drawing;
+using System.Net.Sockets;
 using System.Windows.Forms;
-using Kohl.Framework.Converters;
-
-using Kohl.Framework.Logging;
 using Terminals.Configuration.Files.Main.Favorites;
 using Terminals.Configuration.Files.Main.Keys;
 using Terminals.Configuration.Files.Main.Settings;
@@ -11,10 +11,6 @@ using Terminals.Connection.Manager;
 using Terminals.Properties;
 using Terminals.SSHClient;
 using WalburySoftware;
-using System.Net;
-using System.Net.Sockets;
-using System.Text;
-using System.Linq;
 
 namespace Terminals.Connections
 {
@@ -27,7 +23,7 @@ namespace Terminals.Connections
 
         protected override Image[] images
         {
-            get { return new Image[] {Resources.TELNET}; }
+            get { return new Image[] { Resources.TELNET }; }
         }
 
         public override ushort Port
@@ -48,7 +44,7 @@ namespace Terminals.Connections
         {
             this.connected = false;
 
-			String protocol = "unknown";
+            String protocol = "unknown";
 
             try
             {
@@ -61,7 +57,7 @@ namespace Terminals.Connections
                     protocol = (this.Favorite.Ssh1) ? "SSH1" : "SSH2";
                 }
 
-                this.InvokeIfNecessary(delegate {this.term = new TerminalEmulator();});
+                this.InvokeIfNecessary(delegate { this.term = new TerminalEmulator(); });
 
                 this.Embed(this.term);
 
@@ -82,7 +78,7 @@ namespace Terminals.Connections
 
                 if (!this.Favorite.Credential.IsSetUserName || !this.Favorite.Credential.IsSetPassword)
                 {
-					Log.Fatal(string.Format("Please set user name and password in your {0} connection properties.", this.Favorite.Protocol.ToLower()));
+                    Log.Fatal(string.Format("Please set user name and password in your {0} connection properties.", this.Favorite.Protocol.ToLower()));
                     return false;
                 }
 
@@ -104,7 +100,7 @@ namespace Terminals.Connections
             }
             catch (Exception exc)
             {
-				Log.Fatal(string.Format("Terminals was unable to create the {0} connection.", protocol), exc);
+                Log.Fatal(string.Format("Terminals was unable to create the {0} connection.", protocol), exc);
                 return this.connected = false;
             }
         }
@@ -171,7 +167,7 @@ namespace Terminals.Connections
             catch (Exception ex)
             {
                 Log.Error(
-					string.Format("Unable to disconnect form the {0} connection named \"{1}\".", this.Favorite.Protocol,
+                    string.Format("Unable to disconnect form the {0} connection named \"{1}\".", this.Favorite.Protocol,
                                   this.Favorite.Name), ex);
             }
         }

@@ -1,7 +1,6 @@
 using System;
 using System.Windows.Forms;
 
-
 namespace Terminals.Network.NTP
 {
     public partial class NetworkTime : UserControl
@@ -23,8 +22,6 @@ namespace Terminals.Network.NTP
                 client = NTPClient.GetTime();
 
             this.propertyGrid1.SelectedObject = client;
-
-            
         }
 
         private void UpdateButton_Click(object sender, EventArgs e)

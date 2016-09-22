@@ -1,9 +1,9 @@
+using Kohl.Framework.Info;
+using Kohl.Framework.Lists;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
-using Kohl.Framework.Info;
-using Kohl.Framework.Lists;
 using Terminals.Configuration.Files.Main;
 using Terminals.Configuration.Files.Main.Favorites;
 using Terminals.Configuration.Files.Main.Settings;
@@ -274,7 +274,7 @@ namespace Terminals.Forms
             FavoriteConfigurationElement favorite = this.GetSelectedFavorite();
             if (favorite != null)
             {
-            	string input = "New Connection Name";
+                string input = "New Connection Name";
                 if (InputBox.Show(ref input) == DialogResult.OK && !string.IsNullOrEmpty(input))
                 {
                     this.CopySelectedFavorite(favorite, input);

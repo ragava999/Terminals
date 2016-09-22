@@ -1,5 +1,30 @@
 namespace Terminals
 {
+    using CommandLine;
+    using Configuration.Files.Credentials;
+    using Configuration.Files.History;
+    using Configuration.Files.Main.Favorites;
+    using Configuration.Files.Main.Groups;
+    using Configuration.Files.Main.Settings;
+    using Configuration.Files.Main.SpecialCommands;
+    using Connection;
+    using Connection.Manager;
+    using Connection.Native;
+    using Connection.Panels.OptionPanels;
+    using Connection.ScreenCapture;
+    using Connection.TabControl;
+    using Connections;
+    using ExportImport;
+    using Forms;
+    using Forms.Controls;
+    using Forms.Credentials;
+    using Forms.Render;
+    using Kohl.Framework.Info;
+    using Kohl.Framework.Logging;
+    using Kohl.Framework.WinForms;
+    using Network.Services;
+    using Panels;
+    using Properties;
     using System;
     using System.ComponentModel;
     using System.Diagnostics;
@@ -9,53 +34,24 @@ namespace Terminals
     using System.Runtime.InteropServices;
     using System.Threading;
     using System.Windows.Forms;
-    using Kohl.Framework.Info;
-
-    using Kohl.Framework.Logging;
-    using Kohl.Framework.WinForms;
-    using CommandLine;
-    using Configuration.Files.Credentials;
-    using Configuration.Files.History;
-    using Configuration.Files.Main.Favorites;
-    using Configuration.Files.Main.Groups;
-    using Configuration.Files.Main.Settings;
-    using Configuration.Files.Main.SpecialCommands;
-    using Connection;
-    using Connection.Native;
-    using Connection.TabControl;
-    using Connections;
-    using ExportImport;
-    using Forms;
-    using Forms.Controls;
-    using Forms.Render;
-    using Network.Services;
-    using Properties;
-    using TerminalServices;
-   
-    using Wizard;
     using VncSharp;
-
-    using Terminals.Connection.Manager;
-    using Terminals.Connection.Panels.OptionPanels;
-    using Terminals.Connection.ScreenCapture;
-    using Terminals.Forms.Credentials;
-    using Terminals.Panels;
+    using Wizard;
 
     public partial class MainForm : Form, IHostingForm
     {
         #region Persist the main window state
         private void PersistWindowState()
         {
-        	Log.InsideMethod();
-        	
+            Log.InsideMethod();
+
             new PersistWindowState
-                {
-                    Parent = this,
-                    AllowSaveMinimized = false,
-                    RegistryPath = AssemblyInfo.RegistryPath
-                    // LoadStateEvent += new PersistWindowState.WindowStateDelegate(LoadState),
-                    // SaveStateEvent += new PersistWindowState.WindowStateDelegate(SaveState)
-                };
+            {
+                Parent = this,
+                AllowSaveMinimized = false,
+                RegistryPath = AssemblyInfo.RegistryPath
+                // LoadStateEvent += new PersistWindowState.WindowStateDelegate(LoadState),
+                // SaveStateEvent += new PersistWindowState.WindowStateDelegate(SaveState)
+            };
         }
 
         #region Don't delete this
@@ -89,8 +85,8 @@ namespace Terminals
 
             public MainFormFullScreenSwitch(MainForm mainForm)
             {
-            	Log.InsideMethod();
-            	
+                Log.InsideMethod();
+
                 this.mainForm = mainForm;
             }
 
@@ -102,8 +98,8 @@ namespace Terminals
 
             private void SwitchFullScreen(Boolean newfullScreen)
             {
-            	Log.InsideMethod();
-            	
+                Log.InsideMethod();
+
                 this.mainForm.SuspendLayout();
 
                 //Save windows state before we do a fullscreen so we can restore it
@@ -125,8 +121,8 @@ namespace Terminals
 
             public void LoadWindowState()
             {
-            	Log.InsideMethod();
-            	
+                Log.InsideMethod();
+
                 Program.Caption = AssemblyInfo.AboutText;
                 this.mainForm.Text = Program.Caption;
                 this.mainForm.HideShowFavoritesPanel(Settings.ShowFavoritePanel);
@@ -135,8 +131,8 @@ namespace Terminals
 
             private void SetFullScreen(Boolean fullScreen)
             {
-            	Log.InsideMethod();
-            	
+                Log.InsideMethod();
+
                 this.BackUpToolBarsVisibility(fullScreen);
                 this.HideToolBar(fullScreen);
 
@@ -157,11 +153,11 @@ namespace Terminals
 
             public void CheckForMultiMonitorUse()
             {
-            	Log.InsideMethod();
-            	
+                Log.InsideMethod();
+
                 this.showOnAllScreens = false;
 
-				this.mainForm.showInDualScreensToolStripMenuItem.Text = "Show on &amp;multi screens";
+                this.mainForm.showInDualScreensToolStripMenuItem.Text = "Show on &amp;multi screens";
 
                 if (Screen.AllScreens.Length > 1)
                 {
@@ -173,7 +169,7 @@ namespace Terminals
                     if (this.mainForm.Width > Screen.FromControl(this.mainForm).Bounds.Width || w > 2)  //Screen.PrimaryScreen.Bounds.Width || w > 2)
                     {
                         this.showOnAllScreens = true;
-						this.mainForm.showInDualScreensToolStripMenuItem.Text = "Show on &amp;single screen";
+                        this.mainForm.showInDualScreensToolStripMenuItem.Text = "Show on &amp;single screen";
                     }
                 }
                 else
@@ -185,8 +181,8 @@ namespace Terminals
 
             public void ToggleMultiMonitor()
             {
-            	Log.InsideMethod();
-            	
+                Log.InsideMethod();
+
                 Screen[] screenArr = Screen.AllScreens;
                 Int32 with = 0;
 
@@ -197,13 +193,13 @@ namespace Terminals
 
                     with += screenArr.Sum(screen => screen.Bounds.Width);
 
-					this.mainForm.showInDualScreensToolStripMenuItem.Text = "Show on &amp;single screen";
+                    this.mainForm.showInDualScreensToolStripMenuItem.Text = "Show on &amp;single screen";
                     this.mainForm.BringToFront();
                 }
                 else
                 {
                     with = Screen.PrimaryScreen.Bounds.Width;
-					this.mainForm.showInDualScreensToolStripMenuItem.Text = "Show on &amp;multi screens";
+                    this.mainForm.showInDualScreensToolStripMenuItem.Text = "Show on &amp;multi screens";
                 }
 
                 this.mainForm.Top = 0;
@@ -215,8 +211,8 @@ namespace Terminals
 
             private void BackUpToolBarsVisibility(bool fullScreen)
             {
-            	Log.InsideMethod();
-            	
+                Log.InsideMethod();
+
                 if (fullScreen)
                 {
                     this.isStandardToolbarVisible = this.mainForm.toolbarStd.Visible;
@@ -227,8 +223,8 @@ namespace Terminals
 
             private void HideToolBar(Boolean fullScreen)
             {
-            	Log.InsideMethod();
-            	
+                Log.InsideMethod();
+
                 if (!fullScreen)
                 {
                     this.mainForm.toolbarStd.Visible = this.isStandardToolbarVisible;
@@ -247,8 +243,8 @@ namespace Terminals
 
         private void LoadWindowState()
         {
-        	Log.InsideMethod();
-        	
+            Log.InsideMethod();
+
             if (this.fullScreenSwitch != null)
                 this.fullScreenSwitch.LoadWindowState();
         }
@@ -285,9 +281,9 @@ namespace Terminals
         {
             try
             {
-            	Log.InsideMethod();
-            	
-            	this.fullScreenSwitch = new MainFormFullScreenSwitch(this);
+                Log.InsideMethod();
+
+                this.fullScreenSwitch = new MainFormFullScreenSwitch(this);
 
                 this.PersistWindowState();
 
@@ -303,9 +299,9 @@ namespace Terminals
                 // main designer procedure
                 this.InitializeComponent();
 
-				if (!MachineInfo.IsUnixOrMac)
-	                // Set notifyicon icon from embedded png image
-	                this.MainWindowNotifyIcon.Icon = Resources.terminalsicon;
+                if (!MachineInfo.IsUnixOrMac)
+                    // Set notifyicon icon from embedded png image
+                    this.MainWindowNotifyIcon.Icon = Resources.terminalsicon;
 
                 this.terminalsControler = new TerminalTabsSelectionControler(this, this.tcTerminals);
 
@@ -324,7 +320,7 @@ namespace Terminals
                 this.QuickContextMenu.ItemClicked += this.QuickContextMenu_ItemClicked;
 
                 DataDispatcher.AssignSynchronizationObject(this);
-                
+
                 this.SetLogLevelToDebugToolStripMenuItem.Checked = Log.IsDebugLogLevel();
                 this.SetLogLevelToInfoToolStripMenuItem.Checked = !this.SetLogLevelToDebugToolStripMenuItem.Checked;
             }
@@ -376,8 +372,8 @@ namespace Terminals
         #region Public methods (9)
         public void UpdateControls()
         {
-        	Log.InsideMethod();
-        	
+            Log.InsideMethod();
+
             this.tcTerminals.ShowToolTipOnTitle = Settings.ShowInformationToolTips;
             bool hasSelectedTerminal = this.terminalsControler.HasSelected;
             this.addTerminalToGroupToolStripMenuItem.Enabled = hasSelectedTerminal;
@@ -409,29 +405,29 @@ namespace Terminals
 
         public void DetachTabToNewWindow(TerminalTabControlItem tabControlToOpen)
         {
-        	Log.InsideMethod();
-        	
+            Log.InsideMethod();
+
             this.terminalsControler.DetachTabToNewWindow(tabControlToOpen);
         }
 
         public void RemoveAndUnSelect(TerminalTabControlItem toRemove)
         {
-        	Log.InsideMethod();
-        	
+            Log.InsideMethod();
+
             this.terminalsControler.RemoveAndUnSelect(toRemove);
         }
 
         public static MainForm GetMainForm()
         {
-        	Log.InsideMethod();
-        	
+            Log.InsideMethod();
+
             return mainForm;
         }
-        
+
         public void Connect(String connectionName, Boolean forceConsole, Boolean forceNewWindow, bool isDatabaseFavorite, CredentialSet credential = null, bool waitForEnd = false)
         {
-        	Log.InsideMethod();
-        	
+            Log.InsideMethod();
+
             FavoriteConfigurationElement favorite = FavoritesFactory.GetFavoriteUpdatedCopy(connectionName,
                                                                                             forceConsole, forceNewWindow,
                                                                                             credential, isDatabaseFavorite);
@@ -448,8 +444,8 @@ namespace Terminals
 
         public void OpenNetworkingTools(string action, string host)
         {
-        	Log.InsideMethod();
-        	
+            Log.InsideMethod();
+
             TerminalTabControlItem terminalTabPage = new TerminalTabControlItem("Networking Tools", "Networking Tools");
             try
             {
@@ -481,12 +477,12 @@ namespace Terminals
 
         public void ShowManageTerminalForm(FavoriteConfigurationElement favorite)
         {
-        	Log.InsideMethod();
-        	
+            Log.InsideMethod();
+
             using (FavoriteEditor frmNewTerminal = new FavoriteEditor(favorite))
             {
-            	if (this.favsList1 != null)
-                	frmNewTerminal.SaveInDB = this.favsList1.SaveInDB;
+                if (this.favsList1 != null)
+                    frmNewTerminal.SaveInDB = this.favsList1.SaveInDB;
 
                 TerminalFormDialogResult result = frmNewTerminal.ShowDialog();
 
@@ -500,8 +496,8 @@ namespace Terminals
 
         public void TerminalTabPage_DoubleClick(object sender, EventArgs e)
         {
-        	Log.InsideMethod();
-        	
+            Log.InsideMethod();
+
             if (this.terminalsControler.HasSelected)
             {
                 this.tsbDisconnect.PerformClick();
@@ -510,8 +506,8 @@ namespace Terminals
 
         public void DisalbeSizeChanged(bool disable)
         {
-        	Log.InsideMethod();
-        	
+            Log.InsideMethod();
+
             if (disable)
                 this.tcTerminals.SizeChanged -= new System.EventHandler(this.tcTerminals_SizeChanged);
             else
@@ -520,28 +516,28 @@ namespace Terminals
         #endregion
 
         #region Private methods (126)
-        
+
         private void LoadContextMenu()
         {
-        	Log.InsideMethod();
-        	
+            Log.InsideMethod();
+
             this.menuLoader.ToggleShowHideFavoritesFromQuickMenu();
         }
 
         private void ToggleGrabInput()
         {
-        	Log.InsideMethod();
-        	
+            Log.InsideMethod();
+
             if (this.CurrentConnection != null && this.CurrentConnection is RDPConnection)
             {
                 ((RDPConnection)this.CurrentConnection).FullScreen = !((RDPConnection)this.CurrentConnection).FullScreen;
             }
         }
-        
+
         private void CreateTerminalTab(FavoriteConfigurationElement favorite, bool waitForEnd)
         {
-        	Log.InsideMethod();
-        	
+            Log.InsideMethod();
+
             this.CallExecuteBeforeConnectedFromSettings();
             this.CallExecuteBeforeConnectedFromFavorite(favorite);
             this.TryConnectTabPage(favorite, waitForEnd);
@@ -549,12 +545,12 @@ namespace Terminals
 
         private void ApplyControlsEnableAndVisibleState()
         {
-        	Log.InsideMethod();
-        	
-			if (!MachineInfo.IsUnixOrMac)
-            	this.MainWindowNotifyIcon.Visible = Settings.MinimizeToTray;
-            
-			if (!Settings.MinimizeToTray && !this.Visible)
+            Log.InsideMethod();
+
+            if (!MachineInfo.IsUnixOrMac)
+                this.MainWindowNotifyIcon.Visible = Settings.MinimizeToTray;
+
+            if (!Settings.MinimizeToTray && !this.Visible)
                 this.Visible = true;
 
             this.lockToolbarsToolStripMenuItem.Checked = Settings.ToolbarsLocked;
@@ -576,33 +572,33 @@ namespace Terminals
             this.ApplyTheme();
         }
 
-		private void ApplyTheme()
-		{
-			Log.InsideMethod();
+        private void ApplyTheme()
+        {
+            Log.InsideMethod();
 
-			if (Settings.Office2007BlueFeel)
-				ToolStripManager.Renderer = Office2007Renderer.GetRenderer(RenderColors.Blue);
-			else if (Settings.Office2007BlackFeel)
-				ToolStripManager.Renderer = Office2007Renderer.GetRenderer(RenderColors.Black);
-			else
-				if (!MachineInfo.IsUnixOrMac)
-				{
-					ToolStripManager.Renderer = new ToolStripProfessionalRenderer();
-				}
-				else
-				{
-					ToolStripManager.RenderMode = ToolStripManagerRenderMode.System;
-				}
-		
-			if (!MachineInfo.IsUnixOrMac)
-	            // Update the old treeview theme to the new theme from Win Vista and up
-	            WindowsApi.SetWindowTheme(this.menuStrip.Handle, "Explorer", null);
-	    }
+            if (Settings.Office2007BlueFeel)
+                ToolStripManager.Renderer = Office2007Renderer.GetRenderer(RenderColors.Blue);
+            else if (Settings.Office2007BlackFeel)
+                ToolStripManager.Renderer = Office2007Renderer.GetRenderer(RenderColors.Black);
+            else
+                if (!MachineInfo.IsUnixOrMac)
+            {
+                ToolStripManager.Renderer = new ToolStripProfessionalRenderer();
+            }
+            else
+            {
+                ToolStripManager.RenderMode = ToolStripManagerRenderMode.System;
+            }
+
+            if (!MachineInfo.IsUnixOrMac)
+                // Update the old treeview theme to the new theme from Win Vista and up
+                WindowsApi.SetWindowTheme(this.menuStrip.Handle, "Explorer", null);
+        }
 
         private void ShowWizardAndReloadSpecialCommands()
         {
-        	Log.InsideMethod();
-        	
+            Log.InsideMethod();
+
             if (Settings.ShowWizard)
             {
                 //settings file doesnt exist, wizard!
@@ -617,19 +613,19 @@ namespace Terminals
 
         private void SendNativeMessageToFocus()
         {
-        	Log.InsideMethod();
-        	
+            Log.InsideMethod();
+
             if (!this.Visible)
             {
                 this.Show();
 
-				if (!MachineInfo.IsUnixOrMac)
-				{
-					if (this.WindowState == FormWindowState.Minimized)
-						WindowsApi.ShowWindow(new HandleRef(this, this.Handle), 9);
+                if (!MachineInfo.IsUnixOrMac)
+                {
+                    if (this.WindowState == FormWindowState.Minimized)
+                        WindowsApi.ShowWindow(new HandleRef(this, this.Handle), 9);
 
-					WindowsApi.SetForegroundWindow(new HandleRef(this, this.Handle));
-				}
+                    WindowsApi.SetForegroundWindow(new HandleRef(this, this.Handle));
+                }
             }
         }
 
@@ -639,8 +635,8 @@ namespace Terminals
         /// </summary>
         private void AssignToolStripsToContainer()
         {
-        	Log.InsideMethod();
-        	
+            Log.InsideMethod();
+
             this.toolStripContainer.toolbarStd = this.toolbarStd;
             this.toolStripContainer.standardToolbarToolStripMenuItem = this.standardToolbarToolStripMenuItem;
             this.toolStripContainer.favoriteToolBar = this.favoriteToolBar;
@@ -653,26 +649,26 @@ namespace Terminals
 
         private void CloseTabControlItem()
         {
-        	Log.InsideMethod();
-        	
+            Log.InsideMethod();
+
             this.Text = AssemblyInfo.AboutText;
 
             if (this.tcTerminals.Items.Count == 0)
                 this.fullScreenSwitch.FullScreen = false;
         }
-        
+
         public void RemoveTabPage(TabControlItem tabControlToRemove)
         {
-        	Log.InsideMethod();
-        	
+            Log.InsideMethod();
+
             this.tcTerminals.RemoveTab(tabControlToRemove);
             this.CloseTabControlItem();
         }
 
         private void TryConnectTabPage(FavoriteConfigurationElement favorite, bool waitForEnd)
         {
-        	Log.InsideMethod();
-        	
+            Log.InsideMethod();
+
             try
             {
                 ConnectionManager.CreateConnection(favorite, this, waitForEnd, this.AssignEventsToConnectionTab(favorite));
@@ -683,11 +679,11 @@ namespace Terminals
                 this.terminalsControler.UnSelect();
             }
         }
-        
+
         private TerminalTabControlItem AssignEventsToConnectionTab(FavoriteConfigurationElement favorite)
         {
-        	Log.InsideMethod();
-        	
+            Log.InsideMethod();
+
             TerminalTabControlItem terminalTabPage = ConnectionManager.CreateTerminalTabPageByFavoriteName(favorite);
 
             // This might happen if the user is not allowed to
@@ -712,8 +708,8 @@ namespace Terminals
 
         private void CallExecuteBeforeConnectedFromFavorite(FavoriteConfigurationElement favorite)
         {
-        	Log.InsideMethod();
-        	
+            Log.InsideMethod();
+
             if (favorite.ExecuteBeforeConnect && !string.IsNullOrEmpty(favorite.ExecuteBeforeConnectCommand))
             {
                 try
@@ -737,18 +733,18 @@ namespace Terminals
                 }
             }
         }
-        
+
         private void CallExecuteBeforeConnectedFromSettings()
         {
-        	Log.InsideMethod();
-        	
+            Log.InsideMethod();
+
             if (Settings.ExecuteBeforeConnect && !string.IsNullOrEmpty(Settings.ExecuteBeforeConnectCommand))
             {
                 ProcessStartInfo processStartInfo = new ProcessStartInfo(Settings.ExecuteBeforeConnectCommand,
                                                                          Settings.ExecuteBeforeConnectArgs)
-                                                        {
-                                                            WorkingDirectory = Settings.ExecuteBeforeConnectInitialDirectory
-                                                        };
+                {
+                    WorkingDirectory = Settings.ExecuteBeforeConnectInitialDirectory
+                };
                 Process process = Process.Start(processStartInfo);
                 if (Settings.ExecuteBeforeConnectWaitForExit)
                 {
@@ -759,8 +755,8 @@ namespace Terminals
 
         private void LoadSpecialCommands()
         {
-        	Log.InsideMethod();
-        	
+            Log.InsideMethod();
+
             this.SpecialCommandsToolStrip.Items.Clear();
 
             foreach (SpecialCommandConfigurationElement cmd in Settings.SpecialCommands)
@@ -777,11 +773,11 @@ namespace Terminals
                 });
             }
         }
-        
+
         private Image LoadThumbnail(SpecialCommandConfigurationElement cmd)
         {
-        	Log.InsideMethod();
-        	
+            Log.InsideMethod();
+
             Image img = Resources.application_xp_terminal;
 
             try
@@ -798,30 +794,30 @@ namespace Terminals
 
             return img;
         }
-        
+
         private void ShowCredentialsManager()
         {
-        	Log.InsideMethod();
+            Log.InsideMethod();
             CredentialManager mgr = new CredentialManager();
             mgr.ShowDialog();
         }
 
         private void OpenSavedConnections()
         {
-        	Log.InsideMethod();
-        	if (this.favsList1 != null)
-	            foreach (string name in Settings.SavedConnections)
-	            {
-	               	this.Connect(name, false, false, favsList1.SaveInDB, waitForEnd: true);
-	            }
+            Log.InsideMethod();
+            if (this.favsList1 != null)
+                foreach (string name in Settings.SavedConnections)
+                {
+                    this.Connect(name, false, false, favsList1.SaveInDB, waitForEnd: true);
+                }
 
             Settings.ClearSavedConnectionsList();
         }
 
         private void HideShowFavoritesPanel(bool show)
         {
-        	Log.InsideMethod();
-        	
+            Log.InsideMethod();
+
             if (Settings.EnableFavoritesPanel)
             {
                 if (show)
@@ -857,11 +853,11 @@ namespace Terminals
                 this.splitContainer1.SplitterDistance = 0;
             }
         }
-        
+
         private void LoadGroups()
         {
-        	Log.InsideMethod();
-        	
+            Log.InsideMethod();
+
             GroupConfigurationElementCollection serversGroups = Settings.GetGroups();
             Int32 seperatorIndex = this.groupsToolStripMenuItem.DropDownItems.IndexOf(this.groupsSeparator);
             for (Int32 i = this.groupsToolStripMenuItem.DropDownItems.Count - 1; i > seperatorIndex; i--)
@@ -881,20 +877,20 @@ namespace Terminals
 
         private void AddGroup(GroupConfigurationElement group)
         {
-        	Log.InsideMethod();
+            Log.InsideMethod();
 
-        	ToolStripMenuItem groupToolStripMenuItem = new ToolStripMenuItem(group.Name) {Name = @group.Name};
+            ToolStripMenuItem groupToolStripMenuItem = new ToolStripMenuItem(group.Name) { Name = @group.Name };
             groupToolStripMenuItem.Click += this.groupToolStripMenuItem_Click;
             this.groupsToolStripMenuItem.DropDownItems.Add(groupToolStripMenuItem);
-            ToolStripMenuItem groupAddToolStripMenuItem = new ToolStripMenuItem(group.Name) {Name = @group.Name};
+            ToolStripMenuItem groupAddToolStripMenuItem = new ToolStripMenuItem(group.Name) { Name = @group.Name };
             groupAddToolStripMenuItem.Click += this.groupAddToolStripMenuItem_Click;
             this.addTerminalToGroupToolStripMenuItem.DropDownItems.Add(groupAddToolStripMenuItem);
         }
 
         private void SetGrabInput(Boolean grab)
         {
-        	Log.InsideMethod();
-        	
+            Log.InsideMethod();
+
             if (this.CurrentConnection != null)
             {
                 if (grab && !this.CurrentConnection.ContainsFocus)
@@ -914,26 +910,26 @@ namespace Terminals
 
         private void CreateNewTerminal(bool waitForEnd = false, String name = null)
         {
-        	Log.InsideMethod();
-        	
+            Log.InsideMethod();
+
             if (this.favsList1 != null)
-	            using (FavoriteEditor frmNewTerminal = new FavoriteEditor(name, this.favsList1.SelectedTag))
-	            {
-	                frmNewTerminal.SaveInDB = this.favsList1.SaveInDB;
-	
-	                TerminalFormDialogResult result = frmNewTerminal.ShowDialog();
-	                if (result != TerminalFormDialogResult.Cancel)
-	                {
-	                    if (result == TerminalFormDialogResult.SaveAndConnect)
-	                        this.CreateTerminalTab(frmNewTerminal.Favorite, waitForEnd);
-	                }
-	            }
+                using (FavoriteEditor frmNewTerminal = new FavoriteEditor(name, this.favsList1.SelectedTag))
+                {
+                    frmNewTerminal.SaveInDB = this.favsList1.SaveInDB;
+
+                    TerminalFormDialogResult result = frmNewTerminal.ShowDialog();
+                    if (result != TerminalFormDialogResult.Cancel)
+                    {
+                        if (result == TerminalFormDialogResult.SaveAndConnect)
+                            this.CreateTerminalTab(frmNewTerminal.Favorite, waitForEnd);
+                    }
+                }
         }
- 
+
         private void QuickConnect(String server, Int32 port, Boolean connectToConsole, string protocol, string url, bool isDatabaseFavorite)
         {
-        	Log.InsideMethod();
-        	
+            Log.InsideMethod();
+
             if (port == 0)
                 port = ConnectionManager.GetPort(protocol);
 
@@ -941,18 +937,18 @@ namespace Terminals
                                                                                                      connectToConsole,
                                                                                                      port, protocol, url, isDatabaseFavorite);
 
-            this.CreateTerminalTab(favorite,false);
+            this.CreateTerminalTab(favorite, false);
         }
 
         public void HandleCommandLineActions(CommandLineArgs commandLineArgs)
         {
-        	Log.InsideMethod();
-        	
+            Log.InsideMethod();
+
             Boolean connectToConsole = commandLineArgs.Console;
             this.fullScreenSwitch.FullScreen = commandLineArgs.Fullscreen;
-            
+
             Terminals.Updates.UpdateManager.CheckForUpdates(this, commandLineArgs);
-            
+
             if (commandLineArgs.HasUrlDefined)
                 this.QuickConnect(commandLineArgs.UrlServer, commandLineArgs.UrlPort, connectToConsole, commandLineArgs.ProtcolName, commandLineArgs.UrlServer, commandLineArgs.UseDbFavorite);
             else if (commandLineArgs.HasMachineDefined)
@@ -960,36 +956,36 @@ namespace Terminals
             else
                 this.ConnectToFavorites(commandLineArgs, connectToConsole);
         }
- 
+
         private void ConnectToFavorites(CommandLineArgs commandLineArgs, bool connectToConsole)
         {
-        	Log.InsideMethod();
-        	
-        	if (this.favsList1 != null)
-	            if (commandLineArgs.Favorites.Length > 0)
-	                foreach (String favoriteName in commandLineArgs.Favorites)
-	                    this.Connect(favoriteName, connectToConsole, false, favsList1.SaveInDB, waitForEnd: true);
+            Log.InsideMethod();
+
+            if (this.favsList1 != null)
+                if (commandLineArgs.Favorites.Length > 0)
+                    foreach (String favoriteName in commandLineArgs.Favorites)
+                        this.Connect(favoriteName, connectToConsole, false, favsList1.SaveInDB, waitForEnd: true);
         }
-        
+
         private void SaveActiveConnections()
         {
-        	Log.InsideMethod();
-        	
+            Log.InsideMethod();
+
             Settings.CreateSavedConnectionsList((from TabControlItem item in this.tcTerminals.Items select item.Name).ToArray());
         }
 
         private void OpenReleasePage()
         {
-        	Log.InsideMethod();
-        	
+            Log.InsideMethod();
+
             if (!Settings.NeverShowTerminalsWindow)
                 this.Connect(FavoritesFactory.TerminalsReleasesFavoriteName, false, false, false);
         }
-        
+
         private void ReloadSpecialCommands(Object state)
         {
-        	Log.InsideMethod();
-        	
+            Log.InsideMethod();
+
             // start creating the icons
             this.rebuildShortcutsToolStripMenuItem_Click(null, null);
             Settings.SaveAndFinishDelayedUpdate();
@@ -997,8 +993,8 @@ namespace Terminals
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-        	Log.InsideMethod();
-        	
+            Log.InsideMethod();
+
             this.openTerminalsReleasePageMethodInvoker = this.OpenReleasePage;
             this.Text = AssemblyInfo.AboutText;
             OnReleaseIsAvailable += this.MainForm_OnReleaseIsAvailable;
@@ -1023,16 +1019,16 @@ namespace Terminals
 
         private void MainForm_KeyDown(object sender, KeyEventArgs e)
         {
-        	Log.InsideMethod();
-        	
+            Log.InsideMethod();
+
             if (e.KeyCode == Keys.Cancel)
                 this.ToggleGrabInput();
         }
 
         private void MainForm_KeyUp(object sender, KeyEventArgs e)
         {
-        	Log.InsideMethod();
-        	
+            Log.InsideMethod();
+
             //handle global keyup events
             if (e.Control && e.KeyCode == Keys.F12)
             {
@@ -1052,27 +1048,27 @@ namespace Terminals
 
         private void MainForm_Activated(object sender, EventArgs e)
         {
-        	Log.InsideMethod();
-        	
+            Log.InsideMethod();
+
             if (this.fullScreenSwitch.FullScreen)
                 this.tcTerminals.ShowTabs = false;
 
             this.fullScreenSwitch.CheckForMultiMonitorUse();
         }
-        
+
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-        	Log.InsideMethod();
-        	
+            Log.InsideMethod();
+
             if (this.favsList1 != null)
                 this.favsList1.SaveState();
 
             if (this.fullScreenSwitch.FullScreen)
                 this.fullScreenSwitch.FullScreen = false;
 
-			if (!MachineInfo.IsUnixOrMac)
-            	this.MainWindowNotifyIcon.Visible = false;
-			
+            if (!MachineInfo.IsUnixOrMac)
+                this.MainWindowNotifyIcon.Visible = false;
+
             this.CloseOpenedConnections(e);
             this.toolStripContainer.SaveLayout();
 
@@ -1096,8 +1092,8 @@ namespace Terminals
 
         private void CloseOpenedConnections(FormClosingEventArgs args)
         {
-        	Log.InsideMethod();
-        	
+            Log.InsideMethod();
+
             if (this.tcTerminals.Items.Count > 0)
             {
                 if (Settings.ShowConfirmDialog)
@@ -1125,11 +1121,11 @@ namespace Terminals
                 }
             }
         }
-        
+
         private void SaveConnectonsIfRequested(FormClosingEventArgs args)
         {
-        	Log.InsideMethod();
-        	
+            Log.InsideMethod();
+
             SaveActiveConnectionsForm frmSaveActiveConnections = new SaveActiveConnectionsForm();
             if (frmSaveActiveConnections.ShowDialog() == DialogResult.OK)
             {
@@ -1143,8 +1139,8 @@ namespace Terminals
 
         private void MainForm_Resize(object sender, EventArgs e)
         {
-        	Log.InsideMethod();
-        	
+            Log.InsideMethod();
+
             if (this.WindowState == FormWindowState.Minimized)
             {
                 if (Settings.MinimizeToTray) this.Visible = false;
@@ -1157,24 +1153,24 @@ namespace Terminals
 
         private void tcTerminals_MouseUp(object sender, MouseEventArgs e)
         {
-        	Log.InsideMethod();
-        	
+            Log.InsideMethod();
+
             this.Cursor = Cursors.Default;
             this.IsMouseDown = false;
         }
 
         private void tcTerminals_MouseDown(object sender, MouseEventArgs e)
         {
-        	Log.InsideMethod();
-        	
+            Log.InsideMethod();
+
             this.MouseDownLocation = MousePosition;
             this.IsMouseDown = true;
         }
 
         private void tcTerminals_MouseClick(object sender, MouseEventArgs e)
         {
-        	Log.InsideMethod();
-        	
+            Log.InsideMethod();
+
             if (e.Button == MouseButtons.Right)
             {
                 if (this.tcTerminals != null && sender != null)
@@ -1184,16 +1180,16 @@ namespace Terminals
 
         private void QuickContextMenu_Opening(object sender, CancelEventArgs e)
         {
-        	Log.InsideMethod();
-        	
+            Log.InsideMethod();
+
             this.tcTerminals_MouseClick(null, new MouseEventArgs(MouseButtons.Right, 1, 0, 0, 0));
             e.Cancel = false;
         }
 
         private void QuickContextMenu_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
-        	Log.InsideMethod();
-        	
+            Log.InsideMethod();
+
             ToolStripItem clickedItem = e.ClickedItem;
             if (clickedItem.Text == "Restore" ||
                 clickedItem.Name == FavoritesMenuLoader.COMMAND_RESTORESCREEN ||
@@ -1253,12 +1249,12 @@ namespace Terminals
 
         private void ShowQuickConnect()
         {
-        	Log.InsideMethod();
-        	
-        	if (this.favsList1 == null)
-        		return;
-        	
-            QuickConnect qc = new QuickConnect {StartPosition = FormStartPosition.CenterParent, SaveInDB = favsList1.SaveInDB};
+            Log.InsideMethod();
+
+            if (this.favsList1 == null)
+                return;
+
+            QuickConnect qc = new QuickConnect { StartPosition = FormStartPosition.CenterParent, SaveInDB = favsList1.SaveInDB };
 
             if (qc.ShowDialog(this) == DialogResult.OK && !string.IsNullOrEmpty(qc.ConnectionName))
             {
@@ -1268,16 +1264,16 @@ namespace Terminals
 
         private void OnFavoriteTrayToolsStripClick(ToolStripItemClickedEventArgs e)
         {
-        	Log.InsideMethod();
-        	
+            Log.InsideMethod();
+
             string tag = e.ClickedItem.Tag as String;
 
             if (tag != null)
             {
                 String itemName = e.ClickedItem.Text;
                 if (tag == FavoritesMenuLoader.FAVORITE)
-                	if (this.favsList1 != null)
-                    	this.Connect(itemName, false, false, favsList1.SaveInDB, waitForEnd: false);
+                    if (this.favsList1 != null)
+                        this.Connect(itemName, false, false, favsList1.SaveInDB, waitForEnd: false);
 
                 if (tag == FavoritesMenuLoader.TAG)
                 {
@@ -1289,26 +1285,26 @@ namespace Terminals
 
         private void ConnectToAllFavoritesUnderTag(ToolStripMenuItem parent)
         {
-        	Log.InsideMethod();
-        	
+            Log.InsideMethod();
+
             if (parent.DropDownItems.Count > 0)
             {
                 DialogResult result = this.AskUserIfWantsConnectToAll(parent);
                 if (result == DialogResult.OK)
                 {
-                	if (this.favsList1 != null)
-	                    foreach (ToolStripMenuItem button in parent.DropDownItems)
-	                    {
-	                        this.Connect(button.Text, false, false, favsList1.SaveInDB, waitForEnd: true);
-	                    }
+                    if (this.favsList1 != null)
+                        foreach (ToolStripMenuItem button in parent.DropDownItems)
+                        {
+                            this.Connect(button.Text, false, false, favsList1.SaveInDB, waitForEnd: true);
+                        }
                 }
             }
         }
 
         private DialogResult AskUserIfWantsConnectToAll(ToolStripMenuItem parent)
         {
-        	Log.InsideMethod();
-        	
+            Log.InsideMethod();
+
             String message = String.Format("Are you sure you want to connect to all these {0} connections?",
                                            parent.DropDownItems.Count);
             return MessageBox.Show(message, "Confirmation", MessageBoxButtons.OKCancel);
@@ -1316,15 +1312,15 @@ namespace Terminals
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
-        	Log.InsideMethod();
-        	
+            Log.InsideMethod();
+
             this.Close();
         }
 
         private void groupAddToolStripMenuItem_Click(object sender, EventArgs e)
         {
-        	Log.InsideMethod();
-        	
+            Log.InsideMethod();
+
             GroupConfigurationElement group = Settings.GetGroups()[((ToolStripMenuItem)sender).Text];
             String selectedTitle = this.terminalsControler.Selected.Title;
             group.FavoriteAliases.Add(new FavoriteAliasConfigurationElement(selectedTitle));
@@ -1334,11 +1330,11 @@ namespace Terminals
 
         private void groupToolStripMenuItem_Click(object sender, EventArgs e)
         {
-        	Log.InsideMethod();
-        	
-        	if (this.favsList1 == null)
-        		return;
-        	
+            Log.InsideMethod();
+
+            if (this.favsList1 == null)
+                return;
+
             FavoriteConfigurationElementCollection favorites = Settings.GetFavorites(favsList1.SaveInDB);
             String groupName = ((ToolStripItem)sender).Text;
             GroupConfigurationElement serversGroup = Settings.GetGroups()[groupName];
@@ -1351,11 +1347,11 @@ namespace Terminals
 
         private void serverToolStripMenuItem_Click(object sender, EventArgs e)
         {
-        	Log.InsideMethod();
-        	
-        	if (this.favsList1 == null)
-        		return;
-        	
+            Log.InsideMethod();
+
+            if (this.favsList1 == null)
+                return;
+
             String connectionName = ((ToolStripItem)sender).Text;
             FavoriteConfigurationElement favorite = Settings.GetOneFavorite(connectionName, favsList1.SaveInDB);
             this.CreateTerminalTab(favorite, false);
@@ -1363,54 +1359,54 @@ namespace Terminals
 
         private void terminalTabPage_DragEnter(object sender, DragEventArgs e)
         {
-        	Log.InsideMethod();
+            Log.InsideMethod();
             e.Effect = e.Data.GetDataPresent(DataFormats.FileDrop, false) ? DragDropEffects.Copy : DragDropEffects.None;
         }
 
         private void terminalTabPage_DragOver(object sender, DragEventArgs e)
         {
-        	Log.InsideMethod();
+            Log.InsideMethod();
             this.terminalsControler.Select(sender as TerminalTabControlItem);
         }
 
         private void newTerminalToolStripMenuItem_Click(object sender, EventArgs e)
         {
-        	Log.InsideMethod();
+            Log.InsideMethod();
             this.CreateNewTerminal();
         }
 
         private void tsbConnect_Click(object sender, EventArgs e)
         {
-        	Log.InsideMethod();
+            Log.InsideMethod();
             string connectionName = this.tscConnectTo.Text;
-            
+
             if (this.favsList1 != null)
-	            if (connectionName != String.Empty)
-	            {
-	                this.Connect(connectionName, false, false, favsList1.SaveInDB, waitForEnd: false);
-	            }
+                if (connectionName != String.Empty)
+                {
+                    this.Connect(connectionName, false, false, favsList1.SaveInDB, waitForEnd: false);
+                }
         }
 
         private void tsbConnectToConsole_Click(object sender, EventArgs e)
         {
-        	Log.InsideMethod();
+            Log.InsideMethod();
             string connectionName = this.tscConnectTo.Text;
-            
+
             if (this.favsList1 != null)
-	            if (connectionName != String.Empty)
-	            {
-	                this.Connect(connectionName, true, false, favsList1.SaveInDB, waitForEnd: false);
-	            }
+                if (connectionName != String.Empty)
+                {
+                    this.Connect(connectionName, true, false, favsList1.SaveInDB, waitForEnd: false);
+                }
         }
 
         private void tscConnectTo_KeyDown(object sender, KeyEventArgs e)
         {
-        	Log.InsideMethod();
+            Log.InsideMethod();
             if (e.KeyCode == Keys.Enter)
             {
-            	if (this.favsList1 == null)
-            		return;
-            	
+                if (this.favsList1 == null)
+                    return;
+
                 FavoriteConfigurationElement fav = Settings.GetFavorites(favsList1.SaveInDB)
                                                            .ToList()
                                                            .FirstOrDefault(f => f.Name == tscConnectTo.Text);
@@ -1424,7 +1420,7 @@ namespace Terminals
 
         private void tsbDisconnect_Click(object sender, EventArgs e)
         {
-        	Log.InsideMethod();
+            Log.InsideMethod();
             try
             {
                 TerminalTabControlItem tabToClose = this.terminalsControler.Selected;
@@ -1439,26 +1435,26 @@ namespace Terminals
 
         private void tcTerminals_SelectedIndexChanged(object sender, EventArgs e)
         {
-        	Log.InsideMethod();
+            Log.InsideMethod();
             this.UpdateControls();
         }
 
         private void newTerminalToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
-        	Log.InsideMethod();
+            Log.InsideMethod();
             this.CreateNewTerminal();
         }
 
         private void tsbGrabInput_Click(object sender, EventArgs e)
         {
-        	Log.InsideMethod();
+            Log.InsideMethod();
             this.ToggleGrabInput();
         }
 
         private void tcTerminals_TabControlItemClosing(TabControlItemClosingEventArgs e)
         {
-        	Log.InsideMethod();
-        	
+            Log.InsideMethod();
+
             Boolean cancel = false;
             if (this.CurrentConnection != null && this.CurrentConnection.Connected)
             {
@@ -1497,7 +1493,7 @@ namespace Terminals
 
         private void tcTerminals_TabControlItemSelectionChanged(TabControlItemChangedEventArgs e)
         {
-        	Log.InsideMethod();
+            Log.InsideMethod();
             this.UpdateControls();
             if (this.tcTerminals.Items.Count > 0)
             {
@@ -1520,7 +1516,7 @@ namespace Terminals
         /// <param name="e"></param>
         private void tscConnectTo_TextChanged(object sender, EventArgs e)
         {
-        	Log.InsideMethod();
+            Log.InsideMethod();
             if (timer == null)
             {
                 timer = new System.Windows.Forms.Timer();
@@ -1540,12 +1536,12 @@ namespace Terminals
         /// <param name="e"></param>
         void timer_Tick(object sender, EventArgs e)
         {
-        	Log.InsideMethod();
+            Log.InsideMethod();
             timer.Stop();
 
             if (this.favsList1 == null)
-            	return;
-            
+                return;
+
             this.favsList1.SaveState();
             this.ApplyControlsEnableAndVisibleState();
             this.favsList1.LoadFavorites(tscConnectTo.Text);
@@ -1553,14 +1549,14 @@ namespace Terminals
 
         private void tcTerminals_MouseHover(object sender, EventArgs e)
         {
-        	Log.InsideMethod();
+            Log.InsideMethod();
             if (this.tcTerminals != null && !this.tcTerminals.ShowTabs)
                 this.timerHover.Enabled = true;
         }
 
         private void tcTerminals_MouseLeave(object sender, EventArgs e)
         {
-        	Log.InsideMethod();
+            Log.InsideMethod();
             this.timerHover.Enabled = false;
             if (this.fullScreenSwitch.FullScreen && this.tcTerminals.ShowTabs && !this.tcTerminals.MenuOpen)
                 this.tcTerminals.ShowTabs = false;
@@ -1574,21 +1570,21 @@ namespace Terminals
 
         private void tcTerminals_TabControlItemClosed(object sender, EventArgs e)
         {
-        	Log.InsideMethod();
+            Log.InsideMethod();
             this.CloseTabControlItem();
         }
 
         private void tcTerminals_DoubleClick(object sender, EventArgs e)
         {
-        	Log.InsideMethod();
-			// Deaktivated
+            Log.InsideMethod();
+            // Deaktivated
             //switching = true;
             //this.fullScreenSwitch.FullScreen = !this.fullScreenSwitch.FullScreen;
         }
 
         private void tsbFullScreen_Click(object sender, EventArgs e)
         {
-        	Log.InsideMethod();
+            Log.InsideMethod();
             switching = true;
             this.fullScreenSwitch.FullScreen = !this.fullScreenSwitch.FullScreen;
             this.UpdateControls();
@@ -1596,7 +1592,7 @@ namespace Terminals
 
         private void tcTerminals_MenuItemsLoaded(object sender, EventArgs e)
         {
-        	Log.InsideMethod();
+            Log.InsideMethod();
             foreach (ToolStripItem item in this.tcTerminals.Menu.Items)
             {
                 item.Image = Resources.smallterm;
@@ -1612,31 +1608,31 @@ namespace Terminals
                 this.tcTerminals.Menu.Items.Add(item);
             }
         }
-        
+
         private void manageConnectionsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-        	Log.InsideMethod();
-            OrganizeFavoritesForm conMgr = new OrganizeFavoritesForm {MainForm = this};
-            
+            Log.InsideMethod();
+            OrganizeFavoritesForm conMgr = new OrganizeFavoritesForm { MainForm = this };
+
             if (this.favsList1 != null)
-            	conMgr.SaveInDB = favsList1.SaveInDB;
-            
+                conMgr.SaveInDB = favsList1.SaveInDB;
+
             conMgr.ShowDialog();
         }
 
         private void saveTerminalsAsGroupToolStripMenuItem_Click(object sender, EventArgs e)
         {
-        	Log.InsideMethod();
+            Log.InsideMethod();
             using (NewGroupForm frmNewGroup = new NewGroupForm())
             {
                 if (frmNewGroup.ShowDialog() == DialogResult.OK)
                 {
                     GroupConfigurationElement serversGroup = new GroupConfigurationElement
-                                                                 {
-                                                                     Name =
+                    {
+                        Name =
                                                                          frmNewGroup
                                                                          .txtGroupName.Text
-                                                                 };
+                    };
                     foreach (TabControlItem tabControlItem in this.tcTerminals.Items)
                     {
                         serversGroup.FavoriteAliases.Add(new FavoriteAliasConfigurationElement(tabControlItem.Title));
@@ -1650,12 +1646,12 @@ namespace Terminals
 
         private void organizeGroupsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-        	Log.InsideMethod();
+            Log.InsideMethod();
             using (OrganizeGroupsForm frmOrganizeGroups = new OrganizeGroupsForm())
             {
-            	if (this.favsList1 != null)
-                	frmOrganizeGroups.SaveInDB = favsList1.SaveInDB;
-            	
+                if (this.favsList1 != null)
+                    frmOrganizeGroups.SaveInDB = favsList1.SaveInDB;
+
                 frmOrganizeGroups.ShowDialog();
                 this.LoadGroups();
             }
@@ -1663,12 +1659,12 @@ namespace Terminals
 
         private void tcTerminals_TabControlMouseOnTitle(TabControlMouseOnTitleEventArgs e)
         {
-        	Log.InsideMethod();
+            Log.InsideMethod();
             if (Settings.ShowInformationToolTips)
             {
                 if (this.currentToolTip == null)
                 {
-                    this.currentToolTip = new ToolTip {Active = false};
+                    this.currentToolTip = new ToolTip { Active = false };
                 }
                 else if ((this.currentToolTipItem != null) && (this.currentToolTipItem != e.Item) && !currentToolTipItem.IsDisposed && !currentToolTipItem.Disposing)
                 {
@@ -1679,13 +1675,13 @@ namespace Terminals
                 if (!this.currentToolTip.Active)
                 {
                     this.currentToolTip = new ToolTip
-                                              {
-                                                  ToolTipTitle = "Connection Information",
-                                                  ToolTipIcon = ToolTipIcon.Info,
-                                                  UseFading = true,
-                                                  UseAnimation = true,
-                                                  IsBalloon = false
-                                              };
+                    {
+                        ToolTipTitle = "Connection Information",
+                        ToolTipIcon = ToolTipIcon.Info,
+                        UseFading = true,
+                        UseAnimation = true,
+                        IsBalloon = false
+                    };
                     this.currentToolTip.Show(e.Item.ToolTipText, e.Item, (int)e.Item.StripRect.X, 2);
                     this.currentToolTipItem = e.Item;
                     this.currentToolTip.Active = true;
@@ -1695,7 +1691,7 @@ namespace Terminals
 
         private void tcTerminals_TabControlMouseLeftTitle(TabControlMouseOnTitleEventArgs e)
         {
-        	Log.InsideMethod();
+            Log.InsideMethod();
             if (this.currentToolTipItem != null && !currentToolTipItem.IsDisposed && !currentToolTipItem.Disposing)
             {
                 this.currentToolTip.Hide(this.currentToolTipItem);
@@ -1705,7 +1701,7 @@ namespace Terminals
 
         private void timerHover_Tick(object sender, EventArgs e)
         {
-        	Log.InsideMethod();
+            Log.InsideMethod();
             if (this.timerHover.Enabled)
             {
                 this.timerHover.Enabled = false;
@@ -1715,7 +1711,7 @@ namespace Terminals
 
         private void organizeFavoritesToolbarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-        	Log.InsideMethod();
+            Log.InsideMethod();
             OrganizeFavoritesToolbarForm frmOrganizeFavoritesToolbar = new OrganizeFavoritesToolbarForm();
             frmOrganizeFavoritesToolbar.ShowDialog();
         }
@@ -1725,13 +1721,13 @@ namespace Terminals
         /// </summary>
         private void UpdateCaptureButtonEnabled()
         {
-        	Log.InsideMethod();
+            Log.InsideMethod();
 
             Boolean enableCapture = Settings.EnabledCaptureToFolderAndClipBoard;
 
-			if (Kohl.Framework.Info.MachineInfo.IsUnixOrMac)
-				enableCapture = false;
-			
+            if (Kohl.Framework.Info.MachineInfo.IsUnixOrMac)
+                enableCapture = false;
+
             this.CaptureScreenToolStripButton.Enabled = enableCapture;
             this.captureTerminalScreenToolStripMenuItem.Enabled = enableCapture;
             this.terminalsControler.UpdateCaptureButtonOnDetachedPopUps();
@@ -1739,7 +1735,7 @@ namespace Terminals
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-        	Log.InsideMethod();
+            Log.InsideMethod();
             using (AboutForm frmAbout = new AboutForm())
             {
                 frmAbout.ShowDialog();
@@ -1748,32 +1744,32 @@ namespace Terminals
 
         private void tsbTags_Click(object sender, EventArgs e)
         {
-        	Log.InsideMethod();
+            Log.InsideMethod();
             this.HideShowFavoritesPanel(this.tsbTags.Checked);
         }
 
         private void pbShowTags_Click(object sender, EventArgs e)
         {
-        	Log.InsideMethod();
+            Log.InsideMethod();
             this.HideShowFavoritesPanel(true);
         }
 
         private void pbHideTags_Click(object sender, EventArgs e)
         {
-        	Log.InsideMethod();
+            Log.InsideMethod();
             this.HideShowFavoritesPanel(false);
         }
 
         private void Minimize(object sender, EventArgs e)
         {
-        	Log.InsideMethod();
+            Log.InsideMethod();
             this.originalFormWindowState = this.WindowState;
             this.WindowState = FormWindowState.Minimized;
         }
 
         private void MainWindowNotifyIcon_MouseClick(object sender, MouseEventArgs e)
         {
-        	Log.InsideMethod();
+            Log.InsideMethod();
             if (e.Button == MouseButtons.Left)
             {
                 if (Settings.MinimizeToTray)
@@ -1799,7 +1795,7 @@ namespace Terminals
 
         private void CaptureScreenToolStripButton_Click(object sender, EventArgs e)
         {
-        	Log.InsideMethod();
+            Log.InsideMethod();
             CaptureManagerConnection.PerformScreenCapture(this.tcTerminals);
             this.terminalsControler.RefreshCaptureManager(false);
 
@@ -1809,13 +1805,13 @@ namespace Terminals
 
         private void captureTerminalScreenToolStripMenuItem_Click(object sender, EventArgs e)
         {
-        	Log.InsideMethod();
+            Log.InsideMethod();
             this.CaptureScreenToolStripButton_Click(null, null);
         }
 
         private void VMRCAdminSwitchButton_Click(object sender, EventArgs e)
         {
-        	Log.InsideMethod();
+            Log.InsideMethod();
             if (this.CurrentConnection != null)
             {
                 VMRCConnection vmrc = this.CurrentConnection as VMRCConnection;
@@ -1828,7 +1824,7 @@ namespace Terminals
 
         private void VMRCViewOnlyButton_Click(object sender, EventArgs e)
         {
-        	Log.InsideMethod();
+            Log.InsideMethod();
             if (this.CurrentConnection != null)
             {
                 VMRCConnection vmrc = this.CurrentConnection as VMRCConnection;
@@ -1843,33 +1839,33 @@ namespace Terminals
 
         private void standardToolbarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-        	Log.InsideMethod();
+            Log.InsideMethod();
             this.AddShowStrip(this.toolbarStd, this.standardToolbarToolStripMenuItem, !this.toolbarStd.Visible);
         }
 
         private void toolStripMenuItemShowHideFavoriteToolbar_Click(object sender, EventArgs e)
         {
-        	Log.InsideMethod();
+            Log.InsideMethod();
             this.AddShowStrip(this.favoriteToolBar, this.toolStripMenuItemShowHideFavoriteToolbar,
                               !this.favoriteToolBar.Visible);
         }
-        
+
         private void shortcutsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-        	Log.InsideMethod();
+            Log.InsideMethod();
             this.AddShowStrip(this.SpecialCommandsToolStrip, this.shortcutsToolStripMenuItem,
                               !this.SpecialCommandsToolStrip.Visible);
         }
 
         private void menubarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-        	Log.InsideMethod();
+            Log.InsideMethod();
             this.AddShowStrip(this.menuStrip, this.menubarToolStripMenuItem, !this.menuStrip.Visible);
         }
 
         private void AddShowStrip(ToolStrip strip, ToolStripMenuItem menu, Boolean visible)
         {
-        	Log.InsideMethod();
+            Log.InsideMethod();
             if (!Settings.ToolbarsLocked)
             {
                 strip.Visible = visible;
@@ -1883,7 +1879,7 @@ namespace Terminals
 
         private void toolsToolStripMenuItem_DropDownOpening(object sender, EventArgs e)
         {
-        	Log.InsideMethod();
+            Log.InsideMethod();
             this.shortcutsToolStripMenuItem.Checked = this.SpecialCommandsToolStrip.Visible;
             this.toolStripMenuItemShowHideFavoriteToolbar.Checked = this.favoriteToolBar.Visible;
             this.standardToolbarToolStripMenuItem.Checked = this.toolbarStd.Visible;
@@ -1891,7 +1887,7 @@ namespace Terminals
 
         private void toolStripMenuItem3_Click(object sender, EventArgs e)
         {
-        	Log.InsideMethod();
+            Log.InsideMethod();
             using (OrganizeShortcuts org = new OrganizeShortcuts())
             {
                 org.ShowDialog(this);
@@ -1902,21 +1898,21 @@ namespace Terminals
 
         private void ShortcutsContextMenu_MouseClick(object sender, MouseEventArgs e)
         {
-        	Log.InsideMethod();
+            Log.InsideMethod();
             this.toolStripMenuItem3_Click(null, null);
         }
 
         // todo assign missing SpecialCommandsToolStrip_MouseClick
         private void SpecialCommandsToolStrip_MouseClick(object sender, MouseEventArgs e)
         {
-        	Log.InsideMethod();
+            Log.InsideMethod();
             if (e.Button == MouseButtons.Right)
                 this.ShortcutsContextMenu.Show(e.X, e.Y);
         }
 
         private void SpecialCommandsToolStrip_ItemClicked_1(object sender, ToolStripItemClickedEventArgs e)
         {
-        	Log.InsideMethod();
+            Log.InsideMethod();
             SpecialCommandConfigurationElement elm = e.ClickedItem.Tag as SpecialCommandConfigurationElement;
             if (elm != null)
                 elm.Launch();
@@ -1924,25 +1920,25 @@ namespace Terminals
 
         private void toolStripButton2_Click(object sender, EventArgs e)
         {
-        	Log.InsideMethod();
+            Log.InsideMethod();
             this.OpenNetworkingTools(null, null);
         }
-        
+
         private void networkingToolsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-        	Log.InsideMethod();
+            Log.InsideMethod();
             this.toolStripButton2_Click(null, null);
         }
 
         private void toolStripMenuItemCaptureManager_Click(object sender, EventArgs e)
         {
-        	Log.InsideMethod();
+            Log.InsideMethod();
             this.terminalsControler.RefreshCaptureManagerAndCreateItsTab(true);
         }
 
         private void toolStripButtonCaptureManager_Click(object sender, EventArgs e)
         {
-        	Log.InsideMethod();
+            Log.InsideMethod();
             Boolean origval = Settings.AutoSwitchOnCapture;
             if (!Settings.EnableCaptureToFolder || !Settings.AutoSwitchOnCapture)
             {
@@ -1955,7 +1951,7 @@ namespace Terminals
 
         private void sendALTKeyToolStripMenuItem_Click(object sender, EventArgs e)
         {
-        	Log.InsideMethod();
+            Log.InsideMethod();
             if (sender != null && (sender as ToolStripMenuItem) != null)
             {
                 String key = (sender as ToolStripMenuItem).Text;
@@ -1991,7 +1987,7 @@ namespace Terminals
 
         private void toolStripButton4_Click(object sender, EventArgs e)
         {
-        	Log.InsideMethod();
+            Log.InsideMethod();
             if (this.terminalsControler.HasSelected)
             {
                 TerminalTabControlItem terminalTabPage = this.terminalsControler.Selected;
@@ -2004,14 +2000,14 @@ namespace Terminals
 
         private void pbShowTagsFavorites_MouseMove(object sender, MouseEventArgs e)
         {
-        	Log.InsideMethod();
+            Log.InsideMethod();
             if (Settings.AutoExapandTagsPanel)
                 this.HideShowFavoritesPanel(true);
         }
 
         private void lockToolbarsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-        	Log.InsideMethod();
+            Log.InsideMethod();
             this.toolStripContainer.SaveLayout();
             this.lockToolbarsToolStripMenuItem.Checked = !this.lockToolbarsToolStripMenuItem.Checked;
             Settings.ToolbarsLocked = this.lockToolbarsToolStripMenuItem.Checked;
@@ -2020,19 +2016,19 @@ namespace Terminals
 
         private void MainForm_OnReleaseIsAvailable(FavoriteConfigurationElement releaseFavorite)
         {
-        	Log.InsideMethod();
+            Log.InsideMethod();
             this.Invoke(this.openTerminalsReleasePageMethodInvoker);
         }
 
         private void helpToolStripMenuItem_Click(object sender, EventArgs e)
         {
-        	Log.InsideMethod();
+            Log.InsideMethod();
             if (!this.updateToolStripItem.Visible)
             {
                 if (ReleaseAvailable && this.updateToolStripItem != null)
                 {
                     this.updateToolStripItem.Visible = ReleaseAvailable;
-                    if (! string.IsNullOrEmpty(ReleaseDescription))
+                    if (!string.IsNullOrEmpty(ReleaseDescription))
                     {
                         this.updateToolStripItem.Text = String.Format("{0} - {1}", this.updateToolStripItem.Text,
                                                                       ReleaseDescription);
@@ -2043,25 +2039,25 @@ namespace Terminals
 
         private void toolStripButton5_Click(object sender, EventArgs e)
         {
-        	Log.InsideMethod();
+            Log.InsideMethod();
             Process.Start("mmc.exe", "compmgmt.msc /a /computer=.");
         }
 
         private void rebuildTagsIndexToolStripMenuItem_Click(object sender, EventArgs e)
         {
-        	Log.InsideMethod();
-        	
-        	if (this.favsList1 != null)
-            	Settings.RebuildTagIndex(favsList1.SaveInDB);
-        	
+            Log.InsideMethod();
+
+            if (this.favsList1 != null)
+                Settings.RebuildTagIndex(favsList1.SaveInDB);
+
             this.LoadGroups();
             this.UpdateControls();
         }
 
         private void viewInNewWindowToolStripMenuItem_Click(object sender, EventArgs e)
         {
-        	Log.InsideMethod();
-        	
+            Log.InsideMethod();
+
             if (this.CurrentConnection != null)
             {
                 this.terminalsControler.DetachTabToNewWindow();
@@ -2070,7 +2066,7 @@ namespace Terminals
 
         private void rebuildShortcutsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-        	Log.InsideMethod();
+            Log.InsideMethod();
             Settings.SpecialCommands.Clear();
             Settings.SpecialCommands = SpecialCommandsWizard.LoadSpecialCommands();
 
@@ -2085,20 +2081,20 @@ namespace Terminals
 
         private void rebuildToolbarsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-        	Log.InsideMethod();
+            Log.InsideMethod();
             this.fullScreenSwitch.LoadWindowState();
         }
 
         private void openLogFolderToolStripMenuItem_Click(object sender, EventArgs e)
         {
-        	Log.InsideMethod();
+            Log.InsideMethod();
             Process.Start(Log.CurrentLogFolder);
             Log.Info("The log file folder has been opened.");
         }
-        
+
         private void openLogFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
-        	Log.InsideMethod();
+            Log.InsideMethod();
             if (lastOpenLogFileProcessId > 0)
             {
                 Process lastOpenLogFileProcess =
@@ -2118,77 +2114,77 @@ namespace Terminals
                     }
             }
 
-			if (MachineInfo.IsMac)
-				lastOpenLogFileProcessId = Process.Start("open", "-a TextEdit " + Log.CurrentLogFile).Id;
-			else
-            	lastOpenLogFileProcessId = Process.Start("notepad.exe", Log.CurrentLogFile).Id;
-			
+            if (MachineInfo.IsMac)
+                lastOpenLogFileProcessId = Process.Start("open", "-a TextEdit " + Log.CurrentLogFile).Id;
+            else
+                lastOpenLogFileProcessId = Process.Start("notepad.exe", Log.CurrentLogFile).Id;
+
             Log.Info("Notepad has been started containing the current log file.");
         }
 
         private void splitContainer1_SplitterMoved(object sender, SplitterEventArgs e)
         {
-        	Log.InsideMethod();
-        	
+            Log.InsideMethod();
+
             if (this.splitContainer1.Panel1.Width > 15)
                 Settings.FavoritePanelWidth = this.splitContainer1.Panel1.Width;
 
-			ChangeSize();
-			//if (this.CurrentConnection != null)
-				//this.CurrentConnection.ChangeDesktopSize();
+            ChangeSize();
+            //if (this.CurrentConnection != null)
+            //this.CurrentConnection.ChangeDesktopSize();
         }
 
         private void credentialManagementToolStripMenuItem_Click(object sender, EventArgs e)
         {
-        	Log.InsideMethod();
+            Log.InsideMethod();
             this.ShowCredentialsManager();
         }
 
         private void CredentialManagementToolStripButton_Click(object sender, EventArgs e)
         {
-        	Log.InsideMethod();
+            Log.InsideMethod();
             this.ShowCredentialsManager();
         }
 
         private void exportConnectionsListToolStripMenuItem_Click(object sender, EventArgs e)
         {
-        	Log.InsideMethod();
+            Log.InsideMethod();
             ExportFrom ei = new ExportFrom();
             ei.Show();
         }
 
         private void toolStripMenuItemImport_Click(object sender, EventArgs e)
         {
-        	Log.InsideMethod();
-        	
-            OrganizeFavoritesForm conMgr = new OrganizeFavoritesForm {MainForm = this};
-            
+            Log.InsideMethod();
+
+            OrganizeFavoritesForm conMgr = new OrganizeFavoritesForm { MainForm = this };
+
             if (this.favsList1 != null)
-            	conMgr.SaveInDB = favsList1.SaveInDB;
-            
+                conMgr.SaveInDB = favsList1.SaveInDB;
+
             conMgr.CallImport();
             conMgr.ShowDialog();
         }
 
         private void showInDualScreensToolStripMenuItem_Click(object sender, EventArgs e)
         {
-        	Log.InsideMethod();
+            Log.InsideMethod();
             this.fullScreenSwitch.ToggleMultiMonitor();
         }
 
         private void optionsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-        	Log.InsideMethod();
-        	
+            Log.InsideMethod();
+
             using (OptionEditor frmOptions = new OptionEditor(this))
             {
                 if (frmOptions.ShowDialog() == DialogResult.OK)
                 {
                     if (frmOptions.FavoritesTreeViewOptionsChanged)
                     {
-                    	if (this.favsList1 == null)
-                    		return;
-                    	
+                        if (this.favsList1 == null)
+                            return;
+
                         this.favsList1.SaveState();
                         this.ApplyControlsEnableAndVisibleState();
                         this.pnlTagsFavorites.Controls.Remove(this.favsList1);
@@ -2205,8 +2201,8 @@ namespace Terminals
 
         private void ReloadTerminalsBackgroundImage()
         {
-        	Log.InsideMethod();
-        	
+            Log.InsideMethod();
+
             tcTerminals.BackColor = Kohl.Framework.Converters.ColorParser.FromString(Settings.DashBoardBackgroundColor, Color.FromKnownColor(KnownColor.Control));
             tcTerminals.BackgroundImageLayout = (ImageLayout)Settings.ImageStyle;
 
@@ -2224,17 +2220,17 @@ namespace Terminals
             //ChangeSize();
         }
         #endregion
-		
-		private void ChangeSize()
-		{
-			Log.InsideMethod();
-			ReloadTerminalsBackgroundImage();
+
+        private void ChangeSize()
+        {
+            Log.InsideMethod();
+            ReloadTerminalsBackgroundImage();
 
             // we are chaning from full screen to normal screen
             if (switching && fullScreenSwitch.FullScreen)
             {
                 //this.terminalsControler.Resize(null, false);
-                this.terminalsControler.Resize(new Size(this.tcTerminals.Width, this.tcTerminals.Height - this.tcTerminals.HeaderHeight*3), true);
+                this.terminalsControler.Resize(new Size(this.tcTerminals.Width, this.tcTerminals.Height - this.tcTerminals.HeaderHeight * 3), true);
                 switching = false;
                 return;
             }
@@ -2251,30 +2247,30 @@ namespace Terminals
             // Normal resize
             this.terminalsControler.Resize(null);
             switching = false;
-		}
-		void EmptyLogFileToolStripMenuItemClick(object sender, EventArgs e)
-		{
-			try
-			{
-				if (File.Exists(Log.CurrentLogFile))
-					File.WriteAllText(Log.CurrentLogFile, "");
-			}
-			catch (Exception ex)
-			{
-				MessageBox.Show("Terminals was unable to clear the contents of the file" + Environment.NewLine + ex.Message, "Error");
-			}
-		}
-		void SetLogLevelToInfoToolStripMenuItemClick(object sender, EventArgs e)
-		{
-			Kohl.Framework.Logging.Log.SetLogLevel(false);
-			this.SetLogLevelToDebugToolStripMenuItem.Checked = false;
-			this.SetLogLevelToInfoToolStripMenuItem.Checked = true;
-		}
-		void SetLogLevelToDebugToolStripMenuItemClick(object sender, EventArgs e)
-		{
-			Kohl.Framework.Logging.Log.SetLogLevel(true);
-			this.SetLogLevelToDebugToolStripMenuItem.Checked = true;
-			this.SetLogLevelToInfoToolStripMenuItem.Checked = false;
-		}
+        }
+        void EmptyLogFileToolStripMenuItemClick(object sender, EventArgs e)
+        {
+            try
+            {
+                if (File.Exists(Log.CurrentLogFile))
+                    File.WriteAllText(Log.CurrentLogFile, "");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Terminals was unable to clear the contents of the file" + Environment.NewLine + ex.Message, "Error");
+            }
+        }
+        void SetLogLevelToInfoToolStripMenuItemClick(object sender, EventArgs e)
+        {
+            Kohl.Framework.Logging.Log.SetLogLevel(false);
+            this.SetLogLevelToDebugToolStripMenuItem.Checked = false;
+            this.SetLogLevelToInfoToolStripMenuItem.Checked = true;
+        }
+        void SetLogLevelToDebugToolStripMenuItemClick(object sender, EventArgs e)
+        {
+            Kohl.Framework.Logging.Log.SetLogLevel(true);
+            this.SetLogLevelToDebugToolStripMenuItem.Checked = true;
+            this.SetLogLevelToInfoToolStripMenuItem.Checked = false;
+        }
     }
 }

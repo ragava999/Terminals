@@ -4,7 +4,6 @@
  * Date: 04.10.2012
  * Time: 13:11
  */
-
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -28,7 +27,7 @@ namespace Terminals.Network.Servers
             foreach (string name in servers)
             {
                 ServerType type = Servers.GetServerType(name);
-                KnownServers s = new KnownServers {Name = name, Type = type};
+                KnownServers s = new KnownServers { Name = name, Type = type };
                 list.Add(s);
             }
 

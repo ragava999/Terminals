@@ -19,10 +19,10 @@ namespace Terminals.ExportImport.Import
         private object[] itemsField;
 
         /// <remarks />
-        [XmlElement("Connection", typeof (Connection))]
-        [XmlElement("ConnectionsFolder", typeof (vRDConfigurationFileConnectionsFolder),
+        [XmlElement("Connection", typeof(Connection))]
+        [XmlElement("ConnectionsFolder", typeof(vRDConfigurationFileConnectionsFolder),
             Form = XmlSchemaForm.Unqualified)]
-        [XmlElement("CredentialsFolder", typeof (vRDConfigurationFileCredentialsFolder),
+        [XmlElement("CredentialsFolder", typeof(vRDConfigurationFileCredentialsFolder),
             Form = XmlSchemaForm.Unqualified)]
         public object[] Items
         {

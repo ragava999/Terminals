@@ -1,7 +1,6 @@
 using System;
 using System.Windows.Forms;
 
-
 namespace Terminals.Network.WMI
 {
     public partial class WMIServerCredentials : UserControl
@@ -9,7 +8,7 @@ namespace Terminals.Network.WMI
         public WMIServerCredentials()
         {
             this.InitializeComponent();
-            
+
             this.PasswordTextbox.PasswordChar = Terminals.Forms.Controls.CredentialPanel.HIDDEN_PASSWORD_CHAR;
         }
 

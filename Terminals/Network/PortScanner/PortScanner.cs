@@ -1,12 +1,11 @@
+using Kohl.Framework.Logging;
+using Metro;
+using Metro.Scanning;
 using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Threading;
 using System.Windows.Forms;
-
-using Kohl.Framework.Logging;
-using Metro;
-using Metro.Scanning;
 
 namespace Terminals.Network.PortScanner
 {
@@ -60,7 +59,7 @@ namespace Terminals.Network.PortScanner
 
                 for (int y = iStartPort; y <= iEndPort; y++)
                 {
-                    ports[counter] = (ushort) y;
+                    ports[counter] = (ushort)y;
                     counter++;
                 }
 
@@ -88,11 +87,11 @@ namespace Terminals.Network.PortScanner
                         {
                             try
                             {
-                                ThreadPool.QueueUserWorkItem(this.ScanMachine, new object[] {finalAddress, ports});
+                                ThreadPool.QueueUserWorkItem(this.ScanMachine, new object[] { finalAddress, ports });
                             }
                             catch (Exception exc)
                             {
-								Log.Error("Error scanning the IP subset.", exc);
+                                Log.Error("Error scanning the IP subset.", exc);
                             }
                         }
                     }
@@ -104,9 +103,9 @@ namespace Terminals.Network.PortScanner
         {
             try
             {
-                object[] states = (object[]) state;
-                IPAddress address = (IPAddress) states[0];
-                ushort[] ports = (ushort[]) states[1];
+                object[] states = (object[])state;
+                IPAddress address = (IPAddress)states[0];
+                ushort[] ports = (ushort[])states[1];
 
                 TcpSynScanner scanner = new TcpSynScanner(new IPEndPoint(this.endPointAddress, 0));
                 scanner.PortReply += this.scanner_PortReply;
@@ -117,8 +116,8 @@ namespace Terminals.Network.PortScanner
             }
             catch (Exception ex)
             {
-				Log.Warn("Error occured while trying to scan the target machine.", ex);
-				MessageBox.Show("Error occured while trying to scan the target machine." + Environment.NewLine + ex.Message, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                Log.Warn("Error occured while trying to scan the target machine.", ex);
+                MessageBox.Show("Error occured while trying to scan the target machine." + Environment.NewLine + ex.Message, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
 
             if (!this.IsDisposed)
@@ -147,7 +146,7 @@ namespace Terminals.Network.PortScanner
             }
             catch (Exception exc)
             {
-				Log.Error("Error connecting to the network interfaces.", exc);
+                Log.Error("Error connecting to the network interfaces.", exc);
             }
         }
 
@@ -162,10 +161,10 @@ namespace Terminals.Network.PortScanner
         {
             this.Counter--;
             ScanResult r = new ScanResult
-                               {
-                                   RemoteEndPoint = new IPEndPoint(remoteEndPoint.Address, remoteEndPoint.Port),
-                                   State = state
-                               };
+            {
+                RemoteEndPoint = new IPEndPoint(remoteEndPoint.Address, remoteEndPoint.Port),
+                State = state
+            };
 
             lock (this.resultsLock)
             {
@@ -182,11 +181,11 @@ namespace Terminals.Network.PortScanner
             if (this.resultsGridView.Columns == null || this.resultsGridView.Columns.Count == 0)
             {
                 this.resultsGridView.Columns.Add(
-					"End point",
-					"End point");
+                    "End point",
+                    "End point");
                 this.resultsGridView.Columns.Add(
-					"State",
-					"State");
+                    "State",
+                    "State");
             }
 
             lock (this.resultsLock)
@@ -195,7 +194,7 @@ namespace Terminals.Network.PortScanner
                 {
                     if (result.State == TcpPortState.Opened)
                     {
-                        this.resultsGridView.Rows.Add(new object[] {result.RemoteEndPoint, result.State});
+                        this.resultsGridView.Rows.Add(new object[] { result.RemoteEndPoint, result.State });
                     }
                 }
             }
@@ -209,7 +208,7 @@ namespace Terminals.Network.PortScanner
 
             this.ScanResultsLabel.Text =
                 string.Format(
-					"Outstanding requests: {0}",
+                    "Outstanding requests: {0}",
                     this.Counter);
         }
 

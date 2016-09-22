@@ -6,14 +6,14 @@ using Kohl.Framework.Info;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle ("Terminals")]
-[assembly: AssemblyDescription ("Terminals is a multi-tab terminal services and remote desktop client. Moreover Terminals is capable beside RDP of supporting AutoIt, a shell explorer, http connections, ICA/Citrix connections, telnet, ssh, VNC and many other protocols.")]
-[assembly: AssemblyConfiguration ("")]
-[assembly: AssemblyCompany ("Oliver Kohl D.Sc.")]
-[assembly: AssemblyProduct ("Terminals by Oliver Kohl D.Sc.")]
-[assembly: AssemblyCopyright ("Copyright © Oliver Kohl D.Sc. 2016")]
-[assembly: AssemblyTrademark ("http://www.kohl.bz")]
-[assembly: AssemblyCulture ("")]
+[assembly: AssemblyTitle("Terminals")]
+[assembly: AssemblyDescription("Terminals is a multi-tab terminal services and remote desktop client. Moreover Terminals is capable beside RDP of supporting AutoIt, a shell explorer, http connections, ICA/Citrix connections, telnet, ssh, VNC and many other protocols.")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("Oliver Kohl D.Sc.")]
+[assembly: AssemblyProduct("Terminals by Oliver Kohl D.Sc.")]
+[assembly: AssemblyCopyright("Copyright © Oliver Kohl D.Sc. 2016")]
+[assembly: AssemblyTrademark("http://www.kohl.bz")]
+[assembly: AssemblyCulture("")]
 // Version information for an assembly consists of the following four values:
 //
 //      Major Version
@@ -21,9 +21,9 @@ using Kohl.Framework.Info;
 //      Build Number
 //      Revision
 //
-[assembly: AssemblyVersion ("4.9.1.0")]
-[assembly: AssemblyFileVersion ("4.9.1.0")]
-[assembly: AssemblyInformationalVersion ("4.9.1 TESTING")]
+[assembly: AssemblyVersion("4.9.1.0")]
+[assembly: AssemblyFileVersion("4.9.1.0")]
+[assembly: AssemblyInformationalVersion("4.9.1 TESTING")]
 [assembly: AssemblyTimeStampAttribute("30.08.2016 12:30:00")]
 /*
 AssemblyVersion
@@ -50,5 +50,6 @@ The Product version of the assembly. This is the version you would use when talk
 
 I use the format: major.minor [revision as string]. This would result in:
 [assembly: AssemblyInformationalVersion("1.0 RC1")] 
-*/[assembly: Guid ("76d9dac2-b9e2-44d8-ae9c-22a4585e14e3")]
-[assembly: AssemblyFlags (AssemblyNameFlags.PublicKey | AssemblyNameFlags.EnableJITcompileOptimizer)]
+*/
+[assembly: Guid("76d9dac2-b9e2-44d8-ae9c-22a4585e14e3")]
+[assembly: AssemblyFlags(AssemblyNameFlags.PublicKey | AssemblyNameFlags.EnableJITcompileOptimizer)]

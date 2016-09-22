@@ -1,7 +1,7 @@
+using Kohl.Framework.Logging;
 using System;
 using System.ComponentModel;
 using System.Windows.Forms;
-using Kohl.Framework.Logging;
 using Terminals.Configuration.Files.Main.Favorites;
 using Terminals.Configuration.Files.Main.Settings;
 using Terminals.Connection.Manager;
@@ -14,7 +14,7 @@ namespace Terminals.Network.Servers
     {
         private Session SelectedSession;
         private TerminalServer server;
-        
+
         public TerminalServerManager()
         {
             this.InitializeComponent();
@@ -57,37 +57,37 @@ namespace Terminals.Network.Servers
 
         public void Connect(Kohl.Framework.Security.Credential credentials)
         {
-        	progress.Visible = true;
-        	splitContainer1.Visible = false;
-        	
-        	this.SelectedSession = null;
+            progress.Visible = true;
+            splitContainer1.Visible = false;
+
+            this.SelectedSession = null;
             this.dataGridView1.DataSource = null;
             this.dataGridView2.DataSource = null;
             this.propertyGrid1.SelectedObject = null;
-            
+
             this.server = TerminalServer.LoadServer(this.ServerNameComboBox.Text, credentials);
 
             progress.Visible = false;
             splitContainer1.Visible = true;
-            
+
             if (this.server.IsTerminalServer)
-            {            	
+            {
                 this.dataGridView1.DataSource = this.server.Sessions;
-                
+
                 if (this.dataGridView1.Columns.Count > 0)
-                	this.dataGridView1.Columns[1].Visible = false;
-                
+                    this.dataGridView1.Columns[1].Visible = false;
+
                 if (this.server.Sessions == null)
-                	MessageBox.Show("Terminals was unable to enumerate your server's sessions." + (this.server.Errors != null & this.server.Errors.Count > 0 ? "\n" +this.server.Errors[0] : "" ));
+                    MessageBox.Show("Terminals was unable to enumerate your server's sessions." + (this.server.Errors != null & this.server.Errors.Count > 0 ? "\n" + this.server.Errors[0] : ""));
             }
             else
             {
-				MessageBox.Show("This machine does not appear to be a terminal server.");
+                MessageBox.Show("This machine does not appear to be a terminal server.");
             }
         }
-        
+
         Kohl.Framework.Security.Credential credentials = null;
-        
+
         public void Connect(string server, bool headless, Kohl.Framework.Security.Credential credentials)
         {
             // This prevents SharpDevelop and Visual Studio from both an exception in design mode for controls using this HistoryTreeView and from crashing when opening the
@@ -96,7 +96,7 @@ namespace Terminals.Network.Servers
                 return;
 
             this.credentials = credentials;
-            
+
             try
             {
                 this.splitContainer1.Panel1Collapsed = headless;
@@ -109,7 +109,7 @@ namespace Terminals.Network.Servers
             }
             catch (Exception exc)
             {
-				Log.Error("Connection failure.", exc);
+                Log.Error("Connection failure.", exc);
             }
         }
 
@@ -132,7 +132,7 @@ namespace Terminals.Network.Servers
             {
                 foreach (FavoriteConfigurationElement elm in favorites)
                 {
-                    if (typeof (RDPConnection).IsEqual(elm.Protocol))
+                    if (typeof(RDPConnection).IsEqual(elm.Protocol))
                     {
                         this.ServerNameComboBox.Items.Add(elm.ServerName);
                     }
@@ -144,18 +144,18 @@ namespace Terminals.Network.Servers
         {
             if (this.SelectedSession != null)
             {
-            	string input = "Please enter the message to send..";
+                string input = "Please enter the message to send..";
 
-            	if (InputBox.Show(ref input) == DialogResult.OK && !string.IsNullOrWhiteSpace(input))
+                if (InputBox.Show(ref input) == DialogResult.OK && !string.IsNullOrWhiteSpace(input))
                 {
                     TerminalServicesApi.SendMessage(this.SelectedSession,
-                                                    
-						"Message from your administrator (sent via " + Kohl.Framework.Info.AssemblyInfo.Title + ")",
+
+                        "Message from your administrator (sent via " + Kohl.Framework.Info.AssemblyInfo.Title + ")",
                                                     input.Trim(), 0, 10, false);
                 }
             }
             else
-            	MessageBox.Show("Please select a session");
+                MessageBox.Show("Please select a session");
         }
 
         private void logoffSessionToolStripMenuItem_Click(object sender, EventArgs e)
@@ -163,15 +163,15 @@ namespace Terminals.Network.Servers
             if (this.SelectedSession != null)
             {
                 if (
-					MessageBox.Show("Are you sure you want to log off the selected session?",
-						"Confirmation required ...",
+                    MessageBox.Show("Are you sure you want to log off the selected session?",
+                        "Confirmation required ...",
                                     MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation) == DialogResult.OK)
                 {
                     TerminalServicesApi.LogOffSession(this.SelectedSession, false);
                 }
             }
             else
-            	MessageBox.Show("Please select a session");
+                MessageBox.Show("Please select a session");
         }
 
         private void rebootServerToolStripMenuItem_Click(object sender, EventArgs e)
@@ -179,8 +179,8 @@ namespace Terminals.Network.Servers
             if (this.server.IsTerminalServer)
             {
                 if (
-					MessageBox.Show("Are you sure you want to reboot this server?",
-						"Confirmation required ...",
+                    MessageBox.Show("Are you sure you want to reboot this server?",
+                        "Confirmation required ...",
                                     MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation) == DialogResult.OK)
                 {
                     TerminalServicesApi.ShutdownSystem(this.server, true);
@@ -193,8 +193,8 @@ namespace Terminals.Network.Servers
             if (this.server.IsTerminalServer)
             {
                 if (
-					MessageBox.Show("Are you sure you want to shutdown this server?",
-						"Confirmation required ...",
+                    MessageBox.Show("Are you sure you want to shutdown this server?",
+                        "Confirmation required ...",
                                     MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation) == DialogResult.OK)
                 {
                     TerminalServicesApi.ShutdownSystem(this.server, false);
@@ -209,9 +209,9 @@ namespace Terminals.Network.Servers
                 this.button1_Click(null, null);
             }
         }
-		void PropertyGrid1Click(object sender, EventArgs e)
-		{
-	
-		}
+        void PropertyGrid1Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

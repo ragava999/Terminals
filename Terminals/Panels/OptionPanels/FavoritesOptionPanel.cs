@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Windows.Forms;
-
 using Terminals.Configuration.Files.Main;
 using Terminals.Configuration.Files.Main.Settings;
 using Terminals.Connection.Panels.OptionPanels;
@@ -84,7 +82,7 @@ namespace Terminals.Panels.OptionPanels
                     Changed = true;
                 else
                     Changed = false;
-            
+
             Settings.FavoritesFont = this.FavoritesFont.Font;
             Settings.FavoritesFontBackColor = this.FavoritesFont.BackColor;
             Settings.FavoritesFontForeColor = this.FavoritesFont.ForeColor;

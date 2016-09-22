@@ -1,6 +1,5 @@
 ﻿namespace Terminals.Connections
 {
-    // .NET namespaces
     using System.Runtime.InteropServices;
     using System.Windows.Forms;
 
@@ -15,15 +14,9 @@
         void Close(uint dwSaveOption);
         void SetMoniker(uint dwWhichMoniker, object pmk);
         void GetMoniker(uint dwAssign, uint dwWhichMoniker, object ppmk);
-
-        void InitFromData(IDataObject pDataObject, bool
-                                                       fCreation, uint dwReserved);
-
+        void InitFromData(IDataObject pDataObject, bool fCreation, uint dwReserved);
         void GetClipboardData(uint dwReserved, IDataObject ppDataObject);
-
-        void DoVerb(uint iVerb, uint lpmsg, object pActiveSite,
-                    uint lindex, uint hwndParent, uint lprcPosRect);
-
+        void DoVerb(uint iVerb, uint lpmsg, object pActiveSite, uint lindex, uint hwndParent, uint lprcPosRect);
         void EnumVerbs(object ppEnumOleVerb);
         void Update();
         void IsUpToDate();

@@ -1,16 +1,13 @@
 ﻿namespace Terminals.Connections
 {
-    using System.Drawing;
     using Properties;
+    using System.Drawing;
 
-    /// <summary>
-    ///     Description of SshProtocol.
-    /// </summary>
     public class SshConnection : TerminalConnection
     {
         protected override Image[] images
         {
-            get { return new Image[] {Resources.SSH}; }
+            get { return new Image[] { Resources.SSH }; }
         }
 
         public new int Port

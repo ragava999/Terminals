@@ -1,7 +1,6 @@
+using Metro;
 using System;
 using System.Windows.Forms;
-
-using Metro;
 using Terminals.Network.DNS;
 
 namespace Terminals.Network
@@ -11,7 +10,6 @@ namespace Terminals.Network
         public InterfacesList()
         {
             this.InitializeComponent();
-            
         }
 
         private void InterfacesList_Load(object sender, EventArgs e)

@@ -1,10 +1,9 @@
 namespace Terminals.Connections
 {
+    using Connection.Native;
     using System;
     using System.Linq;
     using System.Runtime.InteropServices;
-
-    using Connection.Native;
 
     public class ShellFileOperation
     {
@@ -21,7 +20,7 @@ namespace Terminals.Connections
             /// <summary>
             /// Not currently used. 
             /// </summary>
-            Confirmmouse = 0x0002, 
+            Confirmmouse = 0x0002,
 
             /// <summary>
             /// Do not display a progress dialog box. 
@@ -128,14 +127,14 @@ namespace Terminals.Connections
             shellFileOperation.pFrom = Marshal.StringToHGlobalUni(multiSource);
             shellFileOperation.pTo = Marshal.StringToHGlobalUni(multiDest);
 
-            shellFileOperation.fFlags = (ushort) this.operationFlags;
+            shellFileOperation.fFlags = (ushort)this.operationFlags;
             shellFileOperation.lpszProgressTitle = this.progressTitle;
             shellFileOperation.fAnyOperationsAborted = 0;
             shellFileOperation.hNameMappings = IntPtr.Zero;
 
             int retVal = WindowsApi.SHFileOperation(ref shellFileOperation);
 
-            WindowsApi.SHChangeNotify(/* ShellChangeNotificationEvents.SHCNE_ALLEVENTS = */ 0x7FFFFFFF /* All events have occurred. */,/* ShellChangeNotificationFlags.SHCNF_DWORD = */ 0x0003 /*The dwItem1 and dwItem2 parameters are DWORD values.  */,IntPtr.Zero,IntPtr.Zero);
+            WindowsApi.SHChangeNotify(/* ShellChangeNotificationEvents.SHCNE_ALLEVENTS = */ 0x7FFFFFFF /* All events have occurred. */,/* ShellChangeNotificationFlags.SHCNF_DWORD = */ 0x0003 /*The dwItem1 and dwItem2 parameters are DWORD values.  */, IntPtr.Zero, IntPtr.Zero);
 
             if (retVal != 0)
                 return false;

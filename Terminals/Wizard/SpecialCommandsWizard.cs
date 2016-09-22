@@ -1,26 +1,23 @@
 ﻿namespace Terminals.Wizard
 {
+    using Configuration.Files.Main.SpecialCommands;
+    using Kohl.Framework.Drawing;
+    using MMC;
     using System;
-    using System.Collections.Generic;
     using System.Drawing;
     using System.IO;
-    using Kohl.Framework.Drawing;
-    using Terminals.Configuration;
-    using Terminals.Configuration.Files.Main.SpecialCommands;
-    using Terminals.Properties;
-    using Terminals.Wizard.MMC;
 
     public static class SpecialCommandsWizard
     {
         private static DirectoryInfo SystemRoot
         {
             get
-			{
-				if (!Kohl.Framework.Info.MachineInfo.IsUnixOrMac)
-					return new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.System));
+            {
+                if (!Kohl.Framework.Info.MachineInfo.IsUnixOrMac)
+                    return new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.System));
 
-				return null;
-			}
+                return null;
+            }
         }
 
         public static SpecialCommandConfigurationElementCollection LoadSpecialCommands()
@@ -37,8 +34,8 @@
 
         private static void AddControlPanelApplets(SpecialCommandConfigurationElementCollection cmdList)
         {
-			if (SystemRoot == null)
-				return;
+            if (SystemRoot == null)
+                return;
 
             foreach (FileInfo file in SystemRoot.GetFiles("*.cpl"))
             {
@@ -58,9 +55,9 @@
 
         private static void AddMmcCommands(SpecialCommandConfigurationElementCollection cmdList)
         {
-			if (SystemRoot == null)
-				return;
-			
+            if (SystemRoot == null)
+                return;
+
             Icon[] IconsList = IconHandler.IconsFromFile(Path.Combine(SystemRoot.FullName, "mmc.exe"),
                                                          IconSize.Small);
             Random rnd = new Random();
@@ -92,9 +89,9 @@
 
         private static void AddRegEditCommand(SpecialCommandConfigurationElementCollection cmdList)
         {
-			if (SystemRoot == null)
-				return;
-			
+            if (SystemRoot == null)
+                return;
+
             string regEditFile = Path.Combine(SystemRoot.FullName, "regedt32.exe");
             Icon[] regeditIcons = IconHandler.IconsFromFile(regEditFile, IconSize.Small);
             SpecialCommandConfigurationElement regEditElm = new SpecialCommandConfigurationElement("Registry Editor");
@@ -110,19 +107,19 @@
 
         private static void AddCmdCommand(SpecialCommandConfigurationElementCollection cmdList)
         {
-			if (!Kohl.Framework.Info.MachineInfo.IsUnixOrMac)
-	            cmdList.Add(new SpecialCommandConfigurationElement("Command Shell")
-	                                                         {
-	                                                             Executable = @"%systemroot%\system32\cmd.exe"
-	                                                         });
+            if (!Kohl.Framework.Info.MachineInfo.IsUnixOrMac)
+                cmdList.Add(new SpecialCommandConfigurationElement("Command Shell")
+                {
+                    Executable = @"%systemroot%\system32\cmd.exe"
+                });
 
-			if (Kohl.Framework.Info.MachineInfo.IsMac)
-			{
-				cmdList.Add(new SpecialCommandConfigurationElement("Command Shell")
-															{
-																Executable = @"Terminal.app"
-															});
-			}
+            if (Kohl.Framework.Info.MachineInfo.IsMac)
+            {
+                cmdList.Add(new SpecialCommandConfigurationElement("Command Shell")
+                {
+                    Executable = @"Terminal.app"
+                });
+            }
         }
     }
 }

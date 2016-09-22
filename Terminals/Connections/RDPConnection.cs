@@ -2,21 +2,17 @@ using MSTSCLib;
 
 namespace Terminals.Connections
 {
-    using System;
-	using System.Drawing;
-	using System.IO;
-	using System.Linq;
-	using Terminals.Properties;
-	using System.Runtime.InteropServices;
-	using System.Windows.Forms;
-	
-	using Terminals.Configuration.Files.Main.Favorites;
-	
-	using Kohl.Framework.Info;
-	
-	using Kohl.Framework.Logging;
-	
     using AxMSTSCLib;
+    using Kohl.Framework.Info;
+    using Kohl.Framework.Logging;
+    using System;
+    using System.Drawing;
+    using System.IO;
+    using System.Linq;
+    using System.Runtime.InteropServices;
+    using System.Windows.Forms;
+    using Terminals.Configuration.Files.Main.Favorites;
+    using Terminals.Properties;
 
     public class RDPConnection : Connection.Connection
     {
@@ -28,8 +24,8 @@ namespace Terminals.Connections
             }
         }
 
-		private static object connectLock = new object();
-		
+        private static object connectLock = new object();
+
         /// <summary>
         /// Checks, if the connection port is available. Simulates reconnect feature of the RDP client.
         /// Doens use the port scanner, because it needs administrative priviledges 
@@ -52,7 +48,7 @@ namespace Terminals.Connections
             private int port;
 
             private readonly object activityLock = new object();
-			
+
             private bool disabled;
             private bool isRunning;
 
@@ -181,7 +177,7 @@ namespace Terminals.Connections
                 return string.Format("ConnectionStateDetector:IsRunning={0},Disabled={1}", this.isRunning, this.disabled);
             }
         }
-		
+
         /// <summary>
         /// Translates error codes to client messages
         /// </summary>
@@ -202,32 +198,32 @@ namespace Terminals.Connections
                 }
             }
 
-			// http://msdn.microsoft.com/en-us/library/windows/desktop/aa382176(v=vs.85).aspx
-			// IMsTscAxEvents::OnFatalError
+            // http://msdn.microsoft.com/en-us/library/windows/desktop/aa382176(v=vs.85).aspx
+            // IMsTscAxEvents::OnFatalError
             public static string ToFatalErrorMessage(int errorCode)
             {
                 switch (errorCode)
                 {
                     case 0:
-					return "An unknown error has occurred.";
+                        return "An unknown error has occurred.";
                     case 1:
-					return "Internal error code 1.";
+                        return "Internal error code 1.";
                     case 2:
-					return "An out-of-memory error has occurred.";
+                        return "An out-of-memory error has occurred.";
                     case 3:
-					return "A window-creation error has occurred.";
+                        return "A window-creation error has occurred.";
                     case 4:
-					return "Internal error code 2.";
+                        return "Internal error code 2.";
                     case 5:
-					return "Internal error code 3. This is not a valid state.";
+                        return "Internal error code 3. This is not a valid state.";
                     case 6:
-					return "Internal error code 4.";
+                        return "Internal error code 4.";
                     case 7:
-					return "An unrecoverable error has occurred during client connection.";
+                        return "An unrecoverable error has occurred during client connection.";
                     case 100:
-					return "Winsock initialization error.";
+                        return "Winsock initialization error.";
                     default:
-					return "An unknown error.";
+                        return "An unknown error.";
                 }
             }
 
@@ -238,48 +234,48 @@ namespace Terminals.Connections
                 switch (errorCode)
                 {
                     case -5:
-					return "Winlogon is displaying the \"session contention\" dialog box.";
+                        return "Winlogon is displaying the \"session contention\" dialog box.";
                     case -2:
-					return "Winlogon is continuing with the logon process.";
+                        return "Winlogon is continuing with the logon process.";
                     case -3:
-					return "Winlogon is ending silently.";
+                        return "Winlogon is ending silently.";
                     case -6:
-					return "Winlogon is displaying the \"no permissions\" dialog box.";
+                        return "Winlogon is displaying the \"no permissions\" dialog box.";
                     case -7:
-					return "Winlogon is displaying the \"disconnect refused\" dialog box.";
+                        return "Winlogon is displaying the \"disconnect refused\" dialog box.";
                     case -4:
-					return "Winlogon is displaying the \"reconnect\" dialog box.";
+                        return "Winlogon is displaying the \"reconnect\" dialog box.";
                     case -1:
-					return "The user access has been denied.";
+                        return "The user access has been denied.";
                     case 0:
-					return "The logon failed because the logon credentials are not valid.";
+                        return "The logon failed because the logon credentials are not valid.";
                     case 2:
-					return "Another logon or post-logon error occurred. The remote desktop client displays a logon screen to the user.";
+                        return "Another logon or post-logon error occurred. The remote desktop client displays a logon screen to the user.";
                     case 1:
-					return "The password has expired. Please update your password to continue logging on.";
+                        return "The password has expired. Please update your password to continue logging on.";
                     case 3:
-					return "The remote desktop client displays a dialog box that contains important information for the user.";
+                        return "The remote desktop client displays a dialog box that contains important information for the user.";
                     case -1073741714:
-					return "The user name and authentication information are valid, but authentication was blocked due to restrictions on the user account, such as time-of-day restrictions.";
+                        return "The user name and authentication information are valid, but authentication was blocked due to restrictions on the user account, such as time-of-day restrictions.";
                     case -1073741715:
-					return "The attempted logon is not valid. This is due to either an incorrect user name or incorrect authentication information.";
+                        return "The attempted logon is not valid. This is due to either an incorrect user name or incorrect authentication information.";
                     case -1073741276:
-					return "The password has expired. The user must update their password to continue logging on.";
+                        return "The password has expired. The user must update their password to continue logging on.";
                     default:
-					return "An unknown error occured.";
+                        return "An unknown error occured.";
                 }
             }
 
-			// http://msdn.microsoft.com/en-us/library/windows/desktop/aa382819(v=vs.85).aspx
-			// IMsTscAxEvents::OnWarning
+            // http://msdn.microsoft.com/en-us/library/windows/desktop/aa382819(v=vs.85).aspx
+            // IMsTscAxEvents::OnWarning
             public static string ToWarningMessage(int warningCode)
             {
                 switch (warningCode)
                 {
                     case 1:
-					return "Bitmap cache is corrupt.";
+                        return "Bitmap cache is corrupt.";
                     default:
-					return "An unknown warning occured.";
+                        return "An unknown warning occured.";
                 }
             }
         }
@@ -305,9 +301,9 @@ namespace Terminals.Connections
 
                     return this.client.FullScreen;
                 }
-				catch (Exception ex)
+                catch (Exception ex)
                 {
-					Log.Error("Error getting full screen status " + ex.Message);
+                    Log.Error("Error getting full screen status " + ex.Message);
                     return false;
                 }
 
@@ -320,9 +316,9 @@ namespace Terminals.Connections
                         this.client.FullScreen = value;
                 }
                 catch (Exception ex)
-				{ 
-					Log.Error("Error switching to full screen " + ex.Message);
-				}
+                {
+                    Log.Error("Error switching to full screen " + ex.Message);
+                }
             }
         }
 
@@ -332,22 +328,22 @@ namespace Terminals.Connections
         private IMsRdpClientNonScriptable4 nonScriptable;
         private RdpClientControl client = null;
 
-		/// <summary>
-		/// http://www.codeproject.com/Tips/109917/Fix-the-focus-issue-on-RDP-Client-from-the-AxInter
-		/// </summary>
-		internal class RdpClientControl: AxMsRdpClient7NotSafeForScripting
-		{
-			protected override void WndProc(ref System.Windows.Forms.Message m)
-		    {
-		        //Fix for the missing focus issue on the rdp client component
-				// https://www.autoitscript.com/autoit3/docs/appendix/WinMsgCodes.htm
-		        if (m.Msg == 0x0021) //WM_MOUSEACTIVATE ref:http://msdn.microsoft.com/en-us/library/ms645612(VS.85).aspx
-		            this.Focus();
+        /// <summary>
+        /// http://www.codeproject.com/Tips/109917/Fix-the-focus-issue-on-RDP-Client-from-the-AxInter
+        /// </summary>
+        internal class RdpClientControl : AxMsRdpClient7NotSafeForScripting
+        {
+            protected override void WndProc(ref System.Windows.Forms.Message m)
+            {
+                //Fix for the missing focus issue on the rdp client component
+                // https://www.autoitscript.com/autoit3/docs/appendix/WinMsgCodes.htm
+                if (m.Msg == 0x0021) //WM_MOUSEACTIVATE ref:http://msdn.microsoft.com/en-us/library/ms645612(VS.85).aspx
+                    this.Focus();
 
-		        base.WndProc(ref m);
-		    }
-		}
-		
+                base.WndProc(ref m);
+            }
+        }
+
         public new delegate void Disconnected(RDPConnection Connection);
         public event Disconnected OnDisconnected;
         public delegate void ConnectionEstablish(RDPConnection Connection);
@@ -375,7 +371,7 @@ namespace Terminals.Connections
                 {
                     this.client.ConnectingText = "Connecting. Please wait...";
                     this.client.DisconnectedText = "Disconnecting...";
-					
+
                     this.ConfigureColorsDepth();
                     this.ConfigureRedirectedDrives();
                     this.ConfigureInterface();
@@ -403,13 +399,13 @@ namespace Terminals.Connections
                 else
                     InvokeIfNecessary(() =>
                     {
-						lock(connectLock)
-						{	
-                        	this.client.Width = this.ParentForm.Width;
-                       		this.client.Height = this.ParentForm.Height;
-						}
+                        lock (connectLock)
+                        {
+                            this.client.Width = this.ParentForm.Width;
+                            this.client.Height = this.ParentForm.Height;
+                        }
                     });
-				
+
                 // if next line fails on Protected memory access exception,
                 // some string property is set to null, which leads to this exception
                 this.client.Connect();
@@ -433,7 +429,7 @@ namespace Terminals.Connections
         {
             try
             {
-				this.client = new RdpClientControl();
+                this.client = new RdpClientControl();
             }
             catch (Exception exception)
             {
@@ -449,17 +445,17 @@ namespace Terminals.Connections
         {
             try
             {
-				base.Focus();
-				reconecting.Focus();
-				
+                base.Focus();
+                reconecting.Focus();
+
                 if (this.client == null)
                     return false;
 
-				return base.Focus() && ((Control)this.client).Focus();
+                return base.Focus() && ((Control)this.client).Focus();
             }
-			catch (Exception ex)
+            catch (Exception ex)
             {
-				Log.Error("Error setting focus " + ex.Message); 
+                Log.Error("Error setting focus " + ex.Message);
                 return false;
             }
         }
@@ -496,14 +492,14 @@ namespace Terminals.Connections
         {
             // if not added to the client control controls collection, then it isnt visible
             var clientControl = (Control)this.client;
-           
+
             this.InvokeIfNecessary(() =>
             {
                 clientControl.Controls.Add(this.reconecting);
                 this.reconecting.Hide();
                 this.reconecting.AbortReconnectRequested += new EventHandler(this.Recoonecting_AbortReconnectRequested);
             });
-            
+
             this.connectionStateDetector.AssignFavorite(this.Favorite);
             this.connectionStateDetector.ReconnectExpired += ConnectionStateDetectorOnReconnectExpired;
             this.connectionStateDetector.Reconnected += ConnectionStateDetectorOnReconnected;
@@ -590,7 +586,7 @@ namespace Terminals.Connections
             }
             catch (Exception ex)
             {
-				Log.Error("Error trying to set the desktop dimensions.", ex);
+                Log.Error("Error trying to set the desktop dimensions.", ex);
             }
         }
 
@@ -615,7 +611,7 @@ namespace Terminals.Connections
 
         private void ConfigureRedirectedDrives()
         {
-			if (this.Favorite.RedirectedDrivesList.Count > 0 && this.Favorite.RedirectedDrives[0].Equals("true"))
+            if (this.Favorite.RedirectedDrivesList.Count > 0 && this.Favorite.RedirectedDrives[0].Equals("true"))
                 this.client.AdvancedSettings2.RedirectDrives = true;
             else
             {
@@ -624,7 +620,7 @@ namespace Terminals.Connections
                     for (int i = 0; i < nonScriptable.DriveCollection.DriveCount; i++)
                     {
                         IMsRdpDrive drive = nonScriptable.DriveCollection.get_DriveByIndex((uint)i);
-							foreach (string str in this.Favorite.RedirectedDrivesList)
+                        foreach (string str in this.Favorite.RedirectedDrivesList)
                         {
                             if (drive.Name.IndexOf(str) > -1)
                                 drive.RedirectionState = true;
@@ -787,42 +783,42 @@ namespace Terminals.Connections
         {
             // Terminal Server Gateway Settings
             this.client.TransportSettings.GatewayUsageMethod = (uint)this.Favorite.TsgwUsageMethod;
-            
+
             if (this.client.TransportSettings.GatewayUsageMethod != 0)
             {
-            	Log.Info("Terminals connection has been configured to use a gateway for connection.");
-            	
-            	if (string.IsNullOrEmpty(this.Favorite.TsgwHostname))
-            	{
-            		Log.Warn("Gateway server hasn't been set. Please check your configuration. Either disable the usage of a terminal services gateway server or specify a gateway server to be used for this connection.");
-            	}
-            	
-		        this.client.TransportSettings.GatewayCredsSource = (uint)this.Favorite.TsgwCredsSource;
-		        this.client.TransportSettings.GatewayHostname = this.Favorite.TsgwHostname;
-		        
-		        this.client.TransportSettings2.GatewayProfileUsageMethod = 1;
-		
-		        // SMART CARD Auth
-		        if (this.Favorite.TsgwCredsSource == 1)
-		        {
-		        	Log.Info("Neither gateway nor connection credentials will be used for the terminal services gateway connection. SMART Card has been selected. Please insert your smart card.");
-		        }
-		        else
-		        	// NTLM Auth
-			        if (this.Favorite.TsgwSeparateLogin)
-			        {
-			        	Log.Info("Using the specified gateway credentials.");
-			            this.client.TransportSettings2.GatewayUsername = this.Favorite.TsgwUsername;
-			            this.client.TransportSettings2.GatewayPassword = this.Favorite.TsgwPassword;
-			            this.client.TransportSettings2.GatewayDomain = this.Favorite.TsgwDomain;
-			        }
-			        else
-			        {
-			        	Log.Info("Using the connection credentials as gateway credentials.");
-			            this.client.TransportSettings2.GatewayUsername = this.Favorite.Credential.UserName;
-			            this.client.TransportSettings2.GatewayPassword = this.Favorite.Credential.Password;
-			            this.client.TransportSettings2.GatewayDomain = this.Favorite.Credential.Domain;
-			        }
+                Log.Info("Terminals connection has been configured to use a gateway for connection.");
+
+                if (string.IsNullOrEmpty(this.Favorite.TsgwHostname))
+                {
+                    Log.Warn("Gateway server hasn't been set. Please check your configuration. Either disable the usage of a terminal services gateway server or specify a gateway server to be used for this connection.");
+                }
+
+                this.client.TransportSettings.GatewayCredsSource = (uint)this.Favorite.TsgwCredsSource;
+                this.client.TransportSettings.GatewayHostname = this.Favorite.TsgwHostname;
+
+                this.client.TransportSettings2.GatewayProfileUsageMethod = 1;
+
+                // SMART CARD Auth
+                if (this.Favorite.TsgwCredsSource == 1)
+                {
+                    Log.Info("Neither gateway nor connection credentials will be used for the terminal services gateway connection. SMART Card has been selected. Please insert your smart card.");
+                }
+                else
+                    // NTLM Auth
+                    if (this.Favorite.TsgwSeparateLogin)
+                {
+                    Log.Info("Using the specified gateway credentials.");
+                    this.client.TransportSettings2.GatewayUsername = this.Favorite.TsgwUsername;
+                    this.client.TransportSettings2.GatewayPassword = this.Favorite.TsgwPassword;
+                    this.client.TransportSettings2.GatewayDomain = this.Favorite.TsgwDomain;
+                }
+                else
+                {
+                    Log.Info("Using the connection credentials as gateway credentials.");
+                    this.client.TransportSettings2.GatewayUsername = this.Favorite.Credential.UserName;
+                    this.client.TransportSettings2.GatewayPassword = this.Favorite.Credential.Password;
+                    this.client.TransportSettings2.GatewayDomain = this.Favorite.Credential.Domain;
+                }
             }
         }
 
@@ -903,12 +899,12 @@ namespace Terminals.Connections
             }
             catch (Exception ex)
             {
-				Log.Error("Unable to disconnect form the {0} connection named \"{1}\".", ex);
+                Log.Error("Unable to disconnect form the {0} connection named \"{1}\".", ex);
             }
 
             InvokeIfNecessary(() => base.Disconnect());
         }
-        
+
         private void client_OnConnected(object sender, EventArgs e)
         {
             if (this.OnConnected != null)
@@ -922,7 +918,7 @@ namespace Terminals.Connections
 
             if (String.IsNullOrEmpty(desktopShare))
             {
-				MessageBox.Show(this, "A desktop share was not defined for this connection.\nPlease define a share in the connection properties window (under the Local Resources tab).",
+                MessageBox.Show(this, "A desktop share was not defined for this connection.\nPlease define a share in the connection properties window (under the Local Resources tab).",
                                 AssemblyInfo.Title, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             else
@@ -1022,12 +1018,12 @@ namespace Terminals.Connections
         {
             int errorCode = e.errorCode;
             string message = RdpClientErrorMessages.ToFatalErrorMessage(errorCode);
-			string finalMsg = string.Format("There was a fatal error returned from the RDP connection \"{0}\".", errorCode, message);
+            string finalMsg = string.Format("There was a fatal error returned from the RDP connection \"{0}\".", errorCode, message);
             Log.Fatal(errorCode.ToString());
-			
-			if (!string.IsNullOrEmpty(finalMsg) && !string.IsNullOrEmpty(finalMsg.Trim()))
-            	MessageBox.Show(finalMsg);
-			
+
+            if (!string.IsNullOrEmpty(finalMsg) && !string.IsNullOrEmpty(finalMsg.Trim()))
+                MessageBox.Show(finalMsg);
+
             Log.Fatal(finalMsg);
         }
 
@@ -1035,7 +1031,7 @@ namespace Terminals.Connections
         {
             int warningCode = e.warningCode;
             string message = RdpClientErrorMessages.ToWarningMessage(warningCode);
-			string finalMsg = string.Format("here was a warning returned from the RDP connection.\nWarning Code: {0}\nWarning Description: {1}", warningCode, message);
+            string finalMsg = string.Format("here was a warning returned from the RDP connection.\nWarning Code: {0}\nWarning Description: {1}", warningCode, message);
             Log.Warn(warningCode.ToString());
             Log.Warn(finalMsg);
         }
@@ -1043,14 +1039,14 @@ namespace Terminals.Connections
         private void client_OnLogonError(object sender, IMsTscAxEvents_OnLogonErrorEvent e)
         {
             int errorCode = e.lError;
-			
+
             string message = RdpClientErrorMessages.ToLogonMessage(errorCode);
-			string finalMsg = string.Format("There was a logon error returned from the RDP connection.\nLogon code: {0}\nLogon description: {1}", errorCode, message);
-            
-			if (errorCode != -2)
-				Log.Error(finalMsg);
-			else
-				Log.Debug(finalMsg);
-        }  
+            string finalMsg = string.Format("There was a logon error returned from the RDP connection.\nLogon code: {0}\nLogon description: {1}", errorCode, message);
+
+            if (errorCode != -2)
+                Log.Error(finalMsg);
+            else
+                Log.Debug(finalMsg);
+        }
     }
 }

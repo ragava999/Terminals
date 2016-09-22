@@ -1,3 +1,5 @@
+using Kohl.Framework.Info;
+using Kohl.Framework.Logging;
 using System;
 using System.Collections;
 using System.Diagnostics;
@@ -6,9 +8,6 @@ using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text;
-using Kohl.Framework.Info;
-
-using Kohl.Framework.Logging;
 
 namespace Terminals.CommandLine
 {
@@ -187,7 +186,7 @@ namespace Terminals.CommandLine
         /// <returns> Returns true if args contains /? or /help. </returns>
         public static bool ParseHelp(string[] args)
         {
-            Parser helpParser = new Parser(typeof (HelpArgument), NullErrorReporter);
+            Parser helpParser = new Parser(typeof(HelpArgument), NullErrorReporter);
             HelpArgument helpArgument = new HelpArgument();
             helpParser.Parse(args, helpArgument);
             return HelpArgument.Help;
@@ -280,9 +279,9 @@ namespace Terminals.CommandLine
 
         private static ArgumentAttribute GetAttribute(FieldInfo field)
         {
-            object[] attributes = field.GetCustomAttributes(typeof (ArgumentAttribute), false);
+            object[] attributes = field.GetCustomAttributes(typeof(ArgumentAttribute), false);
             if (attributes.Length == 1)
-                return (ArgumentAttribute) attributes[0];
+                return (ArgumentAttribute)attributes[0];
 
             Debug.Assert(attributes.Length == 0);
             return null;
@@ -314,7 +313,7 @@ namespace Terminals.CommandLine
                         continue;
 
                     // Skip the arguments if we don't parse the HelpArguments, but any program specific arguments
-                    if (destination.GetType() != typeof (HelpArgument) &&
+                    if (destination.GetType() != typeof(HelpArgument) &&
                         (argument.ToLower() == "help" || argument == "?" || argument == "/?" || argument == "-?" || argument.ToLower() == "/help" || argument.ToLower() == "-help" || argument.ToLower() == "--help"))
                         continue;
 
@@ -331,7 +330,7 @@ namespace Terminals.CommandLine
                         {
                             case '-':
                             case '/':
-                                int endIndex = argument.IndexOfAny(new[] {':', '+', '-'}, 1);
+                                int endIndex = argument.IndexOfAny(new[] { ':', '+', '-' }, 1);
                                 string option = argument.Substring(1,
                                                                    endIndex == -1 ? argument.Length - 1 : endIndex - 1);
                                 string optionArgument;
@@ -348,11 +347,11 @@ namespace Terminals.CommandLine
                                     optionArgument = argument.Substring(option.Length + 1);
                                 }
 
-                                Argument arg = (Argument) this.argumentMap[option];
+                                Argument arg = (Argument)this.argumentMap[option];
 
                                 // Skip (continue;) any option except the help option if we want to parse the HelpArguments
                                 // If we don't want to parse the HelpArguments check if arg==null and either set the value or report an unrecognized argument
-                                if (arg == null && destination.GetType() == typeof (HelpArgument))
+                                if (arg == null && destination.GetType() == typeof(HelpArgument))
                                 {
                                     continue;
                                 }
@@ -418,7 +417,7 @@ namespace Terminals.CommandLine
         {
             ArgumentHelpStrings[] strings = this.GetAllHelpStrings();
 
-            int maxParamLen = strings.Select(helpString => helpString.Syntax.Length).Concat(new[] {0}).Max();
+            int maxParamLen = strings.Select(helpString => helpString.Syntax.Length).Concat(new[] { 0 }).Max();
 
             const int minimumNumberOfCharsForHelpText = 10;
             const int minimumHelpTextColumn = 5;
@@ -510,7 +509,7 @@ namespace Terminals.CommandLine
                 strings[index] = GetHelpStrings(arg);
                 index++;
             }
-            strings[index++] = new ArgumentHelpStrings("@<file>","Read response file for more options");
+            strings[index++] = new ArgumentHelpStrings("@<file>", "Read response file for more options");
             if (this.defaultArgument != null)
                 strings[index++] = GetHelpStrings(this.defaultArgument);
 
@@ -639,7 +638,7 @@ namespace Terminals.CommandLine
                 }
             }
 
-            arguments = (string[]) argArray.ToArray(typeof (string));
+            arguments = (string[])argArray.ToArray(typeof(string));
             return hadError;
         }
 
@@ -703,10 +702,10 @@ namespace Terminals.CommandLine
         private static bool IsValidElementType(Type type)
         {
             return type != null && (
-                                       type == typeof (int) ||
-                                       type == typeof (uint) ||
-                                       type == typeof (string) ||
-                                       type == typeof (bool) ||
+                                       type == typeof(int) ||
+                                       type == typeof(uint) ||
+                                       type == typeof(string) ||
+                                       type == typeof(bool) ||
                                        type.IsEnum);
         }
 
@@ -838,19 +837,19 @@ namespace Terminals.CommandLine
                         builder.Append("/");
                         builder.Append(this.LongName);
                         Type valueType = this.ValueType;
-                        if (valueType == typeof (int))
+                        if (valueType == typeof(int))
                         {
                             builder.Append(":<int>");
                         }
-                        else if (valueType == typeof (uint))
+                        else if (valueType == typeof(uint))
                         {
                             builder.Append(":<uint>");
                         }
-                        else if (valueType == typeof (bool))
+                        else if (valueType == typeof(bool))
                         {
                             builder.Append("[+|-]");
                         }
-                        else if (valueType == typeof (string))
+                        else if (valueType == typeof(string))
                         {
                             builder.Append(":<string>");
                         }
@@ -990,16 +989,16 @@ namespace Terminals.CommandLine
             {
                 // null is only valid for bool variables
                 // empty string is never valid
-                if ((stringData != null || type == typeof (bool)) && (stringData == null || stringData.Length > 0))
+                if ((stringData != null || type == typeof(bool)) && (stringData == null || stringData.Length > 0))
                 {
                     try
                     {
-                        if (type == typeof (string))
+                        if (type == typeof(string))
                         {
                             value = stringData;
                             return true;
                         }
-                        if (type == typeof (bool))
+                        if (type == typeof(bool))
                         {
                             if (stringData == null || stringData == "+")
                             {
@@ -1012,12 +1011,12 @@ namespace Terminals.CommandLine
                                 return true;
                             }
                         }
-                        else if (type == typeof (int))
+                        else if (type == typeof(int))
                         {
                             value = int.Parse(stringData);
                             return true;
                         }
-                        else if (type == typeof (uint))
+                        else if (type == typeof(uint))
                         {
                             value = int.Parse(stringData);
                             return true;
@@ -1049,12 +1048,12 @@ namespace Terminals.CommandLine
                 }
                 else if (value is bool)
                 {
-                    builder.Append((bool) value ? "+" : "-");
+                    builder.Append((bool)value ? "+" : "-");
                 }
                 else
                 {
                     bool first = true;
-                    foreach (object o in (Array) value)
+                    foreach (object o in (Array)value)
                     {
                         if (!first)
                         {
@@ -1101,7 +1100,8 @@ namespace Terminals.CommandLine
 
         private class HelpArgument
         {
-            [Argument(ArgumentType.AtMostOnce, ShortName = "?", LongName = "help")] public static bool Help = false;
+            [Argument(ArgumentType.AtMostOnce, ShortName = "?", LongName = "help")]
+            public static bool Help = false;
         }
 
         private struct SmallRect

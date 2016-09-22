@@ -1,7 +1,6 @@
+using Metro.TransportLayer.Tcp;
 using System;
 using System.Windows.Forms;
-
-using Metro.TransportLayer.Tcp;
 
 namespace Terminals.Network
 {
@@ -10,13 +9,11 @@ namespace Terminals.Network
         public LocalConnections()
         {
             this.InitializeComponent();
-            
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
             TcpConnection[] connections = TcpConnectionManager.GetCurrentTcpConnections();
-            //this.dataGridView1.DataSource = null;
             this.dataGridView1.DataSource = connections;
         }
 

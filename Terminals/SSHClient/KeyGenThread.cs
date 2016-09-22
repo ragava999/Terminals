@@ -1,7 +1,7 @@
-﻿using System;
+﻿using Granados.PKI;
+using System;
 using System.Threading;
 using System.Windows.Forms;
-using Granados.PKI;
 
 namespace Terminals.SSHClient
 {
@@ -48,7 +48,7 @@ namespace Terminals.SSHClient
         {
             if (this._parent.needMoreEntropy)
             {
-                int n = (int) (DateTime.Now.Ticks & 0x8fffffff);
+                int n = (int)(DateTime.Now.Ticks & 0x8fffffff);
                 n ^= (args.X << 16);
                 n ^= args.Y;
                 n ^= 0x31031293;

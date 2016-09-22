@@ -1,11 +1,10 @@
-﻿using System;
+﻿using Kohl.Framework.Logging;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using System.Text;
 using System.Xml;
-
-using Kohl.Framework.Logging;
 using Terminals.Configuration.Files.Main.Favorites;
 
 namespace Terminals.ExportImport.Import

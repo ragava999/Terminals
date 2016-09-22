@@ -1,7 +1,6 @@
 ﻿using System;
 using System.DirectoryServices;
 using Terminals.Configuration.Files.Main.Favorites;
-using Terminals.Connection;
 using Terminals.Connection.Manager;
 using Terminals.Connections;
 
@@ -80,16 +79,16 @@ namespace Terminals.Network.AD
         public FavoriteConfigurationElement ToFavorite(String domain)
         {
             FavoriteConfigurationElement favorite = new FavoriteConfigurationElement(this.ComputerName)
-                                                        {
-                                                            Name = this.ComputerName,
-                                                            ServerName = this.ComputerName,
-                                                            UserName = Environment.UserName,
-                                                            DomainName = domain,
-                                                            Tags = this.Tags,
-                                                            Port = ConnectionManager.GetPort(this.Protocol),
-                                                            Protocol = this.Protocol,
-                                                            Notes = this.Notes
-                                                        };
+            {
+                Name = this.ComputerName,
+                ServerName = this.ComputerName,
+                UserName = Environment.UserName,
+                DomainName = domain,
+                Tags = this.Tags,
+                Port = ConnectionManager.GetPort(this.Protocol),
+                Protocol = this.Protocol,
+                Notes = this.Notes
+            };
             return favorite;
         }
     }

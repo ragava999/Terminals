@@ -2,8 +2,8 @@ namespace Terminals
 {
     using System;
     using System.Collections.Generic;
-    using System.Text;
     using System.Runtime.InteropServices;
+    using System.Text;
 
     public static class WTSApi32
     {
@@ -77,41 +77,6 @@ namespace Terminals
 
         public const int WTS_CURRENT_SERVER_HANDLE = -1;
 
-        /*public static bool GetIsRunningLocally()
-        {
-            System.IntPtr buffer = IntPtr.Zero;
-            uint bytesReturned;
-
-            int sessionID;
-
-            try
-            {
-                bool sessionInfo = WTSQuerySessionInformation(System.IntPtr.Zero, WTS_CURRENT_SERVER_HANDLE, WTSInfoClass.WTSSessionId, out buffer, out bytesReturned);
-                sessionID = Marshal.ReadInt32(buffer);
-
-            }
-            catch
-            {
-                return true;
-            }
-            finally
-            {
-                WTSFreeMemory(buffer);
-                buffer = IntPtr.Zero;
-            }
-
-            int currentSessionId = WTSGetActiveConsoleSessionId();
-
-            if (currentSessionId == sessionID)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }*/
-
         public static IntPtr OpenServer(String Name)
         {
             IntPtr server = WTSOpenServer(Name);
@@ -122,40 +87,6 @@ namespace Terminals
         {
             WTSCloseServer(ServerHandle);
         }
-
-        /*public static List<String> ListSessions(String ServerName)
-        {
-            IntPtr server = IntPtr.Zero;
-            List<String> ret = new List<string>();
-            try
-            {
-                server = OpenServer(ServerName);
-                IntPtr ppSessionInfo = IntPtr.Zero;
-                Int32 count = 0;
-                Int32 retval = WTSEnumerateSessions(server, 0, 1, ref ppSessionInfo, ref count);
-                Int32 dataSize = Marshal.SizeOf(typeof(WTS_SESSION_INFO));
-                Int32 current = (int)ppSessionInfo;
-                if (retval != 0)
-                {
-                    for (int i = 0; i < count; i++)
-                    {
-                        WTS_SESSION_INFO si = (WTS_SESSION_INFO)Marshal.PtrToStructure((System.IntPtr)current, typeof(WTS_SESSION_INFO));
-                        current += dataSize;
-                        ret.Add(si.SessionID + " " + si.State + " " + si.pWinStationName);
-                    }
-                    WTSFreeMemory(ppSessionInfo);
-                }
-            }
-            catch (Exception err)
-            {
-                throw err;
-            }
-            finally
-            {
-                CloseServer(server);
-            }
-            return ret;
-        }*/
 
         private static T QuerySessionInfo<T>(System.IntPtr hServer, int sessionId, WTS_INFO_CLASS wtsInfoClass)
         {
@@ -174,7 +105,7 @@ namespace Terminals
                     }
                     else
                         result = (T)Marshal.PtrToStructure(ppBuffer, typeof(T));
-                    
+
                     return result;
                 }
                 finally

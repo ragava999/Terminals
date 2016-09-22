@@ -1,11 +1,11 @@
-﻿using System;
+﻿using Kohl.Framework.Logging;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Net;
 using System.Net.NetworkInformation;
 using System.Net.Sockets;
 using System.Text;
-using Kohl.Framework.Logging;
 
 namespace Terminals.Network.TraceRoute
 {
@@ -25,7 +25,7 @@ namespace Terminals.Network.TraceRoute
             foreach (PropertyDescriptor property in TypeDescriptor.GetProperties(this))
             {
                 DefaultValueAttribute myAttribute =
-                    (DefaultValueAttribute) property.Attributes[typeof (DefaultValueAttribute)];
+                    (DefaultValueAttribute)property.Attributes[typeof(DefaultValueAttribute)];
                 if (myAttribute != null)
                     property.SetValue(this, myAttribute.Value);
             }

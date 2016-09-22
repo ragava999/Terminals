@@ -1,11 +1,10 @@
+using Kohl.Framework.Logging;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
-using Kohl.Framework.Logging;
-
 using Terminals.Configuration.Files.Main.Settings;
 using Terminals.Connection.Manager;
 using Terminals.Connection.Native;
@@ -61,7 +60,7 @@ namespace Terminals.Panels
 
                 this.tabCtrlOptionPanels.Controls.Add(page);
             }
-            
+
             this.MovePanelsFromTabsIntoControls();
             Settings.ConfigurationChanged += this.SettingsConfigFileReloaded;
             this.LoadSettings();
@@ -77,7 +76,7 @@ namespace Terminals.Panels
 
             this.UpdateLookAndFeel();
 
-            
+
         }
 
         private void SettingsConfigFileReloaded(ConfigurationChangedEventArgs args)
@@ -87,9 +86,9 @@ namespace Terminals.Panels
 
         private void UpdateLookAndFeel()
         {
-			if (!Kohl.Framework.Info.MachineInfo.IsUnixOrMac)
-	            // Update the old treeview theme to the new theme
-	            WindowsApi.SetWindowTheme(this.OptionsTreeView.Handle, "Explorer", null);
+            if (!Kohl.Framework.Info.MachineInfo.IsUnixOrMac)
+                // Update the old treeview theme to the new theme
+                WindowsApi.SetWindowTheme(this.OptionsTreeView.Handle, "Explorer", null);
 
             this.currentPanel = this.panelStartupShutdown;
             this.OptionsTreeView.SelectedNode = this.OptionsTreeView.Nodes[0];
@@ -153,7 +152,7 @@ namespace Terminals.Panels
 
         private void DrawBottomLine()
         {
-            Label lbl = new Label {AutoSize = false, BorderStyle = BorderStyle.Fixed3D};
+            Label lbl = new Label { AutoSize = false, BorderStyle = BorderStyle.Fixed3D };
             lbl.SetBounds(
                 this.OptionTitelLabel.Left,
                 this.OptionsTreeView.Top + this.OptionsTreeView.Height - 1,
@@ -203,7 +202,7 @@ namespace Terminals.Panels
             string panelName = this.OptionsTreeView.SelectedNode.Tag.ToString();
             Debug.WriteLine("Selected panel: " + panelName);
             List<IOptionPanel> uc = this.FindOptionPanels();
-            this.currentPanel = uc.FirstOrDefault(panel => ((panel is OptionPanel) ? ((OptionPanel)panel).Name : panel.Name.StartsWith("panel") ? panel.Name.Substring(5,panel.Name.Length -5) : panel.Name) == panelName);
+            this.currentPanel = uc.FirstOrDefault(panel => ((panel is OptionPanel) ? ((OptionPanel)panel).Name : panel.Name.StartsWith("panel") ? panel.Name.Substring(5, panel.Name.Length - 5) : panel.Name) == panelName);
         }
 
         private void UpdatePanelPosition()

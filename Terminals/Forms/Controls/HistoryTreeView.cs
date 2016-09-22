@@ -1,9 +1,9 @@
-﻿using System;
+﻿using Kohl.Framework.Lists;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Windows.Forms;
-using Kohl.Framework.Lists;
 using Terminals.Configuration.Files.History;
 using Terminals.Configuration.Files.Main.Favorites;
 using Terminals.Configuration.Files.Main.Settings;

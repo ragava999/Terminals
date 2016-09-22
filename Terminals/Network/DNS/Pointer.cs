@@ -74,7 +74,7 @@ namespace Terminals.Network.DNS
         /// <returns> the byte at the pointer </returns>
         public short ReadShort()
         {
-            return (short) (this.ReadByte() << 8 | this.ReadByte());
+            return (short)(this.ReadByte() << 8 | this.ReadByte());
         }
 
         /// <summary>
@@ -83,7 +83,7 @@ namespace Terminals.Network.DNS
         /// <returns> the byte at the pointer </returns>
         public int ReadInt()
         {
-            return (ushort) this.ReadShort() << 16 | (ushort) this.ReadShort();
+            return (ushort)this.ReadShort() << 16 | (ushort)this.ReadShort();
         }
 
         /// <summary>
@@ -92,7 +92,7 @@ namespace Terminals.Network.DNS
         /// <returns> the byte at the pointer </returns>
         private char ReadChar()
         {
-            return (char) this.ReadByte();
+            return (char)this.ReadByte();
         }
 
         /// <summary>

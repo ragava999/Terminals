@@ -73,7 +73,7 @@ namespace Terminals.Network.AD
         {
             if (this.InvokeRequired)
             {
-                this.Invoke(new ComputerFoundDelegate(this.OnClientComputerFound), new object[] {computer});
+                this.Invoke(new ComputerFoundDelegate(this.OnClientComputerFound), new object[] { computer });
             }
             else
             {
@@ -89,7 +89,7 @@ namespace Terminals.Network.AD
         {
             if (this.InvokeRequired)
             {
-                this.Invoke(new ListComputersDoneDelegate(this.AdClient_OnListComputersDone), new object[] {success});
+                this.Invoke(new ListComputersDoneDelegate(this.AdClient_OnListComputersDone), new object[] { success });
             }
             else
             {

@@ -1,6 +1,5 @@
 ﻿namespace Terminals.Connections
 {
-    // .NET namespaces
     using System.Runtime.InteropServices;
 
     [ComImport,

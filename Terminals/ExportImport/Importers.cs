@@ -12,14 +12,14 @@ namespace Terminals.ExportImport
         {
             this.LoadProviders();
 
-            
+
             StringBuilder stringBuilder = new StringBuilder();
-			
-			foreach (KeyValuePair<string, IImport> importer in this.providers)
+
+            foreach (KeyValuePair<string, IImport> importer in this.providers)
             {
                 this.AddProviderFilter(stringBuilder, importer.Value);
             }
-			
+
             return stringBuilder.ToString();
         }
 
@@ -29,21 +29,21 @@ namespace Terminals.ExportImport
         /// </summary>
         private List<FavoriteConfigurationElement> ImportFavorites(String Filename, int index)
         {
-        	IImport importer = null;
-        	
-        	// if no index has been selected -> choose our default i.e. the TerminalsImporter
-        	if (index < 1)
-        		index = 1;
-        	
-        	try
-        	{
-        		importer = this.FindProvider(Filename, index);
-        	}
-        	catch (Exception ex)
-        	{
-        		Kohl.Framework.Logging.Log.Error("Unable to find favorites importer.", ex);
-        	}
-        	
+            IImport importer = null;
+
+            // if no index has been selected -> choose our default i.e. the TerminalsImporter
+            if (index < 1)
+                index = 1;
+
+            try
+            {
+                importer = this.FindProvider(Filename, index);
+            }
+            catch (Exception ex)
+            {
+                Kohl.Framework.Logging.Log.Error("Unable to find favorites importer.", ex);
+            }
+
             if (importer == null)
                 return new List<FavoriteConfigurationElement>();
 
@@ -70,7 +70,7 @@ namespace Terminals.ExportImport
                 this.providers.Add(ImportvRD.FILE_EXTENSION, new ImportvRD());
                 this.providers.Add(ImportMuRD.FILE_EXTENSION, new ImportMuRD());
                 this.providers.Add("CodePlex_Terminals_" + ImportCodePlexTerminals.FILE_EXTENSION, new ImportCodePlexTerminals());
-				this.providers.Add("Remote Desktop Manager", new ImportRemoteDesktopManager());
+                this.providers.Add("Remote Desktop Manager", new ImportRemoteDesktopManager());
             }
         }
     }

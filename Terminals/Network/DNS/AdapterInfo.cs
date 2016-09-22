@@ -85,7 +85,7 @@ namespace Terminals.Network.DNS
             ManagementObjectSearcher searcher = new ManagementObjectSearcher(q);
             foreach (ManagementObject share in searcher.Get())
             {
-                Adapter ad = new Adapter {PropertyData = share};
+                Adapter ad = new Adapter { PropertyData = share };
                 adapterList.Add(ad);
             }
 

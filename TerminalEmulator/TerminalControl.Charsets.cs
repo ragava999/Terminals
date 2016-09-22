@@ -293,7 +293,7 @@ namespace WalburySoftware
                             break;
                     }
                 }
-                    // I'm assuming the right hand in use table will always have a 80-FF char set in it
+                // I'm assuming the right hand in use table will always have a 80-FF char set in it
                 else
                 {
                     switch (GR)

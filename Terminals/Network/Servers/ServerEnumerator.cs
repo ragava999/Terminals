@@ -4,7 +4,6 @@
  * Date: 04.10.2012
  * Time: 13:02
  */
-
 using System;
 using System.Collections;
 using System.Runtime.InteropServices;
@@ -45,7 +44,7 @@ namespace Terminals.Network.Servers
 
         static ServerEnumerator()
         {
-            SERVER_INFO_101_SIZE = Marshal.SizeOf(typeof (Win32API.SERVER_INFO_101));
+            SERVER_INFO_101_SIZE = Marshal.SizeOf(typeof(Win32API.SERVER_INFO_101));
         }
 
         /// <summary>
@@ -69,7 +68,7 @@ namespace Terminals.Network.Servers
                 prefmaxlen, // Specifies the preferred maximum length of returned data, in bytes.
                 ref entriesread, // count of elements actually enumerated.
                 ref totalentries, // total number of visible servers and workstations on the network
-                (uint) serverType, // value that filters the server entries to return from the enumeration
+                (uint)serverType, // value that filters the server entries to return from the enumeration
                 domainName,
                 // Pointer to a constant string that specifies the name of the domain for which a list of servers is to be returned.
                 IntPtr.Zero); // Reserved; must be set to zero. 
@@ -95,10 +94,10 @@ namespace Terminals.Network.Servers
 
             if (++this.currentItem < this.itemCount)
             {
-                int newOffset = this.serverInfoPtr.ToInt32() + SERVER_INFO_101_SIZE*this.currentItem;
+                int newOffset = this.serverInfoPtr.ToInt32() + SERVER_INFO_101_SIZE * this.currentItem;
                 Win32API.SERVER_INFO_101 si =
                     (Win32API.SERVER_INFO_101)
-                    Marshal.PtrToStructure(new IntPtr(newOffset), typeof (Win32API.SERVER_INFO_101));
+                    Marshal.PtrToStructure(new IntPtr(newOffset), typeof(Win32API.SERVER_INFO_101));
                 this.currentServerName = Marshal.PtrToStringAuto(si.lpszServerName);
                 result = true;
             }
@@ -118,7 +117,7 @@ namespace Terminals.Network.Servers
         /// </summary>
         ~ServerEnumerator()
         {
-            if (! this.serverInfoPtr.Equals(IntPtr.Zero))
+            if (!this.serverInfoPtr.Equals(IntPtr.Zero))
             {
                 Win32API.NetApiBufferFree(this.serverInfoPtr);
                 this.serverInfoPtr = IntPtr.Zero;

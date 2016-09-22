@@ -1,15 +1,12 @@
 namespace Terminals.Connections
 {
-    // .NET namespaces
+    using Configuration.Files.Main.Favorites;
+    using Kohl.Framework.Logging;
+    using Properties;
+
     using System;
     using System.Drawing;
     using System.Windows.Forms;
-
-    // Terminals and framework namespaces
-
-    using Kohl.Framework.Logging;
-    using Configuration.Files.Main.Favorites;
-    using Properties;
 
     public class HTTPConnection : Connection.Connection
     {
@@ -22,7 +19,7 @@ namespace Terminals.Connections
                 if (this.Favorite != null)
                     if (this.Favorite.HttpBrowser == BrowserType.InternetExplorer)
                         return 0;
-                   
+
                 return 1;
             }
         }
@@ -105,7 +102,7 @@ namespace Terminals.Connections
         {
             if (!connected)
                 return;
-            
+
             this.connected = false;
 
             this.browser.Dispose();

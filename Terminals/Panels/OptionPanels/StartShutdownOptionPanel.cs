@@ -1,18 +1,16 @@
-﻿using System.Windows.Forms;
-using System;
-
+﻿using System;
+using System.IO;
+using System.Windows.Forms;
 using Terminals.Configuration.Files.Main.Settings;
 using Terminals.Connection.Panels.OptionPanels;
-using System.IO;
 
 namespace Terminals.Panels.OptionPanels
 {
-	public partial class StartShutdownOptionPanel : IOptionPanel
+    public partial class StartShutdownOptionPanel : IOptionPanel
     {
         public StartShutdownOptionPanel()
         {
             this.InitializeComponent();
-            
         }
 
         public override void LoadSettings()
@@ -95,7 +93,7 @@ namespace Terminals.Panels.OptionPanels
         {
             ColorDialog dialog = new ColorDialog();
             dialog.Color = picColor.BackColor;
-            
+
             if (dialog.ShowDialog() == DialogResult.OK)
             {
                 picColor.BackColor = dialog.Color;

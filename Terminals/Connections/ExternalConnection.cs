@@ -1,24 +1,20 @@
 namespace Terminals.Connections
 {
-    // .NET namespaces
+    using Configuration.Files.Main.Favorites;
+    using Kohl.Framework.Logging;
+
     using System;
     using System.Collections.Generic;
     using System.Diagnostics;
     using System.Drawing;
-    using System.Windows.Forms;
     using System.IO;
     using System.Linq;
     using System.Runtime.InteropServices;
     using System.Security;
     using System.Text;
     using System.Threading;
+    using System.Windows.Forms;
 
-    // Terminals and framework namespaces
-
-    using Kohl.Framework.Logging;
-    using Configuration.Files.Main.Favorites;
-
-    // Aliases
     using Timer = System.Windows.Forms.Timer;
 
     public abstract class ExternalConnection : Connection.Connection
@@ -67,7 +63,7 @@ namespace Terminals.Connections
         private const int GWL_STYLE = (-16);
         private const int WM_CLOSE = 0x10;
         private const int WS_MAXIMIZE = 0x01000000;
-        private const int WS_VISIBLE =  0x10000000;
+        private const int WS_VISIBLE = 0x10000000;
 
         #endregion
 

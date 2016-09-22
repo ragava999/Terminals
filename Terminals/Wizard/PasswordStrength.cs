@@ -8,7 +8,7 @@ namespace Terminals.Wizard
             //returns an int, from 0 to 100 on the strength of the given password
             if (Password.Length == 0 || Password.Trim().Length == 0) return 0;
 
-            if (Password.Length > 5) finalStrength = finalStrength + (Password.Length*10);
+            if (Password.Length > 5) finalStrength = finalStrength + (Password.Length * 10);
 
             bool hasUpper = false;
             bool hasLower = false;

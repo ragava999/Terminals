@@ -18,9 +18,9 @@ namespace Terminals.Connections
                 components.Dispose();
             }
             base.Dispose(disposing);
-            
+
             if (this.tabbedTools1 != null)
-            	this.tabbedTools1.Dispose();
+                this.tabbedTools1.Dispose();
         }
 
         #region Component Designer generated code

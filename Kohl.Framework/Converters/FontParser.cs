@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Globalization;
 using System.Drawing;
+using System.Globalization;
 
 namespace Kohl.Framework.Converters
 {

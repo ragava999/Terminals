@@ -4,7 +4,6 @@ using System.Management;
 using System.Text;
 using System.Windows.Forms;
 
-
 namespace Terminals.Network.WMI
 {
     public partial class NetworkShares : UserControl
@@ -12,7 +11,7 @@ namespace Terminals.Network.WMI
         public NetworkShares()
         {
             this.InitializeComponent();
-            
+
         }
 
         private void LoadShares(string Username, string Password, string Computer)
@@ -29,7 +28,7 @@ namespace Terminals.Network.WMI
 
             if (Username != "" && Password != "" && Computer != "" && !Computer.StartsWith(@"\\localhost"))
             {
-                ConnectionOptions oConn = new ConnectionOptions {Username = Username, Password = Password};
+                ConnectionOptions oConn = new ConnectionOptions { Username = Username, Password = Password };
 
                 if (!Computer.StartsWith(@"\\")) Computer = @"\\" + Computer;
 

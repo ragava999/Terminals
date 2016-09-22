@@ -1,10 +1,8 @@
-﻿using System;
-using System.Linq;
+﻿using Kohl.Framework.Info;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
-using Kohl.Framework.Info;
-
 using Terminals.Configuration.Files.Credentials;
 
 namespace Terminals.Forms.Credentials
@@ -17,11 +15,11 @@ namespace Terminals.Forms.Credentials
             this.Text = AssemblyInfo.Title + " - " +
                         "Credential manager";
             StoredCredentials.CredentialsChanged += this.CredentialsChanged;
-                        
+
             if (Terminals.Configuration.Files.Main.Settings.Settings.CredentialStore == Terminals.Configuration.Files.Main.CredentialStoreType.KeePass)
             {
-            	AddButton.Enabled = false;
-            	DeleteButton.Enabled = false;
+                AddButton.Enabled = false;
+                DeleteButton.Enabled = false;
             }
         }
 
@@ -33,8 +31,8 @@ namespace Terminals.Forms.Credentials
         private void BindList()
         {
             this.CredentialsListView.Items.Clear();
-            List<CredentialSet> credentials = StoredCredentials.Items;   
-            
+            List<CredentialSet> credentials = StoredCredentials.Items;
+
             foreach (CredentialSet credential in credentials)
             {
                 ListViewItem item = new ListViewItem(credential.Name);

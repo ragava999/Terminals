@@ -1,8 +1,7 @@
+using Kohl.Framework.Logging;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
-
-using Kohl.Framework.Logging;
 using Terminals.Network.Pcap;
 
 namespace Terminals.Connections
@@ -21,20 +20,15 @@ namespace Terminals.Connections
             {
                 this.packetCapture1 = new PacketCapture();
 
-                // 
-                // PcapTabPage
-                // 
                 this.PcapTabPage.Controls.Add(this.packetCapture1);
                 this.PcapTabPage.Location = new Point(4, 22);
                 this.PcapTabPage.Name = "PcapTabPage";
                 this.PcapTabPage.Padding = new Padding(3);
                 this.PcapTabPage.Size = new Size(886, 309);
                 this.PcapTabPage.TabIndex = 15;
-				this.PcapTabPage.Text = "Packets";
+                this.PcapTabPage.Text = "Packets";
                 this.PcapTabPage.UseVisualStyleBackColor = true;
-                // 
-                // packetCapture1
-                // 
+
                 this.packetCapture1.Dock = DockStyle.Fill;
                 this.packetCapture1.Location = new Point(3, 3);
                 this.packetCapture1.Name = "packetCapture1";
@@ -45,10 +39,10 @@ namespace Terminals.Connections
             {
                 this.PcapTabPage.Controls.Clear();
                 Label l = new Label
-                              {
-					Text = "The software \"WinPCap\" is either not installed or not supported on this version of windows.",
-                                  Dock = DockStyle.Top
-                              };
+                {
+                    Text = "The software \"WinPCap\" is either not installed or not supported on this version of windows.",
+                    Dock = DockStyle.Top
+                };
                 this.PcapTabPage.Controls.Add(l);
                 Log.Info(l.Text, ex);
             }

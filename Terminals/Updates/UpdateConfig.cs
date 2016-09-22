@@ -1,12 +1,11 @@
 ﻿using Kohl.Framework.Logging;
-using Terminals.Configuration.Files.Main.Favorites;
 using System.IO;
 
 namespace Terminals.Updates
 {
-    using System;
-    using Kohl.Framework.Info;
     using Configuration.Files.Main.Settings;
+    using Kohl.Framework.Info;
+    using System;
 
     /// <summary>
     ///     Class containing methods to update config files.
@@ -69,7 +68,7 @@ namespace Terminals.Updates
             {
                 // new name and new value
                 endIndex = config.IndexOf("\"", startIndex + startPattern.Length);
-                
+
                 // error -> attribute existing, but parsing error
                 if (endIndex == -1)
                     return config;
@@ -99,12 +98,12 @@ namespace Terminals.Updates
                 return config;
 
             config = config.Remove(startIndex, endIndex - startIndex);
-            return config.Insert(startIndex, name + "=\""+ newValue);
+            return config.Insert(startIndex, name + "=\"" + newValue);
         }
 
         private static void UpdateObsoleteConfigVersions()
         {
-        	/*
+            /*
             if (Settings.ConfigVersion != null && Settings.ConfigVersion <= new Version(4, 0, 0, 1))
             {
                 Log.Info("Upgrading configuration to version level 4.0.0.2.");

@@ -35,7 +35,7 @@ namespace Terminals.Forms
                     String.Format("Number of processors:\t{0}", Environment.ProcessorCount),
                     String.Format("User interactive:\t\t{0}", Environment.UserInteractive.ToString().ToLower()),
                     String.Format(".NET Framework version:\t{0}", Environment.Version),
-                    String.Format("Working set:\t\t{0} MB", Environment.WorkingSet/1024/1024),
+                    String.Format("Working set:\t\t{0} MB", Environment.WorkingSet / 1024 / 1024),
                     String.Format("Command line arguments:\t{0}",
                                   string.IsNullOrEmpty(Environment.CommandLine.Trim())
                                       ? "None"

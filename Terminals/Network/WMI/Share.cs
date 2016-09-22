@@ -4,7 +4,6 @@
  * Date: 04.10.2012
  * Time: 15:01
  */
-
 namespace Terminals.Network.WMI
 {
     /// <summary>

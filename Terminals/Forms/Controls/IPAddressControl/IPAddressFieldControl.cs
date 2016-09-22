@@ -294,7 +294,7 @@ namespace Terminals.Forms.Controls.IPAddressControl
 
             if (null != this.TextChangedEvent)
             {
-                TextChangedEventArgs args = new TextChangedEventArgs {FieldIndex = this.FieldIndex, Text = this.Text};
+                TextChangedEventArgs args = new TextChangedEventArgs { FieldIndex = this.FieldIndex, Text = this.Text };
                 this.TextChangedEvent(this, args);
             }
 
@@ -415,10 +415,10 @@ namespace Terminals.Forms.Controls.IPAddressControl
             if (null != this.CedeFocusEvent)
             {
                 CedeFocusEventArgs args = new CedeFocusEventArgs
-                                              {
-                                                  FieldIndex = this.FieldIndex,
-                                                  IPAddressControlAction = ipAddressControlAction
-                                              };
+                {
+                    FieldIndex = this.FieldIndex,
+                    IPAddressControlAction = ipAddressControlAction
+                };
                 this.CedeFocusEvent(this, args);
             }
         }
@@ -429,12 +429,12 @@ namespace Terminals.Forms.Controls.IPAddressControl
             if (null != this.CedeFocusEvent)
             {
                 CedeFocusEventArgs args = new CedeFocusEventArgs
-                                              {
-                                                  FieldIndex = this.FieldIndex,
-                                                  IPAddressControlAction = IPAddressControlAction.None,
-                                                  IPAddressControlDirection = ipAddressControlDirection,
-                                                  IPAddressControlSelection = ipAddressControlSelection
-                                              };
+                {
+                    FieldIndex = this.FieldIndex,
+                    IPAddressControlAction = IPAddressControlAction.None,
+                    IPAddressControlDirection = ipAddressControlDirection,
+                    IPAddressControlSelection = ipAddressControlSelection
+                };
                 this.CedeFocusEvent(this, args);
             }
         }

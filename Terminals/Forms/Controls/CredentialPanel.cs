@@ -1,14 +1,12 @@
-﻿using System;
+﻿using Kohl.Framework.Info;
+using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using Kohl.Framework.Info;
 using Terminals.Configuration.Files.Credentials;
 using Terminals.Configuration.Files.Main.Favorites;
 using Terminals.Configuration.Files.Main.Settings;
-using Terminals.Connection;
 using Terminals.Connection.Panels.FavoritePanels;
 using Terminals.Forms.Credentials;
-using System.Linq;
 
 namespace Terminals.Forms.Controls
 {
@@ -23,20 +21,20 @@ namespace Terminals.Forms.Controls
             this.InitializeComponent();
             this.txtPassword.PasswordChar = HIDDEN_PASSWORD_CHAR;
         }
-        
+
         public Credential SelectedCredential
         {
-        	get
-        	{
-        		return SelectedCredentialSet.ToCredential();
-        	}
+            get
+            {
+                return SelectedCredentialSet.ToCredential();
+            }
         }
-        
+
         public CredentialSet SelectedCredentialSet
         {
             get { return (this.CredentialDropdown.SelectedItem as CredentialSet); }
         }
-        
+
         public string FavoritePassword { private get; set; }
 
         public override void FillFavorite(FavoriteConfigurationElement favorite)

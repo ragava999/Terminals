@@ -265,9 +265,9 @@
             else
                 using (Terminals.Configuration.Sql.TerminalsObjectContext dc = Terminals.Configuration.Sql.TerminalsObjectContext.Create())
                 {
-	            	if (dc == null)
-	            		return;
-            	
+                    if (dc == null)
+                        return;
+
                     // Filter all other tags
                     foreach (var group in dc.Groups)
                     {

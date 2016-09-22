@@ -72,7 +72,7 @@ namespace WalburySoftware
                 else
                 {
                     int i = this.Elements.Count - 1;
-                    this.Elements[i] = ((String) this.Elements[i] + CurChar.ToString());
+                    this.Elements[i] = ((String)this.Elements[i] + CurChar.ToString());
                 }
             }
         }

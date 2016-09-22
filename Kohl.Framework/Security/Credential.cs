@@ -14,13 +14,13 @@
                 this.Domain = value;
             }
         }
-        
+
         public string UserNameWithDomain
         {
-        	get
-        	{
-        		return Domain + "\\" + UserName;
-        	}
+            get
+            {
+                return Domain + "\\" + UserName;
+            }
         }
 
     }

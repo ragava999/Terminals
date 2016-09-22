@@ -1,9 +1,8 @@
-﻿using System;
+﻿using Kohl.Framework.Logging;
+using System;
 using System.Reflection;
 using System.Text;
 using System.Xml;
-
-using Kohl.Framework.Logging;
 using Terminals.Configuration.Files.Main.Favorites;
 using Terminals.ExportImport.Import;
 
@@ -66,7 +65,7 @@ namespace Terminals.ExportImport.Export
                     info.Name == "TsgwUsername" || info.Name == "TsgwPassword" || info.Name == "TsgwDomain" || info.Name == "TsgwEncryptedPassword")
                     if (!includePassword)
                         continue;
-                
+
                 if (info.Name == "HtmlFormFields")
                 {
                     w.WriteElementString("HtmlFormFieldsString", favorite.GetType().GetProperty("HtmlFormFieldsString", BindingFlags.NonPublic | BindingFlags.Instance).GetValue(favorite, null).ToString());
@@ -92,7 +91,7 @@ namespace Terminals.ExportImport.Export
 
                 w.WriteElementString(info.Name, value.ToString());
             }
-            
+
             w.WriteEndElement();
         }
     }

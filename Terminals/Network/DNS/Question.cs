@@ -1,7 +1,6 @@
 using System;
 using System.Text.RegularExpressions;
 
-
 namespace Terminals.Network.DNS
 {
     /// <summary>
@@ -33,19 +32,19 @@ namespace Terminals.Network.DNS
                 !Regex.IsMatch(domain, @"^[a-z|A-Z|0-9|-|_]{1,63}(\.[a-z|A-Z|0-9|-|_]{1,63})+$"))
             {
                 // domain names can't be bigger tan 255 chars, and individal labels can't be bigger than 63 chars
-				throw new ArgumentException("The supplied domain name was not in the correct form.", "domain");
+                throw new ArgumentException("The supplied domain name was not in the correct form.", "domain");
             }
 
             // sanity check the DnsType parameter
-            if (!Enum.IsDefined(typeof (DnsType), dnsType) || dnsType == DnsType.None)
+            if (!Enum.IsDefined(typeof(DnsType), dnsType) || dnsType == DnsType.None)
             {
-				throw new ArgumentOutOfRangeException("dnsType", "The supplied dns type is not a valid value.");
+                throw new ArgumentOutOfRangeException("dnsType", "The supplied dns type is not a valid value.");
             }
 
             // sanity check the DnsClass parameter
-            if (!Enum.IsDefined(typeof (DnsClass), dnsClass) || dnsClass == DnsClass.None)
+            if (!Enum.IsDefined(typeof(DnsClass), dnsClass) || dnsClass == DnsClass.None)
             {
-				throw new ArgumentOutOfRangeException("dnsClass", "The supplied dns class is not a valid value.");
+                throw new ArgumentOutOfRangeException("dnsClass", "The supplied dns class is not a valid value.");
             }
 
             // just remember the values
@@ -63,8 +62,8 @@ namespace Terminals.Network.DNS
         {
             // extract from the message
             this._domain = pointer.ReadDomain();
-            this._dnsType = (DnsType) pointer.ReadShort();
-            this._dnsClass = (DnsClass) pointer.ReadShort();
+            this._dnsType = (DnsType)pointer.ReadShort();
+            this._dnsClass = (DnsClass)pointer.ReadShort();
         }
 
         // expose them read/only to the world

@@ -11,8 +11,7 @@ namespace Terminals.Forms
         private int counter;
         private Thread thread;
 
-        public ExpirationDialog()
-            : this(60)
+        public ExpirationDialog() : this(60)
         {
         }
 
@@ -39,12 +38,12 @@ namespace Terminals.Forms
             if (control.InvokeRequired)
             {
                 control.Invoke(new SetControlPropertyThreadSafeDelegate(SetControlPropertyThreadSafe),
-                               new[] {control, propertyName, propertyValue});
+                               new[] { control, propertyName, propertyValue });
             }
             else
             {
                 control.GetType()
-                       .InvokeMember(propertyName, BindingFlags.SetProperty, null, control, new[] {propertyValue});
+                       .InvokeMember(propertyName, BindingFlags.SetProperty, null, control, new[] { propertyValue });
             }
         }
 
@@ -65,7 +64,7 @@ namespace Terminals.Forms
                     SetControlPropertyThreadSafe(this.lblSeconds, "Text", this.counter.ToString());
                     SetControlPropertyThreadSafe(this.progress, "Value", j);
 
-                    float percentage = j*100f/seconds;
+                    float percentage = j * 100f / seconds;
 
                     if (percentage >= 50)
                     {

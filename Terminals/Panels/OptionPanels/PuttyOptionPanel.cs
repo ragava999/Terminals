@@ -1,11 +1,10 @@
 ﻿namespace Terminals.Panels.OptionPanels
 {
-	using System;
-	using System.Windows.Forms;
+    using Configuration.Files.Main.Settings;
+    using Connection.Panels.OptionPanels;
+    using System;
+    using System.Windows.Forms;
 
-	using Terminals.Configuration.Files.Main.Settings;
-	using Terminals.Connection.Panels.OptionPanels;
-	
     public partial class PuttyOptionPanel : OptionPanel
     {
         public PuttyOptionPanel()
@@ -22,21 +21,21 @@
         {
             Settings.PuttyProgramPath = this.txtPuttyPath.Text;
         }
-		void ButtonBrowseCaptureFolderClick(object sender, System.EventArgs e)
-		{
-				using (OpenFileDialog dlg = new OpenFileDialog())
+        void ButtonBrowseCaptureFolderClick(object sender, System.EventArgs e)
+        {
+            using (OpenFileDialog dlg = new OpenFileDialog())
             {
                 dlg.Title = "Select the Putty executable";
                 dlg.Filter = "*.exe (puTTY)|putty.exe";
-                
+
                 if (!string.IsNullOrEmpty(txtPuttyPath.Text) && System.IO.File.Exists(txtPuttyPath.Text))
-                	dlg.FileName = txtPuttyPath.Text;
+                    dlg.FileName = txtPuttyPath.Text;
 
                 if (dlg.ShowDialog() == DialogResult.OK)
                 {
-                	txtPuttyPath.Text = dlg.FileName.NormalizePath();
+                    txtPuttyPath.Text = dlg.FileName.NormalizePath();
                 }
             }
-		}
+        }
     }
 }

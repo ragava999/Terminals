@@ -1,12 +1,10 @@
-﻿using System;
+﻿using Kohl.Framework.Logging;
+using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-
-using Kohl.Framework.Logging;
-using Microsoft.Win32;
 using Terminals.Configuration.Files.Main.Favorites;
 using Terminals.Configuration.Files.Main.Settings;
-using Terminals.Connection;
 using Terminals.Connection.Manager;
 using Terminals.Connections;
 
@@ -32,6 +30,7 @@ namespace Terminals.ExportImport.Import
             try
             {
                 RegistryKey favoritesKey = Registry.CurrentUser.OpenSubKey(REGISTRY_KEY);
+
                 if (favoritesKey != null)
                     return ImportFavoritesFromSubKeys(favoritesKey);
             }
@@ -54,9 +53,7 @@ namespace Terminals.ExportImport.Import
             int slashIndex = userKey.LastIndexOf('\\');
             string domainName = userKey.Substring(0, slashIndex);
             string userName = userKey.Substring(slashIndex + 1, userKey.Length - slashIndex - 1);
-            return FavoritesFactory.CreateNewFavorite(favoriteName, favoriteName,
-                                                      typeof (RDPConnection).GetProtocolName(), domainName, userName,
-                                                      ConnectionManager.GetPort(typeof (RDPConnection).GetProtocolName()));
+            return FavoritesFactory.CreateNewFavorite(favoriteName, favoriteName, typeof(RDPConnection).GetProtocolName(), domainName, userName, ConnectionManager.GetPort(typeof(RDPConnection).GetProtocolName()));
         }
     }
 }

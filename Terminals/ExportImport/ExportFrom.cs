@@ -30,8 +30,8 @@ namespace Terminals.ExportImport
             {
                 this.RunExport();
 
-                MessageBox.Show("Done exporting, you can find your exported file at " + this.saveFileDialog.FileName,
-                                AssemblyInfo.Title + " export");
+                MessageBox.Show("Done exporting, you can find your exported file at " + this.saveFileDialog.FileName, AssemblyInfo.Title + " export");
+
                 this.Close();
             }
         }
@@ -40,15 +40,17 @@ namespace Terminals.ExportImport
         {
             List<FavoriteConfigurationElement> favorites = this.FindSelectedFavorites();
             // filter index is 1 based
-            int filterSplitIndex = (this.saveFileDialog.FilterIndex - 1)*2;
+            int filterSplitIndex = (this.saveFileDialog.FilterIndex - 1) * 2;
             string providerFilter = this.saveFileDialog.Filter.Split('|')[filterSplitIndex];
+
             ExportOptions options = new ExportOptions
-                                        {
-                                            ProviderFilter = providerFilter,
-                                            Favorites = favorites,
-                                            FileName = this.saveFileDialog.FileName,
-                                            IncludePasswords = this.checkBox1.Checked
-                                        };
+            {
+                ProviderFilter = providerFilter,
+                Favorites = favorites,
+                FileName = this.saveFileDialog.FileName,
+                IncludePasswords = this.checkBox1.Checked
+            };
+
             Integrations.Exporters.Export(options, this.saveFileDialog.FilterIndex);
         }
 
@@ -60,6 +62,7 @@ namespace Terminals.ExportImport
         private void btnSelect_Click(object sender, EventArgs e)
         {
             TreeNodeCollection tn = this.favsTree.Nodes;
+
             foreach (TreeNode node in tn)
             {
                 node.Checked = true;
@@ -93,6 +96,7 @@ namespace Terminals.ExportImport
             {
                 n.Checked = true;
                 n.ExpandAll();
+
                 if (n.GetNodeCount(true) != 0)
                     CheckNode(n);
             }

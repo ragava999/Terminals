@@ -28,7 +28,8 @@ namespace Terminals.Connections
         /// Required method for Designer support - do not modify 
         /// the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent() {
+        private void InitializeComponent()
+        {
             this.lbDetails1 = new System.Windows.Forms.ListBox();
             this.LogListBox = new System.Windows.Forms.ListBox();
             this.splitter1 = new System.Windows.Forms.Splitter();

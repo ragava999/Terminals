@@ -1,7 +1,6 @@
+using Kohl.Framework.Logging;
 using System;
 using System.Windows.Forms;
-
-using Kohl.Framework.Logging;
 
 namespace Terminals.Network.WakeOnLAN
 {
@@ -10,7 +9,6 @@ namespace Terminals.Network.WakeOnLAN
         public WakeOnLan()
         {
             this.InitializeComponent();
-            
         }
 
         private void SendButton_Click(object sender, EventArgs e)

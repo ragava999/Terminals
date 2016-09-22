@@ -1,12 +1,12 @@
+using Kohl.Framework.ExtensionMethods;
+using Kohl.Framework.Info;
+using Kohl.Framework.Logging;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
-using Kohl.Framework.ExtensionMethods;
-using Kohl.Framework.Info;
-using Kohl.Framework.Logging;
 using Terminals.Configuration.Files.Credentials;
 using Terminals.Configuration.Files.Main.Favorites;
 using Terminals.Configuration.Files.Main.Settings;
@@ -32,17 +32,17 @@ namespace Terminals.Panels
 
         public Credential Credentials
         {
-        	get
-        	{
-        		Credential credential = this.CredentialPanel.SelectedCredential;
-        		
-        		if (credential != null & !credential.IsSetUserName && !credential.IsSetPassword)
-        			credential = null;
-        		
-        		return credential;
-        	}
+            get
+            {
+                Credential credential = this.CredentialPanel.SelectedCredential;
+
+                if (credential != null & !credential.IsSetUserName && !credential.IsSetPassword)
+                    credential = null;
+
+                return credential;
+            }
         }
-        
+
         public bool SaveInDB { get; set; }
 
         private List<String> oldTags = new List<string>();
@@ -64,29 +64,29 @@ namespace Terminals.Panels
             this.InitializeComponent();
             this.Init(favorite, String.Empty);
         }
-		
-		protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
-		{
-			if (favoriteTabPages != null)
-				foreach (TabPage page in favoriteTabPages)
-	                {
-	                    if (page != null && page.Controls != null && page.Controls.Count > 0 && page.Controls[0] is FavoritePanel)
-	                    {
-	                        FavoritePanel panel = (FavoritePanel)page.Controls[0];
-							panel.Dispose();
-	                    }
-	                }
-			
-			oldTags.Clear();
-			oldTags = null;
-			favoriteTabPages.Clear();
-			this.Favorite = null;
-			
-			this.Dispose();
 
-			base.OnClosing(e);
-		}
-				
+        protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
+        {
+            if (favoriteTabPages != null)
+                foreach (TabPage page in favoriteTabPages)
+                {
+                    if (page != null && page.Controls != null && page.Controls.Count > 0 && page.Controls[0] is FavoritePanel)
+                    {
+                        FavoritePanel panel = (FavoritePanel)page.Controls[0];
+                        panel.Dispose();
+                    }
+                }
+
+            oldTags.Clear();
+            oldTags = null;
+            favoriteTabPages.Clear();
+            this.Favorite = null;
+
+            this.Dispose();
+
+            base.OnClosing(e);
+        }
+
         #endregion
 
         #region Properties
@@ -119,7 +119,7 @@ namespace Terminals.Panels
 
         private void SetTabPage(TabPage tabPage, bool preserve = false)
         {
-            this.SetTabPage(new[] {tabPage}, preserve);
+            this.SetTabPage(new[] { tabPage }, preserve);
         }
 
         private void SetTabPage(TabPage[] tabPages, bool preserve = false)
@@ -168,7 +168,7 @@ namespace Terminals.Panels
         {
             SetFavoritePanels(null, true);
             this.SetEnabledProtocols();
-            
+
             this.LoadMRUs();
             this.SetOkButtonState();
             this.SSHPreferences.Keys = Settings.SSHKeys;
@@ -176,7 +176,7 @@ namespace Terminals.Panels
             if (favorite == null)
             {
                 this.CredentialPanel.FillCredentials(null);
-                
+
                 FavoriteConfigurationElement defaultFav = Settings.GetDefaultFavorite();
                 if (defaultFav != null)
                 {
@@ -204,18 +204,18 @@ namespace Terminals.Panels
             this.cmbHtmlFormField5Value.Items.AddRange(MiniBrowser.FieldConstants);
             this.cmbHtmlFormField6Value.Items.AddRange(MiniBrowser.FieldConstants);
 
-            this.cmbHttpAuthentication.Items.AddRange(Enum.GetNames(typeof (BrowserAuthentication)));
-            this.cmbHttpBrowser.Items.AddRange(Enum.GetNames(typeof (BrowserType)));
-            
+            this.cmbHttpAuthentication.Items.AddRange(Enum.GetNames(typeof(BrowserAuthentication)));
+            this.cmbHttpBrowser.Items.AddRange(Enum.GetNames(typeof(BrowserType)));
+
             if (string.IsNullOrEmpty(this.cmbHttpAuthentication.Text))
             {
-                this.cmbHttpAuthentication.Text = Enum.GetName(typeof (BrowserAuthentication),
+                this.cmbHttpAuthentication.Text = Enum.GetName(typeof(BrowserAuthentication),
                                                                BrowserAuthentication.None);
             }
 
             if (string.IsNullOrEmpty(this.cmbHttpBrowser.Text))
             {
-                this.cmbHttpBrowser.Text = Enum.GetName(typeof (BrowserType), BrowserType.InternetExplorer);
+                this.cmbHttpBrowser.Text = Enum.GetName(typeof(BrowserType), BrowserType.InternetExplorer);
             }
         }
 
@@ -252,7 +252,7 @@ namespace Terminals.Panels
             foreach (TabPage page in favoriteTabPages)
             {
                 FavoritePanel panel = page.Controls.Cast<Control>().Where(control => control is FavoritePanel).Cast<FavoritePanel>().FirstOrDefault();
-                
+
                 if (panel != null)
                     panel.FillControls(favorite);
             }
@@ -327,7 +327,7 @@ namespace Terminals.Panels
             this.httpUrlTextBox.Text = favorite.Url;
 
             this.txtPort.Text = favorite.Port.ToString();
-            
+
             this.chkExecuteBeforeConnect.Checked = favorite.ExecuteBeforeConnect;
             this.txtCommand.Text = favorite.ExecuteBeforeConnectCommand;
             this.txtArguments.Text = favorite.ExecuteBeforeConnectArgs;
@@ -338,7 +338,7 @@ namespace Terminals.Panels
 
             if (favorite.ToolBarIcon != null && File.Exists(favorite.ToolBarIcon))
             {
-            	Image image = Image.FromFile(favorite.ToolBarIcon);
+                Image image = Image.FromFile(favorite.ToolBarIcon);
 
                 this.picCustomIcon.Image = (Image)image.Clone();
 
@@ -452,9 +452,9 @@ namespace Terminals.Panels
 
                 this.Favorite.BrowserAuthentication =
                     (BrowserAuthentication)
-                    Enum.Parse(typeof (BrowserAuthentication), this.cmbHttpAuthentication.Text, true);
+                    Enum.Parse(typeof(BrowserAuthentication), this.cmbHttpAuthentication.Text, true);
                 this.Favorite.HttpBrowser =
-                    (BrowserType) Enum.Parse(typeof (BrowserType), this.cmbHttpBrowser.Text, true);
+                    (BrowserType)Enum.Parse(typeof(BrowserType), this.cmbHttpBrowser.Text, true);
 
                 this.Favorite.Name = name;
 
@@ -462,7 +462,7 @@ namespace Terminals.Panels
                 this.Favorite.VmrcReducedColorsMode = this.VMRCReducedColorsCheckbox.Checked;
 
                 this.Favorite.VncAutoScale = this.vncAutoScaleCheckbox.Checked;
-                this.Favorite.VncDisplayNumber = (Int32) this.vncDisplayNumberInput.Value;
+                this.Favorite.VncDisplayNumber = (Int32)this.vncDisplayNumberInput.Value;
                 this.Favorite.VncViewOnly = this.VncViewOnlyCheckbox.Checked;
 
                 this.Favorite.NewWindow = this.NewWindowCheckbox.Checked;
@@ -476,7 +476,7 @@ namespace Terminals.Panels
                 CredentialSet set = this.CredentialPanel.SelectedCredentialSet;
                 this.Favorite.XmlCredentialSetName = (set == null ? String.Empty : set.Name);
 
-                
+
                 this.ShowOnToolbar = this.chkAddtoToolbar.Checked;
 
                 this.Favorite.ExecuteBeforeConnect = this.chkExecuteBeforeConnect.Checked;
@@ -487,7 +487,7 @@ namespace Terminals.Panels
                 this.Favorite.ToolBarIcon = this.currentToolBarFileName;
 
                 this.Favorite.IcaApplicationName = this.ICAApplicationNameTextBox.Text;
-                
+
                 this.Favorite.Url = this.httpUrlTextBox.Text;
 
                 this.Favorite.IcaClientIni = this.ICAClientINI.Text;
@@ -604,12 +604,12 @@ namespace Terminals.Panels
         private static void GetServerAndPort(String Connection, out String Server, out Int32 Port)
         {
             Server = Connection;
-            Port = ConnectionManager.GetPort(typeof (RDPConnection).GetProtocolName());
+            Port = ConnectionManager.GetPort(typeof(RDPConnection).GetProtocolName());
             if (Connection != null && Connection.Trim() != String.Empty && Connection.Contains(":"))
             {
                 String server = Connection.Substring(0, Connection.IndexOf(":"));
                 String rawPort = Connection.Substring(Connection.IndexOf(":") + 1);
-                Int32 port = ConnectionManager.GetPort(typeof (RDPConnection).GetProtocolName());
+                Int32 port = ConnectionManager.GetPort(typeof(RDPConnection).GetProtocolName());
                 if (rawPort != null && rawPort.Trim() != String.Empty)
                 {
                     rawPort = rawPort.Trim();
@@ -805,7 +805,7 @@ namespace Terminals.Panels
             List<Type> favoritePanelTypes = ConnectionManager.GetFavoritePanels();
 
             List<string> panelsToSkip = new List<string>();
-            
+
             // Load all favorite tab pages, set the name to match the protocol name
             // Either an existing favorite tab page or a existing panel or initialize one.
             foreach (Type type in favoritePanelTypes)
@@ -847,11 +847,11 @@ namespace Terminals.Panels
                 // skip the Plugin
                 if (panel == null || panel.DontLoadMe)
                 {
-                	panelsToSkip.Add(type.Name);
-                	Log.Fatal("Plugin has been skipped due to errors.");
-                	continue;
+                    panelsToSkip.Add(type.Name);
+                    Log.Fatal("Plugin has been skipped due to errors.");
+                    continue;
                 }
-                	
+
                 if (tabPage == null)
                     tabPage = AddTabPage(panel, panel.Name);
 
@@ -881,19 +881,19 @@ namespace Terminals.Panels
                 FavoritePanel panel = (FavoritePanel)page.Controls[0];
 
                 if (panel == null || panel.DontLoadMe || panelsToSkip.Contains(panel.Name))
-                	continue;
-                
+                    continue;
+
                 panel.ParentForm = this;
                 panel.HandleSelectionChanged(this.ProtocolComboBox.Text, isEditing);
 
                 foreach (string protocolName in panel.ProtocolName)
                     if (this.ProtocolComboBox.Text.ToUpper() == protocolName.ToUpper())
                     {
-                        if (!loadTabPages.Contains (page))
+                        if (!loadTabPages.Contains(page))
                             loadTabPages.Add(page);
                     }
             }
-            
+
             this.SetTabPage(loadTabPages.ToArray(), true);
         }
 
@@ -931,7 +931,7 @@ namespace Terminals.Panels
                 panel.Dock = DockStyle.Fill;
                 panel.AutoSize = true;
             }
-            
+
             return tabPage;
         }
 
@@ -959,13 +959,13 @@ namespace Terminals.Panels
 
             List<TabPage> loadTabPages = new List<TabPage>();
 
-            if (typeof (VMRCConnection).IsEqual(this.ProtocolComboBox.Text))
+            if (typeof(VMRCConnection).IsEqual(this.ProtocolComboBox.Text))
             {
                 loadTabPages.Add(this.tabVMRC);
                 this.VMRCReducedColorsCheckbox.Enabled = true;
                 this.VMRCAdminModeCheckbox.Enabled = true;
             }
-            else if (typeof (RASConnection).IsEqual(this.ProtocolComboBox.Text))
+            else if (typeof(RASConnection).IsEqual(this.ProtocolComboBox.Text))
             {
                 loadTabPages.Add(this.tabRAS);
                 this.cmbServers.Items.Clear();
@@ -973,7 +973,7 @@ namespace Terminals.Panels
                 this.txtPort.Enabled = false;
                 this.RASDetailsListBox.Items.Clear();
             }
-            else if (typeof (VNCConnection).IsEqual(this.ProtocolComboBox.Text))
+            else if (typeof(VNCConnection).IsEqual(this.ProtocolComboBox.Text))
             {
                 //vnc settings
                 loadTabPages.Add(this.tabVNC);
@@ -981,15 +981,15 @@ namespace Terminals.Panels
                 this.vncDisplayNumberInput.Enabled = true;
                 this.VncViewOnlyCheckbox.Enabled = true;
             }
-            else if (typeof (TerminalConnection).IsEqual(this.ProtocolComboBox.Text))
+            else if (typeof(TerminalConnection).IsEqual(this.ProtocolComboBox.Text))
             {
                 loadTabPages.Add(this.tabConsole);
             }
-            else if (typeof (SshConnection).IsEqual(this.ProtocolComboBox.Text))
+            else if (typeof(SshConnection).IsEqual(this.ProtocolComboBox.Text))
             {
                 loadTabPages.AddRange(new[] { this.tabSSH, this.tabConsole });
             }
-            else if (typeof (ICAConnection).IsEqual(this.ProtocolComboBox.Text))
+            else if (typeof(ICAConnection).IsEqual(this.ProtocolComboBox.Text))
             {
                 loadTabPages.Add(this.tabICA);
                 this.ICAClientINI.Enabled = true;
@@ -998,10 +998,10 @@ namespace Terminals.Panels
                 this.ICAEnableEncryptionCheckbox.Enabled = true;
                 this.ICAApplicationNameTextBox.Enabled = true;
             }
-            else if (typeof (HTTPConnection).IsEqual(this.ProtocolComboBox.Text))
+            else if (typeof(HTTPConnection).IsEqual(this.ProtocolComboBox.Text))
             {
                 loadTabPages.Add(this.tabHTTP);
-                this.tabHTTP.Text = typeof (HTTPConnection).GetProtocolName();
+                this.tabHTTP.Text = typeof(HTTPConnection).GetProtocolName();
                 if (string.IsNullOrEmpty(this.httpUrlTextBox.Text) || this.httpUrlTextBox.Text == "https://")
                 {
                     this.httpUrlTextBox.Text = "http://";
@@ -1015,10 +1015,10 @@ namespace Terminals.Panels
                 this.cmbServers.Enabled = false;
                 this.httpUrlTextBox.Enabled = true;
             }
-            else if (typeof (HTTPSConnection).IsEqual(this.ProtocolComboBox.Text))
+            else if (typeof(HTTPSConnection).IsEqual(this.ProtocolComboBox.Text))
             {
                 loadTabPages.Add(this.tabHTTP);
-                this.tabHTTP.Text = typeof (HTTPSConnection).GetProtocolName();
+                this.tabHTTP.Text = typeof(HTTPSConnection).GetProtocolName();
                 if (string.IsNullOrEmpty(this.httpUrlTextBox.Text) || this.httpUrlTextBox.Text == "http://")
                 {
                     this.httpUrlTextBox.Text = "https://";
@@ -1032,12 +1032,12 @@ namespace Terminals.Panels
                 this.cmbServers.Enabled = false;
                 this.httpUrlTextBox.Enabled = true;
             }
-            else if (typeof (GenericConnection).IsEqual(this.ProtocolComboBox.Text))
+            else if (typeof(GenericConnection).IsEqual(this.ProtocolComboBox.Text))
             {
                 this.cmbServers.Enabled = false;
                 this.httpUrlTextBox.Enabled = true;
             }
-            else if (typeof (ExplorerConnection).IsEqual(this.ProtocolComboBox.Text))
+            else if (typeof(ExplorerConnection).IsEqual(this.ProtocolComboBox.Text))
             {
                 this.cmbServers.Enabled = false;
                 this.httpUrlTextBox.Enabled = true;
@@ -1059,13 +1059,13 @@ namespace Terminals.Panels
                 return string.Empty;
 
             string fileName = System.IO.Path.GetTempPath() + fileNameWithoutExtension + ".png";
-            
+
             // Delete a temporary file if it already exists
             if (File.Exists(fileName))
                 File.Delete(fileName);
 
             image.Save(fileName);
-            
+
             string returnValue = SetToolBarIcon(fileName, ref image, overwrite);
 
             if (image != null)
@@ -1118,14 +1118,14 @@ namespace Terminals.Panels
         private void pictureBox2_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog
-                                                {
-                                                    CheckFileExists = true,
-                                                    InitialDirectory = Kohl.Framework.Info.AssemblyInfo.Directory,
-                                                    Filter = "All files (*.*)|*.*|TIFF Files (*.tiff)|*.tiff|Bitmap files (*.bmp)|*.bmp|GIF Files (*.gif)|*.gif|ICON Files (*.ico)|*.ico|PNG Files (*.png)|*.png|JPG Files (*.jpg)|*.jpg",
-                                                    Multiselect = false,
-                                                    Title = "Select a custom connection image."
-                                                };
-            
+            {
+                CheckFileExists = true,
+                InitialDirectory = Kohl.Framework.Info.AssemblyInfo.Directory,
+                Filter = "All files (*.*)|*.*|TIFF Files (*.tiff)|*.tiff|Bitmap files (*.bmp)|*.bmp|GIF Files (*.gif)|*.gif|ICON Files (*.ico)|*.ico|PNG Files (*.png)|*.png|JPG Files (*.jpg)|*.jpg",
+                Multiselect = false,
+                Title = "Select a custom connection image."
+            };
+
             if (openFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 Image image = null;
@@ -1161,7 +1161,7 @@ namespace Terminals.Panels
                 this.ProtocolComboBox.SelectedIndexChanged -= this.ProtocolComboBox_SelectedIndexChanged;
                 this.ProtocolComboBox.Text = "HTTPS";
                 this.ProtocolComboBox.SelectedIndexChanged += this.ProtocolComboBox_SelectedIndexChanged;
-                this.tabHTTP.Text = typeof (HTTPSConnection).GetProtocolName();
+                this.tabHTTP.Text = typeof(HTTPSConnection).GetProtocolName();
 
                 if (this.txtPort.Text == "80")
                 {
@@ -1173,7 +1173,7 @@ namespace Terminals.Panels
             this.ProtocolComboBox.SelectedIndexChanged -= this.ProtocolComboBox_SelectedIndexChanged;
             this.ProtocolComboBox.Text = "HTTP";
             this.ProtocolComboBox.SelectedIndexChanged += this.ProtocolComboBox_SelectedIndexChanged;
-            this.tabHTTP.Text = typeof (HTTPConnection).GetProtocolName();
+            this.tabHTTP.Text = typeof(HTTPConnection).GetProtocolName();
 
             if (this.txtPort.Text == "443")
             {
@@ -1283,7 +1283,7 @@ namespace Terminals.Panels
 
         private void ServerINIBrowseButton_Click(object sender, EventArgs e)
         {
-            OpenFileDialog d = new OpenFileDialog {DefaultExt = "*.ini", CheckFileExists = true};
+            OpenFileDialog d = new OpenFileDialog { DefaultExt = "*.ini", CheckFileExists = true };
             DialogResult result = d.ShowDialog();
             if (result == System.Windows.Forms.DialogResult.OK)
             {
@@ -1293,7 +1293,7 @@ namespace Terminals.Panels
 
         private void ClientINIBrowseButton_Click(object sender, EventArgs e)
         {
-            OpenFileDialog d = new OpenFileDialog {DefaultExt = "*.ini", CheckFileExists = true};
+            OpenFileDialog d = new OpenFileDialog { DefaultExt = "*.ini", CheckFileExists = true };
 
             DialogResult result = d.ShowDialog();
             if (result == System.Windows.Forms.DialogResult.OK)
@@ -1311,7 +1311,7 @@ namespace Terminals.Panels
         {
             // If the user has selected forms authentication
             if (this.cmbHttpAuthentication.Text ==
-                Enum.GetName(typeof (BrowserAuthentication), BrowserAuthentication.Forms))
+                Enum.GetName(typeof(BrowserAuthentication), BrowserAuthentication.Forms))
             {
                 // If the user hasn't made any input
                 if (string.IsNullOrEmpty(this.cmbHtmlFormField1Value.Text) &&

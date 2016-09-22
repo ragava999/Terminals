@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace Kohl.Explorer
@@ -63,14 +58,7 @@ namespace Kohl.Explorer
             ExplorerBrowser.ControlStyle controlStyle = ExplorerBrowser.ControlStyle.Single;
 
             if (args.Length >= 1)
-                // .NET 4.0
-                // Enum.TryParse<ExplorerBrowser.ControlStyle>(args[0].Trim('"').Trim('\''), out controlStyle);
-                // .NET 2.0
-                try
-                {
-                    controlStyle = (ExplorerBrowser.ControlStyle)Enum.Parse(typeof(ExplorerBrowser.ControlStyle), args[0].Trim('"').Trim('\''));
-                }
-                catch {}
+                Enum.TryParse<ExplorerBrowser.ControlStyle>(args[0].Trim('"').Trim('\''), out controlStyle);
 
             multiplorer1.ExplorerStyle = controlStyle;
 

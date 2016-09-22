@@ -307,7 +307,7 @@ namespace WalburySoftware
             }
 
             // paint a rectangle over the cursor position
-            CurGraphics.DrawImageUnscaled(this.Caret.Bitmap, X*this.CharSize.Width, Y*this.CharSize.Height);
+            CurGraphics.DrawImageUnscaled(this.Caret.Bitmap, X * this.CharSize.Width, Y * this.CharSize.Height);
 
             // if we don't have a char to redraw then leave
             if (this.CharGrid[Y][X] == '\0')
@@ -338,8 +338,8 @@ namespace WalburySoftware
             this.ShowChar(
                 CurGraphics,
                 this.CharGrid[Y][X],
-                this.Caret.Pos.Y*this.CharSize.Height,
-                this.Caret.Pos.X*this.CharSize.Width,
+                this.Caret.Pos.Y * this.CharSize.Height,
+                this.Caret.Pos.X * this.CharSize.Width,
                 CurAttribs);
         }
 

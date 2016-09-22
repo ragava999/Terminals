@@ -1,5 +1,4 @@
 ﻿using System;
-
 using Terminals.Configuration.Files.Main.Favorites;
 using Terminals.Connection.Manager;
 using Terminals.Connection.Panels.FavoritePanels;
@@ -20,7 +19,7 @@ namespace Terminals.Panels.FavoritePanels
         public RAdminFavoritePanel()
         {
             this.InitializeComponent();
-            
+
         }
 
         public override void FillControls(FavoriteConfigurationElement favorite)
@@ -50,7 +49,7 @@ namespace Terminals.Panels.FavoritePanels
             {
                 RAdminConnection.ColorDepth colorDepth =
                     (RAdminConnection.ColorDepth)
-                    Enum.Parse(typeof (RAdminConnection.ColorDepth), favorite.RAdminColorMode, true);
+                    Enum.Parse(typeof(RAdminConnection.ColorDepth), favorite.RAdminColorMode, true);
 
                 switch (colorDepth)
                 {

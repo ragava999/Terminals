@@ -10,7 +10,7 @@ namespace Terminals.Forms.Controls.IPAddressControl
         {
             get
             {
-                IPAddressControl control = (IPAddressControl) this.Control;
+                IPAddressControl control = (IPAddressControl)this.Control;
 
                 if (control.AutoHeight)
                     return SelectionRules.Moveable | SelectionRules.Visible | SelectionRules.LeftSizeable |
@@ -23,7 +23,7 @@ namespace Terminals.Forms.Controls.IPAddressControl
         {
             get
             {
-                IPAddressControl control = (IPAddressControl) this.Control;
+                IPAddressControl control = (IPAddressControl)this.Control;
 
                 IList snapLines = base.SnapLines;
 

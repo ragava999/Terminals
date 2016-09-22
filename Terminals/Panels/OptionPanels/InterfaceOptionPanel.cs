@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Windows.Forms;
-
 using Terminals.Configuration.Files.Main.Settings;
 using Terminals.Connection.Panels.OptionPanels;
 
@@ -11,7 +9,7 @@ namespace Terminals.Panels.OptionPanels
         public InterfaceOptionPanel()
         {
             this.InitializeComponent();
-            
+
         }
 
         public override void LoadSettings()

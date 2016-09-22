@@ -1,49 +1,46 @@
 ﻿using Terminals.Connection.Manager;
-using Terminals.Connection.Panels.OptionPanels;
 
 namespace Terminals.Forms.Controls
 {
+    using Configuration.Files.Main.Favorites;
+    using Configuration.Files.Main.Settings;
+    using Configuration.Files.Main.SpecialCommands;
+    using Kohl.Framework.Logging;
+    using Properties;
     using System;
     using System.Collections.Generic;
     using System.Drawing;
     using System.Linq;
     using System.Windows.Forms;
 
-    using Kohl.Framework.Logging;
-    using Terminals.Configuration.Files.Main.Favorites;
-    using Terminals.Configuration.Files.Main.Settings;
-    using Terminals.Configuration.Files.Main.SpecialCommands;
-    using Terminals.Connection;
-    using Terminals.Properties;
-
     /// <summary>
     ///     Fills menu, tool strip menu and tool bar with favorite buttons
     /// </summary>
     public class FavoritesMenuLoader
     {
-        public const String COMMAND_EXIT = "Exit";
-        public const String COMMAND_DETACH = "Detach";
-        public const String QUICK_CONNECT = "QuickConnect";
-        public const String COMMAND_SPECIAL = "SpecialCommands";
-        public const String COMMAND_RESTORESCREEN = "RestoreScreen";
-        public const String COMMAND_FULLSCREEN = "FullScreen";
-        public const String COMMAND_SHOWMENU = "ShowMenu";
-        public const String COMMAND_OPTIONS = "Options";
-        public const String COMMAND_CAPTUREMANAGER = "ScreenCaptureManager";
-        public const String COMMAND_NETTOOLS = "NetworkingTools";
-        public const String COMMAND_CREDENTIALMANAGER = "CredentialsManager";
-        public const String COMMAND_ORGANIZEFAVORITES = "OrganizeFavorites";
-        private const String COMMAND_ALPHABETICAL = "Alphabetical";
+        public const string COMMAND_EXIT = "Exit";
+        public const string COMMAND_DETACH = "Detach";
+        public const string QUICK_CONNECT = "QuickConnect";
+        public const string COMMAND_SPECIAL = "SpecialCommands";
+        public const string COMMAND_RESTORESCREEN = "RestoreScreen";
+        public const string COMMAND_FULLSCREEN = "FullScreen";
+        public const string COMMAND_SHOWMENU = "ShowMenu";
+        public const string COMMAND_OPTIONS = "Options";
+        public const string COMMAND_CAPTUREMANAGER = "ScreenCaptureManager";
+        public const string COMMAND_NETTOOLS = "NetworkingTools";
+        public const string COMMAND_CREDENTIALMANAGER = "CredentialsManager";
+        public const string COMMAND_ORGANIZEFAVORITES = "OrganizeFavorites";
+        private const string COMMAND_ALPHABETICAL = "Alphabetical";
 
         /// <summary>
         ///     Stored in context menu Tag to identify virtual context menu groups by tag
         /// </summary>
-        public const String TAG = "tag";
+        public const string TAG = "tag";
 
         /// <summary>
         ///     Stored in context menu Tag to identify favorite context menu items
         /// </summary>
-        public const String FAVORITE = "favorite";
+        public const string FAVORITE = "favorite";
 
         private readonly ToolStrip favoriteToolBar;
         private readonly ToolStripMenuItem favoritesToolStripMenuItem;
@@ -228,14 +225,14 @@ namespace Terminals.Forms.Controls
 
             this.ClearFavoritesToolStripmenuItems();
             this.CreateTagsToolStripMenuItems();
-            
+
             this.LoadFavoritesToolbar();
         }
 
         private void ReFreshConnectionsComboBox()
         {
             this.tscConnectTo.Items.Clear();
-            String[] connectionNames = Settings.GetFavorites(false)
+            string[] connectionNames = Settings.GetFavorites(false)
                                                          .ToList()
                                                          .Select(favorite => favorite.Name).ToArray();
             this.tscConnectTo.Items.AddRange(connectionNames);
@@ -274,7 +271,7 @@ namespace Terminals.Forms.Controls
 
             List<ToolStripMenuItem> items = new List<ToolStripMenuItem>();
 
-            foreach (String tag in tags)
+            foreach (string tag in tags)
             {
                 ToolStripMenuItem tagMenu = CreateTagMenuItem(tag);
 
@@ -297,18 +294,18 @@ namespace Terminals.Forms.Controls
         private void OnTagMenuDropDownOpening(object sender, EventArgs e)
         {
             TagMenuItem tagMenu = sender as TagMenuItem;
-              
+
             if (tagMenu.IsEmpty)
             {
                 tagMenu.DropDown.Items.Clear();
 
                 List<FavoriteConfigurationElement> tagFavorites = Settings.GetSortedFavoritesByTag(tagMenu.Text, false);
-                        
+
                 foreach (FavoriteConfigurationElement favorite in tagFavorites)
                 {
-                        
+
                     ToolStripMenuItem item = this.CreateToolStripItemByFavorite(favorite);
-                        
+
                     tagMenu.DropDown.Items.Add(item);
                 }
             }
@@ -343,7 +340,7 @@ namespace Terminals.Forms.Controls
         private void CreateFavoriteButtons()
         {
             FavoriteConfigurationElementCollection favorites = Settings.GetFavorites(false);
-            foreach (String favoriteName in Settings.FavoritesToolbarButtons)
+            foreach (string favoriteName in Settings.FavoritesToolbarButtons)
             {
                 this.CreateFavoriteButton(favorites, favoriteName);
             }
@@ -364,11 +361,11 @@ namespace Terminals.Forms.Controls
             Image buttonImage = ConnectionImageHandler.GetFavoriteIcon(favorite);
             ToolStripButton favoriteBtn = new ToolStripButton(favorite.Name, buttonImage,
                                                               this.serverToolStripMenuItem_Click)
-                                              {
-                                                  ToolTipText = favorite.GetToolTipText(),
-                                                  Tag = favorite,
-                                                  Overflow = ToolStripItemOverflow.AsNeeded
-                                              };
+            {
+                ToolTipText = favorite.GetToolTipText(),
+                Tag = favorite,
+                Overflow = ToolStripItemOverflow.AsNeeded
+            };
             return favoriteBtn;
         }
 
@@ -452,7 +449,7 @@ namespace Terminals.Forms.Controls
 
         private ToolStripItem CreateSpecialItem(SpecialCommandConfigurationElement commad)
         {
-            String commandExeName = commad.Executable.ToLower();
+            string commandExeName = commad.Executable.ToLower();
 
             if (commandExeName.EndsWith("cpl"))
                 return this.cpl.DropDown.Items.Add(commad.Name);
@@ -482,19 +479,19 @@ namespace Terminals.Forms.Controls
             elm.Launch();
         }
 
-        private static TagMenuItem CreateTagMenuItem(String tag)
+        private static TagMenuItem CreateTagMenuItem(string tag)
         {
-            TagMenuItem tagMenuItem = new TagMenuItem {Tag = TAG, Text = tag};
+            TagMenuItem tagMenuItem = new TagMenuItem { Tag = TAG, Text = tag };
             return tagMenuItem;
         }
 
         private static ToolStripMenuItem CreateFavoriteMenuItem(FavoriteConfigurationElement favorite)
         {
             ToolStripMenuItem item = new ToolStripMenuItem(favorite.Name)
-                                         {
-                                             Tag = FAVORITE,
-                                             Image = ConnectionImageHandler.GetFavoriteIcon(favorite)
-                                         };
+            {
+                Tag = FAVORITE,
+                Image = ConnectionImageHandler.GetFavoriteIcon(favorite)
+            };
             return item;
         }
 
@@ -565,7 +562,7 @@ namespace Terminals.Forms.Controls
             this.fullScreenMenuItem.Visible = !fullScreen;
         }
 
-        private ToolStripItem CreateGeneralTrayContextMenuItem(string menuText, String commnadName, Image icon)
+        private ToolStripItem CreateGeneralTrayContextMenuItem(string menuText, string commnadName, Image icon)
         {
             ToolStripItem menuItem = this.quickContextMenu.Items.Add(menuText, icon);
             menuItem.Name = commnadName;

@@ -14,18 +14,18 @@ namespace Terminals.Forms
             this.InitializeComponent();
             this.LoadFavorites();
 
-            
-            #if (!LIGHTBOX_FOR_SEARCH)
+
+#if (!LIGHTBOX_FOR_SEARCH)
             {
                 this.InputTextbox.Focus();
                 this.likeBox1.Visible = false;
             }
-            #else
+#else
             {
                 this.likeBox1.Focus();
                 this.InputTextbox.Visible = false;
             }
-            #endif
+#endif
         }
         public bool SaveInDB { get; set; }
 
@@ -34,32 +34,32 @@ namespace Terminals.Forms
             var favorites = Settings.GetFavorites(SaveInDB).ToList();
             var favoriteNames = (from f in favorites select f.Name).ToArray();
 
-            #if (!LIGHTBOX_FOR_SEARCH)
+#if (!LIGHTBOX_FOR_SEARCH)
             {
                 this.InputTextbox.AutoCompleteCustomSource = new AutoCompleteStringCollection();
                 this.InputTextbox.AutoCompleteCustomSource.AddRange(favoriteNames);
             }
-            #else
+#else
             {
                 this.likeBox1.DataSource.AddRange(favoriteNames);
                 this.likeBox1.Text = null;
             }
-            #endif
+#endif
         }
 
         public string ConnectionName
         {
             get
             {
-            	#if (LIGHTBOX_FOR_SEARCH)
-	            {
-            		return this.likeBox1.Text;
-	            }
-	            #else
+#if (LIGHTBOX_FOR_SEARCH)
+                {
+                    return this.likeBox1.Text;
+                }
+#else
 	            {
 	                return this.InputTextbox.Text;
 	            }
-	            #endif
+#endif
             }
         }
 

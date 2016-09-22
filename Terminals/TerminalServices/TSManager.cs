@@ -1,9 +1,9 @@
 namespace Terminals.TerminalServices
 {
+    using Kohl.Framework.Logging;
     using System;
     using System.Collections.Generic;
     using System.Runtime.InteropServices;
-    using Kohl.Framework.Logging;
 
     public class TSManager
     {
@@ -94,7 +94,7 @@ namespace Terminals.TerminalServices
                 buffer = IntPtr.Zero;
             }
         }
-        
+
         public static List<SessionInfo> ListSessions(string serverName, string userName, string domainName, string clientName, WTS_CONNECTSTATE_CLASS? state)
         {
             IntPtr server = IntPtr.Zero;
@@ -105,15 +105,15 @@ namespace Terminals.TerminalServices
                 IntPtr ppSessionInfo = IntPtr.Zero;
                 Int32 count = 0;
                 Int32 retval = WTSEnumerateSessions(server, 0, 1, ref ppSessionInfo, ref count);
-                Int32 dataSize = Marshal.SizeOf(typeof (WTS_SESSION_INFO));
-                Int32 current = (int) ppSessionInfo;
+                Int32 dataSize = Marshal.SizeOf(typeof(WTS_SESSION_INFO));
+                Int32 current = (int)ppSessionInfo;
                 if (retval != 0)
                 {
                     for (int i = 0; i < count; i++)
                     {
                         SessionInfo sessionInfo = new SessionInfo();
                         WTS_SESSION_INFO si =
-                            (WTS_SESSION_INFO) Marshal.PtrToStructure((IntPtr) current, typeof (WTS_SESSION_INFO));
+                            (WTS_SESSION_INFO)Marshal.PtrToStructure((IntPtr)current, typeof(WTS_SESSION_INFO));
                         current += dataSize;
 
                         sessionInfo.Id = si.SessionID;
@@ -123,7 +123,7 @@ namespace Terminals.TerminalServices
                         sessionInfo.State = si.State;
 
                         if (userName != null || domainName != null || clientName != null || state != null)
-                            //In this case, the caller is asking to return only matching sessions
+                        //In this case, the caller is asking to return only matching sessions
                         {
                             if (userName != null &&
                                 !String.Equals(userName, sessionInfo.UserName, StringComparison.CurrentCultureIgnoreCase))
@@ -170,7 +170,8 @@ namespace Terminals.TerminalServices
         {
             public readonly Int32 SessionID;
 
-            [MarshalAs(UnmanagedType.LPStr)] private readonly String pWinStationName;
+            [MarshalAs(UnmanagedType.LPStr)]
+            private readonly String pWinStationName;
 
             public readonly WTS_CONNECTSTATE_CLASS State;
         }

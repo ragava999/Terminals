@@ -4,7 +4,6 @@
  * Date: 04.10.2012
  * Time: 13:06
  */
-
 using System;
 using System.Collections;
 using System.Runtime.InteropServices;
@@ -65,8 +64,8 @@ namespace Terminals.Network.Servers
             if (rc != 0 && serverInfoPtr != IntPtr.Zero)
             {
                 Win32API.SERVER_INFO_101 si =
-                    (Win32API.SERVER_INFO_101) Marshal.PtrToStructure(serverInfoPtr, typeof (Win32API.SERVER_INFO_101));
-                result = (ServerType) si.dwType;
+                    (Win32API.SERVER_INFO_101)Marshal.PtrToStructure(serverInfoPtr, typeof(Win32API.SERVER_INFO_101));
+                result = (ServerType)si.dwType;
 
                 Win32API.NetApiBufferFree(serverInfoPtr);
                 serverInfoPtr = IntPtr.Zero;

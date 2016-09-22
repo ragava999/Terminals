@@ -1,9 +1,8 @@
+using Kohl.Framework.Logging;
 using System;
 using System.Collections;
 using System.Net;
 using System.Net.Sockets;
-
-using Kohl.Framework.Logging;
 
 namespace Terminals.Network.DNS
 {
@@ -48,7 +47,7 @@ namespace Terminals.Network.DNS
             foreach (Answer answer in response.Answers)
             {
                 // if the answer is an MX record
-                if (answer.Record.GetType() == typeof (MXRecord))
+                if (answer.Record.GetType() == typeof(MXRecord))
                 {
                     // add it to our array
                     resourceRecords.Add(answer.Record);
@@ -109,8 +108,8 @@ namespace Terminals.Network.DNS
                 unchecked
                 {
                     // substitute in an id unique to this lookup, the request has no idea about this
-                    requestMessage[0] = (byte) (_uniqueId >> 8);
-                    requestMessage[1] = (byte) _uniqueId;
+                    requestMessage[0] = (byte)(_uniqueId >> 8);
+                    requestMessage[1] = (byte)_uniqueId;
                 }
 
                 // we'll be send and receiving a UDP packet
@@ -139,7 +138,7 @@ namespace Terminals.Network.DNS
                 }
                 catch (SocketException ex)
                 {
-					Log.Error("Ein Socketfehler trat auf beim Versuch die UDP-Daten zu erhalten.", ex);
+                    Log.Error("Ein Socketfehler trat auf beim Versuch die UDP-Daten zu erhalten.", ex);
                     // failure - we better try again, but remember how many attempts
                     attempts++;
                 }

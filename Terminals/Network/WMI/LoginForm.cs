@@ -1,8 +1,7 @@
+using Kohl.Framework.Logging;
 using System;
 using System.Management;
 using System.Windows.Forms;
-
-using Kohl.Framework.Logging;
 
 namespace Terminals.Network.WMI
 {
@@ -16,7 +15,7 @@ namespace Terminals.Network.WMI
         public LoginForm()
         {
             this.InitializeComponent();
-            
+
             this.PasswordTextBox.PasswordChar = Terminals.Forms.Controls.CredentialPanel.HIDDEN_PASSWORD_CHAR;
         }
 
@@ -63,24 +62,24 @@ namespace Terminals.Network.WMI
                     try
                     {
                         ConnectionOptions oConn = new ConnectionOptions
-                                                      {
-                                                          Username = this.UsernameTextBox.Text,
-                                                          Password = this.PasswordTextBox.Text,
-                                                          Impersonation = ImpersonationLevel.Impersonate,
-                                                          Authentication = AuthenticationLevel.Connect
-                                                      };
+                        {
+                            Username = this.UsernameTextBox.Text,
+                            Password = this.PasswordTextBox.Text,
+                            Impersonation = ImpersonationLevel.Impersonate,
+                            Authentication = AuthenticationLevel.Connect
+                        };
                         //oConn.Authority = this.MachineNameTextBox.Text;
                         ManagementScope oMs = new ManagementScope(this.MachineNameTextBox.Text, oConn)
-                                                  {
-                                                      Path = new ManagementPath (this.MachineNameTextBox.Text)
-                                                  };
+                        {
+                            Path = new ManagementPath(this.MachineNameTextBox.Text)
+                        };
                         oMs.Connect();
                         success = oMs.IsConnected;
                     }
                     catch (Exception exc)
                     {
-						Log.Info("The login failed.", exc);
-						MessageBox.Show("The login failed.");
+                        Log.Info("The login failed.", exc);
+                        MessageBox.Show("The login failed.");
                     }
 
                     if (success)

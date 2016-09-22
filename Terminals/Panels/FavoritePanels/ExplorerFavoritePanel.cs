@@ -1,5 +1,4 @@
 ﻿using System;
-
 using Terminals.Configuration.Files.Main.Favorites;
 using Terminals.Connection.Manager;
 using Terminals.Connection.Panels.FavoritePanels;
@@ -16,7 +15,7 @@ namespace Terminals.Panels.FavoritePanels
                 return new[] { typeof(ExplorerConnection).GetProtocolName() };
             }
         }
-        
+
         public ExplorerFavoritePanel()
         {
             this.InitializeComponent();
@@ -34,18 +33,18 @@ namespace Terminals.Panels.FavoritePanels
             }
 
             this.cmbDirectory.Sorted = true;
-        	this.cmbDirectory.Sorted = true;
-			this.cmbExplorerStyle.Items.AddRange(Enum.GetNames(typeof(ExplorerBrowser.ControlStyle)));
-			
-			this.cmbExplorerStyle.SelectedIndexChanged += delegate
-			{
-				this.lblDirectoryDual.Visible = this.cmbDirectoryDual.Visible = (this.cmbExplorerStyle.Text.ToLower() == ExplorerBrowser.ControlStyle.DualVertical.ToString().ToLower() || this.cmbExplorerStyle.Text.ToLower() == ExplorerBrowser.ControlStyle.DualHorizontal.ToString().ToLower() || this.cmbExplorerStyle.Text.ToLower() == ExplorerBrowser.ControlStyle.TrippleBottom.ToString().ToLower() || this.cmbExplorerStyle.Text.ToLower() == ExplorerBrowser.ControlStyle.TrippleHorizontal.ToString().ToLower() || this.cmbExplorerStyle.Text.ToLower() == ExplorerBrowser.ControlStyle.TrippleLeft.ToString().ToLower() || this.cmbExplorerStyle.Text.ToLower() == ExplorerBrowser.ControlStyle.TrippleRight.ToString().ToLower() || this.cmbExplorerStyle.Text.ToLower() == ExplorerBrowser.ControlStyle.TrippleTop.ToString().ToLower() || this.cmbExplorerStyle.Text.ToLower() == ExplorerBrowser.ControlStyle.TrippleVertical.ToString().ToLower() || this.cmbExplorerStyle.Text.ToLower() == ExplorerBrowser.ControlStyle.Quad.ToString().ToLower() || this.cmbExplorerStyle.Text.ToLower() == ExplorerBrowser.ControlStyle.QuadHorizontal.ToString().ToLower() || this.cmbExplorerStyle.Text.ToLower() == ExplorerBrowser.ControlStyle.QuadVertical.ToString().ToLower());
-				this.lblDirectoryTripple.Visible = this.cmbDirectoryTripple.Visible = (this.cmbExplorerStyle.Text.ToLower() == ExplorerBrowser.ControlStyle.TrippleBottom.ToString().ToLower() || this.cmbExplorerStyle.Text.ToLower() == ExplorerBrowser.ControlStyle.TrippleHorizontal.ToString().ToLower() || this.cmbExplorerStyle.Text.ToLower() == ExplorerBrowser.ControlStyle.TrippleLeft.ToString().ToLower() || this.cmbExplorerStyle.Text.ToLower() == ExplorerBrowser.ControlStyle.TrippleRight.ToString().ToLower() || this.cmbExplorerStyle.Text.ToLower() == ExplorerBrowser.ControlStyle.TrippleTop.ToString().ToLower() || this.cmbExplorerStyle.Text.ToLower() == ExplorerBrowser.ControlStyle.TrippleVertical.ToString().ToLower() || this.cmbExplorerStyle.Text.ToLower() == ExplorerBrowser.ControlStyle.Quad.ToString().ToLower() || this.cmbExplorerStyle.Text.ToLower() == ExplorerBrowser.ControlStyle.QuadHorizontal.ToString().ToLower() || this.cmbExplorerStyle.Text.ToLower() == ExplorerBrowser.ControlStyle.QuadVertical.ToString().ToLower());
-				this.lblDirectoryQuad.Visible = this.cmbDirectoryQuad.Visible = (this.cmbExplorerStyle.Text.ToLower() == ExplorerBrowser.ControlStyle.Quad.ToString().ToLower() || this.cmbExplorerStyle.Text.ToLower() == ExplorerBrowser.ControlStyle.QuadHorizontal.ToString().ToLower() || this.cmbExplorerStyle.Text.ToLower() == ExplorerBrowser.ControlStyle.QuadVertical.ToString().ToLower());
-			};
-			
-			this.cmbExplorerStyle.Sorted = true;
-			this.cmbExplorerStyle.Text = ExplorerBrowser.ControlStyle.Single.ToString();
+            this.cmbDirectory.Sorted = true;
+            this.cmbExplorerStyle.Items.AddRange(Enum.GetNames(typeof(ExplorerBrowser.ControlStyle)));
+
+            this.cmbExplorerStyle.SelectedIndexChanged += delegate
+            {
+                this.lblDirectoryDual.Visible = this.cmbDirectoryDual.Visible = (this.cmbExplorerStyle.Text.ToLower() == ExplorerBrowser.ControlStyle.DualVertical.ToString().ToLower() || this.cmbExplorerStyle.Text.ToLower() == ExplorerBrowser.ControlStyle.DualHorizontal.ToString().ToLower() || this.cmbExplorerStyle.Text.ToLower() == ExplorerBrowser.ControlStyle.TrippleBottom.ToString().ToLower() || this.cmbExplorerStyle.Text.ToLower() == ExplorerBrowser.ControlStyle.TrippleHorizontal.ToString().ToLower() || this.cmbExplorerStyle.Text.ToLower() == ExplorerBrowser.ControlStyle.TrippleLeft.ToString().ToLower() || this.cmbExplorerStyle.Text.ToLower() == ExplorerBrowser.ControlStyle.TrippleRight.ToString().ToLower() || this.cmbExplorerStyle.Text.ToLower() == ExplorerBrowser.ControlStyle.TrippleTop.ToString().ToLower() || this.cmbExplorerStyle.Text.ToLower() == ExplorerBrowser.ControlStyle.TrippleVertical.ToString().ToLower() || this.cmbExplorerStyle.Text.ToLower() == ExplorerBrowser.ControlStyle.Quad.ToString().ToLower() || this.cmbExplorerStyle.Text.ToLower() == ExplorerBrowser.ControlStyle.QuadHorizontal.ToString().ToLower() || this.cmbExplorerStyle.Text.ToLower() == ExplorerBrowser.ControlStyle.QuadVertical.ToString().ToLower());
+                this.lblDirectoryTripple.Visible = this.cmbDirectoryTripple.Visible = (this.cmbExplorerStyle.Text.ToLower() == ExplorerBrowser.ControlStyle.TrippleBottom.ToString().ToLower() || this.cmbExplorerStyle.Text.ToLower() == ExplorerBrowser.ControlStyle.TrippleHorizontal.ToString().ToLower() || this.cmbExplorerStyle.Text.ToLower() == ExplorerBrowser.ControlStyle.TrippleLeft.ToString().ToLower() || this.cmbExplorerStyle.Text.ToLower() == ExplorerBrowser.ControlStyle.TrippleRight.ToString().ToLower() || this.cmbExplorerStyle.Text.ToLower() == ExplorerBrowser.ControlStyle.TrippleTop.ToString().ToLower() || this.cmbExplorerStyle.Text.ToLower() == ExplorerBrowser.ControlStyle.TrippleVertical.ToString().ToLower() || this.cmbExplorerStyle.Text.ToLower() == ExplorerBrowser.ControlStyle.Quad.ToString().ToLower() || this.cmbExplorerStyle.Text.ToLower() == ExplorerBrowser.ControlStyle.QuadHorizontal.ToString().ToLower() || this.cmbExplorerStyle.Text.ToLower() == ExplorerBrowser.ControlStyle.QuadVertical.ToString().ToLower());
+                this.lblDirectoryQuad.Visible = this.cmbDirectoryQuad.Visible = (this.cmbExplorerStyle.Text.ToLower() == ExplorerBrowser.ControlStyle.Quad.ToString().ToLower() || this.cmbExplorerStyle.Text.ToLower() == ExplorerBrowser.ControlStyle.QuadHorizontal.ToString().ToLower() || this.cmbExplorerStyle.Text.ToLower() == ExplorerBrowser.ControlStyle.QuadVertical.ToString().ToLower());
+            };
+
+            this.cmbExplorerStyle.Sorted = true;
+            this.cmbExplorerStyle.Text = ExplorerBrowser.ControlStyle.Single.ToString();
         }
 
         public override void FillControls(FavoriteConfigurationElement favorite)
@@ -62,7 +61,7 @@ namespace Terminals.Panels.FavoritePanels
             favorite.ExplorerStyle = this.cmbExplorerStyle.Text;
             favorite.ExplorerDirectory = this.cmbDirectory.Text;
             favorite.ExplorerDirectoryDual = this.cmbDirectoryDual.Text;
-            favorite.ExplorerDirectoryTripple =this.cmbDirectoryTripple.Text;
+            favorite.ExplorerDirectoryTripple = this.cmbDirectoryTripple.Text;
             favorite.ExplorerDirectoryQuad = this.cmbDirectoryQuad.Text;
         }
     }

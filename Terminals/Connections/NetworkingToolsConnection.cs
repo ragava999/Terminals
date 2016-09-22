@@ -1,15 +1,11 @@
 namespace Terminals.Connections
 {
-    // .NET namespaces
+    using Configuration.Files.Main.Favorites;
+    using Connection;
+    using Kohl.Framework.Logging;
     using System;
     using System.Drawing;
     using System.Windows.Forms;
-
-    // Terminals and framework namespaces
-
-    using Kohl.Framework.Logging;
-    using Configuration.Files.Main.Favorites;
-    using Connection;
 
     public class NetworkingToolsConnection : ConnectionBase
     {
@@ -29,7 +25,6 @@ namespace Terminals.Connections
         protected override void ChangeDesktopSize(DesktopSize desktopSize, System.Drawing.Size size)
         {
         }
-
 
         public override bool Connect()
         {
@@ -71,9 +66,6 @@ namespace Terminals.Connections
         {
             this.networkingToolsLayout1 = new NetworkingToolsLayout();
             this.SuspendLayout();
-            // 
-            // networkingToolsLayout1
-            // 
             this.networkingToolsLayout1.Location = new Point(0, 0);
             this.networkingToolsLayout1.Size = new Size(700, 500);
             this.networkingToolsLayout1.TabIndex = 0;

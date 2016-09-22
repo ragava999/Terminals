@@ -1,36 +1,35 @@
-using System.Linq;
-using Kohl.Framework.Logging;
-
 namespace Terminals.Updates
 {
+    using CommandLine;
+    using Configuration.Files.Main.Settings;
+    using ICSharpCode.SharpZipLib.Zip;
+    using Kohl.Framework.Info;
+    using Kohl.Framework.Logging;
     using System;
     using System.Diagnostics;
     using System.IO;
+    using System.Linq;
     using System.Security.Cryptography;
-	using System.ServiceModel.Syndication;
+    using System.ServiceModel.Syndication;
     using System.Text;
     using System.Threading;
     using System.Windows.Forms;
-	using System.Xml;
-    using ICSharpCode.SharpZipLib.Zip;
-    using Kohl.Framework.Info;
-    using Terminals.CommandLine;
-    using Terminals.Configuration.Files.Main.Settings;
+    using System.Xml;
 
     public static class UpdateManager
     {
-    	public static Control Invoker { get; set; }
-    	
+        public static Control Invoker { get; set; }
+
         /// <summary>
         ///     Check for available application updates
         /// </summary>
         public static void CheckForUpdates(Control invoker, CommandLineArgs commandLine)
         {
-        	Invoker = invoker;
-        	
-        	if (Invoker == null)
-        		throw new Exception("Error invoker must not be null.");
-        	
+            Invoker = invoker;
+
+            if (Invoker == null)
+                throw new Exception("Error invoker must not be null.");
+
             ThreadPool.QueueUserWorkItem(PerformCheck, commandLine);
         }
 
@@ -68,13 +67,13 @@ namespace Terminals.Updates
         {
             if (!Settings.CheckForNewRelease)
             {
-            	Log.Debug("The user has choosen to deny Terminals the update check.");
-            	return;
+                Log.Debug("The user has choosen to deny Terminals the update check.");
+                return;
             }
-        	
+
             Boolean checkForUpdate = true;
             string releaseFile = Path.Combine(AssemblyInfo.DirectoryConfigFiles, "LastUpdateCheck.txt");
-            
+
             if (File.Exists(releaseFile))
             {
                 string text = null;
@@ -82,7 +81,7 @@ namespace Terminals.Updates
                 {
                     using (StreamReader stream = new StreamReader(fs))
                     {
-                        text = stream.ReadToEnd().Trim();;
+                        text = stream.ReadToEnd().Trim(); ;
                     }
                 }
 
@@ -94,7 +93,7 @@ namespace Terminals.Updates
                         //dont run the update if the file is today or later..if we have checked today or not
                         if (lastUpdate.Date >= DateTime.Now.Date)
                         {
-                        	Log.Debug("No need to check for a new Terminals release. The release has already been checked recently.");
+                            Log.Debug("No need to check for a new Terminals release. The release has already been checked recently.");
                             checkForUpdate = false;
                         }
                     }
@@ -103,55 +102,55 @@ namespace Terminals.Updates
 
             if (checkForUpdate)
             {
-            	Log.Debug("Start to check for a new Terminals release.");
-            	
-            	try
-            	{
-	            	Log.Debug("Connecting to the internet to github.com to check if a new Terminals version is available.");
-	            	
-	            	XmlReader responseReader = XmlReader.Create(Terminals.Configuration.Url.GitHubReleasesFeed);
-	            	
-	            	Log.Debug("Loading syndication feed.");
-	            	
-					SyndicationFeed feed = SyndicationFeed.Load(responseReader);
-					
-					// Only the first element would be enough normally - but to be sure
-					// check all of the releases
-					foreach (SyndicationItem item in feed.Items)
-					{
-					    string title = item.Title.Text;
-					    DateTimeOffset date = item.LastUpdatedTime;
-					
-					    Log.Debug("Release '" + title + "' has been discovered.");
-					    
-	                    //check the date the item was published.  
-	                    //Is it after the currently executing application BuildDate? if so, then it is probably a new build!
-	                    if (date > AssemblyInfo.BuildDate)
-	                    {
-							Log.Debug("Release '" + title + "'(" + date.ToString() + ") is newer than the currently installed Terminals version '" + AssemblyInfo.Version + "'(" + AssemblyInfo.BuildDate.ToString() + ").");
-	                    	
-							System.Windows.Forms.FormsExtensions.InvokeIfNecessary(Invoker, () => { MainForm.ReleaseAvailable = true; MainForm.ReleaseDescription = title; });
-	                    	
-	                        string version = title.Replace("Terminals", "").Trim();
-							Settings.UpdateSource = string.Format(Terminals.Configuration.Url.GitHubLatestRelease_Binary, version);
-	                        commandLineArgs.AutomaticallyUpdate = true;
-	                        break;
-	                    }
-					}
-            	}
-            	catch (Exception ex)
-            	{
-            		Log.Warn("Unable to check for a new Terminals version on " + Terminals.Configuration.Url.GitHubRepositry, ex);
-            	}
-            	
-            	File.WriteAllText(releaseFile, DateTime.Now.ToString());
+                Log.Debug("Start to check for a new Terminals release.");
+
+                try
+                {
+                    Log.Debug("Connecting to the internet to github.com to check if a new Terminals version is available.");
+
+                    XmlReader responseReader = XmlReader.Create(Terminals.Configuration.Url.GitHubReleasesFeed);
+
+                    Log.Debug("Loading syndication feed.");
+
+                    SyndicationFeed feed = SyndicationFeed.Load(responseReader);
+
+                    // Only the first element would be enough normally - but to be sure
+                    // check all of the releases
+                    foreach (SyndicationItem item in feed.Items)
+                    {
+                        string title = item.Title.Text;
+                        DateTimeOffset date = item.LastUpdatedTime;
+
+                        Log.Debug("Release '" + title + "' has been discovered.");
+
+                        //check the date the item was published.  
+                        //Is it after the currently executing application BuildDate? if so, then it is probably a new build!
+                        if (date > AssemblyInfo.BuildDate)
+                        {
+                            Log.Debug("Release '" + title + "'(" + date.ToString() + ") is newer than the currently installed Terminals version '" + AssemblyInfo.Version + "'(" + AssemblyInfo.BuildDate.ToString() + ").");
+
+                            System.Windows.Forms.FormsExtensions.InvokeIfNecessary(Invoker, () => { MainForm.ReleaseAvailable = true; MainForm.ReleaseDescription = title; });
+
+                            string version = title.Replace("Terminals", "").Trim();
+                            Settings.UpdateSource = string.Format(Terminals.Configuration.Url.GitHubLatestRelease_Binary, version);
+                            commandLineArgs.AutomaticallyUpdate = true;
+                            break;
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Log.Warn("Unable to check for a new Terminals version on " + Terminals.Configuration.Url.GitHubRepositry, ex);
+                }
+
+                File.WriteAllText(releaseFile, DateTime.Now.ToString());
             }
         }
 
         private static void PerformCheck(object state)
         {
-        	CommandLineArgs commandLineArgs = (state as CommandLineArgs);
-        	
+            CommandLineArgs commandLineArgs = (state as CommandLineArgs);
+
             try
             {
                 CheckForNewRelease(commandLineArgs);
@@ -168,12 +167,12 @@ namespace Terminals.Updates
                 {
                     String url = Settings.UpdateSource;
 
-                	String name = url.Substring(url.LastIndexOf("/")+1, url.Length - url.LastIndexOf("/")-1);
-					String version = url.Substring(0, url.LastIndexOf("/"));
-					version = version.Substring(version.LastIndexOf("/")+1, version.Length-version.LastIndexOf("/")-1);
-                	                                    	
+                    String name = url.Substring(url.LastIndexOf("/") + 1, url.Length - url.LastIndexOf("/") - 1);
+                    String version = url.Substring(0, url.LastIndexOf("/"));
+                    version = version.Substring(version.LastIndexOf("/") + 1, version.Length - version.LastIndexOf("/") - 1);
+
                     if (!Directory.Exists(AssemblyInfo.UpgradeDirectory))
-                    	Directory.CreateDirectory(AssemblyInfo.UpgradeDirectory);
+                        Directory.CreateDirectory(AssemblyInfo.UpgradeDirectory);
 
                     String finalFolder = Path.Combine(AssemblyInfo.UpgradeDirectory, version);
                     if (!Directory.Exists(finalFolder))
@@ -215,7 +214,7 @@ namespace Terminals.Updates
                                         downloaded = DownloadNewBuild(url, filename);
 
                                     // if the build date is equal to the min value or the build date is equal or lower to the current build date or this build is older than one month
-                                    else if (buildDateResult == DateTime.MinValue || buildDateResult.Equals(new DateTime(1970, 1, 1, 0, 0, 0)) || buildDateResult <= AssemblyInfo.BuildDate || AssemblyInfo.BuildDate < DateTime.Now.Subtract(new TimeSpan(30,0,0,0,0)))
+                                    else if (buildDateResult == DateTime.MinValue || buildDateResult.Equals(new DateTime(1970, 1, 1, 0, 0, 0)) || buildDateResult <= AssemblyInfo.BuildDate || AssemblyInfo.BuildDate < DateTime.Now.Subtract(new TimeSpan(30, 0, 0, 0, 0)))
                                         downloaded = DownloadNewBuild(url, filename);
                                 }
                                 // no valid date -> download new one
@@ -244,35 +243,35 @@ namespace Terminals.Updates
                     {
                         FastZip fz = new FastZip();
                         fz.ExtractZip(filename, finalFolder, null);
-						Log.Debug("Terminals release " + version + " has been extracted to \"" + finalFolder + "\"");
+                        Log.Debug("Terminals release " + version + " has been extracted to \"" + finalFolder + "\"");
 
                         if (
                             MessageBox.Show(
                                 "A new build is available, would you like to install it now",
-								"New Build", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                                "New Build", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                         {
-							Log.Debug("User has choosen to upgrade Terminals from version '" + AssemblyInfo.Version + "'(" + AssemblyInfo.BuildDate.ToString() + ") to '" + version + ".");
+                            Log.Debug("User has choosen to upgrade Terminals from version '" + AssemblyInfo.Version + "'(" + AssemblyInfo.BuildDate.ToString() + ") to '" + version + ".");
 
-                        	string updaterExe= Path.Combine(AssemblyInfo.Directory, AssemblyInfo.Title + "Updater.exe");
-                        	
+                            string updaterExe = Path.Combine(AssemblyInfo.Directory, AssemblyInfo.Title + "Updater.exe");
+
                             if (File.Exists(updaterExe))
                             {
                                 String args = String.Format("\"{0}\" \"{1}\"", finalFolder, AssemblyInfo.Directory);
-								Log.Debug("Starting TerminalsUpdater with arguments \"" + args + "\"");
+                                Log.Debug("Starting TerminalsUpdater with arguments \"" + args + "\"");
                                 Process.Start(updaterExe, args);
                             }
-							else
-								Log.Error("TerminalsUpdater.exe hasn't been found.");
+                            else
+                                Log.Error("TerminalsUpdater.exe hasn't been found.");
                         }
-						else
-							Log.Warn("User has denied to upgrade Terminals from version '" + AssemblyInfo.Version + "'(" + AssemblyInfo.BuildDate.ToString() + ") to '" + version + ".");
-						
+                        else
+                            Log.Warn("User has denied to upgrade Terminals from version '" + AssemblyInfo.Version + "'(" + AssemblyInfo.BuildDate.ToString() + ") to '" + version + ".");
+
                     }
                 }
             }
             catch (Exception exc)
             {
-				Log.Fatal("Failed during update.", exc);
+                Log.Fatal("Failed during update.", exc);
             }
         }
 
@@ -286,7 +285,7 @@ namespace Terminals.Updates
 
         private static bool DownloadNewBuild(String Url, String Filename)
         {
-			Log.Info("Downloading new Terminals release \"" + Url + "\" to \"" + Filename + "\"");
+            Log.Info("Downloading new Terminals release \"" + Url + "\" to \"" + Filename + "\"");
             return Web.SaveHTTPToFile(Url, Filename);
         }
     }

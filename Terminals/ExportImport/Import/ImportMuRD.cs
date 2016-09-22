@@ -22,7 +22,7 @@ namespace Terminals.ExportImport.Import
                     {
                         if (fav == null)
                         {
-                            fav = new FavoriteConfigurationElement {Name = line.Substring(1, line.Length - 2)};
+                            fav = new FavoriteConfigurationElement { Name = line.Substring(1, line.Length - 2) };
                         }
                         else
                         {
@@ -151,7 +151,7 @@ namespace Terminals.ExportImport.Import
 
             return coll;
         }
-        
+
         public string Name
         {
             get { return "Multiple Remote Desktops Manager"; }

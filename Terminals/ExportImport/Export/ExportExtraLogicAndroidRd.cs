@@ -1,10 +1,8 @@
-﻿using System;
+﻿using Kohl.Framework.Logging;
+using System;
 using System.Collections.Generic;
 using System.Xml.Linq;
-
-using Kohl.Framework.Logging;
 using Terminals.Configuration.Files.Main.Favorites;
-using Terminals.Connection;
 using Terminals.Connection.Manager;
 using Terminals.Connections;
 
@@ -47,7 +45,7 @@ namespace Terminals.ExportImport.Export
         {
             foreach (FavoriteConfigurationElement favorite in favorites)
             {
-                if (typeof (RDPConnection).IsEqual(favorite.Protocol))
+                if (typeof(RDPConnection).IsEqual(favorite.Protocol))
                 {
                     doc.Root.Add(ExportFavorite(favorite));
                 }
@@ -60,7 +58,6 @@ namespace Terminals.ExportImport.Export
             int colorBits = ExportRdp.ConvertToColorBits(favorite.Colors);
 
             return new XElement("server",
-                                // analogic to RDP
                                 new XAttribute("full-address", favorite.ServerName),
                                 new XAttribute("server-port", favorite.Port),
                                 new XAttribute("username", favorite.Credential.UserName),
@@ -71,11 +68,8 @@ namespace Terminals.ExportImport.Export
                                 new XAttribute("audiomode", audioMode),
                                 new XAttribute("connect-to-console", Convert.ToByte(favorite.ConnectToConsole)),
                                 new XAttribute("compression", Convert.ToByte(favorite.EnableCompression)),
-                                new XAttribute("disable-cursor-setting",
-                                               Convert.ToByte(favorite.DisableCursorBlinking &&
-                                                              favorite.DisableCursorShadow)),
-                                new XAttribute("disable-full-window-drag",
-                                               Convert.ToByte(favorite.DisableFullWindowDrag)),
+                                new XAttribute("disable-cursor-setting", Convert.ToByte(favorite.DisableCursorBlinking && favorite.DisableCursorShadow)),
+                                new XAttribute("disable-full-window-drag", Convert.ToByte(favorite.DisableFullWindowDrag)),
                                 new XAttribute("disable-menu-anims", Convert.ToByte(favorite.DisableMenuAnimations)),
                                 new XAttribute("disable-themes", Convert.ToByte(favorite.DisableTheming)),
                                 new XAttribute("disable-wallpaper", Convert.ToByte(favorite.DisableWallPaper)),
@@ -86,11 +80,9 @@ namespace Terminals.ExportImport.Export
                                 new XAttribute("shell-working-directory", ""),
                                 new XAttribute("gatewayusagemethod", favorite.TsgwUsageMethod),
                                 new XAttribute("gatewayhostname", favorite.TsgwHostname),
-                                // application specific
                                 new XAttribute("xtr-description", favorite.Notes),
                                 new XAttribute("xtr-security-layer", 0),
-                                new XAttribute("xtr-use-server-creds-for-gateway",
-                                               Convert.ToByte(favorite.TsgwSeparateLogin)),
+                                new XAttribute("xtr-use-server-creds-for-gateway", Convert.ToByte(favorite.TsgwSeparateLogin)),
                                 new XAttribute("xtr-input-locale", 1033),
                                 new XAttribute("xtr-switch-mouse-buttons", 0)
                 );

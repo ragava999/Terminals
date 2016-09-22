@@ -41,7 +41,7 @@ namespace Terminals.Network.DNS
         /// <returns> 1, 0, -1 </returns>
         public int CompareTo(object obj)
         {
-            MXRecord mxOther = (MXRecord) obj;
+            MXRecord mxOther = (MXRecord)obj;
 
             // we want to be able to sort them by preference
             if (mxOther._preference < this._preference) return 1;
@@ -76,7 +76,7 @@ namespace Terminals.Network.DNS
             // must be of same type
             if (this.GetType() != obj.GetType()) return false;
 
-            MXRecord mxOther = (MXRecord) obj;
+            MXRecord mxOther = (MXRecord)obj;
 
             // preference must match
             if (mxOther._preference != this._preference) return false;

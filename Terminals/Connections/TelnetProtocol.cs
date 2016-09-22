@@ -39,8 +39,8 @@ namespace Terminals.Connections
         {
             this.local = new Options();
             this.remote = new Options();
-            this.local.supported[(int) OPT.TTYPE] = true; // terminal type
-            this.remote.supported[(int) OPT.ECHO] = true; // echo
+            this.local.supported[(int)OPT.TTYPE] = true; // terminal type
+            this.remote.supported[(int)OPT.ECHO] = true; // echo
         }
 
         #endregion
@@ -52,12 +52,12 @@ namespace Terminals.Connections
             if (this.first_tx)
             {
                 this.first_tx = false;
-                this.TelnetCmd(CMD.DO, (byte) OPT.ECHO);
+                this.TelnetCmd(CMD.DO, (byte)OPT.ECHO);
             }
 
             // count the chars that look like IACs
             int n = data.Count(b => b == 255);
-            
+
             if (n == 0)
             {
                 // no 0xff chars just send on the buffer
@@ -87,23 +87,23 @@ namespace Terminals.Connections
             while (input.Position < input.Length)
             {
                 int b = input.ReadByte();
-                if ((byte) b == (byte) CMD.IAC)
+                if ((byte)b == (byte)CMD.IAC)
                 {
                     int cmd = input.ReadByte();
                     if (cmd < 0)
                         break;
-                    if ((byte) cmd == (byte) CMD.IAC)
+                    if ((byte)cmd == (byte)CMD.IAC)
                     {
-                        output.WriteByte((byte) cmd);
+                        output.WriteByte((byte)cmd);
                     }
                     else
                     {
-                        this.process_telnet_command((byte) cmd, input);
+                        this.process_telnet_command((byte)cmd, input);
                     }
                 }
                 else
                 {
-                    output.WriteByte((byte) b);
+                    output.WriteByte((byte)b);
                 }
             }
             byte[] obuf = new byte[output.Length];
@@ -196,11 +196,11 @@ namespace Terminals.Connections
 
         private void process_telnet_command(byte b, Stream s)
         {
-            
+
             if (b < 240)
                 return; // error
             int option = s.ReadByte();
-            switch ((CMD) b)
+            switch ((CMD)b)
             {
                 case CMD.SE:
                 case CMD.NOP:
@@ -222,12 +222,12 @@ namespace Terminals.Connections
                         if (this.remote.in_effect[option] != tristate.on)
                         {
                             this.remote.in_effect[option] = tristate.on;
-                            this.TelnetCmd(CMD.DO, (byte) option);
+                            this.TelnetCmd(CMD.DO, (byte)option);
                         }
                     }
                     else
                     {
-                        this.TelnetCmd(CMD.DONT, (byte) option);
+                        this.TelnetCmd(CMD.DONT, (byte)option);
                     }
                     break;
                 case CMD.WONT:
@@ -236,7 +236,7 @@ namespace Terminals.Connections
                         if (this.remote.in_effect[option] != tristate.off)
                         {
                             this.remote.in_effect[option] = tristate.off;
-                            this.TelnetCmd(CMD.DONT, (byte) option);
+                            this.TelnetCmd(CMD.DONT, (byte)option);
                         }
                     }
                     break;
@@ -246,13 +246,13 @@ namespace Terminals.Connections
                         if (this.local.in_effect[option] != tristate.on)
                         {
                             this.local.in_effect[option] = tristate.on;
-                            this.TelnetCmd(CMD.WILL, (byte) option);
+                            this.TelnetCmd(CMD.WILL, (byte)option);
                         }
                     }
                     else
                     {
                         this.local.in_effect[option] = tristate.off;
-                        this.TelnetCmd(CMD.WONT, (byte) option);
+                        this.TelnetCmd(CMD.WONT, (byte)option);
                     }
                     break;
                 case CMD.DONT:
@@ -261,12 +261,12 @@ namespace Terminals.Connections
                         if (this.local.in_effect[option] != tristate.off)
                         {
                             this.local.in_effect[option] = tristate.off;
-                            this.TelnetCmd(CMD.WONT, (byte) option);
+                            this.TelnetCmd(CMD.WONT, (byte)option);
                         }
                     }
                     break;
                 case CMD.IAC:
-                    byte[] ff = {(byte) CMD.IAC};
+                    byte[] ff = { (byte)CMD.IAC };
                     this._IndicateData(ff);
                     break;
                 default: // can't happen
@@ -276,7 +276,7 @@ namespace Terminals.Connections
 
         private void TelnetCmd(CMD cmd, byte option)
         {
-            byte[] data = {(byte) CMD.IAC, (byte) cmd, option};
+            byte[] data = { (byte)CMD.IAC, (byte)cmd, option };
             this._RequestData(data);
         }
 
@@ -285,14 +285,14 @@ namespace Terminals.Connections
             byte[] bval = (new ASCIIEncoding()).GetBytes(val);
             byte[] data = new byte[6 + val.Length];
             int i = 0;
-            data[i++] = (byte) CMD.IAC;
-            data[i++] = (byte) CMD.SB;
-            data[i++] = (byte) option;
+            data[i++] = (byte)CMD.IAC;
+            data[i++] = (byte)CMD.SB;
+            data[i++] = (byte)option;
             data[i++] = 0;
             bval.CopyTo(data, i);
             i += bval.Length;
-            data[i++] = (byte) CMD.IAC;
-            data[i++] = (byte) CMD.SE;
+            data[i++] = (byte)CMD.IAC;
+            data[i++] = (byte)CMD.SE;
             this._RequestData(data);
         }
 
@@ -309,7 +309,7 @@ namespace Terminals.Connections
                 s.ReadByte();
                 return;
             }
-            switch ((OPT) option) // what happens if its undefined ?
+            switch ((OPT)option) // what happens if its undefined ?
             {
                 case OPT.TTYPE:
                     this.TelnetSendSubopt(OPT.TTYPE, this.TerminalType);

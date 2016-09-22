@@ -28,7 +28,7 @@ namespace Terminals.Forms.Controls
         private int _dropDownHeight = 200;
         private int _dropDownWidth = 0;
         private int _maxDropDownItems = 8;
-        
+
         private int _selectedIndex = -1;
 
         private bool _isDroppedDown = false;
@@ -100,7 +100,7 @@ namespace Terminals.Forms.Controls
             get { return _color2; }
             set { _color2 = value; Invalidate(true); }
         }
-        
+
         public Color Color3
         {
             get { return _color3; }
@@ -139,8 +139,8 @@ namespace Terminals.Forms.Controls
         public new object DataSource
         {
             get { return base.DataSource; }
-            set 
-            { 
+            set
+            {
                 _listBox.DataSource = value;
                 base.DataSource = value;
                 OnDataSourceChanged(EventArgs.Empty);
@@ -168,14 +168,14 @@ namespace Terminals.Forms.Controls
                 _listBox.DrawMode = value;
             }
         }
-        
+
         public ComboBoxStyle DropDownStyle
         {
             get { return _dropDownStyle; }
-            set 
-            { 
-                _dropDownStyle = value; 
-            
+            set
+            {
+                _dropDownStyle = value;
+
                 if (_dropDownStyle == ComboBoxStyle.DropDownList)
                 {
                     _textBox.Visible = false;
@@ -191,8 +191,8 @@ namespace Terminals.Forms.Controls
         public new Color BackColor
         {
             get { return _backColor; }
-            set 
-            { 
+            set
+            {
                 this._backColor = value;
                 _textBox.BackColor = value;
                 Invalidate(true);
@@ -202,9 +202,9 @@ namespace Terminals.Forms.Controls
         public bool IsDroppedDown
         {
             get { return _isDroppedDown; }
-            set 
+            set
             {
-                if (_isDroppedDown && value == false )
+                if (_isDroppedDown && value == false)
                 {
                     if (_popupControl.IsDropDown)
                     {
@@ -220,21 +220,21 @@ namespace Terminals.Forms.Controls
 
                     _listBox.Refresh();
 
-                    if (_listBox.Items.Count > 0) 
+                    if (_listBox.Items.Count > 0)
                     {
                         int h = 0;
                         int i = 0;
                         int maxItemHeight = 0;
                         int highestItemHeight = 0;
-                        foreach(object item in _listBox.Items)
+                        foreach (object item in _listBox.Items)
                         {
                             int itHeight = _listBox.GetItemHeight(i);
-                            if (highestItemHeight < itHeight) 
+                            if (highestItemHeight < itHeight)
                             {
                                 highestItemHeight = itHeight;
                             }
                             h = h + itHeight;
-                            if (i <= (_maxDropDownItems - 1)) 
+                            if (i <= (_maxDropDownItems - 1))
                             {
                                 maxItemHeight = h;
                             }
@@ -245,7 +245,7 @@ namespace Terminals.Forms.Controls
                             _listBox.Height = _dropDownHeight + 3;
                         else
                         {
-                            if (maxItemHeight > highestItemHeight )
+                            if (maxItemHeight > highestItemHeight)
                                 _listBox.Height = maxItemHeight + 3;
                             else
                                 _listBox.Height = highestItemHeight + 3;
@@ -297,16 +297,16 @@ namespace Terminals.Forms.Controls
 
             this.SuspendLayout();
             _textBox = new TextBox
-                           {
-                               BorderStyle = BorderStyle.None,
-                               Location = new Point(3, 4),
-                               Size = new Size(60, 13),
-                               TabIndex = 0,
-                               WordWrap = false,
-                               Margin = new Padding(0),
-                               Padding = new Padding(0),
-                               TextAlign = HorizontalAlignment.Left
-                           };
+            {
+                BorderStyle = BorderStyle.None,
+                Location = new Point(3, 4),
+                Size = new Size(60, 13),
+                TabIndex = 0,
+                WordWrap = false,
+                Margin = new Padding(0),
+                Padding = new Padding(0),
+                TextAlign = HorizontalAlignment.Left
+            };
 
             this.Controls.Add(_textBox);
             this.ResumeLayout(false);
@@ -314,27 +314,27 @@ namespace Terminals.Forms.Controls
             AdjustControls();
 
             _listBox = new ListBox
-                           {
-                               IntegralHeight = true,
-                               BorderStyle = BorderStyle.FixedSingle,
-                               SelectionMode = SelectionMode.One,
-                               BindingContext = new BindingContext()
-                           };
+            {
+                IntegralHeight = true,
+                BorderStyle = BorderStyle.FixedSingle,
+                SelectionMode = SelectionMode.One,
+                BindingContext = new BindingContext()
+            };
 
             _controlHost = new ToolStripControlHost(_listBox)
-                               {
-                                   Padding = new Padding(0),
-                                   Margin = new Padding(0),
-                                   AutoSize = false
-                               };
+            {
+                Padding = new Padding(0),
+                Margin = new Padding(0),
+                AutoSize = false
+            };
 
             _popupControl = new ToolStripDropDown
-                                {
-                                    Padding = new Padding(0),
-                                    Margin = new Padding(0),
-                                    AutoSize = true,
-                                    DropShadowEnabled = false
-                                };
+            {
+                Padding = new Padding(0),
+                Margin = new Padding(0),
+                AutoSize = true,
+                DropShadowEnabled = false
+            };
 
             _popupControl.Items.Add(_controlHost);
 
@@ -422,7 +422,7 @@ namespace Terminals.Forms.Controls
             e.Control.GotFocus += new EventHandler(Control_GotFocus);
             e.Control.LostFocus += new EventHandler(Control_LostFocus);
             base.OnControlAdded(e);
-        }        
+        }
 
         protected override void OnMouseEnter(EventArgs e)
         {
@@ -446,7 +446,7 @@ namespace Terminals.Forms.Controls
             if ((this.RectangleToScreen(this._rectBtn).Contains(MousePosition) || (DropDownStyle == ComboBoxStyle.DropDownList)))
             {
                 this.Invalidate(true);
-                if (this.IsDroppedDown) 
+                if (this.IsDroppedDown)
                 {
                     this.IsDroppedDown = false;
                 }
@@ -492,7 +492,7 @@ namespace Terminals.Forms.Controls
 
         protected override void OnSelectedIndexChanged(EventArgs e)
         {
-            if(SelectedIndexChanged!=null)
+            if (SelectedIndexChanged != null)
                 SelectedIndexChanged(this, e);
 
             base.OnSelectedIndexChanged(e);
@@ -574,15 +574,15 @@ namespace Terminals.Forms.Controls
 
             //brushes and pens
             Brush brInnerBrush = new LinearGradientBrush(
-                new Rectangle(rectInner.X,rectInner.Y,rectInner.Width,rectInner.Height+1), 
-                (this._hovered || IsDroppedDown || ContainsFocus)?Color4:Color2, Color.Transparent,
+                new Rectangle(rectInner.X, rectInner.Y, rectInner.Width, rectInner.Height + 1),
+                (this._hovered || IsDroppedDown || ContainsFocus) ? Color4 : Color2, Color.Transparent,
                 LinearGradientMode.Vertical);
             Brush brBackground;
             if (this.DropDownStyle == ComboBoxStyle.DropDownList)
             {
-                brBackground = new LinearGradientBrush(pathInnerBorder.GetBounds(), 
-                    Color.FromArgb(IsDroppedDown ? 100 : 255, Color.White), 
-                    Color.FromArgb(IsDroppedDown?255:100, BackColor),
+                brBackground = new LinearGradientBrush(pathInnerBorder.GetBounds(),
+                    Color.FromArgb(IsDroppedDown ? 100 : 255, Color.White),
+                    Color.FromArgb(IsDroppedDown ? 255 : 100, BackColor),
                     LinearGradientMode.Vertical);
             }
             else
@@ -594,11 +594,11 @@ namespace Terminals.Forms.Controls
             LinearGradientBrush brButtonLeft = new LinearGradientBrush(this._rectBtn, Color1, Color2, LinearGradientMode.Vertical);
             ColorBlend blend = new ColorBlend();
             blend.Colors = new Color[] { Color.Transparent, Color2, Color.Transparent };
-            blend.Positions = new float[] { 0.0f, 0.5f, 1.0f};
+            blend.Positions = new float[] { 0.0f, 0.5f, 1.0f };
             brButtonLeft.InterpolationColors = blend;
             Pen penLeftButton = new Pen(brButtonLeft, 0);
             Brush brButton = new LinearGradientBrush(pathBtnBorder.GetBounds(),
-                Color.FromArgb(100, IsDroppedDown? Color2:Color.White),
+                Color.FromArgb(100, IsDroppedDown ? Color2 : Color.White),
                     Color.FromArgb(100, IsDroppedDown ? Color.White : Color2),
                     LinearGradientMode.Vertical);
 
@@ -611,8 +611,8 @@ namespace Terminals.Forms.Controls
             e.Graphics.DrawPath(penOuterBorder, pathOuterBorder);
             e.Graphics.DrawPath(penInnerBorder, pathInnerBorder);
 
-            e.Graphics.DrawLine(penLeftButton, this._rectBtn.Left + 1, rectInner.Top+1, this._rectBtn.Left + 1, rectInner.Bottom-1);
-            
+            e.Graphics.DrawLine(penLeftButton, this._rectBtn.Left + 1, rectInner.Top + 1, this._rectBtn.Left + 1, rectInner.Bottom - 1);
+
             //Glimph
             Rectangle rectGlimph = rectButton;
             rectButton.Width -= 4;
@@ -627,16 +627,16 @@ namespace Terminals.Forms.Controls
             path.CloseFigure();
             e.Graphics.RotateTransform(0);
 
-            SolidBrush br = new SolidBrush(Enabled?Color.Gray:Color.Gainsboro);
+            SolidBrush br = new SolidBrush(Enabled ? Color.Gray : Color.Gainsboro);
             e.Graphics.FillPath(br, path);
             e.Graphics.ResetTransform();
             br.Dispose();
             path.Dispose();
-            
+
             //text
             if (DropDownStyle == ComboBoxStyle.DropDownList)
             {
-                StringFormat sf  = new StringFormat(StringFormatFlags.NoWrap) {Alignment = StringAlignment.Near};
+                StringFormat sf = new StringFormat(StringFormatFlags.NoWrap) { Alignment = StringAlignment.Near };
 
                 Rectangle rectText = _textBox.Bounds;
                 rectText.Offset(-3, 0);
@@ -672,9 +672,9 @@ namespace Terminals.Forms.Controls
         public override int SelectedIndex
         {
             get { return _selectedIndex; }
-            set 
-            { 
-                if(_listBox != null)
+            set
+            {
+                if (_listBox != null)
                 {
                     if (_listBox.Items.Count == 0)
                         return;
@@ -695,9 +695,9 @@ namespace Terminals.Forms.Controls
 
         public object SelectedItem
         {
-            get { return _listBox.SelectedItem;  }
-            set 
-            { 
+            get { return _listBox.SelectedItem; }
+            set
+            {
                 _listBox.SelectedItem = value;
                 this.SelectedIndex = _listBox.SelectedIndex;
             }
@@ -714,25 +714,25 @@ namespace Terminals.Forms.Controls
 
         protected override void RefreshItem(int index)
         {
-            
+
         }
 
         protected override void RefreshItems()
         {
-            
+
         }
 
         protected override void SetItemCore(int index, object value)
         {
-            
+
         }
 
         protected override void SetItemsCore(System.Collections.IList items)
         {
-            
+
         }
         #endregion
-        
+
         #region Nested controls events (12)
         void Control_LostFocus(object sender, EventArgs e)
         {
@@ -833,7 +833,7 @@ namespace Terminals.Forms.Controls
             OnTextChanged(e);
         }
         #endregion
-        
+
         #region Private methods (2)
         private void AdjustControls()
         {
@@ -889,7 +889,7 @@ namespace Terminals.Forms.Controls
             int w = rectangle.Width;
             int h = rectangle.Height;
 
-            if(topLeftRadius > 0)
+            if (topLeftRadius > 0)
             {
                 path.AddArc(l, t, topLeftRadius * 2, topLeftRadius * 2, 180, 90);
             }
@@ -905,7 +905,7 @@ namespace Terminals.Forms.Controls
                     bottomRightRadius * 2, bottomRightRadius * 2, 0, 90);
             }
             path.AddLine(l + w - bottomRightRadius, t + h, l + bottomLeftRadius, t + h);
-            if(bottomLeftRadius >0)
+            if (bottomLeftRadius > 0)
             {
                 path.AddArc(l, t + h - bottomLeftRadius * 2, bottomLeftRadius * 2, bottomLeftRadius * 2, 90, 90);
             }
@@ -914,5 +914,5 @@ namespace Terminals.Forms.Controls
             return path;
         }
         #endregion
-    } 
+    }
 }

@@ -15,13 +15,12 @@
  * 
  */
 
+using Kohl.Framework.Logging;
 using System;
 using System.Net;
 using System.Net.Sockets;
 using System.Runtime.InteropServices;
 using System.Threading;
-
-using Kohl.Framework.Logging;
 
 namespace Terminals.Network.NTP
 {
@@ -153,7 +152,7 @@ namespace Terminals.Network.NTP
             get
             {
                 // Isolate the two most significant bits
-                byte val = (byte) (this.NTPData[0] >> 6);
+                byte val = (byte)(this.NTPData[0] >> 6);
                 switch (val)
                 {
                     case 0:
@@ -174,7 +173,7 @@ namespace Terminals.Network.NTP
             get
             {
                 // Isolate bits 3 - 5
-                byte val = (byte) ((this.NTPData[0] & 0x38) >> 3);
+                byte val = (byte)((this.NTPData[0] & 0x38) >> 3);
                 return val;
             }
         }
@@ -185,7 +184,7 @@ namespace Terminals.Network.NTP
             get
             {
                 // Isolate bits 0 - 3
-                byte val = (byte) (this.NTPData[0] & 0x7);
+                byte val = (byte)(this.NTPData[0] & 0x7);
                 switch (val)
                 {
                     case 1:
@@ -221,13 +220,13 @@ namespace Terminals.Network.NTP
         // Poll Interval
         public uint PollInterval
         {
-            get { return (uint) Math.Round(Math.Pow(2, this.NTPData[2])); }
+            get { return (uint)Math.Round(Math.Pow(2, this.NTPData[2])); }
         }
 
         // Precision (in milliseconds)
         public double Precision
         {
-            get { return (1000*Math.Pow(2, this.NTPData[3])); }
+            get { return (1000 * Math.Pow(2, this.NTPData[3])); }
         }
 
         // Root Delay (in milliseconds)
@@ -236,8 +235,8 @@ namespace Terminals.Network.NTP
             get
             {
                 int temp = 0;
-                temp = 256*(256*(256*this.NTPData[4] + this.NTPData[5]) + this.NTPData[6]) + this.NTPData[7];
-                return 1000*(((double) temp)/0x10000);
+                temp = 256 * (256 * (256 * this.NTPData[4] + this.NTPData[5]) + this.NTPData[6]) + this.NTPData[7];
+                return 1000 * (((double)temp) / 0x10000);
             }
         }
 
@@ -247,8 +246,8 @@ namespace Terminals.Network.NTP
             get
             {
                 int temp = 0;
-                temp = 256*(256*(256*this.NTPData[8] + this.NTPData[9]) + this.NTPData[10]) + this.NTPData[11];
-                return 1000*(((double) temp)/0x10000);
+                temp = 256 * (256 * (256 * this.NTPData[8] + this.NTPData[9]) + this.NTPData[10]) + this.NTPData[11];
+                return 1000 * (((double)temp) / 0x10000);
             }
         }
 
@@ -288,7 +287,7 @@ namespace Terminals.Network.NTP
                                 {
                                     val = "N/A";
                                     Log.Error(
-								string.Format("Error parsing and looking up DNS for IP address '{0}'.", Address),
+                                string.Format("Error parsing and looking up DNS for IP address '{0}'.", Address),
                                         e);
                                 }
 
@@ -370,7 +369,7 @@ namespace Terminals.Network.NTP
             {
                 TimeSpan span = (this.ReceiveTimestamp - this.OriginateTimestamp) +
                                 (this.ReceptionTimestamp - this.TransmitTimestamp);
-                return (int) span.TotalMilliseconds;
+                return (int)span.TotalMilliseconds;
             }
         }
 
@@ -381,7 +380,7 @@ namespace Terminals.Network.NTP
             {
                 TimeSpan span = (this.ReceiveTimestamp - this.OriginateTimestamp) -
                                 (this.ReceptionTimestamp - this.TransmitTimestamp);
-                return (int) (span.TotalMilliseconds/2);
+                return (int)(span.TotalMilliseconds / 2);
             }
         }
 
@@ -404,15 +403,15 @@ namespace Terminals.Network.NTP
 
             for (int i = 0; i <= 3; i++)
             {
-                intpart = 256*intpart + this.NTPData[offset + i];
+                intpart = 256 * intpart + this.NTPData[offset + i];
             }
 
             for (int i = 4; i <= 7; i++)
             {
-                fractpart = 256*fractpart + this.NTPData[offset + i];
+                fractpart = 256 * fractpart + this.NTPData[offset + i];
             }
 
-            ulong milliseconds = intpart*1000 + (fractpart*1000)/0x100000000L;
+            ulong milliseconds = intpart * 1000 + (fractpart * 1000) / 0x100000000L;
             return milliseconds;
         }
 
@@ -422,22 +421,22 @@ namespace Terminals.Network.NTP
             ulong intpart = 0, fractpart = 0;
             DateTime StartOfCentury = new DateTime(1900, 1, 1, 0, 0, 0); // January 1, 1900 12:00 AM
 
-            ulong milliseconds = (ulong) (date - StartOfCentury).TotalMilliseconds;
-            intpart = milliseconds/1000;
-            fractpart = ((milliseconds%1000)*0x100000000L)/1000;
+            ulong milliseconds = (ulong)(date - StartOfCentury).TotalMilliseconds;
+            intpart = milliseconds / 1000;
+            fractpart = ((milliseconds % 1000) * 0x100000000L) / 1000;
 
             ulong temp = intpart;
             for (int i = 3; i >= 0; i--)
             {
-                this.NTPData[offset + i] = (byte) (temp%256);
-                temp = temp/256;
+                this.NTPData[offset + i] = (byte)(temp % 256);
+                temp = temp / 256;
             }
 
             temp = fractpart;
             for (int i = 7; i >= 4; i--)
             {
-                this.NTPData[offset + i] = (byte) (temp%256);
-                temp = temp/256;
+                this.NTPData[offset + i] = (byte)(temp % 256);
+                temp = temp / 256;
             }
         }
 
@@ -464,7 +463,7 @@ namespace Terminals.Network.NTP
                 //IPHostEntry hostadd = System.Net.Dns.Resolve(TimeServer);
                 IPHostEntry hostadd = Dns.GetHostEntry(this.TimeServer);
                 IPEndPoint EPhost = new IPEndPoint(hostadd.AddressList[0], 123);
-                UdpClient TimeSocket = new UdpClient {Client = {ReceiveTimeout = 1000}};
+                UdpClient TimeSocket = new UdpClient { Client = { ReceiveTimeout = 1000 } };
                 TimeSocket.Connect(EPhost);
                 Thread.Sleep(1000);
                 this.Initialize();
@@ -516,15 +515,15 @@ namespace Terminals.Network.NTP
                 TimeZone.CurrentTimeZone.ToUniversalTime(DateTime.Now.AddMilliseconds(client.LocalClockOffset));
 
             SystemTime st = new SystemTime
-                                {
-                                    Year = (short) setTime.Year,
-                                    Month = (short) setTime.Month,
-                                    Day = (short) setTime.Day,
-                                    Hour = (short) setTime.Hour,
-                                    Minute = (short) setTime.Minute,
-                                    Second = (short) setTime.Second,
-                                    Milliseconds = (short) setTime.Millisecond
-                                };
+            {
+                Year = (short)setTime.Year,
+                Month = (short)setTime.Month,
+                Day = (short)setTime.Day,
+                Hour = (short)setTime.Hour,
+                Minute = (short)setTime.Minute,
+                Second = (short)setTime.Second,
+                Milliseconds = (short)setTime.Millisecond
+            };
 
             SetSystemTime(ref st);
 

@@ -1,9 +1,8 @@
+using Kohl.Framework.Logging;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
-
-using Kohl.Framework.Logging;
 using ZedGraph;
 
 namespace Terminals.Network.TraceRoute
@@ -28,7 +27,7 @@ namespace Terminals.Network.TraceRoute
             this.DoUpdateForm = this.UpdateForm;
 
             this.InitializeGraph();
-            
+
 
             this.dataGridView1.Columns.Add("1", "Count");
             this.dataGridView1.Columns.Add("2", "Address");
@@ -89,7 +88,7 @@ namespace Terminals.Network.TraceRoute
                     MessageBox.Show(ex.Message, "Ups ...", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
-                
+
                 this.traceRunning = true;
             }
 
@@ -194,13 +193,13 @@ namespace Terminals.Network.TraceRoute
             TextObj text = new TextObj(
                 "Zoom: left mouse & drag\nPan: middle mouse & drag\nContext Menu: right mouse",
                 0.02f, 0.15f, CoordType.ChartFraction, AlignH.Left, AlignV.Bottom)
-                               {
-                                   FontSpec =
+            {
+                FontSpec =
                                        {
                                            Size = 8,
                                            StringAlignment = StringAlignment.Near
                                        }
-                               };
+            };
             this.myPane.GraphObjList.Add(text);
 
             // Enable scrollbars if needed
@@ -237,7 +236,7 @@ namespace Terminals.Network.TraceRoute
                 list.Add(x, p.RoundTripTime, p.Address.ToString());
 
                 sum += p.RoundTripTime;
-                avgList.Add(x, (Int32) (sum/x));
+                avgList.Add(x, (Int32)(sum / x));
                 x++;
             }
 

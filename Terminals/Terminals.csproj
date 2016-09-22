@@ -932,7 +932,7 @@
       <DependentUpon>HistoryTreeView.cs</DependentUpon>
     </EmbeddedResource>
     <Compile Include="ExportImport\Import\ImportCodePlexTerminals.cs" />
-    <None Include="Panels\FavoritePanels\TODO.txt" />
+    <None Include="TODO.txt" />
     <Compile Include="ExportImport\Import\ImportRemoteDesktopManager.cs" />
     <None Include="TerminalsBuildDate">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

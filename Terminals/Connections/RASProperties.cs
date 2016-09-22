@@ -1,16 +1,10 @@
-using Terminals.Connection.Manager;
-using Terminals.Connection.Panels.OptionPanels;
-
 namespace Terminals.Connections
 {
+    using DotRas;
+    using Kohl.Framework.Logging;
     using System;
     using System.Windows.Forms;
-    using DotRas;
-
-
-    using Kohl.Framework.Logging;
-
-    using Connection;
+    using Terminals.Connection.Panels.OptionPanels;
 
     public partial class RasProperties : UserControl
     {
@@ -92,18 +86,18 @@ namespace Terminals.Connections
                         if (this.connectedTime == DateTime.MinValue)
                             this.connectedTime = DateTime.Now;
 
-							this.Info("Connected");
-							this.Info(string.Format("Server name: {0}", this.RasConnection.Favorite.ServerName));
-							this.Info(string.Format("Host: {0}", this.RasEntry.PhoneNumber));
-							this.Info(string.Format("IP Address: {0}", this.RasEntry.IPAddress));
+                        this.Info("Connected");
+                        this.Info(string.Format("Server name: {0}", this.RasConnection.Favorite.ServerName));
+                        this.Info(string.Format("Host: {0}", this.RasEntry.PhoneNumber));
+                        this.Info(string.Format("IP Address: {0}", this.RasEntry.IPAddress));
 
                         TimeSpan ts = new TimeSpan(DateTime.Now.Ticks - this.connectedTime.Ticks);
 
-							this.Info(string.Format("Connection duration: {0} days, {1} hours, {2} minutes, {3} seconds", ts.Days, ts.Hours, ts.Minutes, ts.Seconds));
+                        this.Info(string.Format("Connection duration: {0} days, {1} hours, {2} minutes, {3} seconds", ts.Days, ts.Hours, ts.Minutes, ts.Seconds));
                     }
                     else
                     {
-							this.Info("Not connected");
+                        this.Info("Not connected");
                     }
                 }
             });
@@ -145,7 +139,6 @@ namespace Terminals.Connections
                 if (this.lbDetails1.InvokeRequired)
                     this.lbDetails1.Invoke(new MethodInvoker(() => this.RasConnectionOnLog(entry)));
                 else
-                    //this.lbDetails1.TopIndex = this.lbDetails1.Items.Add(string.Format("{0} - {1}", DateTime.Now.ToString("hh:mm"), entry));
                     this.lbDetails1.Items.Insert(0, string.Format("{0} - {1}", DateTime.Now.ToString("hh:mm:ss"), entry));
             }
         }

@@ -1,10 +1,10 @@
+using Kohl.Framework.Security;
 using System;
 using System.Globalization;
 using System.Management;
 using System.Net;
 using System.Net.Sockets;
 using System.Text.RegularExpressions;
-using Kohl.Framework.Security;
 
 namespace Terminals.Network.WakeOnLAN
 {
@@ -68,13 +68,13 @@ namespace Terminals.Network.WakeOnLAN
             //remove all non 0-9, A-F, a-f characters
             macAddr = Regex.Replace(strMacAddress, @"[^0-9A-Fa-f]", "");
             //check if it is now a valid mac adress
-            if (macAddr.Length != BYTELENGHT*2)
-                throw new ArgumentException("Mac Adress must be " + (BYTELENGHT*2).ToString() +
+            if (macAddr.Length != BYTELENGHT * 2)
+                throw new ArgumentException("Mac Adress must be " + (BYTELENGHT * 2).ToString() +
                                             " digits of 0-9, A-F, a-f characters in length.");
 
             for (Int32 i = 0; i < macBytes.Length; i++)
             {
-                String hex = new String(new[] {macAddr[i*2], macAddr[i*2 + 1]});
+                String hex = new String(new[] { macAddr[i * 2], macAddr[i * 2 + 1] });
                 macBytes[(i)] = byte.Parse(hex, NumberStyles.HexNumber);
             }
 
@@ -83,7 +83,7 @@ namespace Terminals.Network.WakeOnLAN
 
         private static Byte[] CreatePayload(Byte[] macAddress)
         {
-            Byte[] payloadData = new Byte[HEADER + MAGICPACKETLENGTH*BYTELENGHT];
+            Byte[] payloadData = new Byte[HEADER + MAGICPACKETLENGTH * BYTELENGHT];
             for (Int32 i = 0; i < HEADER; i++)
             {
                 payloadData[i] = Byte.Parse("FF", NumberStyles.HexNumber);
@@ -93,7 +93,7 @@ namespace Terminals.Network.WakeOnLAN
             {
                 for (Int32 j = 0; j < BYTELENGHT; j++)
                 {
-                    payloadData[((i*BYTELENGHT) + j) + HEADER] = macAddress[j];
+                    payloadData[((i * BYTELENGHT) + j) + HEADER] = macAddress[j];
                 }
             }
 
@@ -160,7 +160,7 @@ namespace Terminals.Network.WakeOnLAN
             foreach (ManagementObject os in searcher.Get())
             {
                 ManagementBaseObject inParams = os.GetMethodParameters("Win32Shutdown");
-                inParams["Flags"] = (Int32) shutdownCommand;
+                inParams["Flags"] = (Int32)shutdownCommand;
 
                 ManagementBaseObject outParams = os.InvokeMethod("Win32Shutdown", inParams, null);
                 result = Convert.ToInt32(outParams.Properties["returnValue"].Value);

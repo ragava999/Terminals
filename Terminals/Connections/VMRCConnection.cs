@@ -1,14 +1,10 @@
+using AxMicrosoft.VMRCClientControl.Interop;
+using Kohl.Framework.Logging;
+using Microsoft.VMRCClientControl.Interop;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
-using AxMicrosoft.VMRCClientControl.Interop;
-
-using Kohl.Framework.Logging;
-using Microsoft.VMRCClientControl.Interop;
 using Terminals.Configuration.Files.Main.Favorites;
-using Terminals.Configuration.Files.Main.Settings;
-using Terminals.Connection;
-using Terminals.Connection.Manager;
 using Terminals.Properties;
 
 namespace Terminals.Connections
@@ -20,7 +16,7 @@ namespace Terminals.Connections
 
         protected override Image[] images
         {
-            get { return new Image[] {Resources.VMRC}; }
+            get { return new Image[] { Resources.VMRC }; }
         }
 
         public override ushort Port
@@ -61,7 +57,7 @@ namespace Terminals.Connections
                 }
                 catch (Exception ex)
                 {
-					Log.Fatal("It seems that your VMRC COM components are not registered. Please run the 'RegisterVMRC.bat' in your Terminals directory as administrator to register the components.", ex);
+                    Log.Fatal("It seems that your VMRC COM components are not registered. Please run the 'RegisterVMRC.bat' in your Terminals directory as administrator to register the components.", ex);
                     return false;
                 }
 
@@ -101,9 +97,9 @@ namespace Terminals.Connections
                 this.vmrc.OnSwitchedDisplay += this.vmrc_OnSwitchedDisplay;
 
                 if (this.InvokeRequired)
-					this.Invoke(new MethodInvoker(delegate { this.Text = "Connecting to VMRC server ..."; }));
+                    this.Invoke(new MethodInvoker(delegate { this.Text = "Connecting to VMRC server ..."; }));
                 else
-					this.Text = "Connecting to VMRC server ...";
+                    this.Text = "Connecting to VMRC server ...";
 
                 this.vmrc.Connect();
 
@@ -112,7 +108,7 @@ namespace Terminals.Connections
             catch (Exception exc)
             {
                 Log.Fatal(
-					string.Format("Terminals was unable to create the {0} connection.", this.Favorite.Protocol),
+                    string.Format("Terminals was unable to create the {0} connection.", this.Favorite.Protocol),
                     exc);
                 return this.connected = false;
             }
@@ -133,12 +129,12 @@ namespace Terminals.Connections
             else
             {
                 if (e.state == VMRCState.vmrcState_ConnectionFailed)
-					Log.Fatal(string.Format("VMRC connection '{0}' failed.",
-						this.Favorite.Name));
+                    Log.Fatal(string.Format("VMRC connection '{0}' failed.",
+                        this.Favorite.Name));
 
                 if (e.state == VMRCState.vmrcState_NotConnected)
-					Log.Fatal(string.Format("VMRC connection '{0}' has been closed.",
-						this.Favorite.Name));
+                    Log.Fatal(string.Format("VMRC connection '{0}' has been closed.",
+                        this.Favorite.Name));
 
                 this.connected = false;
 
@@ -168,7 +164,7 @@ namespace Terminals.Connections
             catch (Exception ex)
             {
                 Log.Error(
-					string.Format("Unable to disconnect form the {0} connection named \"{1}\".", this.Favorite.Protocol,
+                    string.Format("Unable to disconnect form the {0} connection named \"{1}\".", this.Favorite.Protocol,
                                   this.Favorite.Name), ex);
             }
 

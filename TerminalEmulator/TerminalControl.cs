@@ -91,20 +91,20 @@ namespace WalburySoftware
 
         private event CaretOffEventHandler CaretOffEvent;
 
-		protected virtual void OnCaretOffEvent()
-		{
-			var handler = CaretOffEvent;
-			if (handler != null)
-				handler();
-		}
+        protected virtual void OnCaretOffEvent()
+        {
+            var handler = CaretOffEvent;
+            if (handler != null)
+                handler();
+        }
         private event CaretOnEventHandler CaretOnEvent;
 
-		protected virtual void OnCaretOnEvent()
-		{
-			var handler = CaretOnEvent;
-			if (handler != null)
-				handler();
-		}
+        protected virtual void OnCaretOnEvent()
+        {
+            var handler = CaretOnEvent;
+            if (handler != null)
+                handler();
+        }
         #endregion
 
         #region Constructors
@@ -123,7 +123,7 @@ namespace WalburySoftware
             this.Modes = new uc_Mode();
             this.TabStops = new uc_TabStops();
             this.SavedCarets = new ArrayList();
-            
+
             this.Caret.Pos = new Point(0, 0);
             this.CharSize = new Size();
 
@@ -245,7 +245,7 @@ namespace WalburySoftware
         public void IndicateData(Byte[] data)
         {
             String sReceived = Encoding.Default.GetString(data, 0, data.Length);
-            this.Invoke(this.RxdTextEvent, new[] {String.Copy(sReceived)});
+            this.Invoke(this.RxdTextEvent, new[] { String.Copy(sReceived) });
             this.Invoke(this.RefreshEvent);
         }
 
@@ -297,21 +297,21 @@ namespace WalburySoftware
             this.TextAtCursor = this.CaptureTextAtCursor();
 
             // calculate new rows and columns
-            Int32 columns = this.ClientSize.Width/this.CharSize.Width - 1;
-            Int32 rows = this.ClientSize.Height/this.CharSize.Height;
+            Int32 columns = this.ClientSize.Width / this.CharSize.Width - 1;
+            Int32 rows = this.ClientSize.Height / this.CharSize.Height;
 
             // make sure at least 1 row and 1 col or Control will throw
             if (rows < 5)
             {
                 rows = 5;
-                this.Height = this.CharSize.Height*rows;
+                this.Height = this.CharSize.Height * rows;
             }
 
             // make sure at least 1 row and 1 col or Control will throw
             if (columns < 5)
             {
                 columns = 5;
-                this.Width = this.CharSize.Width*columns;
+                this.Width = this.CharSize.Width * columns;
             }
 
             // make sure the bottom of this doesn't exceed bottom of parent client area
@@ -432,11 +432,11 @@ namespace WalburySoftware
             this.EndDrag.X = e.X;
             this.EndDrag.Y = e.Y;
 
-            int endCol = this.EndDrag.X/this.CharSize.Width;
-            int endRow = this.EndDrag.Y/this.CharSize.Height;
+            int endCol = this.EndDrag.X / this.CharSize.Width;
+            int endRow = this.EndDrag.Y / this.CharSize.Height;
 
-            int begCol = this.BeginDrag.X/this.CharSize.Width;
-            int begRow = this.BeginDrag.Y/this.CharSize.Height;
+            int begCol = this.BeginDrag.X / this.CharSize.Width;
+            int begRow = this.BeginDrag.Y / this.CharSize.Height;
 
             this.ResetSelectedTextHighlight();
 
@@ -657,21 +657,27 @@ namespace WalburySoftware
             {
                 string[] lines = new string[sc.Count];
                 sc.CopyTo(lines, 0);
-				try {
-					Clipboard.SetDataObject(string.Join("\n", lines), false, 5, 10);
-				} catch {
-					//MessageBox.Show("Copy Error occured: " + err.ToString());
-				}
+                try
+                {
+                    Clipboard.SetDataObject(string.Join("\n", lines), false, 5, 10);
+                }
+                catch
+                {
+                    //MessageBox.Show("Copy Error occured: " + err.ToString());
+                }
             }
         }
 
         private void PasteClipboardText()
         {
-			try {
-				this.DispatchMessage(this, Clipboard.GetText());
-			} catch {
-				//MessageBox.Show("Paste Error occured: " + err.ToString());
-			}
+            try
+            {
+                this.DispatchMessage(this, Clipboard.GetText());
+            }
+            catch
+            {
+                //MessageBox.Show("Paste Error occured: " + err.ToString());
+            }
         }
 
         /// <summary>
@@ -932,8 +938,8 @@ namespace WalburySoftware
                 this.GetFontInfo();
 
                 this.ClientSize = new Size(
-                    Convert.ToInt32(this.CharSize.Width*this._cols + 2) + this.VertScrollBar.Width,
-                    Convert.ToInt32(this.CharSize.Height*this._rows + 2));
+                    Convert.ToInt32(this.CharSize.Width * this._cols + 2) + this.VertScrollBar.Width,
+                    Convert.ToInt32(this.CharSize.Height * this._rows + 2));
             }
         }
 

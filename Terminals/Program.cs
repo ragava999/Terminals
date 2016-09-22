@@ -1,23 +1,17 @@
 ﻿namespace Terminals
 {
+    using CommandLine;
+    using Configuration.Files.Main.Settings;
+    using Forms;
+    using Kohl.Framework.Info;
+    using Kohl.Framework.Logging;
+    using Network.Services;
     using System;
     using System.IO;
     using System.Linq;
     using System.Runtime.InteropServices;
     using System.Threading;
     using System.Windows.Forms;
-    using Kohl.Framework.Info;
-
-    using Kohl.Framework.Logging;
-    using CommandLine;
-    using Configuration.Files.Main.Settings;
-    using Configuration.Security;
-    using Connection;
-    using Connection.Manager;
-    using Forms;
-    using Network.Services;
-    using Updates;
-    using Timer = System.Timers.Timer;
 
     static class Program
     {
@@ -66,10 +60,10 @@
         [STAThread]
         private static void Main()
         {
-        	// Set the type to be reflected.
+            // Set the type to be reflected.
             AssemblyInfo.Assembly = System.Reflection.Assembly.GetAssembly(typeof(Program));
 
-			Log.Info(String.Format("-------------------------------{0} started. Version: {1}, Date: {2}-------------------------------", AssemblyInfo.Title, AssemblyInfo.Version, AssemblyInfo.BuildDate));
+            Log.Info(String.Format("-------------------------------{0} started. Version: {1}, Date: {2}-------------------------------", AssemblyInfo.Title, AssemblyInfo.Version, AssemblyInfo.BuildDate));
 
             string[] cmdLineArgs = Environment.GetCommandLineArgs();
 
@@ -221,7 +215,7 @@
 
                 Console.ForegroundColor = ConsoleColor.Yellow;
 
-				Console.Write("Press any key to continue . . .");
+                Console.Write("Press any key to continue . . .");
 
                 Console.ForegroundColor = foregroundColor;
                 Console.BackgroundColor = backgroundColor;
@@ -245,20 +239,20 @@
             CreateConfigFileBackup();
 
             // This won't force the configuration to get invalid -> parsing will occur later.
-        	if (Settings.IsMasterPasswordDefined)
-        	{
-        		using (RequestPassword requestPassword = new RequestPassword())
+            if (Settings.IsMasterPasswordDefined)
+            {
+                using (RequestPassword requestPassword = new RequestPassword())
                 {
                     // If the password has been entered three times wrong or the user has clicked the cancel button ->
                     // Return from the main procedure. - Application.Exit() will not work here!
                     if (requestPassword.ShowDialog() != DialogResult.OK)
                         return;
-        		}
-        	}
+                }
+            }
 
             // Upgrade the configuration file if necessary
             //UpdateConfig.CheckConfigVersionUpdate();
-            
+
             Application.ThreadException += Application_ThreadException;
 
             // Create the main form.
@@ -275,21 +269,21 @@
                 LogTerminalsStopped();
                 return;
             }
-            
+
             // UpdateManager.CheckForUpdates(commandLine);
 
             // Log the company name, current windows user, machine domain, etc.
             LogGeneralProperties();
 
             // Start the main form and wait for it to return.
-            StartMainForm(commandLine); 
+            StartMainForm(commandLine);
 
             LogTerminalsStopped();
         }
 
         private static void LogTerminalsStopped()
         {
-			Log.Info(String.Format("-------------------------------{0} stopped. Version: {1}, Date: {2}-------------------------------", AssemblyInfo.Title, AssemblyInfo.Version, AssemblyInfo.BuildDate));
+            Log.Info(String.Format("-------------------------------{0} stopped. Version: {1}, Date: {2}-------------------------------", AssemblyInfo.Title, AssemblyInfo.Version, AssemblyInfo.BuildDate));
         }
 
         private static void CreateConfigFileBackup()
@@ -302,11 +296,11 @@
                 if (File.Exists(Configuration.Files.Credentials.StoredCredentials.ConfigurationFileLocation))
                     File.Copy(Configuration.Files.Credentials.StoredCredentials.ConfigurationFileLocation, Path.Combine(AssemblyInfo.DirectoryConfigFiles, "Credentials.bak"), true);
 
-				Log.Info("Configuration file backup has been created successfully.");
+                Log.Info("Configuration file backup has been created successfully.");
             }
             catch (Exception ex)
             {
-				Log.Warn("Configuration file backup has failed.", ex);
+                Log.Warn("Configuration file backup has failed.", ex);
             }
         }
 
@@ -318,7 +312,7 @@
 
             if (!hasAccess)
             {
-				string message = "Write Access is denied. Please make sure your user account has sufficient permissions. Write access to the current directory is needed.";
+                string message = "Write Access is denied. Please make sure your user account has sufficient permissions. Write access to the current directory is needed.";
                 Log.Fatal(message);
                 MessageBox.Show(message, AssemblyInfo.Title, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Exit();
@@ -331,7 +325,7 @@
         {
             if (!UserInfo.IsAdministrator)
             {
-				Log.Info(string.Format("{0} is running in non-admin mode.", AssemblyInfo.Title));
+                Log.Info(string.Format("{0} is running in non-admin mode.", AssemblyInfo.Title));
             }
         }
 
@@ -339,11 +333,11 @@
         {
             try
             {
-            	RunMainForm(commandLine);
+                RunMainForm(commandLine);
             }
             catch (Exception exc)
             {
-				Log.Fatal("The main form has thrown an exception.", exc);
+                Log.Fatal("The main form has thrown an exception.", exc);
             }
         }
 
@@ -357,14 +351,14 @@
             }
             catch (Exception exc)
             {
-				Log.Fatal("The main form has thrown an exception.", exc);
+                Log.Fatal("The main form has thrown an exception.", exc);
             }
         }
 
         private static void LogGeneralProperties()
         {
             new Thread(new ThreadStart(delegate
-            {       
+            {
                 string commandLine = AssemblyInfo.CommandLine;
                 string userName = UserInfo.UserName;
                 string machineName = MachineInfo.MachineName;
@@ -377,30 +371,30 @@
                 string companyName = MachineInfo.CompanyName;
                 string productName = MachineInfo.ProductName;
 
-				Log.Info(String.Format("Command line arguments: {0}", commandLine ?? "-"));
-				Log.Info(String.Format("Current directory: {0}", string.IsNullOrEmpty(directory) ? "-" : directory));
-				Log.Info(String.Format("Machine name: {0}", string.IsNullOrEmpty(machineName) ? "-" : machineName));
-				Log.Info(String.Format("Machine domain: {0}", string.IsNullOrEmpty(machineDomain) ? "-" : machineDomain));
-				Log.Info(String.Format("User name: {0}", string.IsNullOrEmpty(userName) ? "-" : userName));
-				Log.Info(String.Format("User name alias: {0}", string.IsNullOrEmpty(userNameAlias) ? "-" : userNameAlias));
-				Log.Info(String.Format("User SID: {0}", string.IsNullOrEmpty(userSid) ? "-" : userSid));
-				Log.Info(String.Format("User domain: {0}", string.IsNullOrEmpty(userDomain) ? "-" : userDomain));
-				Log.Info(String.Format("Registered owner: {0}", string.IsNullOrEmpty(registeredOwner) ? "-" : registeredOwner));
-				Log.Info(String.Format("Company name: {0}", string.IsNullOrEmpty(companyName) ? "-" : companyName));
-				Log.Info(String.Format("Is 64 bit OS: {0}", MachineInfo.Is64BitOperatingSystem));
-				Log.Info(String.Format("Is 64 bit process: {0}", AssemblyInfo.Is64BitProcess));
-				Log.Info(String.Format("Your Operating system: {0}", string.IsNullOrEmpty(productName) ? "-" : productName));
-				Log.Info(String.Format("Number of processors: {0}", MachineInfo.ProcessorCount));
-				Log.Info(String.Format("User interactive: {0}", Environment.UserInteractive));
-				Log.Info(String.Format("Version: {0}", Environment.Version));
-				Log.Info(String.Format("Working set: {0} MB", Environment.WorkingSet/1024/1024));
+                Log.Info(String.Format("Command line arguments: {0}", commandLine ?? "-"));
+                Log.Info(String.Format("Current directory: {0}", string.IsNullOrEmpty(directory) ? "-" : directory));
+                Log.Info(String.Format("Machine name: {0}", string.IsNullOrEmpty(machineName) ? "-" : machineName));
+                Log.Info(String.Format("Machine domain: {0}", string.IsNullOrEmpty(machineDomain) ? "-" : machineDomain));
+                Log.Info(String.Format("User name: {0}", string.IsNullOrEmpty(userName) ? "-" : userName));
+                Log.Info(String.Format("User name alias: {0}", string.IsNullOrEmpty(userNameAlias) ? "-" : userNameAlias));
+                Log.Info(String.Format("User SID: {0}", string.IsNullOrEmpty(userSid) ? "-" : userSid));
+                Log.Info(String.Format("User domain: {0}", string.IsNullOrEmpty(userDomain) ? "-" : userDomain));
+                Log.Info(String.Format("Registered owner: {0}", string.IsNullOrEmpty(registeredOwner) ? "-" : registeredOwner));
+                Log.Info(String.Format("Company name: {0}", string.IsNullOrEmpty(companyName) ? "-" : companyName));
+                Log.Info(String.Format("Is 64 bit OS: {0}", MachineInfo.Is64BitOperatingSystem));
+                Log.Info(String.Format("Is 64 bit process: {0}", AssemblyInfo.Is64BitProcess));
+                Log.Info(String.Format("Your Operating system: {0}", string.IsNullOrEmpty(productName) ? "-" : productName));
+                Log.Info(String.Format("Number of processors: {0}", MachineInfo.ProcessorCount));
+                Log.Info(String.Format("User interactive: {0}", Environment.UserInteractive));
+                Log.Info(String.Format("Version: {0}", Environment.Version));
+                Log.Info(String.Format("Working set: {0} MB", Environment.WorkingSet / 1024 / 1024));
             }
-			)).Start();
+            )).Start();
         }
 
         private static void Application_ThreadException(object sender, ThreadExceptionEventArgs e)
         {
-			Log.Fatal("The application has thrown an unhandled exception.", e.Exception);
+            Log.Fatal("The application has thrown an unhandled exception.", e.Exception);
         }
 
         private static CommandLineArgs ParseCommandline(string[] cmdLineArgs)

@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
-using System.Windows.Forms;
 using System.Security.Permissions;
-
+using System.Windows.Forms;
 
 namespace Terminals.Connections
 {

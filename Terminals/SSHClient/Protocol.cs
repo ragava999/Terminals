@@ -89,14 +89,14 @@ namespace Terminals.SSHClient
         public Protocol()
         {
             this._params = new SSHConnectionParameter
+            {
+                KeyCheck = delegate
                                {
-                                   KeyCheck = delegate
-                                                  {
                                                       //byte[] h = info.HostKeyMD5FingerPrint();
                                                       //foreach(byte b in h) Debug.Write(String.Format("{0:x2} ", b));
                                                       return true;
-                                                  }
-                               };
+                               }
+            };
         }
 
         #endregion
@@ -180,7 +180,7 @@ namespace Terminals.SSHClient
         public PortForwardingCheckResult CheckPortForwardingRequest(string host, int port, string originator_host,
                                                                     int originator_port)
         {
-            PortForwardingCheckResult r = new PortForwardingCheckResult {allowed = true, channel = this};
+            PortForwardingCheckResult r = new PortForwardingCheckResult { allowed = true, channel = this };
             return r;
         }
 

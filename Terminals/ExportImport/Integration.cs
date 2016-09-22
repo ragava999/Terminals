@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
-using System.IO;
-using System.Text;
 using System.Linq;
+using System.Text;
 
 namespace Terminals.ExportImport
 {
@@ -14,9 +13,9 @@ namespace Terminals.ExportImport
             this.LoadProviders();
 
             if (index < 1)
-            	index = 1;
-            
-            return providers[providers.Keys.ElementAt(index-1)];
+                index = 1;
+
+            return providers[providers.Keys.ElementAt(index - 1)];
         }
 
         protected void AddProviderFilter(StringBuilder stringBuilder, TIntegrationType provider)

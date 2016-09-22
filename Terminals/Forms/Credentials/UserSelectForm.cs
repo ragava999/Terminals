@@ -1,10 +1,9 @@
 ﻿namespace Terminals.Forms.Credentials
 {
-    using System;
-    using System.Windows.Forms;
-
     using Configuration.Files.Credentials;
     using Controls;
+    using System;
+    using System.Windows.Forms;
 
     public partial class UserSelectForm : Form
     {
@@ -13,7 +12,7 @@
         public UserSelectForm()
         {
             this.InitializeComponent();
-            
+
             this.passwordTextBox.PasswordChar = Terminals.Forms.Controls.CredentialPanel.HIDDEN_PASSWORD_CHAR;
         }
 
@@ -25,12 +24,12 @@
         private void okButton_Click(object sender, EventArgs e)
         {
             this.set = new CredentialSet
-                           {
-                               Name = "",
-                               Username = this.userTextBox.Text,
-                               SecretKey = this.passwordTextBox.Text,
-                               Domain = this.domainTextBox.Text
-                           };
+            {
+                Name = "",
+                Username = this.userTextBox.Text,
+                SecretKey = this.passwordTextBox.Text,
+                Domain = this.domainTextBox.Text
+            };
             this.Close();
         }
 

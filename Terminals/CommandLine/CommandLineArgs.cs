@@ -1,7 +1,6 @@
 using System;
 using System.Runtime.Serialization;
 using Terminals.Configuration.Files.Main.Settings;
-using Terminals.Connection;
 using Terminals.Connection.Manager;
 using Terminals.Connections;
 
@@ -13,33 +12,51 @@ namespace Terminals.CommandLine
     [DataContract]
     public class CommandLineArgs
     {
-        [DataMember] [LocalizedArgument(ArgumentType.AtMostOnce, LongName = "AutomaticallyUpdate", ShortName = "u",
-            HelpText = "CommandLine.CommandLineArgs.AutomaticallyUpdate")] public bool AutomaticallyUpdate;
+        [DataMember]
+        [LocalizedArgument(ArgumentType.AtMostOnce, LongName = "AutomaticallyUpdate", ShortName = "u",
+            HelpText = "CommandLine.CommandLineArgs.AutomaticallyUpdate")]
+        public bool AutomaticallyUpdate;
 
-        [DataMember] [LocalizedArgument(ArgumentType.AtMostOnce, HelpText = "CommandLine.CommandLineArgs.Config")] public string Config;
+        [DataMember]
+        [LocalizedArgument(ArgumentType.AtMostOnce, HelpText = "CommandLine.CommandLineArgs.Config")]
+        public string Config;
 
         [DataMember]
         [LocalizedArgument(ArgumentType.AtMostOnce, HelpText = "CommandLine.CommandLineArgs.Cred")]
         public string Cred;
 
-        [DataMember] [LocalizedArgument(ArgumentType.AtMostOnce, LongName = "console", ShortName = "c",
-            HelpText = "CommandLine.CommandLineArgs.Console")] public bool Console;
+        [DataMember]
+        [LocalizedArgument(ArgumentType.AtMostOnce, LongName = "console", ShortName = "c",
+            HelpText = "CommandLine.CommandLineArgs.Console")]
+        public bool Console;
 
-        [DataMember] [LocalizedArgument(ArgumentType.AtMostOnce, LongName = "favorites",
-            HelpText = "CommandLine.CommandLineArgs.Favs")] public string favorites;
+        [DataMember]
+        [LocalizedArgument(ArgumentType.AtMostOnce, LongName = "favorites",
+            HelpText = "CommandLine.CommandLineArgs.Favs")]
+        public string favorites;
 
-        [DataMember] [LocalizedArgument(ArgumentType.AtMostOnce, LongName = "fullscreen", ShortName = "f",
-            HelpText = "CommandLine.CommandLineArgs.FullScreen")] public bool Fullscreen;
+        [DataMember]
+        [LocalizedArgument(ArgumentType.AtMostOnce, LongName = "fullscreen", ShortName = "f",
+            HelpText = "CommandLine.CommandLineArgs.FullScreen")]
+        public bool Fullscreen;
 
-        [DataMember] [LocalizedArgument(ArgumentType.AtMostOnce, ShortName = "v", HelpText = "CommandLine.CommandLineArgs.Machine")] public string Machine;
+        [DataMember]
+        [LocalizedArgument(ArgumentType.AtMostOnce, ShortName = "v", HelpText = "CommandLine.CommandLineArgs.Machine")]
+        public string Machine;
 
-        [DataMember] [LocalizedArgument(ArgumentType.LastOccurenceWins, LongName = "protocol", ShortName = "p",
-            HelpText = "CommandLine.CommandLineArgs.Protocol")] public string Protocol;
+        [DataMember]
+        [LocalizedArgument(ArgumentType.LastOccurenceWins, LongName = "protocol", ShortName = "p",
+            HelpText = "CommandLine.CommandLineArgs.Protocol")]
+        public string Protocol;
 
-        [DataMember] [LocalizedArgument(ArgumentType.AtMostOnce, LongName = "reuse", ShortName = "r",
-            HelpText = "CommandLine.CommandLineArgs.Reuse")] public bool Reuse;
+        [DataMember]
+        [LocalizedArgument(ArgumentType.AtMostOnce, LongName = "reuse", ShortName = "r",
+            HelpText = "CommandLine.CommandLineArgs.Reuse")]
+        public bool Reuse;
 
-        [DataMember] [LocalizedArgument(ArgumentType.AtMostOnce, HelpText = "CommandLine.CommandLineArgs.Url")] public
+        [DataMember]
+        [LocalizedArgument(ArgumentType.AtMostOnce, HelpText = "CommandLine.CommandLineArgs.Url")]
+        public
             string Url;
 
         [DataMember]
@@ -55,7 +72,7 @@ namespace Terminals.CommandLine
                     if (this.favorites.Contains(","))
                         return this.favorites.Split(',');
 
-                    return new[] {this.favorites};
+                    return new[] { this.favorites };
                 }
 
                 return new string[0];
@@ -89,9 +106,9 @@ namespace Terminals.CommandLine
             {
                 if (string.IsNullOrEmpty(this.Protocol))
                     if (this.HasUrlDefined)
-                        return typeof (HTTPConnection).GetProtocolName();
+                        return typeof(HTTPConnection).GetProtocolName();
                     else
-                        return typeof (RDPConnection).GetProtocolName();
+                        return typeof(RDPConnection).GetProtocolName();
 
                 foreach (string prot in ConnectionManager.GetProtocols())
                 {
@@ -99,7 +116,7 @@ namespace Terminals.CommandLine
                         return prot;
                 }
 
-                return typeof (RDPConnection).GetProtocolName();
+                return typeof(RDPConnection).GetProtocolName();
             }
         }
 

@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
+﻿using System.Drawing;
 using System.Windows.Forms;
 
 namespace ExplorerBrowser
@@ -28,7 +26,7 @@ namespace ExplorerBrowser
         public Control ThirdControl { get; set; }
 
         public Control FourthControl { get; set; }
-    	
+
         public ControlStyler()
         {
             this.Dock = DockStyle.Fill;
@@ -47,8 +45,8 @@ namespace ExplorerBrowser
             {
                 this.InitializeComponent();
                 this.cmbStyles.Items.Clear();
-                this.cmbStyles.Items.AddRange(System.Enum.GetNames(typeof (ControlStyle)));
-                this.cmbStyles.Text = System.Enum.GetName(typeof (ControlStyle), controlStyle);
+                this.cmbStyles.Items.AddRange(System.Enum.GetNames(typeof(ControlStyle)));
+                this.cmbStyles.Text = System.Enum.GetName(typeof(ControlStyle), controlStyle);
                 this.cmbStyles.SelectedIndexChanged += this.cmbStyles_SelectedIndexChanged;
             }
             else
@@ -254,7 +252,7 @@ namespace ExplorerBrowser
                     splitContainer1.Panel1.Controls.Add(this.FirstControl);
 
                 splitContainer1.Panel2.Controls.Add(splitContainer2);
-                
+
                 if (SecondControl != null)
                     splitContainer2.Panel1.Controls.Add(this.SecondControl);
 

@@ -37,12 +37,12 @@ namespace Terminals.Network.DNS
             try
             {
                 object value = this.PropertyData.Properties[property].Value;
-                return (value == null) ? new String[] {} : (String[]) value;
+                return (value == null) ? new String[] { } : (String[])value;
             }
             catch (Exception ex)
             {
                 Log.Error("", ex);
-                return new String[] {};
+                return new String[] { };
             }
         }
     }

@@ -3,9 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Management;
-using System.Text;
 using System.Windows.Forms;
-
 
 namespace Terminals.Network.WMI
 {
@@ -16,7 +14,7 @@ namespace Terminals.Network.WMI
         public Services()
         {
             this.InitializeComponent();
-            
+
         }
 
         private void LoadServices(string Username, string Password, string Computer)
@@ -28,7 +26,7 @@ namespace Terminals.Network.WMI
 
             if (Username != "" && Password != "" && Computer != "" && !Computer.StartsWith(@"\\localhost"))
             {
-                ConnectionOptions oConn = new ConnectionOptions {Username = Username, Password = Password};
+                ConnectionOptions oConn = new ConnectionOptions { Username = Username, Password = Password };
 
                 if (!Computer.StartsWith(@"\\")) Computer = @"\\" + Computer;
 
@@ -108,49 +106,49 @@ namespace Terminals.Network.WMI
             switch (ctValue)
             {
                 case CimType.Boolean:
-                    tReturnVal = typeof (Boolean);
+                    tReturnVal = typeof(Boolean);
                     break;
                 case CimType.Char16:
-                    tReturnVal = typeof (String);
+                    tReturnVal = typeof(String);
                     break;
                 case CimType.DateTime:
-                    tReturnVal = typeof (DateTime);
+                    tReturnVal = typeof(DateTime);
                     break;
                 case CimType.Object:
-                    tReturnVal = typeof (Object);
+                    tReturnVal = typeof(Object);
                     break;
                 case CimType.Real32:
-                    tReturnVal = typeof (Decimal);
+                    tReturnVal = typeof(Decimal);
                     break;
                 case CimType.Real64:
-                    tReturnVal = typeof (Decimal);
+                    tReturnVal = typeof(Decimal);
                     break;
                 case CimType.Reference:
-                    tReturnVal = typeof (Object);
+                    tReturnVal = typeof(Object);
                     break;
                 case CimType.SInt16:
-                    tReturnVal = typeof (Int16);
+                    tReturnVal = typeof(Int16);
                     break;
                 case CimType.SInt32:
-                    tReturnVal = typeof (Int32);
+                    tReturnVal = typeof(Int32);
                     break;
                 case CimType.SInt8:
-                    tReturnVal = typeof (Int16);
+                    tReturnVal = typeof(Int16);
                     break;
                 case CimType.String:
-                    tReturnVal = typeof (String);
+                    tReturnVal = typeof(String);
                     break;
                 case CimType.UInt16:
-                    tReturnVal = typeof (UInt16);
+                    tReturnVal = typeof(UInt16);
                     break;
                 case CimType.UInt32:
-                    tReturnVal = typeof (UInt32);
+                    tReturnVal = typeof(UInt32);
                     break;
                 case CimType.UInt64:
-                    tReturnVal = typeof (UInt64);
+                    tReturnVal = typeof(UInt64);
                     break;
                 case CimType.UInt8:
-                    tReturnVal = typeof (UInt16);
+                    tReturnVal = typeof(UInt16);
                     break;
             }
             return tReturnVal;

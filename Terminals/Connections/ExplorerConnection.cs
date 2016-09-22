@@ -1,16 +1,7 @@
 ﻿namespace Terminals.Connections
 {
-    // .NET namespaces
-    using System;
-    using System.Drawing;
-    using System.Windows.Forms;
-
-    using Kohl.Framework.Logging;
-    using Kohl.Framework.Security;
-
-    // Terminals namespaces
-    using Configuration.Files.Main.Favorites;
     using Properties;
+    using System.Drawing;
 
     /// <summary>
     ///     Description of ExplorerConnection.
@@ -25,16 +16,16 @@
             }
         }
 
-		protected new virtual SleepType SleepMethod
-		{
-			get { return SleepType.WaitForIdleInputSleep; }
-		}
+        protected new virtual SleepType SleepMethod
+        {
+            get { return SleepType.WaitForIdleInputSleep; }
+        }
 
-		// Wait for the explorer browser at least two seconds to initialize
-		protected override int Sleep
-		{
-			get { return 2000; }
-		}
+        // Wait for the explorer browser at least two seconds to initialize
+        protected override int Sleep
+        {
+            get { return 2000; }
+        }
 
         protected override Image[] images
         {
@@ -82,11 +73,11 @@
                 string arguments = string.Empty;
 
                 if (!string.IsNullOrEmpty(this.Favorite.ExplorerDirectory))
-                    arguments  = this.Favorite.ExplorerStyle.ToString() + " \"" + this.Favorite.ExplorerDirectory + "\"";
-                
+                    arguments = this.Favorite.ExplorerStyle.ToString() + " \"" + this.Favorite.ExplorerDirectory + "\"";
+
                 if (!string.IsNullOrEmpty(this.Favorite.ExplorerDirectoryDual))
                     arguments = this.Favorite.ExplorerStyle.ToString() + " \"" + this.Favorite.ExplorerDirectory + "\"" + " \"" + this.Favorite.ExplorerDirectoryDual + "\"";
-                
+
                 if (!string.IsNullOrEmpty(this.Favorite.ExplorerDirectoryTripple))
                     arguments = this.Favorite.ExplorerStyle.ToString() + " \"" + this.Favorite.ExplorerDirectory + "\"" + " \"" + this.Favorite.ExplorerDirectoryDual + "\"" + " \"" + this.Favorite.ExplorerDirectoryTripple + "\"";
 

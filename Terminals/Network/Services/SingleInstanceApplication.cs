@@ -1,6 +1,6 @@
+using Kohl.Framework.Info;
 using System.ComponentModel;
 using System.Threading;
-using Kohl.Framework.Info;
 using Terminals.CommandLine;
 
 namespace Terminals.Network.Services

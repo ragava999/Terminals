@@ -1,8 +1,8 @@
-using System;
-using System.Windows.Forms;
 using Kohl.Framework.Info;
 using Kohl.Framework.Logging;
 using Microsoft.Win32;
+using System;
+using System.Windows.Forms;
 
 namespace Terminals
 {

@@ -1,8 +1,7 @@
-﻿using System;
+﻿using Kohl.Framework.Logging;
+using System;
 using System.Collections.Generic;
 using System.Xml;
-
-using Kohl.Framework.Logging;
 using Terminals.Configuration.Files.Main.Favorites;
 
 namespace Terminals.ExportImport.Import
@@ -42,12 +41,12 @@ namespace Terminals.ExportImport.Import
         {
             try
             {
-				return TryImport(file);
+                return TryImport(file);
             }
             catch (Exception ex)
             {
                 Log.Fatal("Unable to import the whole CodePlex Terminals XML file.", ex);
-                return  new List<FavoriteConfigurationElement>();
+                return new List<FavoriteConfigurationElement>();
             }
         }
 
@@ -56,24 +55,24 @@ namespace Terminals.ExportImport.Import
             using (var reader = new XmlTextReader(filename))
             {
                 var propertyReader = new PropertyReader(reader);
-				var context = new ImportCodePlexTerminalsContext(propertyReader);
+                var context = new ImportCodePlexTerminalsContext(propertyReader);
                 while (propertyReader.Read())
                 {
-                	try
-                	{
-                    	ReadProperty(context);
-                	}
-                	catch (Exception ex)
-                	{
-                		Log.Error("Unable to import some part of the CodePlex Terminals file.", ex);
-                	}
+                    try
+                    {
+                        ReadProperty(context);
+                    }
+                    catch (Exception ex)
+                    {
+                        Log.Error("Unable to import some part of the CodePlex Terminals file.", ex);
+                    }
                 }
 
                 return context.Favorites;
             }
         }
 
-		private static void ReadProperty(ImportCodePlexTerminalsContext context)
+        private static void ReadProperty(ImportCodePlexTerminalsContext context)
         {
             switch (context.Reader.NodeType)
             {
@@ -97,10 +96,10 @@ namespace Terminals.ExportImport.Import
                             context.Current.AllowBackgroundInput = context.Reader.ReadBool();
                             break;
                         case "bitmapPeristence":
-                        	if (context.Reader.ToString().ToUpperInvariant() == "RDP" || context.Reader.ReadBool())
-                            	context.Current.BitmapPeristence = true;
+                            if (context.Reader.ToString().ToUpperInvariant() == "RDP" || context.Reader.ReadBool())
+                                context.Current.BitmapPeristence = true;
                             else
-                            	context.Current.BitmapPeristence = false;
+                                context.Current.BitmapPeristence = false;
                             break;
                         case "connectionTimeout":
                             context.Current.ConnectionTimeout = context.Reader.ReadInt();
@@ -129,7 +128,7 @@ namespace Terminals.ExportImport.Import
                         case "colors":
                             context.Current.Colors = context.Reader.ReadColors();
                             break;
-						case "credential":
+                        case "credential":
                             context.Current.XmlCredentialSetName = context.Reader.ReadString();
                             break;
                         case "disableWindowsKey":
@@ -155,33 +154,33 @@ namespace Terminals.ExportImport.Import
                             break;
                         case "desktopSize":
                             context.Current.DesktopSize = context.Reader.ReadDesktopSize();
-                            
+
                             if (context.Current.DesktopSize == DesktopSize.Custom)
                             {
-                            	switch (context.Reader.ToString())
-                            	{
-                            		case "x480":
-                            			context.Current.DesktopSizeHeight = 640;
-                            			context.Current.DesktopSizeWidth = 480;
-                            			break;
-                            		case "x600":
-                            			context.Current.DesktopSizeHeight = 800;
-                            			context.Current.DesktopSizeWidth = 600;
-                            			break;
-                            		case "x768":
-                            			context.Current.DesktopSizeHeight = 1024;
-                            			context.Current.DesktopSizeWidth = 768;
-                            			break;
-                            		case "x864":
-                            			context.Current.DesktopSizeHeight = 1152;
-                            			context.Current.DesktopSizeWidth = 864;
-                            			break;
-                            		default:
-                        			//case "x1024":
-                            			context.Current.DesktopSizeHeight = 1280;
-                            			context.Current.DesktopSizeWidth = 1024;
-                            			break;
-                            	}
+                                switch (context.Reader.ToString())
+                                {
+                                    case "x480":
+                                        context.Current.DesktopSizeHeight = 640;
+                                        context.Current.DesktopSizeWidth = 480;
+                                        break;
+                                    case "x600":
+                                        context.Current.DesktopSizeHeight = 800;
+                                        context.Current.DesktopSizeWidth = 600;
+                                        break;
+                                    case "x768":
+                                        context.Current.DesktopSizeHeight = 1024;
+                                        context.Current.DesktopSizeWidth = 768;
+                                        break;
+                                    case "x864":
+                                        context.Current.DesktopSizeHeight = 1152;
+                                        context.Current.DesktopSizeWidth = 864;
+                                        break;
+                                    default:
+                                        //case "x1024":
+                                        context.Current.DesktopSizeHeight = 1280;
+                                        context.Current.DesktopSizeWidth = 1024;
+                                        break;
+                                }
                             }
                             break;
                         case "desktopShare":
@@ -288,13 +287,13 @@ namespace Terminals.ExportImport.Import
                         case "protocol":
                             string protocol = context.Reader.ReadString();
                             if (protocol.ToUpperInvariant() == "TELNET")
-                            	context.Current.Protocol = "Terminal";
+                                context.Current.Protocol = "Terminal";
                             else if (protocol.ToUpperInvariant() == "SSH")
-                            	context.Current.Protocol = "Ssh";
+                                context.Current.Protocol = "Ssh";
                             else if (protocol.ToUpperInvariant() == "ICA CITRIX")
-                            	context.Current.Protocol = "Ica";
+                                context.Current.Protocol = "Ica";
                             else
-                            	context.Current.Protocol = protocol;
+                                context.Current.Protocol = protocol;
                             break;
                         case "port":
                             context.Current.Port = context.Reader.ReadInt();
@@ -327,7 +326,7 @@ namespace Terminals.ExportImport.Import
                             context.Current.ShutdownTimeout = context.Reader.ReadInt();
                             break;
                         case "ssh1":
-							context.Current.Ssh1 = context.Reader.ReadBool();
+                            context.Current.Ssh1 = context.Reader.ReadBool();
                             break;
                         case "securityFullScreen":
                             context.Current.SecurityFullScreen = context.Reader.ReadBool();
@@ -376,9 +375,9 @@ namespace Terminals.ExportImport.Import
                             break;
                         case "tsgwSeparateLogin":
                             context.Current.TsgwSeparateLogin = context.Reader.ReadBool();
-                            
+
                             if (context.Current.TsgwSeparateLogin)
-                            	context.Current.TsgwXmlCredentialSetName = Terminals.Forms.Controls.CredentialPanel.Custom;
+                                context.Current.TsgwXmlCredentialSetName = Terminals.Forms.Controls.CredentialPanel.Custom;
                             break;
                         case "tsgwUsageMethod":
                             context.Current.TsgwUsageMethod = context.Reader.ReadInt();
@@ -399,133 +398,133 @@ namespace Terminals.ExportImport.Import
                             context.Current.VncDisplayNumber = context.Reader.ReadInt();
                             break;
                         case "vmrcadministratormode":
-							context.Current.VmrcAdministratorMode = context.Reader.ReadBool();
+                            context.Current.VmrcAdministratorMode = context.Reader.ReadBool();
                             break;
                         case "vmrcreducedcolorsmode":
-							context.Current.VmrcReducedColorsMode = context.Reader.ReadBool();
+                            context.Current.VmrcReducedColorsMode = context.Reader.ReadBool();
                             break;
                     }
                     break;
             }
         }
 
-		private class ImportCodePlexTerminalsContext
-		{
-			public PropertyReader Reader { get; private set; }
+        private class ImportCodePlexTerminalsContext
+        {
+            public PropertyReader Reader { get; private set; }
 
-			public List<FavoriteConfigurationElement> Favorites { get; private set; }
+            public List<FavoriteConfigurationElement> Favorites { get; private set; }
 
-			/// <summary>
-			/// because reading more than one property into the same favorite,
-			/// keep the favorite out of the read property method.
-			/// </summary>
-			public FavoriteConfigurationElement Current { get; private set; }
+            /// <summary>
+            /// because reading more than one property into the same favorite,
+            /// keep the favorite out of the read property method.
+            /// </summary>
+            public FavoriteConfigurationElement Current { get; private set; }
 
-			public ImportCodePlexTerminalsContext(PropertyReader reader)
-			{
-				this.Reader = reader;
-				this.Favorites = new List<FavoriteConfigurationElement>();
-			}
+            public ImportCodePlexTerminalsContext(PropertyReader reader)
+            {
+                this.Reader = reader;
+                this.Favorites = new List<FavoriteConfigurationElement>();
+            }
 
-			internal void SetNewCurrent()
-			{
-				this.Current = new FavoriteConfigurationElement();
-				this.Favorites.Add(this.Current);
-			}
+            internal void SetNewCurrent()
+            {
+                this.Current = new FavoriteConfigurationElement();
+                this.Favorites.Add(this.Current);
+            }
 
-			public void ReadTsgwPassword()
-			{
-				this.Current.TsgwPassword = this.Reader.ReadString();
-			}
+            public void ReadTsgwPassword()
+            {
+                this.Current.TsgwPassword = this.Reader.ReadString();
+            }
 
-			public void ReadPassword()
-			{
-				this.Current.Password = this.Reader.ReadString();
-			}
-		}
+            public void ReadPassword()
+            {
+                this.Current.Password = this.Reader.ReadString();
+            }
+        }
 
-		private class PropertyReader
-		{
-			private readonly XmlTextReader innerReader;
+        private class PropertyReader
+        {
+            private readonly XmlTextReader innerReader;
 
-			internal XmlNodeType NodeType { get { return this.innerReader.NodeType; } }
+            internal XmlNodeType NodeType { get { return this.innerReader.NodeType; } }
 
-			internal string NodeName { get { return this.innerReader.Name; } }
+            internal string NodeName { get { return this.innerReader.Name; } }
 
-			public PropertyReader(XmlTextReader innerReader)
-			{
-				this.innerReader = innerReader;
-			}
+            public PropertyReader(XmlTextReader innerReader)
+            {
+                this.innerReader = innerReader;
+            }
 
-			public bool Read()
-			{
-				return this.innerReader.Read();
-			}
+            public bool Read()
+            {
+                return this.innerReader.Read();
+            }
 
-			public string ReadString()
-			{
-				return this.innerReader.ReadString().Trim();
-			}
+            public string ReadString()
+            {
+                return this.innerReader.ReadString().Trim();
+            }
 
-			internal bool ReadBool()
-			{
-				bool tmp = false;
-				bool.TryParse(this.ReadString(), out tmp);
-				return tmp;
-			}
+            internal bool ReadBool()
+            {
+                bool tmp = false;
+                bool.TryParse(this.ReadString(), out tmp);
+                return tmp;
+            }
 
-			internal int ReadInt()
-			{
-				int tmp = 0;
-				int.TryParse(this.ReadString(), out tmp);
-				return tmp;
-			}
+            internal int ReadInt()
+            {
+                int tmp = 0;
+                int.TryParse(this.ReadString(), out tmp);
+                return tmp;
+            }
 
-			internal DesktopSize ReadDesktopSize()
-			{
-				DesktopSize tmp = DesktopSize.AutoScale;
-				string str = this.ReadString();
-				
-				try
-				{
-					if (!String.IsNullOrEmpty(str))
-						tmp = (DesktopSize)Enum.Parse(typeof(DesktopSize), str);
-				}
-				catch
-				{
-					// if the value is something like 768x1024
-					// The CodePlex Terminals holds the value 'x1024'
-					// which is a custom value.
-					// possible exception:
-					// >> System.ArgumentException: Requested value 'x1024' was not found. <<
-					return DesktopSize.Custom;
-				}
-				
-				return tmp;
-			}
+            internal DesktopSize ReadDesktopSize()
+            {
+                DesktopSize tmp = DesktopSize.AutoScale;
+                string str = this.ReadString();
 
-			internal Colors ReadColors()
-			{
-				Colors tmp = Colors.Bit16;
-				string str = this.ReadString();
-				if (!String.IsNullOrEmpty(str))
-					tmp = (Colors)Enum.Parse(typeof(Colors), str);
-				return tmp;
-			}
+                try
+                {
+                    if (!String.IsNullOrEmpty(str))
+                        tmp = (DesktopSize)Enum.Parse(typeof(DesktopSize), str);
+                }
+                catch
+                {
+                    // if the value is something like 768x1024
+                    // The CodePlex Terminals holds the value 'x1024'
+                    // which is a custom value.
+                    // possible exception:
+                    // >> System.ArgumentException: Requested value 'x1024' was not found. <<
+                    return DesktopSize.Custom;
+                }
 
-			internal RemoteSounds ReadRemoteSounds()
-			{
-				RemoteSounds tmp = RemoteSounds.DontPlay;
-				string str = this.ReadString();
-				if (!String.IsNullOrEmpty(str))
-					tmp = (RemoteSounds)Enum.Parse(typeof(RemoteSounds), str);
-				return tmp;
-			}
+                return tmp;
+            }
 
-			public override string ToString()
-			{
-				return this.ReadString();
-			}
-		}
+            internal Colors ReadColors()
+            {
+                Colors tmp = Colors.Bit16;
+                string str = this.ReadString();
+                if (!String.IsNullOrEmpty(str))
+                    tmp = (Colors)Enum.Parse(typeof(Colors), str);
+                return tmp;
+            }
+
+            internal RemoteSounds ReadRemoteSounds()
+            {
+                RemoteSounds tmp = RemoteSounds.DontPlay;
+                string str = this.ReadString();
+                if (!String.IsNullOrEmpty(str))
+                    tmp = (RemoteSounds)Enum.Parse(typeof(RemoteSounds), str);
+                return tmp;
+            }
+
+            public override string ToString()
+            {
+                return this.ReadString();
+            }
+        }
     }
 }

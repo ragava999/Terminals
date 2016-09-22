@@ -1,10 +1,9 @@
 ﻿namespace Terminals.Panels.OptionPanels
 {
-	using System;
-	using System.Windows.Forms;
-
-	using Terminals.Configuration.Files.Main.Settings;
-	using Terminals.Connection.Panels.OptionPanels;
+    using Configuration.Files.Main.Settings;
+    using Connection.Panels.OptionPanels;
+    using System;
+    using System.Windows.Forms;
 
     public partial class RAdminOptionPanel : OptionPanel
     {
@@ -24,21 +23,21 @@
             Settings.RAdminDefaultPort = Convert.ToUInt16(this.txtRAdminDefaultPort.Text);
             Settings.RAdminProgramPath = this.txtRAdminPath.Text;
         }
-		void ButtonBrowseCaptureFolderClick(object sender, EventArgs e)
-		{
-			using (OpenFileDialog dlg = new OpenFileDialog())
+        void ButtonBrowseCaptureFolderClick(object sender, EventArgs e)
+        {
+            using (OpenFileDialog dlg = new OpenFileDialog())
             {
                 dlg.Title = "Select the RAdmin executable";
                 dlg.Filter = "*.exe (RAdmin)|Radmin.exe";
-                
+
                 if (!string.IsNullOrEmpty(txtRAdminPath.Text) && System.IO.File.Exists(txtRAdminPath.Text))
-                	dlg.FileName = txtRAdminPath.Text;
+                    dlg.FileName = txtRAdminPath.Text;
 
                 if (dlg.ShowDialog() == DialogResult.OK)
                 {
-                	txtRAdminPath.Text = dlg.FileName.NormalizePath();
+                    txtRAdminPath.Text = dlg.FileName.NormalizePath();
                 }
             }
-		}
+        }
     }
 }

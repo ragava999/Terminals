@@ -6,15 +6,15 @@ namespace ExplorerBrowser
     internal partial class ExporerNavigationComboBox : UserControl
     {
         private readonly DataComboBox pathComboBox = new DataComboBox
-                                                            {
-                                                                BackgroundImageLayout = ImageLayout.Center,
-                                                                Cursor = Cursors.IBeam,
-                                                                Font = new Font("Arial", 9F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(0))),
-                                                                ForeColor = Color.SteelBlue,
-                                                                ImeMode = ImeMode.On,
-                                                                Location = new Point(3, 5),
-                                                                TabIndex = 1
-                                                            };
+        {
+            BackgroundImageLayout = ImageLayout.Center,
+            Cursor = Cursors.IBeam,
+            Font = new Font("Arial", 9F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(0))),
+            ForeColor = Color.SteelBlue,
+            ImeMode = ImeMode.On,
+            Location = new Point(3, 5),
+            TabIndex = 1
+        };
 
         public ComboBox.ObjectCollection Items
         {
@@ -55,11 +55,11 @@ namespace ExplorerBrowser
             for (int i = start; i < end; i++)
             {
                 this.Controls.Add(new PictureBox
-                                      {
-                                          BackgroundImage = Resources.ExporerNavigationComboBox_Pixel,
-                                          Location = new Point(i, 0),
-                                          BackColor = Color.Transparent
-                                      });
+                {
+                    BackgroundImage = Resources.ExporerNavigationComboBox_Pixel,
+                    Location = new Point(i, 0),
+                    BackColor = Color.Transparent
+                });
             }
         }
 

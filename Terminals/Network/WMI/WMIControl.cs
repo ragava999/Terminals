@@ -1,3 +1,4 @@
+using Kohl.Framework.Logging;
 using System;
 using System.Collections;
 using System.ComponentModel;
@@ -8,8 +9,6 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using System.Xml;
-
-using Kohl.Framework.Logging;
 using Terminals.Properties;
 
 namespace Terminals.Network.WMI
@@ -26,7 +25,7 @@ namespace Terminals.Network.WMI
         {
             this.InitializeComponent();
             this.Form1_Resize(null, null);
-            
+
         }
 
         private string Username { get; set; }
@@ -48,7 +47,7 @@ namespace Terminals.Network.WMI
             if (username != string.Empty && password != string.Empty && computer != string.Empty &&
                 !computer.StartsWith(@"\\localhost"))
             {
-                ConnectionOptions oConn = new ConnectionOptions {Username = username, Password = password};
+                ConnectionOptions oConn = new ConnectionOptions { Username = username, Password = password };
 
                 if (!computer.StartsWith(@"\\"))
                     computer = @"\\" + computer;
@@ -118,49 +117,49 @@ namespace Terminals.Network.WMI
             switch (ctValue)
             {
                 case CimType.Boolean:
-                    tReturnVal = typeof (Boolean);
+                    tReturnVal = typeof(Boolean);
                     break;
                 case CimType.Char16:
-                    tReturnVal = typeof (String);
+                    tReturnVal = typeof(String);
                     break;
                 case CimType.DateTime:
-                    tReturnVal = typeof (DateTime);
+                    tReturnVal = typeof(DateTime);
                     break;
                 case CimType.Object:
-                    tReturnVal = typeof (Object);
+                    tReturnVal = typeof(Object);
                     break;
                 case CimType.Real32:
-                    tReturnVal = typeof (Decimal);
+                    tReturnVal = typeof(Decimal);
                     break;
                 case CimType.Real64:
-                    tReturnVal = typeof (Decimal);
+                    tReturnVal = typeof(Decimal);
                     break;
                 case CimType.Reference:
-                    tReturnVal = typeof (Object);
+                    tReturnVal = typeof(Object);
                     break;
                 case CimType.SInt16:
-                    tReturnVal = typeof (Int16);
+                    tReturnVal = typeof(Int16);
                     break;
                 case CimType.SInt32:
-                    tReturnVal = typeof (Int32);
+                    tReturnVal = typeof(Int32);
                     break;
                 case CimType.SInt8:
-                    tReturnVal = typeof (Int16);
+                    tReturnVal = typeof(Int16);
                     break;
                 case CimType.String:
-                    tReturnVal = typeof (String);
+                    tReturnVal = typeof(String);
                     break;
                 case CimType.UInt16:
-                    tReturnVal = typeof (UInt16);
+                    tReturnVal = typeof(UInt16);
                     break;
                 case CimType.UInt32:
-                    tReturnVal = typeof (UInt32);
+                    tReturnVal = typeof(UInt32);
                     break;
                 case CimType.UInt64:
-                    tReturnVal = typeof (UInt64);
+                    tReturnVal = typeof(UInt64);
                     break;
                 case CimType.UInt8:
-                    tReturnVal = typeof (UInt16);
+                    tReturnVal = typeof(UInt16);
                     break;
             }
 
@@ -169,15 +168,7 @@ namespace Terminals.Network.WMI
 
         private void Form1_Resize(object sender, EventArgs e)
         {
-            //this.tabControl1.Height = this.Height - 50;
-            //this.StopButton.Left = this.Width - QueryButton.Width - 15;
-            //QueryButton.Left = StopButton.Left - QueryButton.Width - 15;
-            //this.ConnectButton.Left = QueryButton.Left - StopButton.Left - QueryButton.Width - StopButton.Width - 15;
-
-            //this.QueryTextBox.Width = QueryButton.Left - 15;
             this.progressBar1.Width = this.Width - 10;
-            //progressBar1.Left=this.Width-progressBar1.Width-25;
-            //progressBar1.Top=this.Height-progressBar1.Height-33;
         }
 
         private void IncrementBar()
@@ -264,10 +255,10 @@ namespace Terminals.Network.WMI
                         !string.IsNullOrEmpty(this.Computer) && !this.Computer.StartsWith(@"\\localhost"))
                     {
                         ConnectionOptions oConn = new ConnectionOptions
-                                                      {
-                                                          Username = this.Username,
-                                                          Password = this.Password
-                                                      };
+                        {
+                            Username = this.Username,
+                            Password = this.Password
+                        };
 
                         ManagementScope oMs = new ManagementScope(this.Computer, oConn);
 
@@ -278,14 +269,14 @@ namespace Terminals.Network.WMI
                         searcher = new ManagementObjectSearcher(query);
                     }
 
-                    TreeNode root = new TreeNode(qry) {Tag = "RootNode"};
+                    TreeNode root = new TreeNode(qry) { Tag = "RootNode" };
 
                     root.Expand();
                     this.treeView1.Nodes.Add(root);
 
                     foreach (ManagementObject share in searcher.Get())
                     {
-                        TreeNode item = new TreeNode(share.ClassPath.ClassName) {Tag = "ClassNode"};
+                        TreeNode item = new TreeNode(share.ClassPath.ClassName) { Tag = "ClassNode" };
 
                         root.Nodes.Add(item);
 
@@ -305,7 +296,7 @@ namespace Terminals.Network.WMI
                             if (p.Value != null)
                                 val = p.Value.ToString();
 
-                            TreeNode node = new TreeNode(name) {Tag = "PropertyNode"};
+                            TreeNode node = new TreeNode(name) { Tag = "PropertyNode" };
 
                             string display = "";
 
@@ -318,11 +309,11 @@ namespace Terminals.Network.WMI
                                 display = "Value=" + val;
                             }
 
-                            TreeNode ValueNode = new TreeNode(display) {Tag = "ValueNode"};
-                            TreeNode TypeNode = new TreeNode("Type='" + type + "'") {Tag = "ValueNode"};
-                            TreeNode localNode = new TreeNode("IsLocal=" + isLocal) {Tag = "ValueNode"};
-                            TreeNode OriginNode = new TreeNode("Origin='" + origin + "'") {Tag = "ValueNode"};
-                            TreeNode IsArrayNode = new TreeNode("IsArray=" + IsArray) {Tag = "ValueNode"};
+                            TreeNode ValueNode = new TreeNode(display) { Tag = "ValueNode" };
+                            TreeNode TypeNode = new TreeNode("Type='" + type + "'") { Tag = "ValueNode" };
+                            TreeNode localNode = new TreeNode("IsLocal=" + isLocal) { Tag = "ValueNode" };
+                            TreeNode OriginNode = new TreeNode("Origin='" + origin + "'") { Tag = "ValueNode" };
+                            TreeNode IsArrayNode = new TreeNode("IsArray=" + IsArray) { Tag = "ValueNode" };
 
                             node.Nodes.Add(ValueNode);
                             node.Nodes.Add(TypeNode);
@@ -332,7 +323,7 @@ namespace Terminals.Network.WMI
 
                             if (IsArray && p.Value != null)
                             {
-                                Array a = (Array) p.Value;
+                                Array a = (Array)p.Value;
 
                                 for (int x = 0; x < a.Length; x++)
                                 {
@@ -340,7 +331,7 @@ namespace Terminals.Network.WMI
                                     if (a.GetValue(x) != null)
                                         v = a.GetValue(x).ToString();
 
-                                    TreeNode arrayNode = new TreeNode(name + "[" + x + "]=" + v) {Tag = "ArrayNode"};
+                                    TreeNode arrayNode = new TreeNode(name + "[" + x + "]=" + v) { Tag = "ArrayNode" };
 
                                     IsArrayNode.Nodes.Add(arrayNode);
 
@@ -375,14 +366,10 @@ namespace Terminals.Network.WMI
 
         private void treeView1_DoubleClick(object sender, EventArgs e)
         {
-            //
-            // select * from win32_process where caption like 'k%'
-
-            // work our way up the tree till the root
             if (sender != null)
             {
                 string queryString = string.Empty;
-                TreeNode n = ((TreeView) sender).SelectedNode;
+                TreeNode n = ((TreeView)sender).SelectedNode;
 
                 if (n != null)
                 {
@@ -514,11 +501,11 @@ namespace Terminals.Network.WMI
         private void LoginMenuItem_Click(object sender, EventArgs e)
         {
             LoginForm frm = new LoginForm
-                                {
-                                    UserName = this.Username,
-                                    Password = this.Password,
-                                    MachineName = this.Computer
-                                };
+            {
+                UserName = this.Username,
+                Password = this.Password,
+                MachineName = this.Computer
+            };
 
             frm.ShowDialog(this);
             if (!frm.Cancelled)
@@ -594,10 +581,6 @@ namespace Terminals.Network.WMI
 
         private void BasicTreemenuItem_Click(object sender, EventArgs e)
         {
-            //string path = Application.StartupPath + "\\BasicTree.xml";
-            //System.IO.StreamReader rdr = new System.IO.StreamReader(path);
-            //string xml = rdr.ReadToEnd();
-            //rdr.Close();
             this.LoadBasicTree(Resources.BasicTree);
         }
 

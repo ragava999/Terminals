@@ -1,11 +1,9 @@
-﻿
+﻿using Kohl.Framework.Drawing;
+using System.Drawing;
 using Terminals.Configuration.Files.Main.Favorites;
 using Terminals.Connection.Manager;
 using Terminals.Connection.Panels.FavoritePanels;
 using Terminals.Connections;
-using Kohl.Framework.Drawing;
-using System.Drawing;
-using System.Windows.Forms;
 
 namespace Terminals.Panels.FavoritePanels
 {
