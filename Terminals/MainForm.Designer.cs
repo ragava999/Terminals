@@ -960,7 +960,7 @@ namespace Terminals
         	this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
         	this.toolStripButton4.Name = "toolStripButton4";
         	this.toolStripButton4.Size = new System.Drawing.Size(23, 22);
-        	this.toolStripButton4.Text = "toolStripButton4";
+        	this.toolStripButton4.Text = "Fix current connection's content size";
         	this.toolStripButton4.Click += new System.EventHandler(this.toolStripButton4_Click);
         	// 
         	// toolStripSeparator6
