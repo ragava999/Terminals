@@ -157,7 +157,7 @@ namespace Terminals
 
                 this.showOnAllScreens = false;
 
-                this.mainForm.showInDualScreensToolStripMenuItem.Text = "Show on &amp;multi screens";
+                this.mainForm.showInDualScreensToolStripMenuItem.Text = "Show on &multi screens";
 
                 if (Screen.AllScreens.Length > 1)
                 {
@@ -169,7 +169,7 @@ namespace Terminals
                     if (this.mainForm.Width > Screen.FromControl(this.mainForm).Bounds.Width || w > 2)  //Screen.PrimaryScreen.Bounds.Width || w > 2)
                     {
                         this.showOnAllScreens = true;
-                        this.mainForm.showInDualScreensToolStripMenuItem.Text = "Show on &amp;single screen";
+                        this.mainForm.showInDualScreensToolStripMenuItem.Text = "Show on &single screen";
                     }
                 }
                 else
@@ -193,13 +193,13 @@ namespace Terminals
 
                     with += screenArr.Sum(screen => screen.Bounds.Width);
 
-                    this.mainForm.showInDualScreensToolStripMenuItem.Text = "Show on &amp;single screen";
+                    this.mainForm.showInDualScreensToolStripMenuItem.Text = "Show on &single screen";
                     this.mainForm.BringToFront();
                 }
                 else
                 {
                     with = Screen.PrimaryScreen.Bounds.Width;
-                    this.mainForm.showInDualScreensToolStripMenuItem.Text = "Show on &amp;multi screens";
+                    this.mainForm.showInDualScreensToolStripMenuItem.Text = "Show on &multi screens";
                 }
 
                 this.mainForm.Top = 0;
