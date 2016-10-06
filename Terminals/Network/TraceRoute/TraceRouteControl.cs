@@ -250,7 +250,7 @@ namespace Terminals.Network.TraceRoute
 
             this.myPane.CurveList.Clear();
             LineItem myCurve = this.myPane.AddCurve(this.TextHost.Text, list, Color.Blue, SymbolType.Diamond);
-            LineItem avgCurve = this.myPane.AddCurve("Average", avgList, Color.Red, SymbolType.Diamond);
+            this.myPane.AddCurve("Average", avgList, Color.Red, SymbolType.Diamond);
 
             // Fill the symbols with white
             myCurve.Symbol.Fill = new Fill(Color.White);

@@ -167,7 +167,6 @@ namespace Terminals.Updates
                 {
                     String url = Settings.UpdateSource;
 
-                    String name = url.Substring(url.LastIndexOf("/") + 1, url.Length - url.LastIndexOf("/") - 1);
                     String version = url.Substring(0, url.LastIndexOf("/"));
                     version = version.Substring(version.LastIndexOf("/") + 1, version.Length - version.LastIndexOf("/") - 1);
 

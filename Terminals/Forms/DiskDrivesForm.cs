@@ -10,13 +10,11 @@ namespace Terminals.Forms
 {
     public partial class DiskDrivesForm : Form
     {
-        private readonly FavoriteEditor _parentForm;
         private bool updatingState;
 
-        public DiskDrivesForm(FavoriteEditor parentForm, List<string> redirectedDrives, bool redirectDevices)
+        public DiskDrivesForm(List<string> redirectedDrives, bool redirectDevices)
         {
             this.InitializeComponent();
-            this._parentForm = parentForm;
             this.RedirectDevices = redirectDevices;
             this.RedirectedDrives = redirectedDrives;
             this.LoadDevices();

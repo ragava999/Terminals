@@ -20,8 +20,6 @@
 			
 			lock (locker)
 			{
-				AssemblyName askedAssembly = new AssemblyName(args.Name);
-			
 				string[] fields = args.Name.Split(',');
 				string name = fields[0];
 				string culture = fields[2];

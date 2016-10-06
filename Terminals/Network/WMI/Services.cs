@@ -51,8 +51,6 @@ namespace Terminals.Network.WMI
 
             foreach (ManagementObject share in searcher.Get())
             {
-                Share s = new Share();
-
                 this.list.Add(share);
 
                 if (needsSchema)

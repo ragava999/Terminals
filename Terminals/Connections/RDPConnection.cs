@@ -111,8 +111,8 @@ namespace Terminals.Connections
             {
                 try
                 {
-                    // simulate reconnect, cant use port scanned, because it requires admin priviledges
-                    var portClient = new System.Net.Sockets.TcpClient(this.serverName, this.port);
+					// simulate reconnect, cant use port scanned, because it requires admin priviledges
+					using (var portClient = new System.Net.Sockets.TcpClient(this.serverName, this.port)){};
                     return true;
                 }
                 catch // exception is not necessary, simply is has to work

@@ -50,7 +50,7 @@ namespace TerminalsUpdater
 		            foreach (FileInfo file in dir.GetFiles())
 		            {
 		                string dest = Path.Combine(destination, file.Name);
-		                FileInfo fi = new FileInfo(dest);
+		                //FileInfo fi = new FileInfo(dest);
 		                
 		                try
 		                {

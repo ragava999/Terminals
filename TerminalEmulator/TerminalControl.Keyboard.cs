@@ -31,15 +31,11 @@ namespace WalburySoftware
                 Byte[] lBytes;
                 Byte[] wBytes;
                 UInt16 KeyValue = 0;
-                UInt16 RepeatCount = 0;
                 Byte ScanCode = 0;
-                Byte AnsiChar = 0;
-                UInt16 UniChar = 0;
                 Byte Flags = 0;
 
                 lBytes = BitConverter.GetBytes(KeyMess.LParam.ToInt64());
                 wBytes = BitConverter.GetBytes(KeyMess.WParam.ToInt64());
-                RepeatCount = BitConverter.ToUInt16(lBytes, 0);
                 ScanCode = lBytes[2];
                 Flags = lBytes[3];
 
@@ -181,18 +177,15 @@ namespace WalburySoftware
                 else if (KeyMess.Msg == WMCodes.WM_SYSCHAR ||
                          KeyMess.Msg == WMCodes.WM_CHAR)
                 {
-                    AnsiChar = wBytes[0];
-                    UniChar = BitConverter.ToUInt16(wBytes, 0);
+					// if there's a string mapped to this key combo we want to ignore the character
+					// as it has been overriden in the keydown event
 
-                    // if there's a string mapped to this key combo we want to ignore the character
-                    // as it has been overriden in the keydown event
-
-                    // only send the windows generated char if there was no custom
-                    // string sent by the keydown event
-                    if (this.LastKeyDownSent == false)
-                    {
-                        // send the character straight to the host if we haven't already handled the actual key press
-                        this.KeyboardEvent(this, Convert.ToChar(AnsiChar).ToString());
+					// only send the windows generated char if there was no custom
+					// string sent by the keydown event
+					if (this.LastKeyDownSent == false)
+					{
+						// send the character straight to the host if we haven't already handled the actual key press
+						this.KeyboardEvent(this, Convert.ToChar(wBytes[0]).ToString());
                     }
                 }
 

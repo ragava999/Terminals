@@ -695,7 +695,9 @@ namespace Kohl.Framework.Info
                     // Add 4 bytes to the offset
                     stream.Seek(dosHeader.e_lfanew, SeekOrigin.Begin);
 
-                    UInt32 ntHeadersSignature = reader.ReadUInt32();
+					// Read the NT header's signature
+                    reader.ReadUInt32();
+
                     fileHeader = FromBinaryReader<IMAGE_FILE_HEADER>(reader);
                     if (this.Is32BitHeader)
                     {

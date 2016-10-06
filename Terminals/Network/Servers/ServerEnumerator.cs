@@ -60,7 +60,7 @@ namespace Terminals.Network.Servers
             this.Reset();
             this.serverInfoPtr = IntPtr.Zero;
 
-            uint nRes = Win32API.NetServerEnum(
+            Win32API.NetServerEnum(
                 IntPtr.Zero, // Server Name: Reserved; must be NULL. 
                 level,
                 // Return server names, types, and associated software. The bufptr parameter points to an array of SERVER_INFO_101 structures.

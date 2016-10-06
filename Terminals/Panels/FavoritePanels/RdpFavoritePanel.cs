@@ -38,7 +38,7 @@ namespace Terminals.Panels.FavoritePanels
 
         private void btnDrives_Click(object sender, EventArgs e)
         {
-            DiskDrivesForm drivesForm = new DiskDrivesForm(((FavoriteEditor)this.ParentForm), this.RedirectedDrivesList, this.RedirectDevices);
+            DiskDrivesForm drivesForm = new DiskDrivesForm(this.RedirectedDrivesList, this.RedirectDevices);
             drivesForm.ShowDialog(this);
             this.RedirectedDrivesList = drivesForm.RedirectedDrives;
             this.RedirectDevices = drivesForm.RedirectDevices;

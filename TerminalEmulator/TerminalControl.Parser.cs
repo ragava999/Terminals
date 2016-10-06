@@ -91,7 +91,6 @@ namespace WalburySoftware
             private Char CurChar = '\0';
             private String CurSequence = String.Empty;
 
-            private ArrayList ParamList = new ArrayList();
             private States State = States.Ground;
 
             public event ParserEventHandler ParserEvent;
