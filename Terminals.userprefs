@@ -2,14 +2,8 @@
   <MonoDevelop.Ide.ItemProperties.Terminals PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Terminals Status">
     <Files>
-      <File FileName="Terminals/Network/TraceRoute/TraceRouteControl.cs" Line="253" Column="13" />
-      <File FileName="Terminals/Updates/UpdateManager.cs" Line="170" Column="1" />
-      <File FileName="Terminals.Configuration/Files/Main/Settings/Settings_Favorites.cs" Line="129" Column="37" />
-      <File FileName="Terminals/Connections/ShellFileOperation.cs" Line="120" Column="54" />
-      <File FileName="Terminals/Connections/PuttyConnection.cs" Line="20" Column="22" />
-      <File FileName="Terminals/Forms/Controls/TabColorPreferences.Designer.cs" Line="85" Column="49" />
-      <File FileName="Terminals/Forms/DiskDrivesForm.cs" Line="14" Column="3" />
-      <File FileName="Terminals/Panels/FavoritePanels/RdpFavoritePanel.cs" Line="43" Column="61" />
+      <File FileName="Terminals/Properties/AssemblyInfo.cs" Line="29" Column="16" />
+      <File FileName="Release.sh" Line="3" Column="98" />
       <File FileName="Terminals Status" />
     </Files>
   </MonoDevelop.Ide.Workbench>

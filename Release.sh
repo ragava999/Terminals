@@ -1,6 +1,6 @@
 #!/bin/bash
 ROOT="/home/ubuntu/Terminals"
-VERSION=`cat /home/ubuntu/Terminals/Terminals/Properties/AssemblyInfo.cs | grep "AssemblyVersion(" | cut -d \" -f 2`
+VERSION=`cat /home/ubuntu/Terminals/Terminals/Properties/AssemblyInfo.cs | grep "AssemblyVersion (" | cut -d \" -f 2`
 ARTIFACTS="/home/ubuntu/Terminals/Terminals/bin/x86/Release/"
 
 echo $VERSION
