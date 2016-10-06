@@ -3,6 +3,8 @@ ROOT="/home/ubuntu/Terminals"
 VERSION=`cat /home/ubuntu/Terminals/Terminals/Properties/AssemblyInfo.cs | grep "AssemblyVersion (" | cut -d \" -f 2`
 ARTIFACTS="/home/ubuntu/Terminals/Terminals/bin/x86/Release/"
 
+echo $VERSION
+
 cd $ARTIFACTS
 
 cp "/home/ubuntu/Terminals/TerminalsUpdater/bin/Release/TerminalsUpdater.exe" .
@@ -104,9 +106,6 @@ command -v wine >/dev/null 2>&1 || { echo >&2 "I require wine but it's not insta
 # Translate unix script path to windows path 
 SCRIPTNAME=$(winepath -w "$SCRIPTNAME" 2> /dev/null)
 INNO_PATH=$(winepath -w "$INNO_PATH" 2> /dev/null)
-
-# Print the InnoSetup usage
-WINEDLLOVERRIDES="mscoree,mshtml=" wine /?
 
 # Compile!
 WINEDLLOVERRIDES="mscoree,mshtml=" wine "$INNO_PATH" "$SCRIPTNAME" 
