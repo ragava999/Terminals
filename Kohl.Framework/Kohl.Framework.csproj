@@ -122,6 +122,7 @@
     <Compile Include="Security\Credential.cs" />
     <Compile Include="Security\Impersonator.cs" />
     <Compile Include="Framework.Info\AssemblyTimeStampAttribute.cs" />
+    <Compile Include="Framework.Info\HumanReadableInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="log4net">

@@ -359,35 +359,7 @@
         {
             new Thread(new ThreadStart(delegate
             {
-                string commandLine = AssemblyInfo.CommandLine;
-                string userName = UserInfo.UserName;
-                string machineName = MachineInfo.MachineName;
-                string machineDomain = MachineInfo.MachineDomain;
-                string directory = AssemblyInfo.Directory;
-                string userNameAlias = UserInfo.UserNameAlias;
-                string userSid = UserInfo.UserSid;
-                string userDomain = UserInfo.UserDomain;
-                string registeredOwner = MachineInfo.RegisteredOwner;
-                string companyName = MachineInfo.CompanyName;
-                string productName = MachineInfo.ProductName;
-
-                Log.Info(String.Format("Command line arguments: {0}", commandLine ?? "-"));
-                Log.Info(String.Format("Current directory: {0}", string.IsNullOrEmpty(directory) ? "-" : directory));
-                Log.Info(String.Format("Machine name: {0}", string.IsNullOrEmpty(machineName) ? "-" : machineName));
-                Log.Info(String.Format("Machine domain: {0}", string.IsNullOrEmpty(machineDomain) ? "-" : machineDomain));
-                Log.Info(String.Format("User name: {0}", string.IsNullOrEmpty(userName) ? "-" : userName));
-                Log.Info(String.Format("User name alias: {0}", string.IsNullOrEmpty(userNameAlias) ? "-" : userNameAlias));
-                Log.Info(String.Format("User SID: {0}", string.IsNullOrEmpty(userSid) ? "-" : userSid));
-                Log.Info(String.Format("User domain: {0}", string.IsNullOrEmpty(userDomain) ? "-" : userDomain));
-                Log.Info(String.Format("Registered owner: {0}", string.IsNullOrEmpty(registeredOwner) ? "-" : registeredOwner));
-                Log.Info(String.Format("Company name: {0}", string.IsNullOrEmpty(companyName) ? "-" : companyName));
-                Log.Info(String.Format("Is 64 bit OS: {0}", MachineInfo.Is64BitOperatingSystem));
-                Log.Info(String.Format("Is 64 bit process: {0}", AssemblyInfo.Is64BitProcess));
-                Log.Info(String.Format("Your Operating system: {0}", string.IsNullOrEmpty(productName) ? "-" : productName));
-                Log.Info(String.Format("Number of processors: {0}", MachineInfo.ProcessorCount));
-                Log.Info(String.Format("User interactive: {0}", Environment.UserInteractive));
-                Log.Info(String.Format("Version: {0}", Environment.Version));
-                Log.Info(String.Format("Working set: {0} MB", Environment.WorkingSet / 1024 / 1024));
+				Log.Info(new HumanReadableInfo().ToString());
             }
             )).Start();
         }

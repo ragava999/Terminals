@@ -2,8 +2,6 @@
   <MonoDevelop.Ide.ItemProperties.Terminals PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Terminals Status">
     <Files>
-      <File FileName="Terminals/Properties/AssemblyInfo.cs" Line="29" Column="16" />
-      <File FileName="Release.sh" Line="3" Column="98" />
       <File FileName="Terminals Status" />
     </Files>
   </MonoDevelop.Ide.Workbench>
@@ -12,8 +10,6 @@
     <BreakpointStore>
       <Breakpoint file="/Users/oliverkohldsc/Documents/Code/Terminals/Terminals.Configuration/Files/Main/Settings/Settings_FileAccess.cs" line="384" column="1" />
       <Breakpoint file="/Users/oliverkohldsc/Documents/Code/Terminals/Terminals/MainForm.cs" line="1137" column="1" />
-      <Breakpoint file="/Users/oliverkohldsc/Documents/Code/Terminals/Terminals/MainForm.cs" line="1017" column="1" />
-      <Breakpoint file="/Users/oliverkohldsc/Documents/Code/Terminals/Terminals/MainForm.cs" line="1025" column="1" />
       <Breakpoint file="/Users/oliverkohldsc/Documents/Code/Terminals/Terminals/MainForm.cs" line="1590" column="1" />
       <Breakpoint file="/Users/oliverkohldsc/Documents/Code/Terminals/Terminals/MainForm.cs" line="1863" column="1" />
       <Breakpoint file="/Users/oliverkohldsc/Documents/Code/Terminals/Terminals/MainForm.cs" line="1058" column="1" />
