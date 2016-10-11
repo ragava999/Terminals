@@ -1,6 +1,7 @@
 using Kohl.PInvoke;
 using System;
 using System.DirectoryServices;
+using System.DirectoryServices.AccountManagement;
 using System.Security.Principal;
 
 namespace Kohl.Framework.Info
@@ -27,9 +28,29 @@ namespace Kohl.Framework.Info
         {
             get
             {
+                // Get the user's display name on a MacOSX
                 if (MachineInfo.IsMac)
                 {
                     return System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo("osascript", "-e \"long user name of (system info)\"") { RedirectStandardOutput = true, UseShellExecute = false }).StandardOutput.ReadLine().Trim();
+                }
+                // Get the user's AD display name for Windows
+                else if (!MachineInfo.IsUnix && !string.IsNullOrWhiteSpace(UserNameAlias))
+                {
+                    // set up domain context
+                    using (PrincipalContext ctx = new PrincipalContext(ContextType.Domain))
+                    {
+                        // find user by it's SAM account name
+                        UserPrincipal user = UserPrincipal.FindByIdentity(ctx, UserNameAlias);
+
+                        if (user != null)
+                        {
+                            return user.DisplayName;
+                        }
+                        else
+                        {
+                            return null;
+                        }
+                    }
                 }
 
                 return null;

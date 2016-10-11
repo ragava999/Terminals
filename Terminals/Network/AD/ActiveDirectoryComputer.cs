@@ -21,12 +21,12 @@ namespace Terminals.Network.AD
             this.Notes = String.Empty;
         }
 
-        private String ComputerName { get; set; }
-        private String OperatingSystem { get; set; }
+        public string ComputerName { get; private set; }
+        public string OperatingSystem { get; private set; }
 
-        private String Protocol { get; set; }
-        private String Tags { get; set; }
-        private String Notes { get; set; }
+        public string Protocol { get; private set; }
+        public string Tags { get; private set; }
+        public string Notes { get; private set; }
 
         public static ActiveDirectoryComputer FromDirectoryEntry(String domain, DirectoryEntry computer)
         {

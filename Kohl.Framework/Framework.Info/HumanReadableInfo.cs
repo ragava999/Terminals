@@ -40,5 +40,15 @@ namespace Kohl.Framework.Info
 
 			return result;
 		}
+
+        public static void ToLog()
+        {
+            string[] humanReadableInfo = new HumanReadableInfo().ToString().Split(new string[] { Environment.NewLine }, StringSplitOptions.None);
+
+            foreach(string line in humanReadableInfo)
+            {
+                Logging.Log.Info(line);
+            }
+        }
 	}
 }

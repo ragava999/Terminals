@@ -44,7 +44,7 @@ namespace Terminals.Network.DNS
             // 
             // lookupButton
             // 
-            this.lookupButton.Location = new System.Drawing.Point(268, 30);
+            this.lookupButton.Location = new System.Drawing.Point(398, 30);
             this.lookupButton.Name = "lookupButton";
             this.lookupButton.Size = new System.Drawing.Size(75, 23);
             this.lookupButton.TabIndex = 2;
@@ -56,7 +56,7 @@ namespace Terminals.Network.DNS
             // 
             this.hostnameTextBox.Location = new System.Drawing.Point(76, 3);
             this.hostnameTextBox.Name = "hostnameTextBox";
-            this.hostnameTextBox.Size = new System.Drawing.Size(186, 20);
+            this.hostnameTextBox.Size = new System.Drawing.Size(291, 20);
             this.hostnameTextBox.TabIndex = 0;
             this.hostnameTextBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.hostnameTextBox_KeyUp);
             // 
@@ -109,7 +109,7 @@ namespace Terminals.Network.DNS
             this.serverComboBox.FormattingEnabled = true;
             this.serverComboBox.Location = new System.Drawing.Point(76, 32);
             this.serverComboBox.Name = "serverComboBox";
-            this.serverComboBox.Size = new System.Drawing.Size(186, 21);
+            this.serverComboBox.Size = new System.Drawing.Size(291, 21);
             this.serverComboBox.TabIndex = 1;
             this.serverComboBox.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
@@ -122,7 +122,7 @@ namespace Terminals.Network.DNS
             this.splitter1.TabIndex = 6;
             this.splitter1.TabStop = false;
             // 
-            // DNSLookup
+            // DnsLookup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;

@@ -413,7 +413,7 @@ namespace Kohl.TinyMce
             {
                 element = domdocument.getElementById("elm1");
             }
-            catch (System.NotSupportedException)
+            catch
             {
                 return;
             }

@@ -47,7 +47,7 @@ namespace Terminals.Network.AD
         public void FindComputers(string domain)
         {
             // nothing is running
-            if (this.IsRunning)
+            if (!this.IsRunning)
             {
                 this.IsRunning = true;
                 ThreadPool.QueueUserWorkItem(this.StartScan, domain);
@@ -69,6 +69,7 @@ namespace Terminals.Network.AD
         {
             try
             {
+                this.cancelationPending = false;
                 this.SearchComputers(domain.ToString());
                 this.FireListComputersDone(true);
             }

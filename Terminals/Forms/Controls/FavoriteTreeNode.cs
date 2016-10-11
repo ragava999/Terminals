@@ -18,10 +18,18 @@ namespace Terminals.Forms.Controls
             this.ImageKey = ConnectionImageHandler.GetTreeviewImageListKey(favorite);
             this.SelectedImageKey = this.ImageKey;
 
-            new System.Threading.Thread(new System.Threading.ThreadStart(new MethodInvoker(delegate
+            try
             {
-                this.ToolTipText = favorite.GetToolTipText();
-            }))).Start();
+                new System.Threading.Thread(new System.Threading.ThreadStart(new MethodInvoker(delegate
+                {
+                    this.ToolTipText = favorite.GetToolTipText();
+                }))).Start();
+            }
+            catch (System.OutOfMemoryException ex)
+            {
+                Kohl.Framework.Logging.Log.Fatal("An out of memory exception has occured while trying to load the tool tip texts for each active favorite in the favorites tree view.", ex);
+                return;
+            }
         }
 
         /// <summary>

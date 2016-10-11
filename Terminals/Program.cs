@@ -65,6 +65,8 @@
 
             Log.Info(String.Format("-------------------------------{0} started. Version: {1}, Date: {2}-------------------------------", AssemblyInfo.Title, AssemblyInfo.Version, AssemblyInfo.BuildDate));
 
+            new Thread(() => { Network.DNS.AdapterInfo.LoadDnsServers(); }).Start();
+
             string[] cmdLineArgs = Environment.GetCommandLineArgs();
 
             #region Command line
@@ -359,7 +361,7 @@
         {
             new Thread(new ThreadStart(delegate
             {
-				Log.Info(new HumanReadableInfo().ToString());
+                HumanReadableInfo.ToLog();
             }
             )).Start();
         }

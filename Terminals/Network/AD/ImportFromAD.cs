@@ -111,6 +111,9 @@ namespace Terminals.Network.AD
 
         private void CancelButton_Click(object sender, EventArgs e)
         {
+            if (this.adClient.IsRunning)
+                this.adClient.Stop();
+
             this.Close();
         }
 

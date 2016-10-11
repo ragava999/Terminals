@@ -369,7 +369,15 @@ namespace Terminals.Network.NTP
             {
                 TimeSpan span = (this.ReceiveTimestamp - this.OriginateTimestamp) +
                                 (this.ReceptionTimestamp - this.TransmitTimestamp);
-                return (int)span.TotalMilliseconds;
+
+                try
+                {
+                    return (int)span.TotalMilliseconds;
+                }
+                catch
+                {
+                    return -1;
+                }
             }
         }
 
@@ -508,7 +516,7 @@ namespace Terminals.Network.NTP
             return GetAndSetTime(DefaultTimeServer);
         }
 
-        private static NTPClient GetAndSetTime(string TimeServer)
+        public static NTPClient GetAndSetTime(string TimeServer)
         {
             NTPClient client = GetTime(TimeServer);
             DateTime setTime =

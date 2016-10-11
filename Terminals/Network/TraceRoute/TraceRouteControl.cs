@@ -83,9 +83,10 @@ namespace Terminals.Network.TraceRoute
                 }
                 catch (Exception ex)
                 {
-                    Log.Warn(ex.Message);
+                    string warning = ex.Message.Replace("Ping", "Trace Route");
+                    Log.Warn(warning);
                     this.ResetForm();
-                    MessageBox.Show(ex.Message, "Ups ...", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show(warning, "Ups ...", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
