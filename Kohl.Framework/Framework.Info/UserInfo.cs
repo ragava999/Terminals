@@ -1,7 +1,6 @@
 using Kohl.PInvoke;
 using System;
 using System.DirectoryServices;
-using System.DirectoryServices.AccountManagement;
 using System.Security.Principal;
 
 namespace Kohl.Framework.Info
@@ -36,21 +35,28 @@ namespace Kohl.Framework.Info
                 // Get the user's AD display name for Windows
                 else if (!MachineInfo.IsUnix && !string.IsNullOrWhiteSpace(UserNameAlias))
                 {
-                    // set up domain context
-                    using (PrincipalContext ctx = new PrincipalContext(ContextType.Domain))
-                    {
-                        // find user by it's SAM account name
-                        UserPrincipal user = UserPrincipal.FindByIdentity(ctx, UserNameAlias);
+					DirectoryEntry userEntry = new DirectoryEntry("WinNT://" + UserDomain + "/" + UserNameAlias + ",User");
+					return (string)userEntry.Properties["fullname"].Value;
 
-                        if (user != null)
-                        {
-                            return user.DisplayName;
-                        }
-                        else
-                        {
-                            return null;
-                        }
-                    }
+					/*
+					 * System.DirectoryServices.AccountManagement is not defined in Mono
+					 * 
+                    // set up domain context
+					using (dynamic ctx = new System.DirectoryServices.AccountManagement.PrincipalContext(System.DirectoryServices.AccountManagement.ContextType.Domain))
+					{
+						// find user by it's SAM account name
+						dynamic user = System.DirectoryServices.AccountManagement.UserPrincipal.FindByIdentity(ctx, UserNameAlias);
+
+						if (user != null)
+						{
+							return user.DisplayName;
+						}
+						else
+						{
+							return null;
+						}
+					}
+					*/
                 }
 
                 return null;

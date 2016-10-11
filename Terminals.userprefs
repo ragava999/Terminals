@@ -2,8 +2,21 @@
   <MonoDevelop.Ide.ItemProperties.Terminals PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Terminals Status">
     <Files>
+      <File FileName="Kohl.Framework/Framework.Info/UserInfo.cs" Line="43" Column="9" />
       <File FileName="Terminals Status" />
     </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="Terminals" expanded="True" selected="True">
+            <Node name="Kohl.Framework" expanded="True">
+              <Node name="References" expanded="True" />
+              <Node name="Framework.Info" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
