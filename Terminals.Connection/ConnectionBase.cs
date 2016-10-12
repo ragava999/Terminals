@@ -226,9 +226,9 @@ namespace Terminals.Connection
 
             bool wasSelected = tabPage.Selected;
             this.ParentForm.RemoveTabPage(tabPage);
-            if (wasSelected)
-                PostMessage(new HandleRef(this, this.Handle), WM_LEAVING_FULLSCREEN, IntPtr.Zero,
-                                    IntPtr.Zero);
+
+            if (wasSelected && !this.IsDisposed)
+                PostMessage(new HandleRef(this, this.Handle), WM_LEAVING_FULLSCREEN, IntPtr.Zero, IntPtr.Zero);
 
             this.ParentForm.UpdateControls();
         }

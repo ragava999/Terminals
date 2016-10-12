@@ -266,19 +266,7 @@ namespace Kohl.Framework.Info
         {
             get
             {
-                bool flag;
-                if (IntPtr.Size == 8)
-                {
-                    return true;
-                }
-
-                if (!MachineInfo.IsUnixOrMac)
-                    if (DeveloperTools.DoesWin32MethodExist("kernel32.dll", "IsWow64Process") && NativeMethods.IsWow64Process(NativeMethods.GetCurrentProcess(), out flag))
-                    {
-                        return flag;
-                    }
-
-                return false;
+                return Environment.Is64BitOperatingSystem;
             }
         }
 

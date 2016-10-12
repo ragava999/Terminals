@@ -51,7 +51,9 @@ namespace Terminals.Connections
         public new void Dispose()
         {
             base.Dispose();
-            this.packetCapture1.Dispose();
+
+            if (packetCapture1 != null)
+                this.packetCapture1.Dispose();
         }
 
         public event TabChanged OnTabChanged;

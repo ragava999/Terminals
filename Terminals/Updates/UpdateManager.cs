@@ -119,19 +119,28 @@ namespace Terminals.Updates
                     foreach (SyndicationItem item in feed.Items)
                     {
                         string title = item.Title.Text;
-                        DateTimeOffset date = item.LastUpdatedTime;
+                        string version = title.Replace("Terminals", "").Trim();
+                        DateTimeOffset feedDate = item.LastUpdatedTime;
 
                         Log.Debug("Release '" + title + "' has been discovered.");
 
-                        //check the date the item was published.  
-                        //Is it after the currently executing application BuildDate? if so, then it is probably a new build!
-                        if (date > AssemblyInfo.BuildDate)
+                        try
                         {
-                            Log.Debug("Release '" + title + "'(" + date.ToString() + ") is newer than the currently installed Terminals version '" + AssemblyInfo.Version + "'(" + AssemblyInfo.BuildDate.ToString() + ").");
+                            feedDate = Convert.ToDateTime(Web.HTTPAsString(string.Format(Terminals.Configuration.Url.GitHubLatestRelease_Binary, version).Replace("Terminals.zip", "TerminalsBuildDate")).Replace("?", ""));
+                        }
+                        catch (Exception ex)
+                        {
+                            Log.Error("Unable to get the release date from the TerminalsBuildDate file stored on GitHub in " + title + ". Using the syndication feed date.", ex);
+                        }
 
-                            System.Windows.Forms.FormsExtensions.InvokeIfNecessary(Invoker, () => { MainForm.ReleaseAvailable = true; MainForm.ReleaseDescription = title; });
+                        //check the date the item was build (stored in TerminalsBuildDate), if not available check when it has been published (date in syndication feed).  
+                        // If the build date is old than the feed date, then it's probably a new build!
+                        if (feedDate > AssemblyInfo.BuildDate)
+                        {
+                            Log.Debug("Release '" + title + "'(" + feedDate.ToString() + ") is newer than the currently installed Terminals version '" + AssemblyInfo.Version + "'(" + AssemblyInfo.BuildDate.ToString() + ").");
 
-                            string version = title.Replace("Terminals", "").Trim();
+                            FormsExtensions.InvokeIfNecessary(Invoker, () => { MainForm.ReleaseAvailable = true; MainForm.ReleaseDescription = title; });
+                            
                             Settings.UpdateSource = string.Format(Terminals.Configuration.Url.GitHubLatestRelease_Binary, version);
                             commandLineArgs.AutomaticallyUpdate = true;
                             break;
