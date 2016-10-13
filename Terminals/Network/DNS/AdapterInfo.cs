@@ -19,8 +19,11 @@ namespace Terminals.Network.DNS
 
             try
             {
-                List<Adapter> adapters = GetAdapters();
-                dnsServers.AddRange(from a in adapters where a.IPEnabled where a.DNSServerSearchOrder != null from server in a.DNSServerSearchOrder select "Local: " + server);
+				if (!Kohl.Framework.Info.MachineInfo.IsUnixOrMac)
+				{
+					List<Adapter> adapters = GetAdapters();
+					dnsServers.AddRange(from a in adapters where a.IPEnabled where a.DNSServerSearchOrder != null from server in a.DNSServerSearchOrder select "Local: " + server);
+				}
 
                 /*
                  Free Public DNS Server

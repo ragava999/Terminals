@@ -2,30 +2,21 @@
   <MonoDevelop.Ide.ItemProperties.Terminals PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Terminals Status">
     <Files>
-      <File FileName="Kohl.Framework/Framework.Info/UserInfo.cs" Line="43" Column="9" />
+      <File FileName="Terminals/Updates/UpdateManager.cs" Line="130" Column="1" />
+      <File FileName="Terminals/Updates/Web.cs" Line="49" Column="1" />
+      <File FileName="Terminals.Configuration/Files/Main/Settings/Settings_FileAccess.cs" Line="567" Column="1" />
       <File FileName="Terminals Status" />
     </Files>
-    <Pads>
-      <Pad Id="ProjectPad">
-        <State name="__root__">
-          <Node name="Terminals" expanded="True" selected="True">
-            <Node name="Kohl.Framework" expanded="True">
-              <Node name="References" expanded="True" />
-              <Node name="Framework.Info" expanded="True" />
-            </Node>
-          </Node>
-        </State>
-      </Pad>
-    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Breakpoint file="/Users/oliverkohldsc/Documents/Code/Terminals/Terminals.Configuration/Files/Main/Settings/Settings_FileAccess.cs" line="384" column="1" />
       <Breakpoint file="/Users/oliverkohldsc/Documents/Code/Terminals/Terminals/MainForm.cs" line="1137" column="1" />
-      <Breakpoint file="/Users/oliverkohldsc/Documents/Code/Terminals/Terminals/MainForm.cs" line="1590" column="1" />
       <Breakpoint file="/Users/oliverkohldsc/Documents/Code/Terminals/Terminals/MainForm.cs" line="1863" column="1" />
       <Breakpoint file="/Users/oliverkohldsc/Documents/Code/Terminals/Terminals/MainForm.cs" line="1058" column="1" />
+      <Breakpoint file="/Users/oliverkohldsc/Documents/Code/Terminals/Terminals/Updates/Web.cs" line="183" column="1" />
+      <Breakpoint file="/Users/oliverkohldsc/Documents/Code/Terminals/Terminals/Updates/Web.cs" line="48" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
