@@ -46,7 +46,7 @@ namespace Terminals.ExportImport.Import
             FavoriteConfigurationElement favorite = null;
             try
             {
-                using (XmlTextReader reader = new XmlTextReader(new StreamReader(file, Encoding.Unicode)))
+                using (XmlTextReader reader = new XmlTextReader(new StreamReader(file, Encoding.UTF8)))
                 {
                     while (reader.Read())
                     {

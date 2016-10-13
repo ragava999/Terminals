@@ -947,14 +947,14 @@ namespace Terminals
             Boolean connectToConsole = commandLineArgs.Console;
             this.fullScreenSwitch.FullScreen = commandLineArgs.Fullscreen;
 
-            Terminals.Updates.UpdateManager.CheckForUpdates(this, commandLineArgs);
-
             if (commandLineArgs.HasUrlDefined)
                 this.QuickConnect(commandLineArgs.UrlServer, commandLineArgs.UrlPort, connectToConsole, commandLineArgs.ProtcolName, commandLineArgs.UrlServer, commandLineArgs.UseDbFavorite);
             else if (commandLineArgs.HasMachineDefined)
                 this.QuickConnect(commandLineArgs.MachineName, commandLineArgs.Port, connectToConsole, commandLineArgs.ProtcolName, null, commandLineArgs.UseDbFavorite);
             else
                 this.ConnectToFavorites(commandLineArgs, connectToConsole);
+
+            Updates.UpdateManager.CheckAndPerformUpgradeIfAllowedInSettingsAndBinaryIsNewer(this, commandLineArgs);
         }
 
         private void ConnectToFavorites(CommandLineArgs commandLineArgs, bool connectToConsole)
@@ -1015,6 +1015,36 @@ namespace Terminals
             // been restored ... otherwise the connection window would be either
             // a bit smaller or huger (i.e. some content would be cutted - missed!).
             this.OpenSavedConnections();
+
+            SetUpgradeStatusInToolStripBar();
+        }
+
+        private void SetUpgradeStatusInToolStripBar()
+        {
+            // Give the update procedure some time.
+            for (int i = 0; i <= 100; i++)
+            {
+                Thread.Sleep(50);
+                Application.DoEvents();
+            }
+
+            if (Updates.UpdateManager.IsUpdateInProgress)
+            {
+                this.updateToolStripItem.Enabled = false;
+                this.updateToolStripItem.Text = "Upgrade is in progress ... ";
+
+                while (Updates.UpdateManager.IsUpdateInProgress)
+                {
+                    Thread.Sleep(50);
+                    Application.DoEvents();
+                }
+
+                // actually not needed, but if some error occurs during the upgrade process
+                // we want to reset our environment.
+                this.updateToolStripItem.Text = "Checking for a new &release online";
+                this.updateToolStripItem.Enabled = true;
+                this.updateToolStripItem.Visible = false;
+            }
         }
 
         private void MainForm_KeyDown(object sender, KeyEventArgs e)
@@ -2030,8 +2060,7 @@ namespace Terminals
                     this.updateToolStripItem.Visible = ReleaseAvailable;
                     if (!string.IsNullOrEmpty(ReleaseDescription))
                     {
-                        this.updateToolStripItem.Text = String.Format("{0} - {1}", this.updateToolStripItem.Text,
-                                                                      ReleaseDescription);
+                        this.updateToolStripItem.Text = String.Format("Upgrade to {0} now", ReleaseDescription);
                     }
                 }
             }
@@ -2271,6 +2300,29 @@ namespace Terminals
             Kohl.Framework.Logging.Log.SetLogLevel(true);
             this.SetLogLevelToDebugToolStripMenuItem.Checked = true;
             this.SetLogLevelToInfoToolStripMenuItem.Checked = false;
+        }
+
+        private void updateToolStripItem_Click(object sender, EventArgs e)
+        {
+            // Force the upgrade
+            Thread upgradeThread = new Thread(() => { Updates.UpdateManager.PerformUpgradeIfNewer(new CommandLineArgs() { AutomaticallyUpdate = true }, true); });
+
+            upgradeThread.Start();
+
+            this.updateToolStripItem.Enabled = false;
+            this.updateToolStripItem.Text = "Upgrade is in progress ... ";
+
+            while (upgradeThread.IsAlive)
+            {
+                Thread.Sleep(50);
+                Application.DoEvents();
+            }
+
+            // actually not needed, but if some error occurs during the upgrade process
+            // we want to reset our environment.
+            this.updateToolStripItem.Text = "Checking for a new &release online";
+            this.updateToolStripItem.Enabled = true;
+            this.updateToolStripItem.Visible = false;
         }
     }
 }

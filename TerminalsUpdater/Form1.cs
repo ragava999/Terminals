@@ -4,7 +4,6 @@ using System.Linq;
 using System.Windows.Forms;
 using System.IO;
 using System.Threading;
-using Kohl.Framework.Info;
 using Kohl.Framework.Logging;
 
 namespace TerminalsUpdater
@@ -18,22 +17,12 @@ namespace TerminalsUpdater
         
         private void Update(object state)
         {
-        	Log.Info("Starting update");
-        	
-        	try
-        	{
-                /*
-	            Mutex mtx = new Mutex(false, "Terminals");
-	            bool isAppRunning = true;
-	
-	            while (isAppRunning)
-	            {
-	                isAppRunning = !mtx.WaitOne(0, false);
-	            }
-                */
-	            //wait for the process to completely end
-	            //Thread.Sleep(5000);
-	
+            Log.Info("Starting update");
+
+            Thread.Sleep(10000);
+
+            try
+            {
 	            string source = Program.Args[0];
 	            string destination = Program.Args[1];
 	
@@ -80,23 +69,24 @@ namespace TerminalsUpdater
         		Log.Fatal("Error updating Terminals ...", ex);
         	}
         }
+
         private void Form1_Load(object sender, EventArgs e)
         {
-            Thread.Sleep(5000);
-
             try
             {
                 foreach (Process process in Process.GetProcesses().Where(x => x.ProcessName == "Terminals" && (new FileInfo(x.MainModule.FileName).Directory.FullName == Program.Args[1])))
                 {
+                    int processId = process.Id;
+                    string name = process.ProcessName + " (" + process.MainWindowTitle + ") - " + process.MainModule.FileName;
+
                     try
                     {
                         process.Kill();
-                        Thread.Sleep(5000);
-                        Log.Info("Killed '" + process.MainModule.FileName);
+                        Log.Info("Killed '" + name + "'");
                     }
                     catch (Exception ex)
                     {
-                        Log.Fatal("Unable to terminate the Terminals process " + process.MainModule.FileName + " (" + process.Id + ").", ex);
+                        Log.Fatal("Unable to terminate the Terminals process " + name + " (" + processId + ").", ex);
                         Application.Exit();
                     }
                 }

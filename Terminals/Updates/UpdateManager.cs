@@ -23,14 +23,14 @@ namespace Terminals.Updates
         /// <summary>
         ///     Check for available application updates
         /// </summary>
-        public static void CheckForUpdates(Control invoker, CommandLineArgs commandLine)
+        public static void CheckAndPerformUpgradeIfAllowedInSettingsAndBinaryIsNewer(Control invoker, CommandLineArgs commandLine)
         {
             Invoker = invoker;
 
             if (Invoker == null)
                 throw new Exception("Error invoker must not be null.");
 
-            ThreadPool.QueueUserWorkItem(PerformCheck, commandLine);
+            ThreadPool.QueueUserWorkItem(PerformUpgradeIfNewer, commandLine);
         }
 
         private static string GetMD5HashFromFile(string file_name)
@@ -63,13 +63,14 @@ namespace Terminals.Updates
         /// <summary>
         ///     check codeplex's rss feed to see if we have a new release available.
         /// </summary>
-        private static void CheckForNewRelease(CommandLineArgs commandLineArgs)
+        private static void CheckForNewRelease(CommandLineArgs commandLineArgs, bool forceCheck = false)
         {
-            if (!Settings.CheckForNewRelease)
-            {
-                Log.Debug("The user has choosen to deny Terminals the update check.");
-                return;
-            }
+            if (forceCheck == false)
+                if (!Settings.CheckForNewRelease)
+                {
+                    Log.Debug("The user has choosen to deny Terminals the update check.");
+                    return;
+                }
 
             Boolean checkForUpdate = true;
             string releaseFile = Path.Combine(AssemblyInfo.DirectoryConfigFiles, "LastUpdateCheck.txt");
@@ -156,13 +157,22 @@ namespace Terminals.Updates
             }
         }
 
-        private static void PerformCheck(object state)
+        private static void PerformUpgradeIfNewer(object state)
         {
+            PerformUpgradeIfNewer(state, false);
+        }
+
+        public static bool IsUpdateInProgress { get; private set; }
+
+        public static void PerformUpgradeIfNewer(object state, bool forceUpgrade = false)
+        {
+            IsUpdateInProgress = false;
+
             CommandLineArgs commandLineArgs = (state as CommandLineArgs);
 
             try
             {
-                CheckForNewRelease(commandLineArgs);
+                CheckForNewRelease(commandLineArgs, forceUpgrade);
             }
             catch
             {
@@ -172,8 +182,10 @@ namespace Terminals.Updates
 
             try
             {
-                if (commandLineArgs.AutomaticallyUpdate)
+                if (forceUpgrade || commandLineArgs.AutomaticallyUpdate)
                 {
+                    IsUpdateInProgress = true;
+
                     String url = Settings.UpdateSource;
 
                     String version = url.Substring(0, url.LastIndexOf("/"));
@@ -266,6 +278,7 @@ namespace Terminals.Updates
                             {
                                 String args = String.Format("\"{0}\" \"{1}\"", finalFolder, AssemblyInfo.Directory);
                                 Log.Debug("Starting TerminalsUpdater with arguments \"" + args + "\"");
+                                IsUpdateInProgress = false;
                                 Process.Start(updaterExe, args);
                             }
                             else
@@ -275,10 +288,13 @@ namespace Terminals.Updates
                             Log.Warn("User has denied to upgrade Terminals from version '" + AssemblyInfo.Version + "'(" + AssemblyInfo.BuildDate.ToString() + ") to '" + version + ".");
 
                     }
+
+                    IsUpdateInProgress = false;
                 }
             }
             catch (Exception exc)
             {
+                IsUpdateInProgress = false;
                 Log.Fatal("Failed during update.", exc);
             }
         }

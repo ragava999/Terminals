@@ -17,7 +17,7 @@ namespace Terminals.ExportImport.Export
         {
             try
             {
-                using (XmlTextWriter w = new XmlTextWriter(options.FileName, Encoding.Unicode))
+                using (XmlTextWriter w = new XmlTextWriter(options.FileName, Encoding.UTF8))
                 {
                     w.WriteStartDocument();
                     w.WriteStartElement("favorites");
