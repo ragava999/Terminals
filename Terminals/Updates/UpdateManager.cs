@@ -272,10 +272,13 @@ namespace Terminals.Updates
                         {
                             Log.Debug("User has choosen to upgrade Terminals from version '" + AssemblyInfo.Version + "'(" + AssemblyInfo.BuildDate.ToString() + ") to '" + version + ".");
 
-                            string updaterExe = Path.Combine(AssemblyInfo.Directory, AssemblyInfo.Title + "Updater.exe");
+                            string updaterExe = Path.Combine(AssemblyInfo.Directory, "TerminalsUpdater.exe");
 
                             if (File.Exists(updaterExe))
                             {
+                                // Use the new updater
+                                File.Copy(Path.Combine(finalFolder, "TerminalsUpdater.exe"), updaterExe, true);
+
                                 String args = String.Format("\"{0}\" \"{1}\"", finalFolder, AssemblyInfo.Directory);
                                 Log.Debug("Starting TerminalsUpdater with arguments \"" + args + "\"");
                                 IsUpdateInProgress = false;

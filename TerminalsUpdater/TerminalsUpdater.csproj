@@ -132,11 +132,35 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="..\Kohl.Framework\Framework.ExtensionMethods\StringExtensions.cs">
+      <Link>Kohl.Framework Excerpt\StringExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Kohl.Framework\Framework.Info\AssemblyInfo.cs">
+      <Link>Kohl.Framework Excerpt\AssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\Kohl.Framework\Framework.Info\AssemblyTimeStampAttribute.cs">
+      <Link>Kohl.Framework Excerpt\AssemblyTimeStampAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\Kohl.Framework\Framework.Info\DeveloperTools.cs">
+      <Link>Kohl.Framework Excerpt\DeveloperTools.cs</Link>
+    </Compile>
+    <Compile Include="..\Kohl.Framework\Framework.Info\MachineInfo.cs">
+      <Link>Kohl.Framework Excerpt\MachineInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\Kohl.Framework\Logging.cs">
+      <Link>Kohl.Framework Excerpt\Logging.cs</Link>
+    </Compile>
+    <Compile Include="..\Kohl.Framework\PInvoke\NativeMethods.cs">
+      <Link>Kohl.Framework Excerpt\NativeMethods.cs</Link>
+    </Compile>
+    <Compile Include="..\Kohl.Framework\PInvoke\UnixNativeMethods.cs">
+      <Link>Kohl.Framework Excerpt\UnixNativeMethods.cs</Link>
+    </Compile>
+    <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -145,9 +169,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Form1.resx">
+    <EmbeddedResource Include="MainForm.resx">
       <SubType>Designer</SubType>
-      <DependentUpon>Form1.cs</DependentUpon>
+      <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -180,15 +204,15 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Kohl.Framework\Kohl.Framework.csproj">
-      <Project>{2e4e3508-2275-4a32-9a0d-9a95b134407b}</Project>
-      <Name>Kohl.Framework</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
+    <Reference Include="log4net, Version=1.2.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.5\lib\net40-full\log4net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.XML" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
