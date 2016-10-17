@@ -1451,14 +1451,14 @@ namespace Terminals.Configuration.Files.Main.Favorites
             set { this["bitmapPeristence"] = value; }
         }
 
-        [ConfigurationProperty("enableTLSAuthentication", IsRequired = false, DefaultValue = false)]
+        [ConfigurationProperty("enableTLSAuthentication", IsRequired = false, DefaultValue = true)]
         public Boolean EnableTlsAuthentication
         {
             get { return (Boolean)this["enableTLSAuthentication"]; }
             set { this["enableTLSAuthentication"] = value; }
         }
 
-        [ConfigurationProperty("enableNLAAuthentication", IsRequired = false, DefaultValue = false)]
+        [ConfigurationProperty("enableNLAAuthentication", IsRequired = false, DefaultValue = true)]
         public Boolean EnableNlaAuthentication
         {
             get { return (Boolean)this["enableNLAAuthentication"]; }

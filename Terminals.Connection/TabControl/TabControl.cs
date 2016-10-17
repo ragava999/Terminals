@@ -9,7 +9,7 @@ namespace Terminals.Connection.TabControl
     using System.Drawing.Drawing2D;
     using System.ComponentModel;
 
-    using Terminals.Configuration.Files.Main.Settings;
+    using Configuration.Files.Main.Settings;
 
     [DefaultEvent("TabControlItemSelectionChanged")]
     [DefaultProperty("Items")]
@@ -499,7 +499,7 @@ namespace Terminals.Connection.TabControl
         }
         #endregion
 
-        #region Private Methods (39)
+        #region Private Methods (40)
         private bool AllowDraw(TabControlItem item)
         {
             bool result = true;
@@ -522,6 +522,17 @@ namespace Terminals.Connection.TabControl
         {
             MouseEventArgs mouse = e as MouseEventArgs;
             return mouse != null && mouse.Button == MouseButtons.Middle;
+        }
+
+        private void InitializeComponent()
+        {
+            this.SuspendLayout();
+            // 
+            // TabControl
+            // 
+            this.AllowDrop = true;
+            this.ResumeLayout(false);
+
         }
 
         private void CloseTabAtCurrentCursor()
@@ -999,6 +1010,7 @@ namespace Terminals.Connection.TabControl
             this.Font = new Font("Tahoma", 8.25f, FontStyle.Regular);
             this.sf = new StringFormat();
             this.movePreview = new TabPreview(this);
+            this.movePreview.AllowDrop = true;
 
             this.EndInit();
 

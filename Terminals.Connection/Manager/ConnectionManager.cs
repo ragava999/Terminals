@@ -210,10 +210,10 @@ namespace Terminals.Connection.Manager
             // if the user has a freeware version.
             if (Limit.Contains(favorite.Protocol.ToUpper()) || terminalTabPage == null)
             {
-                MessageBox.Show("You are not allowed to use that kind of connection! Please upgrade your license.", AssemblyInfo.Title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("You are not allowed to use that kind of connection!", AssemblyInfo.Title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            
+
             if (!waitforEnd)
             {
                Thread t = new Thread((ThreadStart)delegate

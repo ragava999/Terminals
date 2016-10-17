@@ -1,17 +1,15 @@
 namespace Terminals.Connection
 {
-    // .NET namespaces
+    using Configuration.Files.Main.Settings;
+    using Configuration.Files.Main.Favorites;
+    using Kohl.Framework.Logging;
+    using Kohl.Framework.Info;
+    using Kohl.PInvoke;
     using System;
     using System.Collections.Generic;
     using System.Drawing;
-    using System.Runtime.InteropServices;
+    using System.IO;
     using System.Windows.Forms;
-
-    // Terminals and framework namespaces
-    using Configuration.Files.Main.Settings;
-    using TabControl;
-    using Terminals.Configuration.Files.Main.Favorites;
-    using Terminals.Connection.Manager;
 
     public abstract class Connection : ConnectionBase
     {
@@ -19,7 +17,7 @@ namespace Terminals.Connection
         private readonly List<ConnectionImage> list = new List<ConnectionImage>();
         #endregion
 
-        #region Public Properties (4)
+        #region Public Properties (5)
         public virtual ushort Port
         {
             get { return 0; }
@@ -30,6 +28,14 @@ namespace Terminals.Connection
             get
             {
                 return true;
+            }
+        }
+
+        public virtual bool SupportsDragAndDropFileCopy
+        {
+            get
+            {
+                return false;
             }
         }
 
@@ -111,6 +117,70 @@ namespace Terminals.Connection
 
             Settings.EditFavorite(this.Favorite.Name, this.Favorite);
             Settings.SaveAndFinishDelayedUpdate();
+        }
+        #endregion
+
+        #region Private Methods - Drag & Drop File Copy Support (2)
+        protected void CopyDragAndDropFilesToServer(object sender, DragEventArgs e)
+        {
+            if (!SupportsDragAndDropFileCopy)
+            {
+                Log.Warn("There's no support for drag&drop file copy for this Terminals protocol.");
+                return;
+            }
+
+            string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+            string desktopShare = this.GetDesktopShare();
+
+            if (String.IsNullOrEmpty(desktopShare))
+            {
+                MessageBox.Show(this, "A desktop share was not defined for this connection.\nPlease define a share in the connection properties window (under the Local Resources tab).", AssemblyInfo.Title, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            else
+            {
+                CopyFiles(files, desktopShare);
+            }
+        }
+
+        private void CopyFiles(string[] sourceFilesToCopy, string destinationShare)
+        {
+            NativeMethods.NETRESOURCE nr = new NativeMethods.NETRESOURCE();
+            nr.dwType = NativeMethods.ResourceType.RESOURCETYPE_DISK;
+            nr.lpLocalName = null;
+            nr.lpRemoteName = destinationShare;
+            nr.lpProvider = null;
+
+            int retCode = NativeMethods.WNetAddConnection2(nr, Favorite.Password, Favorite.Credential.IsSetUserNameAndDomainName ? Favorite.Credential.UserNameWithDomain : Favorite.Credential.UserName, 0);
+
+            if (retCode != 0)
+            {
+                string errorMessage = "Terminals was unable to copy your file" + (sourceFilesToCopy.Length > 1 ? "s" : "") + " to the server.";
+                Log.Error(errorMessage, new Exception("WNetAddConnection2 error return code: " + retCode));
+                MessageBox.Show(errorMessage, "File copy", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            string result = "Your files have been copied to:" + Environment.NewLine;
+
+            foreach (string sourceFileToCopy in sourceFilesToCopy)
+            {
+                try
+                {
+                    string destination = Path.Combine(destinationShare, Path.GetFileName(sourceFileToCopy));
+                    File.Copy(sourceFileToCopy, destination, true);
+                    result += Environment.NewLine + destination;
+                }
+                catch (Exception ex)
+                {
+                    Log.Error("There's been a problem copying your drag&drop file '" + sourceFileToCopy + "' to the server", ex);
+                }
+            }
+
+            Log.Info(result);
+
+            MessageBox.Show(result, "Copy result", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            NativeMethods.WNetCancelConnection2(destinationShare, 0, true);
         }
         #endregion
     }

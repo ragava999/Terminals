@@ -201,8 +201,17 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="TabControl\TabControl.resx">
+      <DependentUpon>TabControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TabControl\TabControlItem.resx">
+      <DependentUpon>TabControlItem.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TabControl\TabPreview.resx">
       <DependentUpon>TabPreview.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TabControl\TerminalTabControlItem.resx">
+      <DependentUpon>TerminalTabControlItem.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

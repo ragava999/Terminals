@@ -109,7 +109,7 @@ namespace Terminals.Updates
                 {
                     Log.Debug("Connecting to the internet to github.com to check if a new Terminals version is available.");
 
-                    XmlReader responseReader = XmlReader.Create(Terminals.Configuration.Url.GitHubReleasesFeed);
+                    XmlReader responseReader = XmlReader.Create(Configuration.Url.GitHubReleasesFeed);
 
                     Log.Debug("Loading syndication feed.");
 
@@ -127,11 +127,12 @@ namespace Terminals.Updates
 
                         try
                         {
-                            feedDate = Convert.ToDateTime(Web.HTTPAsString(string.Format(Terminals.Configuration.Url.GitHubLatestRelease_Binary, version).Replace("Terminals.zip", "TerminalsBuildDate")).Replace("?", ""));
+                            feedDate = Convert.ToDateTime(Web.HTTPAsString(string.Format(Configuration.Url.GitHubLatestRelease_Binary, version).Replace("Terminals.zip", "TerminalsBuildDate")).Replace("?", ""));
+                            Log.Info("Received release date \"" + feedDate.ToString() + "\" from the TerminalsBuildDate file stored on GitHub in " + title);
                         }
                         catch (Exception ex)
                         {
-                            Log.Error("Unable to get the release date from the TerminalsBuildDate file stored on GitHub in " + title + ". Using the syndication feed date.", ex);
+                            Log.Debug("Unable to get the release date from the TerminalsBuildDate file stored on GitHub in " + title + ". Using the syndication feed date.", ex);
                         }
 
                         //check the date the item was build (stored in TerminalsBuildDate), if not available check when it has been published (date in syndication feed).  
@@ -142,7 +143,7 @@ namespace Terminals.Updates
 
                             FormsExtensions.InvokeIfNecessary(Invoker, () => { MainForm.ReleaseAvailable = true; MainForm.ReleaseDescription = title; });
                             
-                            Settings.UpdateSource = string.Format(Terminals.Configuration.Url.GitHubLatestRelease_Binary, version);
+                            Settings.UpdateSource = string.Format(Configuration.Url.GitHubLatestRelease_Binary, version);
                             commandLineArgs.AutomaticallyUpdate = true;
                             break;
                         }
@@ -150,7 +151,7 @@ namespace Terminals.Updates
                 }
                 catch (Exception ex)
                 {
-                    Log.Warn("Unable to check for a new Terminals version on " + Terminals.Configuration.Url.GitHubRepositry, ex);
+                    Log.Warn("Unable to check for a new Terminals version on " + Configuration.Url.GitHubRepositry, ex);
                 }
 
                 File.WriteAllText(releaseFile, DateTime.Now.ToString());
@@ -186,21 +187,21 @@ namespace Terminals.Updates
                 {
                     IsUpdateInProgress = true;
 
-                    String url = Settings.UpdateSource;
+                    string url = Settings.UpdateSource;
 
-                    String version = url.Substring(0, url.LastIndexOf("/"));
+                    string version = url.Substring(0, url.LastIndexOf("/"));
                     version = version.Substring(version.LastIndexOf("/") + 1, version.Length - version.LastIndexOf("/") - 1);
 
                     if (!Directory.Exists(AssemblyInfo.UpgradeDirectory))
                         Directory.CreateDirectory(AssemblyInfo.UpgradeDirectory);
 
-                    String finalFolder = Path.Combine(AssemblyInfo.UpgradeDirectory, version);
+                    string finalFolder = Path.Combine(AssemblyInfo.UpgradeDirectory, version);
                     if (!Directory.Exists(finalFolder))
                         Directory.CreateDirectory(finalFolder);
 
-                    String filename = String.Format("{0}.zip", version);
+                    string filename = string.Format("{0}.zip", version);
                     filename = Path.Combine(AssemblyInfo.UpgradeDirectory, filename);
-                    Boolean downloaded = true;
+                    bool downloaded = true;
 
                     // if the file has already been downloaded
                     if (File.Exists(filename))
@@ -279,7 +280,7 @@ namespace Terminals.Updates
                                 // Use the new updater
                                 File.Copy(Path.Combine(finalFolder, "TerminalsUpdater.exe"), updaterExe, true);
 
-                                String args = String.Format("\"{0}\" \"{1}\"", finalFolder, AssemblyInfo.Directory);
+                                string args = String.Format("\"{0}\" \"{1}\"", finalFolder, AssemblyInfo.Directory);
                                 Log.Debug("Starting TerminalsUpdater with arguments \"" + args + "\"");
                                 IsUpdateInProgress = false;
                                 Process.Start(updaterExe, args);

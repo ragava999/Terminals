@@ -125,6 +125,7 @@ namespace Terminals.Connection.TabControl
             if (displayControl != null && displayControl is ICaptionSupport)
             {
                 ICaptionSupport capControl = displayControl as ICaptionSupport;
+                displayControl.AllowDrop = true;
                 this.Title = capControl.Caption;
             }
             else if (caption != null && caption.Length <= 0 && displayControl != null)
@@ -146,6 +147,19 @@ namespace Terminals.Connection.TabControl
             if (this.Changed != null)
                 this.Changed(this, EventArgs.Empty);
         }
-        #endregion       
+        #endregion
+
+        #region Private Methods (1)
+        private void InitializeComponent()
+        {
+            this.SuspendLayout();
+            // 
+            // TabControlItem
+            // 
+            this.AllowDrop = true;
+            this.ResumeLayout(false);
+
+        }
+        #endregion
     }
 }

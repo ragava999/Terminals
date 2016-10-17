@@ -803,6 +803,9 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Wizard\WizardForms.cs" />
+    <EmbeddedResource Include="Connections\ReconnectingControl.resx">
+      <DependentUpon>ReconnectingControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\AboutForm.resx">
       <DependentUpon>AboutForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -844,6 +847,9 @@
     <EmbeddedResource Include="Forms\NewGroupForm.resx">
       <SubType>Designer</SubType>
       <DependentUpon>NewGroupForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Panels\FavoritePanels\RdpFavoritePanel.resx">
+      <DependentUpon>RdpFavoritePanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Panels\OptionEditor.resx">
       <DependentUpon>OptionEditor.cs</DependentUpon>
@@ -892,7 +898,6 @@
     <Compile Include="Forms\SaveActiveConnectionsForm.Designer.cs">
       <DependentUpon>SaveActiveConnectionsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Connections\ShellFileOperation.cs" />
     <Compile Include="Network\Services\SingleInstanceApplication.cs" />
     <Compile Include="TerminalServices\Client.cs" />
     <Compile Include="TerminalServices\ConnectionStates.cs" />

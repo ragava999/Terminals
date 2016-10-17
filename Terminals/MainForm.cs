@@ -380,11 +380,10 @@ namespace Terminals
             this.tsbConnect.Enabled = (this.tscConnectTo.Text != String.Empty);
             this.tsbConnectToConsole.Enabled = (this.tscConnectTo.Text != String.Empty);
             this.saveTerminalsAsGroupToolStripMenuItem.Enabled = (this.tcTerminals.Items.Count > 0);
-
-            this.TerminalServerMenuButton.Visible = false;
             this.vncActionButton.Visible = false;
             this.VMRCAdminSwitchButton.Visible = false;
             this.VMRCViewOnlyButton.Visible = false;
+            RefreshToolStripButtons();
 
             if (this.CurrentConnection == null)
                 return;
@@ -399,8 +398,6 @@ namespace Terminals
             {
                 this.vncActionButton.Visible = true;
             }
-
-            this.TerminalServerMenuButton.Visible = this.CurrentConnection as RDPConnection != null;
         }
 
         public void DetachTabToNewWindow(TerminalTabControlItem tabControlToOpen)
@@ -1018,6 +1015,41 @@ namespace Terminals
 
             SetUpgradeStatusInToolStripBar();
         }
+        
+        protected override void WndProc(ref Message msg)
+        {
+            try
+            {
+                if (msg.Msg == 0x21)  // mouse click
+                {
+                    TerminalTabControlItem selectedTab = this.terminalsControler.Selected;
+                    if (selectedTab != null)
+                    {
+                        Rectangle r = selectedTab.RectangleToScreen(selectedTab.ClientRectangle);
+                        if (r.Contains(MousePosition))
+                        {
+                            SetGrabInput(true);
+                        }
+                        else
+                        {
+                            TabControlItem item = tcTerminals.GetTabItemByPoint(tcTerminals.PointToClient(MousePosition));
+                            if (item == selectedTab)
+                                SetGrabInput(true); //Grab input if clicking on currently selected tab
+                        }
+                    }
+                    /*else
+                    {
+                        SetGrabInput(false);
+                    }*/
+                }
+
+                base.WndProc(ref msg);
+            }
+            catch (Exception ex)
+            {
+                Log.Debug("WnProc failure", ex);
+            }
+        }
 
         private void SetUpgradeStatusInToolStripBar()
         {
@@ -1241,7 +1273,7 @@ namespace Terminals
             }
             else if (clickedItem.Name == FavoritesMenuLoader.COMMAND_NETTOOLS)
             {
-                this.toolStripButton2_Click(null, null);
+                this.TsbNetworkingTools_Click(null, null);
             }
             else if (clickedItem.Name == FavoritesMenuLoader.COMMAND_CAPTUREMANAGER)
             {
@@ -1391,12 +1423,18 @@ namespace Terminals
         {
             Log.InsideMethod();
             e.Effect = e.Data.GetDataPresent(DataFormats.FileDrop, false) ? DragDropEffects.Copy : DragDropEffects.None;
+
+            if (e.Data != null)
+                this.CurrentConnection.DoDragDrop(e.Data, e.AllowedEffect);
         }
 
         private void terminalTabPage_DragOver(object sender, DragEventArgs e)
         {
             Log.InsideMethod();
             this.terminalsControler.Select(sender as TerminalTabControlItem);
+
+            if (e.Data != null)
+                this.CurrentConnection.DoDragDrop(e.Data, e.AllowedEffect);
         }
 
         private void newTerminalToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1521,14 +1559,25 @@ namespace Terminals
             e.Cancel = cancel;
         }
 
+        private void RefreshToolStripButtons()
+        {
+            if (this.tcTerminals.Items.Count > 0)
+            {
+                tsbDisconnect.Enabled = this.disconnectToolStripMenuItem.Enabled = this.CurrentConnection != null;
+            }
+            else
+            {
+                tsbDisconnect.Enabled = this.disconnectToolStripMenuItem.Enabled = false;
+            }
+        }
+
         private void tcTerminals_TabControlItemSelectionChanged(TabControlItemChangedEventArgs e)
         {
             Log.InsideMethod();
             this.UpdateControls();
+
             if (this.tcTerminals.Items.Count > 0)
             {
-                this.tsbDisconnect.Enabled = e.Item != null;
-                this.disconnectToolStripMenuItem.Enabled = e.Item != null;
                 this.SetGrabInput(true);
 
                 if (e.Item.Selected && Settings.ShowInformationToolTips)
@@ -1553,10 +1602,20 @@ namespace Terminals
                 timer.Tick += timer_Tick;
             }
 
+            if (string.IsNullOrEmpty(tscConnectTo.Text) || !tscConnectTo.Items.Contains(tscConnectTo.Text))
+            {
+                tsbConnect.Enabled = tsbConnectToConsole.Enabled = false;
+            }
+
             timer.Enabled = true;
             timer.Interval = 1000;
             timer.Stop();
             timer.Start();
+        }
+
+        private void tscConnectTo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            tsbConnect.Enabled = tsbConnectToConsole.Enabled = !string.IsNullOrEmpty(this.tscConnectTo.Text);
         }
 
         /// <summary>
@@ -1915,7 +1974,7 @@ namespace Terminals
             this.standardToolbarToolStripMenuItem.Checked = this.toolbarStd.Visible;
         }
 
-        private void toolStripMenuItem3_Click(object sender, EventArgs e)
+        private void ToolStripOrganizeShortucts_Click(object sender, EventArgs e)
         {
             Log.InsideMethod();
             using (OrganizeShortcuts org = new OrganizeShortcuts())
@@ -1929,7 +1988,7 @@ namespace Terminals
         private void ShortcutsContextMenu_MouseClick(object sender, MouseEventArgs e)
         {
             Log.InsideMethod();
-            this.toolStripMenuItem3_Click(null, null);
+            this.ToolStripOrganizeShortucts_Click(null, null);
         }
 
         // todo assign missing SpecialCommandsToolStrip_MouseClick
@@ -1948,7 +2007,7 @@ namespace Terminals
                 elm.Launch();
         }
 
-        private void toolStripButton2_Click(object sender, EventArgs e)
+        private void TsbNetworkingTools_Click(object sender, EventArgs e)
         {
             Log.InsideMethod();
             this.OpenNetworkingTools(null, null);
@@ -1957,7 +2016,7 @@ namespace Terminals
         private void networkingToolsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Log.InsideMethod();
-            this.toolStripButton2_Click(null, null);
+            this.TsbNetworkingTools_Click(null, null);
         }
 
         private void toolStripMenuItemCaptureManager_Click(object sender, EventArgs e)
@@ -2015,7 +2074,7 @@ namespace Terminals
             }
         }
 
-        private void toolStripButton4_Click(object sender, EventArgs e)
+        private void TsbFixDesktopSize_Click(object sender, EventArgs e)
         {
             Log.InsideMethod();
             if (this.terminalsControler.HasSelected)
@@ -2066,7 +2125,7 @@ namespace Terminals
             }
         }
 
-        private void toolStripButton5_Click(object sender, EventArgs e)
+        private void TsbComputerManagement_Click(object sender, EventArgs e)
         {
             Log.InsideMethod();
             Process.Start("mmc.exe", "compmgmt.msc /a /computer=.");
@@ -2249,7 +2308,7 @@ namespace Terminals
             //ChangeSize();
         }
         #endregion
-
+        
         private void ChangeSize()
         {
             Log.InsideMethod();
@@ -2277,6 +2336,7 @@ namespace Terminals
             this.terminalsControler.Resize(null);
             switching = false;
         }
+
         void EmptyLogFileToolStripMenuItemClick(object sender, EventArgs e)
         {
             try
@@ -2289,12 +2349,14 @@ namespace Terminals
                 MessageBox.Show("Terminals was unable to clear the contents of the file" + Environment.NewLine + ex.Message, "Error");
             }
         }
+
         void SetLogLevelToInfoToolStripMenuItemClick(object sender, EventArgs e)
         {
             Kohl.Framework.Logging.Log.SetLogLevel(false);
             this.SetLogLevelToDebugToolStripMenuItem.Checked = false;
             this.SetLogLevelToInfoToolStripMenuItem.Checked = true;
         }
+
         void SetLogLevelToDebugToolStripMenuItemClick(object sender, EventArgs e)
         {
             Kohl.Framework.Logging.Log.SetLogLevel(true);

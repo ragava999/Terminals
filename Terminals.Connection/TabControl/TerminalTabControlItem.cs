@@ -15,5 +15,17 @@
 
         public FavoriteConfigurationElement Favorite { get; set; }
         #endregion
+
+        #region Private Methods (1)
+        private void InitializeComponent()
+        {
+            this.SuspendLayout();
+            // 
+            // TerminalTabControlItem
+            // 
+            this.AllowDrop = true;
+            this.ResumeLayout(false);
+        }
+        #endregion
     }
 }

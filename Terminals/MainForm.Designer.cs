@@ -108,29 +108,29 @@ namespace Terminals
             this.tscConnectTo = new System.Windows.Forms.ToolStripComboBox();
             this.tsbConnect = new System.Windows.Forms.ToolStripButton();
             this.tsbConnectToConsole = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbDisconnect = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbManageConnections = new System.Windows.Forms.ToolStripButton();
             this.CredentialManagementToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbFullScreen = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
+            this.tsbFixDesktopSize = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbTags = new System.Windows.Forms.ToolStripButton();
             this.CaptureScreenToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonCaptureManager = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.VMRCAdminSwitchButton = new System.Windows.Forms.ToolStripButton();
-            this.TerminalServerMenuButton = new System.Windows.Forms.ToolStripDropDownButton();
             this.VMRCViewOnlyButton = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
+            this.tsbNetworkingTools = new System.Windows.Forms.ToolStripButton();
             this.vncActionButton = new System.Windows.Forms.ToolStripDropDownButton();
             this.sendALTKeyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sendALTF4KeyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sendCTRLKeyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sendCTRLESCKeysToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sentCTRLALTDELETEKeysToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
+            this.tsbComputerManagement = new System.Windows.Forms.ToolStripButton();
             this.ShortcutsContextMenu.SuspendLayout();
             this.toolStripContainer.ContentPanel.SuspendLayout();
             this.toolStripContainer.TopToolStripPanel.SuspendLayout();
@@ -615,7 +615,7 @@ namespace Terminals
             this.toolStripOrganizeShortucts.Size = new System.Drawing.Size(276, 22);
             this.toolStripOrganizeShortucts.Text = "Or&ganize Shortcuts";
             this.toolStripOrganizeShortucts.ToolTipText = "Organize Shortcuts";
-            this.toolStripOrganizeShortucts.Click += new System.EventHandler(this.toolStripMenuItem3_Click);
+            this.toolStripOrganizeShortucts.Click += new System.EventHandler(this.ToolStripOrganizeShortucts_Click);
             // 
             // credentialManagementToolStripMenuItem
             // 
@@ -826,27 +826,27 @@ namespace Terminals
             this.tscConnectTo,
             this.tsbConnect,
             this.tsbConnectToConsole,
+            this.toolStripSeparator5,
             this.tsbDisconnect,
             this.toolStripSeparator3,
             this.tsbManageConnections,
             this.CredentialManagementToolStripButton,
             this.toolStripSeparator2,
             this.tsbFullScreen,
-            this.toolStripButton4,
+            this.tsbFixDesktopSize,
             this.toolStripSeparator6,
             this.tsbTags,
             this.CaptureScreenToolStripButton,
             this.toolStripButtonCaptureManager,
             this.toolStripSeparator4,
             this.VMRCAdminSwitchButton,
-            this.TerminalServerMenuButton,
             this.VMRCViewOnlyButton,
-            this.toolStripButton2,
+            this.tsbNetworkingTools,
             this.vncActionButton,
-            this.toolStripButton5});
+            this.tsbComputerManagement});
             this.toolbarStd.Location = new System.Drawing.Point(114, 49);
             this.toolbarStd.Name = "toolbarStd";
-            this.toolbarStd.Size = new System.Drawing.Size(675, 25);
+            this.toolbarStd.Size = new System.Drawing.Size(699, 25);
             this.toolbarStd.TabIndex = 2;
             // 
             // tsbNewTerminal
@@ -877,6 +877,7 @@ namespace Terminals
             this.tscConnectTo.Size = new System.Drawing.Size(199, 25);
             this.tscConnectTo.Sorted = true;
             this.tscConnectTo.ToolTipText = resources.GetString("tscConnectTo.ToolTipText");
+            this.tscConnectTo.SelectedIndexChanged += new System.EventHandler(this.tscConnectTo_SelectedIndexChanged);
             this.tscConnectTo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tscConnectTo_KeyDown);
             this.tscConnectTo.TextChanged += new System.EventHandler(this.tscConnectTo_TextChanged);
             // 
@@ -901,6 +902,11 @@ namespace Terminals
             this.tsbConnectToConsole.Size = new System.Drawing.Size(23, 22);
             this.tsbConnectToConsole.ToolTipText = "Connect To Console";
             this.tsbConnectToConsole.Click += new System.EventHandler(this.tsbConnectToConsole_Click);
+            // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 25);
             // 
             // tsbDisconnect
             // 
@@ -954,15 +960,15 @@ namespace Terminals
             this.tsbFullScreen.ToolTipText = "Full Screen (Alt + F11)";
             this.tsbFullScreen.Click += new System.EventHandler(this.tsbFullScreen_Click);
             // 
-            // toolStripButton4
+            // tsbFixDesktopSize
             // 
-            this.toolStripButton4.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton4.Image = global::Terminals.Properties.Resources.Refresh;
-            this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton4.Name = "toolStripButton4";
-            this.toolStripButton4.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton4.Text = "Fix current connection\'s content size";
-            this.toolStripButton4.Click += new System.EventHandler(this.toolStripButton4_Click);
+            this.tsbFixDesktopSize.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbFixDesktopSize.Image = global::Terminals.Properties.Resources.Refresh;
+            this.tsbFixDesktopSize.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbFixDesktopSize.Name = "tsbFixDesktopSize";
+            this.tsbFixDesktopSize.Size = new System.Drawing.Size(23, 22);
+            this.tsbFixDesktopSize.Text = "Fix current connection\'s content size";
+            this.tsbFixDesktopSize.Click += new System.EventHandler(this.TsbFixDesktopSize_Click);
             // 
             // toolStripSeparator6
             // 
@@ -1014,11 +1020,6 @@ namespace Terminals
             this.VMRCAdminSwitchButton.Text = "VMRC: Switch to Administrator View";
             this.VMRCAdminSwitchButton.Click += new System.EventHandler(this.VMRCAdminSwitchButton_Click);
             // 
-            // TerminalServerMenuButton
-            // 
-            this.TerminalServerMenuButton.Name = "TerminalServerMenuButton";
-            this.TerminalServerMenuButton.Size = new System.Drawing.Size(13, 22);
-            // 
             // VMRCViewOnlyButton
             // 
             this.VMRCViewOnlyButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -1029,15 +1030,15 @@ namespace Terminals
             this.VMRCViewOnlyButton.Text = "VMRC: View Only Mode";
             this.VMRCViewOnlyButton.Click += new System.EventHandler(this.VMRCViewOnlyButton_Click);
             // 
-            // toolStripButton2
+            // tsbNetworkingTools
             // 
-            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton2.Image = global::Terminals.Properties.Resources.computer_link;
-            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton2.Text = "Networking Tools";
-            this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
+            this.tsbNetworkingTools.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbNetworkingTools.Image = global::Terminals.Properties.Resources.computer_link;
+            this.tsbNetworkingTools.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbNetworkingTools.Name = "tsbNetworkingTools";
+            this.tsbNetworkingTools.Size = new System.Drawing.Size(23, 22);
+            this.tsbNetworkingTools.Text = "Networking Tools";
+            this.tsbNetworkingTools.Click += new System.EventHandler(this.TsbNetworkingTools_Click);
             // 
             // vncActionButton
             // 
@@ -1089,15 +1090,15 @@ namespace Terminals
             this.sentCTRLALTDELETEKeysToolStripMenuItem.Text = "Sent CTRL ALT DEL Keys";
             this.sentCTRLALTDELETEKeysToolStripMenuItem.Click += new System.EventHandler(this.sendALTKeyToolStripMenuItem_Click);
             // 
-            // toolStripButton5
+            // tsbComputerManagement
             // 
-            this.toolStripButton5.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton5.Image = global::Terminals.Properties.Resources.CompMgmt;
-            this.toolStripButton5.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton5.Name = "toolStripButton5";
-            this.toolStripButton5.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton5.Text = "Computer Management (MMC)";
-            this.toolStripButton5.Click += new System.EventHandler(this.toolStripButton5_Click);
+            this.tsbComputerManagement.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbComputerManagement.Image = global::Terminals.Properties.Resources.CompMgmt;
+            this.tsbComputerManagement.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbComputerManagement.Name = "tsbComputerManagement";
+            this.tsbComputerManagement.Size = new System.Drawing.Size(23, 22);
+            this.tsbComputerManagement.Text = "Computer Management (MMC)";
+            this.tsbComputerManagement.Click += new System.EventHandler(this.TsbComputerManagement_Click);
             // 
             // MainForm
             // 
@@ -1203,7 +1204,7 @@ namespace Terminals
         private System.Windows.Forms.ContextMenuStrip ShortcutsContextMenu;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
         private System.Windows.Forms.ToolStrip SpecialCommandsToolStrip;
-        private System.Windows.Forms.ToolStripButton toolStripButton2;
+        private System.Windows.Forms.ToolStripButton tsbNetworkingTools;
         private System.Windows.Forms.ToolStripMenuItem networkingToolsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemCaptureManager;
         private System.Windows.Forms.ToolStripButton toolStripButtonCaptureManager;
@@ -1213,15 +1214,14 @@ namespace Terminals
         private System.Windows.Forms.ToolStripMenuItem sendCTRLKeyToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sendCTRLESCKeysToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sentCTRLALTDELETEKeysToolStripMenuItem;
-        private System.Windows.Forms.ToolStripButton toolStripButton4;
-        private System.Windows.Forms.ToolStripDropDownButton TerminalServerMenuButton;
+        private System.Windows.Forms.ToolStripButton tsbFixDesktopSize;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.ToolStripMenuItem standardToolbarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemShowHideFavoriteToolbar;
         private System.Windows.Forms.ToolStripMenuItem shortcutsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem lockToolbarsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem updateToolStripItem;
-        private System.Windows.Forms.ToolStripButton toolStripButton5;
+        private System.Windows.Forms.ToolStripButton tsbComputerManagement;
         private System.Windows.Forms.ToolStripMenuItem rebuildTagsIndexToolStripMenuItem;
         private Terminals.Forms.Controls.FavsList favsList1;
         private System.Windows.Forms.ToolStripMenuItem viewInNewWindowToolStripMenuItem;
@@ -1243,5 +1243,6 @@ namespace Terminals
         private System.Windows.Forms.ToolStripMenuItem changeLogLevelToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem SetLogLevelToDebugToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem SetLogLevelToInfoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
     }
 }

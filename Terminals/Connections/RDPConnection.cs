@@ -7,12 +7,10 @@ namespace Terminals.Connections
     using Kohl.Framework.Logging;
     using System;
     using System.Drawing;
-    using System.IO;
-    using System.Linq;
     using System.Runtime.InteropServices;
     using System.Windows.Forms;
-    using Terminals.Configuration.Files.Main.Favorites;
-    using Terminals.Properties;
+    using Configuration.Files.Main.Favorites;
+    using Properties;
 
     public class RDPConnection : Connection.Connection
     {
@@ -227,7 +225,7 @@ namespace Terminals.Connections
                 }
             }
 
-            // http://msdn.microsoft.com/en-us/library/windows/desktop/dd919969%28v=vs.85%29.aspx
+            // http://msdn.microsoft.com/en-us/library/windows/desktop/dd919969(v=vs.85).aspx
             // IMsTscAxEvents::OnLogonError method
             public static string ToLogonMessage(int errorCode)
             {
@@ -285,6 +283,11 @@ namespace Terminals.Connections
             get { return new Image[] { Resources.RDP }; }
         }
 
+        public override bool SupportsDragAndDropFileCopy
+        {
+            get { return true; }
+        }
+
         public override ushort Port
         {
             get { return 3389; }
@@ -326,24 +329,7 @@ namespace Terminals.Connections
         private readonly ConnectionStateDetector connectionStateDetector = new ConnectionStateDetector();
 
         private IMsRdpClientNonScriptable4 nonScriptable;
-        private RdpClientControl client = null;
-
-        /// <summary>
-        /// http://www.codeproject.com/Tips/109917/Fix-the-focus-issue-on-RDP-Client-from-the-AxInter
-        /// </summary>
-        internal class RdpClientControl : AxMsRdpClient7NotSafeForScripting
-        {
-            protected override void WndProc(ref System.Windows.Forms.Message m)
-            {
-                //Fix for the missing focus issue on the rdp client component
-                // https://www.autoitscript.com/autoit3/docs/appendix/WinMsgCodes.htm
-                if (m.Msg == 0x0021) //WM_MOUSEACTIVATE ref:http://msdn.microsoft.com/en-us/library/ms645612(VS.85).aspx
-                    this.Focus();
-
-                base.WndProc(ref m);
-            }
-        }
-
+        private AxMsRdpClient7NotSafeForScripting client = null;
         public new delegate void Disconnected(RDPConnection Connection);
         public event Disconnected OnDisconnected;
         public delegate void ConnectionEstablish(RDPConnection Connection);
@@ -429,11 +415,14 @@ namespace Terminals.Connections
         {
             try
             {
-                this.client = new RdpClientControl();
+                this.client = new AxMsRdpClient7NotSafeForScripting();
+                this.reconecting.AllowDrop = true;
+                this.AllowDrop = true;
+                this.client.AllowDrop = true;
             }
             catch (Exception exception)
             {
-                string message = "Please update your RDP client to at least version 6.";
+                string message = "Please update your RDP client to at least version 7.";
                 Log.Info(message, exception);
                 MessageBox.Show(message);
                 return false;
@@ -886,7 +875,25 @@ namespace Terminals.Connections
                 clientControl.DragEnter += new DragEventHandler(this.client_DragEnter);
                 clientControl.DragDrop += new DragEventHandler(this.client_DragDrop);
             }
+        }
 
+        //
+        // Summary:
+        //     Begins a drag-and-drop operation.
+        //
+        // Parameters:
+        //   data:
+        //     The data to drag.
+        //
+        //   allowedEffects:
+        //     One of the System.Windows.Forms.DragDropEffects values.
+        //
+        // Returns:
+        //     A value from the System.Windows.Forms.DragDropEffects enumeration that represents
+        //     the final effect that was performed during the drag-and-drop operation.
+        public new DragDropEffects DoDragDrop(object data, DragDropEffects allowedEffects)
+        {
+            return this.client.DoDragDrop(data, allowedEffects);
         }
 
         public override void Disconnect()
@@ -913,25 +920,7 @@ namespace Terminals.Connections
 
         private void client_DragDrop(object sender, DragEventArgs e)
         {
-            string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
-            string desktopShare = this.GetDesktopShare();
-
-            if (String.IsNullOrEmpty(desktopShare))
-            {
-                MessageBox.Show(this, "A desktop share was not defined for this connection.\nPlease define a share in the connection properties window (under the Local Resources tab).",
-                                AssemblyInfo.Title, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
-            else
-            {
-                this.SHCopyFiles(files, desktopShare);
-            }
-        }
-
-        private void SHCopyFiles(string[] sourceFiles, string destinationFolder)
-        {
-            ShellFileOperation fo = new ShellFileOperation();
-
-            fo.InvokeOperation(this.Handle, FileOperations.Copy, sourceFiles, sourceFiles.Select(sourceFile => Path.Combine(destinationFolder, Path.GetFileName(sourceFile))).ToArray());
+            CopyDragAndDropFilesToServer(sender, e);
         }
 
         private void client_DragEnter(object sender, DragEventArgs e)

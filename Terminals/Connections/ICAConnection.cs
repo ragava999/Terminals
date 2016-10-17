@@ -23,6 +23,11 @@ namespace Terminals.Connections
             get { return new Image[] { Resources.CITRIX }; }
         }
 
+        public override bool SupportsDragAndDropFileCopy
+        {
+            get { return true; }
+        }
+
         public override ushort Port
         {
             get { return 1494; }
@@ -154,16 +159,7 @@ namespace Terminals.Connections
 
         private void ICAConnection_DragDrop(object sender, DragEventArgs e)
         {
-            string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
-            string desktopShare = this.GetDesktopShare();
-
-            if (String.IsNullOrEmpty(desktopShare))
-            {
-                MessageBox.Show(this, "A desktop share was not defined for this connection. Please define a share in the connection properties window (under the Local Resources tab).",
-                                AssemblyInfo.Title, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
-            else
-                this.SHCopyFiles(files, desktopShare);
+            CopyDragAndDropFilesToServer(sender, e);
         }
 
         private void ICAConnection_DragEnter(object sender, DragEventArgs e)
@@ -189,19 +185,6 @@ namespace Terminals.Connections
             }
 
             InvokeIfNecessary(() => base.Disconnect());
-        }
-
-        private void SHCopyFiles(string[] sourceFiles, string destinationFolder)
-        {
-            ShellFileOperation fo = new ShellFileOperation();
-            List<string> destinationFiles = new List<string>();
-
-            foreach (string sourceFile in sourceFiles)
-            {
-                destinationFiles.Add(Path.Combine(destinationFolder, Path.GetFileName(sourceFile)));
-            }
-
-            fo.InvokeOperation(this.Handle, FileOperations.Copy, sourceFiles, destinationFiles.ToArray());
         }
     }
 }

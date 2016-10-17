@@ -14,7 +14,7 @@ The [official website](http://oliverkohldsc.github.io/Terminals) can be found [h
 
 ###Release v 4.9.1.0
 
-Date: 2016-10-11
+Date: 2016-10-17
 
 Added a more reliable way of detecting the build date of Terminals.exe (The 'AssemblyTimeStampAttribute' attribute has been implemented in the namespace 'Kohl.Framework.Info')
 
@@ -65,7 +65,17 @@ Improved deserialization of the plugin options, because had just functioned unde
 
 Fixed some minor issues.
 
+Code cleanup has been done.
+
+Remove unneeded classes.
+
 Fixed the AD scanner itself.
+
+Fixed drag and drop for RPD and ICA.
+
+Upgraded to log4net 1.2.15.0
+
+Now NLA and TLS are enabled per default for new RDP connections.
 
 
 ###Release v 4.9.0.0
