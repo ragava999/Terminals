@@ -294,7 +294,7 @@ namespace Terminals.ExportImport.Import
         }
 
         [XmlRoot(ElementName = "ArrayOfConnection")]
-        private class RemoteDesktopManager
+        public class RemoteDesktopManager
         {
             [XmlElement("Connection")]
             public List<Connection> Connections { get; set; }

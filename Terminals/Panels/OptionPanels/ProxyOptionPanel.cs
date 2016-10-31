@@ -28,8 +28,32 @@ namespace Terminals.Panels.OptionPanels
 
             if (Settings.ProxyUse)
             {
-                rdoNoAuth.Checked = false;
-                rdoDefaultCredentials.Checked = true;
+                if (Settings.ProxyUseAuthCustom)
+                {
+                    rdoCustomCredentials.Checked = true;
+
+                    if (Settings.ProxyXmlCredentialSetName == Terminals.Forms.Controls.CredentialPanel.Custom)
+                    {
+                        this.ProxyCredentials.FillControls(new FavoriteConfigurationElement()
+                        {
+                            DomainName = Settings.ProxyDomainName,
+                            UserName = Settings.ProxyUserName,
+                            Password = Settings.ProxyPassword,
+                            XmlCredentialSetName = Settings.ProxyXmlCredentialSetName
+                        });
+                    }
+                    this.ProxyCredentials.FillCredentials(Settings.ProxyXmlCredentialSetName);
+                }
+                else
+                {
+                    if (!Settings.ProxyUseAuth)
+                        rdoNoAuth.Checked = true;
+                    else
+                    {
+                        rdoNoAuth.Checked = false;
+                        rdoDefaultCredentials.Checked = true;
+                    }
+                }
             }
             else
             {
@@ -51,8 +75,13 @@ namespace Terminals.Panels.OptionPanels
                 }
                 else
                 {
-                    rdoNoAuth.Checked = true;
-                    rdoDefaultCredentials.Checked = false;
+                    if (!Settings.ProxyUseAuth)
+                        rdoNoAuth.Checked = true;
+                    else
+                    {
+                        rdoNoAuth.Checked = false;
+                        rdoDefaultCredentials.Checked = false;
+                    }
                 }
             }
 

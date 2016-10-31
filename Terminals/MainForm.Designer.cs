@@ -54,7 +54,6 @@ namespace Terminals
             this.newTerminalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemImport = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemExport = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -355,7 +354,6 @@ namespace Terminals
             this.newTerminalToolStripMenuItem,
             this.toolStripMenuItemImport,
             this.toolStripMenuItemExport,
-            this.toolStripMenuItem4,
             this.toolStripMenuItem1,
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
@@ -388,12 +386,6 @@ namespace Terminals
             this.toolStripMenuItemExport.Text = "&Export connections";
             this.toolStripMenuItemExport.ToolTipText = "Opens export dialog to select connections to export into a xml file.";
             this.toolStripMenuItemExport.Click += new System.EventHandler(this.exportConnectionsListToolStripMenuItem_Click);
-            // 
-            // toolStripMenuItem4
-            // 
-            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(212, 6);
-            this.toolStripMenuItem4.Visible = false;
             // 
             // toolStripMenuItem1
             // 
@@ -846,7 +838,7 @@ namespace Terminals
             this.tsbComputerManagement});
             this.toolbarStd.Location = new System.Drawing.Point(114, 49);
             this.toolbarStd.Name = "toolbarStd";
-            this.toolbarStd.Size = new System.Drawing.Size(699, 25);
+            this.toolbarStd.Size = new System.Drawing.Size(668, 25);
             this.toolbarStd.TabIndex = 2;
             // 
             // tsbNewTerminal
@@ -1236,7 +1228,6 @@ namespace Terminals
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemImport;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemExport;
-        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem4;
         private System.Windows.Forms.ToolStripMenuItem openLogFolderToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem openLogFileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem emptyLogFileToolStripMenuItem;
