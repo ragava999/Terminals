@@ -196,7 +196,9 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Loading.gif" />
+    <None Include="Resources\Loading.gif" />
+    <None Include="Resources\Loading_XMAS.gif" />
+    <None Include="Resources\Loading_EasterBunny.gif" />
     <Content Include="terminalsicon.ico" />
     <Content Include="Update.ico" />
   </ItemGroup>

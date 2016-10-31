@@ -42,9 +42,9 @@ namespace TerminalsUpdater {
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(161, 216);
+            this.button1.Location = new System.Drawing.Point(156, 206);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(104, 23);
+            this.button1.Size = new System.Drawing.Size(111, 34);
             this.button1.TabIndex = 2;
             this.button1.Text = "&Cancel Update";
             this.button1.UseVisualStyleBackColor = true;
@@ -53,7 +53,7 @@ namespace TerminalsUpdater {
             // pictureBox1
             // 
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Image = global::TerminalsUpdater.Properties.Resources.Loading;
             this.pictureBox1.InitialImage = null;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";

@@ -13,8 +13,63 @@ namespace TerminalsUpdater
         public MainForm()
         {
             InitializeComponent();
+
+            // XMAS and advent
+            if (XmasImminent(DateTime.Now))
+            {
+                pictureBox1.Image = TerminalsUpdater.Properties.Resources.Loading_XMAS;
+                pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            }
+
+            // Easter
+            if (EasterImminent(DateTime.Now))
+            {
+                pictureBox1.Image = TerminalsUpdater.Properties.Resources.Loading_EasterBunny;
+                pictureBox1.SizeMode = PictureBoxSizeMode.Normal;
+                this.BackColor = System.Drawing.Color.LimeGreen;
+            }
         }
-        
+
+        private static bool XmasImminent(DateTime isXmasOrNot)
+        {
+            isXmasOrNot = new DateTime(DateTime.Now.Year, isXmasOrNot.Month, isXmasOrNot.Day);
+
+            bool xmasImminent = (new DateTime(DateTime.Now.Year, 12, 25) - isXmasOrNot).TotalDays <= 31;
+
+            return xmasImminent;
+        }
+
+        public static DateTime EasterSunday(int year)
+        {
+            int day = 0;
+            int month = 0;
+
+            int g = year % 19;
+            int c = year / 100;
+            int h = (c - (int)(c / 4) - (int)((8 * c + 13) / 25) + 19 * g + 15) % 30;
+            int i = h - (int)(h / 28) * (1 - (int)(h / 28) * (int)(29 / (h + 1)) * (int)((21 - g) / 11));
+
+            day = i - ((year + (int)(year / 4) + i + 2 - c + (int)(c / 4)) % 7) + 28;
+            month = 3;
+
+            if (day > 31)
+            {
+                month++;
+                day -= 31;
+            }
+
+            return new DateTime(year, month, day);
+        }
+
+        private static bool EasterImminent(DateTime isEasterOrNot)
+        {
+            isEasterOrNot = new DateTime(DateTime.Now.Year, isEasterOrNot.Month, isEasterOrNot.Day);
+
+            bool xmasImminent = (EasterSunday(DateTime.Now.Year+1) - isEasterOrNot).TotalDays <= 40;
+
+            return xmasImminent;
+        }
+
         private void Update(object state)
         {
             Log.Info("Starting update");
