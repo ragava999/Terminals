@@ -17,57 +17,52 @@ namespace TerminalsUpdater
             // XMAS and advent
             if (XmasImminent(DateTime.Now))
             {
-                pictureBox1.Image = TerminalsUpdater.Properties.Resources.Loading_XMAS;
+                pictureBox1.Image = Properties.Resources.Loading_XMAS;
                 pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             }
 
             // Easter
             if (EasterImminent(DateTime.Now))
             {
-                pictureBox1.Image = TerminalsUpdater.Properties.Resources.Loading_EasterBunny;
+                pictureBox1.Image = Properties.Resources.Loading_EasterBunny;
                 pictureBox1.SizeMode = PictureBoxSizeMode.Normal;
                 this.BackColor = System.Drawing.Color.LimeGreen;
             }
         }
 
-        private static bool XmasImminent(DateTime isXmasOrNot)
+        /// <summary>
+        /// Get the version of the updater
+        /// </summary>
+        private void PerformVersionDependentUpdate()
         {
-            isXmasOrNot = new DateTime(DateTime.Now.Year, isXmasOrNot.Month, isXmasOrNot.Day);
-
-            bool xmasImminent = (new DateTime(DateTime.Now.Year, 12, 25) - isXmasOrNot).TotalDays <= 31;
-
-            return xmasImminent;
-        }
-
-        public static DateTime EasterSunday(int year)
-        {
-            int day = 0;
-            int month = 0;
-
-            int g = year % 19;
-            int c = year / 100;
-            int h = (c - (int)(c / 4) - (int)((8 * c + 13) / 25) + 19 * g + 15) % 30;
-            int i = h - (int)(h / 28) * (1 - (int)(h / 28) * (int)(29 / (h + 1)) * (int)((21 - g) / 11));
-
-            day = i - ((year + (int)(year / 4) + i + 2 - c + (int)(c / 4)) % 7) + 28;
-            month = 3;
-
-            if (day > 31)
+            try
             {
-                month++;
-                day -= 31;
+                switch (System.Reflection.Assembly.LoadFrom(Path.Combine(Program.Args[1], "Terminals.exe")).GetName().Version.ToString())
+                {
+                    case "4.9.1.0":
+                        Version_4_9_1_0_to_4_9_X_X();
+                        break;
+                    default:
+                        Log.Info("No need to perform any version dependent update.");
+                        break;
+                }
             }
-
-            return new DateTime(year, month, day);
+            catch (Exception ex)
+            {
+                Log.Error("Unable to update perform version dependent update.", ex);
+            }
         }
-
-        private static bool EasterImminent(DateTime isEasterOrNot)
+        
+        private void Version_4_9_1_0_to_4_9_X_X()
         {
-            isEasterOrNot = new DateTime(DateTime.Now.Year, isEasterOrNot.Month, isEasterOrNot.Day);
-
-            bool xmasImminent = (EasterSunday(DateTime.Now.Year+1) - isEasterOrNot).TotalDays <= 40;
-
-            return xmasImminent;
+            try
+            {
+                // Your code here
+            }
+            catch (Exception ex)
+            {
+                Log.Error("An error occured while trying to update Terminals.", ex);
+            }
         }
 
         private void Update(object state)
@@ -83,13 +78,15 @@ namespace TerminalsUpdater
 	
 	            if (Directory.Exists(source))
 	            {
-	            	if (!Directory.Exists(destination))
+                    if (!Directory.Exists(destination))
 	            	{
 	            		Log.Error ("Unable to update Terminals, the destination directory " + destination + " doesn't exist");
 	            		Application.Exit();
 	            	}
-	            	
-	            	DirectoryInfo dir = new DirectoryInfo(source);
+
+                    PerformVersionDependentUpdate();
+
+                    DirectoryInfo dir = new DirectoryInfo(source);
 	
 		            foreach (FileInfo file in dir.GetFiles())
 		            {
@@ -111,7 +108,7 @@ namespace TerminalsUpdater
 		                	Log.Fatal("Unable to copy file " + file.Name);
 		                }
 		            }
-	            }
+                }
 	            else
 	            {
 	            	Log.Error ("Unable to update Terminals, the source directory " + source + " doesn't exist");
@@ -161,6 +158,46 @@ namespace TerminalsUpdater
         private void button1_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private static bool XmasImminent(DateTime isXmasOrNot)
+        {
+            isXmasOrNot = new DateTime(DateTime.Now.Year, isXmasOrNot.Month, isXmasOrNot.Day);
+
+            bool xmasImminent = (new DateTime(DateTime.Now.Year, 12, 25) - isXmasOrNot).TotalDays <= 31;
+
+            return xmasImminent;
+        }
+
+        private static DateTime EasterSunday(int year)
+        {
+            int day = 0;
+            int month = 0;
+
+            int g = year % 19;
+            int c = year / 100;
+            int h = (c - (int)(c / 4) - (int)((8 * c + 13) / 25) + 19 * g + 15) % 30;
+            int i = h - (int)(h / 28) * (1 - (int)(h / 28) * (int)(29 / (h + 1)) * (int)((21 - g) / 11));
+
+            day = i - ((year + (int)(year / 4) + i + 2 - c + (int)(c / 4)) % 7) + 28;
+            month = 3;
+
+            if (day > 31)
+            {
+                month++;
+                day -= 31;
+            }
+
+            return new DateTime(year, month, day);
+        }
+
+        private static bool EasterImminent(DateTime isEasterOrNot)
+        {
+            isEasterOrNot = new DateTime(DateTime.Now.Year, isEasterOrNot.Month, isEasterOrNot.Day);
+
+            bool xmasImminent = (EasterSunday(DateTime.Now.Year + 1) - isEasterOrNot).TotalDays <= 40;
+
+            return xmasImminent;
         }
     }
 }

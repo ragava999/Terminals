@@ -91,7 +91,7 @@ namespace Terminals.Updates
                     DateTime lastUpdate = DateTime.MinValue;
                     if (DateTime.TryParse(text, out lastUpdate))
                     {
-                        //dont run the update if the file is today or later..if we have checked today or not
+                        //don't run the update if the file is today or later .. if we have checked today or not
                         if (lastUpdate.Date >= DateTime.Now.Date)
                         {
                             Log.Debug("No need to check for a new Terminals release. The release has already been checked recently.");

@@ -3,9 +3,10 @@ using System.Windows.Forms;
 using Kohl.Framework.Info;
 using Kohl.Framework.Logging;
 
-namespace TerminalsUpdater {
-    static class Program {
-
+namespace TerminalsUpdater
+{
+    static class Program
+    {
         public static string[] Args;
 
         /// <summary>
@@ -26,11 +27,6 @@ namespace TerminalsUpdater {
             	Log.Fatal("Unable to update Terminals, incorrect number of command line arguments for " + AssemblyInfo.TitleVersion);
             	return;
             }
-            
-			/*
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-			*/
 
             Args = args;
 

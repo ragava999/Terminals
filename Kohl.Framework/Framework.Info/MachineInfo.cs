@@ -147,32 +147,7 @@ namespace Kohl.Framework.Info
                 return value;
             }
         }
-
-        public static string ExternalIp
-        {
-            get
-            {
-                string str;
-                try
-                {
-                    string str1 = (new WebClient()).DownloadString("http://ip.kohl.bz");
-                    if (string.IsNullOrEmpty(str1) || str1 == "unknown")
-                    {
-                        str = null;
-                    }
-                    else
-                    {
-                        str = str1;
-                    }
-                }
-                catch
-                {
-                    str = null;
-                }
-                return str;
-            }
-        }
-
+        
         public static string HardwareID
         {
             get
@@ -213,31 +188,6 @@ namespace Kohl.Framework.Info
                     dateTime = DateTime.MinValue;
                 }
                 return dateTime;
-            }
-        }
-
-        public static bool InternetConnection
-        {
-            get
-            {
-                bool flag;
-                try
-                {
-                    string str = (new WebClient()).DownloadString("http://services.kohl.bz/check.htm");
-                    if (!string.IsNullOrEmpty(str))
-                    {
-                        flag = (str != "1" ? false : true);
-                    }
-                    else
-                    {
-                        flag = false;
-                    }
-                }
-                catch
-                {
-                    flag = false;
-                }
-                return flag;
             }
         }
 
