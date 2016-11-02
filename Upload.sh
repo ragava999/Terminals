@@ -10,7 +10,7 @@ echo Grabbing GHR
 
 wget https://github.com/tcnksm/ghr/releases/download/v0.5.3/ghr_v0.5.3_linux_amd64.zip
 
-uzip ghr_v0.5.3_linux_amd64.zip -d .
+unzip ghr_v0.5.3_linux_amd64.zip -d .
 
 echo Finished downloading GHR. Progressing with the upload.
 
