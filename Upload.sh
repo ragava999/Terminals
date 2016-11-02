@@ -14,7 +14,9 @@ unzip ghr_v0.5.3_linux_amd64.zip -d .
 
 echo Finished downloading GHR. Progressing with the upload.
 
-ghr -t $GITHUB_TOKEN -u $CIRCLE_PROJECT_USERNAME -r $CIRCLE_PROJECT_REPONAME --replace $VERSION $ARTIFACTS
-ghr -t $GITHUB_TOKEN -u $CIRCLE_PROJECT_USERNAME -r $CIRCLE_PROJECT_REPONAME --replace $VERSION "/home/ubuntu/Terminals/Terminals.Setup/Output/"
+ls -altr
+
+./ghr -t $GITHUB_TOKEN -u $CIRCLE_PROJECT_USERNAME -r $CIRCLE_PROJECT_REPONAME --replace $VERSION $ARTIFACTS
+./ghr -t $GITHUB_TOKEN -u $CIRCLE_PROJECT_USERNAME -r $CIRCLE_PROJECT_REPONAME --replace $VERSION "/home/ubuntu/Terminals/Terminals.Setup/Output/"
 
 echo Uploads have been completed successfully.
