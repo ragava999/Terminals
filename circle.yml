@@ -46,7 +46,7 @@ dependencies:
     ######## SYNC CERTIFICATE STORE & DOWNLOAD NuGet PACKAGES ########
     - mozroots --import --sync
     - mono .nuget/NuGet.exe restore -NonInteractive Terminals.sln
-    - sudo chmod +x ./Release.sh
+    - sudo chmod +x ./Release.sh && sudo chmod +x ./Upload.sh
 
 ###############################
 
@@ -58,3 +58,4 @@ test:
     - cat /home/ubuntu/Terminals/Terminals/TerminalsBuildDate
     - xbuild /t:Rebuild /p:WarningLevel=0 /p:Configuration=Release /p:RunCodeAnalysis=false "Terminals.sln"
     - ./Release.sh
+    - ./Upload.sh
