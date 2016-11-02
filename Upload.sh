@@ -1,4 +1,7 @@
 #!/bin/bash
+VERSION=`cat /home/ubuntu/Terminals/Terminals/Properties/AssemblyInfo.cs | grep "AssemblyVersion (" | cut -d \" -f 2`
+ARTIFACTS="/home/ubuntu/Terminals/Terminals/bin/x86/Release/"
+
 ######## DOWNLOAD AND INVOKE "GHR" - a tool capable of uploading a release to GitHub
 
 echo Grabbing GHR
