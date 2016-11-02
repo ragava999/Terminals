@@ -14,7 +14,7 @@ The [official website](http://oliverkohldsc.github.io/Terminals) can be found [h
 
 ###Release v 4.9.1.0
 
-Date: 2016-10-17
+Date: 2016-11-02
 
 Added a more reliable way of detecting the build date of Terminals.exe (The 'AssemblyTimeStampAttribute' attribute has been implemented in the namespace 'Kohl.Framework.Info')
 
@@ -40,12 +40,33 @@ Improved Terminals.Configuration.Files.Main.Settings.Web by adding support for p
 
 Improved the Terminals.Updates.UpdateManager by enabling proxy support, added a more detailed level of logging and fixing some minor issues.
 
+Added a more reliable way of detecting the build date of Terminals.exe (The 'AssemblyTimeStampAttribute' attribute has been implemented in the namespace 'Kohl.Framework.Info')
+
+Internal stuff: Converted the build system to an ubuntu build system (CircleCI)
+
+Improved NuGet package dependencies
+
+Removed the unneeded upx, mpress and netz commands for binary optimization (Compression might force anti virus systems to report false positives)
+
+Deleted the oboslete tool chain needed for compilation on Windows
+
+Removed the old setup binaries
+
+Added missing DLLs to the Terminals' setup file.
+
+Improved sed switch for differentiating between Terminals.zip (AppDir\Logs\Terminals.log) and Terminals.exe (AppData...\Terminals.log) <- Check the log4net switch for setup.exe -> 'sed' replace seems to be not working -> DONE - works again now
+
+Solved unneeded compiler warnings
+
+Added the possibility to change the log level from inside the application
+
+Improved Terminals.Configuration.Files.Main.Settings.Web by adding support for proxy configuration
+
+Improved the Terminals.Updates.UpdateManager by enabling proxy support, added a more detailed level of logging and fixing some minor issues.
+
 Improved the option panel for the proxy configuration.
 
-Trying to get Terminals working under MacOSX
-   -> Folder detection has been improved.
-   -> Mac OS X version is now getting reported
-   -> Terminals starts without any error
+Trying to get Terminals working under MacOSX -> Folder detection has been improved. -> Mac OS X version is now getting reported -> Terminals starts without any error
 
 Import/Export features have been improved.
 
@@ -76,6 +97,36 @@ Fixed drag and drop for RPD and ICA.
 Upgraded to log4net 1.2.15.0
 
 Now NLA and TLS are enabled per default for new RDP connections.
+
+The following bugs have been solved:
+
+* https://github.com/OliverKohlDSc/Terminals/issues/26
+
+* https://github.com/OliverKohlDSc/Terminals/issues/23
+
+* https://github.com/OliverKohlDSc/Terminals/issues/22
+
+* https://github.com/OliverKohlDSc/Terminals/issues/21
+
+* https://github.com/OliverKohlDSc/Terminals/issues/20
+
+* https://github.com/OliverKohlDSc/Terminals/issues/19
+
+* https://github.com/OliverKohlDSc/Terminals/issues/17
+
+* https://github.com/OliverKohlDSc/Terminals/issues/16
+
+* https://github.com/OliverKohlDSc/Terminals/issues/9
+
+* https://github.com/OliverKohlDSc/Terminals/issues/8
+
+* https://github.com/OliverKohlDSc/Terminals/issues/5
+
+* https://github.com/OliverKohlDSc/Terminals/issues/4
+
+* https://github.com/OliverKohlDSc/Terminals/issues/3
+
+* https://github.com/OliverKohlDSc/Terminals/issues/1
 
 
 ###Release v 4.9.0.0
