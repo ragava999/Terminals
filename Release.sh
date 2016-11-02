@@ -127,6 +127,4 @@ rm -f *.exe
 rm -rf Plugins
 rm -rf "Radmin Viewer 3"
 
-./Upload.sh
-
 echo Done. Exiting script ...
