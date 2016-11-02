@@ -127,17 +127,6 @@ rm -f *.exe
 rm -rf Plugins
 rm -rf "Radmin Viewer 3"
 
-######## DOWNLOAD AND INVOKE "GHR" - a tool capable of uploading a release to GitHub
-
-echo Grabbing GHR
-
-go get -u -f -v github.com/tcnksm/ghr
-
-echo Finished downloading GHR. Progressing with the upload.
-
-ghr -t $GITHUB_TOKEN -u $CIRCLE_PROJECT_USERNAME -r $CIRCLE_PROJECT_REPONAME --replace $VERSION $ARTIFACTS
-ghr -t $GITHUB_TOKEN -u $CIRCLE_PROJECT_USERNAME -r $CIRCLE_PROJECT_REPONAME --replace $VERSION "/home/ubuntu/Terminals/Terminals.Setup/Output/"
-
-echo Uploads have been completed successfully.
+./Upload.sh
 
 echo Done. Exiting script ...
