@@ -131,7 +131,7 @@ rm -rf "Radmin Viewer 3"
 
 echo Grabbing GHR
 
-go get github.com/tcnksm/ghr
+go get -u -f -v github.com/tcnksm/ghr
 
 echo Finished downloading GHR. Progressing with the upload.
 
