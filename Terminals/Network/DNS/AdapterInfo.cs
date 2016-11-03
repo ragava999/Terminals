@@ -19,43 +19,43 @@ namespace Terminals.Network.DNS
 
             try
             {
-				if (!Kohl.Framework.Info.MachineInfo.IsUnixOrMac)
-				{
-					List<Adapter> adapters = GetAdapters();
-					dnsServers.AddRange(from a in adapters where a.IPEnabled where a.DNSServerSearchOrder != null from server in a.DNSServerSearchOrder select "Local: " + server);
-				}
+                if (!Kohl.Framework.Info.MachineInfo.IsUnixOrMac)
+                {
+                        List<Adapter> adapters = GetAdapters();
+                        dnsServers.AddRange(from a in adapters where a.IPEnabled where a.DNSServerSearchOrder != null from server in a.DNSServerSearchOrder select "Local: " + server);
+                }
 
                 /*
                  Free Public DNS Server
 
                 => Service provider: Google
                  Google public dns server IP address:
-                •8.8.8.8
-                •8.8.4.4
+                â€¢8.8.8.8
+                â€¢8.8.4.4
 
                 => Service provider:Dnsadvantage
                  Dnsadvantage free dns server list:
-                •156.154.70.1
-                •156.154.71.1
+                â€¢156.154.70.1
+                â€¢156.154.71.1
 
                 => Service provider:OpenDNS
                  OpenDNS free dns server list / IP address:
-                •208.67.222.222
-                •208.67.220.220
+                â€¢208.67.222.222
+                â€¢208.67.220.220
 
                 => Service provider:Norton
                  Norton free dns server list / IP address:
-                •198.153.192.1
-                •198.153.194.1
+                â€¢198.153.192.1
+                â€¢198.153.194.1
 
                 => Service provider: GTEI DNS (now Verizon)
                  Public Name server IP address:
-                •4.2.2.1
-                •4.2.2.2
-                •4.2.2.3
-                •4.2.2.4
-                •4.2.2.5
-                •4.2.2.6
+                â€¢4.2.2.1
+                â€¢4.2.2.2
+                â€¢4.2.2.3
+                â€¢4.2.2.4
+                â€¢4.2.2.5
+                â€¢4.2.2.6
                 */
 
                 dnsServers.Add("Google: 8.8.8.8");
@@ -73,16 +73,18 @@ namespace Terminals.Network.DNS
                 dnsServers.Add("Verizon: 4.2.2.5");
                 dnsServers.Add("Verizon: 4.2.2.6");
 
-                using (var forest = Forest.GetCurrentForest())
+                if (!Kohl.Framework.Info.MachineInfo.IsUnixOrMac)
                 {
-                    foreach (Domain domain in forest.Domains)
+                    using (var forest = Forest.GetCurrentForest())
                     {
+                        foreach (Domain domain in forest.Domains)
+                        {
                         try
                         {
                             // One domain controller per domain is fully enough
                             /*
                              foreach (DomainController dc in domain.DomainControllers)
-                                  dnsServers.Add("Domain Controller (" + domain.Name + "): " + dc.IPAddress);
+                              dnsServers.Add("Domain Controller (" + domain.Name + "): " + dc.IPAddress);
                             */
                             dnsServers.Add("Domain Controller (" + domain.Name + "): " + domain.DomainControllers[0].IPAddress);
                         }
@@ -93,6 +95,7 @@ namespace Terminals.Network.DNS
                         finally
                         {
                             domain.Dispose();
+                        }
                         }
                     }
                 }
