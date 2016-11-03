@@ -40,7 +40,7 @@ namespace TerminalsUpdater
                 switch (System.Reflection.Assembly.LoadFrom(Path.Combine(Program.Args[1], "Terminals.exe")).GetName().Version.ToString())
                 {
                     case "4.9.1.0":
-                        Version_4_9_1_0_to_4_9_X_X();
+                        Version_4_9_1_0_to_4_9_2_0();
                         break;
                     default:
                         Log.Info("No need to perform any version dependent update.");
@@ -53,7 +53,7 @@ namespace TerminalsUpdater
             }
         }
         
-        private void Version_4_9_1_0_to_4_9_X_X()
+        private void Version_4_9_1_0_to_4_9_2_0()
         {
             try
             {

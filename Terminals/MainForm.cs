@@ -650,8 +650,9 @@ namespace Terminals
 
             this.Text = AssemblyInfo.AboutText;
 
-            if (this.tcTerminals.Items.Count == 0)
-                this.fullScreenSwitch.FullScreen = false;
+            if (Settings.LetTerminalsAutomaticallyManageRevertFromFullScreenMode)
+                if (this.tcTerminals.Items.Count == 0)
+                    this.fullScreenSwitch.FullScreen = false;
         }
 
         public void RemoveTabPage(TabControlItem tabControlToRemove)
@@ -984,7 +985,7 @@ namespace Terminals
             Log.InsideMethod();
 
             // start creating the icons
-            this.rebuildShortcutsToolStripMenuItem_Click(null, null);
+            LoadSpecialCommands(false);
             Settings.SaveAndFinishDelayedUpdate();
         }
 
@@ -2154,9 +2155,18 @@ namespace Terminals
 
         private void rebuildShortcutsToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            LoadSpecialCommands(true);
+        }
+
+        private void LoadSpecialCommands(bool reload)
+        {
             Log.InsideMethod();
-            Settings.SpecialCommands.Clear();
-            Settings.SpecialCommands = SpecialCommandsWizard.LoadSpecialCommands();
+
+            if (Settings.SpecialCommands.Count == 0 || reload)
+            {
+                Settings.SpecialCommands.Clear();
+                Settings.SpecialCommands = SpecialCommandsWizard.LoadSpecialCommands();
+            }
 
             while (!this.Created)
             {

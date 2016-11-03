@@ -432,9 +432,9 @@ namespace Terminals.Forms.Controls
         {
             this.AddCommandMenuItems();
 
-            foreach (SpecialCommandConfigurationElement commad in Settings.SpecialCommands)
+            foreach (SpecialCommandConfigurationElement command in Settings.SpecialCommands)
             {
-                this.AddSpecialMenuItem(commad);
+                this.AddSpecialMenuItem(command);
             }
         }
 

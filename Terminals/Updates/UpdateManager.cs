@@ -137,7 +137,7 @@ namespace Terminals.Updates
 
                         //check the date the item was build (stored in TerminalsBuildDate), if not available check when it has been published (date in syndication feed).  
                         // If the build date is old than the feed date, then it's probably a new build!
-                        if (feedDate > AssemblyInfo.BuildDate)
+                        if (new Version(version) >= AssemblyInfo.Version && feedDate > AssemblyInfo.BuildDate)
                         {
                             Log.Debug("Release '" + title + "'(" + feedDate.ToString() + ") is newer than the currently installed Terminals version '" + AssemblyInfo.Version + "'(" + AssemblyInfo.BuildDate.ToString() + ").");
 

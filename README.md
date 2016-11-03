@@ -4,12 +4,25 @@ Terminals is a multi-tab terminal services and remote desktop client. Moreover T
 [![CircleCI](https://circleci.com/gh/OliverKohlDSc/Terminals.svg?style=svg)](https://circleci.com/gh/OliverKohlDSc/Terminals)
 
 Download the latest release:
-* [as a ZIP file](https://github.com/OliverKohlDSc/Terminals/releases/download/4.9.1.0/Terminals.zip) or
-* in form of an [installer/setup](https://github.com/OliverKohlDSc/Terminals/releases/download/4.9.1.0/Setup_Terminals.exe)
+* [as a ZIP file](https://github.com/OliverKohlDSc/Terminals/releases/download/4.9.2.0/Terminals.zip) or
+* in form of an [installer/setup](https://github.com/OliverKohlDSc/Terminals/releases/download/4.9.2.0/Setup_Terminals.exe)
 
 The [official website](http://oliverkohldsc.github.io/Terminals) can be found [here](http://oliverkohldsc.github.io/Terminals).
 
 [My personal website](http://www.kohl.bz)
+
+
+###Release v 4.9.2.0
+
+Date: 2016-11-30
+
+Fixed a minor bug, where an empty "Terminals.Configuration.dll.config" (i.e. without a db connection string) file caused the DB-TreeView to try loading favorites, which is not working of course.
+
+Improved the Terminals upgrade process to prevent "downgrading". i.e. if a Version 4.9.1 is discovered and we are using 4.9.2 Terminals would wrongly detect it as a "new release" -> new releases can only happen if github "VerionInfo" >= "VersionInfo" (might be that we release the same version with a different release date e.g. backport, update or critical bugfix)
+
+Fixed issue https://github.com/OliverKohlDSc/Terminals/issues/31: Closing the last connection in the Terminals full screen state reverts the full screen back to the normal mode. i.e. Terminals will now show the priviously hidden toolbars. To prevent this "feature", which in my opineon works as designed a new setting in the Terminals options has been implemented, which can now be set to false. (LetTerminalsAutomaticallyManageRevertFromFullScreenMode := true)
+
+The RDP and ICA default desktop share (Option: DefaultDesktopShare) for file copy operations on drag&drop has been defaulted to "\\%SERVER%\C$".
 
 
 ###Release v 4.9.1.0

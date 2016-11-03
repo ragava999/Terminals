@@ -183,6 +183,13 @@ namespace Terminals.Configuration.Files.Main
             set { this["showConfirmDialog"] = value; }
         }
 
+        [ConfigurationProperty("letTerminalsAutomaticallyManageRevertFromFullScreenMode", DefaultValue = true)]
+        public bool LetTerminalsAutomaticallyManageRevertFromFullScreenMode
+        {
+            get { return (bool)this["letTerminalsAutomaticallyManageRevertFromFullScreenMode"]; }
+            set { this["letTerminalsAutomaticallyManageRevertFromFullScreenMode"] = value; }
+        }
+
         [ConfigurationProperty("saveConnectionsOnClose")]
         public bool SaveConnectionsOnClose
         {
@@ -245,7 +252,7 @@ namespace Terminals.Configuration.Files.Main
             set { this["autoCaseTags"] = value; }
         }
 
-        [ConfigurationProperty("defaultDesktopShare")]
+        [ConfigurationProperty("defaultDesktopShare", DefaultValue =@"\\%SERVER%\C$")]
         public string DefaultDesktopShare
         {
             get { return (string) this["defaultDesktopShare"]; }

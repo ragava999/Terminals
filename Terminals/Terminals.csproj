@@ -874,6 +874,9 @@
       <SubType>Designer</SubType>
       <DependentUpon>OrganizeShortcuts.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Panels\OptionPanels\ConnectionsOptionPanel.resx">
+      <DependentUpon>ConnectionsOptionPanel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Panels\OptionPanels\CredentialStoreOptionPanel.resx">
       <DependentUpon>CredentialStoreOptionPanel.Designer.cs</DependentUpon>
     </EmbeddedResource>

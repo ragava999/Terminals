@@ -82,6 +82,22 @@ namespace Terminals.Connections
 
         public string Home { private get; set; }
 
+        /// <summary> 
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        [System.Diagnostics.DebuggerStepThrough()]
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+
+            base.Dispose(disposing);
+        }
+
+        [System.Diagnostics.DebuggerStepThrough()]
         public new void Dispose()
         {
             if (this.internetExplorer != null)

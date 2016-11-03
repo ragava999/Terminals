@@ -249,6 +249,17 @@ namespace Terminals.Configuration.Files.Main.Settings
             }
         }
 
+        public static bool LetTerminalsAutomaticallyManageRevertFromFullScreenMode
+        {
+            get { return GetSection().LetTerminalsAutomaticallyManageRevertFromFullScreenMode; }
+
+            set
+            {
+                GetSection().LetTerminalsAutomaticallyManageRevertFromFullScreenMode = value;
+                SaveImmediatelyIfRequested();
+            }
+        }
+
         public static bool SaveConnectionsOnClose
         {
             get { return GetSection().SaveConnectionsOnClose; }

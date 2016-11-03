@@ -11,6 +11,9 @@ namespace Terminals.Configuration.Sql
     		// Get the appSettings section
     		AppSettingsSection myDllConfigAppSettings = (AppSettingsSection)myDllConfig.GetSection("appSettings");
 
+            if (myDllConfigAppSettings.Settings[key] == null)
+                return null;
+
     		// return the desired field
 			return myDllConfigAppSettings.Settings[key].Value; 
     	}
@@ -18,10 +21,20 @@ namespace Terminals.Configuration.Sql
     	public static TerminalsObjectContext Create()
     	{
     		string connectionString = "metadata=res://*/;";
-    		
-    		try
+
+            try
     		{
-    			connectionString+= "provider=System.Data.SqlClient;provider connection string=\"" + GetConfigValue("TerminalsConnection") + "\"";
+                string connectionStringInConfigFile = GetConfigValue("TerminalsConnection");
+
+                if (string.IsNullOrWhiteSpace(connectionStringInConfigFile))
+                {
+                    // Configuration file has been ommitted, the config file entry is missing or the
+                    // value is null -> return null
+                    Kohl.Framework.Logging.Log.Warn("The connection to the terminals database will be ignored.");
+                    return null;
+                }
+
+                connectionString += "provider=System.Data.SqlClient;provider connection string=\"" + connectionStringInConfigFile + "\"";
     		}
     		catch
     		{

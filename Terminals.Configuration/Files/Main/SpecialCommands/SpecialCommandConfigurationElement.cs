@@ -61,7 +61,15 @@ namespace Terminals.Configuration.Files.Main.SpecialCommands
             }
             p.StartInfo = new ProcessStartInfo(exe, this.Arguments);
             p.StartInfo.WorkingDirectory = this.WorkingFolder;
-            p.Start();
+
+            try
+            {
+                p.Start();
+            }
+            catch (Exception ex)
+            {
+                Kohl.Framework.Logging.Log.Warn(ex.Message);
+            }
         }
     }
 }

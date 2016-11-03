@@ -15,6 +15,7 @@ namespace Terminals.Panels.OptionPanels
 
         public override void LoadSettings()
         {
+            this.chkLetTerminalsAutomaticallyManageRevertFromFullScreenMode.Checked = Settings.LetTerminalsAutomaticallyManageRevertFromFullScreenMode;
             this.validateServerNamesCheckbox.Checked = Settings.ForceComputerNamesAsURI;
             this.warnDisconnectCheckBox.Checked = Settings.WarnOnConnectionClose;
             this.txtDefaultDesktopShare.Text = Settings.DefaultDesktopShare;
@@ -24,6 +25,7 @@ namespace Terminals.Panels.OptionPanels
 
         public override void SaveSettings()
         {
+            Settings.LetTerminalsAutomaticallyManageRevertFromFullScreenMode = this.chkLetTerminalsAutomaticallyManageRevertFromFullScreenMode.Checked;
             Settings.ForceComputerNamesAsURI = this.validateServerNamesCheckbox.Checked;
             Settings.WarnOnConnectionClose = this.warnDisconnectCheckBox.Checked;
             Settings.DefaultDesktopShare = this.txtDefaultDesktopShare.Text;

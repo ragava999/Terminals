@@ -21,9 +21,9 @@ using Kohl.Framework.Info;
 //      Build Number
 //      Revision
 //
-[assembly: AssemblyVersion ("4.9.1.0")]
-[assembly: AssemblyFileVersion("4.9.1.0")]
-[assembly: AssemblyInformationalVersion("4.9.1 TESTING")]
+[assembly: AssemblyVersion ("4.9.2.0")]
+[assembly: AssemblyFileVersion("4.9.2.0")]
+[assembly: AssemblyInformationalVersion("4.9.2 TESTING")]
 [assembly: AssemblyTimeStampAttribute("30.08.2016 12:30:00")]
 /*
 AssemblyVersion

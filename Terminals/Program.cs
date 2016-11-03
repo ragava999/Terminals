@@ -12,6 +12,7 @@
     using System.Runtime.InteropServices;
     using System.Threading;
     using System.Windows.Forms;
+    using Updates;
 
     static class Program
     {
@@ -253,7 +254,7 @@
             }
 
             // Upgrade the configuration file if necessary
-            //UpdateConfig.CheckConfigVersionUpdate();
+            UpdateConfig.CheckConfigVersionUpdate();
 
             Application.ThreadException += Application_ThreadException;
 
@@ -271,8 +272,6 @@
                 LogTerminalsStopped();
                 return;
             }
-
-            // UpdateManager.CheckForUpdates(commandLine);
 
             // Log the company name, current windows user, machine domain, etc.
             LogGeneralProperties();

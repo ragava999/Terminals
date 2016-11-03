@@ -21,8 +21,8 @@ namespace Terminals.Configuration
 		// https://github.com/OliverKohlDSc/Terminals/releases.atom
 		public const string GitHubReleasesFeed = "https://github.com/OliverKohlDSc/Terminals/releases.atom";
 		
-		// https://github.com/OliverKohlDSc/Terminals/releases/tag/4.9.1.0
-	    // https://github.com/OliverKohlDSc/Terminals/releases/download/4.9.1.0/Terminals.zip
+		// https://github.com/OliverKohlDSc/Terminals/releases/tag/4.9.2.0
+	    // https://github.com/OliverKohlDSc/Terminals/releases/download/4.9.2.0/Terminals.zip
 		public const string GitHubLatestRelease_Binary = "https://github.com/OliverKohlDSc/Terminals/releases/download/{0}/Terminals.zip";
 	}
 }
