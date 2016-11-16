@@ -119,6 +119,14 @@ namespace Terminals.Updates
                     // check all of the releases
                     foreach (SyndicationItem item in feed.Items)
                     {
+                        // Don't check this release - it's deprecated
+                        if (item.Title.Text.ToUpperInvariant().Contains("DEPRECATED"))
+                            continue;
+
+                        // Don't check this release - it's broken
+                        if (item.Title.Text.ToUpperInvariant().Contains("BROKEN"))
+                            continue;
+
                         string title = item.Title.Text;
                         string version = title.Replace("Terminals", "").Trim();
                         DateTimeOffset feedDate = item.LastUpdatedTime;
@@ -139,6 +147,12 @@ namespace Terminals.Updates
                         // If the build date is old than the feed date, then it's probably a new build!
                         if (new Version(version) >= AssemblyInfo.Version && feedDate > AssemblyInfo.BuildDate)
                         {
+                            dynamic content = item.Content;
+
+                            // Skip prereleases if we aren't already on a prerelease of the same version
+                            if (AssemblyInfo.Version < new Version(version) && content.Text.ToLowerInvariant().Contains("this is just a preview"))
+                                continue;
+
                             Log.Debug("Release '" + title + "'(" + feedDate.ToString() + ") is newer than the currently installed Terminals version '" + AssemblyInfo.Version + "'(" + AssemblyInfo.BuildDate.ToString() + ").");
 
                             FormsExtensions.InvokeIfNecessary(Invoker, () => { MainForm.ReleaseAvailable = true; MainForm.ReleaseDescription = title; });
