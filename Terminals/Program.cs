@@ -66,8 +66,15 @@
 
             Log.Info(String.Format("-------------------------------{0} started. Version: {1}, Date: {2}-------------------------------", AssemblyInfo.Title, AssemblyInfo.Version, AssemblyInfo.BuildDate));
 
-            new Thread(() => { Network.DNS.AdapterInfo.LoadDnsServers(); }).Start();
-
+            try
+            {
+            	new Thread(() => { Network.DNS.AdapterInfo.LoadDnsServers(); }).Start();
+            }
+            catch
+            {
+            	Log.Debug("Error caching DNS servers");
+            }
+            
             string[] cmdLineArgs = Environment.GetCommandLineArgs();
 
             #region Command line

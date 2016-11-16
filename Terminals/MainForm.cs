@@ -2212,12 +2212,27 @@ namespace Terminals
                     }
             }
 
-            if (MachineInfo.IsMac)
-                lastOpenLogFileProcessId = Process.Start("open", "-a TextEdit " + Log.CurrentLogFile).Id;
-            else
-                lastOpenLogFileProcessId = Process.Start("notepad.exe", Log.CurrentLogFile).Id;
-
-            Log.Info("Notepad has been started containing the current log file.");
+            try
+            {
+            	if (!File.Exists(Log.CurrentLogFile))
+            	{
+	            	Log.Warn("No log file has been found. Please check you log4net settings in *.log4net file.");
+	            	MessageBox.Show("No log file has been found. Please check you log4net settings in *.log4net file.", "Ups ...", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+	            	return;
+        		}
+            	
+	            if (MachineInfo.IsMac)
+	                lastOpenLogFileProcessId = Process.Start("open", "-a TextEdit " + Log.CurrentLogFile).Id;
+	            else
+	                lastOpenLogFileProcessId = Process.Start("notepad.exe", Log.CurrentLogFile).Id;
+	
+	            Log.Info("Notepad has been started containing the current log file.");
+            }
+            catch (Exception ex)
+            {
+            	Log.Warn("Unalbe to display your log file.", ex);
+            	MessageBox.Show("Unalbe to display your log file.", "Ups ...", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
         private void splitContainer1_SplitterMoved(object sender, SplitterEventArgs e)

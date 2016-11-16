@@ -63,10 +63,8 @@ namespace Terminals.Connection
         public abstract bool Connect();
         public virtual void Disconnect()
         {
-        	if (Disconnected != null)
-        		Disconnected.Invoke();
-        	
-            //Disconnected?.Invoke();
+        	// C# 6.0 - if you get errors install ms build 2013 + ms build 2015, update your SharpDevelop to at least 5.2.0 beta
+            Disconnected?.Invoke();
         }
         #endregion
 

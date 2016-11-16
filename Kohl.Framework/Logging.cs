@@ -105,12 +105,20 @@ namespace Kohl.Framework.Logging
         {
             get
             {
-                string file = CurrentLogFile;
-
-                if (string.IsNullOrEmpty(file))
-                    return AssemblyInfo.DirectoryConfigFiles;
-
-                return Path.GetDirectoryName(file);
+            	try
+            	{
+	                string file = CurrentLogFile;
+	
+	                if (string.IsNullOrEmpty(file))
+	                    return AssemblyInfo.DirectoryConfigFiles;
+	
+	                return Path.GetDirectoryName(file);
+            	}
+            	catch
+            	{
+            		// might occur if a *.log4net file has been found and if it contains no or invalid content
+            		return string.Empty;
+            	}
             }
         }
 
@@ -136,6 +144,10 @@ namespace Kohl.Framework.Logging
         {
             get
             {
+        		// might occur if a *.log4net file has been found and if it contains no or invalid content
+        		if (GetRootAppender == null)
+        			return Path.Combine(Path.Combine(AssemblyInfo.DirectoryConfigFiles, "Logs"), AssemblyInfo.Title + ".log");
+        		
                 string file = GetRootAppenderFileName;
 
                 if (MachineInfo.IsUnixOrMac && file.Contains("\\\\"))
