@@ -1143,3 +1143,4 @@ VncSharp/bin/
 VncSharp/obj/
 ZedGraph 5.1 (.net 2)/source/bin/
 ZedGraph 5.1 (.net 2)/source/obj/
+/DLLs/xulrunner-29.0.en-US.win32/xulrunner/*.chk
