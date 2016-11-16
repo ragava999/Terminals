@@ -398,7 +398,7 @@ namespace Terminals.Connection.Manager
                     conn.BringToFront();
                     conn.Update();
                 }
-                
+                                
                 if (parentForm.InvokeRequired)
                     parentForm.Invoke(new MethodInvoker(delegate
                     {
@@ -416,6 +416,7 @@ namespace Terminals.Connection.Manager
                 }
 
                 conn.AfterConnectPlugins();
+                conn.Focus();
             }
             else
             {

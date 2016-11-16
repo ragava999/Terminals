@@ -227,6 +227,8 @@ namespace Terminals.Connection.TabControl
                 conn.Update();
 
                 this.mainForm.UpdateControls();
+                
+                conn.Focus();
             }
             catch (Exception exc)
             {

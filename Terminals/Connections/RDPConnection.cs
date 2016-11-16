@@ -401,7 +401,7 @@ namespace Terminals.Connections
                     {
                         this.ChangeDesktopSize();
                     });
-
+                
                 return true;
             }
             catch (Exception exc)
@@ -430,17 +430,47 @@ namespace Terminals.Connections
             return true;
         }
 
-        public new bool Focus()
+        /// <summary>
+        /// This code is needed to circumvent a 10-year-old bug in the rdp control which prevents us from setting the focus
+        /// There's a different solution which makes use of WndProc, but the problem is that the WndProc on event 23 is not
+        /// thread safe and disables mouse wheel scrolling, drag and drop and window moving in the RDP session itself.
+        /// </summary>
+        public override bool Focus()
         {
             try
             {
-                base.Focus();
-                reconecting.Focus();
-
+                bool focus = base.Focus();
+      
+				// Splitter
+				if (this.TerminalTabPage.Parent != null)
+					this.TerminalTabPage.InvokeIfNecessary(() => this.TerminalTabPage.Parent.Parent.Focus());
+				
+				// TabControl
+				if (this.TerminalTabPage.Parent != null && this.TerminalTabPage.Parent.Parent != null)
+					this.TerminalTabPage.InvokeIfNecessary(() => this.TerminalTabPage.Parent.Focus());
+				
+				// TabPage
+				this.TerminalTabPage.InvokeIfNecessary(() => this.TerminalTabPage.Focus());
+				
+				// Reconnection Control
+                this.reconecting.InvokeIfNecessary(() => this.reconecting.Focus());
+                
+                this.TerminalTabPage.InvokeIfNecessary(() => this.TerminalTabPage.Select());
+                
                 if (this.client == null)
                     return false;
 
-                return base.Focus() && ((Control)this.client).Focus();
+                this.client.InvokeIfNecessary(() => ((Control)this.client).Focus());
+                
+                IOleWindow oleWindow = (IOleWindow)this.client.GetOcx();
+                IntPtr hWnd = IntPtr.Zero;
+                
+                if (oleWindow.GetWindow(out hWnd) == 0 && hWnd != IntPtr.Zero)
+                {
+                	SetFocus(hWnd);
+                }
+                
+                return focus;
             }
             catch (Exception ex)
             {
@@ -448,6 +478,16 @@ namespace Terminals.Connections
                 return false;
             }
         }
+        
+         [ComImport, InterfaceType(ComInterfaceType.InterfaceIsIUnknown), Guid("00000114-0000-0000-C000-000000000046")]
+	    interface IOleWindow {
+	        [PreserveSig]
+	        int GetWindow(out IntPtr hwnd);
+	        void ContextSensitiveHelp(int fEnterMode);
+	    }
+	   
+[DllImport("user32.dll", SetLastError = true)]
+static extern IntPtr SetFocus(IntPtr hWnd);
 
         private static readonly object lock_controlcreation = new object();
 
@@ -578,6 +618,7 @@ namespace Terminals.Connections
                 Log.Error("Error trying to set the desktop dimensions.", ex);
             }
         }
+               
 
         private void ConfigureColorsDepth()
         {
@@ -916,6 +957,16 @@ namespace Terminals.Connections
         {
             if (this.OnConnected != null)
                 this.OnConnected(this);
+            
+	        // This code is needed to circumvent a 10-year-old bug in the rdp control which prevents us from setting the focus
+	        // There's a different solution which makes use of WndProc, but the problem is that the WndProc on event 23 is not
+	        // thread safe and disables mouse wheel scrolling, drag and drop and window moving in the RDP session itself.
+			if (this.ParentForm.InvokeRequired)
+				this.ParentForm.Invoke(new Action(() => this.ParentForm.SetGrabInput(true)));
+			else
+				this.ParentForm.SetGrabInput(true);
+			
+			this.Focus();
         }
 
         private void client_DragDrop(object sender, DragEventArgs e)

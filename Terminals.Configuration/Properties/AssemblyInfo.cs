@@ -32,9 +32,9 @@ using System.Runtime.InteropServices;
 //      Revision
 //
 
-[assembly: AssemblyVersion("2.9.1.0")]
-[assembly: AssemblyFileVersion("2.9.1.0")]
-[assembly: AssemblyInformationalVersion("2.9.1 RTM")]
+[assembly: AssemblyVersion("4.9.2.0")]
+[assembly: AssemblyFileVersion("4.9.2.0")]
+[assembly: AssemblyInformationalVersion("4.9.2 RTM")]
 
 /*
 AssemblyVersion

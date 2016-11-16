@@ -885,7 +885,7 @@ namespace Terminals
             this.addTerminalToGroupToolStripMenuItem.DropDownItems.Add(groupAddToolStripMenuItem);
         }
 
-        private void SetGrabInput(Boolean grab)
+        public void SetGrabInput(bool grab)
         {
             Log.InsideMethod();
 

@@ -16,6 +16,7 @@ namespace Terminals.Connection.Panels.OptionPanels
         #endregion
 
         #region Methods (6)
+        void SetGrabInput(bool grab);
         void DetachTabToNewWindow(TerminalTabControlItem tabControlToOpen);
         object Invoke(System.Delegate method);
         void RemoveTabPage(TabControlItem tabControlToRemove);

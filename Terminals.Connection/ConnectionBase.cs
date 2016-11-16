@@ -50,6 +50,11 @@ namespace Terminals.Connection
         }
         #endregion
 
+        new public virtual bool Focus()
+        {
+        	return base.Focus();
+        }
+        
         #region Public Abstract Properties (1)
         public abstract bool Connected { get; }
         #endregion
@@ -58,7 +63,10 @@ namespace Terminals.Connection
         public abstract bool Connect();
         public virtual void Disconnect()
         {
-            Disconnected?.Invoke();
+        	if (Disconnected != null)
+        		Disconnected.Invoke();
+        	
+            //Disconnected?.Invoke();
         }
         #endregion
 

@@ -52,6 +52,14 @@ namespace Terminals.Connections
         {
         }
 
+		public override bool Focus()
+		{
+			bool focus = base.Focus();
+			this.TerminalTabPage.InvokeIfNecessary(() => this.TerminalTabPage.Focus());
+			this.browser.InvokeIfNecessary(() => this.browser.Focus());
+			return focus;
+		}
+        
         public override bool Connect()
         {
             this.connected = false;
