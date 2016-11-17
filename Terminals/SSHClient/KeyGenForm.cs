@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Windows.Forms;
-using Granados.PKI;
 
 namespace Terminals.SSHClient
 {
@@ -8,7 +7,7 @@ namespace Terminals.SSHClient
     {
         private String _OpenSSHstring;
         private bool _gotKey;
-        private SSH2UserAuthKey _key;
+        private string _key;
         private MouseEventHandler _mmhandler;
 
         public KeyGenForm()
@@ -34,7 +33,7 @@ namespace Terminals.SSHClient
             set { this.textBoxTag.Text = value; }
         }
 
-        public SSH2UserAuthKey Key
+        public string Key
         {
             get { return this._key; }
         }
@@ -46,8 +45,8 @@ namespace Terminals.SSHClient
 
         private void buttonGenerate_Click(object sender, EventArgs e)
         {
-            PublicKeyAlgorithm algorithm;
-            algorithm = this.algorithmBox.Text == "RSA" ? PublicKeyAlgorithm.RSA : PublicKeyAlgorithm.DSA;
+            //PublicKeyAlgorithm algorithm;
+            //algorithm = this.algorithmBox.Text == "RSA" ? PublicKeyAlgorithm.RSA : PublicKeyAlgorithm.DSA;
             this.labelfingerprint.Hide();
             this.labelpublicKey.Hide();
             this.labelTag.Hide();
@@ -59,10 +58,10 @@ namespace Terminals.SSHClient
             this._gotKey = false;
             this._key = null;
             this._OpenSSHstring = "";
-            KeyGenThread t = new KeyGenThread(this, algorithm, Int32.Parse(this.bitCountBox.Text));
-            this._mmhandler = t.OnMouseMove;
+            //KeyGenThread t = new KeyGenThread(this, algorithm, Int32.Parse(this.bitCountBox.Text));
+            //this._mmhandler = t.OnMouseMove;
             this.progressBarGenerate.MouseMove += this._mmhandler;
-            t.Start();
+            //t.Start();
         }
 
         private void buttonCancel_Click(object sender, EventArgs e)
@@ -73,7 +72,6 @@ namespace Terminals.SSHClient
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
-            //Terminals.Configuration.Settings.Settings.AddSSHKey(textBoxTag.Text,_key);
             this.Close();
         }
 
@@ -87,17 +85,14 @@ namespace Terminals.SSHClient
 
         private void showKey()
         {
-            this._OpenSSHstring = this._key.PublicPartInOpenSSHStyle();
-            String alg;
-            alg = this._key.Algorithm == PublicKeyAlgorithm.DSA ? "dsa" : "rsa";
+        	this._OpenSSHstring = this._key; //.PublicPartInOpenSSHStyle();
+            String alg = "";
+            //alg = this._key.Algorithm == PublicKeyAlgorithm.DSA ? "dsa" : "rsa";
             DateTime n = DateTime.Now;
             String comment = alg + "-key-" + n.ToString("yyyyMMdd");
             this.labelpublicKey.Show();
             this.publicKeyBox.Text = this._OpenSSHstring + " " + this.textBoxTag.Text;
             this.publicKeyBox.Show();
-            //labelfingerprint.Show();
-            //fingerprintBox.Text = _key.
-            //fingerprintBox.Show();
             this.labelTag.Show();
             this.textBoxTag.Show();
             this.textBoxTag.Text = comment;
@@ -117,7 +112,7 @@ namespace Terminals.SSHClient
             }
         }
 
-        public void SetResultKey(SSH2UserAuthKey k)
+        public void SetResultKey(string k)
         {
             this._key = k;
         }

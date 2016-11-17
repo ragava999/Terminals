@@ -1,6 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
+# Visual Studio 2012
+# SharpDevelop 5.2
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{C6FE383B-88F4-4801-9791-F3EB667D768E}"
@@ -20,8 +21,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Terminals", "Terminals\Term
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Metro", "Metro\Metro.csproj", "{4F3A4024-5A19-4F08-823A-B75D6AFE5CD8}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Granados", "Granados\Granados.csproj", "{9780D85D-2E12-4747-9E08-DEDB95A71FC3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TerminalEmulator", "TerminalEmulator\TerminalEmulator.csproj", "{933C6FDB-9617-4F19-89AF-C5D373F88479}"
 EndProject
@@ -85,14 +84,6 @@ Global
 		{4F3A4024-5A19-4F08-823A-B75D6AFE5CD8}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4F3A4024-5A19-4F08-823A-B75D6AFE5CD8}.Release|x86.ActiveCfg = Release|x86
 		{4F3A4024-5A19-4F08-823A-B75D6AFE5CD8}.Release|x86.Build.0 = Release|x86
-		{9780D85D-2E12-4747-9E08-DEDB95A71FC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9780D85D-2E12-4747-9E08-DEDB95A71FC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9780D85D-2E12-4747-9E08-DEDB95A71FC3}.Debug|x86.ActiveCfg = Debug|x86
-		{9780D85D-2E12-4747-9E08-DEDB95A71FC3}.Debug|x86.Build.0 = Debug|x86
-		{9780D85D-2E12-4747-9E08-DEDB95A71FC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9780D85D-2E12-4747-9E08-DEDB95A71FC3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9780D85D-2E12-4747-9E08-DEDB95A71FC3}.Release|x86.ActiveCfg = Release|x86
-		{9780D85D-2E12-4747-9E08-DEDB95A71FC3}.Release|x86.Build.0 = Release|x86
 		{933C6FDB-9617-4F19-89AF-C5D373F88479}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{933C6FDB-9617-4F19-89AF-C5D373F88479}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{933C6FDB-9617-4F19-89AF-C5D373F88479}.Debug|x86.ActiveCfg = Debug|x86

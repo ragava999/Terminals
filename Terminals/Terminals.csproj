@@ -133,6 +133,9 @@
       <HintPath>..\DLLs\VMRC\Microsoft.VMRCClientControl.Interop.dll</HintPath>
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
+    <Reference Include="Renci.SshNet">
+      <HintPath>..\packages\SSH.NET.2016.0.0\lib\net40\Renci.SshNet.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -620,7 +623,6 @@
       <DependentUpon>QuickConnect.cs</DependentUpon>
     </Compile>
     <Compile Include="TerminalServices\SessionInfo.cs" />
-    <Compile Include="SSHClient\KeyGenThread.cs" />
     <Compile Include="SSHClient\KeyChooser.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -639,9 +641,6 @@
     <Compile Include="SSHClient\Preferences.Designer.cs">
       <DependentUpon>Preferences.cs</DependentUpon>
     </Compile>
-    <Compile Include="SSHClient\Protocol.cs" />
-    <Compile Include="SSHClient\SSH2UserAuthKey.cs" />
-    <Compile Include="SSHClient\SShTraceLissener.cs" />
     <Compile Include="Updates\Web.cs" />
     <Compile Include="Updates\UpdateManager.cs" />
     <Compile Include="Updates\UpdateConfig.cs" />
@@ -935,6 +934,7 @@
     <None Include="..\Terminals.Setup\Terminals.iss">
       <Link>Terminals.iss</Link>
     </None>
+    <None Include="packages.config" />
     <None Include="TerminalServices\WTSApi32.cs" />
     <EmbeddedResource Include="Forms\Controls\HistoryTreeView.resx">
       <DependentUpon>HistoryTreeView.cs</DependentUpon>
@@ -1006,10 +1006,6 @@
     <ProjectReference Include="..\ExplorerBrowser\ExplorerBrowser.csproj">
       <Project>{2AACFF7E-F4B1-44F6-92C6-20ACBB647A4D}</Project>
       <Name>ExplorerBrowser</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Granados\Granados.csproj">
-      <Project>{9780D85D-2E12-4747-9E08-DEDB95A71FC3}</Project>
-      <Name>Granados</Name>
     </ProjectReference>
     <ProjectReference Include="..\Kohl.Framework\Kohl.Framework.csproj">
       <Project>{2E4E3508-2275-4A32-9A0D-9A95B134407B}</Project>

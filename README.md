@@ -24,6 +24,8 @@ Fixed issue https://github.com/OliverKohlDSc/Terminals/issues/31: Closing the la
 
 The RDP and ICA default desktop share (Option: DefaultDesktopShare) for file copy operations on drag&drop has been defaulted to "\\%SERVER%\C$".
 
+Removed the obsolete "Granados" library from 2006 and replaced it with SSH.NET library (renci.sshnet).
+
 
 ###Release v 4.9.1.0
 

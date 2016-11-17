@@ -1144,3 +1144,20 @@ VncSharp/obj/
 ZedGraph 5.1 (.net 2)/source/bin/
 ZedGraph 5.1 (.net 2)/source/obj/
 /DLLs/xulrunner-29.0.en-US.win32/xulrunner/*.chk
+/packages/SSH.NET.2016.0.0/SSH.NET.2016.0.0.nupkg
+/packages/SSH.NET.2016.0.0/lib/net35/Renci.SshNet.dll
+/packages/SSH.NET.2016.0.0/lib/net35/Renci.SshNet.xml
+/packages/SSH.NET.2016.0.0/lib/net40/Renci.SshNet.dll
+/packages/SSH.NET.2016.0.0/lib/net40/Renci.SshNet.xml
+/packages/SSH.NET.2016.0.0/lib/netstandard1.3/Renci.SshNet.dll
+/packages/SSH.NET.2016.0.0/lib/netstandard1.3/Renci.SshNet.xml
+/packages/SSH.NET.2016.0.0/lib/sl4/Renci.SshNet.dll
+/packages/SSH.NET.2016.0.0/lib/sl4/Renci.SshNet.xml
+/packages/SSH.NET.2016.0.0/lib/sl5/Renci.SshNet.dll
+/packages/SSH.NET.2016.0.0/lib/sl5/Renci.SshNet.xml
+/packages/SSH.NET.2016.0.0/lib/uap10/Renci.SshNet.dll
+/packages/SSH.NET.2016.0.0/lib/uap10/Renci.SshNet.xml
+/packages/SSH.NET.2016.0.0/lib/wp71/Renci.SshNet.dll
+/packages/SSH.NET.2016.0.0/lib/wp71/Renci.SshNet.xml
+/packages/SSH.NET.2016.0.0/lib/wp8/Renci.SshNet.dll
+/packages/SSH.NET.2016.0.0/lib/wp8/Renci.SshNet.xml

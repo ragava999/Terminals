@@ -108,7 +108,7 @@ namespace Terminals.SSHClient
                 }
                 else
                 {
-                    this.keysSection.AddKey(tag, dlg.Key.toBase64String());
+                	this.keysSection.AddKey(tag, dlg.Key); //dlg.Key.toBase64String());
                     this.comboBoxKey.Items.Add(tag);
                     this.comboBoxKey.SelectedIndex = this.comboBoxKey.FindString(tag);
                 }
@@ -126,8 +126,8 @@ namespace Terminals.SSHClient
         {
             string tag = (string)this.comboBoxKey.SelectedItem;
             string keytext = this.keysSection.Keys[tag].Key;
-            SSH2UserAuthKey key = SSH2UserAuthKey.FromBase64String(keytext);
-            this.openSSHTextBox.Text = key.PublicPartInOpenSSHStyle() + " " + tag;
+            //SSH2UserAuthKey key = SSH2UserAuthKey.FromBase64String(keytext);
+            //this.openSSHTextBox.Text = key.PublicPartInOpenSSHStyle() + " " + tag;
         }
 
         private void ButtonSSH1CheckedChanged(object sender, EventArgs e)

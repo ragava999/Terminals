@@ -1,3 +1,6 @@
+using System.IO;
+using System.Text;
+using System.Threading;
 using Kohl.Framework.Converters;
 using Kohl.Framework.Logging;
 using System;
@@ -5,20 +8,17 @@ using System.Drawing;
 using System.Net.Sockets;
 using System.Windows.Forms;
 using Terminals.Configuration.Files.Main.Favorites;
-using Terminals.Configuration.Files.Main.Keys;
-using Terminals.Configuration.Files.Main.Settings;
 using Terminals.Connection.Manager;
 using Terminals.Properties;
-using Terminals.SSHClient;
 using WalburySoftware;
+using Renci.SshNet;
 
 namespace Terminals.Connections
 {
     public class TerminalConnection : Connection.Connection
     {
-        private Socket client;
+        private dynamic client;
         private Boolean connected;
-        private Protocol sshProtocol;
         private TerminalEmulator term;
 
         protected override Image[] images
@@ -73,9 +73,6 @@ namespace Terminals.Connections
                 this.term.Rows = this.Favorite.ConsoleRows;
                 this.term.Columns = this.Favorite.ConsoleCols;
 
-                this.client = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-                this.client.Connect(this.Favorite.ServerName, this.Favorite.Port);
-
                 if (!this.Favorite.Credential.IsSetUserName || !this.Favorite.Credential.IsSetPassword)
                 {
                     Log.Fatal(string.Format("Please set user name and password in your {0} connection properties.", this.Favorite.Protocol.ToLower()));
@@ -107,10 +104,13 @@ namespace Terminals.Connections
 
         private void ConfigureTelnetConnection(string userName, string password)
         {
+            this.client = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+            this.client.Connect(this.Favorite.ServerName, this.Favorite.Port);
+
             TcpProtocol tcpProtocol = new TcpProtocol(new NetworkStream(this.client));
             TelnetProtocol p = new TelnetProtocol();
             tcpProtocol.OnDataIndicated += p.IndicateData;
-            tcpProtocol.OnDisconnect += this.OnDisconnected;
+            tcpProtocol.OnDisconnect += this.OnConnectionLost;
             p.TerminalType = this.term.TerminalType;
             p.Username = userName;
             p.Password = password;
@@ -122,36 +122,43 @@ namespace Terminals.Connections
 
         private void ConfigureSshConnection(string userName, string password)
         {
-            this.sshProtocol = new Protocol();
-            this.sshProtocol.setTerminalParams(this.term.TerminalType, this.term.Rows, this.term.Columns);
-            this.sshProtocol.OnDataIndicated += this.term.IndicateData;
-            this.sshProtocol.OnDisconnect += this.OnDisconnected;
-            this.term.OnDataRequested += this.sshProtocol.RequestData;
+        	SshClient client = new SshClient(this.Favorite.ServerName, this.Favorite.Port, userName, password);
 
-            String key = String.Empty;
+        	client.Connect();
+        	
+        	System.Collections.Generic.IDictionary<Renci.SshNet.Common.TerminalModes, uint> termkvp = new System.Collections.Generic.Dictionary<Renci.SshNet.Common.TerminalModes, uint>();
+            //termkvp.Add(Renci.SshNet.Common.TerminalModes.ECHO, 53);
 
-            KeyConfigElement keyConfigElement = Settings.SSHKeys.Keys[this.Favorite.KeyTag];
+            ShellStream shellStream = client.CreateShellStream("xterm", 80,24, 800, 600, 1024, termkvp);
 
-            if (keyConfigElement != null)
-                key = keyConfigElement.Key;
+            // Send the output from the ssh session to the terminal
+            shellStream.DataReceived += (object sender, Renci.SshNet.Common.ShellDataEventArgs e) => this.term.IndicateData(e.Data);
 
-            this.sshProtocol.setProtocolParams(this.Favorite.AuthMethod, userName, password, key, this.Favorite.Ssh1);
-
-            this.sshProtocol.Connect(this.client);
-            this.connected = true; // SSH will throw if fails
+        	// Send the keys from the terminal emulator to the ssh protocol
+        	this.term.OnDataRequested += (byte[] data) => WriteStream(/*ConvertByteToString(*/data/*)*/, shellStream);
+            
+        	this.connected = true;
         }
-
-        private void OnDisconnected()
+		
+		private static void WriteStream(byte[] cmd, ShellStream stream)
+		{
+		    var writer = new StreamWriter(stream, Encoding.Default);
+		    writer.AutoFlush = true;
+		     
+	    	writer.Write(Encoding.Default.GetString(cmd).ToCharArray());
+		    
+		    while (stream.Length == 0)
+		        Thread.Sleep(50);
+		}
+		
+        private void OnConnectionLost()
         {
             if (!connected)
                 return;
 
-            Log.Fatal(String.Format("{0} connection \"{1}\" has been lost.",
-                                    this.Favorite.Protocol, this.Favorite.Name));
-            this.connected = false;
-            this.CloseTabPage();
-
-            InvokeIfNecessary(() => base.Disconnect());
+            Log.Fatal(String.Format("{0} connection \"{1}\" has been lost.", this.Favorite.Protocol, this.Favorite.Name));
+            
+            Disconnect();
         }
 
         public override void Disconnect()
@@ -160,9 +167,19 @@ namespace Terminals.Connections
 
             try
             {
-                this.client.Close();
-                if (this.sshProtocol != null)
-                    this.sshProtocol.OnConnectionClosed();
+            	if (client is SshClient)
+            	{
+            		client.Disconnect();
+            		client.Dispose();
+            	}
+            	else
+                	this.client.Close();
+            	
+            	this.term.Dispose();
+            	
+            	this.CloseTabPage();
+
+            	InvokeIfNecessary(() => base.Disconnect());
             }
             catch (Exception ex)
             {

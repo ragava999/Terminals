@@ -2,4 +2,4 @@
 
 [assembly: AssemblyTitle("TerminalEmulator")]
 [assembly: AssemblyProduct("TerminalEmulator")]
-[assembly: AssemblyVersion("1.1.*")]
+[assembly: AssemblyVersion("4.9.2.0")]
