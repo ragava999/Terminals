@@ -192,7 +192,7 @@ namespace Kohl.Framework.Info
         /// <summary>
         /// Get the fully qualified original local directory path.
         /// </summary>
-        /// <example>C:\Kohl\Terminal\</example>
+        /// <example>C:\Kohl\Terminals\</example>
         public static string Directory
         {
             get

@@ -10,6 +10,9 @@ namespace TerminalsUpdater
 {
     public partial class MainForm : Form
     {
+    	string source = Program.Args[0];
+        string destination = Program.Args[1];
+    	
         public MainForm()
         {
             InitializeComponent();
@@ -37,7 +40,7 @@ namespace TerminalsUpdater
         {
             try
             {
-                switch (System.Reflection.Assembly.LoadFrom(Path.Combine(Program.Args[1], "Terminals.exe")).GetName().Version.ToString())
+                switch (System.Reflection.Assembly.LoadFrom(Path.Combine(destination, "Terminals.exe")).GetName().Version.ToString())
                 {
                     case "4.9.1.0":
                         Version_4_9_1_0_to_4_9_2_0();
@@ -57,7 +60,11 @@ namespace TerminalsUpdater
         {
             try
             {
-                // Your code here
+            	// Delete the obsolete granados.dll which got replaced by the Renci.SshNet lib.
+            	string granadosDllToDelete = Path.Combine(destination, "Granados.dll");
+            	
+            	if (File.Exists(granadosDllToDelete))
+            		File.Delete(granadosDllToDelete);
             }
             catch (Exception ex)
             {
@@ -72,10 +79,7 @@ namespace TerminalsUpdater
             Thread.Sleep(10000);
 
             try
-            {
-	            string source = Program.Args[0];
-	            string destination = Program.Args[1];
-	
+            {	
 	            if (Directory.Exists(source))
 	            {
                     if (!Directory.Exists(destination))
@@ -130,7 +134,7 @@ namespace TerminalsUpdater
         {
             try
             {
-                foreach (Process process in Process.GetProcesses().Where(x => x.ProcessName == "Terminals" && (new FileInfo(x.MainModule.FileName).Directory.FullName == Program.Args[1])))
+                foreach (Process process in Process.GetProcesses().Where(x => x.ProcessName == "Terminals" && (new FileInfo(x.MainModule.FileName).Directory.FullName == destination)))
                 {
                     int processId = process.Id;
                     string name = process.ProcessName + " (" + process.MainWindowTitle + ") - " + process.MainModule.FileName;

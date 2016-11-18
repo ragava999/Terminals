@@ -44,7 +44,7 @@ namespace Terminals.Connections
         {
             this.connected = false;
 
-            String protocol = "unknown";
+            String protocol = string.Empty;
 
             try
             {
@@ -129,23 +129,40 @@ namespace Terminals.Connections
         	System.Collections.Generic.IDictionary<Renci.SshNet.Common.TerminalModes, uint> termkvp = new System.Collections.Generic.Dictionary<Renci.SshNet.Common.TerminalModes, uint>();
             //termkvp.Add(Renci.SshNet.Common.TerminalModes.ECHO, 53);
 
-            ShellStream shellStream = client.CreateShellStream("xterm", 80,24, 800, 600, 1024, termkvp);
+            ShellStream shellStream = client.CreateShellStream("xterm", (uint)this.Favorite.ConsoleCols, (uint)this.Favorite.ConsoleRows, (uint)this.Favorite.ConsoleCols, (uint)this.Favorite.ConsoleRows,/* 800, 600,*/ 512, termkvp);
 
             // Send the output from the ssh session to the terminal
-            shellStream.DataReceived += (object sender, Renci.SshNet.Common.ShellDataEventArgs e) => this.term.IndicateData(e.Data);
+            shellStream.DataReceived += (sender, e) => {
+				if (Encoding.Default.GetString(e.Data).Equals("logout\r\n"))
+					this.InvokeIfNecessary(()=> this.Disconnect());
+				else
+					this.term.IndicateData(e.Data);
+			};
 
         	// Send the keys from the terminal emulator to the ssh protocol
-        	this.term.OnDataRequested += (byte[] data) => WriteStream(/*ConvertByteToString(*/data/*)*/, shellStream);
+        	this.term.OnDataRequested += (byte[] data) => { if (client != null) WriteStream(data, shellStream); };
             
         	this.connected = true;
         }
 		
-		private static void WriteStream(byte[] cmd, ShellStream stream)
+		private void WriteStream(byte[] cmd, ShellStream stream)
 		{
 		    var writer = new StreamWriter(stream, Encoding.Default);
-		    writer.AutoFlush = true;
-		     
-	    	writer.Write(Encoding.Default.GetString(cmd).ToCharArray());
+		    
+		    try
+		    {
+		    	writer.AutoFlush = true;
+		    }
+		    catch (ObjectDisposedException ex)
+		    {
+		    	Log.Debug("Disconnecting from disposed SSH session.");
+		    	Disconnect();
+		    	return;
+		    }
+		    
+		    string command = Encoding.Default.GetString(cmd);
+		    
+	    	writer.Write(command.ToCharArray());
 		    
 		    while (stream.Length == 0)
 		        Thread.Sleep(50);
@@ -167,19 +184,23 @@ namespace Terminals.Connections
 
             try
             {
-            	if (client is SshClient)
-            	{
-            		client.Disconnect();
-            		client.Dispose();
-            	}
-            	else
-                	this.client.Close();
+            	if (client != null)
+	            	if (client is SshClient)
+	            	{
+	            		client.Disconnect();
+	            		client.Dispose();
+	            	}
+	            	else
+	                	this.client.Close();
             	
-            	this.term.Dispose();
+            	if (term != null)
+            		this.term.Dispose();
             	
             	this.CloseTabPage();
 
             	InvokeIfNecessary(() => base.Disconnect());
+            	
+            	Log.Info("Disconnected from " + this.Favorite.Protocol + " session.");
             }
             catch (Exception ex)
             {
