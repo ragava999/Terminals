@@ -256,7 +256,6 @@
 /Terminals.Configuration/obj/Release/Terminals.Configuration.csprojResolveAssemblyReference.cache
 /Terminals.Configuration/obj/Release/Terminals.Configuration.dll
 /Terminals.Configuration/obj/Release/Terminals.Configuration.Properties.Resources.resources
-/Terminals.Configuration/packages.config
 /Terminals.Connection/bin/Debug/KeePassLib.dll
 /Terminals.Connection/bin/Debug/KeePassLib.xml
 /Terminals.Connection/bin/Debug/Kohl.Framework.dll
@@ -1069,7 +1068,6 @@
 /Terminals/obj/Release/Terminals.Panels.OptionPanels.DefaultPasswordOptionPanel.resources
 /Terminals/obj/Release/Terminals.Properties.Resources.resources
 /Terminals/obj/Release/Terminals.Wizard.FirstRunWizard.resources
-/Terminals/packages.config
 /TerminalsUpdater/bin/Debug
 /TerminalsUpdater/bin/Release
 /TerminalsUpdater/obj/Debug
@@ -1116,7 +1114,6 @@ Metro/bin/
 Metro/obj/
 packages/WindowsAPICodePack-Core.1.1.2/
 packages/WindowsAPICodePack-Shell.1.1.1/
-PacketDotNet-0.13.0/PacketDotNet/packages.config
 SharpPcap-4.1.0/SharpPcap/bin/
 SharpPcap-4.1.0/SharpPcap/obj/
 SharpZipLib/bin/
