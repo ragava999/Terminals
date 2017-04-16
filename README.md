@@ -867,7 +867,6 @@ This code is based on the Terminals version 1.0 located on CodePlex.
 |--------------------------------------------------|------|---------|
 |https://terminals.codeplex.com/releases/view/1659 | 2007 |     1.0 |
 
-
 1) Support for RDP 6:
 - 32bit color support
 - Supports screen resolutions of up to 4096x2048
