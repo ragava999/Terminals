@@ -36,7 +36,15 @@ namespace Kohl.Framework.Info
                 else if (!MachineInfo.IsUnix && !string.IsNullOrWhiteSpace(UserNameAlias))
                 {
 					DirectoryEntry userEntry = new DirectoryEntry("WinNT://" + UserDomain + "/" + UserNameAlias + ",User");
-					return (string)userEntry.Properties["fullname"].Value;
+
+                    try
+                    {
+                        return (string)userEntry.Properties["fullname"].Value;
+                    }
+                    catch (System.Runtime.InteropServices.COMException)
+                    {
+                        return null;
+                    }
 
 					/*
 					 * System.DirectoryServices.AccountManagement is not defined in Mono
