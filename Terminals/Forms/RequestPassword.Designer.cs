@@ -35,6 +35,7 @@ namespace Terminals.Forms
             this.CancelPasswordButton = new System.Windows.Forms.Button();
             this.OkButton = new System.Windows.Forms.Button();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.RememberCheckBox = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -49,6 +50,8 @@ namespace Terminals.Forms
             // 
             // PasswordTextBox
             // 
+            this.PasswordTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.PasswordTextBox.Location = new System.Drawing.Point(69, 13);
             this.PasswordTextBox.Name = "PasswordTextBox";
             this.PasswordTextBox.Size = new System.Drawing.Size(165, 20);
@@ -57,18 +60,20 @@ namespace Terminals.Forms
             // 
             // CancelPasswordButton
             // 
+            this.CancelPasswordButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.CancelPasswordButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.CancelPasswordButton.Location = new System.Drawing.Point(159, 41);
+            this.CancelPasswordButton.Location = new System.Drawing.Point(159, 65);
             this.CancelPasswordButton.Name = "CancelPasswordButton";
             this.CancelPasswordButton.Size = new System.Drawing.Size(75, 23);
-            this.CancelPasswordButton.TabIndex = 2;
+            this.CancelPasswordButton.TabIndex = 4;
             this.CancelPasswordButton.Text = "&Cancel";
             this.CancelPasswordButton.UseVisualStyleBackColor = true;
             this.CancelPasswordButton.Click += new System.EventHandler(this.CancelPasswordButton_Click);
             // 
             // OkButton
             // 
-            this.OkButton.Location = new System.Drawing.Point(78, 41);
+            this.OkButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.OkButton.Location = new System.Drawing.Point(78, 65);
             this.OkButton.Name = "OkButton";
             this.OkButton.Size = new System.Drawing.Size(75, 23);
             this.OkButton.TabIndex = 3;
@@ -81,13 +86,24 @@ namespace Terminals.Forms
             this.errorProvider1.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
             this.errorProvider1.ContainerControl = this;
             // 
+            // RememberCheckBox
+            // 
+            this.RememberCheckBox.AutoSize = true;
+            this.RememberCheckBox.Location = new System.Drawing.Point(70, 42);
+            this.RememberCheckBox.Name = "RememberCheckBox";
+            this.RememberCheckBox.Size = new System.Drawing.Size(126, 17);
+            this.RememberCheckBox.TabIndex = 2;
+            this.RememberCheckBox.Text = "Remember Password";
+            this.RememberCheckBox.UseVisualStyleBackColor = true;
+            // 
             // RequestPassword
             // 
             this.AcceptButton = this.OkButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.CancelPasswordButton;
-            this.ClientSize = new System.Drawing.Size(258, 73);
+            this.ClientSize = new System.Drawing.Size(258, 97);
+            this.Controls.Add(this.RememberCheckBox);
             this.Controls.Add(this.OkButton);
             this.Controls.Add(this.CancelPasswordButton);
             this.Controls.Add(this.PasswordTextBox);
@@ -111,5 +127,6 @@ namespace Terminals.Forms
         private System.Windows.Forms.TextBox PasswordTextBox;
         private System.Windows.Forms.Button CancelPasswordButton;
         private System.Windows.Forms.Button OkButton;
+        private System.Windows.Forms.CheckBox RememberCheckBox;
     }
 }
