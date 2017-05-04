@@ -39,12 +39,14 @@ namespace Terminals.Panels.OptionPanels
         	this.PasswordTextbox = new System.Windows.Forms.TextBox();
         	this.lblConfirm = new System.Windows.Forms.Label();
         	this.ConfirmPasswordTextBox = new System.Windows.Forms.TextBox();
+            this.ForgetPasswordButton = new System.Windows.Forms.Button();
         	this.panel1.SuspendLayout();
         	this.groupBox3.SuspendLayout();
         	this.SuspendLayout();
         	// 
         	// panel1
         	// 
+            this.panel1.Controls.Add(this.ForgetPasswordButton);
         	this.panel1.Controls.Add(this.groupBox3);
         	this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
         	this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -129,6 +131,16 @@ namespace Terminals.Panels.OptionPanels
         	this.ConfirmPasswordTextBox.Size = new System.Drawing.Size(176, 20);
         	this.ConfirmPasswordTextBox.TabIndex = 2;
         	this.ConfirmPasswordTextBox.TextChanged += new System.EventHandler(this.ConfirmPasswordTextBox_TextChanged);
+            // 
+            // ForgetPasswordButton
+            // 
+            this.ForgetPasswordButton.Location = new System.Drawing.Point(118, 154);
+            this.ForgetPasswordButton.Name = "ForgetPasswordButton";
+            this.ForgetPasswordButton.Size = new System.Drawing.Size(176, 23);
+            this.ForgetPasswordButton.TabIndex = 1;
+            this.ForgetPasswordButton.Text = "Forget Saved Master Password";
+            this.ForgetPasswordButton.UseVisualStyleBackColor = true;
+            this.ForgetPasswordButton.Click += new System.EventHandler(this.ForgetPasswordButton_Click);
         	// 
         	// MasterPasswordOptionPanel
         	// 
@@ -153,5 +165,6 @@ namespace Terminals.Panels.OptionPanels
         private Label lblConfirm;
         private TextBox ConfirmPasswordTextBox;
         private System.Windows.Forms.Label lblMasterPasswordCaption;
+        private Button ForgetPasswordButton;
     }
 }

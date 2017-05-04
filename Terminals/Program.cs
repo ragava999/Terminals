@@ -249,7 +249,8 @@
             CreateConfigFileBackup();
 
             // This won't force the configuration to get invalid -> parsing will occur later.
-            if (Settings.IsMasterPasswordDefined)
+            if (Settings.IsMasterPasswordDefined
+            && !Settings.IsMasterPasswordValid(Settings.SavedMasterPassword))
             {
                 using (RequestPassword requestPassword = new RequestPassword())
                 {

@@ -302,6 +302,19 @@ namespace Terminals.Configuration.Files.Main
             }
             set { this["credentialStore"] = value; }
         }
+
+        [ConfigurationProperty("encryptedSavedMasterPassword", IsRequired = false)]
+        public string EncryptedSavedMasterPassword
+        {
+            get { return (string) this["encryptedSavedMasterPassword"]; }
+            set { this["encryptedSavedMasterPassword"] = value; }
+        }
+
+        public string SavedMasterPassword
+        {
+        	get { return PasswordFunctions.DecryptPassword(this.EncryptedSavedMasterPassword, string.Empty, "SavedMasterPassword"); }
+			set { this.EncryptedSavedMasterPassword = PasswordFunctions.EncryptPassword(value, string.Empty); }
+        }
         
         #region KeePass section (3)
         [ConfigurationProperty("KeePassPath")]

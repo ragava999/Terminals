@@ -91,6 +91,16 @@ namespace Terminals.Configuration.Files.Main.Settings
                 SaveImmediatelyIfRequested();
             }
         }
+
+        public static string SavedMasterPassword
+        {
+            get { return GetSection().SavedMasterPassword; }
+            set
+            {
+                GetSection().SavedMasterPassword = value;
+                SaveImmediatelyIfRequested();
+            }
+        }
         
         #region KeePass settings (2)
         public static string KeePassPath

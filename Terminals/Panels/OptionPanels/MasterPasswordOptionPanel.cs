@@ -121,5 +121,10 @@ namespace Terminals.Panels.OptionPanels
                 }
             }
         }
+
+        private void ForgetPasswordButton_Click(object sender, EventArgs e)
+        {
+            Settings.SavedMasterPassword = "";
+        }
     }
 }

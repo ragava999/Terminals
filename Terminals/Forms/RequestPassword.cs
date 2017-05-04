@@ -31,6 +31,9 @@ namespace Terminals.Forms
             }
             else
             {
+                if (RememberCheckBox.Checked)
+                    Settings.SavedMasterPassword = newPass;
+
                 this.DialogResult = DialogResult.OK;
                 this.Hide();
             }
