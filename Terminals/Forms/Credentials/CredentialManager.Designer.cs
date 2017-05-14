@@ -29,52 +29,61 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CredentialManager));
-            this.CredentialsListView = new System.Windows.Forms.ListView();
-            this.columnName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnUserName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnDomain = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.CredentialsGrid = new System.Windows.Forms.DataGridView();
+            this.columnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnUserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnDomain = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AddButton = new System.Windows.Forms.Button();
             this.EditButton = new System.Windows.Forms.Button();
             this.DeleteButton = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.DoneButton = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CredentialsGrid)).BeginInit();
             this.SuspendLayout();
             // 
-            // CredentialsListView
+            // CredentialsGrid
             // 
-            this.CredentialsListView.Activation = System.Windows.Forms.ItemActivation.OneClick;
-            this.CredentialsListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.CredentialsGrid.AllowUserToAddRows = false;
+            this.CredentialsGrid.AllowUserToDeleteRows = false;
+            this.CredentialsGrid.AllowUserToResizeRows = false;
+            this.CredentialsGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.CredentialsGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.columnName,
             this.columnUserName,
             this.columnDomain});
-            this.CredentialsListView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CredentialsListView.FullRowSelect = true;
-            this.CredentialsListView.GridLines = true;
-            this.CredentialsListView.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.CredentialsListView.Location = new System.Drawing.Point(0, 0);
-            this.CredentialsListView.MultiSelect = false;
-            this.CredentialsListView.Name = "CredentialsListView";
-            this.CredentialsListView.Size = new System.Drawing.Size(350, 212);
-            this.CredentialsListView.TabIndex = 0;
-            this.CredentialsListView.UseCompatibleStateImageBehavior = false;
-            this.CredentialsListView.View = System.Windows.Forms.View.Details;
-            this.CredentialsListView.DoubleClick += new System.EventHandler(this.EditButton_Click);
+            this.CredentialsGrid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CredentialsGrid.Location = new System.Drawing.Point(0, 0);
+            this.CredentialsGrid.Name = "CredentialsGrid";
+            this.CredentialsGrid.ReadOnly = true;
+            this.CredentialsGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.CredentialsGrid.Size = new System.Drawing.Size(350, 212);
+            this.CredentialsGrid.TabIndex = 0;
+            this.CredentialsGrid.DoubleClick += new System.EventHandler(this.EditButton_Click);
             // 
             // columnName
             // 
-            this.columnName.Text = "Name";
-            this.columnName.Width = 110;
+            this.columnName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.columnName.DataPropertyName = "Name";
+            this.columnName.HeaderText = "Name";
+            this.columnName.Name = "columnName";
+            this.columnName.ReadOnly = true;
             // 
             // columnUserName
             // 
-            this.columnUserName.Text = "User Name";
-            this.columnUserName.Width = 120;
+            this.columnUserName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.columnUserName.DataPropertyName = "Username";
+            this.columnUserName.HeaderText = "User Name";
+            this.columnUserName.Name = "columnUserName";
+            this.columnUserName.ReadOnly = true;
             // 
             // columnDomain
             // 
-            this.columnDomain.Text = "Domain";
-            this.columnDomain.Width = 115;
+            this.columnDomain.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.columnDomain.DataPropertyName = "Domain";
+            this.columnDomain.HeaderText = "Domain";
+            this.columnDomain.Name = "columnDomain";
+            this.columnDomain.ReadOnly = true;
             // 
             // AddButton
             // 
@@ -137,10 +146,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.DoneButton;
             this.ClientSize = new System.Drawing.Size(450, 212);
-            this.Controls.Add(this.CredentialsListView);
+            this.Controls.Add(this.CredentialsGrid);
             this.Controls.Add(this.panel1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "CredentialManager";
@@ -148,21 +157,22 @@
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.CredentialManager_FormClosed);
             this.Load += new System.EventHandler(this.CredentialManager_Load);
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.CredentialsGrid)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.ListView CredentialsListView;
+        private System.Windows.Forms.DataGridView CredentialsGrid;
         private System.Windows.Forms.Button AddButton;
         private System.Windows.Forms.Button EditButton;
         private System.Windows.Forms.Button DeleteButton;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button DoneButton;
-        private System.Windows.Forms.ColumnHeader columnName;
-        private System.Windows.Forms.ColumnHeader columnDomain;
-        private System.Windows.Forms.ColumnHeader columnUserName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnDomain;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnUserName;
 
     }
 }

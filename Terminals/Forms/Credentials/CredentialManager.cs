@@ -30,29 +30,8 @@ namespace Terminals.Forms.Credentials
 
         private void BindList()
         {
-            this.CredentialsListView.Items.Clear();
-            List<CredentialSet> credentials = StoredCredentials.Items;
-
-            foreach (CredentialSet credential in credentials)
-            {
-                ListViewItem item = new ListViewItem(credential.Name);
-                item.SubItems.Add(new ListViewItem.ListViewSubItem(item, credential.Username));
-                item.SubItems.Add(new ListViewItem.ListViewSubItem(item, credential.Domain));
-                this.CredentialsListView.Items.Add(item);
-            }
-
-            // Auto resize the form to prevent showing a horizontal scroll bar.
-            // Only show the vertical or nothing.
-            if (this.CredentialsListView.Items.Count > 10)
-            {
-                this.Size = new Size(483, 250);
-            }
-            else
-            {
-                this.panel1.Location = new Point(350, 0);
-                this.panel1.Size = new Size(100, 212);
-                this.Size = new Size(466, 250);
-            }
+            CredentialsGrid.AutoGenerateColumns = false;
+            CredentialsGrid.DataSource          = StoredCredentials.Items.ToArray();
         }
 
         private void DoneButton_Click(object sender, EventArgs e)
@@ -72,10 +51,9 @@ namespace Terminals.Forms.Credentials
 
         private CredentialSet GetSelectedItemCredentials()
         {
-            if (this.CredentialsListView.SelectedItems != null && this.CredentialsListView.SelectedItems.Count > 0)
+            if (CredentialsGrid.SelectedRows.Count > 0)
             {
-                string name = this.CredentialsListView.SelectedItems[0].Text;
-                return StoredCredentials.GetByName(name);
+                return (CredentialSet)CredentialsGrid.SelectedRows[0].DataBoundItem;
             }
 
             return null;

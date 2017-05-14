@@ -94,9 +94,9 @@ namespace Terminals.Forms
             this.MoreButton.Name = "MoreButton";
             this.MoreButton.Size = new System.Drawing.Size(75, 23);
             this.MoreButton.TabIndex = 3;
-            this.MoreButton.Text = "More...";
+            this.MoreButton.Text = "Less...";
             this.MoreButton.UseVisualStyleBackColor = true;
-            this.MoreButton.Click += new System.EventHandler(this.MoreButton_Click);
+            this.MoreButton.Click += new System.EventHandler(this.ToggleView);
             // 
             // btnClose
             // 
@@ -160,7 +160,6 @@ namespace Terminals.Forms
             this.Controls.Add(this.pnlOptions);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;

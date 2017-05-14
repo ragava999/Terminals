@@ -5,10 +5,13 @@ namespace Terminals.Forms
 {
     public partial class SaveActiveConnectionsForm : Form
     {
+        int ExpandSize { get; }
+
         public SaveActiveConnectionsForm()
         {
             this.InitializeComponent();
-            this.Height = 160;
+            ExpandSize = pnlOptions.Height;
+            ToggleView();
         }
 
         public bool PromptNextTime
@@ -21,17 +24,17 @@ namespace Terminals.Forms
             get { return this.chkOpenOnNextTime.Checked; }
         }
 
-        private void MoreButton_Click(object sender, EventArgs e)
+        private void ToggleView(object sender = null, EventArgs e = null)
         {
-            if (this.Height == 160)
+            if (MoreButton.Text == "More...")
             {
-                this.MoreButton.Text = "Less...";
-                this.Height = 230;
+                MoreButton.Text = "Less...";
+                Height += ExpandSize;
             }
             else
             {
-                this.MoreButton.Text = "More...";
-                this.Height = 160;
+                MoreButton.Text = "More...";
+                Height -= ExpandSize;
             }
         }
     }
