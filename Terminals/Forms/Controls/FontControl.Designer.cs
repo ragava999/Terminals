@@ -55,13 +55,13 @@
             this.TextColorTextBox.Location = new System.Drawing.Point(84, 57);
             this.TextColorTextBox.Name = "TextColorTextBox";
             this.TextColorTextBox.ReadOnly = true;
-            this.TextColorTextBox.Size = new System.Drawing.Size(160, 20);
+            this.TextColorTextBox.Size = new System.Drawing.Size(204, 20);
             this.TextColorTextBox.TabIndex = 54;
             this.TextColorTextBox.Text = "FFFFFFFF (White)";
             // 
             // FontButton
             // 
-            this.FontButton.Location = new System.Drawing.Point(250, 1);
+            this.FontButton.Location = new System.Drawing.Point(294, 1);
             this.FontButton.Name = "FontButton";
             this.FontButton.Size = new System.Drawing.Size(31, 23);
             this.FontButton.TabIndex = 47;
@@ -71,7 +71,7 @@
             // 
             // TextColorButton
             // 
-            this.TextColorButton.Location = new System.Drawing.Point(250, 55);
+            this.TextColorButton.Location = new System.Drawing.Point(294, 55);
             this.TextColorButton.Name = "TextColorButton";
             this.TextColorButton.Size = new System.Drawing.Size(31, 23);
             this.TextColorButton.TabIndex = 53;
@@ -93,7 +93,7 @@
             this.FontTextbox.Location = new System.Drawing.Point(84, 3);
             this.FontTextbox.Name = "FontTextbox";
             this.FontTextbox.ReadOnly = true;
-            this.FontTextbox.Size = new System.Drawing.Size(160, 20);
+            this.FontTextbox.Size = new System.Drawing.Size(204, 20);
             this.FontTextbox.TabIndex = 48;
             this.FontTextbox.Text = "[Font: Name=Courier New, Size=10, Units=3, GdiCharSet=0, GdiVerticalFont=False, S" +
     "tyle=0]";
@@ -103,7 +103,7 @@
             this.BackColorTextBox.Location = new System.Drawing.Point(84, 30);
             this.BackColorTextBox.Name = "BackColorTextBox";
             this.BackColorTextBox.ReadOnly = true;
-            this.BackColorTextBox.Size = new System.Drawing.Size(160, 20);
+            this.BackColorTextBox.Size = new System.Drawing.Size(204, 20);
             this.BackColorTextBox.TabIndex = 51;
             this.BackColorTextBox.Text = "FF000000 (Black)";
             // 
@@ -118,7 +118,7 @@
             // 
             // BackcolorButton
             // 
-            this.BackcolorButton.Location = new System.Drawing.Point(250, 28);
+            this.BackcolorButton.Location = new System.Drawing.Point(294, 28);
             this.BackcolorButton.Name = "BackcolorButton";
             this.BackcolorButton.Size = new System.Drawing.Size(31, 23);
             this.BackcolorButton.TabIndex = 50;
@@ -132,7 +132,8 @@
             // 
             // FontControl
             // 
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.Controls.Add(this.label5);
             this.Controls.Add(this.TextColorTextBox);
@@ -144,7 +145,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.BackcolorButton);
             this.Name = "FontControl";
-            this.Size = new System.Drawing.Size(284, 82);
+            this.Size = new System.Drawing.Size(328, 82);
             this.ResumeLayout(false);
             this.PerformLayout();
 

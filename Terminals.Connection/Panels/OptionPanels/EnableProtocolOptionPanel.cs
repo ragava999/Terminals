@@ -47,35 +47,19 @@
 
             string enabledProtocols = EnabledForProtocols();
 
-            int startlocation = -5;
-            int location = startlocation;
-            int left = 17;
-            int counter = 1;
-
             foreach (string name in names)
             {
-                // Number of allowed elements per row
-                // After 15 elements we'll break the row.
-                if (counter == 15)
-                {
-                    left = 135;
-                    location = startlocation;
-                }
-
                 if (!ExcludeProtocols.Contains(name))
                 {
                     CheckBox checkBox = new CheckBox();
                     checkBox.Name = name;
-                    location += 20;
-                    checkBox.Location = new System.Drawing.Point(left, location);
                     checkBox.Text = name;
                     checkBox.UseVisualStyleBackColor = true;
                     checkBox.AutoSize = true;
 
                     alreadyInitializedAndLoaded = true;
                     
-                    grpConnections.Controls.Add(checkBox);
-                    counter++;
+                    pnlConnections.Controls.Add(checkBox);
                 }
                 else
                     protocolSkipped = true;
@@ -103,7 +87,7 @@
                         if (protocolSkipped && protocols[0] == "ALL")
                         {
                             // This is the first time ... the default value
-                            foreach (CheckBox checkBox in grpConnections.Controls)
+                            foreach (CheckBox checkBox in pnlConnections.Controls)
                             {
                                 checkBox.Checked = true;
                             }
@@ -113,7 +97,7 @@
                             foreach (string name in names)
                             {
                                 CheckBox box =
-                                (from chk in grpConnections.Controls.Cast<CheckBox>()
+                                (from chk in pnlConnections.Controls.Cast<CheckBox>()
                                  where chk.Name == name
                                  select chk).FirstOrDefault();
 
@@ -146,7 +130,7 @@
                     // doesn't matter if either checked or unchecked.
                     // for every displayed checkbox!
                     SetSpecificProtocolNames(
-                    (from control in grpConnections.Controls.Cast<CheckBox>()
+                    (from control in pnlConnections.Controls.Cast<CheckBox>()
                      //where control.Checked
                     select control.Name).ToArray<string>());
                 }
@@ -158,7 +142,7 @@
             {
                 // Only for checked checkboxes (for selected ones)!
                 SetSpecificProtocolNames(
-                (from control in grpConnections.Controls.Cast<CheckBox>()
+                (from control in pnlConnections.Controls.Cast<CheckBox>()
                  where control.Checked
                  select control.Name).ToArray<string>());
             }

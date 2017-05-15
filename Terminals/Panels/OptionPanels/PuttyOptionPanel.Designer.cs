@@ -77,6 +77,8 @@ namespace Terminals.Panels.OptionPanels
         	// 
         	// PuttyOptionPanel
         	// 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
         	this.Controls.Add(this.panPutty);
         	this.Name = "PuttyOptionPanel";
         	this.Size = new System.Drawing.Size(514, 332);

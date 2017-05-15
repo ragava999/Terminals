@@ -170,6 +170,8 @@ namespace Terminals.Panels.OptionPanels
         	// 
         	// CredentialStoreOptionPanel
         	// 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
         	this.Controls.Add(this.panel1);
         	this.Name = "CredentialStoreOptionPanel";
         	this.Size = new System.Drawing.Size(511, 332);

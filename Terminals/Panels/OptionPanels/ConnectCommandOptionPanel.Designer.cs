@@ -140,6 +140,8 @@ namespace Terminals.Panels.OptionPanels
         	// 
         	// ConnectCommandOptionPanel
         	// 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
         	this.Controls.Add(this.panel1);
         	this.Name = "ConnectCommandOptionPanel";
         	this.Size = new System.Drawing.Size(513, 334);

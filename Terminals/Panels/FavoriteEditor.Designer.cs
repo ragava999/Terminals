@@ -234,6 +234,7 @@ namespace Terminals.Panels
             // 
             // btnAddNewTag
             // 
+            this.btnAddNewTag.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAddNewTag.Image = global::Terminals.Properties.Resources.tag_blue_add;
             this.btnAddNewTag.Location = new System.Drawing.Point(421, 18);
             this.btnAddNewTag.Name = "btnAddNewTag";
@@ -245,6 +246,7 @@ namespace Terminals.Panels
             // 
             // btnRemoveTag
             // 
+            this.btnRemoveTag.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnRemoveTag.Image = global::Terminals.Properties.Resources.tag_blue_delete;
             this.btnRemoveTag.Location = new System.Drawing.Point(421, 24);
             this.btnRemoveTag.Name = "btnRemoveTag";
@@ -256,6 +258,7 @@ namespace Terminals.Panels
             // 
             // AllTagsAddButton
             // 
+            this.AllTagsAddButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.AllTagsAddButton.Image = global::Terminals.Properties.Resources.tag_blue_add;
             this.AllTagsAddButton.Location = new System.Drawing.Point(421, 20);
             this.AllTagsAddButton.Name = "AllTagsAddButton";
@@ -323,6 +326,7 @@ namespace Terminals.Panels
             // 
             // picCustomIcon
             // 
+            this.picCustomIcon.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.picCustomIcon.BackColor = System.Drawing.Color.White;
             this.picCustomIcon.Image = global::Terminals.Properties.Resources.World;
             this.picCustomIcon.InitialImage = global::Terminals.Properties.Resources.smallterm;
@@ -568,6 +572,8 @@ namespace Terminals.Panels
             // 
             // txtTag
             // 
+            this.txtTag.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtTag.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.txtTag.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.txtTag.Location = new System.Drawing.Point(70, 19);
@@ -1288,6 +1294,7 @@ namespace Terminals.Panels
             // consolePreferences
             // 
             this.consolePreferences.AutoSize = true;
+            this.consolePreferences.Dock = System.Windows.Forms.DockStyle.Fill;
             this.consolePreferences.Location = new System.Drawing.Point(7, 21);
             this.consolePreferences.Margin = new System.Windows.Forms.Padding(4);
             this.consolePreferences.Name = "consolePreferences";
@@ -1348,6 +1355,8 @@ namespace Terminals.Panels
             // 
             // tabColorPreferences
             // 
+            this.tabColorPreferences.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tabColorPreferences.Location = new System.Drawing.Point(15, 296);
             this.tabColorPreferences.Name = "tabColorPreferences";
             this.tabColorPreferences.Size = new System.Drawing.Size(471, 26);
@@ -1355,6 +1364,9 @@ namespace Terminals.Panels
             // 
             // NotesTextbox
             // 
+            this.NotesTextbox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.NotesTextbox.Location = new System.Drawing.Point(117, 225);
             this.NotesTextbox.Multiline = true;
             this.NotesTextbox.Name = "NotesTextbox";
@@ -1568,11 +1580,9 @@ namespace Terminals.Panels
             this.Controls.Add(this.TabControl1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.groupBox7);
-            this.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximizeBox = false;
             this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(600, 400);
             this.Name = "FavoriteEditor";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;

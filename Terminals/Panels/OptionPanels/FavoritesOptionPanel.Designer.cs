@@ -83,14 +83,14 @@ namespace Terminals.Panels.OptionPanels
         	// 
         	// ImageWidth
         	// 
-        	this.ImageWidth.Location = new System.Drawing.Point(400, 44);
+            this.ImageWidth.Location = new System.Drawing.Point(414, 44);
         	this.ImageWidth.Name = "ImageWidth";
         	this.ImageWidth.Size = new System.Drawing.Size(77, 20);
         	this.ImageWidth.TabIndex = 4;
         	// 
         	// ImageHeight
         	// 
-        	this.ImageHeight.Location = new System.Drawing.Point(400, 17);
+            this.ImageHeight.Location = new System.Drawing.Point(414, 17);
         	this.ImageHeight.Name = "ImageHeight";
         	this.ImageHeight.Size = new System.Drawing.Size(77, 20);
         	this.ImageHeight.TabIndex = 3;
@@ -98,7 +98,7 @@ namespace Terminals.Panels.OptionPanels
         	// lblImageWidth
         	// 
         	this.lblImageWidth.AutoSize = true;
-        	this.lblImageWidth.Location = new System.Drawing.Point(310, 46);
+            this.lblImageWidth.Location = new System.Drawing.Point(338, 46);
         	this.lblImageWidth.Name = "lblImageWidth";
         	this.lblImageWidth.Size = new System.Drawing.Size(67, 13);
         	this.lblImageWidth.TabIndex = 2;
@@ -107,7 +107,7 @@ namespace Terminals.Panels.OptionPanels
         	// lblImageHeight
         	// 
         	this.lblImageHeight.AutoSize = true;
-        	this.lblImageHeight.Location = new System.Drawing.Point(310, 19);
+            this.lblImageHeight.Location = new System.Drawing.Point(338, 19);
         	this.lblImageHeight.Name = "lblImageHeight";
         	this.lblImageHeight.Size = new System.Drawing.Size(71, 13);
         	this.lblImageHeight.TabIndex = 1;
@@ -118,7 +118,7 @@ namespace Terminals.Panels.OptionPanels
         	this.FavoritesFont.AutoSize = true;
         	this.FavoritesFont.Location = new System.Drawing.Point(7, 14);
         	this.FavoritesFont.Name = "FavoritesFont";
-        	this.FavoritesFont.Size = new System.Drawing.Size(288, 83);
+            this.FavoritesFont.Size = new System.Drawing.Size(328, 83);
         	this.FavoritesFont.TabIndex = 0;
         	// 
         	// FavSortGroupBox
@@ -246,6 +246,8 @@ namespace Terminals.Panels.OptionPanels
         	// 
         	// FavoritesOptionPanel
         	// 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
         	this.Controls.Add(this.panel1);
         	this.Name = "FavoritesOptionPanel";
         	this.Size = new System.Drawing.Size(519, 335);

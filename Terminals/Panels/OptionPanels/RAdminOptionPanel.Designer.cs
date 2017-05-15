@@ -98,6 +98,8 @@ namespace Terminals.Panels.OptionPanels
         	// 
         	// RAdminOptionPanel
         	// 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
         	this.Controls.Add(this.panRAdmin);
         	this.Name = "RAdminOptionPanel";
         	this.Size = new System.Drawing.Size(514, 332);

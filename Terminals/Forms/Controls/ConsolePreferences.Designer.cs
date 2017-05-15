@@ -42,7 +42,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(10, 152);
+            this.label6.Location = new System.Drawing.Point(6, 152);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(40, 13);
             this.label6.TabIndex = 49;
@@ -50,17 +50,17 @@
             // 
             // CursorColorTextBox
             // 
-            this.CursorColorTextBox.Location = new System.Drawing.Point(88, 149);
+            this.CursorColorTextBox.Location = new System.Drawing.Point(84, 149);
             this.CursorColorTextBox.Name = "CursorColorTextBox";
             this.CursorColorTextBox.ReadOnly = true;
-            this.CursorColorTextBox.Size = new System.Drawing.Size(160, 20);
+            this.CursorColorTextBox.Size = new System.Drawing.Size(204, 20);
             this.CursorColorTextBox.TabIndex = 48;
             this.CursorColorTextBox.Text = "FFFF0000 (Red)";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(8, 7);
+            this.label1.Location = new System.Drawing.Point(6, 7);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(37, 13);
             this.label1.TabIndex = 34;
@@ -68,7 +68,7 @@
             // 
             // CursorColorButton
             // 
-            this.CursorColorButton.Location = new System.Drawing.Point(254, 147);
+            this.CursorColorButton.Location = new System.Drawing.Point(294, 147);
             this.CursorColorButton.Name = "CursorColorButton";
             this.CursorColorButton.Size = new System.Drawing.Size(31, 23);
             this.CursorColorButton.TabIndex = 47;
@@ -79,7 +79,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(8, 36);
+            this.label2.Location = new System.Drawing.Point(6, 36);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(50, 13);
             this.label2.TabIndex = 35;
@@ -87,7 +87,7 @@
             // 
             // ColumnsTextBox
             // 
-            this.ColumnsTextBox.Location = new System.Drawing.Point(88, 33);
+            this.ColumnsTextBox.Location = new System.Drawing.Point(84, 33);
             this.ColumnsTextBox.Name = "ColumnsTextBox";
             this.ColumnsTextBox.Size = new System.Drawing.Size(38, 20);
             this.ColumnsTextBox.TabIndex = 37;
@@ -95,7 +95,7 @@
             // 
             // RowsTextBox
             // 
-            this.RowsTextBox.Location = new System.Drawing.Point(88, 4);
+            this.RowsTextBox.Location = new System.Drawing.Point(84, 4);
             this.RowsTextBox.Name = "RowsTextBox";
             this.RowsTextBox.Size = new System.Drawing.Size(38, 20);
             this.RowsTextBox.TabIndex = 36;
@@ -104,9 +104,9 @@
             // fontControl1
             // 
             this.fontControl1.AutoSize = true;
-            this.fontControl1.Location = new System.Drawing.Point(-1, 62);
+            this.fontControl1.Location = new System.Drawing.Point(0, 62);
             this.fontControl1.Name = "fontControl1";
-            this.fontControl1.Size = new System.Drawing.Size(288, 82);
+            this.fontControl1.Size = new System.Drawing.Size(328, 82);
             this.fontControl1.TabIndex = 50;
             // 
             // ConsolePreferences
@@ -123,9 +123,10 @@
             this.Controls.Add(this.ColumnsTextBox);
             this.Controls.Add(this.RowsTextBox);
             this.Name = "ConsolePreferences";
-            this.Size = new System.Drawing.Size(294, 178);
+            this.Size = new System.Drawing.Size(331, 178);
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
         private Terminals.Forms.Controls.FontControl fontControl1;
 

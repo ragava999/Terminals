@@ -36,7 +36,9 @@ namespace Terminals.Connection.Panels.OptionPanels
             this.optThis = new System.Windows.Forms.RadioButton();
             this.lblEnableThisConnectionFor = new System.Windows.Forms.Label();
             this.optAll = new System.Windows.Forms.RadioButton();
+            this.pnlConnections = new System.Windows.Forms.FlowLayoutPanel();
             this.panAutoIt.SuspendLayout();
+            this.grpConnections.SuspendLayout();
             this.SuspendLayout();
             // 
             // panAutoIt
@@ -54,8 +56,13 @@ namespace Terminals.Connection.Panels.OptionPanels
             // 
             // grpConnections
             // 
+            this.grpConnections.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpConnections.Controls.Add(this.pnlConnections);
             this.grpConnections.Location = new System.Drawing.Point(210, 25);
             this.grpConnections.Name = "grpConnections";
+            this.grpConnections.Padding = new System.Windows.Forms.Padding(10, 5, 0, 0);
             this.grpConnections.Size = new System.Drawing.Size(274, 302);
             this.grpConnections.TabIndex = 4;
             this.grpConnections.TabStop = false;
@@ -106,13 +113,26 @@ namespace Terminals.Connection.Panels.OptionPanels
             this.optAll.UseVisualStyleBackColor = true;
             this.optAll.CheckedChanged += new System.EventHandler(this.CheckedChanged);
             // 
+            // pnlConnections
+            // 
+            this.pnlConnections.AutoScroll = true;
+            this.pnlConnections.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlConnections.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.pnlConnections.Location = new System.Drawing.Point(10, 18);
+            this.pnlConnections.Name = "pnlConnections";
+            this.pnlConnections.Size = new System.Drawing.Size(264, 284);
+            this.pnlConnections.TabIndex = 0;
+            // 
             // EnableProtocolOptionPanel
             // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.panAutoIt);
             this.Name = "EnableProtocolOptionPanel";
             this.Size = new System.Drawing.Size(514, 332);
             this.panAutoIt.ResumeLayout(false);
             this.panAutoIt.PerformLayout();
+            this.grpConnections.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -125,5 +145,6 @@ namespace Terminals.Connection.Panels.OptionPanels
         private RadioButton optAll;
         private GroupBox grpConnections;
         private RadioButton optSpecific;
+        private FlowLayoutPanel pnlConnections;
     }
 }

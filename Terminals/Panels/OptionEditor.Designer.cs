@@ -66,7 +66,7 @@ namespace Terminals.Panels
             // 
             this.btnOk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnOk.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnOk.Location = new System.Drawing.Point(693, 19);
+            this.btnOk.Location = new System.Drawing.Point(631, 19);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(88, 26);
             this.btnOk.TabIndex = 0;
@@ -78,7 +78,7 @@ namespace Terminals.Panels
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(787, 19);
+            this.btnCancel.Location = new System.Drawing.Point(725, 19);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(88, 26);
             this.btnCancel.TabIndex = 1;
@@ -88,12 +88,14 @@ namespace Terminals.Panels
             // lnkHomepage
             // 
             this.lnkHomepage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lnkHomepage.AutoSize = true;
             this.lnkHomepage.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lnkHomepage.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.lnkHomepage.Location = new System.Drawing.Point(3, 19);
             this.lnkHomepage.Name = "lnkHomepage";
-            this.lnkHomepage.Size = new System.Drawing.Size(150, 20);
+            this.lnkHomepage.Size = new System.Drawing.Size(198, 13);
             this.lnkHomepage.TabIndex = 2;
+            this.lnkHomepage.TabStop = true;
             this.lnkHomepage.Text = "http://oliverkohldsc.github.io/Terminals/";
             this.lnkHomepage.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lnkHomepage.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.ShowHomepage);
@@ -105,7 +107,7 @@ namespace Terminals.Panels
             this.OptionTitelLabel.Dock = System.Windows.Forms.DockStyle.Top;
             this.OptionTitelLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.OptionTitelLabel.ForeColor = System.Drawing.Color.White;
-            this.OptionTitelLabel.Location = new System.Drawing.Point(270, 8);
+            this.OptionTitelLabel.Location = new System.Drawing.Point(208, 8);
             this.OptionTitelLabel.Name = "OptionTitelLabel";
             this.OptionTitelLabel.Size = new System.Drawing.Size(613, 27);
             this.OptionTitelLabel.TabIndex = 1;
@@ -115,7 +117,7 @@ namespace Terminals.Panels
             // 
             this.pnlMain.Controls.Add(this.lblBottomLine);
             this.pnlMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlMain.Location = new System.Drawing.Point(270, 35);
+            this.pnlMain.Location = new System.Drawing.Point(208, 35);
             this.pnlMain.Name = "pnlMain";
             this.pnlMain.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
             this.pnlMain.Size = new System.Drawing.Size(613, 342);
@@ -176,7 +178,7 @@ namespace Terminals.Panels
             treeNode10,
             treeNode11});
             this.OptionsTreeView.ShowLines = false;
-            this.OptionsTreeView.Size = new System.Drawing.Size(262, 369);
+            this.OptionsTreeView.Size = new System.Drawing.Size(200, 369);
             this.OptionsTreeView.TabIndex = 0;
             this.OptionsTreeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.OptionsTreeView_AfterSelect);
             // 
@@ -188,7 +190,7 @@ namespace Terminals.Panels
             this.pnlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.pnlBottom.Location = new System.Drawing.Point(8, 377);
             this.pnlBottom.Name = "pnlBottom";
-            this.pnlBottom.Size = new System.Drawing.Size(875, 45);
+            this.pnlBottom.Size = new System.Drawing.Size(813, 45);
             this.pnlBottom.TabIndex = 3;
             // 
             // pnlLeft
@@ -197,7 +199,7 @@ namespace Terminals.Panels
             this.pnlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlLeft.Location = new System.Drawing.Point(8, 8);
             this.pnlLeft.Name = "pnlLeft";
-            this.pnlLeft.Size = new System.Drawing.Size(262, 369);
+            this.pnlLeft.Size = new System.Drawing.Size(200, 369);
             this.pnlLeft.TabIndex = 0;
             // 
             // OptionEditor
@@ -206,13 +208,14 @@ namespace Terminals.Panels
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(891, 430);
+            this.ClientSize = new System.Drawing.Size(829, 430);
             this.Controls.Add(this.pnlMain);
             this.Controls.Add(this.OptionTitelLabel);
             this.Controls.Add(this.pnlLeft);
             this.Controls.Add(this.pnlBottom);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(600, 400);
             this.Name = "OptionEditor";
             this.Padding = new System.Windows.Forms.Padding(8);
             this.ShowInTaskbar = false;
@@ -221,6 +224,7 @@ namespace Terminals.Panels
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.OptionDialog_FormClosed);
             this.pnlMain.ResumeLayout(false);
             this.pnlBottom.ResumeLayout(false);
+            this.pnlBottom.PerformLayout();
             this.pnlLeft.ResumeLayout(false);
             this.ResumeLayout(false);
 

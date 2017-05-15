@@ -178,10 +178,11 @@ namespace Terminals.Panels.OptionPanels
         	// 
         	// ProxyCredentials
         	// 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
         	this.ProxyCredentials.AutoSize = true;
         	this.ProxyCredentials.BackColor = System.Drawing.Color.White;
         	this.ProxyCredentials.DontLoadMe = false;
-        	this.ProxyCredentials.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
         	this.ProxyCredentials.Location = new System.Drawing.Point(26, 172);
         	this.ProxyCredentials.Name = "ProxyCredentials";
         	this.ProxyCredentials.Size = new System.Drawing.Size(463, 139);
