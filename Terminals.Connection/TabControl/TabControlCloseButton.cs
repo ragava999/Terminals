@@ -41,7 +41,7 @@ namespace Terminals.Connection.TabControl
                 g.DrawRectangle(SystemPens.Highlight, borderRect);
             }
 
-            using (Pen pen = new Pen(Color.Black, 1f))
+            using (Pen pen = new Pen(Color.Black, Rect.Width / 16f))
             {
                 g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.None;
                 g.DrawLine(pen, this.Rect.Left + 3, this.Rect.Top + 4,

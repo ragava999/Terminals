@@ -7,7 +7,7 @@ namespace Terminals.Connection.TabControl
     using System.Windows.Forms.VisualStyles;
 
     [ToolboxItem(false)]
-    public class BaseStyledPanel : Panel
+    public class BaseStyledPanel : UserControl
     {
         #region Fields (1)
         private static readonly ToolStripProfessionalRenderer Renderer;

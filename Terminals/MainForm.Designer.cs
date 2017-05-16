@@ -311,7 +311,6 @@ namespace Terminals
             this.tcTerminals.AllowDrop = true;
             this.tcTerminals.AlwaysShowClose = false;
             this.tcTerminals.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tcTerminals.Font = new System.Drawing.Font("Tahoma", 8.25F);
             this.tcTerminals.Location = new System.Drawing.Point(0, 0);
             this.tcTerminals.Name = "tcTerminals";
             this.tcTerminals.Padding = new System.Windows.Forms.Padding(1, 20, 1, 1);
@@ -1094,8 +1093,8 @@ namespace Terminals
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(961, 573);
             this.Controls.Add(this.toolStripContainer);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));

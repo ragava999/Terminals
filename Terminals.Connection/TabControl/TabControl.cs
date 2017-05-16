@@ -18,8 +18,7 @@ namespace Terminals.Connection.TabControl
     public sealed class TabControl : BaseStyledPanel, ISupportInitialize
     {
         #region Constants (3)
-        private const int DEF_HEADER_HEIGHT = 19;
-        private const int DEF_GLYPH_WIDTH = 40;
+        private int DEF_HEADER_HEIGHT { get; }
         private const int MOVE_TOLERANCE = 5;
         #endregion
 
@@ -218,11 +217,11 @@ namespace Terminals.Connection.TabControl
                     g.DrawLine(new Pen(brush), buttonRect.Left - 9, buttonRect.Height + 2, buttonRect.Left + buttonRect.Width - 1, buttonRect.Height + 2);
                 }
 
-                PointF textLoc = new PointF(buttonRect.Left + buttonRect.Height - 4, buttonRect.Top + (buttonRect.Height / 2) - (textSize.Height / 2) - 3);
+                PointF textLoc = new PointF(buttonRect.Left + buttonRect.Height - 4, buttonRect.Top);
                 RectangleF textRect = buttonRect;
                 textRect.Location = textLoc;
                 textRect.Width = (float)buttonRect.Width - (textRect.Left - buttonRect.Left) - 4;
-                textRect.Height = textSize.Height + currentFont.Size / 2;
+                textRect.Height = DEF_HEADER_HEIGHT;
 
                 HeaderHeight = Convert.ToInt32(buttonRect.Height + buttonRect.Location.Y);
 
@@ -900,12 +899,12 @@ namespace Terminals.Connection.TabControl
             if (currentItem == this.SelectedItem)
                 currentFont = new Font(this.Font, FontStyle.Bold);
 
-            SizeF textSize = g.MeasureString(currentItem.Title, currentFont, new SizeF(200, 10), this.sf);
-            textSize.Width += 20;
+            SizeF textSize = g.MeasureString(currentItem.Title, currentFont, new SizeF(300, 10), this.sf);
+            textSize.Width += DEF_HEADER_HEIGHT;
 
             if (this.RightToLeft == RightToLeft.No)
             {
-                RectangleF buttonRect = new RectangleF(this.startPosition, 3, textSize.Width, 17);
+                RectangleF buttonRect = new RectangleF(this.startPosition, DEF_HEADER_HEIGHT * 3 / 20F, textSize.Width, DEF_HEADER_HEIGHT * 17 / 20F);
                 currentItem.StripRect = buttonRect;
                 this.startPosition += (int)textSize.Width;
             }
@@ -919,15 +918,18 @@ namespace Terminals.Connection.TabControl
 
         private void UpdateLayout()
         {
+            int btnWidth = (int)(DEF_HEADER_HEIGHT * 0.8);
+
             if (this.RightToLeft == RightToLeft.No)
             {
                 this.sf.Trimming = StringTrimming.EllipsisCharacter;
                 this.sf.FormatFlags |= StringFormatFlags.NoWrap;
                 this.sf.FormatFlags &= StringFormatFlags.DirectionRightToLeft;
 
-                this.stripButtonRect = new Rectangle(0, 0, this.ClientSize.Width - DEF_GLYPH_WIDTH - 2, 10);
-                this.menuGlyph.Rect = new Rectangle(this.ClientSize.Width - DEF_GLYPH_WIDTH, 2, 16, 16);
-                this.closeButton.Rect = new Rectangle(this.ClientSize.Width - 20, 2, 16, 15);
+                this.stripButtonRect = new Rectangle(0, 0, this.ClientSize.Width - (DEF_HEADER_HEIGHT * 2) - 2, 10);
+                this.menuGlyph.Rect = new Rectangle(this.ClientSize.Width - (DEF_HEADER_HEIGHT * 2), 2, btnWidth, btnWidth);
+
+                closeButton.Rect = new Rectangle(this.ClientSize.Width - DEF_HEADER_HEIGHT, DEF_HEADER_HEIGHT / 10, btnWidth, btnWidth);
             }
             else
             {
@@ -935,9 +937,9 @@ namespace Terminals.Connection.TabControl
                 this.sf.FormatFlags |= StringFormatFlags.NoWrap;
                 this.sf.FormatFlags |= StringFormatFlags.DirectionRightToLeft;
 
-                this.stripButtonRect = new Rectangle(DEF_GLYPH_WIDTH + 2, 0, this.ClientSize.Width - DEF_GLYPH_WIDTH - 15, 10);
-                this.menuGlyph.Rect = new Rectangle(20 + 4, 2, 16, 16);//this.ClientSize.Width - 20, 2, 16, 16);
-                this.closeButton.Rect = new Rectangle(4, 2, 16, 15);//ClientSize.Width - DEF_GLYPH_WIDTH, 2, 16, 16);
+                this.stripButtonRect = new Rectangle((DEF_HEADER_HEIGHT * 2) + 2, 0, this.ClientSize.Width - (DEF_HEADER_HEIGHT * 2) - 15, 10);
+                this.menuGlyph.Rect = new Rectangle(DEF_HEADER_HEIGHT, 2, btnWidth, btnWidth);//this.ClientSize.Width - 20, 2, 16, 16);
+                this.closeButton.Rect = new Rectangle(4, 2, btnWidth, btnWidth);//ClientSize.Width - DEF_GLYPH_WIDTH, 2, 16, 16);
             }
 
             int borderWidth = (this.showBorder ? 1 : 0);
@@ -1007,12 +1009,21 @@ namespace Terminals.Connection.TabControl
 
             this.menuGlyph = new TabControlMenuGlyph(this.ToolStripRenderer);
             this.closeButton = new TabControlCloseButton(this.ToolStripRenderer);
-            this.Font = new Font("Tahoma", 8.25f, FontStyle.Regular);
+            
+            var topPanel  = new UserControl { Dock = DockStyle.Top, Height = 20 };
+            Controls.Add(topPanel);
+
             this.sf = new StringFormat();
             this.movePreview = new TabPreview(this);
             this.movePreview.AllowDrop = true;
 
+            AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.EndInit();
+
+            DEF_HEADER_HEIGHT = topPanel.Height;
+            Controls.Remove(topPanel);
+            topPanel.Dispose();
 
             this.UpdateLayout();
         }
