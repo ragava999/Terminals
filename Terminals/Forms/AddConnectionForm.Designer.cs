@@ -30,8 +30,7 @@ namespace Terminals.Forms
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddConnectionForm));
             this.gbFavorites = new System.Windows.Forms.GroupBox();
-            this.lvFavorites = new System.Windows.Forms.ListView();
-            this.chFavoriteName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.pnlControls = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnOk = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
@@ -41,7 +40,7 @@ namespace Terminals.Forms
             // 
             // gbFavorites
             // 
-            this.gbFavorites.Controls.Add(this.lvFavorites);
+            this.gbFavorites.Controls.Add(this.pnlControls);
             this.gbFavorites.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gbFavorites.Location = new System.Drawing.Point(0, 0);
             this.gbFavorites.Name = "gbFavorites";
@@ -50,25 +49,15 @@ namespace Terminals.Forms
             this.gbFavorites.TabStop = false;
             this.gbFavorites.Text = "Favorites";
             // 
-            // lvFavorites
+            // pnlControls
             // 
-            this.lvFavorites.CheckBoxes = true;
-            this.lvFavorites.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.chFavoriteName});
-            this.lvFavorites.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lvFavorites.FullRowSelect = true;
-            this.lvFavorites.Location = new System.Drawing.Point(3, 17);
-            this.lvFavorites.Name = "lvFavorites";
-            this.lvFavorites.Size = new System.Drawing.Size(215, 220);
-            this.lvFavorites.TabIndex = 1;
-            this.lvFavorites.UseCompatibleStateImageBehavior = false;
-            this.lvFavorites.View = System.Windows.Forms.View.Details;
-            this.lvFavorites.ItemChecked += new System.Windows.Forms.ItemCheckedEventHandler(this.lvFavorites_ItemChecked);
-            // 
-            // chFavoriteName
-            // 
-            this.chFavoriteName.Text = "Favorite name";
-            this.chFavoriteName.Width = 186;
+            this.pnlControls.AutoScroll = true;
+            this.pnlControls.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlControls.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.pnlControls.Location = new System.Drawing.Point(3, 16);
+            this.pnlControls.Name = "pnlControls";
+            this.pnlControls.Size = new System.Drawing.Size(215, 221);
+            this.pnlControls.TabIndex = 0;
             // 
             // panel1
             // 
@@ -89,7 +78,7 @@ namespace Terminals.Forms
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(75, 25);
             this.btnOk.TabIndex = 9;
-            this.btnOk.Text = "Ok";
+            this.btnOk.Text = "OK";
             this.btnOk.UseVisualStyleBackColor = true;
             this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
             // 
@@ -113,7 +102,6 @@ namespace Terminals.Forms
             this.ClientSize = new System.Drawing.Size(221, 287);
             this.Controls.Add(this.gbFavorites);
             this.Controls.Add(this.panel1);
-            this.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -130,10 +118,9 @@ namespace Terminals.Forms
         #endregion
 
         private System.Windows.Forms.GroupBox gbFavorites;
-        private System.Windows.Forms.ListView lvFavorites;
-        private System.Windows.Forms.ColumnHeader chFavoriteName;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnOk;
         private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.FlowLayoutPanel pnlControls;
     }
 }

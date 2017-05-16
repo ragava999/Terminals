@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using Terminals.Configuration.Files.Main.Favorites;
@@ -8,45 +9,40 @@ namespace Terminals.Forms
 {
     public partial class AddConnectionForm : Form
     {
-        private List<string> connections;
-
         public AddConnectionForm(bool saveInDB)
         {
             this.InitializeComponent();
-            FavoriteConfigurationElementCollection favorites = Settings.GetFavorites(saveInDB);
+
+            var favorites = Settings.GetFavorites(saveInDB);
             foreach (FavoriteConfigurationElement favorite in favorites)
             {
-                this.lvFavorites.Items.Add(favorite.Name);
+                var checkBox = new CheckBox()
+                {
+                    Text                    = favorite.Name,
+                    UseVisualStyleBackColor = true,
+                    AutoSize                = true
+                };
+                checkBox.CheckedChanged += SetButtonOkState;
+
+                pnlControls.Controls.Add(checkBox);
             }
         }
 
-        public List<string> Connections
+        IEnumerable<CheckBox> SelectedCheckBoxes
         {
-            get { return this.connections; }
+            get { return pnlControls.Controls.OfType<CheckBox>().Where(x => x.Checked); }
         }
 
-        private void lvFavorites_ItemChecked(object sender, ItemCheckedEventArgs e)
-        {
-            this.SetButtonOkState();
-        }
+        public string[] Connections { get; private set; }
 
-        private void SetButtonOkState()
+        private void SetButtonOkState(object sender = null, EventArgs e = null)
         {
-            this.btnOk.Enabled = this.lvFavorites.CheckedItems.Count > 0;
-        }
-
-        private void txtServerName_TextChanged(object sender, EventArgs e)
-        {
-            this.SetButtonOkState();
+            this.btnOk.Enabled = SelectedCheckBoxes.Any();
         }
 
         private void btnOk_Click(object sender, EventArgs e)
         {
-            this.connections = new List<string>();
-            foreach (ListViewItem item in this.lvFavorites.CheckedItems)
-            {
-                this.connections.Add(item.Text);
-            }
+            Connections = SelectedCheckBoxes.Select(x => x.Text).ToArray();
         }
     }
 }

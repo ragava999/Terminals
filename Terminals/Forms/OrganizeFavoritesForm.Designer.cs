@@ -180,7 +180,7 @@ namespace Terminals.Forms
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(3, 4);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(70, 13);
+            this.label1.Size = new System.Drawing.Size(69, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Connections:";
             // 
@@ -834,7 +834,7 @@ namespace Terminals.Forms
             this.lblSelectedCount.AutoSize = true;
             this.lblSelectedCount.Location = new System.Drawing.Point(122, 4);
             this.lblSelectedCount.Name = "lblSelectedCount";
-            this.lblSelectedCount.Size = new System.Drawing.Size(64, 13);
+            this.lblSelectedCount.Size = new System.Drawing.Size(62, 13);
             this.lblSelectedCount.TabIndex = 14;
             this.lblSelectedCount.Text = "(0 selected)";
             // 
@@ -1103,7 +1103,6 @@ namespace Terminals.Forms
             this.ClientSize = new System.Drawing.Size(866, 489);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuStrip1);
-            this.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
             this.Icon = global::Terminals.Properties.Resources.terminalsicon;
             this.KeyPreview = true;
             this.MainMenuStrip = this.menuStrip1;
@@ -1113,6 +1112,7 @@ namespace Terminals.Forms
             this.Name = "OrganizeFavoritesForm";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Organise Favourites";
             this.Shown += new System.EventHandler(this.OrganizeFavoritesForm_Shown);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridFavorites_KeyDown);
             this.menuStrip1.ResumeLayout(false);
